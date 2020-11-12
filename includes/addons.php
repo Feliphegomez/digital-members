@@ -238,7 +238,7 @@ function dmrfid_getPluginAPIObjectFromAddon( $addon ) {
 		$api->package = add_query_arg( 'key', $key, $api->package );
 	}
 	if ( empty( $api->upgrade_notice ) && ! dmrfid_license_isValid( null, 'plus' ) ) {
-		$api->upgrade_notice = __( 'Important: This plugin requires a valid DmRFID Plus license key to update.', 'paid-memberships-pro' );
+		$api->upgrade_notice = __( 'Important: This plugin requires a valid DmRFID Plus license key to update.', 'digital-members-rfid' );
 	}
 
 	return $api;
@@ -291,7 +291,7 @@ function dmrfid_admin_init_updating_plugins() {
 		// if Plus addons found, check license key
 		if ( ! empty( $plus_plugins ) && ! dmrfid_license_isValid( null, 'plus' ) ) {
 			// show error
-			$msg = __( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=bulkupdate">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons. The following plugins will not be updated:', 'paid-memberships-pro' );
+			$msg = __( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=bulkupdate">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons. The following plugins will not be updated:', 'digital-members-rfid' );
 			echo '<div class="error"><p>' . $msg . ' <strong>' . implode( ', ', $plus_addons ) . '</strong></p></div>';
 		}
 
@@ -311,10 +311,10 @@ function dmrfid_admin_init_updating_plugins() {
 
 			echo '<div class="wrap"><h2>' . __( 'Update Plugin' ) . '</h2>';
 
-			$msg = __( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=addon_update">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons.', 'paid-memberships-pro' );
+			$msg = __( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=addon_update">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons.', 'digital-members-rfid' );
 			echo '<div class="error"><p>' . $msg . '</p></div>';
 
-			echo '<p><a href="' . admin_url( 'admin.php?page=dmrfid-addons' ) . '" target="_parent">' . __( 'Return to the DmRFID Add Ons page', 'paid-memberships-pro' ) . '</a></p>';
+			echo '<p><a href="' . admin_url( 'admin.php?page=dmrfid-addons' ) . '" target="_parent">' . __( 'Return to the DmRFID Add Ons page', 'digital-members-rfid' ) . '</a></p>';
 
 			echo '</div>';
 
@@ -333,7 +333,7 @@ function dmrfid_admin_init_updating_plugins() {
 		$slug = str_replace( '.php', '', basename( $plugin ) );
 		$addon = dmrfid_getAddonBySlug( $slug );
 		if ( ! empty( $addon ) && $addon->License == 'plus' && ! dmrfid_license_isValid( null, 'plus' ) ) {
-			$msg = __( 'You must enter a valid DmRFID Plus License Key under Settings > DmRFID License to update this add on.', 'paid-memberships-pro' );
+			$msg = __( 'You must enter a valid DmRFID Plus License Key under Settings > DmRFID License to update this add on.', 'digital-members-rfid' );
 			echo '<div class="error"><p>' . $msg . '</p></div>';
 
 			// can exit WP now

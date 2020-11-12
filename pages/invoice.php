@@ -18,17 +18,17 @@
 			$dmrfid_invoice->getUser();
 			$dmrfid_invoice->getMembershipLevel();
 		?>
-		<h3><?php printf(__('Invoice #%s on %s', 'paid-memberships-pro' ), $dmrfid_invoice->code, date_i18n(get_option('date_format'), $dmrfid_invoice->getTimestamp()));?></h3>
-		<a class="<?php echo dmrfid_get_element_class( 'dmrfid_a-print' ); ?>" href="javascript:window.print()"><?php _e('Print', 'paid-memberships-pro' ); ?></a>
+		<h3><?php printf(__('Invoice #%s on %s', 'digital-members-rfid' ), $dmrfid_invoice->code, date_i18n(get_option('date_format'), $dmrfid_invoice->getTimestamp()));?></h3>
+		<a class="<?php echo dmrfid_get_element_class( 'dmrfid_a-print' ); ?>" href="javascript:window.print()"><?php _e('Print', 'digital-members-rfid' ); ?></a>
 		<ul>
 			<?php do_action("dmrfid_invoice_bullets_top", $dmrfid_invoice); ?>
-			<li><strong><?php _e('Account', 'paid-memberships-pro' );?>:</strong> <?php echo $dmrfid_invoice->user->display_name?> (<?php echo $dmrfid_invoice->user->user_email?>)</li>
-			<li><strong><?php _e('Membership Level', 'paid-memberships-pro' );?>:</strong> <?php echo $dmrfid_invoice->membership_level->name?></li>
+			<li><strong><?php _e('Account', 'digital-members-rfid' );?>:</strong> <?php echo $dmrfid_invoice->user->display_name?> (<?php echo $dmrfid_invoice->user->user_email?>)</li>
+			<li><strong><?php _e('Membership Level', 'digital-members-rfid' );?>:</strong> <?php echo $dmrfid_invoice->membership_level->name?></li>
 			<?php if ( ! empty( $dmrfid_invoice->status ) ) { ?>
-				<li><strong><?php _e('Status', 'paid-memberships-pro' ); ?>:</strong>
+				<li><strong><?php _e('Status', 'digital-members-rfid' ); ?>:</strong>
 				<?php
 					if ( in_array( $dmrfid_invoice->status, array( '', 'success', 'cancelled' ) ) ) {
-						$display_status = __( 'Paid', 'paid-memberships-pro' );
+						$display_status = __( 'Paid', 'digital-members-rfid' );
 					} else {
 						$display_status = ucwords( $dmrfid_invoice->status );
 					}
@@ -37,7 +37,7 @@
 				</li>
 			<?php } ?>
 			<?php if($dmrfid_invoice->getDiscountCode()) { ?>
-				<li><strong><?php _e('Discount Code', 'paid-memberships-pro' );?>:</strong> <?php echo $dmrfid_invoice->discount_code->code?></li>
+				<li><strong><?php _e('Discount Code', 'digital-members-rfid' );?>:</strong> <?php echo $dmrfid_invoice->discount_code->code?></li>
 			<?php } ?>
 			<?php do_action("dmrfid_invoice_bullets_bottom", $dmrfid_invoice); ?>
 		</ul>
@@ -53,7 +53,7 @@
 		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_invoice_details' ); ?>">
 			<?php if(!empty($dmrfid_invoice->billing->name)) { ?>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_invoice-billing-address' ); ?>">
-					<strong><?php _e('Billing Address', 'paid-memberships-pro' );?></strong>
+					<strong><?php _e('Billing Address', 'digital-members-rfid' );?></strong>
 					<p><?php echo $dmrfid_invoice->billing->name?><br />
 					<?php echo $dmrfid_invoice->billing->street?><br />
 					<?php if($dmrfid_invoice->billing->city && $dmrfid_invoice->billing->state) { ?>
@@ -66,11 +66,11 @@
 
 			<?php if ( ! empty( $dmrfid_invoice->accountnumber ) || ! empty( $dmrfid_invoice->payment_type ) ) { ?>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_invoice-payment-method' ); ?>">
-					<strong><?php _e('Payment Method', 'paid-memberships-pro' );?></strong>
+					<strong><?php _e('Payment Method', 'digital-members-rfid' );?></strong>
 					<?php if($dmrfid_invoice->accountnumber) { ?>
-						<p><?php echo ucwords( $dmrfid_invoice->cardtype ); ?> <?php _e('ending in', 'paid-memberships-pro' );?> <?php echo last4($dmrfid_invoice->accountnumber)?>
+						<p><?php echo ucwords( $dmrfid_invoice->cardtype ); ?> <?php _e('ending in', 'digital-members-rfid' );?> <?php echo last4($dmrfid_invoice->accountnumber)?>
 						<br />
-						<?php _e('Expiration', 'paid-memberships-pro' );?>: <?php echo $dmrfid_invoice->expirationmonth?>/<?php echo $dmrfid_invoice->expirationyear?></p>
+						<?php _e('Expiration', 'digital-members-rfid' );?>: <?php echo $dmrfid_invoice->expirationmonth?>/<?php echo $dmrfid_invoice->expirationyear?></p>
 					<?php } else { ?>
 						<p><?php echo $dmrfid_invoice->payment_type; ?></p>
 					<?php } ?>
@@ -78,15 +78,15 @@
 			<?php } ?>
 
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_invoice-total' ); ?>">
-				<strong><?php _e('Total Billed', 'paid-memberships-pro' );?></strong>
+				<strong><?php _e('Total Billed', 'digital-members-rfid' );?></strong>
 				<p><?php if($dmrfid_invoice->total != '0.00') { ?>
 					<?php if(!empty($dmrfid_invoice->tax)) { ?>
-						<?php _e('Subtotal', 'paid-memberships-pro' );?>: <?php echo dmrfid_formatPrice($dmrfid_invoice->subtotal);?><br />
-						<?php _e('Tax', 'paid-memberships-pro' );?>: <?php echo dmrfid_formatPrice($dmrfid_invoice->tax);?><br />
+						<?php _e('Subtotal', 'digital-members-rfid' );?>: <?php echo dmrfid_formatPrice($dmrfid_invoice->subtotal);?><br />
+						<?php _e('Tax', 'digital-members-rfid' );?>: <?php echo dmrfid_formatPrice($dmrfid_invoice->tax);?><br />
 						<?php if(!empty($dmrfid_invoice->couponamount)) { ?>
-							<?php _e('Coupon', 'paid-memberships-pro' );?>: (<?php echo dmrfid_formatPrice($dmrfid_invoice->couponamount);?>)<br />
+							<?php _e('Coupon', 'digital-members-rfid' );?>: (<?php echo dmrfid_formatPrice($dmrfid_invoice->couponamount);?>)<br />
 						<?php } ?>
-						<strong><?php _e('Total', 'paid-memberships-pro' );?>: <?php echo dmrfid_formatPrice($dmrfid_invoice->total);?></strong>
+						<strong><?php _e('Total', 'digital-members-rfid' );?>: <?php echo dmrfid_formatPrice($dmrfid_invoice->total);?></strong>
 					<?php } else { ?>
 						<?php echo dmrfid_formatPrice($dmrfid_invoice->total);?>
 					<?php } ?>
@@ -108,10 +108,10 @@
 			<table id="dmrfid_invoices_table" class="<?php echo dmrfid_get_element_class( 'dmrfid_table dmrfid_invoice', 'dmrfid_invoices_table' ); ?>" width="100%" cellpadding="0" cellspacing="0" border="0">
 			<thead>
 				<tr>
-					<th><?php _e('Date', 'paid-memberships-pro' ); ?></th>
-					<th><?php _e('Invoice #', 'paid-memberships-pro' ); ?></th>
-					<th><?php _e('Level', 'paid-memberships-pro' ); ?></th>
-					<th><?php _e('Total Billed', 'paid-memberships-pro' ); ?></th>
+					<th><?php _e('Date', 'digital-members-rfid' ); ?></th>
+					<th><?php _e('Invoice #', 'digital-members-rfid' ); ?></th>
+					<th><?php _e('Level', 'digital-members-rfid' ); ?></th>
+					<th><?php _e('Total Billed', 'digital-members-rfid' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -135,15 +135,15 @@
 		else
 		{
 			?>
-			<p><?php _e('No invoices found.', 'paid-memberships-pro' );?></p>
+			<p><?php _e('No invoices found.', 'digital-members-rfid' );?></p>
 			<?php
 		}
 	}
 ?>
 <p class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav' ); ?>">
-	<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-right' ); ?>"><a href="<?php echo dmrfid_url("account")?>"><?php _e('View Your Membership Account &rarr;', 'paid-memberships-pro' );?></a></span>
+	<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-right' ); ?>"><a href="<?php echo dmrfid_url("account")?>"><?php _e('View Your Membership Account &rarr;', 'digital-members-rfid' );?></a></span>
 	<?php if ( $dmrfid_invoice ) { ?>
-		<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-left' ); ?>"><a href="<?php echo dmrfid_url("invoice")?>"><?php _e('&larr; View All Invoices', 'paid-memberships-pro' );?></a></span>
+		<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-left' ); ?>"><a href="<?php echo dmrfid_url("invoice")?>"><?php _e('&larr; View All Invoices', 'digital-members-rfid' );?></a></span>
 	<?php } ?>
 </p> <!-- end dmrfid_actions_nav -->
 </div> <!-- end dmrfid_invoice_wrap -->

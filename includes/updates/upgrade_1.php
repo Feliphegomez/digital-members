@@ -4,13 +4,13 @@ function dmrfid_upgrade_1()
 	/*
 		default options
 	*/
-	$nonmembertext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Join Now</a>', 'paid-memberships-pro' ), "!!levels_page_url!!" );
+	$nonmembertext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Join Now</a>', 'digital-members-rfid' ), "!!levels_page_url!!" );
 	dmrfid_setOption("nonmembertext", $nonmembertext);
 
-	$notloggedintext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Login</a> <a href="%s">Join Now</a>', 'paid-memberships-pro' ), '!!login_url!!', "!!levels_page_url!!" );
+	$notloggedintext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Login</a> <a href="%s">Join Now</a>', 'digital-members-rfid' ), '!!login_url!!', "!!levels_page_url!!" );
 	dmrfid_setOption("notloggedintext", $notloggedintext);
 
-	$rsstext = __( 'This content is for members only. Visit the site and log in/register to read.', 'paid-memberships-pro' );
+	$rsstext = __( 'This content is for members only. Visit the site and log in/register to read.', 'digital-members-rfid' );
 	dmrfid_setOption("rsstext", $rsstext);
 
 	$gateway_environment = "sandbox";

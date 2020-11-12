@@ -18,7 +18,7 @@ function dmrfid_init_check_for_deprecated_filters() {
 	foreach ( $dmrfid_map_deprecated_filters as $new => $old ) {
 		if ( has_filter( $old ) ) {
 			/* translators: 1: the old hook name, 2: the new or replacement hook name */
-			trigger_error( sprintf( esc_html__( 'The %1$s hook has been deprecated in Digital Members RFID. Please use the %2$s hook instead.', 'paid-memberships-pro' ), $old, $new ) );
+			trigger_error( sprintf( esc_html__( 'The %1$s hook has been deprecated in Digital Members RFID. Please use the %2$s hook instead.', 'digital-members-rfid' ), $old, $new ) );
 			
 			// Add filters back using the new tag.
 			foreach( $wp_filter[$old]->callbacks as $priority => $callbacks ) {

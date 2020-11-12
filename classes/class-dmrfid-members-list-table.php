@@ -24,7 +24,7 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 	 */
 	public function __construct() {
 
-		$this->plugin_text_domain = 'paid-memberships-pro';
+		$this->plugin_text_domain = 'digital-members-rfid';
 
 		parent::__construct(
 			array(
@@ -223,18 +223,18 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 			$s = "";
 		?>
 		<p>
-			<?php _e( 'No members found.', 'paid-memberships-pro' ); ?>
+			<?php _e( 'No members found.', 'digital-members-rfid' ); ?>
 			<?php if ( $l ) { ?>
-				<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 's' => $s ) ) ); ?>"><?php _e( 'Search all levels', 'paid-memberships-pro' );?></a>
+				<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 's' => $s ) ) ); ?>"><?php _e( 'Search all levels', 'digital-members-rfid' );?></a>
 			<?php } ?>
 		</p>
 		<hr />
-		<p><?php _e( 'You can also try searching:', 'paid-memberships-pro' ); ?>
+		<p><?php _e( 'You can also try searching:', 'digital-members-rfid' ); ?>
 		<ul class="ul-disc">
-			<li><a href="<?php echo esc_url( add_query_arg( array( 's' => $s ), admin_url( 'users.php' ) ) ); ?>"><?php _e( 'All Users', 'paid-memberships-pro' ); ?></a></li>
-			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'cancelled', 's' => $s ) ) ); ?>"><?php _e( 'Cancelled Members', 'paid-memberships-pro' ); ?></a></li>
-			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'expired', 's' => $s ) ) ); ?>"><?php _e( 'Expired Members', 'paid-memberships-pro' ); ?></a></li>
-			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'oldmembers', 's' => $s ) ) ); ?>"><?php _e( 'Old Members', 'paid-memberships-pro' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 's' => $s ), admin_url( 'users.php' ) ) ); ?>"><?php _e( 'All Users', 'digital-members-rfid' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'cancelled', 's' => $s ) ) ); ?>"><?php _e( 'Cancelled Members', 'digital-members-rfid' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'expired', 's' => $s ) ) ); ?>"><?php _e( 'Expired Members', 'digital-members-rfid' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'oldmembers', 's' => $s ) ) ); ?>"><?php _e( 'Old Members', 'digital-members-rfid' ); ?></a></li>
 		</ul>
 		<?php
 	}
@@ -539,7 +539,7 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 		$fee = '';
 		// If there is no payment for the level, show a dash.
 		if ( (float)$item['initial_payment'] <= 0 && (float)$item['billing_amount'] <= 0 ) {
-			$fee .= esc_html_e( '&#8212;', 'paid-memberships-pro' );
+			$fee .= esc_html_e( '&#8212;', 'digital-members-rfid' );
 		} else {
 			// Display the member's initial payment.
 			if ( (float)$item['initial_payment'] > 0 ) {
@@ -547,12 +547,12 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 			}
 			// If there is a recurring payment, show a plus sign.
 			if ( (float)$item['initial_payment'] > 0 && (float)$item['billing_amount'] > 0 ) {
-				$fee .= esc_html( ' + ', 'paid-memberships-pro' );
+				$fee .= esc_html( ' + ', 'digital-members-rfid' );
 			}
 			// If there is a recurring payment, show the recurring payment amount and cycle.
 			if ( (float)$item['billing_amount'] > 0 ) {
 				$fee .= dmrfid_formatPrice( $item['billing_amount'] );
-				$fee .= esc_html( ' per ', 'paid-memberships-pro' );
+				$fee .= esc_html( ' per ', 'digital-members-rfid' );
 				if ( $item['cycle_number'] > 1 ) {
 					$fee .= $item['cycle_number'] . " " . $item['cycle_period'] . "s";
 				} else {
@@ -600,7 +600,7 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 	public function column_enddate( $item ) {
 		$user_object = get_userdata( $item['ID'] );
 		if ( 0 == $item['enddate'] ) {
-			return __( apply_filters( 'dmrfid_memberslist_expires_column', 'Never', $user_object ), 'paid-memberships-pro');
+			return __( apply_filters( 'dmrfid_memberslist_expires_column', 'Never', $user_object ), 'digital-members-rfid');
 		} else {
 			return apply_filters( 'dmrfid_memberslist_expires_column', date_i18n( get_option('date_format'), $item['enddate'] ), $user_object );
 		}
@@ -620,9 +620,9 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 			} else {
 				$l = false;
 			}
-			_e('Show', 'paid-memberships-pro' );?>
+			_e('Show', 'digital-members-rfid' );?>
 			<select name="l" onchange="jQuery('#current-page-selector').val('1'); jQuery('#member-list-form').submit();">
-				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' );?></option>
+				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'digital-members-rfid' );?></option>
 				<?php
 					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->dmrfid_membership_levels ORDER BY name");
 					foreach($levels as $level)
@@ -632,9 +632,9 @@ class DmRFID_Members_List_Table extends WP_List_Table {
 				<?php
 					}
 				?>
-				<option value="cancelled" <?php if($l == "cancelled") { ?>selected="selected"<?php } ?>><?php _e('Cancelled Members', 'paid-memberships-pro' );?></option>
-				<option value="expired" <?php if($l == "expired") { ?>selected="selected"<?php } ?>><?php _e('Expired Members', 'paid-memberships-pro' );?></option>
-				<option value="oldmembers" <?php if($l == "oldmembers") { ?>selected="selected"<?php } ?>><?php _e('Old Members', 'paid-memberships-pro' );?></option>
+				<option value="cancelled" <?php if($l == "cancelled") { ?>selected="selected"<?php } ?>><?php _e('Cancelled Members', 'digital-members-rfid' );?></option>
+				<option value="expired" <?php if($l == "expired") { ?>selected="selected"<?php } ?>><?php _e('Expired Members', 'digital-members-rfid' );?></option>
+				<option value="oldmembers" <?php if($l == "oldmembers") { ?>selected="selected"<?php } ?>><?php _e('Old Members', 'digital-members-rfid' );?></option>
 			</select>
 			<?php
 			}

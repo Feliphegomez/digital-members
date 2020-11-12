@@ -52,7 +52,7 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 	static function dmrfid_gateways($gateways)
 	{
 		if(empty($gateways['authorizenet']))
-			$gateways['authorizenet'] = __('Authorize.net', 'paid-memberships-pro' );
+			$gateways['authorizenet'] = __('Authorize.net', 'digital-members-rfid' );
 
 		return $gateways;
 	}
@@ -107,12 +107,12 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 	<tr class="dmrfid_settings_divider gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 		<td colspan="2">
 			<hr />
-			<h2 class="title"><?php esc_html_e('Authorize.net Settings', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e('Authorize.net Settings', 'digital-members-rfid' ); ?></h2>
 		</td>
 	</tr>
 	<tr class="gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 		<th scope="row" valign="top">
-			<label for="loginname"><?php _e('Login Name', 'paid-memberships-pro' );?>:</label>
+			<label for="loginname"><?php _e('Login Name', 'digital-members-rfid' );?>:</label>
 		</th>
 		<td>
 			<input type="text" id="loginname" name="loginname" value="<?php echo esc_attr($values['loginname'])?>" class="regular-text code" />
@@ -120,7 +120,7 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 	</tr>
 	<tr class="gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 		<th scope="row" valign="top">
-			<label for="transactionkey"><?php _e('Transaction Key', 'paid-memberships-pro' );?>:</label>
+			<label for="transactionkey"><?php _e('Transaction Key', 'digital-members-rfid' );?>:</label>
 		</th>
 		<td>
 			<input type="text" id="transactionkey" name="transactionkey" value="<?php echo esc_attr($values['transactionkey'])?>" class="regular-text code" />
@@ -128,10 +128,10 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 	</tr>
 	<tr class="gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 		<th scope="row" valign="top">
-			<label><?php _e('Silent Post URL', 'paid-memberships-pro' );?>:</label>
+			<label><?php _e('Silent Post URL', 'digital-members-rfid' );?>:</label>
 		</th>
 		<td>
-			<p><?php _e('To fully integrate with Authorize.net, be sure to set your Silent Post URL to', 'paid-memberships-pro' ); ?></p>
+			<p><?php _e('To fully integrate with Authorize.net, be sure to set your Silent Post URL to', 'digital-members-rfid' ); ?></p>
 			<p><code><?php echo admin_url("admin-ajax.php") . "?action=authnet_silent_post";?></code></p>
 		</td>
 	</tr>
@@ -186,7 +186,7 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 			else
 			{
 				if(empty($order->error))
-					$order->error = __("Unknown error: Authorization failed.", 'paid-memberships-pro' );
+					$order->error = __("Unknown error: Authorization failed.", 'digital-members-rfid' );
 				return false;
 			}
 		}
@@ -237,13 +237,13 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 						if($this->void($order))
 						{
 							if(!$order->error)
-								$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+								$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
 						}
 						else
 						{
 							if(!$order->error)
-								$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
-							$order->error .= " " . __("A partial payment was made that we could not void. Please contact the site owner immediately to correct this.", 'paid-memberships-pro' );
+								$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
+							$order->error .= " " . __("A partial payment was made that we could not void. Please contact the site owner immediately to correct this.", 'digital-members-rfid' );
 						}
 
 						return false;
@@ -259,7 +259,7 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 			else
 			{
 				if(empty($order->error))
-					$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+					$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
 
 				return false;
 			}
@@ -911,8 +911,8 @@ class DmRFIDGateway_authorizenet extends DmRFIDGateway
 		else
 		{
 			$order->status = "error";
-			$order->error = __("Could not connect to Authorize.net", 'paid-memberships-pro' );
-			$order->shorterror = __("Could not connect to Authorize.net", 'paid-memberships-pro' );
+			$order->error = __("Could not connect to Authorize.net", 'digital-members-rfid' );
+			$order->shorterror = __("Could not connect to Authorize.net", 'digital-members-rfid' );
 			return false;
 		}
 	}

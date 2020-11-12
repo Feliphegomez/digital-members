@@ -1,5 +1,5 @@
 /* icon */
-#wp-admin-bar-paid-memberships-pro .ab-item .ab-icon:before {
+#wp-admin-bar-digital-members-rfid .ab-item .ab-icon:before {
     font-family: "dashicons";
     content: "\f307";
 }
@@ -7,7 +7,7 @@
 
 /* header/etc */
 .dmrfid_admin {
-    background-image: url(../images/Paid-Memberships-Pro_watermark.png);
+    background-image: url(../images/Digital-Members-RFID_watermark.png);
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 290px 40px;

@@ -68,7 +68,7 @@
 		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['paypalstandard']))
-				$gateways['paypalstandard'] = __('PayPal Standard', 'paid-memberships-pro' );
+				$gateways['paypalstandard'] = __('PayPal Standard', 'digital-members-rfid' );
 
 			return $gateways;
 		}
@@ -130,7 +130,7 @@
 		<tr class="dmrfid_settings_divider gateway gateway_paypal gateway_paypalexpress gateway_paypalstandard" <?php if($gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
-				<h3><?php _e('PayPal Settings', 'paid-memberships-pro' ); ?></h3>
+				<h3><?php _e('PayPal Settings', 'digital-members-rfid' ); ?></h3>
 			</td>
 		</tr>
 		<tr class="gateway gateway_paypalstandard" <?php if($gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
@@ -144,14 +144,14 @@
 							'title' => array(),
 						),
 					);
-					echo sprintf( wp_kses( __( 'Note: We do not recommend using PayPal Standard. We suggest using PayPal Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="_blank" href="%s" title="More information on why can be found here">More information on why can be found here</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/read-using-paypal-standard-paid-memberships-pro/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=read-using-paypal-standard-paid-memberships-pro' );
+					echo sprintf( wp_kses( __( 'Note: We do not recommend using PayPal Standard. We suggest using PayPal Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="_blank" href="%s" title="More information on why can be found here">More information on why can be found here</a>.', 'digital-members-rfid' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/read-using-paypal-standard-digital-members-rfid/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=read-using-paypal-standard-digital-members-rfid' );
 				?>
 				</p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_paypal gateway_paypalexpress gateway_paypalstandard" <?php if($gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="gateway_email"><?php _e('Gateway Account Email', 'paid-memberships-pro' );?>:</label>
+				<label for="gateway_email"><?php _e('Gateway Account Email', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="gateway_email" name="gateway_email" size="60" value="<?php echo esc_attr($values['gateway_email'])?>" />
@@ -159,7 +159,7 @@
 		</tr>
 		<tr class="gateway gateway_paypal gateway_paypalexpress" <?php if($gateway != "paypal" && $gateway != "paypalexpress") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="apiusername"><?php _e('API Username', 'paid-memberships-pro' );?>:</label>
+				<label for="apiusername"><?php _e('API Username', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="apiusername" name="apiusername" size="60" value="<?php echo esc_attr($values['apiusername'])?>" />
@@ -167,7 +167,7 @@
 		</tr>
 		<tr class="gateway gateway_paypal gateway_paypalexpress" <?php if($gateway != "paypal" && $gateway != "paypalexpress") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="apipassword"><?php _e('API Password', 'paid-memberships-pro' );?>:</label>
+				<label for="apipassword"><?php _e('API Password', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="apipassword" name="apipassword" size="60" value="<?php echo esc_attr($values['apipassword'])?>" />
@@ -175,7 +175,7 @@
 		</tr>
 		<tr class="gateway gateway_paypal gateway_paypalexpress" <?php if($gateway != "paypal" && $gateway != "paypalexpress") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="apisignature"><?php _e('API Signature', 'paid-memberships-pro' );?>:</label>
+				<label for="apisignature"><?php _e('API Signature', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="apisignature" name="apisignature" size="60" value="<?php echo esc_attr($values['apisignature'])?>" />
@@ -183,10 +183,10 @@
 		</tr>
 		<tr class="gateway gateway_paypal gateway_paypalexpress gateway_paypalstandard" <?php if($gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label><?php _e('IPN Handler URL', 'paid-memberships-pro' );?>:</label>
+				<label><?php _e('IPN Handler URL', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
-				<p><?php _e('Here is your IPN URL for reference. You SHOULD NOT set this in your PayPal settings.', 'paid-memberships-pro' );?> <pre><?php echo add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') );?></pre></p>
+				<p><?php _e('Here is your IPN URL for reference. You SHOULD NOT set this in your PayPal settings.', 'digital-members-rfid' );?> <pre><?php echo add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') );?></pre></p>
 			</td>
 		</tr>
 		<?php
@@ -238,12 +238,12 @@
 			?>
 			<span id="dmrfid_paypalexpress_checkout" <?php if(($gateway != "paypalexpress" && $gateway != "paypalstandard") || !$dmrfid_requirebilling) { ?>style="display: none;"<?php } ?>>
 				<input type="hidden" name="submit-checkout" value="1" />
-				<input type="image" value="<?php _e('Check Out with PayPal', 'paid-memberships-pro' );?> &raquo;" src="<?php echo apply_filters("dmrfid_paypal_button_image", "https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png");?>" />
+				<input type="image" value="<?php _e('Check Out with PayPal', 'digital-members-rfid' );?> &raquo;" src="<?php echo apply_filters("dmrfid_paypal_button_image", "https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png");?>" />
 			</span>
 
 			<span id="dmrfid_submit_span" <?php if(($gateway == "paypalexpress" || $gateway == "paypalstandard") && $dmrfid_requirebilling) { ?>style="display: none;"<?php } ?>>
 				<input type="hidden" name="submit-checkout" value="1" />
-				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit-checkout', 'dmrfid_btn-submit-checkout' ); ?>" value="<?php if($dmrfid_requirebilling) { _e('Submit and Check Out', 'paid-memberships-pro' ); } else { _e('Submit and Confirm', 'paid-memberships-pro' );}?> &raquo;" />
+				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit-checkout', 'dmrfid_btn-submit-checkout' ); ?>" value="<?php if($dmrfid_requirebilling) { _e('Submit and Check Out', 'digital-members-rfid' ); } else { _e('Submit and Confirm', 'digital-members-rfid' );}?> &raquo;" />
 			</span>
 			<?php
 
@@ -569,7 +569,7 @@
 			// PayPal profile info for if/when PayPal Express credentials happen to exist in our settings
             $nvp_args['PROFILEID'] = $order->subscription_transaction_id;
 			$nvp_args['ACTION'] = 'Cancel';
-			$nvp_args['NOTE'] = __( "User requested cancellation", "paid-memberships-pro" );
+			$nvp_args['NOTE'] = __( "User requested cancellation", "digital-members-rfid" );
 
 			// Encode the query
 			$nvpStr = http_build_query( $nvp_args );
@@ -585,7 +585,7 @@
 			{
 				$order->status = "error";
 				$order->errorcode = $this->httpParsedResponseAr['L_ERRORCODE0'];
-				$order->error = urldecode($this->httpParsedResponseAr['L_LONGMESSAGE0']) . ". " . __("Please contact the site owner or cancel your subscription from within PayPal to make sure you are not charged going forward.", 'paid-memberships-pro' );
+				$order->error = urldecode($this->httpParsedResponseAr['L_LONGMESSAGE0']) . ". " . __("Please contact the site owner or cancel your subscription from within PayPal to make sure you are not charged going forward.", 'digital-members-rfid' );
 				$order->shorterror = urldecode($this->httpParsedResponseAr['L_SHORTMESSAGE0']);
 
 				return false;

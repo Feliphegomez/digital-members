@@ -28,8 +28,8 @@ function dmrfid_enqueue_admin_pointer_scripts() {
 function dmrfid_prepare_pointer_scripts() {
 	// Just one pointer for now, but eventually we will have more
 	$id       = '#toplevel_page_dmrfid-dashboard';
-	$content  = '<h3>' .  __( 'DmRFID v2.0 Update', 'paid-memberships-pro' ) . '</h3>';
-	$content .= '<p>'. sprintf( __( "The Memberships menu has moved. Check out the new dashboard. The Membership Levels and Discount Codes pages can now be found under <a href=\"%s\">Settings</a>.", 'paid-memberships-pro' ) , 'admin.php?page=dmrfid-membershiplevels' ). '</p>';
+	$content  = '<h3>' .  __( 'DmRFID v2.0 Update', 'digital-members-rfid' ) . '</h3>';
+	$content .= '<p>'. sprintf( __( "The Memberships menu has moved. Check out the new dashboard. The Membership Levels and Discount Codes pages can now be found under <a href=\"%s\">Settings</a>.", 'digital-members-rfid' ) , 'admin.php?page=dmrfid-membershiplevels' ). '</p>';
 
 	$options  = array(
 		'content'  => $content,
@@ -44,7 +44,7 @@ function dmrfid_prepare_pointer_scripts() {
 	$dismissed_pointers = array_merge( $globally_dismissed_pointers, $user_dismissed_pointers );
 
 	if ( ! in_array( 'dmrfid_v2_menu_moved', $dismissed_pointers ) ) {
-		dmrfid_build_pointer_script( $id, $options, __( 'Close', 'paid-memberships-pro' ) );
+		dmrfid_build_pointer_script( $id, $options, __( 'Close', 'digital-members-rfid' ) );
 	}
 }
 

@@ -73,7 +73,7 @@
         
 		if($worked === true && empty($dmrfid_error))
 		{
-			$dmrfid_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
+			$dmrfid_msg = __("Your membership has been cancelled.", 'digital-members-rfid' );
 			$dmrfid_msgt = "dmrfid_success";
 
 			//send an email to the member

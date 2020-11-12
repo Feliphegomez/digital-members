@@ -32,8 +32,8 @@ if($dmrfid_msg)
 <table id="dmrfid_levels_table" class="<?php echo dmrfid_get_element_class( 'dmrfid_table dmrfid_checkout', 'dmrfid_levels_table' ); ?>">
 <thead>
   <tr>
-	<th><?php _e('Level', 'paid-memberships-pro' );?></th>
-	<th><?php _e('Price', 'paid-memberships-pro' );?></th>	
+	<th><?php _e('Level', 'digital-members-rfid' );?></th>
+	<th><?php _e('Price', 'digital-members-rfid' );?></th>	
 	<th>&nbsp;</th>
   </tr>
 </thead>
@@ -63,20 +63,20 @@ if($dmrfid_msg)
 		</td>
 		<td>
 		<?php if(empty($current_user->membership_level->ID)) { ?>
-			<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'paid-memberships-pro' );?></a>
+			<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'digital-members-rfid' );?></a>
 		<?php } elseif ( !$current_level ) { ?>                	
-			<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'paid-memberships-pro' );?></a>
+			<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'digital-members-rfid' );?></a>
 		<?php } elseif($current_level) { ?>      
 			
 			<?php
 				//if it's a one-time-payment level, offer a link to renew				
 				if( dmrfid_isLevelExpiringSoon( $current_user->membership_level) && $current_user->membership_level->allow_signups ) {
 					?>
-						<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Renew', 'paid-memberships-pro' );?></a>
+						<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Renew', 'digital-members-rfid' );?></a>
 					<?php
 				} else {
 					?>
-						<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn disabled', 'dmrfid_btn' ); ?>" href="<?php echo dmrfid_url("account")?>"><?php _e('Your&nbsp;Level', 'paid-memberships-pro' );?></a>
+						<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn disabled', 'dmrfid_btn' ); ?>" href="<?php echo dmrfid_url("account")?>"><?php _e('Your&nbsp;Level', 'digital-members-rfid' );?></a>
 					<?php
 				}
 			?>
@@ -91,8 +91,8 @@ if($dmrfid_msg)
 </table>
 <p class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav' ); ?>">
 	<?php if(!empty($current_user->membership_level->ID)) { ?>
-		<a href="<?php echo dmrfid_url("account")?>" id="dmrfid_levels-return-account"><?php _e('&larr; Return to Your Account', 'paid-memberships-pro' );?></a>
+		<a href="<?php echo dmrfid_url("account")?>" id="dmrfid_levels-return-account"><?php _e('&larr; Return to Your Account', 'digital-members-rfid' );?></a>
 	<?php } else { ?>
-		<a href="<?php echo home_url()?>" id="dmrfid_levels-return-home"><?php _e('&larr; Return to Home', 'paid-memberships-pro' );?></a>
+		<a href="<?php echo home_url()?>" id="dmrfid_levels-return-home"><?php _e('&larr; Return to Home', 'digital-members-rfid' );?></a>
 	<?php } ?>
 </p> <!-- end dmrfid_actions_nav -->

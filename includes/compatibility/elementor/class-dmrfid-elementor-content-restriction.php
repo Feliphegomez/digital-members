@@ -26,7 +26,7 @@ class DmRFID_Elementor_Content_Restriction extends DmRFID_Elementor {
 	public function add_controls( $element, $args ) {
 		$element->add_control(
 			'dmrfid_require_membership_heading', array(
-				'label'     => __( 'Require Membership Level', 'paid-memberships-pro' ),
+				'label'     => __( 'Require Membership Level', 'digital-members-rfid' ),
 				'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
 			)
@@ -38,7 +38,7 @@ class DmRFID_Elementor_Content_Restriction extends DmRFID_Elementor {
                 'options'     => dmrfid_elementor_get_all_levels(),
                 'multiple'    => 'true',
 				'label_block' => 'true',
-				'description' => __( 'Require membership level to see this content.', 'paid-memberships-pro' ),
+				'description' => __( 'Require membership level to see this content.', 'digital-members-rfid' ),
             )
         );
 

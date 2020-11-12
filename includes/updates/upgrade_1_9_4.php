@@ -5,8 +5,8 @@
 */
 function dmrfid_upgrade_1_9_4() {
 
-	$parent_theme_template = get_template_directory() . "/paid-memberships-pro/pages/checkout.php";
-	$child_theme_template = get_stylesheet_directory() . "/paid-memberships-pro/pages/checkout.php";
+	$parent_theme_template = get_template_directory() . "/digital-members-rfid/pages/checkout.php";
+	$child_theme_template = get_stylesheet_directory() . "/digital-members-rfid/pages/checkout.php";
 
 	$dmrfid_hide_notice = get_option( 'dmrfid_hide_div_notice', 0 );
 		
@@ -23,8 +23,8 @@ function dmrfid_upgrade_1_9_4() {
 function dmrfid_upgrade_1_9_4_show_div_notice() {
  ?>
     <div class="notice notice-warning">
-        <p><?php _e( 'We have detected that you are using a custom checkout page template for Digital Members RFID. This was recently changed and may need to be updated in order to display correctly.', 'paid-memberships-pro')?>
-        	<?php _e('If you notice UI issues after upgrading, <a href="https://www.paidmembershipspro.com/add-ons/table-layout-plugin-pages/">see this free add on to temporarily roll back to the table-based layout while you resolve the issues</a>.', 'paid-memberships-pro' ); ?> <a href="<?php echo add_query_arg('dmrfid_div_notice_hide', '1', $_SERVER['REQUEST_URI']);?>"><?php _e( 'Dismiss', 'paid-memberships-pro' );?></a></p>
+        <p><?php _e( 'We have detected that you are using a custom checkout page template for Digital Members RFID. This was recently changed and may need to be updated in order to display correctly.', 'digital-members-rfid')?>
+        	<?php _e('If you notice UI issues after upgrading, <a href="https://www.paidmembershipspro.com/add-ons/table-layout-plugin-pages/">see this free add on to temporarily roll back to the table-based layout while you resolve the issues</a>.', 'digital-members-rfid' ); ?> <a href="<?php echo add_query_arg('dmrfid_div_notice_hide', '1', $_SERVER['REQUEST_URI']);?>"><?php _e( 'Dismiss', 'digital-members-rfid' );?></a></p>
     </div>
 <?php
 }

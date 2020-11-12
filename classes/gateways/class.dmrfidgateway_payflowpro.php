@@ -36,7 +36,7 @@
 		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['payflowpro']))
-				$gateways['payflowpro'] = __('Payflow Pro/PayPal Pro', 'paid-memberships-pro' );
+				$gateways['payflowpro'] = __('Payflow Pro/PayPal Pro', 'digital-members-rfid' );
 
 			return $gateways;
 		}
@@ -93,12 +93,12 @@
 		<tr class="dmrfid_settings_divider gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
-				<h2 class="title"><?php esc_html_e( 'Payflow Pro Settings', 'paid-memberships-pro' ); ?></h2>
+				<h2 class="title"><?php esc_html_e( 'Payflow Pro Settings', 'digital-members-rfid' ); ?></h2>
 			</td>
 		</tr>
 		<tr class="gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 		    <th scope="row" valign="top">
-				<label for="payflow_partner"><?php _e('Partner', 'paid-memberships-pro' );?>:</label>
+				<label for="payflow_partner"><?php _e('Partner', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="payflow_partner" name="payflow_partner" value="<?php echo esc_attr($values['payflow_partner'])?>" class="regular-text code" />
@@ -106,7 +106,7 @@
 	    </tr>
 	    <tr class="gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 		    <th scope="row" valign="top">
-				<label for="payflow_vendor"><?php _e('Vendor', 'paid-memberships-pro' );?>:</label>
+				<label for="payflow_vendor"><?php _e('Vendor', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="payflow_vendor" name="payflow_vendor" value="<?php echo esc_attr($values['payflow_vendor'])?>" class="regular-text code" />
@@ -114,7 +114,7 @@
 	    </tr>
 	    <tr class="gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 		    <th scope="row" valign="top">
-				<label for="payflow_user"><?php _e('User', 'paid-memberships-pro' );?>:</label>
+				<label for="payflow_user"><?php _e('User', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="payflow_user" name="payflow_user" value="<?php echo esc_attr($values['payflow_user'])?>" class="regular-text code" />
@@ -122,7 +122,7 @@
 	    </tr>
 	    <tr class="gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 		    <th scope="row" valign="top">
-				<label for="payflow_pwd"><?php _e('Password', 'paid-memberships-pro' );?>:</label>
+				<label for="payflow_pwd"><?php _e('Password', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="password" id="payflow_pwd" name="payflow_pwd" value="<?php echo esc_attr($values['payflow_pwd'])?>" class="regular-text code" />
@@ -130,7 +130,7 @@
 	    </tr>
 		<tr class="gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label><?php _e('IPN Handler', 'paid-memberships-pro' );?>:</label>
+				<label><?php _e('IPN Handler', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<p class="description">
@@ -142,7 +142,7 @@
 							'title' => array(),
 						),
 					);
-					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
+					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'digital-members-rfid' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
 				?>
 				</p>
 			</td>
@@ -170,7 +170,7 @@
 				else
 				{
 					if(empty($order->error))
-						$order->error = __("Unknown error: Authorization failed.", 'paid-memberships-pro' );
+						$order->error = __("Unknown error: Authorization failed.", 'digital-members-rfid' );
 					return false;
 				}
 			}
@@ -193,14 +193,14 @@
 							if($this->void($order, $order->payment_transaction_id))
 							{
 								if(empty($order->error))
-									$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+									$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
 							}
 							else
 							{
 								if(empty($order->error))
-									$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+									$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
 
-								$order->error .= " " . __("A partial payment was made that we could not refund. Please contact the site owner immediately to correct this.", 'paid-memberships-pro' );
+								$order->error .= " " . __("A partial payment was made that we could not refund. Please contact the site owner immediately to correct this.", 'digital-members-rfid' );
 							}
 
 							return false;

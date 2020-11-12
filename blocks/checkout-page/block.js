@@ -25,15 +25,15 @@ const {
  export default registerBlockType(
      'dmrfid/checkout-page',
      {
-         title: __( 'Membership Checkout Form', 'paid-memberships-pro' ),
-         description: __( 'Displays the Membership Checkout form.', 'paid-memberships-pro' ),
+         title: __( 'Membership Checkout Form', 'digital-members-rfid' ),
+         description: __( 'Displays the Membership Checkout form.', 'digital-members-rfid' ),
          category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'list-view',
          },
-         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'digital-members-rfid' ) ],
          supports: {
          },
          attributes: {
@@ -48,11 +48,11 @@ const {
              return [
                 isSelected && <Inspector { ...{ setAttributes, ...props} } />,
                 <div className="dmrfid-block-element">
-                  <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                  <span className="dmrfid-block-subtitle">{ __( 'Membership Checkout Form', 'paid-memberships-pro' ) }</span>
+                  <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'digital-members-rfid' ) }</span>
+                  <span className="dmrfid-block-subtitle">{ __( 'Membership Checkout Form', 'digital-members-rfid' ) }</span>
                   <hr />
                   <SelectControl
-                      label={ __( 'Membership Level', 'paid-memberships-pro' ) }
+                      label={ __( 'Membership Level', 'digital-members-rfid' ) }
                       value={ dmrfid_default_level }
                       onChange={ dmrfid_default_level => setAttributes( { dmrfid_default_level } ) }
                       options={ window.dmrfid.all_level_values_and_labels }

@@ -28,16 +28,16 @@ export default class Inspector extends Component {
           <InspectorControls>
               <PanelBody>
                  <TextControl
-                     label={ __( 'Button Text', 'paid-memberships-pro' ) }
-                     help={ __( 'Text for checkout button', 'paid-memberships-pro' ) }
+                     label={ __( 'Button Text', 'digital-members-rfid' ) }
+                     help={ __( 'Text for checkout button', 'digital-members-rfid' ) }
                      value={ text }
                      onChange={ text => setAttributes( { text } ) }
                  />
               </PanelBody>
               <PanelBody>
                   <SelectControl
-                      label={ __( 'Level', 'paid-memberships-pro' ) }
-                      help={ __( 'The level to link to for checkout button', 'paid-memberships-pro' ) }
+                      label={ __( 'Level', 'digital-members-rfid' ) }
+                      help={ __( 'The level to link to for checkout button', 'digital-members-rfid' ) }
                       value={ level }
                       onChange={ level => setAttributes( { level } ) }
                       options={ window.dmrfid.all_level_values_and_labels }
@@ -45,8 +45,8 @@ export default class Inspector extends Component {
               </PanelBody>
               <PanelBody>
                  <TextControl
-                     label={ __( 'CSS Class', 'paid-memberships-pro' ) }
-                     help={ __( 'Additional styling for checkout button', 'paid-memberships-pro' ) }
+                     label={ __( 'CSS Class', 'digital-members-rfid' ) }
+                     help={ __( 'Additional styling for checkout button', 'digital-members-rfid' ) }
                      value={ css_class }
                      onChange={ css_class => setAttributes( { css_class } ) }
                  />

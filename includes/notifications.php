@@ -22,7 +22,7 @@ function dmrfid_notifications() {
 		?>
 		<div class="dmrfid_notification" id="<?php echo $notification->id; ?>">
 		<?php if ( $notification->dismissable ) { ?>
-			<button type="button" class="dmrfid-notice-button notice-dismiss" value="<?php echo $notification->id; ?>"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'paid-memberships-pro' ); ?></span></button>
+			<button type="button" class="dmrfid-notice-button notice-dismiss" value="<?php echo $notification->id; ?>"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'digital-members-rfid' ); ?></span></button>
 		<?php } ?>
 			<div class="dmrfid_notification-<?php echo $notification->type; ?>">
 				<h3><span class="dashicons dashicons-<?php esc_attr_e( $notification->dashicon ); ?>"></span> <?php esc_html_e( $notification->title ); ?></h3>

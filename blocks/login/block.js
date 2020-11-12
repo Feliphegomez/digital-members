@@ -20,10 +20,10 @@ const { Fragment } = wp.element;
  * Register block
  */
 export default registerBlockType("dmrfid/login-form", {
-	title: __("Log in Form", "paid-memberships-pro"),
+	title: __("Log in Form", "digital-members-rfid"),
 	description: __(
 		"Displays a Log In Form for Digital Members RFID.",
-		"paid-memberships-pro"
+		"digital-members-rfid"
 	),
 	category: "dmrfid",
 	icon: {
@@ -32,10 +32,10 @@ export default registerBlockType("dmrfid/login-form", {
 		src: "unlock",
 	},
 	keywords: [
-		__("dmrfid", "paid-memberships-pro"),
-		__("login", "paid-memberships-pro"),
-		__("form", "paid-memberships-pro"),
-		__("log in", "paid-memberships-pro"),
+		__("dmrfid", "digital-members-rfid"),
+		__("login", "digital-members-rfid"),
+		__("form", "digital-members-rfid"),
+		__("log in", "digital-members-rfid"),
 	],
 	supports: {},
 	edit: (props) => {
@@ -43,8 +43,8 @@ export default registerBlockType("dmrfid/login-form", {
 			<Fragment>
 				<Inspector {...props} />
 				<div className="dmrfid-block-element">
-					<span className="dmrfid-block-title">{__("Digital Members RFID", "paid-memberships-pro")}</span>
-					<span className="dmrfid-block-subtitle">{__("Log in Form", "paid-memberships-pro")}</span>
+					<span className="dmrfid-block-title">{__("Digital Members RFID", "digital-members-rfid")}</span>
+					<span className="dmrfid-block-subtitle">{__("Log in Form", "digital-members-rfid")}</span>
 				</div>
 			</Fragment>,
 		];

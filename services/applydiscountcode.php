@@ -83,7 +83,7 @@
 		$code_levels = apply_filters("dmrfid_discount_code_level", $code_levels, $discount_code_id);
 	}
 
-	printf(__("The %s code has been applied to your order. ", 'paid-memberships-pro' ), $discount_code);
+	printf(__("The %s code has been applied to your order. ", 'digital-members-rfid' ), $discount_code);
 
 	$combined_level = null;
 	foreach ( $code_levels as $code_level ) {
@@ -117,7 +117,7 @@
 		}
 
 		jQuery('#other_discount_code_tr').hide();
-		jQuery('#other_discount_code_p').html('<a id="other_discount_code_a" href="javascript:void(0);"><?php _e('Click here to change your discount code', 'paid-memberships-pro' );?></a>.');
+		jQuery('#other_discount_code_p').html('<a id="other_discount_code_a" href="javascript:void(0);"><?php _e('Click here to change your discount code', 'digital-members-rfid' );?></a>.');
 		jQuery('#other_discount_code_p').show();
 
 		jQuery('#other_discount_code_a').click(function() {
@@ -129,11 +129,11 @@
 			if ( count( $code_levels ) <= 1 ) {
 				$code_level = empty( $code_levels ) ? null : $code_levels[0];
 				?>
-				jQuery('#dmrfid_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'paid-memberships-pro' ), $discount_code);?></p><p><?php echo dmrfid_no_quotes(dmrfid_getLevelCost( $code_level, array('"', "'", "\n", "\r")))?><?php echo dmrfid_no_quotes(dmrfid_getLevelExpiration( $code_level, array('"', "'", "\n", "\r")))?></p>');
+				jQuery('#dmrfid_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'digital-members-rfid' ), $discount_code);?></p><p><?php echo dmrfid_no_quotes(dmrfid_getLevelCost( $code_level, array('"', "'", "\n", "\r")))?><?php echo dmrfid_no_quotes(dmrfid_getLevelExpiration( $code_level, array('"', "'", "\n", "\r")))?></p>');
 				<?php
 			} else {
 				?>
-				jQuery('#dmrfid_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'paid-memberships-pro' ), $discount_code);?></p><p><?php echo dmrfid_no_quotes(dmrfid_getLevelsCost($code_levels), array('"', "'", "\n", "\r"))?><?php echo dmrfid_no_quotes(dmrfid_getLevelsExpiration($code_levels), array('"', "'", "\n", "\r"))?></p>');
+				jQuery('#dmrfid_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'digital-members-rfid' ), $discount_code);?></p><p><?php echo dmrfid_no_quotes(dmrfid_getLevelsCost($code_levels), array('"', "'", "\n", "\r"))?><?php echo dmrfid_no_quotes(dmrfid_getLevelsExpiration($code_levels), array('"', "'", "\n", "\r"))?></p>');
 				<?php
 			}
 

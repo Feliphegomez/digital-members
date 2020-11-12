@@ -35,13 +35,13 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 		<?php if(in_array('membership', $sections) || in_array('memberships', $sections)) { ?>
 			<div id="dmrfid_account-membership" class="<?php echo dmrfid_get_element_class( 'dmrfid_box', 'dmrfid_account-membership' ); ?>">
 
-				<h3><?php _e("My Memberships", 'paid-memberships-pro' );?></h3>
+				<h3><?php _e("My Memberships", 'digital-members-rfid' );?></h3>
 				<table class="<?php echo dmrfid_get_element_class( 'dmrfid_table' ); ?>" width="100%" cellpadding="0" cellspacing="0" border="0">
 					<thead>
 						<tr>
-							<th><?php _e("Level", 'paid-memberships-pro' );?></th>
-							<th><?php _e("Billing", 'paid-memberships-pro' ); ?></th>
-							<th><?php _e("Expiration", 'paid-memberships-pro' ); ?></th>
+							<th><?php _e("Level", 'digital-members-rfid' );?></th>
+							<th><?php _e("Billing", 'digital-members-rfid' ); ?></th>
+							<th><?php _e("Expiration", 'digital-members-rfid' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,13 +65,13 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 							// Show the correct checkout link.
 							if ( ! empty( $level ) && ! empty( $level->allow_signups ) ) {
 								$url = dmrfid_url( 'checkout', '?level=' . $level->id );
-								printf( __( "Your membership is not active. <a href='%s'>Renew now.</a>", 'paid-memberships-pro' ), $url );
+								printf( __( "Your membership is not active. <a href='%s'>Renew now.</a>", 'digital-members-rfid' ), $url );
 							} elseif ( ! empty( $default_level_id ) ) {
 								$url = dmrfid_url( 'checkout', '?level=' . $default_level_id );
-								printf( __( "You do not have an active membership. <a href='%s'>Register here.</a>", 'paid-memberships-pro' ), $url );
+								printf( __( "You do not have an active membership. <a href='%s'>Register here.</a>", 'digital-members-rfid' ), $url );
 							} else {
 								$url = dmrfid_url( 'levels' );
-								printf( __( "You do not have an active membership. <a href='%s'>Choose a membership level.</a>", 'paid-memberships-pro' ), $url );
+								printf( __( "You do not have an active membership. <a href='%s'>Choose a membership level.</a>", 'digital-members-rfid' ), $url );
 							}
 							?>
 							</td>
@@ -91,19 +91,19 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 										$dmrfid_member_action_links = array();
 
 										if( array_key_exists($level->id, $dmrfid_levels) && dmrfid_isLevelExpiringSoon( $level ) ) {
-											$dmrfid_member_action_links['renew'] = sprintf( '<a id="dmrfid_actionlink-renew" href="%s">%s</a>', esc_url( add_query_arg( 'level', $level->id, dmrfid_url( 'checkout', '', 'https' ) ) ), esc_html__( 'Renew', 'paid-memberships-pro' ) );
+											$dmrfid_member_action_links['renew'] = sprintf( '<a id="dmrfid_actionlink-renew" href="%s">%s</a>', esc_url( add_query_arg( 'level', $level->id, dmrfid_url( 'checkout', '', 'https' ) ) ), esc_html__( 'Renew', 'digital-members-rfid' ) );
 										}
 
 										if((isset($order->status) && $order->status == "success") && (isset($order->gateway) && in_array($order->gateway, array("authorizenet", "paypal", "stripe", "braintree", "payflow", "cybersource"))) && dmrfid_isLevelRecurring($level)) {
-											$dmrfid_member_action_links['update-billing'] = sprintf( '<a id="dmrfid_actionlink-update-billing" href="%s">%s</a>', dmrfid_url( 'billing', '', 'https' ), esc_html__( 'Update Billing Info', 'paid-memberships-pro' ) );
+											$dmrfid_member_action_links['update-billing'] = sprintf( '<a id="dmrfid_actionlink-update-billing" href="%s">%s</a>', dmrfid_url( 'billing', '', 'https' ), esc_html__( 'Update Billing Info', 'digital-members-rfid' ) );
 										}
 
 										//To do: Only show CHANGE link if this level is in a group that has upgrade/downgrade rules
 										if(count($dmrfid_levels) > 1 && !defined("DMRFID_DEFAULT_LEVEL")) {
-											$dmrfid_member_action_links['change'] = sprintf( '<a id="dmrfid_actionlink-change" href="%s">%s</a>', dmrfid_url( 'levels' ), esc_html__( 'Change', 'paid-memberships-pro' ) );
+											$dmrfid_member_action_links['change'] = sprintf( '<a id="dmrfid_actionlink-change" href="%s">%s</a>', dmrfid_url( 'levels' ), esc_html__( 'Change', 'digital-members-rfid' ) );
 										}
 
-										$dmrfid_member_action_links['cancel'] = sprintf( '<a id="dmrfid_actionlink-cancel" href="%s">%s</a>', esc_url( add_query_arg( 'levelstocancel', $level->id, dmrfid_url( 'cancel' ) ) ), esc_html__( 'Cancel', 'paid-memberships-pro' ) );
+										$dmrfid_member_action_links['cancel'] = sprintf( '<a id="dmrfid_actionlink-cancel" href="%s">%s</a>', esc_url( add_query_arg( 'levelstocancel', $level->id, dmrfid_url( 'cancel' ) ) ), esc_html__( 'Cancel', 'digital-members-rfid' ) );
 
 										$dmrfid_member_action_links = apply_filters( 'dmrfid_member_action_links', $dmrfid_member_action_links );
 
@@ -142,7 +142,7 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 				</table>
 				<?php //Todo: If there are multiple levels defined that aren't all in the same group defined as upgrades/downgrades ?>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_actionlinks' ); ?>">
-					<a id="dmrfid_actionlink-levels" href="<?php echo dmrfid_url("levels")?>"><?php _e("View all Membership Options", 'paid-memberships-pro' );?></a>
+					<a id="dmrfid_actionlink-levels" href="<?php echo dmrfid_url("levels")?>"><?php _e("View all Membership Options", 'digital-members-rfid' );?></a>
 				</div>
 
 			</div> <!-- end dmrfid_account-membership -->
@@ -151,14 +151,14 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 		<?php if(in_array('profile', $sections)) { ?>
 			<div id="dmrfid_account-profile" class="<?php echo dmrfid_get_element_class( 'dmrfid_box', 'dmrfid_account-profile' ); ?>">
 				<?php wp_get_current_user(); ?>
-				<h3><?php _e("My Account", 'paid-memberships-pro' );?></h3>
+				<h3><?php _e("My Account", 'digital-members-rfid' );?></h3>
 				<?php if($current_user->user_firstname) { ?>
 					<p><?php echo $current_user->user_firstname?> <?php echo $current_user->user_lastname?></p>
 				<?php } ?>
 				<ul>
 					<?php do_action('dmrfid_account_bullets_top');?>
-					<li><strong><?php _e("Username", 'paid-memberships-pro' );?>:</strong> <?php echo $current_user->user_login?></li>
-					<li><strong><?php _e("Email", 'paid-memberships-pro' );?>:</strong> <?php echo $current_user->user_email?></li>
+					<li><strong><?php _e("Username", 'digital-members-rfid' );?>:</strong> <?php echo $current_user->user_login?></li>
+					<li><strong><?php _e("Email", 'digital-members-rfid' );?>:</strong> <?php echo $current_user->user_email?></li>
 					<?php do_action('dmrfid_account_bullets_bottom');?>
 				</ul>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_actionlinks' ); ?>">
@@ -175,14 +175,14 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 						// Build the links to return.
 						$dmrfid_profile_action_links = array();
 						if ( ! empty( $edit_profile_url) ) {
-							$dmrfid_profile_action_links['edit-profile'] = sprintf( '<a id="dmrfid_actionlink-profile" href="%s">%s</a>', esc_url( $edit_profile_url ), esc_html__( 'Edit Profile', 'paid-memberships-pro' ) );
+							$dmrfid_profile_action_links['edit-profile'] = sprintf( '<a id="dmrfid_actionlink-profile" href="%s">%s</a>', esc_url( $edit_profile_url ), esc_html__( 'Edit Profile', 'digital-members-rfid' ) );
 						}
 
 						if ( ! empty( $change_password_url ) ) {
-							$dmrfid_profile_action_links['change-password'] = sprintf( '<a id="dmrfid_actionlink-change-password" href="%s">%s</a>', esc_url( $change_password_url ), esc_html__( 'Change Password', 'paid-memberships-pro' ) );
+							$dmrfid_profile_action_links['change-password'] = sprintf( '<a id="dmrfid_actionlink-change-password" href="%s">%s</a>', esc_url( $change_password_url ), esc_html__( 'Change Password', 'digital-members-rfid' ) );
 						}
 
-						$dmrfid_profile_action_links['logout'] = sprintf( '<a id="dmrfid_actionlink-logout" href="%s">%s</a>', esc_url( wp_logout_url() ), esc_html__( 'Log Out', 'paid-memberships-pro' ) );
+						$dmrfid_profile_action_links['logout'] = sprintf( '<a id="dmrfid_actionlink-logout" href="%s">%s</a>', esc_url( wp_logout_url() ), esc_html__( 'Log Out', 'digital-members-rfid' ) );
 
 						$dmrfid_profile_action_links = apply_filters( 'dmrfid_account_profile_action_links', $dmrfid_profile_action_links );
 
@@ -203,14 +203,14 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 
 		<?php if(in_array('invoices', $sections) && !empty($invoices)) { ?>
 		<div id="dmrfid_account-invoices" class="<?php echo dmrfid_get_element_class( 'dmrfid_box', 'dmrfid_account-invoices' ); ?>">
-			<h3><?php _e("Past Invoices", 'paid-memberships-pro' );?></h3>
+			<h3><?php _e("Past Invoices", 'digital-members-rfid' );?></h3>
 			<table class="<?php echo dmrfid_get_element_class( 'dmrfid_table' ); ?>" width="100%" cellpadding="0" cellspacing="0" border="0">
 				<thead>
 					<tr>
-						<th><?php _e("Date", 'paid-memberships-pro' ); ?></th>
-						<th><?php _e("Level", 'paid-memberships-pro' ); ?></th>
-						<th><?php _e("Amount", 'paid-memberships-pro' ); ?></th>
-						<th><?php _e("Status", 'paid-memberships-pro'); ?></th>
+						<th><?php _e("Date", 'digital-members-rfid' ); ?></th>
+						<th><?php _e("Level", 'digital-members-rfid' ); ?></th>
+						<th><?php _e("Amount", 'digital-members-rfid' ); ?></th>
+						<th><?php _e("Status", 'digital-members-rfid'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -228,17 +228,17 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 						$invoice->getMembershipLevel();
 
 						if ( in_array( $invoice->status, array( '', 'success', 'cancelled' ) ) ) {
-						    $display_status = __( 'Paid', 'paid-memberships-pro' );
+						    $display_status = __( 'Paid', 'digital-members-rfid' );
 						} elseif ( $invoice->status == 'pending' ) {
 						    // Some Add Ons set status to pending.
-						    $display_status = __( 'Pending', 'paid-memberships-pro' );
+						    $display_status = __( 'Pending', 'digital-members-rfid' );
 						} elseif ( $invoice->status == 'refunded' ) {
-						    $display_status = __( 'Refunded', 'paid-memberships-pro' );
+						    $display_status = __( 'Refunded', 'digital-members-rfid' );
 						}
 						?>
 						<tr id="dmrfid_account-invoice-<?php echo $invoice->code; ?>">
 							<td><a href="<?php echo dmrfid_url("invoice", "?invoice=" . $invoice->code)?>"><?php echo date_i18n(get_option("date_format"), $invoice->getTimestamp())?></a></td>
-							<td><?php if(!empty($invoice->membership_level)) echo $invoice->membership_level->name; else echo __("N/A", 'paid-memberships-pro' );?></td>
+							<td><?php if(!empty($invoice->membership_level)) echo $invoice->membership_level->name; else echo __("N/A", 'digital-members-rfid' );?></td>
 							<td><?php echo dmrfid_formatPrice($invoice->total)?></td>
 							<td><?php echo $display_status; ?></td>
 						</tr>
@@ -248,14 +248,14 @@ function dmrfid_shortcode_account($atts, $content=null, $code="")
 				</tbody>
 			</table>
 			<?php if($count == 6) { ?>
-				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_actionlinks' ); ?>"><a id="dmrfid_actionlink-invoices" href="<?php echo dmrfid_url("invoice"); ?>"><?php _e("View All Invoices", 'paid-memberships-pro' );?></a></div>
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_actionlinks' ); ?>"><a id="dmrfid_actionlink-invoices" href="<?php echo dmrfid_url("invoice"); ?>"><?php _e("View All Invoices", 'digital-members-rfid' );?></a></div>
 			<?php } ?>
 		</div> <!-- end dmrfid_account-invoices -->
 		<?php } ?>
 
 		<?php if(in_array('links', $sections) && (has_filter('dmrfid_member_links_top') || has_filter('dmrfid_member_links_bottom'))) { ?>
 		<div id="dmrfid_account-links" class="<?php echo dmrfid_get_element_class( 'dmrfid_box', 'dmrfid_account-links' ); ?>">
-			<h3><?php _e("Member Links", 'paid-memberships-pro' );?></h3>
+			<h3><?php _e("Member Links", 'digital-members-rfid' );?></h3>
 			<ul>
 				<?php
 					do_action("dmrfid_member_links_top");

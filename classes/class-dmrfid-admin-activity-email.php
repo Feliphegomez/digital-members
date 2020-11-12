@@ -40,9 +40,9 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 		}
 
 		$term_list = array(
-			'day'   => __( 'yesterday', 'paid-memberships-pro' ),
-			'week'  => __( 'last week', 'paid-memberships-pro' ),
-			'month' => __( 'last month', 'paid-memberships-pro' ),
+			'day'   => __( 'yesterday', 'digital-members-rfid' ),
+			'week'  => __( 'last week', 'digital-members-rfid' ),
+			'month' => __( 'last month', 'digital-members-rfid' ),
 		);
 		$term      = $term_list[ $frequency ];
 
@@ -80,7 +80,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 					<tr>
 						<td valign="top" style="background:#FFFFFF;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;padding:30px;text-align:center;">
 							<h2 style="color:#2997c8;font-size:30px;margin:0px 0px 20px 0px;padding:0px;"><?php get_bloginfo( 'name' ); ?></h2>
-							<p style="font-size:20px;line-height:30px;margin:0px;padding:0px;"><?php printf( __( "Here's a summary of what happened in your Digital Members RFID site %s.", 'paid-memberships-pro' ), esc_html( $term ) ); ?></p>
+							<p style="font-size:20px;line-height:30px;margin:0px;padding:0px;"><?php printf( __( "Here's a summary of what happened in your Digital Members RFID site %s.", 'digital-members-rfid' ), esc_html( $term ) ); ?></p>
 						</td>
 					</tr>
 					<tr>
@@ -98,10 +98,10 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 							$revenue = dmrfid_get_revenue_between_dates( $report_start_date, $report_end_date );
 							if ( $revenue > 0 ) {
 								?>
-								<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Sales and Revenue', 'paid-memberships-pro' ); ?></h3>
-								<p style="margin:0px 0px 15px 0px;padding:0px;"><?php printf( __( 'Your membership site made <strong>%1$s</strong> in revenue %2$s.', 'paid-memberships-pro' ), esc_html( dmrfid_formatPrice( $revenue ) ), esc_html( $term ) ); ?></p>
+								<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Sales and Revenue', 'digital-members-rfid' ); ?></h3>
+								<p style="margin:0px 0px 15px 0px;padding:0px;"><?php printf( __( 'Your membership site made <strong>%1$s</strong> in revenue %2$s.', 'digital-members-rfid' ), esc_html( dmrfid_formatPrice( $revenue ) ), esc_html( $term ) ); ?></p>
 							<?php } else { ?>
-								<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Signups and Cancellations', 'paid-memberships-pro' ); ?></h3>
+								<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Signups and Cancellations', 'digital-members-rfid' ); ?></h3>
 							<?php } ?>
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border:0;background-color:#FFFFFF;text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;">
 								<tr>
@@ -130,7 +130,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 							<?php
 							$total_members = $wpdb->get_var( "SELECT COUNT( DISTINCT user_id ) FROM {$wpdb->dmrfid_memberships_users} WHERE status IN ('active')" );
 							?>
-							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 5px 0px;padding:0px;"><span style="background:#2997c8;color:#FFFFFF;padding:5px 10px 5px 10px;"><?php esc_html_e( number_format_i18n( $total_members ) ); ?></span><?php esc_html_e( ' Total Members', 'paid-memberships-pro' ); ?></h3>
+							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 5px 0px;padding:0px;"><span style="background:#2997c8;color:#FFFFFF;padding:5px 10px 5px 10px;"><?php esc_html_e( number_format_i18n( $total_members ) ); ?></span><?php esc_html_e( ' Total Members', 'digital-members-rfid' ); ?></h3>
 							<?php
 							$members_per_level = $wpdb->get_results(
 								"
@@ -146,7 +146,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 
 							$num_levels_to_show = 5;
 							if ( count( $members_per_level ) > $num_levels_to_show ) {
-								echo( '<p>' . sprintf( __( 'Here is a summary of your top %s most popular levels:</p>', 'paid-memberships-pro' ), esc_html( $num_levels_to_show ) ) . '</p>' );
+								echo( '<p>' . sprintf( __( 'Here is a summary of your top %s most popular levels:</p>', 'digital-members-rfid' ), esc_html( $num_levels_to_show ) ) . '</p>' );
 							}
 							?>
 							<ul>
@@ -160,7 +160,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 							}
 							?>
 							</ul>
-							<p style="margin:0px;padding:0px;"><a style="color:#2997c8;" href="<?php echo( esc_url( admin_url( 'admin.php?page=dmrfid-reports&report=memberships' ) ) ); ?>" target="_blank"><?php esc_html_e( 'View Signups and Cancellations Report &raquo;', 'paid-memberships-pro' ); ?></a></p>
+							<p style="margin:0px;padding:0px;"><a style="color:#2997c8;" href="<?php echo( esc_url( admin_url( 'admin.php?page=dmrfid-reports&report=memberships' ) ) ); ?>" target="_blank"><?php esc_html_e( 'View Signups and Cancellations Report &raquo;', 'digital-members-rfid' ); ?></a></p>
 						</td>
 					</tr>
 					<?php
@@ -170,7 +170,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 					<tr>
 						<td valign="top" style="background:#FFFFFF;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;padding:30px;text-align:left;">
 							<div style="border:8px dashed #F1F1F1;padding:30px;margin:0px;text-align:center;">
-								<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Discount Code Usage', 'paid-memberships-pro' ); ?></h3>
+								<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Discount Code Usage', 'digital-members-rfid' ); ?></h3>
 								<?php
 									$sqlQuery = "SELECT mo.id
 															 FROM $wpdb->dmrfid_membership_orders mo, $wpdb->dmrfid_discount_codes_uses dcu
@@ -201,9 +201,9 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 									<p style="margin:0px 0px 15px 0px;padding:0px;">
 									<?php
 										if ( $num_orders_with_discount_code == 1 ) {
-											printf( __( '<strong>%1$d order</strong> used a <a %2$s>Discount Code</a> at checkout:', 'paid-memberships-pro' ), esc_html( number_format_i18n( $num_orders_with_discount_code ) ), 'style="color:#2997c8;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes' ) ) . '"' );
+											printf( __( '<strong>%1$d order</strong> used a <a %2$s>Discount Code</a> at checkout:', 'digital-members-rfid' ), esc_html( number_format_i18n( $num_orders_with_discount_code ) ), 'style="color:#2997c8;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes' ) ) . '"' );
 										} else {
-											printf( __( '<strong>%1$d orders</strong> used a <a %2$s>Discount Code</a> at checkout. Here is a breakdown of your most used codes:', 'paid-memberships-pro' ), esc_html( number_format_i18n( $num_orders_with_discount_code ) ), 'style="color:#2997c8;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes' ) ) . '"' );
+											printf( __( '<strong>%1$d orders</strong> used a <a %2$s>Discount Code</a> at checkout. Here is a breakdown of your most used codes:', 'digital-members-rfid' ), esc_html( number_format_i18n( $num_orders_with_discount_code ) ), 'style="color:#2997c8;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes' ) ) . '"' );
 										}
 										?>
 									</p>
@@ -214,16 +214,16 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 												break;
 											}
 											if ( $orders_per_discount_code_element->uses == 1 ) {
-												$orders_string = esc_html( __( 'Order', 'paid-memberships-pro' ) );
+												$orders_string = esc_html( __( 'Order', 'digital-members-rfid' ) );
 											} else {
-												$orders_string = esc_html( __( 'Orders', 'paid-memberships-pro' ) );
+												$orders_string = esc_html( __( 'Orders', 'digital-members-rfid' ) );
 											}
 											echo( '<p style="margin:0px 0px 15px 0px;padding:0;"><span style="background-color:#fcf8e3;font-weight:900;padding:5px;">' . esc_html( $orders_per_discount_code_element->code ) . '</span> ' . esc_html( number_format_i18n( $orders_per_discount_code_element->uses ) ) . ' ' . $orders_string . '</p>' );
 											$codes_left_to_show--;
 										}
 								} else {
 									?>
-									<p style="margin:0px;padding:0px;"><?php printf( __( 'No <a %1$s>Discount Codes</a> were used %2$s.', 'paid-memberships-pro' ), 'style="color:#2997c8;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes' ) ) . '"', esc_html( $term ) ); ?></p>
+									<p style="margin:0px;padding:0px;"><?php printf( __( 'No <a %1$s>Discount Codes</a> were used %2$s.', 'digital-members-rfid' ), 'style="color:#2997c8;" target="_blank" href="' . esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes' ) ) . '"', esc_html( $term ) ); ?></p>
 									<?php
 								}
 								?>
@@ -236,7 +236,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 					?>
 					<tr>
 						<td valign="top" style="background:#F1F1F1;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;padding:30px;text-align:center;">
-							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Active Add Ons', 'paid-memberships-pro' ); ?></h3>
+							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Active Add Ons', 'digital-members-rfid' ); ?></h3>
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border:0;background-color:#F1F1F1;text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;">
 								<tr>
 									<?php
@@ -265,12 +265,12 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 									$addon_updates_box_color      = $update_addons ? '#f2dede' : '#FFFFFF';
 									$addon_updates_text_color = $update_addons ? '#a94442' : '#222222';
 									?>
-									<td width="33%"><div style="background:#FFFFFF;margin:5px;padding:10px;"><div style="font-size:50px;font-weight:900;line-height:65px;"><?php esc_html_e( number_format_i18n( $free_addons ) ); ?></div><?php esc_html_e( 'Free Add Ons', 'paid-memberships-pro' ); ?></div></td>
-									<td width="33%"><div style="background:#FFFFFF;margin:5px;padding:10px;"><div style="font-size:50px;font-weight:900;line-height:65px;"><?php esc_html_e( number_format_i18n( $plus_addons ) ); ?></div><?php esc_html_e( 'Plus Add Ons', 'paid-memberships-pro' ); ?></div></td>
-									<td width="33%"><div style="background:<?php echo $addon_updates_box_color; ?>;color:<?php echo $addon_updates_text_color; ?>;margin:5px;padding:10px;"><a style="color:<?php echo $addon_updates_text_color; ?>;display:block;text-decoration:none;" href="<?php echo( esc_url( admin_url( 'admin.php?page=dmrfid-addons&plugin_status=update' ) ) ); ?>" target="_blank"><div style="font-size:50px;font-weight:900;line-height:65px;"><?php esc_html_e( number_format_i18n( $update_addons ) ); ?></div><?php esc_html_e( 'Required Updates', 'paid-memberships-pro' ); ?></a></div></td>
+									<td width="33%"><div style="background:#FFFFFF;margin:5px;padding:10px;"><div style="font-size:50px;font-weight:900;line-height:65px;"><?php esc_html_e( number_format_i18n( $free_addons ) ); ?></div><?php esc_html_e( 'Free Add Ons', 'digital-members-rfid' ); ?></div></td>
+									<td width="33%"><div style="background:#FFFFFF;margin:5px;padding:10px;"><div style="font-size:50px;font-weight:900;line-height:65px;"><?php esc_html_e( number_format_i18n( $plus_addons ) ); ?></div><?php esc_html_e( 'Plus Add Ons', 'digital-members-rfid' ); ?></div></td>
+									<td width="33%"><div style="background:<?php echo $addon_updates_box_color; ?>;color:<?php echo $addon_updates_text_color; ?>;margin:5px;padding:10px;"><a style="color:<?php echo $addon_updates_text_color; ?>;display:block;text-decoration:none;" href="<?php echo( esc_url( admin_url( 'admin.php?page=dmrfid-addons&plugin_status=update' ) ) ); ?>" target="_blank"><div style="font-size:50px;font-weight:900;line-height:65px;"><?php esc_html_e( number_format_i18n( $update_addons ) ); ?></div><?php esc_html_e( 'Required Updates', 'digital-members-rfid' ); ?></a></div></td>
 								</tr>
 							</table>
-							<p style="margin:15px 0px 0px 0px;padding:0px;"><?php printf( __( 'It is important to keep all Add Ons up to date to take advantage of security improvements, bug fixes, and expanded features. Add On updates can be made <a href="%s" style="color:#2997c8;" target="_blank">via the WordPress Dashboard</a>.', 'paid-memberships-pro' ), esc_url( admin_url( 'update-core.php' ) ) ); ?></p>
+							<p style="margin:15px 0px 0px 0px;padding:0px;"><?php printf( __( 'It is important to keep all Add Ons up to date to take advantage of security improvements, bug fixes, and expanded features. Add On updates can be made <a href="%s" style="color:#2997c8;" target="_blank">via the WordPress Dashboard</a>.', 'digital-members-rfid' ), esc_url( admin_url( 'update-core.php' ) ) ); ?></p>
 						</td>
 					</tr>
 					<?php
@@ -279,12 +279,12 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 					?>
 					<tr>
 						<td valign="top" style="background:#FFFFFF;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:25px;color:#222222;padding:30px 30px 15px 30px;text-align:left;">
-							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Membership Site Administration', 'paid-memberships-pro' ); ?></h3>
+							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'Membership Site Administration', 'digital-members-rfid' ); ?></h3>
 							<ul>
 								<?php
 								$roles_to_list = array(
-									'administrator' => __( 'Administrators', 'paid-memberships-pro' ),
-									'dmrfid_membership_manager' => __( 'Membership Managers', 'paid-memberships-pro' ),
+									'administrator' => __( 'Administrators', 'digital-members-rfid' ),
+									'dmrfid_membership_manager' => __( 'Membership Managers', 'digital-members-rfid' ),
 								);
 								foreach ( $roles_to_list as $role => $role_name ) {
 									$users_with_role = get_users(
@@ -303,15 +303,15 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 								}
 								?>
 							</ul>
-							<p style="margin:0px;padding:0px;"><?php esc_html_e( 'Note: It is important to review users with access to your membership site data since they control settings and can modify member accounts.', 'paid-memberships-pro' ); ?></p>
+							<p style="margin:0px;padding:0px;"><?php esc_html_e( 'Note: It is important to review users with access to your membership site data since they control settings and can modify member accounts.', 'digital-members-rfid' ); ?></p>
 
 							<?php
 							$key = get_option( 'dmrfid_license_key', '' );
 							if ( ! dmrfid_license_isValid( $key, null ) ) {
 								?>
 							<hr style="background-color:#F1F1F1;border:0;height:4px;margin:30px 0px 30px 0px;" />
-							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'License Status: None', 'paid-memberships-pro' ); ?></h3>
-							<p style="margin:0px;padding:0px;"><?php printf( __( '...and that is perfectly OK! DmRFID is free to use for as long as you want for membership sites of all sizes. Interested in unlimited support, access to over 70 featured-enhancing Add Ons and instant installs and updates? <a %s>Check out our paid plans to learn more</a>.', 'paid-memberships-pro' ), ' style="color:#2997c8;" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=dmrfid-admin-activity-email&utm_campaign=pricing&utm_content=license-section" target="_blank"' ); ?></p>
+							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'License Status: None', 'digital-members-rfid' ); ?></h3>
+							<p style="margin:0px;padding:0px;"><?php printf( __( '...and that is perfectly OK! DmRFID is free to use for as long as you want for membership sites of all sizes. Interested in unlimited support, access to over 70 featured-enhancing Add Ons and instant installs and updates? <a %s>Check out our paid plans to learn more</a>.', 'digital-members-rfid' ), ' style="color:#2997c8;" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=dmrfid-admin-activity-email&utm_campaign=pricing&utm_content=license-section" target="_blank"' ); ?></p>
 								<?php
 							}
 							?>
@@ -341,7 +341,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 											$rss_items = $rss->get_items( 0, $max_items );
 									}
 									if ( $max_items <= 0 ) {
-										echo( '<p style="margin:15px 0px 0px 0px;padding:0;">' . __( 'No news found.', 'paid-memberships-pro' ) . '</p>' );
+										echo( '<p style="margin:15px 0px 0px 0px;padding:0;">' . __( 'No news found.', 'digital-members-rfid' ) . '</p>' );
 									} else {
 										foreach ( $rss_items as $item ) {
 											echo( '<p style="margin:15px 0px 0px 0px;padding:0;"><a style="color:#2997c8;" href=" ' . esc_url( $item->get_permalink() ) . ' " target="_blank">' . esc_html( $item->get_title() ) . '</a> ' . esc_html( $item->get_date( get_option( 'date_format' ) ) ) . '</p>' );
@@ -350,11 +350,11 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 									?>
 									</td>
 									<td width="40%" style="background-color:#F1F1F1;padding:15px;">
-										<p style="margin:0px;padding:0px;text-align:center;"><a style="color:#2997c8;" href="https://www.paidmembershipspro.com" target="_blank"><img style="width:100px;height:100px;" src="<?php echo esc_url( plugins_url( 'images/Paid-Memberships-Pro_icon.png', DMRFID_BASE_FILE ) ); ?>" alt="<?php esc_html_e( 'Digital Members RFID', 'paid-memberships-pro' ); ?>" /></a></p>
-										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.paidmembershipspro.com/support/" target="_blank"><?php esc_html_e( 'Get Support', 'paid-memberships-pro' ); ?></a></p>
-										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://twitter.com/dmrfidplugin" target="_blank"><?php esc_html_e( 'Follow @dmrfidplugin on Twitter', 'paid-memberships-pro' ); ?></a></p>
-										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.facebook.com/PaidMembershipsPro/" target="_blank"><?php esc_html_e( 'Like us on Facebook', 'paid-memberships-pro' ); ?></p></p>
-										<p style="margin:0px;padding:0px;"><a style="color:#2997c8;" href="https://www.youtube.com/user/strangerstudiostv" target="_blank"><?php esc_html_e( 'Subscribe to our YouTube Channel', 'paid-memberships-pro' ); ?></a></p>
+										<p style="margin:0px;padding:0px;text-align:center;"><a style="color:#2997c8;" href="https://www.paidmembershipspro.com" target="_blank"><img style="width:100px;height:100px;" src="<?php echo esc_url( plugins_url( 'images/Digital-Members-RFID_icon.png', DMRFID_BASE_FILE ) ); ?>" alt="<?php esc_html_e( 'Digital Members RFID', 'digital-members-rfid' ); ?>" /></a></p>
+										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.paidmembershipspro.com/support/" target="_blank"><?php esc_html_e( 'Get Support', 'digital-members-rfid' ); ?></a></p>
+										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://twitter.com/dmrfidplugin" target="_blank"><?php esc_html_e( 'Follow @dmrfidplugin on Twitter', 'digital-members-rfid' ); ?></a></p>
+										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.facebook.com/DigitalMembersRFID/" target="_blank"><?php esc_html_e( 'Like us on Facebook', 'digital-members-rfid' ); ?></p></p>
+										<p style="margin:0px;padding:0px;"><a style="color:#2997c8;" href="https://www.youtube.com/user/strangerstudiostv" target="_blank"><?php esc_html_e( 'Subscribe to our YouTube Channel', 'digital-members-rfid' ); ?></a></p>
 									</td>
 								</tr>
 							</table>
@@ -366,8 +366,8 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 					?>
 					<tr>
 						<td valign="top" style="background:#333333;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:30px;color:#FFFFFF;padding:30px;text-align:center;">
-							<p style="margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'This email is automatically generated by your WordPress site and sent to your Administration Email Address set under Settings > General in your WordPress dashboard.', 'paid-memberships-pro' ); ?></p>
-							<p style="margin:0px;padding:0px;"><?php printf( __( 'To adjust the frequency of this message or disable these emails completely, you can <a %s>update the "Activity Email Frequency" setting here</a>.', 'paid-memberships-pro' ), ' style="color:#FFFFFF;" href="' . admin_url( 'admin.php?page=dmrfid-advancedsettings' ) . '" target="_blank"' ); ?></p>
+							<p style="margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'This email is automatically generated by your WordPress site and sent to your Administration Email Address set under Settings > General in your WordPress dashboard.', 'digital-members-rfid' ); ?></p>
+							<p style="margin:0px;padding:0px;"><?php printf( __( 'To adjust the frequency of this message or disable these emails completely, you can <a %s>update the "Activity Email Frequency" setting here</a>.', 'digital-members-rfid' ), ' style="color:#FFFFFF;" href="' . admin_url( 'admin.php?page=dmrfid-advancedsettings' ) . '" target="_blank"' ); ?></p>
 						</td>
 					</tr>
 					<?php
@@ -405,7 +405,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 		}
 		$this->email = $recipient;
 
-		$this->subject  = sprintf( __( '[%1$s] DmRFID Activity for %2$s: %3$s', 'paid-memberships-pro' ), get_bloginfo( 'name' ), ucwords( $term ), $date_range );
+		$this->subject  = sprintf( __( '[%1$s] DmRFID Activity for %2$s: %3$s', 'digital-members-rfid' ), get_bloginfo( 'name' ), ucwords( $term ), $date_range );
 		$this->template = 'admin_activity_email';
 		$this->body     = $admin_activity_email_body;
 		$this->from     = dmrfid_getOption( 'from' );

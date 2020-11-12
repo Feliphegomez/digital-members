@@ -779,7 +779,7 @@ up the lines of text.
 * BUG: Fixed bug where the address/street wasn't showing up when printing orders from the dashboard.
 * BUG: Fixed bug where the Stripe class would sometimes show its billing and payment fields even if a secondary gateway was chosen.
 * BUG: Making sure $this->total is set for new orders and available to the dmrfid_add_order, dmrfid_added_order filters.
-* BUG: Fixed bug where email templates were not being loaded out of the /paid-memberships-pro/languages/email/ directory. (Thanks, menardmam on wordpress.org)
+* BUG: Fixed bug where email templates were not being loaded out of the /digital-members-rfid/languages/email/ directory. (Thanks, menardmam on wordpress.org)
 * BUG: No longer showing a "renew" link on the membership account or membership levels pages if the user's level is not allowing sign ups.
 * BUG: Fixed bug where the expiration script might try to run on deleted or expired users.
 * BUG/ENHANCEMENT: Change membership shortcode to call dmrfid_hasMembershipLevel when checking for level="" as well. This ensures the dmrfid_has_membership_level filter runs, which some addons/etc need.
@@ -962,7 +962,7 @@ up the lines of text.
 * ENHANCEMENT: French translation updated and now includes email templates. (Thanks, Jean-Christophe Michel)
 * ENHANCEMENT: Added the dmrfid_is_ready filter. This should be used by gateway plugins to set the $dmrfid_gateway_ready global variable.
 * ENHANCEMENT: Added dmrfid_memberslist_per_page and dmrfid_orders_per_page filters to change the default number of items to show on those admin pages.
-* ENHANCEMENT: Added dmrfid_new_user and dmrfid_new_user_setup hooks to allow for alterring the user creation code at checkout. For an example of how to use these see (https://github.com/strangerstudios/paid-memberships-pro/pull/224). (Thanks, David Crabill)
+* ENHANCEMENT: Added dmrfid_new_user and dmrfid_new_user_setup hooks to allow for alterring the user creation code at checkout. For an example of how to use these see (https://github.com/strangerstudios/digital-members-rfid/pull/224). (Thanks, David Crabill)
 * ENHANCEMENT: Now setting the Stripe API version in the Stripe class. (Set to version "2015-07-13" right now.) This ensures that Stripe processes DmRFID API calls correctly. We will update this to the latest versions as they come out and we test DmRFID against them. You will still need to update the API version in the Account Settings of your Stripe dashboard to versio 2015-07-13 (or later as we update the version we work against) so webhook events originating from Stripe are sent out in the correct format.
 
 = 1.8.4.4 =
@@ -1181,8 +1181,8 @@ up the lines of text.
 * Fixed issues where extra emails were being sent out when users cancelled a membership when using Stripe.
 * Generally made the Stripe integration better and ready for version 2.0.
 * The Stripe webhook will now add a 5 second delay before processing most requests. This is to ensure that DmRFID has time to update the order during checkout (Stripe can sometimes receive a charge or cancellation, then send the webhook, and WP can process that in the split second it takes DmRFID to save an order during checkout.). This prevents duplicate orders in the DmRFID DB on some charges and fixes some issues with cancellations.
-* Setting constant DMRFID_STRIPE_WEBHOOK_DEBUG to true will send an email to the WP admin every time the Stripe Webhook is hit. You can also set it to an alternative email address or "log" to have it added to ../paid-memberships-pro/logs/stripe-webhook.txt.
-* Setting constant DMRFID_IPN_DEBUG to true will send an email to the WP admin every time the IPN handler is hit. You can also set it to an alternative email address or "log" to have it added to ../paid-memberships-pro/logs/ipn.txt.
+* Setting constant DMRFID_STRIPE_WEBHOOK_DEBUG to true will send an email to the WP admin every time the Stripe Webhook is hit. You can also set it to an alternative email address or "log" to have it added to ../digital-members-rfid/logs/stripe-webhook.txt.
+* Setting constant DMRFID_IPN_DEBUG to true will send an email to the WP admin every time the IPN handler is hit. You can also set it to an alternative email address or "log" to have it added to ../digital-members-rfid/logs/ipn.txt.
 * Now showing the DmRFID order ID/code in INVOICE emails instead of the Stripe order id when using the Stripe gateway.
 
 = 1.7.8.1 =
@@ -1211,7 +1211,7 @@ up the lines of text.
 * Added filter options to orders page in admin and export. (Thanks, HTCIA and Harsha Venkatesh)
 * Added Brazilian Portuguese translation. (Thanks, dballona on GitHub.)
 * Fixed some warnings. (Thanks, AlexBiddle on GitHub.)
-* Added dmrfid_custom_advanced_settings hook to add settings to advanced settings page. Details on usage here: https://github.com/strangerstudios/paid-memberships-pro/pull/86 (Thanks, Jess Oros)
+* Added dmrfid_custom_advanced_settings hook to add settings to advanced settings page. Details on usage here: https://github.com/strangerstudios/digital-members-rfid/pull/86 (Thanks, Jess Oros)
 * Updated addon categorization to reflect a lot of addons which have moved into the WordPress.org repository as well as updated versions.
 
 = 1.7.7 =
@@ -1319,7 +1319,7 @@ up the lines of text.
 * Fixed bug on add/edit level page that was causing issues in some versions of IE.
 * Fixed bug where links in the email_header.html and email_footer.html templates were not being converted to true links.
 * Removed an extra $ from the PayPal Express confirmation emails.
-* Fixed loading of local (in the paid-memberships-pro/languages directory) translation files. (Should have some bundled with the plugin soon.)
+* Fixed loading of local (in the digital-members-rfid/languages directory) translation files. (Should have some bundled with the plugin soon.)
 
 = 1.7.2 =
 * Fixed the revenue/sales report to accurately track recurring sales and reports from earlier years.
@@ -1381,7 +1381,7 @@ up the lines of text.
 * If PayPal Standard is the active gateway, users without membership levels will be able to see the confirmation page with a message that PayPal is processing payment.
 * Fixed bug where PayPal recurring orders were being attributed to the wrong user (if no subscriber id was attached to the IPN message).
 * Fixed bug where users sometimes couldn't checkout with a discount code that made a level free.
-* Cleaned up code in base paid-memberships-pro.php file.
+* Cleaned up code in base digital-members-rfid.php file.
 * Updated the .dmrfid_checkout tr.odd td line in frontend.css to use rgba with alpha transparency to work a bit better on dark background themes.
 * Fixed bug where a user's first_name and last_name meta fields might be overwritten by the billing name fields at checkout. It will still set them if the user's first and last name fields are blank. (Thanks, John Hamlin.)
 * Fixed bug where zipcode was shown instead of state in the members list CSV export. (Thanks, John Hamlin.)
@@ -1444,9 +1444,9 @@ up the lines of text.
 * Fixed the PayPal Express gateway to correctly set the order transaction id to TRANSACTIONID instead of the PROFILEID.
 * Updated the IPN handlers to accept recurring_payment_id or subscr_id when checking for recurring payment orders.
 * Changed the site_url() in the javascript for discount codes on the checkout page to home_url(). home_url() is better to use in case users have their WP core files in a different directory.
-* You can now place email templates in a paid-memberships-pro/email folder in your theme and DmRFID will use these before using the built in email templates. Just copy the file out of the wp-plugins/paid-memberships-pro/email folder, use the same filenames, and edit the file.
-* You can now place page templates in a paid-memberships-pro/pages folder in your theme and DmRFID will use these before using the built in page templates. Just copy the file out of the wp-plugins/paid-memberships-pro/pages folder, use the same filename, and edit the file.
-* You can now place css templates in a paid-memberships-pro/css folder in your theme and DmRFID will use these before using the built in page templates. Just copy the file out of the wp-plugins/paid-memberships-pro/css folder, use the same filename, and edit the file.
+* You can now place email templates in a digital-members-rfid/email folder in your theme and DmRFID will use these before using the built in email templates. Just copy the file out of the wp-plugins/digital-members-rfid/email folder, use the same filenames, and edit the file.
+* You can now place page templates in a digital-members-rfid/pages folder in your theme and DmRFID will use these before using the built in page templates. Just copy the file out of the wp-plugins/digital-members-rfid/pages folder, use the same filename, and edit the file.
+* You can now place css templates in a digital-members-rfid/css folder in your theme and DmRFID will use these before using the built in page templates. Just copy the file out of the wp-plugins/digital-members-rfid/css folder, use the same filename, and edit the file.
 * Fixed a bug where discount codes that reduced a level price to $0 were not being counted as "uses".
 * Added a dmrfid_email_data filter to make it easier to add variables to edited email templates.
 * Added user_login to the data fields all of the emails for use by templates (use !!user_login!! in your template)
@@ -1488,7 +1488,7 @@ up the lines of text.
 * Updated Stripe library to version 1.7.10. Updated DmRFID to take advantage of new "interval_count" parameter in subscriptions, so you can now have subscriptions setup for "every 2 months", etc.
 * Fix to dmrfid_checkout_start_date_keep_startdate filter added in 1.5.5
 * Added "Start Date" and "End Date" to emails sent to admins when a membership is cancelled.
-* Now checks for CSS files in a paid-memberships-pro subfolder of your active theme and uses those admin.css, frontend.css, and print.css files instead if they exist. (Going to move email and page template checks to that subfolder in the future as well.)
+* Now checks for CSS files in a digital-members-rfid subfolder of your active theme and uses those admin.css, frontend.css, and print.css files instead if they exist. (Going to move email and page template checks to that subfolder in the future as well.)
 
 = 1.5.5 =
 * Updated dmrfid_check_site_url_for_https function to cache the siteurl to limit DB queries.
@@ -1497,7 +1497,7 @@ up the lines of text.
 * If a member checks out for the same level again (extending their membership), the startdate added to dmrfid_memberships_users will be their old startdate.
 * If a member checks out for the same level again, the remaining days on their existing membership will be added to their new enddate. So e.g. if a user starts an annual membership in April 2013, then checks out again (extends) their membership in February 2014, their new enddate will be April 2015 instead of February 2015. (NOTE: if you were doing this through the custom code here - https://gist.github.com/3678054 - you should remove your custom code.)
 * Fixed bug where you couldn't remove all required membership levels from a page/post. (Thanks, lisaleague)
-* Updated the button CSS included in paid-memberships-pro/css/frontend.css. I added a dmrfid_ prefix to these classes so they don't conflict with other .btn CSS rules. I also changed the rules a bit to show the buttons more consistently. If you relied on the old CSS rules, you may need to tweak your theme to get things looking right.
+* Updated the button CSS included in digital-members-rfid/css/frontend.css. I added a dmrfid_ prefix to these classes so they don't conflict with other .btn CSS rules. I also changed the rules a bit to show the buttons more consistently. If you relied on the old CSS rules, you may need to tweak your theme to get things looking right.
 
 = 1.5.4 =
 * Added a gateway check to preheaders/checkout.php. Mischivous users used to be able to bypass payment by passing &gateway=check or something similar to the checkout page. DmRFID would then use the check gateway to checkout. Now only the active gateway option in the payments settings or gateways added via the new dmrfid_valid_gateways filter (1 parameter is the array of gateways, add/edit the gateways and return the array). It is important that all DmRFID users upgrade to keep mischivious users from accessing your site for free. Any site currently enabling multiple gateway options will need to add code to set the valid gateways. More info here: http://www.paidmembershipspro.com/2012/06/offering-multiple-gateway-options-at-checkout/

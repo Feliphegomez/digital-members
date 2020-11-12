@@ -14,7 +14,7 @@ chdir($cwd);
 /*
 	Load Reports From Theme
 */
-$dmrfid_reports_theme_dir = get_stylesheet_directory() . "/paid-memberships-pro/reports/";
+$dmrfid_reports_theme_dir = get_stylesheet_directory() . "/digital-members-rfid/reports/";
 if(is_dir($dmrfid_reports_theme_dir))
 {
 	$cwd = getcwd();

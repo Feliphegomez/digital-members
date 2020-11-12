@@ -38,7 +38,7 @@ class DmRFID_Deny_Network_Activation {
 
 				//show notice
 				echo '<div class="notice notice-info is-dismissible"><p>';
-				$text = sprintf( __("The %s plugin should not be network activated. Activate on each individual site's plugin page.", 'paid-memberships-pro'), $plugin_name);
+				$text = sprintf( __("The %s plugin should not be network activated. Activate on each individual site's plugin page.", 'digital-members-rfid'), $plugin_name);
 				echo $text;
 				echo '</p></div>';
 		}

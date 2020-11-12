@@ -106,8 +106,8 @@ function dmrfid_updates_notice() {
 ?>
 <div class="update-nag notice notice-warning inline">
 	<?php
-		echo __( 'Digital Members RFID Data Update Required', 'paid-memberships-pro' ) . '. ';
-		echo sprintf(__( '(1) <a target="_blank" href="%s">Backup your WordPress database</a></strong> and then (2) <a href="%s">click here to start the update</a>.', 'paid-memberships-pro' ), 'https://codex.wordpress.org/WordPress_Backups#Database_Backup_Instructions', admin_url('admin.php?page=dmrfid-updates'));
+		echo __( 'Digital Members RFID Data Update Required', 'digital-members-rfid' ) . '. ';
+		echo sprintf(__( '(1) <a target="_blank" href="%s">Backup your WordPress database</a></strong> and then (2) <a href="%s">click here to start the update</a>.', 'digital-members-rfid' ), 'https://codex.wordpress.org/WordPress_Backups#Database_Backup_Instructions', admin_url('admin.php?page=dmrfid-updates'));
 	?>
 </div>
 <?php
@@ -127,7 +127,7 @@ function dmrfid_updates_notice_complete() {
 <div class="updated notice notice-success is-dismissible">
 	<p>
 	<?php
-		echo __('All Digital Members RFID updates have finished.', 'paid-memberships-pro' );
+		echo __('All Digital Members RFID updates have finished.', 'digital-members-rfid' );
 	?>
 	</p>
 </div>
@@ -147,7 +147,7 @@ function dmrfid_show_notice_for_reports() {
 
 	?>
     <div class="notice notice-warning">
-        <p><?php _e( sprintf( 'You currently have the Better Login Reports Add On activated. This functionality has now been merged into Digital Members RFID. %s', "<br/><a href='". esc_url( admin_url( '/plugins.php?s=better%20logins%20report%20add%20on&plugin_status=inactive&dmrfid-deactivate-reports=true' ) ) . "'>Please deactivate and remove this plugin.</a>" ), 'paid-memberships-pro' ); ?></p>
+        <p><?php _e( sprintf( 'You currently have the Better Login Reports Add On activated. This functionality has now been merged into Digital Members RFID. %s', "<br/><a href='". esc_url( admin_url( '/plugins.php?s=better%20logins%20report%20add%20on&plugin_status=inactive&dmrfid-deactivate-reports=true' ) ) . "'>Please deactivate and remove this plugin.</a>" ), 'digital-members-rfid' ); ?></p>
     </div>
     <?php
 }

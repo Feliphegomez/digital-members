@@ -7,15 +7,15 @@ function dmrfid_enqueue_scripts() {
     
     // Frontend styles.
     $frontend_css_rtl = false;
-    if(file_exists(get_stylesheet_directory() . "/paid-memberships-pro/css/frontend.css")) {
-        $frontend_css = get_stylesheet_directory_uri() . "/paid-memberships-pro/css/frontend.css";
-        if( is_rtl() && file_exists(get_stylesheet_directory() . "/paid-memberships-pro/css/frontend-rtl.css") ) {
-            $frontend_css_rtl = get_stylesheet_directory_uri() . "/paid-memberships-pro/css/frontend-rtl.css";
+    if(file_exists(get_stylesheet_directory() . "/digital-members-rfid/css/frontend.css")) {
+        $frontend_css = get_stylesheet_directory_uri() . "/digital-members-rfid/css/frontend.css";
+        if( is_rtl() && file_exists(get_stylesheet_directory() . "/digital-members-rfid/css/frontend-rtl.css") ) {
+            $frontend_css_rtl = get_stylesheet_directory_uri() . "/digital-members-rfid/css/frontend-rtl.css";
         }
-    } elseif(file_exists(get_template_directory() . "/paid-memberships-pro/frontend.css")) {
-        $frontend_css = get_template_directory_uri() . "/paid-memberships-pro/frontend.css";
-        if( is_rtl() && file_exists(get_template_directory() . "/paid-memberships-pro/css/frontend-rtl.css") ) {
-            $frontend_css_rtl = get_template_directory_uri() . "/paid-memberships-pro/css/frontend-rtl.css";
+    } elseif(file_exists(get_template_directory() . "/digital-members-rfid/frontend.css")) {
+        $frontend_css = get_template_directory_uri() . "/digital-members-rfid/frontend.css";
+        if( is_rtl() && file_exists(get_template_directory() . "/digital-members-rfid/css/frontend-rtl.css") ) {
+            $frontend_css_rtl = get_template_directory_uri() . "/digital-members-rfid/css/frontend-rtl.css";
         }
     } else {
         $frontend_css = plugins_url('css/frontend.css',dirname(__FILE__) );
@@ -29,10 +29,10 @@ function dmrfid_enqueue_scripts() {
     }
 
     // Print styles.
-    if(file_exists(get_stylesheet_directory() . "/paid-memberships-pro/css/print.css"))
-        $print_css = get_stylesheet_directory_uri() . "/paid-memberships-pro/css/print.css";
-    elseif(file_exists(get_template_directory() . "/paid-memberships-pro/print.css"))
-        $print_css = get_template_directory_uri() . "/paid-memberships-pro/print.css";
+    if(file_exists(get_stylesheet_directory() . "/digital-members-rfid/css/print.css"))
+        $print_css = get_stylesheet_directory_uri() . "/digital-members-rfid/css/print.css";
+    elseif(file_exists(get_template_directory() . "/digital-members-rfid/print.css"))
+        $print_css = get_template_directory_uri() . "/digital-members-rfid/print.css";
     else
         $print_css = plugins_url('css/print.css',dirname(__FILE__) );
     wp_enqueue_style('dmrfid_print', $print_css, array(), DMRFID_VERSION, "print");
@@ -83,7 +83,7 @@ function dmrfid_enqueue_scripts() {
 
         wp_localize_script( 'dmrfid_login', 'dmrfid', array(
             'dmrfid_login_page' => 'changepassword',
-			'strength_indicator_text' => __( 'Strength Indicator', 'paid-memberships-pro' ),
+			'strength_indicator_text' => __( 'Strength Indicator', 'digital-members-rfid' ),
             'allow_weak_passwords' => $allow_weak_passwords ) );
         wp_enqueue_script( 'dmrfid_login' );	
     }
@@ -112,15 +112,15 @@ function dmrfid_admin_enqueue_scripts() {
 
     // Admin CSS
     $admin_css_rtl = false;
-    if(file_exists(get_stylesheet_directory() . "/paid-memberships-pro/css/admin.css")) {
-        $admin_css = get_stylesheet_directory_uri() . "/paid-memberships-pro/css/admin.css";
-        if( is_rtl() && file_exists(get_stylesheet_directory() . "/paid-memberships-pro/css/admin-rtl.css") ) {
-            $admin_css_rtl = get_stylesheet_directory_uri() . "/paid-memberships-pro/css/admin-rtl.css";
+    if(file_exists(get_stylesheet_directory() . "/digital-members-rfid/css/admin.css")) {
+        $admin_css = get_stylesheet_directory_uri() . "/digital-members-rfid/css/admin.css";
+        if( is_rtl() && file_exists(get_stylesheet_directory() . "/digital-members-rfid/css/admin-rtl.css") ) {
+            $admin_css_rtl = get_stylesheet_directory_uri() . "/digital-members-rfid/css/admin-rtl.css";
         }
-    } elseif(file_exists(get_template_directory() . "/paid-memberships-pro/admin.css")) {
-        $admin_css = get_template_directory_uri() . "/paid-memberships-pro/admin.css";
-        if( is_rtl() && file_exists(get_template_directory() . "/paid-memberships-pro/css/admin-rtl.css") ) {
-            $admin_css_rtl = get_template_directory_uri() . "/paid-memberships-pro/css/admin-rtl.css";
+    } elseif(file_exists(get_template_directory() . "/digital-members-rfid/admin.css")) {
+        $admin_css = get_template_directory_uri() . "/digital-members-rfid/admin.css";
+        if( is_rtl() && file_exists(get_template_directory() . "/digital-members-rfid/css/admin-rtl.css") ) {
+            $admin_css_rtl = get_template_directory_uri() . "/digital-members-rfid/css/admin-rtl.css";
         }
     } else {
         $admin_css = plugins_url('css/admin.css',dirname(__FILE__) );

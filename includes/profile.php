@@ -19,7 +19,7 @@ function dmrfid_membership_level_profile_fields($user)
 	if(!$levels)
 		return "";
 ?>
-<h3><?php _e("Membership Level", 'paid-memberships-pro' ); ?></h3>
+<h3><?php _e("Membership Level", 'digital-members-rfid' ); ?></h3>
 <table class="form-table">
     <?php
 		$show_membership_level = true;
@@ -28,10 +28,10 @@ function dmrfid_membership_level_profile_fields($user)
 		{
 		?>
 		<tr>
-			<th><label for="membership_level"><?php _e("Current Level", 'paid-memberships-pro' ); ?></label></th>
+			<th><label for="membership_level"><?php _e("Current Level", 'digital-members-rfid' ); ?></label></th>
 			<td>
 				<select name="membership_level">
-					<option value="" <?php if(empty($user->membership_level->ID)) { ?>selected="selected"<?php } ?>>-- <?php _e("None", 'paid-memberships-pro' );?> --</option>
+					<option value="" <?php if(empty($user->membership_level->ID)) { ?>selected="selected"<?php } ?>>-- <?php _e("None", 'digital-members-rfid' );?> --</option>
 				<?php
 					foreach($levels as $level)
 					{
@@ -55,9 +55,9 @@ function dmrfid_membership_level_profile_fields($user)
 				if(empty($membership_values) || dmrfid_isLevelFree($membership_values))
                 {
 					if(!empty($membership_values->original_initial_payment) && $membership_values->original_initial_payment > 0)
-						echo __('Paid', 'paid-memberships-pro' ) . " " . dmrfid_formatPrice($membership_values->original_initial_payment) . ".";
+						echo __('Paid', 'digital-members-rfid' ) . " " . dmrfid_formatPrice($membership_values->original_initial_payment) . ".";
 					else
-						_e('Not paying.', 'paid-memberships-pro' );
+						_e('Not paying.', 'digital-members-rfid' );
 				}
 				else
                 {
@@ -65,7 +65,7 @@ function dmrfid_membership_level_profile_fields($user)
                 }
                 ?>
                 </span>
-                <p id="cancel_description" class="description hidden"><?php _e("This will not change the subscription at the gateway unless the 'Cancel' checkbox is selected below.", 'paid-memberships-pro' ); ?></p>
+                <p id="cancel_description" class="description hidden"><?php _e("This will not change the subscription at the gateway unless the 'Cancel' checkbox is selected below.", 'digital-members-rfid' ); ?></p>
             </td>
 		</tr>
 		<?php
@@ -83,11 +83,11 @@ function dmrfid_membership_level_profile_fields($user)
 			$selected_expires_year =  date( 'Y', $end_date ? $user->membership_level->enddate : current_time('timestamp') );
 		?>
 		<tr>
-			<th><label for="expiration"><?php _e("Expires", 'paid-memberships-pro' ); ?></label></th>
+			<th><label for="expiration"><?php _e("Expires", 'digital-members-rfid' ); ?></label></th>
 			<td>
 				<select id="expires" name="expires">
-					<option value="0" <?php if(!$end_date) { ?>selected="selected"<?php } ?>><?php _e("No", 'paid-memberships-pro' );?></option>
-					<option value="1" <?php if($end_date) { ?>selected="selected"<?php } ?>><?php _e("Yes", 'paid-memberships-pro' );?></option>
+					<option value="0" <?php if(!$end_date) { ?>selected="selected"<?php } ?>><?php _e("No", 'digital-members-rfid' );?></option>
+					<option value="1" <?php if($end_date) { ?>selected="selected"<?php } ?>><?php _e("Yes", 'digital-members-rfid' );?></option>
 				</select>
 				<span id="expires_date" <?php if(!$end_date) { ?>style="display: none;"<?php } ?>>
 					on
@@ -117,13 +117,13 @@ function dmrfid_membership_level_profile_fields($user)
         <tr class="more_level_options">
             <th></th>
             <td>
-                <label for="send_admin_change_email"><input value="1" id="send_admin_change_email" name="send_admin_change_email" type="checkbox"> <?php _e( 'Send the user an email about this change.', 'paid-memberships-pro' ); ?></label>
+                <label for="send_admin_change_email"><input value="1" id="send_admin_change_email" name="send_admin_change_email" type="checkbox"> <?php _e( 'Send the user an email about this change.', 'digital-members-rfid' ); ?></label>
             </td>
         </tr>
         <tr class="more_level_options">
             <th></th>
             <td>
-                <label for="cancel_subscription"><input value="1" id="cancel_subscription" name="cancel_subscription" type="checkbox"> <?php _e("Cancel this user's subscription at the gateway.", "paid-memberships-pro" ); ?></label>
+                <label for="cancel_subscription"><input value="1" id="cancel_subscription" name="cancel_subscription" type="checkbox"> <?php _e("Cancel this user's subscription at the gateway.", "digital-members-rfid" ); ?></label>
             </td>
         </tr>
 		<?php
@@ -137,7 +137,7 @@ function dmrfid_membership_level_profile_fields($user)
 			if( !empty( $tospage_id ) || !empty( $consent_log ) ) {
 			?>
 	        <tr>
-				<th><label for="tos_consent_history"><?php _e("TOS Consent History", 'paid-memberships-pro' ); ?></label></th>
+				<th><label for="tos_consent_history"><?php _e("TOS Consent History", 'digital-members-rfid' ); ?></label></th>
 				<td id="tos_consent_history">
 					<?php
 						if( !empty( $consent_log ) ) {
@@ -152,7 +152,7 @@ function dmrfid_membership_level_profile_fields($user)
 							}
 							echo '</ul>';
 						} else {
-							echo __( 'N/A', 'paid-memberships-pro' );
+							echo __( 'N/A', 'digital-members-rfid' );
 						}
 					?>
 				</td>
@@ -187,7 +187,7 @@ function dmrfid_membership_level_profile_fields($user)
 				//cancelling sub or not
 				if($membership_level_select.val() == 0) {
                     jQuery("#cancel_subscription").attr('checked', true);
-                    jQuery("#current_level_cost").text('<?php _e("Not paying.", "paid-memberships-pro" ); ?>');
+                    jQuery("#current_level_cost").text('<?php _e("Not paying.", "digital-members-rfid" ); ?>');
                 }
                 else {
                     jQuery("#cancel_subscription").attr('checked', false);
@@ -234,7 +234,7 @@ function dmrfid_membership_level_profile_fields($user)
                 if(jQuery(this).attr('checked') == 'checked')
                 {
                     jQuery("#cancel_description").hide();
-                    jQuery("#current_level_cost").text('<?php _e("Not paying.", "paid-memberships-pro" ); ?>');
+                    jQuery("#current_level_cost").text('<?php _e("Not paying.", "digital-members-rfid" ); ?>');
                 }
                 else
                 {
@@ -401,7 +401,7 @@ function dmrfid_member_profile_edit_form() {
 	global $current_user;
 
 	if ( ! is_user_logged_in() ) {
-		echo '<div class="' . dmrfid_get_element_class( 'dmrfid_message dmrfid_alert', 'dmrfid_alert' ) . '"><a href="' . esc_url( dmrfid_login_url() ) . '">' . esc_html__( 'Log in to edit your profile.', 'paid-memberships-pro' ) . '</a></div>';
+		echo '<div class="' . dmrfid_get_element_class( 'dmrfid_message dmrfid_alert', 'dmrfid_alert' ) . '"><a href="' . esc_url( dmrfid_login_url() ) . '">' . esc_html__( 'Log in to edit your profile.', 'digital-members-rfid' ) . '</a></div>';
 		return;
 	}
 
@@ -437,7 +437,7 @@ function dmrfid_member_profile_edit_form() {
 
 		// Validate display name.
 		if ( empty( $user->display_name ) ) {
-			$errors[] = __( 'Please enter a display name.', 'paid-memberships-pro' );
+			$errors[] = __( 'Please enter a display name.', 'digital-members-rfid' );
 		}
 
 		// Don't allow admins to change their email address.
@@ -447,13 +447,13 @@ function dmrfid_member_profile_edit_form() {
 
 		// Validate email address.
 		if ( empty( $user->user_email ) ) {
-			$errors[] = __( 'Please enter an email address.', 'paid-memberships-pro' );
+			$errors[] = __( 'Please enter an email address.', 'digital-members-rfid' );
 		} elseif ( ! is_email( $user->user_email ) ) {
-			$errors[] = __( 'The email address isn&#8217;t correct.', 'paid-memberships-pro' );
+			$errors[] = __( 'The email address isn&#8217;t correct.', 'digital-members-rfid' );
 		} else {
 			$owner_id = email_exists( $user->user_email );
 			if ( $owner_id && ( ! $update || ( $owner_id != $user->ID ) ) ) {
-				$errors[] = __( 'This email is already registered, please choose another one.', 'paid-memberships-pro' );
+				$errors[] = __( 'This email is already registered, please choose another one.', 'digital-members-rfid' );
 			}
 		}
 
@@ -480,7 +480,7 @@ function dmrfid_member_profile_edit_form() {
 			wp_update_user( $user );
 			?>
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_message dmrfid_success', 'dmrfid_success' ); ?>">
-				<?php _e( 'Your profile has been updated.', 'paid-memberships-pro' ); ?>
+				<?php _e( 'Your profile has been updated.', 'digital-members-rfid' ); ?>
 			</div>
 		<?php }
 	} else {
@@ -505,10 +505,10 @@ function dmrfid_member_profile_edit_form() {
 			<?php
 			$user_fields = apply_filters( 'dmrfid_member_profile_edit_user_object_fields',
 				array(
-					'first_name'	=> __( 'First Name', 'paid-memberships-pro' ),
-					'last_name'		=> __( 'Last Name', 'paid-memberships-pro' ),
-					'display_name'	=> __( 'Display name publicly as', 'paid-memberships-pro' ),
-					'user_email'	=> __( 'Email', 'paid-memberships-pro' ),
+					'first_name'	=> __( 'First Name', 'digital-members-rfid' ),
+					'last_name'		=> __( 'Last Name', 'digital-members-rfid' ),
+					'display_name'	=> __( 'Display name publicly as', 'digital-members-rfid' ),
+					'user_email'	=> __( 'Email', 'digital-members-rfid' ),
 				)
 			);
 			?>
@@ -520,7 +520,7 @@ function dmrfid_member_profile_edit_form() {
 						<label for="<?php echo esc_attr( $field_key ); ?>"><?php esc_html_e( $label ); ?></label>
 						<?php if ( current_user_can( 'manage_options' ) && $field_key === 'user_email' ) { ?>
 							<input type="text" readonly="readonly" name="user_email" id="user_email" value="<?php echo esc_attr( $user->user_email ); ?>" class="<?php echo dmrfid_get_element_class( 'input', 'user_email' ); ?>" />
-							<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php esc_html_e( 'Site administrators must use the WordPress dashboard to update their email address.', 'paid-memberships-pro' ); ?></p>
+							<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php esc_html_e( 'Site administrators must use the WordPress dashboard to update their email address.', 'digital-members-rfid' ); ?></p>
 						<?php } else { ?>
 							<input type="text" name="<?php echo esc_attr( $field_key ); ?>" id="<?php echo esc_attr( $field_key ); ?>" value="<?php echo esc_attr( stripslashes( $user->{$field_key} ) ); ?>" class="<?php echo dmrfid_get_element_class( 'input', $field_key ); ?>" />
 						<?php } ?>
@@ -543,8 +543,8 @@ function dmrfid_member_profile_edit_form() {
 			<input type="hidden" name="user_id" value="<?php echo $current_user->ID; ?>" />
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
 				<hr />
-				<input type="submit" name="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php _e( 'Update Profile', 'paid-memberships-pro' );?>" />
-				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php _e( 'Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo dmrfid_url( 'account'); ?>';" />
+				<input type="submit" name="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php _e( 'Update Profile', 'digital-members-rfid' );?>" />
+				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php _e( 'Cancel', 'digital-members-rfid' );?>" onclick="location.href='<?php echo dmrfid_url( 'account'); ?>';" />
 			</div>
 		</form>
 	</div> <!-- end dmrfid_member_profile_edit_wrap -->
@@ -597,13 +597,13 @@ function dmrfid_change_password_process() {
 	// Check that all password information is correct.
 	$error = false;
 	if ( isset( $password_current ) && ( empty( $pass1 ) || empty( $pass2 ) ) ) {
-		$error = __( 'Please complete all fields.', 'paid-memberships-pro' );
+		$error = __( 'Please complete all fields.', 'digital-members-rfid' );
 	} elseif ( ! empty( $pass1 ) && empty( $password_current ) ) {
-		$error = __( 'Please enter your current password.', 'paid-memberships-pro' );
+		$error = __( 'Please enter your current password.', 'digital-members-rfid' );
 	} elseif ( ( ! empty( $pass1 ) || ! empty( $pass2 ) ) && $pass1 !== $pass2 ) {
-		$error = __( 'New passwords do not match.', 'paid-memberships-pro' );
+		$error = __( 'New passwords do not match.', 'digital-members-rfid' );
 	} elseif ( ! empty( $pass1 ) && ! wp_check_password( $password_current, $current_user->user_pass, $current_user->ID ) ) {
-		$error = __( 'Your current password is incorrect.', 'paid-memberships-pro' );
+		$error = __( 'Your current password is incorrect.', 'digital-members-rfid' );
 	}
 
 	// Change the password.
@@ -614,7 +614,7 @@ function dmrfid_change_password_process() {
 		wp_set_current_user( $current_user->ID, $current_user->user_login );
 		wp_set_auth_cookie( $current_user->ID, true, apply_filters( 'dmrfid_checkout_signon_secure', force_ssl_admin() ) );
 
-		dmrfid_setMessage( __( 'Your password has been updated.', 'paid-memberships-pro' ), 'dmrfid_success' );
+		dmrfid_setMessage( __( 'Your password has been updated.', 'digital-members-rfid' ), 'dmrfid_success' );
 	} else {
 		dmrfid_setMessage( $error, 'dmrfid_error' );
 	}
@@ -630,7 +630,7 @@ add_action( 'init', 'dmrfid_change_password_process' );
 function dmrfid_change_password_form() {
 	global $current_user, $dmrfid_msg, $dmrfid_msgt;
 	?>
-	<h2><?php _e( 'Change Password', 'paid-memberships-pro' ); ?></h2>
+	<h2><?php _e( 'Change Password', 'digital-members-rfid' ); ?></h2>
 	<?php if ( ! empty( $dmrfid_msg ) ) { ?>
 		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_message ' . $dmrfid_msgt, $dmrfid_msgt ); ?>">
 			<?php echo esc_html( $dmrfid_msg ); ?>
@@ -644,21 +644,21 @@ function dmrfid_change_password_form() {
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout_box-password' ); ?>">
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-fields' ); ?>">
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-field dmrfid_change_password-field-password_current', 'dmrfid_change_password-field-password_current' ); ?>">
-						<label for="password_current"><?php _e( 'Current Password', 'paid-memberships-pro' ); ?></label></th>
+						<label for="password_current"><?php _e( 'Current Password', 'digital-members-rfid' ); ?></label></th>
 						<input type="password" name="password_current" id="password_current" value="" class="<?php echo dmrfid_get_element_class( 'input', 'password_current' ); ?>" />
-						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'digital-members-rfid' ); ?>">*</abbr></span>
 					</div> <!-- end dmrfid_change_password-field-password_current -->
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-field dmrfid_change_password-field-pass1', 'dmrfid_change_password-field-pass1' ); ?>">
-						<label for="pass1"><?php _e( 'New Password', 'paid-memberships-pro' ); ?></label></th>
+						<label for="pass1"><?php _e( 'New Password', 'digital-members-rfid' ); ?></label></th>
 						<input type="password" name="pass1" id="pass1" value="" class="<?php echo dmrfid_get_element_class( 'input pass1', 'pass1' ); ?>" autocomplete="off" />
-						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
-						<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength Indicator', 'paid-memberships-pro' ); ?></div>
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'digital-members-rfid' ); ?>">*</abbr></span>
+						<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength Indicator', 'digital-members-rfid' ); ?></div>
 						<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php echo wp_get_password_hint(); ?></p>
 					</div> <!-- end dmrfid_change_password-field-pass1 -->
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-field dmrfid_change_password-field-pass2', 'dmrfid_change_password-field-pass2' ); ?>">
-						<label for="pass2"><?php _e( 'Confirm New Password', 'paid-memberships-pro' ); ?></label></th>
+						<label for="pass2"><?php _e( 'Confirm New Password', 'digital-members-rfid' ); ?></label></th>
 						<input type="password" name="pass2" id="pass2" value="" class="<?php echo dmrfid_get_element_class( 'input', 'pass2' ); ?>" autocomplete="off" />
-						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'digital-members-rfid' ); ?>">*</abbr></span>
 					</div> <!-- end dmrfid_change_password-field-pass2 -->
 				</div> <!-- end dmrfid_change_password-fields -->
 			</div> <!-- end dmrfid_checkout_box-password -->
@@ -667,8 +667,8 @@ function dmrfid_change_password_form() {
 			<input type="hidden" name="user_id" value="<?php echo esc_attr( $current_user->ID ); ?>" />
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
 				<hr />
-				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e('Change Password', 'paid-memberships-pro' );?>" />
-				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php esc_attr_e('Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo esc_url( dmrfid_url( 'account') ); ?>';" />
+				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e('Change Password', 'digital-members-rfid' );?>" />
+				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php esc_attr_e('Cancel', 'digital-members-rfid' );?>" onclick="location.href='<?php echo esc_url( dmrfid_url( 'account') ); ?>';" />
 			</div>
 		</form>
 	</div> <!-- end dmrfid_change_password_wrap -->

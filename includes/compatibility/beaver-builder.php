@@ -30,17 +30,17 @@ function dmrfid_beaver_builder_settings_form( $form, $id ) {
 		$levels[ $level->id ] = $level->name;
 	}
 	$row_settings_dmrfid = array(
-		'title'    => __( 'DmRFID', 'paid-memberships-pro' ),
+		'title'    => __( 'DmRFID', 'digital-members-rfid' ),
 		'sections' => array(
-			'paid-memberships-pro' => array(
-				'title'  => __( 'General', 'paid-memberships-pro' ),
+			'digital-members-rfid' => array(
+				'title'  => __( 'General', 'digital-members-rfid' ),
 				'fields' => array(
 					'dmrfid_enable'      => array(
 						'type'    => 'select',
-						'label'   => __( 'Enable Digital Members RFID module visibility?', 'paid-memberships-pro' ),
+						'label'   => __( 'Enable Digital Members RFID module visibility?', 'digital-members-rfid' ),
 						'options' => array(
-							'yes' => __( 'Yes', 'paid-memberships-pro' ),
-							'no'  => __( 'No', 'paid-memberships-pro' ),
+							'yes' => __( 'Yes', 'digital-members-rfid' ),
+							'no'  => __( 'No', 'digital-members-rfid' ),
 						),
 						'default' => 'no',
 						'toggle'  => array(
@@ -52,7 +52,7 @@ function dmrfid_beaver_builder_settings_form( $form, $id ) {
 						),
 					),
 					'dmrfid_memberships' => array(
-						'label'        => __( 'Select a level for module access', 'paid-memberships-pro' ),
+						'label'        => __( 'Select a level for module access', 'digital-members-rfid' ),
 						'type'         => 'select',
 						'options'      => $levels,
 						'multi-select' => true,
@@ -124,17 +124,17 @@ function dmrfid_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
 			$levels[ $level->id ] = $level->name;
 		}
 		$form['dmrfid-bb'] = array(
-			'title'    => __( 'DmRFID', 'paid-memberships-pro' ),
+			'title'    => __( 'DmRFID', 'digital-members-rfid' ),
 			'sections' => array(
 				'memberships' => array(
-					'title'  => __( 'Membership Levels', 'paid-memberships-pro' ),
+					'title'  => __( 'Membership Levels', 'digital-members-rfid' ),
 					'fields' => array(
 						'dmrfid_enable'      => array(
 							'type'    => 'select',
-							'label'   => __( 'Enable Digital Members RFID module visibility?', 'paid-memberships-pro' ),
+							'label'   => __( 'Enable Digital Members RFID module visibility?', 'digital-members-rfid' ),
 							'options' => array(
-								'yes' => __( 'Yes', 'paid-memberships-pro' ),
-								'no'  => __( 'No', 'paid-memberships-pro' ),
+								'yes' => __( 'Yes', 'digital-members-rfid' ),
+								'no'  => __( 'No', 'digital-members-rfid' ),
 							),
 							'default' => 'no',
 							'toggle'  => array(
@@ -146,7 +146,7 @@ function dmrfid_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
 							),
 						),
 						'dmrfid_memberships' => array(
-							'label'        => __( 'Select a level for module access', 'paid-memberships-pro' ),
+							'label'        => __( 'Select a level for module access', 'digital-members-rfid' ),
 							'type'         => 'select',
 							'options'      => $levels,
 							'multi-select' => true,

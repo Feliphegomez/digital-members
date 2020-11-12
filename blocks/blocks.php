@@ -34,7 +34,7 @@ function dmrfid_place_blocks_in_panel( $categories, $post ) {
 		array(
 			array(
 				'slug'  => 'dmrfid',
-				'title' => __( 'Digital Members RFID', 'paid-memberships-pro' ),
+				'title' => __( 'Digital Members RFID', 'digital-members-rfid' ),
 			),
 		)
 	);
@@ -63,7 +63,7 @@ function dmrfid_block_editor_scripts() {
 
 	// Adding translation functionality to Gutenberg blocks/JS.
 	if ( function_exists( 'wp_set_script_translations' ) ) {
-		wp_set_script_translations( 'dmrfid-blocks-editor-js', 'paid-memberships-pro' );
+		wp_set_script_translations( 'dmrfid-blocks-editor-js', 'digital-members-rfid' );
 	}
 }
 add_action( 'enqueue_block_editor_assets', 'dmrfid_block_editor_scripts' );

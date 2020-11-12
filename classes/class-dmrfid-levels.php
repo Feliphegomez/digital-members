@@ -229,7 +229,7 @@ class DmRFID_Membership_Level{
 					//couldn't delete the subscription
 					//we should probably notify the admin
 					$dmrfidemail = new DmRFIDEmail();
-					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%d. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), $user_id) . "</p>");
+					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%d. You will want to check your payment gateway to see if their subscription is still active.", 'digital-members-rfid' ), $user_id) . "</p>");
 					$last_order = $wpdb->get_row( $wpdb->prepare( "
 						SELECT * FROM $wpdb->dmrfid_membership_orders
 						WHERE user_id = %d
@@ -237,7 +237,7 @@ class DmRFID_Membership_Level{
 						$user_id
 					) );
 					if($last_order)
-						$dmrfidemail->data["body"] .= "<p>" . __("Last Invoice", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($last_order, true)) . "</p>";
+						$dmrfidemail->data["body"] .= "<p>" . __("Last Invoice", 'digital-members-rfid' ) . ":<br />" . nl2br(var_export($last_order, true)) . "</p>";
                     $dmrfidemail->sendEmail(get_bloginfo("admin_email"));
                     
                     $r3 = false; // Set it to false if it couldn't delete the subscription.

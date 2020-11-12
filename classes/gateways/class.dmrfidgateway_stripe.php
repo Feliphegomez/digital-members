@@ -22,8 +22,8 @@ require_once( dirname( __FILE__ ) . "/class.dmrfidgateway.php" );
 add_action( 'init', array( 'DmRFIDGateway_stripe', 'init' ) );
 
 // loading plugin activation actions
-add_action( 'activate_paid-memberships-pro', array( 'DmRFIDGateway_stripe', 'dmrfid_activation' ) );
-add_action( 'deactivate_paid-memberships-pro', array( 'DmRFIDGateway_stripe', 'dmrfid_deactivation' ) );
+add_action( 'activate_digital-members-rfid', array( 'DmRFIDGateway_stripe', 'dmrfid_activation' ) );
+add_action( 'deactivate_digital-members-rfid', array( 'DmRFIDGateway_stripe', 'dmrfid_deactivation' ) );
 
 /**
  * DmRFIDGateway_stripe Class
@@ -71,7 +71,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 
 			$dmrfid_stripe_error = true;
 			$msg                = - 1;
-			$msgt               = sprintf( __( "The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_PHP_MIN_VERSION );
+			$msgt               = sprintf( __( "The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "digital-members-rfid" ), DMRFID_PHP_MIN_VERSION );
 
 			if ( ! is_admin() ) {
 				dmrfid_setMessage( $msgt, "dmrfid_error" );
@@ -86,7 +86,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			if ( ! extension_loaded( $module ) ) {
 				$dmrfid_stripe_error = true;
 				$msg                = - 1;
-				$msgt               = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Stripe', $module );
+				$msgt               = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'digital-members-rfid' ), 'Stripe', $module );
 
 				//throw error on checkout page
 				if ( ! is_admin() ) {
@@ -237,7 +237,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 	 */
 	static function dmrfid_gateways( $gateways ) {
 		if ( empty( $gateways['stripe'] ) ) {
-			$gateways['stripe'] = __( 'Stripe', 'paid-memberships-pro' );
+			$gateways['stripe'] = __( 'Stripe', 'digital-members-rfid' );
 		}
 
 		return $gateways;
@@ -308,19 +308,19 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 
 		?>
 		<tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
-            <th><?php _e( 'Stripe API Version', 'paid-memberships-pro' ); ?>:</th>
+            <th><?php _e( 'Stripe API Version', 'digital-members-rfid' ); ?>:</th>
             <td><code><?php echo DMRFID_STRIPE_API_VERSION; ?></code></td>
         </tr>
 		<tr class="dmrfid_settings_divider gateway gateway_stripe"
 		    <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <td colspan="2">
 				<hr />
-				<h2><?php _e( 'Stripe Settings', 'paid-memberships-pro' ); ?></h2>
+				<h2><?php _e( 'Stripe Settings', 'digital-members-rfid' ); ?></h2>
             </td>
         </tr>
         <tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <th scope="row" valign="top">
-                <label for="stripe_publishablekey"><?php _e( 'Publishable Key', 'paid-memberships-pro' ); ?>:</label>
+                <label for="stripe_publishablekey"><?php _e( 'Publishable Key', 'digital-members-rfid' ); ?>:</label>
             </th>
             <td>
                 <input type="text" id="stripe_publishablekey" name="stripe_publishablekey" value="<?php echo esc_attr( $values['stripe_publishablekey'] ) ?>" class="regular-text code" />
@@ -328,7 +328,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 				$public_key_prefix = substr( $values['stripe_publishablekey'], 0, 3 );
 				if ( ! empty( $values['stripe_publishablekey'] ) && $public_key_prefix != 'pk_' ) {
 					?>
-                    <p class="dmrfid_red"><strong><?php _e( 'Your Publishable Key appears incorrect.', 'paid-memberships-pro' ); ?></strong></p>
+                    <p class="dmrfid_red"><strong><?php _e( 'Your Publishable Key appears incorrect.', 'digital-members-rfid' ); ?></strong></p>
 					<?php
 				}
 				?>
@@ -336,7 +336,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
         </tr>
         <tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <th scope="row" valign="top">
-                <label for="stripe_secretkey"><?php _e( 'Secret Key', 'paid-memberships-pro' ); ?>:</label>
+                <label for="stripe_secretkey"><?php _e( 'Secret Key', 'digital-members-rfid' ); ?>:</label>
             </th>
             <td>
                 <input type="text" id="stripe_secretkey" name="stripe_secretkey" value="<?php echo esc_attr( $values['stripe_secretkey'] ) ?>" class="regular-text code" />
@@ -344,68 +344,68 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
         </tr>
         <tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <th scope="row" valign="top">
-                <label><?php _e( 'Webhook', 'paid-memberships-pro' ); ?>:</label>
+                <label><?php _e( 'Webhook', 'digital-members-rfid' ); ?>:</label>
             </th>
             <td>
 				<?php if ( ! empty( $webhook ) && is_array( $webhook ) ) { ?>
-				<button type="button" id="dmrfid_stripe_create_webhook" class="button button-secondary" style="display: none;"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'paid-memberships-pro' ); ?></button>
+				<button type="button" id="dmrfid_stripe_create_webhook" class="button button-secondary" style="display: none;"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'digital-members-rfid' ); ?></button>
 					<?php 
 						if ( 'disabled' === $webhook['status'] ) {
 							// Check webhook status.
 							?>
 							<div class="notice error inline">
-								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is disabled.', 'paid-memberships-pro' ); ?> <a id="dmrfid_stripe_rebuild_webhook" href="#">Rebuild Webhook</a></p>
+								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is disabled.', 'digital-members-rfid' ); ?> <a id="dmrfid_stripe_rebuild_webhook" href="#">Rebuild Webhook</a></p>
 							</div>
 							<?php
 						} elseif ( $webhook['api_version'] < DMRFID_STRIPE_API_VERSION ) {
 							// Check webhook API version.
 							?>
 							<div class="notice error inline">
-								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is using an old API version.', 'paid-memberships-pro' ); ?> <a id="dmrfid_stripe_rebuild_webhook" href="#"><?php _e( 'Rebuild Webhook', 'paid-memberships-pro' ); ?></a></p>
+								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is using an old API version.', 'digital-members-rfid' ); ?> <a id="dmrfid_stripe_rebuild_webhook" href="#"><?php _e( 'Rebuild Webhook', 'digital-members-rfid' ); ?></a></p>
 							</div>
 							<?php
 						} else {
 							?>
 							<div class="notice notice-success inline">
-								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'Your webhook is enabled.', 'paid-memberships-pro' ); ?> <a id="dmrfid_stripe_delete_webhook" href="#"><?php _e( 'Disable Webhook', 'paid-memberships-pro' ); ?></a></p>
+								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'Your webhook is enabled.', 'digital-members-rfid' ); ?> <a id="dmrfid_stripe_delete_webhook" href="#"><?php _e( 'Disable Webhook', 'digital-members-rfid' ); ?></a></p>
 							</div>
 							<?php
 						}
 					 } else { ?>
-				<button type="button" id="dmrfid_stripe_create_webhook" class="button button-secondary"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'paid-memberships-pro' ); ?></button>
+				<button type="button" id="dmrfid_stripe_create_webhook" class="button button-secondary"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'digital-members-rfid' ); ?></button>
 				<div class="notice error inline">
-					<p id="dmrfid_stripe_webhook_notice"><?php _e('A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'paid-memberships-pro' );?></p>
+					<p id="dmrfid_stripe_webhook_notice"><?php _e('A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'digital-members-rfid' );?></p>
 				</div>
 				<?php } ?>
-			<p class="description"><?php esc_html_e( 'Webhook URL', 'paid-memberships-pro' ); ?>:
+			<p class="description"><?php esc_html_e( 'Webhook URL', 'digital-members-rfid' ); ?>:
 			<code><?php echo self::get_site_webhook_url(); ?></code></p>
             </td>
         </tr>
 		<tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <th scope="row" valign="top">
-                <label for="stripe_billingaddress"><?php _e( 'Show Billing Address Fields', 'paid-memberships-pro' ); ?>
+                <label for="stripe_billingaddress"><?php _e( 'Show Billing Address Fields', 'digital-members-rfid' ); ?>
                     :</label>
             </th>
             <td>
                 <select id="stripe_billingaddress" name="stripe_billingaddress">
                     <option value="0"
-					        <?php if ( empty( $values['stripe_billingaddress'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'paid-memberships-pro' ); ?></option>
+					        <?php if ( empty( $values['stripe_billingaddress'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'digital-members-rfid' ); ?></option>
                     <option value="1"
-					        <?php if ( ! empty( $values['stripe_billingaddress'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'paid-memberships-pro' ); ?></option>
+					        <?php if ( ! empty( $values['stripe_billingaddress'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'digital-members-rfid' ); ?></option>
                 </select>
-				<p class="description"><?php _e( "Stripe doesn't require billing address fields. Choose 'No' to hide them on the checkout page.<br /><strong>If No, make sure you disable address verification in the Stripe dashboard settings.</strong>", 'paid-memberships-pro' ); ?></p>
+				<p class="description"><?php _e( "Stripe doesn't require billing address fields. Choose 'No' to hide them on the checkout page.<br /><strong>If No, make sure you disable address verification in the Stripe dashboard settings.</strong>", 'digital-members-rfid' ); ?></p>
             </td>
         </tr>
 		<tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <th scope="row" valign="top">
-				<label for="stripe_payment_request_button"><?php _e( 'Enable Payment Request Button', 'paid-memberships-pro' ); ?>:</label>
+				<label for="stripe_payment_request_button"><?php _e( 'Enable Payment Request Button', 'digital-members-rfid' ); ?>:</label>
             </th>
             <td>
                 <select id="stripe_payment_request_button" name="stripe_payment_request_button">
                     <option value="0"
-					        <?php if ( empty( $values['stripe_payment_request_button'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'paid-memberships-pro' ); ?></option>
+					        <?php if ( empty( $values['stripe_payment_request_button'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'digital-members-rfid' ); ?></option>
                     <option value="1"
-					        <?php if ( ! empty( $values['stripe_payment_request_button'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'paid-memberships-pro' ); ?></option>
+					        <?php if ( ! empty( $values['stripe_payment_request_button'] ) ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'digital-members-rfid' ); ?></option>
                 </select>
                 <?php
 	                $allowed_stripe_payment_button_html = array (
@@ -416,7 +416,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 						),
 					);
 				?>
-				<p class="description"><?php echo sprintf( wp_kses( __( 'Allow users to pay using Apple Pay, Google Pay, or Microsoft Pay depending on their browser. When enabled, your domain will automatically be registered with Apple and a domain association file will be hosted on your site. <a target="_blank" href="%s" title="More Information about the domain association file for Apple Pay">More Information &raquo;</a>', 'paid-memberships-pro' ), $allowed_stripe_payment_button_html ), 'https://stripe.com/docs/stripe-js/elements/payment-request-button#verifying-your-domain-with-apple-pay' ); ?></p>
+				<p class="description"><?php echo sprintf( wp_kses( __( 'Allow users to pay using Apple Pay, Google Pay, or Microsoft Pay depending on their browser. When enabled, your domain will automatically be registered with Apple and a domain association file will be hosted on your site. <a target="_blank" href="%s" title="More Information about the domain association file for Apple Pay">More Information &raquo;</a>', 'digital-members-rfid' ), $allowed_stripe_payment_button_html ), 'https://stripe.com/docs/stripe-js/elements/payment-request-button#verifying-your-domain-with-apple-pay' ); ?></p>
 					<?php
 					if ( ! empty( $values['stripe_payment_request_button'] ) ) {
 						// Are there any issues with how the payment request button is set up?
@@ -429,13 +429,13 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 							),
 						);
 						if ( empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" ) {
-							$payment_request_error = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
+							$payment_request_error = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
 						} elseif ( substr( $values['stripe_publishablekey'], 0, 8 ) !== "pk_live_" && substr( $values['stripe_publishablekey'], 0, 8 ) !== "pk_test_" ) {
-							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe publishable key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "pk_live_" or "pk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your publishable key</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
+							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe publishable key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "pk_live_" or "pk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your publishable key</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
 						} elseif ( substr( $values['stripe_secretkey'], 0, 8 ) !== "sk_live_" && substr( $values['stripe_secretkey'], 0, 8 ) !== "sk_test_" ) {
-							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe secret key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "sk_live_" or "sk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your secret key</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
+							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe secret key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "sk_live_" or "sk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your secret key</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
 						} elseif ( ! $stripe->dmrfid_does_apple_pay_domain_exist() ) {
-							$payment_request_error = sprintf( wp_kses( __( 'Your domain could not be registered with Apple to enable Apple Pay. Please try <a target="_blank" href="%s" title="Apple Pay Settings Page in Stripe">registering your domain manually from the Apple Pay settings page in Stripe</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/settings/payments/apple_pay' );
+							$payment_request_error = sprintf( wp_kses( __( 'Your domain could not be registered with Apple to enable Apple Pay. Please try <a target="_blank" href="%s" title="Apple Pay Settings Page in Stripe">registering your domain manually from the Apple Pay settings page in Stripe</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/settings/payments/apple_pay' );
 						}
 						if ( ! empty( $payment_request_error ) ) {
 							?>
@@ -460,7 +460,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 				if ( $gateway != "stripe" ) { 
 					echo ' style="display: none;"';
 				}
-				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Digital Members RFID - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'paid-memberships-pro' ), $allowed_appe_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=dmrfid-add-paypal-express-option-checkout' ) . '</p></td></tr>';
+				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Digital Members RFID - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'digital-members-rfid' ), $allowed_appe_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=dmrfid-add-paypal-express-option-checkout' ) . '</p></td></tr>';
 		} ?>
 		<?php
 	}
@@ -480,7 +480,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			$r = array(
 				'success' => false,
 				'notice' => 'error',
-				'message' => __( 'Webhook creation failed. You might already have a webhook set up.', 'paid-memberships-pro' ),
+				'message' => __( 'Webhook creation failed. You might already have a webhook set up.', 'digital-members-rfid' ),
 				'response' => $r
 			);
 		} else {
@@ -495,7 +495,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 				$r = array(
 					'success' => true,
 					'notice' => 'notice-success',
-					'message' => __( 'Your webhook is enabled.', 'paid-memberships-pro' ),
+					'message' => __( 'Your webhook is enabled.', 'digital-members-rfid' ),
 					'response' => $r
 				);
 			}
@@ -521,7 +521,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			$r = array(
 				'success' => true,
 				'notice' => 'error',
-				'message' => __( 'A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'paid-memberships-pro' )
+				'message' => __( 'A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'digital-members-rfid' )
 			);
 		} else {
 			$r = $stripe::delete_webhook( $webhook, $secretkey );
@@ -538,14 +538,14 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 					$r = array(
 						'success' => true,
 						'notice' => 'error',
-						'message' => __( 'A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'paid-memberships-pro' ),
+						'message' => __( 'A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'digital-members-rfid' ),
 						'response' => $r
 					);
 				} else {
 					$r = array(
 						'success' => false,
 						'notice' => 'error',
-						'message' => __( 'There was an error deleting the webhook.', 'paid-memberships-pro' ),
+						'message' => __( 'There was an error deleting the webhook.', 'digital-members-rfid' ),
 						'response' => $r
 					);
 				}
@@ -572,7 +572,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			$r = array(
 				'success' => true,
 				'notice' => 'error',
-				'message' => __( 'A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'paid-memberships-pro' )
+				'message' => __( 'A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'digital-members-rfid' )
 			);
 		} else {
 			$r = $stripe::delete_webhook( $webhook, $secretkey );
@@ -595,7 +595,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 							'success' => false,
 							'notice' => 'error',
 							'message' => $r,
-							'message' => __( 'Webhook creation failed. Please refresh and try again.', 'paid-memberships-pro' ),
+							'message' => __( 'Webhook creation failed. Please refresh and try again.', 'digital-members-rfid' ),
 							'response' => $r
 						);
 					} else {
@@ -610,7 +610,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 							$r = array(
 								'success' => true,
 								'notice' => 'notice-success',
-								'message' => __( 'Your webhook is enabled.', 'paid-memberships-pro' ),
+								'message' => __( 'Your webhook is enabled.', 'digital-members-rfid' ),
 								'response' => $r
 							);
 						}
@@ -619,7 +619,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 					$r = array(
 						'success' => false,
 						'notice' => 'error',
-						'message' => __( 'There was an error deleting the webhook.', 'paid-memberships-pro' ),
+						'message' => __( 'There was an error deleting the webhook.', 'digital-members-rfid' ),
 						'response' => $r
 					);
 				}
@@ -652,7 +652,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 					'publishableKey' => dmrfid_getOption( 'stripe_publishablekey' ),
 					'verifyAddress'  => apply_filters( 'dmrfid_stripe_verify_address', dmrfid_getOption( 'stripe_billingaddress' ) ),
 					'ajaxUrl'        => admin_url( "admin-ajax.php" ),
-					'msgAuthenticationValidated' => __( 'Verification steps confirmed. Your payment is processing.', 'paid-memberships-pro' ),
+					'msgAuthenticationValidated' => __( 'Verification steps confirmed. Your payment is processing.', 'digital-members-rfid' ),
 					'dmrfid_require_billing' => $dmrfid_requirebilling,
 					'restUrl' => get_rest_url(),
 					'siteName' => get_bloginfo( 'name' ),
@@ -1034,8 +1034,8 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
         <div id="dmrfid_payment_information_fields" class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout', 'dmrfid_payment_information_fields' ); ?>"
 		     <?php if ( ! $dmrfid_requirebilling || apply_filters( "dmrfid_hide_payment_information_fields", false ) ) { ?>style="display: none;"<?php } ?>>
             <h3>
-                <span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e( 'Payment Information', 'paid-memberships-pro' ); ?></span>
-                <span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf( __( 'We Accept %s', 'paid-memberships-pro' ), $dmrfid_accepted_credit_cards_string ); ?></span>
+                <span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e( 'Payment Information', 'digital-members-rfid' ); ?></span>
+                <span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf( __( 'We Accept %s', 'digital-members-rfid' ), $dmrfid_accepted_credit_cards_string ); ?></span>
             </h3>
 			<?php $sslseal = dmrfid_getOption( "sslseal" ); ?>
 			<?php if ( ! empty( $sslseal ) ) { ?>
@@ -1045,7 +1045,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			if ( dmrfid_getOption( 'stripe_payment_request_button' ) ) { ?>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-payment-request-button', 'dmrfid_checkout-field-payment-request-button' ); ?>">
 					<div id="payment-request-button"><!-- Alternate payment method will be inserted here. --></div>
-					<h4 class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-credit-card', 'dmrfid_payment-credit-card' ); ?>"><?php esc_html_e( 'Pay with Credit Card', 'paid-memberships-pro' ); ?></h4>
+					<h4 class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-credit-card', 'dmrfid_payment-credit-card' ); ?>"><?php esc_html_e( 'Pay with Credit Card', 'digital-members-rfid' ); ?></h4>
 				</div>
 				<?php
 			}
@@ -1055,7 +1055,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 					$dmrfid_include_cardtype_field = apply_filters( 'dmrfid_include_cardtype_field', false );
 					if ( $dmrfid_include_cardtype_field ) { ?>
                         <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-card-type', 'dmrfid_payment-card-type' ); ?>">
-                            <label for="CardType"><?php _e( 'Card Type', 'paid-memberships-pro' ); ?></label>
+                            <label for="CardType"><?php _e( 'Card Type', 'digital-members-rfid' ); ?></label>
                             <select id="CardType" class="<?php echo dmrfid_get_element_class( 'CardType' ); ?>">
 								<?php foreach ( $dmrfid_accepted_credit_cards as $cc ) { ?>
                                     <option value="<?php echo $cc ?>"
@@ -1068,29 +1068,29 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
                                value="<?php echo esc_attr( $CardType ); ?>"/>
 					<?php } ?>
                     <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-account-number', 'dmrfid_payment-account-number' ); ?>">
-                        <label for="AccountNumber"><?php _e( 'Card Number', 'paid-memberships-pro' ); ?></label>
+                        <label for="AccountNumber"><?php _e( 'Card Number', 'digital-members-rfid' ); ?></label>
                         <div id="AccountNumber"></div>
                     </div>
                     <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-expiration', 'dmrfid_payment-expiration' ); ?>">
-                        <label for="Expiry"><?php _e( 'Expiration Date', 'paid-memberships-pro' ); ?></label>
+                        <label for="Expiry"><?php _e( 'Expiration Date', 'digital-members-rfid' ); ?></label>
                         <div id="Expiry"></div>
                     </div>
 					<?php
 					$dmrfid_show_cvv = apply_filters( "dmrfid_show_cvv", true );
 					if ( $dmrfid_show_cvv ) { ?>
                         <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-cvv', 'dmrfid_payment-cvv' ); ?>">
-                            <label for="CVV"><?php _e( 'CVC', 'paid-memberships-pro' ); ?></label>
+                            <label for="CVV"><?php _e( 'CVC', 'digital-members-rfid' ); ?></label>
                             <div id="CVV"></div>
                         </div>
 					<?php } ?>
 					<?php if ( $dmrfid_show_discount_code ) { ?>
                         <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-discount-code', 'dmrfid_payment-discount-code' ); ?>">
-                            <label for="discount_code"><?php _e( 'Discount Code', 'paid-memberships-pro' ); ?></label>
+                            <label for="discount_code"><?php _e( 'Discount Code', 'digital-members-rfid' ); ?></label>
                             <input class="<?php echo dmrfid_get_element_class( 'input dmrfid_alter_price', 'discount_code' ); ?>"
                                    id="discount_code" name="discount_code" type="text" size="10"
                                    value="<?php echo esc_attr( $discount_code ) ?>"/>
                             <input type="button" id="discount_code_button" name="discount_code_button"
-                                   value="<?php _e( 'Apply', 'paid-memberships-pro' ); ?>"/>
+                                   value="<?php _e( 'Apply', 'digital-members-rfid' ); ?>"/>
                             <p id="discount_code_message" class="<?php echo dmrfid_get_element_class( 'dmrfid_message' ); ?>" style="display: none;"></p>
                         </div>
 					<?php } ?>
@@ -1115,10 +1115,10 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 		global $wpdb, $current_user, $dmrfid_currency_symbol;
 
 		$cycles        = array(
-			__( 'Day(s)', 'paid-memberships-pro' )   => 'Day',
-			__( 'Week(s)', 'paid-memberships-pro' )  => 'Week',
-			__( 'Month(s)', 'paid-memberships-pro' ) => 'Month',
-			__( 'Year(s)', 'paid-memberships-pro' )  => 'Year'
+			__( 'Day(s)', 'digital-members-rfid' )   => 'Day',
+			__( 'Week(s)', 'digital-members-rfid' )  => 'Week',
+			__( 'Month(s)', 'digital-members-rfid' ) => 'Month',
+			__( 'Year(s)', 'digital-members-rfid' )  => 'Year'
 		);
 		$current_year  = date_i18n( "Y" );
 		$current_month = date_i18n( "m" );
@@ -1157,24 +1157,24 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			//if the last order has a sub id, let the admin know there is no sub at Stripe
 			if ( ! empty( $last_order ) && $last_order->gateway == "stripe" && ! empty( $last_order->subscription_transaction_id ) && strpos( $last_order->subscription_transaction_id, "sub_" ) !== false ) {
 				?>
-                <p><?php printf( __( '%1$sNote:%2$s Subscription %3$s%4$s%5$s could not be found at Stripe. It may have been deleted.', 'paid-memberships-pro' ), '<strong>', '</strong>', '<strong>', esc_attr( $last_order->subscription_transaction_id ), '</strong>' ); ?></p>
+                <p><?php printf( __( '%1$sNote:%2$s Subscription %3$s%4$s%5$s could not be found at Stripe. It may have been deleted.', 'digital-members-rfid' ), '<strong>', '</strong>', '<strong>', esc_attr( $last_order->subscription_transaction_id ), '</strong>' ); ?></p>
 				<?php
 			}
 		} elseif ( true === self::$is_loaded ) {
 			?>
-            <h3><?php _e( "Subscription Updates", 'paid-memberships-pro' ); ?></h3>
+            <h3><?php _e( "Subscription Updates", 'digital-members-rfid' ); ?></h3>
             <p>
 				<?php
 				if ( empty( $_REQUEST['user_id'] ) ) {
-					_e( "Subscription updates, allow you to change the member's subscription values at predefined times. Be sure to click Update Profile after making changes.", 'paid-memberships-pro' );
+					_e( "Subscription updates, allow you to change the member's subscription values at predefined times. Be sure to click Update Profile after making changes.", 'digital-members-rfid' );
 				} else {
-					_e( "Subscription updates, allow you to change the member's subscription values at predefined times. Be sure to click Update User after making changes.", 'paid-memberships-pro' );
+					_e( "Subscription updates, allow you to change the member's subscription values at predefined times. Be sure to click Update User after making changes.", 'digital-members-rfid' );
 				}
 				?>
             </p>
             <table class="form-table">
                 <tr>
-                    <th><label for="membership_level"><?php _e( "Update", 'paid-memberships-pro' ); ?></label></th>
+                    <th><label for="membership_level"><?php _e( "Update", 'digital-members-rfid' ); ?></label></th>
                     <td id="updates_td">
 						<?php
 						$old_updates = $user->dmrfid_stripe_updates;
@@ -1249,7 +1249,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 								<?php echo $dmrfid_currency_symbol ?><input name="updates_billing_amount[]" type="text"
                                                                            size="10"
                                                                            value="<?php echo esc_attr( $update['billing_amount'] ); ?>"/>
-								<small><?php _e( 'per', 'paid-memberships-pro' ); ?></small>
+								<small><?php _e( 'per', 'digital-members-rfid' ); ?></small>
 								<input name="updates_cycle_number[]" type="text" size="5"
                                        value="<?php echo esc_attr( $update['cycle_number'] ); ?>"/>
 								<select name="updates_cycle_period[]">
@@ -1763,11 +1763,11 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 						try {
 							$charge = Stripe_Charge::retrieve( $payment_transaction_id );
 						} catch ( \Throwable $e ) {
-							$order->error = sprintf( __( 'Error: %s', 'paid-memberships-pro' ), $e->getMessage() );
+							$order->error = sprintf( __( 'Error: %s', 'digital-members-rfid' ), $e->getMessage() );
 
 							return false;
 						} catch ( \Exception $e ) {
-							$order->error = sprintf( __( 'Error: %s', 'paid-memberships-pro' ), $e->getMessage() );
+							$order->error = sprintf( __( 'Error: %s', 'digital-members-rfid' ), $e->getMessage() );
 
 							return false;
 						}
@@ -1780,11 +1780,11 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 						try {
 							$invoice = Stripe_Invoice::retrieve( $payment_transaction_id );
 						} catch ( \Throwable $e ) {
-							$order->error = sprintf( __( 'Error: %s', 'paid-memberships-pro' ), $e->getMessage() );
+							$order->error = sprintf( __( 'Error: %s', 'digital-members-rfid' ), $e->getMessage() );
 
 							return false;
 						} catch ( \Exception $e ) {
-							$order->error = sprintf( __( 'Error: %s', 'paid-memberships-pro' ), $e->getMessage() );
+							$order->error = sprintf( __( 'Error: %s', 'digital-members-rfid' ), $e->getMessage() );
 
 							return false;
 						}
@@ -1878,17 +1878,17 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 					"email"       => $order->Email,
 				) );
 			} catch ( \Stripe\Error $e ) {
-				$order->error      = __( "Error creating customer record with Stripe:", 'paid-memberships-pro' ) . " " . $e->getMessage();
+				$order->error      = __( "Error creating customer record with Stripe:", 'digital-members-rfid' ) . " " . $e->getMessage();
 				$order->shorterror = $order->error;
 
 				return false;
 			} catch ( \Throwable $e ) {
-				$order->error      = __( "Error creating customer record with Stripe:", 'paid-memberships-pro' ) . " " . $e->getMessage();
+				$order->error      = __( "Error creating customer record with Stripe:", 'digital-members-rfid' ) . " " . $e->getMessage();
 				$order->shorterror = $order->error;
 
 				return false;
 			} catch ( \Exception $e ) {
-				$order->error      = __( "Error creating customer record with Stripe:", 'paid-memberships-pro' ) . " " . $e->getMessage();
+				$order->error      = __( "Error creating customer record with Stripe:", 'digital-members-rfid' ) . " " . $e->getMessage();
 				$order->shorterror = $order->error;
 
 				return false;
@@ -1947,12 +1947,12 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			try {
 				$sub = $this->customer->subscriptions->retrieve( $order->subscription_transaction_id );
 			} catch ( \Throwable $e ) {
-				$order->error      = __( "Error getting subscription with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
+				$order->error      = __( "Error getting subscription with Stripe:", 'digital-members-rfid' ) . $e->getMessage();
 				$order->shorterror = $order->error;
 
 				return false;
 			} catch ( \Exception $e ) {
-				$order->error      = __( "Error getting subscription with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
+				$order->error      = __( "Error getting subscription with Stripe:", 'digital-members-rfid' ) . $e->getMessage();
 				$order->shorterror = $order->error;
 
 				return false;
@@ -2118,12 +2118,12 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 
 			$plan = Stripe_Plan::create( apply_filters( 'dmrfid_stripe_create_plan_array', $plan ) );
 		} catch ( \Throwable $e ) {
-			$order->error      = __( "Error creating plan with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error creating plan with Stripe:", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 
 			return false;
 		} catch ( \Exception $e ) {
-			$order->error      = __( "Error creating plan with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error creating plan with Stripe:", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 
 			return false;
@@ -2154,7 +2154,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			}
 
 			//return error
-			$order->error      = __( "Error subscribing customer to plan with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error subscribing customer to plan with Stripe:", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 
 			return false;
@@ -2168,7 +2168,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			}
 
 			//return error
-			$order->error      = __( "Error subscribing customer to plan with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error subscribing customer to plan with Stripe:", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 
 			return false;
@@ -2259,7 +2259,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 				if ( ! function_exists( 'dmrfid_stripe_user_profile_fields_save_error' ) ) {
 					//throw error and halt save
 					function dmrfid_stripe_user_profile_fields_save_error( $errors, $update, $user ) {
-						$errors->add( 'dmrfid_stripe_updates', __( 'Could not cancel the old subscription. Updates have not been processed.', 'paid-memberships-pro' ) );
+						$errors->add( 'dmrfid_stripe_updates', __( 'Could not cancel the old subscription. Updates have not been processed.', 'digital-members-rfid' ) );
 					}
 
 					add_filter( 'user_profile_update_errors', 'dmrfid_stripe_user_profile_fields_save_error', 10, 3 );
@@ -2411,7 +2411,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 				if ( $this->cancelSubscriptionAtGateway( $subscription ) ) {
 					//we're okay, going to return true later
 				} else {
-					$order->error      = __( "Could not cancel old subscription.", 'paid-memberships-pro' );
+					$order->error      = __( "Could not cancel old subscription.", 'digital-members-rfid' );
 					$order->shorterror = $order->error;
 
 					return false;
@@ -2427,7 +2427,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 
 			return true;
 		} else {
-			$order->error      = __( "Could not find the customer.", 'paid-memberships-pro' );
+			$order->error      = __( "Could not find the customer.", 'digital-members-rfid' );
 			$order->shorterror = $order->error;
 
 			return false;    //no customer found
@@ -2595,13 +2595,13 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 			$refund = $charge->refund();
 		} catch ( \Throwable $e ) {
 			$order->errorcode  = true;
-			$order->error      = __( "Error: ", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error: ", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 
 			return false;
 		} catch ( \Exception $e ) {
 			$order->errorcode  = true;
-			$order->error      = __( "Error: ", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error: ", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 
 			return false;
@@ -2615,7 +2615,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 		} else {
 			$order->status     = "error";
 			$order->errorcode  = true;
-			$order->error      = sprintf( __( "Error: Unkown error while refunding charge #%s", 'paid-memberships-pro' ), $transaction_id );
+			$order->error      = sprintf( __( "Error: Unkown error while refunding charge #%s", 'digital-members-rfid' ), $transaction_id );
 			$order->shorterror = $order->error;
 
 			return false;
@@ -3083,7 +3083,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 
 		if ( 'requires_action' == $this->payment_intent->status ) {
 			$order->errorcode = true;
-			$order->error = __( 'Customer authentication is required to complete this transaction. Please complete the verification steps issued by your payment provider.', 'paid-memberships-pro' );
+			$order->error = __( 'Customer authentication is required to complete this transaction. Please complete the verification steps issued by your payment provider.', 'digital-members-rfid' );
 			$order->error_type = 'dmrfid_alert';
 
 			return false;
@@ -3100,7 +3100,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 
 		if ( 'requires_action' === $this->setup_intent->status ) {
 			$order->errorcode = true;
-			$order->error     = __( 'Customer authentication is required to finish setting up your subscription. Please complete the verification steps issued by your payment provider.', 'paid-memberships-pro' );
+			$order->error     = __( 'Customer authentication is required to finish setting up your subscription. Please complete the verification steps issued by your payment provider.', 'digital-members-rfid' );
 
 			return false;
 		}

@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_discountcodes")))
 	{
-		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
+		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
 	}
 
 	//vars
@@ -60,7 +60,7 @@
 	//check nonce for saving codes
 	if (!empty($_REQUEST['saveid']) && (empty($_REQUEST['dmrfid_discountcodes_nonce']) || !check_admin_referer('save', 'dmrfid_discountcodes_nonce'))) {
 		$dmrfid_msgt = 'error';
-		$dmrfid_msg = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
+		$dmrfid_msg = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
 		$saveid = false;
 	}
 
@@ -104,13 +104,13 @@
 		if(empty($wpdb->last_error)) {
 			if($saveid < 1) {
 				//insert
-				$dmrfid_msg = __("Discount code added successfully.", 'paid-memberships-pro' );
+				$dmrfid_msg = __("Discount code added successfully.", 'digital-members-rfid' );
 				$dmrfid_msgt = "success";
 				$saved = true;
 				$edit = $wpdb->insert_id;
 			} else {
 				//updated
-				$dmrfid_msg = __("Discount code updated successfully.", 'paid-memberships-pro' );
+				$dmrfid_msg = __("Discount code updated successfully.", 'digital-members-rfid' );
 				$dmrfid_msgt = "success";
 				$saved = true;
 				$edit = $saveid;
@@ -118,11 +118,11 @@
 		} else {
 			if($saveid < 1) {
 				//error inserting
-				$dmrfid_msg = __("Error adding discount code. That code may already be in use.", 'paid-memberships-pro' ) . $wpdb->last_error;
+				$dmrfid_msg = __("Error adding discount code. That code may already be in use.", 'digital-members-rfid' ) . $wpdb->last_error;
 				$dmrfid_msgt = "error";
 			} else {
 				//error updating
-				$dmrfid_msg = __("Error updating discount code. That code may already be in use.", 'paid-memberships-pro' );
+				$dmrfid_msg = __("Error updating discount code. That code may already be in use.", 'digital-members-rfid' );
 				$dmrfid_msgt = "error";
 			}
 		}
@@ -284,7 +284,7 @@
 					else
 					{
 						$level = dmrfid_getLevel($level_id);
-						$level_errors[] = sprintf(__("Error saving values for the %s level.", 'paid-memberships-pro' ), $level->name);
+						$level_errors[] = sprintf(__("Error saving values for the %s level.", 'digital-members-rfid' ), $level->name);
 					}
 				}
 			}
@@ -292,7 +292,7 @@
 			//errors?
 			if(!empty($level_errors))
 			{
-				$dmrfid_msg = __("There were errors updating the level values: ", 'paid-memberships-pro' ) . implode(" ", $level_errors);
+				$dmrfid_msg = __("There were errors updating the level values: ", 'digital-members-rfid' ) . implode(" ", $level_errors);
 				$dmrfid_msgt = "error";
 			}
 			else
@@ -308,7 +308,7 @@
 	//check nonce for deleting codes
 	if (!empty($_REQUEST['delete']) && (empty($_REQUEST['dmrfid_discountcodes_nonce']) || !check_admin_referer('delete', 'dmrfid_discountcodes_nonce'))) {
 		$dmrfid_msgt = 'error';
-		$dmrfid_msg = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
+		$dmrfid_msg = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
 		$delete = false;
 	}
 
@@ -332,30 +332,30 @@
 
 				if($r2 !== false)
 				{
-					$dmrfid_msg = sprintf(__("Code %s deleted successfully.", 'paid-memberships-pro' ), $code);
+					$dmrfid_msg = sprintf(__("Code %s deleted successfully.", 'digital-members-rfid' ), $code);
 					$dmrfid_msgt = "success";
 				}
 				else
 				{
-					$dmrfid_msg = __("Error deleting discount code. The code was only partially deleted. Please try again.", 'paid-memberships-pro' );
+					$dmrfid_msg = __("Error deleting discount code. The code was only partially deleted. Please try again.", 'digital-members-rfid' );
 					$dmrfid_msgt = "error";
 				}
 			}
 			else
 			{
-				$dmrfid_msg = __("Error deleting code. Please try again.", 'paid-memberships-pro' );
+				$dmrfid_msg = __("Error deleting code. Please try again.", 'digital-members-rfid' );
 				$dmrfid_msgt = "error";
 			}
 		}
 		else
 		{
-			$dmrfid_msg = __("Code not found.", 'paid-memberships-pro' );
+			$dmrfid_msg = __("Code not found.", 'digital-members-rfid' );
 			$dmrfid_msgt = "error";
 		}
 	}
 	
 	if( ! empty( $dmrfid_msg ) && ! empty( $expiration_warning_flag ) ) {
-		$dmrfid_msg .= ' <strong>' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
+		$dmrfid_msg .= ' <strong>' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 		
 		if( $dmrfid_msgt == 'success' ) {
 			$dmrfid_msgt = 'warning';
@@ -370,9 +370,9 @@
 		<h1>
 			<?php
 				if($edit > 0)
-					echo __("Edit Discount Code", 'paid-memberships-pro' );
+					echo __("Edit Discount Code", 'digital-members-rfid' );
 				else
-					echo __("Add New Discount Code", 'paid-memberships-pro' );
+					echo __("Add New Discount Code", 'digital-members-rfid' );
 			?>
 		</h1>
 
@@ -441,12 +441,12 @@
 				<table class="form-table">
                 <tbody>
                     <tr>
-                        <th scope="row" valign="top"><label><?php _e('ID', 'paid-memberships-pro' );?>:</label></th>
-                        <td><p class="description"><?php if(!empty($code->id)) echo $code->id; else echo __("This will be generated when you save.", 'paid-memberships-pro' );?></p></td>
+                        <th scope="row" valign="top"><label><?php _e('ID', 'digital-members-rfid' );?>:</label></th>
+                        <td><p class="description"><?php if(!empty($code->id)) echo $code->id; else echo __("This will be generated when you save.", 'digital-members-rfid' );?></p></td>
                     </tr>
 
                     <tr>
-                        <th scope="row" valign="top"><label for="code"><?php _e('Code', 'paid-memberships-pro' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="code"><?php _e('Code', 'digital-members-rfid' );?>:</label></th>
                         <td><input name="code" type="text" size="20" value="<?php echo str_replace("\"", "&quot;", stripslashes($code->code))?>" /></td>
                     </tr>
 
@@ -484,7 +484,7 @@
 					?>
 
 					<tr>
-                        <th scope="row" valign="top"><label for="starts"><?php _e('Start Date', 'paid-memberships-pro' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="starts"><?php _e('Start Date', 'digital-members-rfid' );?>:</label></th>
                         <td>
 							<select name="starts_month">
 								<?php
@@ -502,7 +502,7 @@
                     </tr>
 
 					<tr>
-                        <th scope="row" valign="top"><label for="expires"><?php _e('Expiration Date', 'paid-memberships-pro' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="expires"><?php _e('Expiration Date', 'digital-members-rfid' );?>:</label></th>
                         <td>
 							<select name="expires_month">
 								<?php
@@ -520,10 +520,10 @@
                     </tr>
 
 					<tr>
-                        <th scope="row" valign="top"><label for="uses"><?php _e('Uses', 'paid-memberships-pro' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="uses"><?php _e('Uses', 'digital-members-rfid' );?>:</label></th>
                         <td>
 							<input name="uses" type="text" size="10" value="<?php if(!empty($code->uses)) echo str_replace("\"", "&quot;", stripslashes($code->uses));?>" />
-							<p class="description"><?php _e('Leave blank for unlimited uses.', 'paid-memberships-pro' );?></p>
+							<p class="description"><?php _e('Leave blank for unlimited uses.', 'digital-members-rfid' );?></p>
 						</td>
                     </tr>
 
@@ -532,7 +532,7 @@
 
 			<?php do_action("dmrfid_discount_code_after_settings", $edit); ?>
 
-			<h3><?php _e('Which Levels Will This Code Apply To?', 'paid-memberships-pro' ); ?></h3>
+			<h3><?php _e('Which Levels Will This Code Apply To?', 'digital-members-rfid' ); ?></h3>
 
 			<div class="dmrfid_discount_levels">
 			<?php
@@ -570,7 +570,7 @@
 						<table class="form-table">
 						<tbody>
 							<tr>
-								<th scope="row" valign="top"><label for="initial_payment"><?php _e('Initial Payment', 'paid-memberships-pro' );?>:</label></th>
+								<th scope="row" valign="top"><label for="initial_payment"><?php _e('Initial Payment', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<?php
 									if(dmrfid_getCurrencyPosition() == "left")
@@ -581,17 +581,17 @@
 									if(dmrfid_getCurrencyPosition() == "right")
 										echo $dmrfid_currency_symbol;
 									?>
-									<p class="description"><?php _e('The initial amount collected at registration.', 'paid-memberships-pro' );?></p>
+									<p class="description"><?php _e('The initial amount collected at registration.', 'digital-members-rfid' );?></p>
 								</td>
 							</tr>
 
 							<tr>
-								<th scope="row" valign="top"><label><?php _e('Recurring Subscription', 'paid-memberships-pro' );?>:</label></th>
-								<td><input class="recurring_checkbox" id="recurring_<?php echo $level->id;?>" name="recurring[]" type="checkbox" value="<?php echo $level->id?>" <?php if(dmrfid_isLevelRecurring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).prop('checked')) {					jQuery(this).parent().parent().siblings('.recurring_info').show(); if(!jQuery('#custom_trial_<?php echo $level->id?>').is(':checked')) jQuery(this).parent().parent().siblings('.trial_info').hide();} else					jQuery(this).parent().parent().siblings('.recurring_info').hide();" /> <label for="recurring_<?php echo $level->id;?>"><?php _e('Check if this level has a recurring subscription payment.', 'paid-memberships-pro' );?></label></td>
+								<th scope="row" valign="top"><label><?php _e('Recurring Subscription', 'digital-members-rfid' );?>:</label></th>
+								<td><input class="recurring_checkbox" id="recurring_<?php echo $level->id;?>" name="recurring[]" type="checkbox" value="<?php echo $level->id?>" <?php if(dmrfid_isLevelRecurring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).prop('checked')) {					jQuery(this).parent().parent().siblings('.recurring_info').show(); if(!jQuery('#custom_trial_<?php echo $level->id?>').is(':checked')) jQuery(this).parent().parent().siblings('.trial_info').hide();} else					jQuery(this).parent().parent().siblings('.recurring_info').hide();" /> <label for="recurring_<?php echo $level->id;?>"><?php _e('Check if this level has a recurring subscription payment.', 'digital-members-rfid' );?></label></td>
 							</tr>
 
 							<tr class="recurring_info" <?php if(!dmrfid_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
-								<th scope="row" valign="top"><label for="billing_amount"><?php _e('Billing Amount', 'paid-memberships-pro' );?>:</label></th>
+								<th scope="row" valign="top"><label for="billing_amount"><?php _e('Billing Amount', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<?php
 									if(dmrfid_getCurrencyPosition() == "left")
@@ -602,11 +602,11 @@
 									if(dmrfid_getCurrencyPosition() == "right")
 										echo $dmrfid_currency_symbol;
 									?>
-									<?php _e('per', 'paid-memberships-pro' ); ?>
+									<?php _e('per', 'digital-members-rfid' ); ?>
 									<input name="cycle_number[]" type="text" size="10" value="<?php echo str_replace("\"", "&quot;", stripslashes($level->cycle_number))?>" />
 									<select name="cycle_period[]">
 									  <?php
-										$cycles = array( __('Day(s)', 'paid-memberships-pro' ) => 'Day', __('Week(s)', 'paid-memberships-pro' ) => 'Week', __('Month(s)', 'paid-memberships-pro' ) => 'Month', __('Year(s)', 'paid-memberships-pro' ) => 'Year' );
+										$cycles = array( __('Day(s)', 'digital-members-rfid' ) => 'Day', __('Week(s)', 'digital-members-rfid' ) => 'Week', __('Month(s)', 'digital-members-rfid' ) => 'Month', __('Year(s)', 'digital-members-rfid' ) => 'Year' );
 										foreach ( $cycles as $name => $value ) {
 										  echo "<option value='$value'";
 										  if ( $level->cycle_period == $value ) echo " selected='selected'";
@@ -614,23 +614,23 @@
 										}
 									  ?>
 									</select>
-									<p class="description"><?php _e('The amount to be billed one cycle after the initial payment.', 'paid-memberships-pro' );?></p>
+									<p class="description"><?php _e('The amount to be billed one cycle after the initial payment.', 'digital-members-rfid' );?></p>
 									<?php if($gateway == "braintree") { ?>
-										<strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently only supports billing periods of "Month" or "Year".', 'paid-memberships-pro' );?></strong>
+										<strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently only supports billing periods of "Month" or "Year".', 'digital-members-rfid' );?></strong>
 									<?php } elseif($gateway == "stripe") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration does not allow billing periods longer than 1 year.', 'paid-memberships-pro' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration does not allow billing periods longer than 1 year.', 'digital-members-rfid' );?></strong></p>
 									<?php }?>
 								</td>
 							</tr>
 
 							<tr class="recurring_info" <?php if(!dmrfid_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
-								<th scope="row" valign="top"><label for="billing_limit"><?php _e('Billing Cycle Limit', 'paid-memberships-pro' );?>:</label></th>
+								<th scope="row" valign="top"><label for="billing_limit"><?php _e('Billing Cycle Limit', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<input name="billing_limit[]" type="text" size="20" value="<?php echo $level->billing_limit?>" />
 									<p class="description">
-										<?php _e('The <strong>total</strong> number of recurring billing cycles for this level, including the trial period (if applicable) but not including the initial payment. Set to zero if membership is indefinite.', 'paid-memberships-pro' );?>
+										<?php _e('The <strong>total</strong> number of recurring billing cycles for this level, including the trial period (if applicable) but not including the initial payment. Set to zero if membership is indefinite.', 'digital-members-rfid' );?>
 										<?php if ( ( $gateway == "stripe" ) && ! function_exists( 'dmrfidsbl_plugin_row_meta' ) ) { ?>
-											<br /><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support billing limits. You can still set an expiration date below.', 'paid-memberships-pro' );?></strong>
+											<br /><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support billing limits. You can still set an expiration date below.', 'digital-members-rfid' );?></strong>
 											<?php if ( ! function_exists( 'dmrfidsd_dmrfid_membership_level_after_other_settings' ) ) {
 													$allowed_sbl_html = array (
 														'a' => array (
@@ -639,7 +639,7 @@
 															'title' => array(),
 														),
 													);
-													echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'paid-memberships-pro' ), $allowed_sbl_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
+													echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
 											} ?>
 									<?php } ?>
 								</p>
@@ -647,17 +647,17 @@
 							</tr>
 
 							<tr class="recurring_info" <?php if (!dmrfid_isLevelRecurring($level)) echo "style='display:none;'";?>>
-								<th scope="row" valign="top"><label><?php _e('Custom Trial', 'paid-memberships-pro' );?>:</label></th>
+								<th scope="row" valign="top"><label><?php _e('Custom Trial', 'digital-members-rfid' );?>:</label></th>
 								<td>
-									<input id="custom_trial_<?php echo $level->id?>" id="custom_trial_<?php echo $level->id;?>" name="custom_trial[]" type="checkbox" value="<?php echo $level->id?>" <?php if ( dmrfid_isLevelTrial($level) ) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).prop('checked')) jQuery(this).parent().parent().siblings('.trial_info').show();	else jQuery(this).parent().parent().siblings('.trial_info').hide();" /> <label for="custom_trial_<?php echo $level->id;?>"><?php _e('Check to add a custom trial period.', 'paid-memberships-pro' );?></label>
+									<input id="custom_trial_<?php echo $level->id?>" id="custom_trial_<?php echo $level->id;?>" name="custom_trial[]" type="checkbox" value="<?php echo $level->id?>" <?php if ( dmrfid_isLevelTrial($level) ) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).prop('checked')) jQuery(this).parent().parent().siblings('.trial_info').show();	else jQuery(this).parent().parent().siblings('.trial_info').hide();" /> <label for="custom_trial_<?php echo $level->id;?>"><?php _e('Check to add a custom trial period.', 'digital-members-rfid' );?></label>
 									<?php if($gateway == "twocheckout") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_twocheckout_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('2Checkout integration does not support custom trials. You can do one period trials by setting an initial payment different from the billing amount.', 'paid-memberships-pro' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_twocheckout_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('2Checkout integration does not support custom trials. You can do one period trials by setting an initial payment different from the billing amount.', 'digital-members-rfid' );?></strong></p>
 									<?php } ?>
 								</td>
 							</tr>
 
 							<tr class="trial_info recurring_info" <?php if (!dmrfid_isLevelTrial($level)) echo "style='display:none;'";?>>
-								<th scope="row" valign="top"><label for="trial_amount"><?php _e('Trial Billing Amount', 'paid-memberships-pro' );?>:</label></th>
+								<th scope="row" valign="top"><label for="trial_amount"><?php _e('Trial Billing Amount', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<?php
 									if(dmrfid_getCurrencyPosition() == "left")
@@ -668,31 +668,31 @@
 									if(dmrfid_getCurrencyPosition() == "right")
 										echo $dmrfid_currency_symbol;
 									?>
-									<?php _e('for the first', 'paid-memberships-pro' );?>
+									<?php _e('for the first', 'digital-members-rfid' );?>
 									<input name="trial_limit[]" type="text" size="10" value="<?php echo str_replace("\"", "&quot;", stripslashes($level->trial_limit))?>" />
-									<?php _e('subscription payments', 'paid-memberships-pro' );?>.
+									<?php _e('subscription payments', 'digital-members-rfid' );?>.
 									<?php if($gateway == "stripe") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support trial amounts greater than $0.', 'digital-members-rfid' );?></strong></p>
 									<?php } elseif($gateway == "braintree") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently does not support trial amounts greater than $0.', 'digital-members-rfid' );?></strong></p>
 									<?php } elseif($gateway == "payflowpro") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_payflow_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Payflow integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_payflow_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Payflow integration currently does not support trial amounts greater than $0.', 'digital-members-rfid' );?></strong></p>
 									<?php } ?>
 								</td>
 							</tr>
 
 							<tr>
-								<th scope="row" valign="top"><label><?php _e('Membership Expiration', 'paid-memberships-pro' );?>:</label></th>
-								<td><input id="expiration_<?php echo $level->id;?>" name="expiration[]" type="checkbox" value="<?php echo $level->id?>" <?php if(dmrfid_isLevelExpiring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).is(':checked')) { jQuery(this).parent().parent().siblings('.expiration_info').show(); } else { jQuery(this).parent().parent().siblings('.expiration_info').hide();}" /> <label for="expiration_<?php echo $level->id;?>"><?php _e('Check this to set when membership access expires.', 'paid-memberships-pro' );?></label></td>
+								<th scope="row" valign="top"><label><?php _e('Membership Expiration', 'digital-members-rfid' );?>:</label></th>
+								<td><input id="expiration_<?php echo $level->id;?>" name="expiration[]" type="checkbox" value="<?php echo $level->id?>" <?php if(dmrfid_isLevelExpiring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).is(':checked')) { jQuery(this).parent().parent().siblings('.expiration_info').show(); } else { jQuery(this).parent().parent().siblings('.expiration_info').hide();}" /> <label for="expiration_<?php echo $level->id;?>"><?php _e('Check this to set when membership access expires.', 'digital-members-rfid' );?></label></td>
 							</tr>
 
 							<tr class="expiration_info" <?php if(!dmrfid_isLevelExpiring($level)) {?>style="display: none;"<?php } ?>>
-								<th scope="row" valign="top"><label for="billing_amount"><?php _e('Expires In', 'paid-memberships-pro' );?>:</label></th>
+								<th scope="row" valign="top"><label for="billing_amount"><?php _e('Expires In', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<input id="expiration_number" name="expiration_number[]" type="text" size="10" value="<?php echo str_replace("\"", "&quot;", stripslashes($level->expiration_number))?>" />
 									<select id="expiration_period" name="expiration_period[]">
 									  <?php
-										$cycles = array( __('Day(s)', 'paid-memberships-pro' ) => 'Day', __('Week(s)', 'paid-memberships-pro' ) => 'Week', __('Month(s)', 'paid-memberships-pro' ) => 'Month', __('Year(s)', 'paid-memberships-pro' ) => 'Year' );
+										$cycles = array( __('Day(s)', 'digital-members-rfid' ) => 'Day', __('Week(s)', 'digital-members-rfid' ) => 'Week', __('Month(s)', 'digital-members-rfid' ) => 'Month', __('Year(s)', 'digital-members-rfid' ) => 'Year' );
 										foreach ( $cycles as $name => $value ) {
 										  echo "<option value='$value'";
 										  if ( $level->expiration_period == $value ) echo " selected='selected'";
@@ -701,7 +701,7 @@
 									  ?>
 
 									</select>
-									<p class="description"><?php _e('Set the duration of membership access. Note that the any future payments (recurring subscription, if any) will be cancelled when the membership expires.', 'paid-memberships-pro' );?></p>
+									<p class="description"><?php _e('Set the duration of membership access. Note that the any future payments (recurring subscription, if any) will be cancelled when the membership expires.', 'digital-members-rfid' );?></p>
 								</td>
 							</tr>
 						</tbody>
@@ -728,8 +728,8 @@
 
 	<?php } else { ?>
 
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'Memberships Discount Codes', 'paid-memberships-pro' ); ?></h1>
-		<a href="admin.php?page=dmrfid-discountcodes&edit=-1" class="page-title-action"><?php esc_html_e( 'Add New Discount Code', 'paid-memberships-pro' ); ?></a>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'Memberships Discount Codes', 'digital-members-rfid' ); ?></h1>
+		<a href="admin.php?page=dmrfid-discountcodes&edit=-1" class="page-title-action"><?php esc_html_e( 'Add New Discount Code', 'digital-members-rfid' ); ?></a>
 		<hr class="wp-header-end">
 
 		<?php
@@ -748,10 +748,10 @@
 
 			if( empty( $s ) && empty( $codes ) ) { ?>
 				<div class="dmrfid-new-install">
-					<h2><?php echo esc_attr_e( 'No Discount Codes Found', 'paid-memberships-pro' ); ?></h2>
-					<h4><?php _e( 'Discount codes allow you to override your membership level\'s default pricing.', 'paid-memberships-pro' ); ?></h4>
-					<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes&edit=-1' ) ) ; ?>" class="button-primary"><?php esc_attr_e( 'Create a Discount Code', 'paid-memberships-pro' );?></a>
-					<a href="<?php echo esc_url( 'https://www.paidmembershipspro.com/documentation/discount-codes/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=documentation&utm_content=discount-codes' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Documentation: Discount Codes', 'paid-memberships-pro' ); ?></a>
+					<h2><?php echo esc_attr_e( 'No Discount Codes Found', 'digital-members-rfid' ); ?></h2>
+					<h4><?php _e( 'Discount codes allow you to override your membership level\'s default pricing.', 'digital-members-rfid' ); ?></h4>
+					<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes&edit=-1' ) ) ; ?>" class="button-primary"><?php esc_attr_e( 'Create a Discount Code', 'digital-members-rfid' );?></a>
+					<a href="<?php echo esc_url( 'https://www.paidmembershipspro.com/documentation/discount-codes/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=documentation&utm_content=discount-codes' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Documentation: Discount Codes', 'digital-members-rfid' ); ?></a>
 				</div> <!-- end dmrfid-new-install -->
 			<?php } else { ?>
 
@@ -760,15 +760,15 @@
 				<?php } ?>
 
 				<?php if ( ! empty( $codes ) ) { ?>
-					<p class="subsubsub"><?php printf( __( "%d discount codes found.", 'paid-memberships-pro' ), $totalrows ); ?></span></p>
+					<p class="subsubsub"><?php printf( __( "%d discount codes found.", 'digital-members-rfid' ), $totalrows ); ?></span></p>
 				<?php } ?>
 
 				<form id="posts-filter" method="get" action="">
 					<p class="search-box">
-						<label class="screen-reader-text" for="post-search-input"><?php _e('Search Discount Codes', 'paid-memberships-pro' );?>:</label>
+						<label class="screen-reader-text" for="post-search-input"><?php _e('Search Discount Codes', 'digital-members-rfid' );?>:</label>
 						<input type="hidden" name="page" value="dmrfid-discountcodes" />
 						<input id="post-search-input" type="text" value="<?php if(!empty($s)) echo $s;?>" name="s" size="30" />
-						<input class="button" type="submit" value="<?php _e('Search', 'paid-memberships-pro' );?>" id="search-submit "/>
+						<input class="button" type="submit" value="<?php _e('Search', 'digital-members-rfid' );?>" id="search-submit "/>
 					</p>
 				</form>
 
@@ -777,12 +777,12 @@
 				<table class="widefat">
 				<thead>
 					<tr>
-						<th><?php _e('ID', 'paid-memberships-pro' );?></th>
-						<th><?php _e('Code', 'paid-memberships-pro' );?></th>
-						<th><?php _e('Starts', 'paid-memberships-pro' );?></th>
-						<th><?php _e('Expires', 'paid-memberships-pro' );?></th>
-						<th><?php _e('Uses', 'paid-memberships-pro' );?></th>
-						<th><?php _e('Levels', 'paid-memberships-pro' );?></th>
+						<th><?php _e('ID', 'digital-members-rfid' );?></th>
+						<th><?php _e('Code', 'digital-members-rfid' );?></th>
+						<th><?php _e('Starts', 'digital-members-rfid' );?></th>
+						<th><?php _e('Expires', 'digital-members-rfid' );?></th>
+						<th><?php _e('Uses', 'digital-members-rfid' );?></th>
+						<th><?php _e('Levels', 'digital-members-rfid' );?></th>
 						<?php do_action("dmrfid_discountcodes_extra_cols_header", $codes);?>
 					</tr>
 				</thead>
@@ -790,7 +790,7 @@
 					<?php if ( !empty( $s ) && empty( $codes ) ) { ?>
 					<tr>
 						<td colspan="6">
-							<?php echo esc_attr_e( 'Code not found.', 'paid-memberships-pro' ); ?>
+							<?php echo esc_attr_e( 'Code not found.', 'digital-members-rfid' ); ?>
 						</td>
 					</tr> 
 					<?php } ?>
@@ -804,17 +804,17 @@
 								<a title="<?php echo sprintf( 'Edit Code: %s', $code->code ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php echo $code->code?></a>
 								<div class="row-actions">
 									<span class="edit">
-										<a title="<?php _e( 'Edit', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Edit', 'paid-memberships-pro' ); ?></a>
+										<a title="<?php _e( 'Edit', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Edit', 'digital-members-rfid' ); ?></a>
 									</span> |
 									<span class="copy">
-										<a title="<?php _e( 'Copy', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => -1, 'copy' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Copy', 'paid-memberships-pro' ); ?></a>
+										<a title="<?php _e( 'Copy', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => -1, 'copy' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Copy', 'digital-members-rfid' ); ?></a>
 									</span> |
 									<span class="delete">
-										<a title="<?php _e( 'Delete', 'paid-memberships-pro' ); ?>" href="javascript:dmrfid_askfirst('<?php echo str_replace("'", "\'", sprintf(__('Are you sure you want to delete the %s discount code? The subscriptions for existing users will not change, but new users will not be able to use this code anymore.', 'paid-memberships-pro' ), $code->code));?>', '<?php echo wp_nonce_url(add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'delete' => $code->id), admin_url( 'admin.php' ) ), 'delete', 'dmrfid_discountcodes_nonce'); ?>'); void(0);"><?php _e('Delete', 'paid-memberships-pro' ); ?></a>
+										<a title="<?php _e( 'Delete', 'digital-members-rfid' ); ?>" href="javascript:dmrfid_askfirst('<?php echo str_replace("'", "\'", sprintf(__('Are you sure you want to delete the %s discount code? The subscriptions for existing users will not change, but new users will not be able to use this code anymore.', 'digital-members-rfid' ), $code->code));?>', '<?php echo wp_nonce_url(add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'delete' => $code->id), admin_url( 'admin.php' ) ), 'delete', 'dmrfid_discountcodes_nonce'); ?>'); void(0);"><?php _e('Delete', 'digital-members-rfid' ); ?></a>
 									</span>
 									<?php if ( (int)$uses > 0 ) { ?>
 										| <span class="orders">
-											<a title="<?php _e(' View Orders', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-orders', 'discount_code' => $code->id, 'filter' => 'with-discount-code' ), admin_url('admin.php' ) ); ?>"><?php _e( 'Orders', 'paid-memberships-pro' ); ?></a>
+											<a title="<?php _e(' View Orders', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-orders', 'discount_code' => $code->id, 'filter' => 'with-discount-code' ), admin_url('admin.php' ) ); ?>"><?php _e( 'Orders', 'digital-members-rfid' ); ?></a>
 										</span>
 									<?php } ?>
 								</div>

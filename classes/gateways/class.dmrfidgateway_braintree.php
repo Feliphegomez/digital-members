@@ -48,7 +48,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 
                         $dmrfid_braintree_error = true;
                         $msg                   = - 1;
-                        $msgt                  = sprintf( __( 'Attempting to load Braintree gateway: %s', 'paid-memberships-pro' ), $exception->getMessage() );
+                        $msgt                  = sprintf( __( 'Attempting to load Braintree gateway: %s', 'digital-members-rfid' ), $exception->getMessage() );
                     return false;
                 }
 
@@ -70,7 +70,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			if ( version_compare( PHP_VERSION, '5.4.45', '<' )) {
 
 				$msg = -1;
-				$msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_PHP_MIN_VERSION );
+				$msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "digital-members-rfid" ), DMRFID_PHP_MIN_VERSION );
 
 				dmrfid_setMessage( $msgt, "dmrfid_error" );
 				return false;
@@ -84,7 +84,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				    if ( false == $dmrfid_braintree_error ) {
 					    $dmrfid_braintree_error = true;
 					    $msg                   = - 1;
-					    $msgt                  = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Braintree', $module );
+					    $msgt                  = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'digital-members-rfid' ), 'Braintree', $module );
 				    }
 
 					//throw error on checkout page
@@ -141,9 +141,9 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 					    $status = $exception->getMessage();
 
 					    if ( !empty( $status)) {
-						    $msgt = sprintf( __( "Problem loading plans: %s", "paid-memberships-pro" ), $status );
+						    $msgt = sprintf( __( "Problem loading plans: %s", "digital-members-rfid" ), $status );
 					    } else {
-					        $msgt = __( "Problem accessing the Braintree Gateway. Please verify your DmRFID Payment Settings (Keys, etc).", "paid-memberships-pro");
+					        $msgt = __( "Problem accessing the Braintree Gateway. Please verify your DmRFID Payment Settings (Keys, etc).", "digital-members-rfid");
                         }
 				    }
 
@@ -248,7 +248,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['braintree']))
-				$gateways['braintree'] = __('Braintree Payments', 'paid-memberships-pro' );
+				$gateways['braintree'] = __('Braintree Payments', 'digital-members-rfid' );
 
 			return $gateways;
 		}
@@ -305,12 +305,12 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		<tr class="dmrfid_settings_divider gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
-				<h2 class="title"><?php esc_html_e( 'Braintree Settings', 'paid-memberships-pro' ); ?></h2>
+				<h2 class="title"><?php esc_html_e( 'Braintree Settings', 'digital-members-rfid' ); ?></h2>
 			</td>
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_merchantid"><?php _e('Merchant ID', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_merchantid"><?php _e('Merchant ID', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="braintree_merchantid" name="braintree_merchantid" value="<?php echo esc_attr($values['braintree_merchantid'])?>" class="regular-text code" />
@@ -318,7 +318,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_publickey"><?php _e('Public Key', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_publickey"><?php _e('Public Key', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="braintree_publickey" name="braintree_publickey" value="<?php echo esc_attr($values['braintree_publickey'])?>" class="regular-text code" />
@@ -326,7 +326,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_privatekey"><?php _e('Private Key', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_privatekey"><?php _e('Private Key', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="braintree_privatekey" name="braintree_privatekey" value="<?php echo esc_attr($values['braintree_privatekey'])?>" class="regular-text code" />
@@ -334,7 +334,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="braintree_encryptionkey"><?php _e('Client-Side Encryption Key', 'paid-memberships-pro' );?>:</label>
+				<label for="braintree_encryptionkey"><?php _e('Client-Side Encryption Key', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<textarea id="braintree_encryptionkey" name="braintree_encryptionkey" rows="3" cols="50" class="large-text code"><?php echo esc_textarea($values['braintree_encryptionkey'])?></textarea>
@@ -342,10 +342,10 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		</tr>
 		<tr class="gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label><?php _e('Web Hook URL', 'paid-memberships-pro' );?>:</label>
+				<label><?php _e('Web Hook URL', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
-				<p><?php _e('To fully integrate with Braintree, be sure to set your Web Hook URL to', 'paid-memberships-pro' );?></p>
+				<p><?php _e('To fully integrate with Braintree, be sure to set your Web Hook URL to', 'digital-members-rfid' );?></p>
 				<p><code><?php
 						//echo admin_url("admin-ajax.php") . "?action=braintree_webhook";
 						echo add_query_arg( 'action', 'braintree_webhook', admin_url( 'admin-ajax.php' ) );
@@ -451,8 +451,8 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			?>
 			<div id="dmrfid_payment_information_fields" class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout', 'dmrfid_payment_information_fields' ); ?>" <?php if(!$dmrfid_requirebilling || apply_filters("dmrfid_hide_payment_information_fields", false) ) { ?>style="display: none;"<?php } ?>>
 				<h3>
-					<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Payment Information', 'paid-memberships-pro' );?></span>
-				<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf(__('We Accept %s', 'paid-memberships-pro' ), $dmrfid_accepted_credit_cards_string);?></span>
+					<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Payment Information', 'digital-members-rfid' );?></span>
+				<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf(__('We Accept %s', 'digital-members-rfid' ), $dmrfid_accepted_credit_cards_string);?></span>
 				</h3>
 				<?php $sslseal = dmrfid_getOption("sslseal"); ?>
 				<?php if(!empty($sslseal)) { ?>
@@ -463,7 +463,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 						$dmrfid_include_cardtype_field = apply_filters('dmrfid_include_cardtype_field', true);
 						if($dmrfid_include_cardtype_field) { ?>
 						<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-card-type', 'dmrfid_payment-card-type' ); ?>">
-							<label for="CardType"><?php _e('Card Type', 'paid-memberships-pro' );?></label>
+							<label for="CardType"><?php _e('Card Type', 'digital-members-rfid' );?></label>
 							<select id="CardType" name="CardType" class="<?php echo dmrfid_get_element_class( 'CardType' ); ?>">
 								<?php foreach($dmrfid_accepted_credit_cards as $cc) { ?>
 									<option value="<?php echo $cc?>" <?php if($CardType == $cc) { ?>selected="selected"<?php } ?>><?php echo $cc?></option>
@@ -472,11 +472,11 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 						</div>
 					<?php } ?>
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-account-number', 'dmrfid_payment-account-number' ); ?>">
-						<label for="AccountNumber"><?php _e('Card Number', 'paid-memberships-pro' );?></label>
+						<label for="AccountNumber"><?php _e('Card Number', 'digital-members-rfid' );?></label>
 						<input id="AccountNumber" name="AccountNumber" class="<?php echo dmrfid_get_element_class( 'input', 'AccountNumber' ); ?>" type="text" size="25" value="<?php echo esc_attr($AccountNumber)?>" data-encrypted-name="number" autocomplete="off" />
 					</div>
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-expiration', 'dmrfid_payment-expiration' ); ?>">
-						<label for="ExpirationMonth"><?php _e('Expiration Date', 'paid-memberships-pro' );?></label>
+						<label for="ExpirationMonth"><?php _e('Expiration Date', 'digital-members-rfid' );?></label>
 						<select id="ExpirationMonth" name="ExpirationMonth" class="<?php echo dmrfid_get_element_class( 'ExpirationMonth' ); ?>">
 							<option value="01" <?php if($ExpirationMonth == "01") { ?>selected="selected"<?php } ?>>01</option>
 							<option value="02" <?php if($ExpirationMonth == "02") { ?>selected="selected"<?php } ?>>02</option>
@@ -500,15 +500,15 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 						$dmrfid_show_cvv = apply_filters("dmrfid_show_cvv", true);
 						if($dmrfid_show_cvv) { ?>
 							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-cvv', 'dmrfid_payment-cvv' ); ?>">
-								<label for="CVV"><?php _e('CVV', 'paid-memberships-pro' );?></label>
-								<input id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr(sanitize_text_field($_REQUEST['CVV'])); }?>" class="<?php echo dmrfid_get_element_class( 'input', 'CVV' ); ?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo dmrfid_https_filter(DMRFID_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
+								<label for="CVV"><?php _e('CVV', 'digital-members-rfid' );?></label>
+								<input id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr(sanitize_text_field($_REQUEST['CVV'])); }?>" class="<?php echo dmrfid_get_element_class( 'input', 'CVV' ); ?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo dmrfid_https_filter(DMRFID_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'digital-members-rfid' );?></a>)</small>
 							</div>
 					<?php } ?>
 					<?php if($dmrfid_show_discount_code) { ?>
 						<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-discount-code', 'dmrfid_payment-discount-code' ); ?>">
-							<label for="discount_code"><?php _e('Discount Code', 'paid-memberships-pro' );?></label>
+							<label for="discount_code"><?php _e('Discount Code', 'digital-members-rfid' );?></label>
 							<input class="<?php echo dmrfid_get_element_class( 'input', 'discount_code' ); ?>" id="discount_code" name="discount_code" type="text" size="20" value="<?php echo esc_attr($discount_code)?>" />
-							<input type="button" id="discount_code_button" name="discount_code_button" value="<?php _e('Apply', 'paid-memberships-pro' );?>" />
+							<input type="button" id="discount_code_button" name="discount_code_button" value="<?php _e('Apply', 'digital-members-rfid' );?>" />
 							<p id="discount_code_message" class="<?php echo dmrfid_get_element_class( 'dmrfid_message' ); ?>" style="display: none;"></p>
 						</div>
 					<?php } ?>
@@ -567,11 +567,11 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 
 					    if ( !self::$is_loaded ) {
 
-					        $order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", "paid-memberships-pro");
+					        $order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", "digital-members-rfid");
 
                         } else {
 
-						    $order->error = __( "Unknown error: Initial payment failed.", "paid-memberships-pro" );
+						    $order->error = __( "Unknown error: Initial payment failed.", "digital-members-rfid" );
 					    }
                     }
 
@@ -584,7 +584,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		{
 		    if ( ! self::$is_loaded ) {
 
-                $order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", "paid-memberships-pro");
+                $order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", "digital-members-rfid");
                 return false;
             }
 
@@ -647,7 +647,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				else
 				{
 					$order->errorcode = true;
-					$order->error = __("Error during settlement:", 'paid-memberships-pro' ) . " " . $response->message;
+					$order->error = __("Error during settlement:", 'digital-members-rfid' ) . " " . $response->message;
 					$order->shorterror = $response->message;
 					return false;
 				}
@@ -656,7 +656,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			{
 				//$order->status = "error";
 				$order->errorcode = true;
-				$order->error = __("Error during charge:", 'paid-memberships-pro' ) . " " . $response->message;
+				$order->error = __("Error during charge:", 'digital-members-rfid' ) . " " . $response->message;
 				$order->shorterror = $response->message;
 				return false;
 			}
@@ -674,7 +674,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		function getCustomer(&$order, $force = false)
 		{
             if ( ! self::$is_loaded ) {
-	            $order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'paid-memberships-pro');
+	            $order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'digital-members-rfid');
 	            return false;
             }
 
@@ -748,7 +748,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 								//update
 								$response = Braintree_Customer::update($customer_id, $update_array);
                             } catch ( Exception $exception ) {
-								$order->error = sprintf( __("Failed to update customer: %s", 'paid-memberships-pro' ), $exception->getMessage() );
+								$order->error = sprintf( __("Failed to update customer: %s", 'digital-members-rfid' ), $exception->getMessage() );
 								$order->shorterror = $order->error;
 								return false;
                             }
@@ -760,7 +760,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 						}
 						else
 						{
-							$order->error = __("Failed to update customer.", 'paid-memberships-pro' ) . " " . $response->message;
+							$order->error = __("Failed to update customer.", 'digital-members-rfid' ) . " " . $response->message;
 							$order->shorterror = $order->error;
 							return false;
 						}
@@ -808,14 +808,14 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 					}
 					else
 					{
-						$order->error = __("Failed to create customer.", 'paid-memberships-pro' ) . " " . $result->message;
+						$order->error = __("Failed to create customer.", 'digital-members-rfid' ) . " " . $result->message;
 						$order->shorterror = $order->error;
 						return false;
 					}
 				}
 				catch (Exception $e)
 				{
-					$order->error = __("Error creating customer record with Braintree:", 'paid-memberships-pro' ) . $e->getMessage() . " (" . get_class($e) . ")";
+					$order->error = __("Error creating customer record with Braintree:", 'digital-members-rfid' ) . $e->getMessage() . " (" . get_class($e) . ")";
 					$order->shorterror = $order->error;
 					return false;
 				}
@@ -846,7 +846,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		function subscribe(&$order)
 		{
 			if ( ! self::$is_loaded ) {
-				$order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'paid-memberships-pro');
+				$order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'digital-members-rfid');
 				return false;
 			}
 
@@ -931,7 +931,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			}
 			catch (Exception $e)
 			{
-				$order->error = sprint( __("Error subscribing customer to plan with Braintree: %s (%s)", 'paid-memberships-pro' ), $e->getMessage(), get_class($e) );
+				$order->error = sprint( __("Error subscribing customer to plan with Braintree: %s (%s)", 'digital-members-rfid' ), $e->getMessage(), get_class($e) );
 				//return error
 				$order->shorterror = $order->error;
 				return false;
@@ -946,7 +946,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			}
 			else
 			{
-				$order->error = sprintf( __("Failed to subscribe with Braintree: %s", 'paid-memberships-pro' ),  $result->message );
+				$order->error = sprintf( __("Failed to subscribe with Braintree: %s", 'digital-members-rfid' ),  $result->message );
 				$order->shorterror = $result->message;
 				return false;
 			}
@@ -955,7 +955,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		function update(&$order)
 		{
 			if ( ! self::$is_loaded ) {
-				$order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'paid-memberships-pro');
+				$order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'digital-members-rfid');
 				return false;
 			}
 
@@ -982,7 +982,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		function cancel(&$order)
 		{
 			if ( ! self::$is_loaded ) {
-				$order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'paid-memberships-pro');
+				$order->error = __("Payment error: Please contact the webmaster (braintree-load-error)", 'digital-members-rfid');
 				return false;
 			}
 			
@@ -1016,7 +1016,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				}
 				catch(Exception $e)
 				{
-					$order->error = sprintf( __("Could not find the subscription. %s", 'paid-memberships-pro' ),  $e->getMessage() );
+					$order->error = sprintf( __("Could not find the subscription. %s", 'digital-members-rfid' ),  $e->getMessage() );
 					$order->shorterror = $order->error;
 					return false;	//no subscription found
 				}
@@ -1027,14 +1027,14 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				}
 				else
 				{
-					$order->error = sprintf( __("Could not find the subscription. %s", 'paid-memberships-pro' ), $result->message );
+					$order->error = sprintf( __("Could not find the subscription. %s", 'digital-members-rfid' ), $result->message );
 					$order->shorterror = $order->error;
 					return false;	//no subscription found
 				}
 			}
 			else
 			{
-				$order->error = __("Could not find the subscription.", 'paid-memberships-pro' );
+				$order->error = __("Could not find the subscription.", 'digital-members-rfid' );
 				$order->shorterror = $order->error;
 				return false;	//no customer found
 			}
@@ -1080,7 +1080,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		try {
 			$subscription = Braintree_Subscription::find( $order->subscription_transaction_id );
 		} catch ( Exception $e ) {
-			$order->error      = __( "Error getting subscription with Braintree:", 'paid-memberships-pro' ) . $e->getMessage();
+			$order->error      = __( "Error getting subscription with Braintree:", 'digital-members-rfid' ) . $e->getMessage();
 			$order->shorterror = $order->error;
 			return false;
 		}

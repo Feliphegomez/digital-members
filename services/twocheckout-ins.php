@@ -471,7 +471,7 @@
     
 		$worked = dmrfid_changeMembershipLevel( false, $morder->user->ID , 'inactive');
 		if( $worked === true ) {
-			//$dmrfid_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
+			//$dmrfid_msg = __("Your membership has been cancelled.", 'digital-members-rfid' );
 			//$dmrfid_msgt = "dmrfid_success";
 
 			//send an email to the member
@@ -504,7 +504,7 @@
 
 		$worked = dmrfid_changeMembershipLevel( $morder->membership_level->id, $morder->user->ID );
 		if( $worked === true ) {
-			//$dmrfid_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
+			//$dmrfid_msg = __("Your membership has been cancelled.", 'digital-members-rfid' );
 			//$dmrfid_msgt = "dmrfid_success";
 
 			//send an email to the member

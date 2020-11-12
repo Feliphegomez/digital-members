@@ -47,11 +47,11 @@
 		<div class="right">
 			<table>
 				<tr>
-					<td><?php echo __('Invoice #: ', 'paid-memberships-pro' ) . '&nbsp;' . $order->code; ?></td>
+					<td><?php echo __('Invoice #: ', 'digital-members-rfid' ) . '&nbsp;' . $order->code; ?></td>
 				</tr>
 				<tr>
 					<td>
-						<?php echo __( 'Date:', 'paid-memberships-pro' ) . '&nbsp;' . date_i18n( get_option( 'date_format' ), $order->getTimestamp() ); ?>
+						<?php echo __( 'Date:', 'digital-members-rfid' ) . '&nbsp;' . date_i18n( get_option( 'date_format' ), $order->getTimestamp() ); ?>
 					</td>
 				</tr>
 			</table>
@@ -72,9 +72,9 @@
 		</p>
 		<table class="invoice">
 			<tr>
-				<th><?php _e('ID', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e('Item', 'paid-memberships-pro' ); ?></th>
-				<th><?php _e('Price', 'paid-memberships-pro' ); ?></th>
+				<th><?php _e('ID', 'digital-members-rfid' ); ?></th>
+				<th><?php _e('Item', 'digital-members-rfid' ); ?></th>
+				<th><?php _e('Price', 'digital-members-rfid' ); ?></th>
 			</tr>
 			<tr>
 				<td class="aligncenter"><?php echo $level->id; ?></td>
@@ -82,15 +82,15 @@
 				<td class="alignright"><?php echo $order->subtotal; ?></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="alignright"><?php _e('Subtotal', 'paid-memberships-pro' ); ?></th>
+				<th colspan="2" class="alignright"><?php _e('Subtotal', 'digital-members-rfid' ); ?></th>
 				<td class="alignright"><?php echo $order->subtotal; ?></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="alignright"><?php _e('Tax', 'paid-memberships-pro' ); ?></th>
+				<th colspan="2" class="alignright"><?php _e('Tax', 'digital-members-rfid' ); ?></th>
 				<td class="alignright"><?php echo $order->tax; ?></td>
 			</tr>
 			<tr>
-				<th colspan="2" class="alignright"><?php _e('Total', 'paid-memberships-pro' ); ?></th>
+				<th colspan="2" class="alignright"><?php _e('Total', 'digital-members-rfid' ); ?></th>
 				<th class="alignright"><?php echo dmrfid_formatPrice( $order->total ); ?></th>
 			</tr>
 		</table>

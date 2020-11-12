@@ -62,7 +62,7 @@ class DmRFID_Elementor {
         $element->start_controls_section(
             $this->section_name, array(
                 'tab'   => \Elementor\Controls_Manager::TAB_ADVANCED,
-                'label' => __( 'Digital Members RFID', 'paid-memberships-pro' ),
+                'label' => __( 'Digital Members RFID', 'digital-members-rfid' ),
             )
         );
 

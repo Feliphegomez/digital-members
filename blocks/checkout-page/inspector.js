@@ -28,8 +28,8 @@ export default class Inspector extends Component {
           <InspectorControls>
           <PanelBody>
              <SelectControl
-                 label={ __( 'Membership Level', 'paid-memberships-pro' ) }
-                 help={ __( 'Choose a default level for Membership Checkout.', 'paid-memberships-pro' ) }
+                 label={ __( 'Membership Level', 'digital-members-rfid' ) }
+                 help={ __( 'Choose a default level for Membership Checkout.', 'digital-members-rfid' ) }
                  value={ dmrfid_default_level }
                  onChange={ dmrfid_default_level => setAttributes( { dmrfid_default_level } ) }
                  options={ [''].concat( window.dmrfid.all_level_values_and_labels ) }

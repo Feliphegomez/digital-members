@@ -31,7 +31,7 @@
 		$checkout_url = dmrfid_url( 'checkout', '?level=' . $level->id );
 		$logout_url = wp_logout_url( $checkout_url );
 		?>
-		<p><?php printf(__("Logged in as <strong>%s</strong>.", 'paid-memberships-pro' ), $current_user->user_login);?> <small><a href="<?php echo esc_url( $logout_url ); ?>"><?php _e("logout", 'paid-memberships-pro' );?></a></small></p>
+		<p><?php printf(__("Logged in as <strong>%s</strong>.", 'digital-members-rfid' ), $current_user->user_login);?> <small><a href="<?php echo esc_url( $logout_url ); ?>"><?php _e("logout", 'digital-members-rfid' );?></a></small></p>
 		<?php
 		 /**
 		 * dmrfid_billing_message_top hook to add in general content to the billing page without using custom page templates.
@@ -55,15 +55,15 @@
 					continue;
 				}
 				?>
-				<li><strong><?php _e("Level", 'paid-memberships-pro' );?>:</strong> <?php echo $level->name?></li>
+				<li><strong><?php _e("Level", 'digital-members-rfid' );?>:</strong> <?php echo $level->name?></li>
 				<?php if($level->billing_amount > 0) { ?>
-					<li><strong><?php _e("Membership Fee", 'paid-memberships-pro' );?>:</strong>
+					<li><strong><?php _e("Membership Fee", 'digital-members-rfid' );?>:</strong>
 						<?php
 							$level = $current_user->membership_level;
 							if($current_user->membership_level->cycle_number > 1) {
-								printf(__('%s every %d %s.', 'paid-memberships-pro' ), dmrfid_formatPrice($level->billing_amount), $level->cycle_number, dmrfid_translate_billing_period($level->cycle_period, $level->cycle_number));
+								printf(__('%s every %d %s.', 'digital-members-rfid' ), dmrfid_formatPrice($level->billing_amount), $level->cycle_number, dmrfid_translate_billing_period($level->cycle_period, $level->cycle_number));
 							} elseif($current_user->membership_level->cycle_number == 1) {
-								printf(__('%s per %s.', 'paid-memberships-pro' ), dmrfid_formatPrice($level->billing_amount), dmrfid_translate_billing_period($level->cycle_period));
+								printf(__('%s per %s.', 'digital-members-rfid' ), dmrfid_formatPrice($level->billing_amount), dmrfid_translate_billing_period($level->cycle_period));
 							} else {
 								echo dmrfid_formatPrice($current_user->membership_level->billing_amount);
 							}
@@ -74,18 +74,18 @@
 			<?php } ?>
 
 			<?php if($level->billing_limit) { ?>
-				<li><strong><?php _e("Duration", 'paid-memberships-pro' );?>:</strong> <?php echo $level->billing_limit.' '.sornot($level->cycle_period,$level->billing_limit)?></li>
+				<li><strong><?php _e("Duration", 'digital-members-rfid' );?>:</strong> <?php echo $level->billing_limit.' '.sornot($level->cycle_period,$level->billing_limit)?></li>
 			<?php } ?>
 
 			<?php
 				$dmrfid_billing_show_payment_method = apply_filters( 'dmrfid_billing_show_payment_method'
 					, true);
 				if ( $dmrfid_billing_show_payment_method && ! empty( $CardType ) && $has_recurring_levels ) { ?>
-					<li><strong><?php _e( 'Payment Method', 'paid-memberships-pro' ); ?>: </strong>
+					<li><strong><?php _e( 'Payment Method', 'digital-members-rfid' ); ?>: </strong>
 						<?php echo esc_html( ucwords( $CardType ) ); ?>
-						<?php _e('ending in', 'paid-memberships-pro' ); ?>
+						<?php _e('ending in', 'digital-members-rfid' ); ?>
 						<?php echo esc_html( last4( get_user_meta( $current_user->ID, 'dmrfid_AccountNumber', true ) ) ); ?>.
-						<?php _e('Expiration', 'paid-memberships-pro' );?>: <?php echo esc_html( $ExpirationMonth ); ?>/<?php echo esc_html( $ExpirationYear ); ?>
+						<?php _e('Expiration', 'digital-members-rfid' );?>: <?php echo esc_html( $ExpirationMonth ); ?>/<?php echo esc_html( $ExpirationYear ); ?>
 					</li>
 					<?php
 				}
@@ -110,18 +110,18 @@
 		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_check_instructions' ); ?>"><?php echo wpautop( wp_unslash( $instructions ) ); ?></div>
 		<hr />
 		<p class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav' ); ?>">
-			<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-right' ); ?>"><a href="<?php echo dmrfid_url( 'account' )?>"><?php _e('View Your Membership Account &rarr;', 'paid-memberships-pro' );?></a></span>
+			<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-right' ); ?>"><a href="<?php echo dmrfid_url( 'account' )?>"><?php _e('View Your Membership Account &rarr;', 'digital-members-rfid' );?></a></span>
 		</p> <!-- end dmrfid_actions_nav -->
 	<?php } elseif ( $show_paypal_link ) { ?>
-		<p><?php  _e('Your payment subscription is managed by PayPal. Please <a href="http://www.paypal.com">login to PayPal here</a> to update your billing information.', 'paid-memberships-pro' );?></p>
+		<p><?php  _e('Your payment subscription is managed by PayPal. Please <a href="http://www.paypal.com">login to PayPal here</a> to update your billing information.', 'digital-members-rfid' );?></p>
 		<hr />
 		<p class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav' ); ?>">
-			<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-right' ); ?>"><a href="<?php echo dmrfid_url( 'account' )?>"><?php _e('View Your Membership Account &rarr;', 'paid-memberships-pro' );?></a></span>
+			<span class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav-right' ); ?>"><a href="<?php echo dmrfid_url( 'account' )?>"><?php _e('View Your Membership Account &rarr;', 'digital-members-rfid' );?></a></span>
 		</p> <!-- end dmrfid_actions_nav -->
 	<?php } elseif ( $gateway != $default_gateway ) {
 		// This membership's gateway is not the default site gateway, Pay by Check, or PayPal Express.
 		?>
-		<p><?php _e( 'Your billing information cannot be updated at this time.', 'paid-memberships-pro' ); ?></p>
+		<p><?php _e( 'Your billing information cannot be updated at this time.', 'digital-members-rfid' ); ?></p>
 	<?php } else {
 		// Show the default gateway form and allow billing information update.
 		?>
@@ -145,26 +145,26 @@
 			<div id="dmrfid_billing_address_fields" class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout', 'dmrfid_billing_address_fields' ); ?>">
 				<hr />
 				<h3>
-					<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Billing Address', 'paid-memberships-pro' );?></span>
+					<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Billing Address', 'digital-members-rfid' );?></span>
 				</h3>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-fields' ); ?>">
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bfirstname', 'dmrfid_checkout-field-bfirstname' ); ?>">
-						<label for="bfirstname"><?php _e('First Name', 'paid-memberships-pro' );?></label>
+						<label for="bfirstname"><?php _e('First Name', 'digital-members-rfid' );?></label>
 						<input id="bfirstname" name="bfirstname" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'bfirstname' ); ?>" size="30" value="<?php echo esc_attr($bfirstname);?>" />
 					</div> <!-- end dmrfid_checkout-field-bfirstname -->
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-blastname', 'dmrfid_checkout-field-blastname' ); ?>">
-						<label for="blastname"><?php _e('Last Name', 'paid-memberships-pro' );?></label>
+						<label for="blastname"><?php _e('Last Name', 'digital-members-rfid' );?></label>
 						<input id="blastname" name="blastname" type="text" 
 
 						class="<?php echo dmrfid_get_element_class( 'input', 'blastname' ); ?>" size="30" value="<?php echo esc_attr($blastname);?>" />
 					</div> <!-- end dmrfid_checkout-field-blastname -->
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-baddress1', 'dmrfid_checkout-field-baddress1' ); ?>">
-						<label for="baddress1"><?php _e('Address 1', 'paid-memberships-pro' );?></label>
+						<label for="baddress1"><?php _e('Address 1', 'digital-members-rfid' );?></label>
 						<input id="baddress1" name="baddress1" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'baddress1' ); ?>" size="30" value="<?php echo esc_attr($baddress1);?>" />
 					</div> <!-- end dmrfid_checkout-field-baddress1 -->
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-baddress2', 'dmrfid_checkout-field-baddress2' ); ?>">
-						<label for="baddress2"><?php _e('Address 2', 'paid-memberships-pro' );?></label>
-						<input id="baddress2" name="baddress2" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'baddress2' ); ?>" size="30" value="<?php echo esc_attr($baddress2);?>" /> <small class="<?php echo dmrfid_get_element_class( 'lite' ); ?>">(<?php _e('optional', 'paid-memberships-pro' );?>)</small>
+						<label for="baddress2"><?php _e('Address 2', 'digital-members-rfid' );?></label>
+						<input id="baddress2" name="baddress2" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'baddress2' ); ?>" size="30" value="<?php echo esc_attr($baddress2);?>" /> <small class="<?php echo dmrfid_get_element_class( 'lite' ); ?>">(<?php _e('optional', 'digital-members-rfid' );?>)</small>
 					</div> <!-- end dmrfid_checkout-field-baddress2 -->
 
 					<?php
@@ -173,15 +173,15 @@
 						{
 						?>
 							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bcity', 'dmrfid_checkout-field-bcity' ); ?>">
-								<label for="bcity"><?php _e('City', 'paid-memberships-pro' );?></label>
+								<label for="bcity"><?php _e('City', 'digital-members-rfid' );?></label>
 								<input id="bcity" name="bcity" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'bcity' ); ?>" size="30" value="<?php echo esc_attr($bcity)?>" />
 							</div> <!-- end dmrfid_checkout-field-bcity -->
 							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bstate', 'dmrfid_checkout-field-bstate' ); ?>">
-								<label for="bstate"><?php _e('State', 'paid-memberships-pro' );?></label>
+								<label for="bstate"><?php _e('State', 'digital-members-rfid' );?></label>
 								<input id="bstate" name="bstate" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'bstate' ); ?>" size="30" value="<?php echo esc_attr($bstate)?>" />
 							</div> <!-- end dmrfid_checkout-field-bstate -->
 							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bzipcode', 'dmrfid_checkout-field-bzipcode' ); ?>">
-								<label for="bzipcode"><?php _e('Postal Code', 'paid-memberships-pro' );?></label>
+								<label for="bzipcode"><?php _e('Postal Code', 'digital-members-rfid' );?></label>
 								<input id="bzipcode" name="bzipcode" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'bzipcode' ); ?>" size="30" value="<?php echo esc_attr($bzipcode)?>" />
 							</div> <!-- end dmrfid_checkout-field-bzipcode -->
 						<?php
@@ -190,7 +190,7 @@
 						{
 						?>
 							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bcity_state_zip', 'dmrfid_checkout-field-bcity_state_zip' ); ?>">
-								<label for="bcity_state_zip"><?php _e('City, State Zip', 'paid-memberships-pro' );?></label>
+								<label for="bcity_state_zip"><?php _e('City, State Zip', 'digital-members-rfid' );?></label>
 								<input id="bcity" name="bcity" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'bcity' ); ?>" size="14" value="<?php echo esc_attr($bcity)?>" />,
 								<?php
 									$state_dropdowns = apply_filters("dmrfid_state_dropdowns", false);
@@ -243,7 +243,7 @@
 						{
 					?>
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bcountry', 'dmrfid_checkout-field-bcountry' ); ?>">
-						<label for="bcountry"><?php _e('Country', 'paid-memberships-pro' );?></label>
+						<label for="bcountry"><?php _e('Country', 'digital-members-rfid' );?></label>
 						<select name="bcountry" class="<?php echo dmrfid_get_element_class( '', 'bcountry' );?>">
 							<?php
 								global $dmrfid_countries, $dmrfid_default_country;
@@ -268,7 +268,7 @@
 						}
 					?>
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bphone', 'dmrfid_checkout-field-bphone' ); ?>">
-						<label for="bphone"><?php _e('Phone', 'paid-memberships-pro' );?></label>
+						<label for="bphone"><?php _e('Phone', 'digital-members-rfid' );?></label>
 						<input id="bphone" name="bphone" type="text" class="<?php echo dmrfid_get_element_class( 'input', 'bphone' ); ?>" size="30" value="<?php echo esc_attr($bphone)?>" />
 					</div> <!-- end dmrfid_checkout-field-bphone -->
 					<?php if($current_user->ID) { ?>
@@ -279,11 +279,11 @@
 							$bconfirmemail = $current_user->user_email;
 					?>
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bemail', 'dmrfid_checkout-field-bemail' ); ?>">
-						<label for="bemail"><?php _e('Email Address', 'paid-memberships-pro' );?></label>
+						<label for="bemail"><?php _e('Email Address', 'digital-members-rfid' );?></label>
 						<input id="bemail" name="bemail" type="<?php echo ($dmrfid_email_field_type ? 'email' : 'text'); ?>" class="<?php echo dmrfid_get_element_class( 'input', 'bemail' ); ?>" size="30" value="<?php echo esc_attr($bemail)?>" />
 					</div> <!-- end dmrfid_checkout-field-bemail -->
 					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-bconfirmemail', 'dmrfid_checkout-field-bconfirmemail' ); ?>">
-						<label for="bconfirmemail"><?php _e('Confirm Email', 'paid-memberships-pro' );?></label>
+						<label for="bconfirmemail"><?php _e('Confirm Email', 'digital-members-rfid' );?></label>
 						<input id="bconfirmemail" name="bconfirmemail" type="<?php echo ($dmrfid_email_field_type ? 'email' : 'text'); ?>" class="<?php echo dmrfid_get_element_class( 'input', 'bconfirmemail' ); ?>" size="30" value="<?php echo esc_attr($bconfirmemail)?>" />
 					</div> <!-- end dmrfid_checkout-field-bconfirmemail -->
 					<?php } ?>
@@ -306,8 +306,8 @@
 				?>
 				<div id="dmrfid_payment_information_fields" class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout', 'dmrfid_payment_information_fields' ); ?>">
 					<h3>
-						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Credit Card Information', 'paid-memberships-pro' );?></span>
-						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf(__('We accept %s', 'paid-memberships-pro' ), $dmrfid_accepted_credit_cards_string);?></span>
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Credit Card Information', 'digital-members-rfid' );?></span>
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf(__('We accept %s', 'digital-members-rfid' ), $dmrfid_accepted_credit_cards_string);?></span>
 					</h3>
 					<?php $sslseal = dmrfid_getOption("sslseal"); ?>
 					<?php if(!empty($sslseal)) { ?>
@@ -318,7 +318,7 @@
 							$dmrfid_include_cardtype_field = apply_filters('dmrfid_include_cardtype_field', false);
 							if($dmrfid_include_cardtype_field) { ?>
 								<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-card-type', 'dmrfid_payment-card-type' ); ?>">
-									<label for="CardType"><?php _e('Card Type', 'paid-memberships-pro' );?></label>
+									<label for="CardType"><?php _e('Card Type', 'digital-members-rfid' );?></label>
 									<select id="CardType" name="CardType" class="<?php echo dmrfid_get_element_class( '', 'CardType' );?>">
 										<?php foreach($dmrfid_accepted_credit_cards as $cc) { ?>
 											<option value="<?php echo $cc?>" <?php if($CardType == $cc) { ?>selected="selected"<?php } ?>><?php echo $cc?></option>
@@ -356,11 +356,11 @@
 								}
 							?>
 						<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-account-number', 'dmrfid_payment-account-number' ); ?>">
-							<label for="AccountNumber"><?php _e('Card Number', 'paid-memberships-pro' );?></label>
+							<label for="AccountNumber"><?php _e('Card Number', 'digital-members-rfid' );?></label>
 							<input id="AccountNumber" name="AccountNumber" class="<?php echo dmrfid_get_element_class( 'input', 'AccountNumber' );?>" type="text" size="25" value="<?php echo esc_attr($AccountNumber)?>" autocomplete="off" />
 						</div>
 						<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-expiration', 'dmrfid_payment-expiration' ); ?>">
-							<label for="ExpirationMonth"><?php _e('Expiration Date', 'paid-memberships-pro' );?></label>
+							<label for="ExpirationMonth"><?php _e('Expiration Date', 'digital-members-rfid' );?></label>
 							<select id="ExpirationMonth" name="ExpirationMonth" class="<?php echo dmrfid_get_element_class( '', 'ExpirationMonth' ); ?>">
 								<option value="01" <?php if($ExpirationMonth == "01") { ?>selected="selected"<?php } ?>>01</option>
 								<option value="02" <?php if($ExpirationMonth == "02") { ?>selected="selected"<?php } ?>>02</option>
@@ -391,12 +391,12 @@
 								if ( true == ini_get('allow_url_include') ) {
 									$cvv_template = dmrfid_loadTemplate('popup-cvv', 'url', 'pages', 'html');
 								} else {
-									$cvv_template = plugins_url( 'paid-memberships-pro/pages/popup-cvv.html', DMRFID_DIR );
+									$cvv_template = plugins_url( 'digital-members-rfid/pages/popup-cvv.html', DMRFID_DIR );
 								}
 							?>
 							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-cvv', 'dmrfid_payment-cvv' ); ?>">
-								<label for="CVV"><?php _e('CVV', 'paid-memberships-pro' );?></label>
-								<input id="CVV" name="CVV" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr($_REQUEST['CVV']); }?>" class="<?php echo dmrfid_get_element_class( 'input', 'CVV ');?>" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo dmrfid_https_filter($cvv_template); ?>','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
+								<label for="CVV"><?php _e('CVV', 'digital-members-rfid' );?></label>
+								<input id="CVV" name="CVV" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr($_REQUEST['CVV']); }?>" class="<?php echo dmrfid_get_element_class( 'input', 'CVV ');?>" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo dmrfid_https_filter($cvv_template); ?>','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'digital-members-rfid' );?></a>)</small>
 							</div>
 						<?php } ?>
 					</div> <!-- end dmrfid_checkout-fields -->
@@ -410,8 +410,8 @@
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
 				<hr />
 				<input type="hidden" name="update-billing" value="1" />
-				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php _e('Update', 'paid-memberships-pro' );?>" />
-				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php _e('Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo dmrfid_url("account")?>';" />
+				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php _e('Update', 'digital-members-rfid' );?>" />
+				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php _e('Cancel', 'digital-members-rfid' );?>" onclick="location.href='<?php echo dmrfid_url("account")?>';" />
 			</div>
 		</form>
 		<script>
@@ -443,16 +443,16 @@
 		// Show the correct checkout link.
 		if ( ! empty( $level ) && ! empty( $level->allow_signups ) ) {
 			$url = dmrfid_url( 'checkout', '?level=' . $level->id );
-			printf( __( "Your membership is not active. <a href='%s'>Renew now.</a>", 'paid-memberships-pro' ), $url );
+			printf( __( "Your membership is not active. <a href='%s'>Renew now.</a>", 'digital-members-rfid' ), $url );
 		} elseif ( ! empty( $default_level_id ) ) {
 			$url = dmrfid_url( 'checkout', '?level=' . $default_level_id );
-			printf( __( "You do not have an active membership. <a href='%s'>Register here.</a>", 'paid-memberships-pro' ), $url );
+			printf( __( "You do not have an active membership. <a href='%s'>Register here.</a>", 'digital-members-rfid' ), $url );
 		} else {
 			$url = dmrfid_url( 'levels' );
-			printf( __( "You do not have an active membership. <a href='%s'>Choose a membership level.</a>", 'paid-memberships-pro' ), $url );
+			printf( __( "You do not have an active membership. <a href='%s'>Choose a membership level.</a>", 'digital-members-rfid' ), $url );
 		}
 	} else { ?>
-		<p><?php _e("This subscription is not recurring. So you don't need to update your billing information.", 'paid-memberships-pro' );?></p>
+		<p><?php _e("This subscription is not recurring. So you don't need to update your billing information.", 'digital-members-rfid' );?></p>
 	<?php }
 } ?>
 </div> <!-- end dmrfid_billing_wrap -->

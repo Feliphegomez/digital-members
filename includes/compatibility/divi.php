@@ -16,11 +16,11 @@ class DmRFIDDivi{
 	public function toggle( $modules ) {
 
 		if ( ! empty( $modules ) && is_object( $modules['et_pb_row'] ) ) {
-			$modules['et_pb_row']->settings_modal_toggles['custom_css']['toggles']['paid-memberships-pro'] = __( 'Digital Members RFID', 'paid-memberships-pro' );
+			$modules['et_pb_row']->settings_modal_toggles['custom_css']['toggles']['digital-members-rfid'] = __( 'Digital Members RFID', 'digital-members-rfid' );
 		}
 
 		if ( ! empty( $modules ) && is_object( $modules['et_pb_section'] ) ) {
-			$modules['et_pb_section']->settings_modal_toggles['custom_css']['toggles']['paid-memberships-pro'] = __( 'Digital Members RFID', 'paid-memberships-pro' );
+			$modules['et_pb_section']->settings_modal_toggles['custom_css']['toggles']['digital-members-rfid'] = __( 'Digital Members RFID', 'digital-members-rfid' );
 		}
 
 		return $modules;
@@ -29,14 +29,14 @@ class DmRFIDDivi{
 
 	public function row_settings( $settings ) {
 
-		$settings['paid-memberships-pro'] = array(
+		$settings['digital-members-rfid'] = array(
 			'tab_slug' => 'custom_css',
-			'label' => __( 'Restrict Row by Level', 'paid-memberships-pro' ),
-			'description' => __( 'Enter comma-separated level IDs.', 'paid-memberships-pro' ),
+			'label' => __( 'Restrict Row by Level', 'digital-members-rfid' ),
+			'description' => __( 'Enter comma-separated level IDs.', 'digital-members-rfid' ),
 			'type' => 'text',
 			'default' => '',
 			'option_category' => 'configuration',
-			'toggle_slug' => 'paid-memberships-pro',
+			'toggle_slug' => 'digital-members-rfid',
 	    );
 
 		return $settings;
@@ -45,14 +45,14 @@ class DmRFIDDivi{
 
 	public function section_settings( $settings ) {
 
-	    $settings['paid-memberships-pro'] = array(
+	    $settings['digital-members-rfid'] = array(
 			'tab_slug' => 'custom_css',
-			'label' => __( 'Restrict Section by Level', 'paid-memberships-pro' ),
-			'description' => __( 'Enter comma-separated level IDs.', 'paid-memberships-pro' ),
+			'label' => __( 'Restrict Section by Level', 'digital-members-rfid' ),
+			'description' => __( 'Enter comma-separated level IDs.', 'digital-members-rfid' ),
 			'type' => 'text',
 			'default' => '',
 			'option_category' => 'configuration',
-			'toggle_slug' => 'paid-memberships-pro',
+			'toggle_slug' => 'digital-members-rfid',
 	    );
 
 		return $settings;
@@ -65,11 +65,11 @@ class DmRFIDDivi{
 			return $output;
 	    }
 
-	    if( !isset( $props['paid-memberships-pro'] ) ){
+	    if( !isset( $props['digital-members-rfid'] ) ){
 	    	return $output;
 	    }
 		
-		$level = $props['paid-memberships-pro'];
+		$level = $props['digital-members-rfid'];
 		
 		if ( empty( trim( $level ) ) || trim( $level ) === '0' ) {
 			return $output;

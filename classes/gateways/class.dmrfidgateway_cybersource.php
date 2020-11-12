@@ -33,7 +33,7 @@
 		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['cybersource']))
-				$gateways['cybersource'] = __('CyberSource', 'paid-memberships-pro' );
+				$gateways['cybersource'] = __('CyberSource', 'digital-members-rfid' );
 			return $gateways;
 		}
 		/**
@@ -81,17 +81,17 @@
 		<tr class="dmrfid_settings_divider gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
-				<h2 class="title"><?php esc_html_e( 'CyberSource Settings', 'paid-memberships-pro' ); ?></h2>
+				<h2 class="title"><?php esc_html_e( 'CyberSource Settings', 'digital-members-rfid' ); ?></h2>
 			</td>
 		</tr>
 		<tr class="gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2" style="padding: 0px;">
-				<p class="dmrfid_message"><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php _e('This gateway option is in beta. Some functionality may not be available. Please contact Digital Members RFID with any issues you run into. <strong>Please be sure to upgrade Digital Members RFID to the latest versions when available.</strong>', 'paid-memberships-pro' );?></p>
+				<p class="dmrfid_message"><?php _e('Note', 'digital-members-rfid' );?>:</strong> <?php _e('This gateway option is in beta. Some functionality may not be available. Please contact Digital Members RFID with any issues you run into. <strong>Please be sure to upgrade Digital Members RFID to the latest versions when available.</strong>', 'digital-members-rfid' );?></p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="cybersource_merchantid"><?php _e('Merchant ID', 'paid-memberships-pro' );?>:</label>
+				<label for="cybersource_merchantid"><?php _e('Merchant ID', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="cybersource_merchantid" name="cybersource_merchantid" value="<?php echo esc_attr($values['cybersource_merchantid'])?>" class="regular-text code" />
@@ -99,7 +99,7 @@
 		</tr>
 		<tr class="gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="cybersource_securitykey"><?php _e('Transaction Security Key', 'paid-memberships-pro' );?>:</label>
+				<label for="cybersource_securitykey"><?php _e('Transaction Security Key', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<textarea id="cybersource_securitykey" name="cybersource_securitykey" rows="3" cols="50" class="large-text code"><?php echo esc_textarea($values['cybersource_securitykey']);?></textarea>
@@ -152,7 +152,7 @@
 				else
 				{
 					if(empty($order->error))
-						$order->error = __("Unknown error: Authorization failed.", 'paid-memberships-pro' );
+						$order->error = __("Unknown error: Authorization failed.", 'digital-members-rfid' );
 					return false;
 				}
 			}
@@ -200,13 +200,13 @@
 							if($this->void($order))
 							{
 								if(!$order->error)
-									$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+									$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
 							}
 							else
 							{
 								if(!$order->error)
-									$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
-								$order->error .= " " . __("A partial payment was made that we could not void. Please contact the site owner immediately to correct this.", 'paid-memberships-pro' );
+									$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
+								$order->error .= " " . __("A partial payment was made that we could not void. Please contact the site owner immediately to correct this.", 'digital-members-rfid' );
 							}
 							return false;
 						}
@@ -221,7 +221,7 @@
 				else
 				{
 					if(empty($order->error))
-						$order->error = __("Unknown error: Payment failed.", 'paid-memberships-pro' );
+						$order->error = __("Unknown error: Payment failed.", 'digital-members-rfid' );
 					return false;
 				}
 			}
@@ -314,8 +314,8 @@
 
 			if( empty($request->card->cardType) )
 			{
-				$order->error = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "paid-memberships-pro" );
-				$order->shorterror = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "paid-memberships-pro" );
+				$order->error = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "digital-members-rfid" );
+				$order->shorterror = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "digital-members-rfid" );
 				return false;
 			}
 			
@@ -341,14 +341,14 @@
 			}
 			catch(Throwable $t)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $t->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $t->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;			
 			}
 			catch(Exception $e)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $e->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $e->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;
 			}
 
@@ -393,14 +393,14 @@
 			}
 			catch(Throwable $t)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $t->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $t->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;			
 			}
 			catch(Exception $e)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $e->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $e->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;
 			}
 
@@ -478,8 +478,8 @@
 
 			if( empty($request->card->cardType) )
 			{
-				$order->error = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "paid-memberships-pro" );
-				$order->shorterror = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "paid-memberships-pro" );
+				$order->error = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "digital-members-rfid" );
+				$order->shorterror = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "digital-members-rfid" );
 				return false;
 			}
 
@@ -503,14 +503,14 @@
 			}
 			catch(Throwable $t)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $t->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $t->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;			
 			}
 			catch(Exception $e)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $e->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $e->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;
 			}
 
@@ -676,7 +676,7 @@
 
 			if( empty($request->card->cardType) )
 			{
-				$order->error = __( "The payment gateway doesn't support this credit/debit card type.", "paid-memberships-pro" );
+				$order->error = __( "The payment gateway doesn't support this credit/debit card type.", "digital-members-rfid" );
 				$order->updateStatus("error");
 				return false;
 			}
@@ -693,14 +693,14 @@
 			}
 			catch(Throwable $t)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $t->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $t->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;			
 			}
 			catch(Exception $e)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $e->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $e->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;
 			}
 
@@ -765,8 +765,8 @@
 
 			if( empty($request->card->cardType) )
 			{
-				$order->error = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "paid-memberships-pro", "paid-memberships-pro" );
-				$order->shorterror = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "paid-memberships-pro", "paid-memberships-pro" );
+				$order->error = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "digital-members-rfid", "digital-members-rfid" );
+				$order->shorterror = __( "Error validating credit card type. Make sure your credit card number is correct and try again.", "digital-members-rfid", "digital-members-rfid" );
 				return false;
 			}
 
@@ -777,14 +777,14 @@
 			}
 			catch(Throwable $t)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $t->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $t->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;			
 			}
 			catch(Exception $e)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $e->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $e->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;
 			}
 
@@ -831,14 +831,14 @@
 			}
 			catch(Throwable $t)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $t->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $t->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;			
 			}
 			catch(Exception $e)
 			{
-				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'paid-memberships-pro' ), $e->getMessage() );
-				$order->shorterror = __( 'Error communicating with Cybersource.', 'paid-memberships-pro' );
+				$order->error = sprintf( __( 'Error communicating with Cybersource: %', 'digital-members-rfid' ), $e->getMessage() );
+				$order->shorterror = __( 'Error communicating with Cybersource.', 'digital-members-rfid' );
 				return false;
 			}
 
@@ -861,70 +861,70 @@
 		function getErrorFromCode($reply)
 		{
 			$error_messages = array(
-				"100" => __( "Successful transaction.", "paid-memberships-pro" ),
-				"101" => __( "The request is missing one or more required fields.", "paid-memberships-pro" ),
-				"102" => __( "One or more fields in the request contains invalid data. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"104" => __( "Duplicate order detected.", "paid-memberships-pro" ),
-				"110" => __( "Only partial amount was approved.", "paid-memberships-pro" ),
-				"150" => __( "Error: General system failure.", "paid-memberships-pro" ),
-				"151" => __( "Error: The request was received but there was a server timeout.", "paid-memberships-pro" ),
-				"152" => __( "Error: The request was received, but a service did not finish running in time. ", "paid-memberships-pro" ),
-				"200" => __( "Address Verification Service (AVS) failure.", "paid-memberships-pro" ),
-				"201" => __( "Authorization failed.", "paid-memberships-pro" ),
-				"202" => __( "Expired card or invalid expiration date.", "paid-memberships-pro" ),
-				"203" => __( "The card was declined.", "paid-memberships-pro" ),
-				"204" => __( "Insufficient funds in the account.", "paid-memberships-pro" ),
-				"205" => __( "Stolen or lost card.", "paid-memberships-pro" ),
-				"207" => __( "Issuing bank unavailable.", "paid-memberships-pro" ),
-				"208" => __( "Inactive card or card not authorized for card-not-present transactions.", "paid-memberships-pro" ),
-				"209" => __( "American Express Card Identification Digits (CID) did not match.", "paid-memberships-pro" ),
-				"210" => __( "The card has reached the credit limit. ", "paid-memberships-pro" ),
-				"211" => __( "Invalid card verification number.", "paid-memberships-pro" ),
-				"221" => __( "The customer matched an entry on the processors negative file. ", "paid-memberships-pro" ),
-				"230" => __( "Card verification (CV) check failed.", "paid-memberships-pro" ),
-				"231" => __( "Invalid account number.", "paid-memberships-pro" ),
-				"232" => __( "The card type is not accepted by the payment processor.", "paid-memberships-pro" ),
-				"233" => __( "General decline by the processor.", "paid-memberships-pro" ),
-				"234" => __( "There is a problem with your CyberSource merchant configuration.", "paid-memberships-pro" ),
-				"235" => __( "The requested amount exceeds the originally authorized amount.", "paid-memberships-pro" ),
-				"236" => __( "Processor failure.", "paid-memberships-pro" ),
-				"237" => __( "The authorization has already been reversed.", "paid-memberships-pro" ),
-				"238" => __( "The authorization has already been captured.", "paid-memberships-pro" ),
-				"239" => __( "The requested transaction amount must match the previous transaction amount.", "paid-memberships-pro" ),
-				"240" => __( "The card type sent is invalid or does not correlate with the credit card number.", "paid-memberships-pro" ),
-				"241" => __( "The referenced request id is invalid for all follow-on transactions.", "paid-memberships-pro" ),
-				"242" => __( "The request ID is invalid.", "paid-memberships-pro" ),
-				"243" => __( "The transaction has already been settled or reversed.", "paid-memberships-pro" ),
-				"246" => __( "The capture or credit is not voidable because the capture or credit information has already been submitted to your processor. Or, you requested a void for a type of transaction that cannot be voided.", "paid-memberships-pro" ),
-				"247" => __( "You requested a credit for a capture that was previously voided.", "paid-memberships-pro" ),
-				"250" => __( "Error: The request was received, but there was a timeout at the payment processor.", "paid-memberships-pro" ),
-				"254" => __( "Stand-alone credits are not allowed with this processor.", "paid-memberships-pro" ),
-				"450" => __( "Apartment number missing or not found. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"451" => __( "Insufficient address information. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"452" => __( "House/Box number not found on street. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"453" => __( "Multiple address matches were found. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"454" => __( "P.O. Box identifier not found or out of range.. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"455" => __( "Route service identifier not found or out of range. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"456" => __( "Street name not found in Postal code. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"457" => __( "Postal code not found in database. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"458" => __( "Unable to verify or correct address. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"459" => __( "Multiple address matches were found (international). Check that your billing address is valid.", "paid-memberships-pro" ),
-				"460" => __( "Address match not found. Check that your billing address is valid.", "paid-memberships-pro" ),
-				"461" => __( "Unsupported character set. Verify the character set that you are using to process transactions.", "paid-memberships-pro" ),
-				"481" => __( "Order has been rejected by Decision Manager.", "paid-memberships-pro" ),
-				"520" => __( "Smart Authorization failed.", "paid-memberships-pro" ),
-				"700" => __( "Your order has been refused.", "paid-memberships-pro" ),
+				"100" => __( "Successful transaction.", "digital-members-rfid" ),
+				"101" => __( "The request is missing one or more required fields.", "digital-members-rfid" ),
+				"102" => __( "One or more fields in the request contains invalid data. Check that your billing address is valid.", "digital-members-rfid" ),
+				"104" => __( "Duplicate order detected.", "digital-members-rfid" ),
+				"110" => __( "Only partial amount was approved.", "digital-members-rfid" ),
+				"150" => __( "Error: General system failure.", "digital-members-rfid" ),
+				"151" => __( "Error: The request was received but there was a server timeout.", "digital-members-rfid" ),
+				"152" => __( "Error: The request was received, but a service did not finish running in time. ", "digital-members-rfid" ),
+				"200" => __( "Address Verification Service (AVS) failure.", "digital-members-rfid" ),
+				"201" => __( "Authorization failed.", "digital-members-rfid" ),
+				"202" => __( "Expired card or invalid expiration date.", "digital-members-rfid" ),
+				"203" => __( "The card was declined.", "digital-members-rfid" ),
+				"204" => __( "Insufficient funds in the account.", "digital-members-rfid" ),
+				"205" => __( "Stolen or lost card.", "digital-members-rfid" ),
+				"207" => __( "Issuing bank unavailable.", "digital-members-rfid" ),
+				"208" => __( "Inactive card or card not authorized for card-not-present transactions.", "digital-members-rfid" ),
+				"209" => __( "American Express Card Identification Digits (CID) did not match.", "digital-members-rfid" ),
+				"210" => __( "The card has reached the credit limit. ", "digital-members-rfid" ),
+				"211" => __( "Invalid card verification number.", "digital-members-rfid" ),
+				"221" => __( "The customer matched an entry on the processors negative file. ", "digital-members-rfid" ),
+				"230" => __( "Card verification (CV) check failed.", "digital-members-rfid" ),
+				"231" => __( "Invalid account number.", "digital-members-rfid" ),
+				"232" => __( "The card type is not accepted by the payment processor.", "digital-members-rfid" ),
+				"233" => __( "General decline by the processor.", "digital-members-rfid" ),
+				"234" => __( "There is a problem with your CyberSource merchant configuration.", "digital-members-rfid" ),
+				"235" => __( "The requested amount exceeds the originally authorized amount.", "digital-members-rfid" ),
+				"236" => __( "Processor failure.", "digital-members-rfid" ),
+				"237" => __( "The authorization has already been reversed.", "digital-members-rfid" ),
+				"238" => __( "The authorization has already been captured.", "digital-members-rfid" ),
+				"239" => __( "The requested transaction amount must match the previous transaction amount.", "digital-members-rfid" ),
+				"240" => __( "The card type sent is invalid or does not correlate with the credit card number.", "digital-members-rfid" ),
+				"241" => __( "The referenced request id is invalid for all follow-on transactions.", "digital-members-rfid" ),
+				"242" => __( "The request ID is invalid.", "digital-members-rfid" ),
+				"243" => __( "The transaction has already been settled or reversed.", "digital-members-rfid" ),
+				"246" => __( "The capture or credit is not voidable because the capture or credit information has already been submitted to your processor. Or, you requested a void for a type of transaction that cannot be voided.", "digital-members-rfid" ),
+				"247" => __( "You requested a credit for a capture that was previously voided.", "digital-members-rfid" ),
+				"250" => __( "Error: The request was received, but there was a timeout at the payment processor.", "digital-members-rfid" ),
+				"254" => __( "Stand-alone credits are not allowed with this processor.", "digital-members-rfid" ),
+				"450" => __( "Apartment number missing or not found. Check that your billing address is valid.", "digital-members-rfid" ),
+				"451" => __( "Insufficient address information. Check that your billing address is valid.", "digital-members-rfid" ),
+				"452" => __( "House/Box number not found on street. Check that your billing address is valid.", "digital-members-rfid" ),
+				"453" => __( "Multiple address matches were found. Check that your billing address is valid.", "digital-members-rfid" ),
+				"454" => __( "P.O. Box identifier not found or out of range.. Check that your billing address is valid.", "digital-members-rfid" ),
+				"455" => __( "Route service identifier not found or out of range. Check that your billing address is valid.", "digital-members-rfid" ),
+				"456" => __( "Street name not found in Postal code. Check that your billing address is valid.", "digital-members-rfid" ),
+				"457" => __( "Postal code not found in database. Check that your billing address is valid.", "digital-members-rfid" ),
+				"458" => __( "Unable to verify or correct address. Check that your billing address is valid.", "digital-members-rfid" ),
+				"459" => __( "Multiple address matches were found (international). Check that your billing address is valid.", "digital-members-rfid" ),
+				"460" => __( "Address match not found. Check that your billing address is valid.", "digital-members-rfid" ),
+				"461" => __( "Unsupported character set. Verify the character set that you are using to process transactions.", "digital-members-rfid" ),
+				"481" => __( "Order has been rejected by Decision Manager.", "digital-members-rfid" ),
+				"520" => __( "Smart Authorization failed.", "digital-members-rfid" ),
+				"700" => __( "Your order has been refused.", "digital-members-rfid" ),
 			);
 
 			if(isset($error_messages[$reply->reasonCode]))
 				$error = $error_messages[$reply->reasonCode];
 			else
-				return __( "Unknown error.", "paid-memberships-pro" );
+				return __( "Unknown error.", "digital-members-rfid" );
 			
 			// list invalid fields from reply
 			if( isset($reply->invalidField) && !empty($reply->invalidField) )
 			{
-				$error .= __( " Invalid fields:", "paid-memberships-pro" );
+				$error .= __( " Invalid fields:", "digital-members-rfid" );
 				$invalidFields = $reply->invalidField;
 				$invalidFields = str_replace("/", ",", $invalidFields);
 				$invalidFields = str_replace("c:", " ", $invalidFields);

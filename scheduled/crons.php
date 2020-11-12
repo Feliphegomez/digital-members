@@ -38,7 +38,7 @@ function dmrfid_cron_expire_memberships()
 			$dmrfidemail->sendMembershipExpiredEmail($euser);
 
 			if(current_user_can('manage_options'))
-				printf(__("Membership expired email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
+				printf(__("Membership expired email sent to %s. ", 'digital-members-rfid' ), $euser->user_email);
 			else
 				echo ". ";
 		}
@@ -106,7 +106,7 @@ function dmrfid_cron_expiration_warnings()
 			$dmrfidemail->sendMembershipExpiringEmail($euser);
 
 			if(current_user_can('manage_options'))
-				printf(__("Membership expiring email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
+				printf(__("Membership expiring email sent to %s. ", 'digital-members-rfid' ), $euser->user_email);
 			else
 				echo ". ";
 		}
@@ -190,7 +190,7 @@ function dmrfid_cron_credit_card_expiring_warnings()
 				$dmrfidemail->sendCreditCardExpiringEmail($euser,$last_order);
 
 				if(current_user_can('manage_options'))
-					printf(__("Credit card expiring email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
+					printf(__("Credit card expiring email sent to %s. ", 'digital-members-rfid' ), $euser->user_email);
 				else
 					echo ". ";
 			}
@@ -248,7 +248,7 @@ function dmrfid_cron_trial_ending_warnings()
 			$dmrfidemail->sendTrialEndingEmail($euser);
 
 			if(current_user_can('manage_options'))
-				printf(__("Trial ending email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
+				printf(__("Trial ending email sent to %s. ", 'digital-members-rfid' ), $euser->user_email);
 			else
 				echo ". ";
 		}

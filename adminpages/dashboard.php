@@ -9,49 +9,49 @@
  */
 add_meta_box(
 	'dmrfid_dashboard_welcome',
-	__( 'Welcome to Digital Members RFID', 'paid-memberships-pro' ),
+	__( 'Welcome to Digital Members RFID', 'digital-members-rfid' ),
 	'dmrfid_dashboard_welcome_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'normal'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_sales',
-	__( 'Sales and Revenue', 'paid-memberships-pro' ),
+	__( 'Sales and Revenue', 'digital-members-rfid' ),
 	'dmrfid_report_sales_widget',
 	'toplevel_page_dmrfid-dashboard',
 	'advanced'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_membership_stats',
-	__( 'Membership Stats', 'paid-memberships-pro' ),
+	__( 'Membership Stats', 'digital-members-rfid' ),
 	'dmrfid_report_memberships_widget',
 	'toplevel_page_dmrfid-dashboard',
 	'advanced'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_logins',
-	__( 'Visits, Views, and Logins', 'paid-memberships-pro' ),
+	__( 'Visits, Views, and Logins', 'digital-members-rfid' ),
 	'dmrfid_report_login_widget',
 	'toplevel_page_dmrfid-dashboard',
 	'advanced'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_recent_members',
-	__( 'Recent Members', 'paid-memberships-pro' ),
+	__( 'Recent Members', 'digital-members-rfid' ),
 	'dmrfid_dashboard_report_recent_members_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'side'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_recent_orders',
-	__( 'Recent Orders', 'paid-memberships-pro' ),
+	__( 'Recent Orders', 'digital-members-rfid' ),
 	'dmrfid_dashboard_report_recent_orders_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'side'
 );
 add_meta_box(
 	'dmrfid_dashboard_news_updates',
-	__( 'Digital Members RFID News and Updates', 'paid-memberships-pro' ),
+	__( 'Digital Members RFID News and Updates', 'digital-members-rfid' ),
 	'dmrfid_dashboard_news_updates_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'side'
@@ -105,14 +105,14 @@ function dmrfid_dashboard_welcome_callback() { ?>
 	<div class="dmrfid-dashboard-welcome-columns">
         <div class="dmrfid-dashboard-welcome-column">
     		<?php global $dmrfid_level_ready, $dmrfid_gateway_ready, $dmrfid_pages_ready; ?>
-    		<h3><?php echo esc_attr_e( 'Initial Setup', 'paid-memberships-pro' ); ?></h3>
+    		<h3><?php echo esc_attr_e( 'Initial Setup', 'digital-members-rfid' ); ?></h3>
     		<ul>
     			<?php if ( current_user_can( 'dmrfid_membershiplevels' ) ) { ?>
     				<li>
     					<?php if ( empty( $dmrfid_level_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels&edit=-1' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'Create a Membership Level', 'paid-memberships-pro' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels&edit=-1' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'Create a Membership Level', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'View Membership Levels', 'paid-memberships-pro' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'View Membership Levels', 'digital-members-rfid' ); ?></a>
     					<?php } ?>
     				</li>
     			<?php } ?>
@@ -120,9 +120,9 @@ function dmrfid_dashboard_welcome_callback() { ?>
     			<?php if ( current_user_can( 'dmrfid_pagesettings' ) ) { ?>
     				<li>
     					<?php if ( empty( $dmrfid_pages_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Generate Membership Pages', 'paid-memberships-pro' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Generate Membership Pages', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Manage Membership Pages', 'paid-memberships-pro' ); ?>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Manage Membership Pages', 'digital-members-rfid' ); ?>
     					<?php } ?>
     				</li>
     			<?php } ?>
@@ -130,35 +130,35 @@ function dmrfid_dashboard_welcome_callback() { ?>
     			<?php if ( current_user_can( 'dmrfid_pagesettings' ) ) { ?>
     				<li>
     					<?php if ( empty( $dmrfid_gateway_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configure Payment Settings', 'paid-memberships-pro' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configure Payment Settings', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configure Payment Settings', 'paid-memberships-pro' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configure Payment Settings', 'digital-members-rfid' ); ?></a>
     					<?php } ?>
     				</li>
     			<?php } ?>
     		</ul>
-    		<h3><?php echo esc_attr_e( 'Other Settings', 'paid-memberships-pro' ); ?></h3>
+    		<h3><?php echo esc_attr_e( 'Other Settings', 'digital-members-rfid' ); ?></h3>
     		<ul>
     			<?php if ( current_user_can( 'dmrfid_emailsettings' ) ) { ?>
-    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-emailsettings' );?>"><i class="dashicons dashicons-email"></i> <?php echo esc_attr_e( 'Confirm Email Settings', 'paid-memberships-pro' );?></a></li>
+    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-emailsettings' );?>"><i class="dashicons dashicons-email"></i> <?php echo esc_attr_e( 'Confirm Email Settings', 'digital-members-rfid' );?></a></li>
     			<?php } ?>
 
     			<?php if ( current_user_can( 'dmrfid_advancedsettings' ) ) { ?>
-    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-advancedsettings' );?>"><i class="dashicons dashicons-admin-settings"></i> <?php echo esc_attr_e( 'View Advanced Settings', 'paid-memberships-pro' ); ?></a></li>
+    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-advancedsettings' );?>"><i class="dashicons dashicons-admin-settings"></i> <?php echo esc_attr_e( 'View Advanced Settings', 'digital-members-rfid' ); ?></a></li>
     			<?php } ?>
 
     			<?php if ( current_user_can( 'dmrfid_addons' ) ) { ?>
-    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-addons' );?>"><i class="dashicons dashicons-admin-plugins"></i> <?php echo esc_attr_e( 'Explore Add Ons for Additional Features', 'paid-memberships-pro' ); ?></a></li>
+    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-addons' );?>"><i class="dashicons dashicons-admin-plugins"></i> <?php echo esc_attr_e( 'Explore Add Ons for Additional Features', 'digital-members-rfid' ); ?></a></li>
     			<?php } ?>
     		</ul>
     		<hr />
     		<p class="text-center">
-    			<?php echo esc_html( __( 'For guidance as your begin these steps,', 'paid-memberships-pro' ) ); ?>
-    			<a href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=documentation&utm_content=initial-plugin-setup" target="_blank"><?php echo esc_attr_e( 'view the Initial Setup Video and Docs.', 'paid-memberships-pro' ); ?></a>
+    			<?php echo esc_html( __( 'For guidance as your begin these steps,', 'digital-members-rfid' ) ); ?>
+    			<a href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=documentation&utm_content=initial-plugin-setup" target="_blank"><?php echo esc_attr_e( 'view the Initial Setup Video and Docs.', 'digital-members-rfid' ); ?></a>
     		</p>
     	</div> <!-- end dmrfid-dashboard-welcome-column -->
     	<div class="dmrfid-dashboard-welcome-column">
-    		<h3><?php echo esc_attr_e( 'Support License', 'paid-memberships-pro' ); ?></h3>
+    		<h3><?php echo esc_attr_e( 'Support License', 'digital-members-rfid' ); ?></h3>
     		<?php
     			// Get saved license.
     			$key = get_option( 'dmrfid_license_key', '' );
@@ -166,36 +166,36 @@ function dmrfid_dashboard_welcome_callback() { ?>
     		?>
     		<?php if ( ! dmrfid_license_isValid() && empty( $key ) ) { ?>
     			<p class="dmrfid_message dmrfid_error">
-    				<strong><?php echo esc_html_e( 'No support license key found.', 'paid-memberships-pro' ); ?></strong><br />
-    				<?php printf(__( '<a href="%s">Enter your key here &raquo;</a>', 'paid-memberships-pro' ), admin_url( 'admin.php?page=dmrfid-license' ) );?>
+    				<strong><?php echo esc_html_e( 'No support license key found.', 'digital-members-rfid' ); ?></strong><br />
+    				<?php printf(__( '<a href="%s">Enter your key here &raquo;</a>', 'digital-members-rfid' ), admin_url( 'admin.php?page=dmrfid-license' ) );?>
     			</p>
     		<?php } elseif ( ! dmrfid_license_isValid() ) { ?>
     			<p class="dmrfid_message dmrfid_alert">
-    				<strong><?php echo esc_html_e( 'Your license is invalid or expired.', 'paid-memberships-pro' ); ?></strong><br />
-					<?php printf(__( '<a href="%s">View your membership account</a> to verify your license key.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/login/?redirect_to=%2Fmembership-account%2F%3Futm_source%3Dplugin%26utm_medium%3Ddmrfid-dashboard%26utm_campaign%3Dmembership-account%26utm_content%3Dverify-license-key' );?>
+    				<strong><?php echo esc_html_e( 'Your license is invalid or expired.', 'digital-members-rfid' ); ?></strong><br />
+					<?php printf(__( '<a href="%s">View your membership account</a> to verify your license key.', 'digital-members-rfid' ), 'https://www.paidmembershipspro.com/login/?redirect_to=%2Fmembership-account%2F%3Futm_source%3Dplugin%26utm_medium%3Ddmrfid-dashboard%26utm_campaign%3Dmembership-account%26utm_content%3Dverify-license-key' );?>
     		<?php } else { ?>
-    			<p class="dmrfid_message dmrfid_success"><?php printf(__( '<strong>Thank you!</strong> A valid <strong>%s</strong> license key has been used to activate your support license on this site.', 'paid-memberships-pro' ), ucwords($dmrfid_license_check['license']));?></p>
+    			<p class="dmrfid_message dmrfid_success"><?php printf(__( '<strong>Thank you!</strong> A valid <strong>%s</strong> license key has been used to activate your support license on this site.', 'digital-members-rfid' ), ucwords($dmrfid_license_check['license']));?></p>
     		<?php } ?>
 
     		<?php if ( ! dmrfid_license_isValid() ) { ?>
-    			<p><?php esc_html_e( 'An annual support license is recommended for websites running Digital Members RFID.', 'paid-memberships-pro' ); ?><br /><a href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=pricing&utm_content=upgrade" target="_blank"><?php esc_html_e( 'View Pricing &raquo;' , 'paid-memberships-pro' ); ?></a></p>
-    			<p><a href="https://www.paidmembershipspro.com/membership-checkout/?level=20&utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=plus-checkout&utm_content=upgrade" target="_blank" class="button button-action button-hero"><?php esc_attr_e( 'Upgrade', 'paid-memberships-pro' ); ?></a>
+    			<p><?php esc_html_e( 'An annual support license is recommended for websites running Digital Members RFID.', 'digital-members-rfid' ); ?><br /><a href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=pricing&utm_content=upgrade" target="_blank"><?php esc_html_e( 'View Pricing &raquo;' , 'digital-members-rfid' ); ?></a></p>
+    			<p><a href="https://www.paidmembershipspro.com/membership-checkout/?level=20&utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=plus-checkout&utm_content=upgrade" target="_blank" class="button button-action button-hero"><?php esc_attr_e( 'Upgrade', 'digital-members-rfid' ); ?></a>
     		<?php } ?>
     		<hr />
-    		<p><?php echo wp_kses_post( sprintf( __( 'Digital Members RFID and our add ons are distributed under the <a target="_blank" href="%s">GPLv2 license</a>. This means, among other things, that you may use the software on this site or any other site free of charge.', 'paid-memberships-pro' ), 'http://www.gnu.org/licenses/gpl-2.0.html' ) ); ?></p>
+    		<p><?php echo wp_kses_post( sprintf( __( 'Digital Members RFID and our add ons are distributed under the <a target="_blank" href="%s">GPLv2 license</a>. This means, among other things, that you may use the software on this site or any other site free of charge.', 'digital-members-rfid' ), 'http://www.gnu.org/licenses/gpl-2.0.html' ) ); ?></p>
     	</div> <!-- end dmrfid-dashboard-welcome-column -->
     	<div class="dmrfid-dashboard-welcome-column">
-    		<h3><?php esc_html_e( 'Get Involved', 'paid-memberships-pro' ); ?></h3>
-    		<p><?php esc_html_e( 'There are many ways you can help support Digital Members RFID.', 'paid-memberships-pro' ); ?></p>
-    		<p><?php esc_html_e( 'Get involved with our plugin development via GitHub.', 'paid-memberships-pro' ); ?> <a href="https://github.com/strangerstudios/paid-memberships-pro" target="_blank"><?php esc_html_e( 'View on GitHub', 'paid-memberships-pro' ); ?></a></p>
+    		<h3><?php esc_html_e( 'Get Involved', 'digital-members-rfid' ); ?></h3>
+    		<p><?php esc_html_e( 'There are many ways you can help support Digital Members RFID.', 'digital-members-rfid' ); ?></p>
+    		<p><?php esc_html_e( 'Get involved with our plugin development via GitHub.', 'digital-members-rfid' ); ?> <a href="https://github.com/strangerstudios/digital-members-rfid" target="_blank"><?php esc_html_e( 'View on GitHub', 'digital-members-rfid' ); ?></a></p>
     		<ul>
-				<li><a href="https://www.youtube.com/channel/UCFtMIeYJ4_YVidi1aq9kl5g/" target="_blank"><i class="dashicons dashicons-format-video"></i> <?php esc_html_e( 'Subscribe to our YouTube Channel.', 'paid-memberships-pro' ); ?></a></li>
-				<li><a href="https://www.facebook.com/PaidMembershipsPro" target="_blank"><i class="dashicons dashicons-facebook"></i> <?php esc_html_e( 'Follow us on Facebook.', 'paid-memberships-pro' ); ?></a></li>
-				<li><a href="https://twitter.com/dmrfidplugin" target="_blank"><i class="dashicons dashicons-twitter"></i> <?php esc_html_e( 'Follow @dmrfidplugin on Twitter.', 'paid-memberships-pro' ); ?></a></li>
-				<li><a href="https://wordpress.org/plugins/paid-memberships-pro/#reviews" target="_blank"><i class="dashicons dashicons-wordpress"></i> <?php esc_html_e( 'Share an honest review at WordPress.org.', 'paid-memberships-pro' ); ?></a></li>
+				<li><a href="https://www.youtube.com/channel/UCFtMIeYJ4_YVidi1aq9kl5g/" target="_blank"><i class="dashicons dashicons-format-video"></i> <?php esc_html_e( 'Subscribe to our YouTube Channel.', 'digital-members-rfid' ); ?></a></li>
+				<li><a href="https://www.facebook.com/DigitalMembersRFID" target="_blank"><i class="dashicons dashicons-facebook"></i> <?php esc_html_e( 'Follow us on Facebook.', 'digital-members-rfid' ); ?></a></li>
+				<li><a href="https://twitter.com/dmrfidplugin" target="_blank"><i class="dashicons dashicons-twitter"></i> <?php esc_html_e( 'Follow @dmrfidplugin on Twitter.', 'digital-members-rfid' ); ?></a></li>
+				<li><a href="https://wordpress.org/plugins/digital-members-rfid/#reviews" target="_blank"><i class="dashicons dashicons-wordpress"></i> <?php esc_html_e( 'Share an honest review at WordPress.org.', 'digital-members-rfid' ); ?></a></li>
 			</ul>
     		<hr />
-    		<p><?php esc_html_e( 'Help translate Digital Members RFID into your language.', 'paid-memberships-pro' ); ?> <a href="https://translate.wordpress.org/projects/wp-plugins/paid-memberships-pro" target="_blank"><?php esc_html_e( 'Translation Dashboard', 'paid-memberships-pro' ); ?></a></p>
+    		<p><?php esc_html_e( 'Help translate Digital Members RFID into your language.', 'digital-members-rfid' ); ?> <a href="https://translate.wordpress.org/projects/wp-plugins/digital-members-rfid" target="_blank"><?php esc_html_e( 'Translation Dashboard', 'digital-members-rfid' ); ?></a></p>
     	</div> <!-- end dmrfid-dashboard-welcome-column -->
     </div> <!-- end dmrfid-dashboard-welcome-columns -->
 	<?php
@@ -216,16 +216,16 @@ function dmrfid_dashboard_report_recent_members_callback() {
     	<table class="wp-list-table widefat fixed striped">
     		<thead>
     			<tr>
-    				<th><?php _e( 'Username', 'paid-memberships-pro' );?></th>
-    				<th><?php _e( 'Level', 'paid-memberships-pro' );?></th>
-    				<th><?php _e( 'Joined', 'paid-memberships-pro' );?></th>
-    				<th><?php _e( 'Expires', 'paid-memberships-pro' ); ?></th>
+    				<th><?php _e( 'Username', 'digital-members-rfid' );?></th>
+    				<th><?php _e( 'Level', 'digital-members-rfid' );?></th>
+    				<th><?php _e( 'Joined', 'digital-members-rfid' );?></th>
+    				<th><?php _e( 'Expires', 'digital-members-rfid' ); ?></th>
     			</tr>
     		</thead>
     		<tbody>
     		<?php if ( empty( $theusers ) ) { ?>
                 <tr>
-                    <td colspan="4"><p><?php _e( 'No members found.', 'paid-memberships-pro' ); ?></p></td>
+                    <td colspan="4"><p><?php _e( 'No members found.', 'digital-members-rfid' ); ?></p></td>
                 </tr>
             <?php } else {
     			foreach ( $theusers as $auser ) {
@@ -262,7 +262,7 @@ function dmrfid_dashboard_report_recent_members_callback() {
     	</table>
     </span>
     <?php if ( ! empty( $theusers ) ) { ?>
-        <p class="text-center"><a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=dmrfid-memberslist' ); ?>"><?php esc_attr_e( 'View All Members ', 'paid-memberships-pro' ); ?></a></p>
+        <p class="text-center"><a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=dmrfid-memberslist' ); ?>"><?php esc_attr_e( 'View All Members ', 'digital-members-rfid' ); ?></a></p>
     <?php } ?>
 	<?php
 }
@@ -283,19 +283,19 @@ function dmrfid_dashboard_report_recent_orders_callback() {
     	<table class="wp-list-table widefat fixed striped">
     	<thead>
     		<tr class="thead">
-    			<th><?php _e( 'Code', 'paid-memberships-pro' ); ?></th>
-    			<th><?php _e( 'User', 'paid-memberships-pro' ); ?></th>
-    			<th><?php _e( 'Level', 'paid-memberships-pro' ); ?></th>
-    			<th><?php _e( 'Total', 'paid-memberships-pro' ); ?></th>
-    			<th><?php _e( 'Status', 'paid-memberships-pro' ); ?></th>
-    			<th><?php _e( 'Date', 'paid-memberships-pro' ); ?></th>
+    			<th><?php _e( 'Code', 'digital-members-rfid' ); ?></th>
+    			<th><?php _e( 'User', 'digital-members-rfid' ); ?></th>
+    			<th><?php _e( 'Level', 'digital-members-rfid' ); ?></th>
+    			<th><?php _e( 'Total', 'digital-members-rfid' ); ?></th>
+    			<th><?php _e( 'Status', 'digital-members-rfid' ); ?></th>
+    			<th><?php _e( 'Date', 'digital-members-rfid' ); ?></th>
     		</tr>
     		</thead>
     		<tbody id="orders" class="orders-list">
         	<?php
                 if ( empty( $order_ids ) ) { ?>
                     <tr>
-                        <td colspan="8"><p><?php _e( 'No orders found.', 'paid-memberships-pro' ); ?></p></td>
+                        <td colspan="8"><p><?php _e( 'No orders found.', 'digital-members-rfid' ); ?></p></td>
                     </tr>
                 <?php } else {
                     foreach ( $order_ids as $order_id ) {
@@ -312,9 +312,9 @@ function dmrfid_dashboard_report_recent_orders_callback() {
         					<?php if ( ! empty( $order->user ) ) { ?>
         						<a href="user-edit.php?user_id=<?php echo $order->user->ID; ?>"><?php echo $order->user->user_login; ?></a>
         					<?php } elseif ( $order->user_id > 0 ) { ?>
-        						[<?php _e( 'deleted', 'paid-memberships-pro' ); ?>]
+        						[<?php _e( 'deleted', 'digital-members-rfid' ); ?>]
         					<?php } else { ?>
-        						[<?php _e( 'none', 'paid-memberships-pro' ); ?>]
+        						[<?php _e( 'none', 'digital-members-rfid' ); ?>]
         					<?php } ?>
                             
                             <?php if ( ! empty( $order->billing->name ) ) { ?>
@@ -327,9 +327,9 @@ function dmrfid_dashboard_report_recent_orders_callback() {
 								if ( ! empty( $level ) ) {
 									echo $level->name;
 								} elseif ( $order->membership_id > 0 ) { ?>
-									[<?php _e( 'deleted', 'paid-memberships-pro' ); ?>]
+									[<?php _e( 'deleted', 'digital-members-rfid' ); ?>]
 								<?php } else { ?>
-									[<?php _e( 'none', 'paid-memberships-pro' ); ?>]
+									[<?php _e( 'none', 'digital-members-rfid' ); ?>]
 								<?php }
 							?>
                         </td>
@@ -353,7 +353,7 @@ function dmrfid_dashboard_report_recent_orders_callback() {
     	</table>
     </span>
     <?php if ( ! empty( $order_ids ) ) { ?>
-        <p class="text-center"><a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=dmrfid-orders' ); ?>"><?php esc_attr_e( 'View All Orders ', 'paid-memberships-pro' ); ?></a></p>
+        <p class="text-center"><a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=dmrfid-orders' ); ?>"><?php esc_attr_e( 'View All Orders ', 'digital-members-rfid' ); ?></a></p>
     <?php } ?>
 	<?php
 }
@@ -384,13 +384,13 @@ function dmrfid_dashboard_news_updates_callback() {
 
 	<ul>
 	    <?php if ( $maxitems == 0 ) : ?>
-	        <li><?php _e( 'No news found.', 'paid-memberships-pro' ); ?></li>
+	        <li><?php _e( 'No news found.', 'digital-members-rfid' ); ?></li>
 	    <?php else : ?>
 	        <?php // Loop through each feed item and display each item as a hyperlink. ?>
 	        <?php foreach ( $rss_items as $item ) : ?>
 	            <li>
 	                <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-	                    title="<?php printf( __( 'Posted %s', 'paid-memberships-pro' ), $item->get_date( get_option( 'date_format' ) ) ); ?>">
+	                    title="<?php printf( __( 'Posted %s', 'digital-members-rfid' ), $item->get_date( get_option( 'date_format' ) ) ); ?>">
 	                    <?php echo esc_html( $item->get_title() ); ?>
 	                </a>
 					<?php echo esc_html( $item->get_date( get_option( 'date_format' ) ) ); ?>
@@ -398,7 +398,7 @@ function dmrfid_dashboard_news_updates_callback() {
 	        <?php endforeach; ?>
 	    <?php endif; ?>
 	</ul>
-	<p class="text-center"><a class="button button-primary" href="<?php echo esc_url( 'https://www.paidmembershipspro.com/blog/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=blog&utm_content=news-updates-metabox' ); ?>"><?php esc_attr_e( 'View More', 'paid-memberships-pro' ); ?></a></p>
+	<p class="text-center"><a class="button button-primary" href="<?php echo esc_url( 'https://www.paidmembershipspro.com/blog/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=blog&utm_content=news-updates-metabox' ); ?>"><?php esc_attr_e( 'View More', 'digital-members-rfid' ); ?></a></p>
 	<?php
 }
 

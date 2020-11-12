@@ -19,15 +19,15 @@
  export default registerBlockType(
      'dmrfid/invoice-page',
      {
-         title: __( 'Membership Invoice Page', 'paid-memberships-pro' ),
-         description: __( 'Displays the member\'s  Membership Invoices.', 'paid-memberships-pro' ),
+         title: __( 'Membership Invoice Page', 'digital-members-rfid' ),
+         description: __( 'Displays the member\'s  Membership Invoices.', 'digital-members-rfid' ),
          category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'archive',
          },
-         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'digital-members-rfid' ) ],
          supports: {
          },
          attributes: {
@@ -35,8 +35,8 @@
          edit(){
              return [
                  <div className="dmrfid-block-element">
-                   <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                   <span className="dmrfid-block-subtitle">{ __( 'Membership Invoices', 'paid-memberships-pro' ) }</span>
+                   <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'digital-members-rfid' ) }</span>
+                   <span className="dmrfid-block-subtitle">{ __( 'Membership Invoices', 'digital-members-rfid' ) }</span>
                  </div>
             ];
          },

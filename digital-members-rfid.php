@@ -142,7 +142,7 @@ if ( ! defined( 'SECUREURL'  ) ) {
 }
 define( 'DMRFID_URL', plugins_url( '', DMRFID_BASE_FILE ) );
 define( 'DMRFID_DOMAIN', dmrfid_getDomainFromURL( site_url() ) );
-define( 'PAYPAL_BN_CODE', 'PaidMembershipsPro_SP' );
+define( 'PAYPAL_BN_CODE', 'DigitalMembersRFID_SP' );
 
 /*
 	Globals
@@ -154,21 +154,21 @@ $gateway_environment = dmrfid_getOption( 'gateway_environment' );
 // Returns a list of all available gateway
 function dmrfid_gateways() {
 	$dmrfid_gateways = array(
-		''                  => __( 'Testing Only', 'paid-memberships-pro' ),
-		'check'             => __( 'Pay by Check', 'paid-memberships-pro' ),
-		'stripe'            => __( 'Stripe', 'paid-memberships-pro' ),
-		'paypalexpress'     => __( 'PayPal Express', 'paid-memberships-pro' ),
-		'paypal'            => __( 'PayPal Website Payments Pro', 'paid-memberships-pro' ),
-		'payflowpro'        => __( 'PayPal Payflow Pro/PayPal Pro', 'paid-memberships-pro' ),
-		'paypalstandard'    => __( 'PayPal Standard', 'paid-memberships-pro' ),
-		'authorizenet'      => __( 'Authorize.net', 'paid-memberships-pro' ),
-		'braintree'         => __( 'Braintree Payments', 'paid-memberships-pro' ),
-		'twocheckout'       => __( '2Checkout', 'paid-memberships-pro' ),
-		'cybersource'       => __( 'Cybersource', 'paid-memberships-pro' ),
+		''                  => __( 'Testing Only', 'digital-members-rfid' ),
+		'check'             => __( 'Pay by Check', 'digital-members-rfid' ),
+		'stripe'            => __( 'Stripe', 'digital-members-rfid' ),
+		'paypalexpress'     => __( 'PayPal Express', 'digital-members-rfid' ),
+		'paypal'            => __( 'PayPal Website Payments Pro', 'digital-members-rfid' ),
+		'payflowpro'        => __( 'PayPal Payflow Pro/PayPal Pro', 'digital-members-rfid' ),
+		'paypalstandard'    => __( 'PayPal Standard', 'digital-members-rfid' ),
+		'authorizenet'      => __( 'Authorize.net', 'digital-members-rfid' ),
+		'braintree'         => __( 'Braintree Payments', 'digital-members-rfid' ),
+		'twocheckout'       => __( '2Checkout', 'digital-members-rfid' ),
+		'cybersource'       => __( 'Cybersource', 'digital-members-rfid' ),
 	);
 
 	if ( dmrfid_onlyFreeLevels() ) {
-		$dmrfid_gateways[''] = __( 'Default', 'paid-memberships-pro' );
+		$dmrfid_gateways[''] = __( 'Default', 'digital-members-rfid' );
 	}
 
 	return apply_filters( 'dmrfid_gateways', $dmrfid_gateways );

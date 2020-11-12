@@ -2,25 +2,25 @@
 function dmrfid_load_textdomain()
 {
     //get the locale
-	$locale = apply_filters("plugin_locale", get_locale(), "paid-memberships-pro");
-	$mofile = "paid-memberships-pro-" . $locale . ".mo";
+	$locale = apply_filters("plugin_locale", get_locale(), "digital-members-rfid");
+	$mofile = "digital-members-rfid-" . $locale . ".mo";
 
 	//paths to local (plugin) and global (WP) language files
 	$mofile_local  = dirname(__FILE__)."/../languages/" . $mofile;
 	$mofile_global = WP_LANG_DIR . '/dmrfid/' . $mofile;
-	$mofile_global2 = WP_LANG_DIR . '/paid-memberships-pro/' . $mofile;
+	$mofile_global2 = WP_LANG_DIR . '/digital-members-rfid/' . $mofile;
 
 	//load global first    
 	if(file_exists($mofile_global))
-		load_textdomain("paid-memberships-pro", $mofile_global);
+		load_textdomain("digital-members-rfid", $mofile_global);
 	elseif(file_exists($mofile_global2))
-		load_textdomain("paid-memberships-pro", $mofile_global2);
+		load_textdomain("digital-members-rfid", $mofile_global2);
 	
 	//load local second
-	load_textdomain("paid-memberships-pro", $mofile_local);
+	load_textdomain("digital-members-rfid", $mofile_local);
 	
 	//load via plugin_textdomain/glotpress
-	load_plugin_textdomain( 'paid-memberships-pro', false, dirname(__FILE__)."/../languages/" );
+	load_plugin_textdomain( 'digital-members-rfid', false, dirname(__FILE__)."/../languages/" );
 }
 add_action("init", "dmrfid_load_textdomain", 1);
 
@@ -30,23 +30,23 @@ function dmrfid_translate_billing_period($period, $number = 1)
 	if($number == 1)
 	{
 		if($period == "Day")
-			return __("Day", 'paid-memberships-pro' );
+			return __("Day", 'digital-members-rfid' );
 		elseif($period == "Week")
-			return __("Week", 'paid-memberships-pro' );
+			return __("Week", 'digital-members-rfid' );
 		elseif($period == "Month")
-			return __("Month", 'paid-memberships-pro' );
+			return __("Month", 'digital-members-rfid' );
 		elseif($period == "Year")
-			return __("Year", 'paid-memberships-pro' );
+			return __("Year", 'digital-members-rfid' );
 	}
 	else
 	{
 		if($period == "Day")
-			return __("Days", 'paid-memberships-pro' );
+			return __("Days", 'digital-members-rfid' );
 		elseif($period == "Week")
-			return __("Weeks", 'paid-memberships-pro' );
+			return __("Weeks", 'digital-members-rfid' );
 		elseif($period == "Month")
-			return __("Months", 'paid-memberships-pro' );
+			return __("Months", 'digital-members-rfid' );
 		elseif($period == "Year")
-			return __("Years", 'paid-memberships-pro' );
+			return __("Years", 'digital-members-rfid' );
 	}
 }

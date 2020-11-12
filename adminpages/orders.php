@@ -1,7 +1,7 @@
 <?php
 // only admins can get this
 if ( ! function_exists( 'current_user_can' ) || ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'dmrfid_orders' ) ) ) {
-	die( __( 'You do not have permissions to perform this action.', 'paid-memberships-pro' ) );
+	die( __( 'You do not have permissions to perform this action.', 'digital-members-rfid' ) );
 }
 
 // vars
@@ -158,10 +158,10 @@ $condition = apply_filters( 'dmrfid_admin_orders_query_condition', $condition, $
 if ( ! empty( $_REQUEST['delete'] ) ) {
 	$dorder = new MemberOrder( intval( $_REQUEST['delete'] ) );
 	if ( $dorder->deleteMe() ) {
-		$dmrfid_msg  = __( 'Order deleted successfully.', 'paid-memberships-pro' );
+		$dmrfid_msg  = __( 'Order deleted successfully.', 'digital-members-rfid' );
 		$dmrfid_msgt = 'success';
 	} else {
-		$dmrfid_msg  = __( 'Error deleting order.', 'paid-memberships-pro' );
+		$dmrfid_msg  = __( 'Error deleting order.', 'digital-members-rfid' );
 		$dmrfid_msgt = 'error';
 	}
 }
@@ -301,14 +301,14 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 		
 		// handle timestamp
 		if ( $order->updateTimestamp( intval( $_POST['ts_year'] ), intval( $_POST['ts_month'] ), intval( $_POST['ts_day'] ), intval( $_POST['ts_hour'] ) . ':' . intval( $_POST['ts_minute'] ) . ':00' ) !== false ) {
-			$dmrfid_msg  = __( 'Order saved successfully.', 'paid-memberships-pro' );
+			$dmrfid_msg  = __( 'Order saved successfully.', 'digital-members-rfid' );
 			$dmrfid_msgt = 'success';
 		} else {
-			$dmrfid_msg  = __( 'Error updating order timestamp.', 'paid-memberships-pro' );
+			$dmrfid_msg  = __( 'Error updating order timestamp.', 'digital-members-rfid' );
 			$dmrfid_msgt = 'error';
 		}
 	} else {
-		$dmrfid_msg  = __( 'Error saving order.', 'paid-memberships-pro' );
+		$dmrfid_msg  = __( 'Error saving order.', 'digital-members-rfid' );
 		$dmrfid_msgt = 'error';
 	}
 	
@@ -379,11 +379,11 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 <?php if ( ! empty( $order ) ) { ?>
 
 	<?php if ( ! empty( $order->id ) ) { ?>
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'Order', 'paid-memberships-pro' ); ?> #<?php echo esc_html( $order->id ); ?>: <?php echo esc_html( $order->code ); ?></h1>
-		<a title="<?php esc_attr_e( 'Print', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'dmrfid_orders_print_view', 'order' => $order->id ), admin_url( 'admin-ajax.php' ) ) ); ?>" class="page-title-action" target="_blank" ><?php esc_html_e( 'Print', 'paid-memberships-pro' ); ?></a>
-		<a title="<?php esc_attr_e( 'Email', 'paid-memberships-pro' ); ?>" href="#TB_inline?width=600&height=200&inlineId=email_invoice" class="thickbox email_link page-title-action" data-order="<?php echo esc_html( $order->id ); ?>"><?php esc_html_e( 'Email', 'paid-memberships-pro' ); ?></a>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'Order', 'digital-members-rfid' ); ?> #<?php echo esc_html( $order->id ); ?>: <?php echo esc_html( $order->code ); ?></h1>
+		<a title="<?php esc_attr_e( 'Print', 'digital-members-rfid' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'dmrfid_orders_print_view', 'order' => $order->id ), admin_url( 'admin-ajax.php' ) ) ); ?>" class="page-title-action" target="_blank" ><?php esc_html_e( 'Print', 'digital-members-rfid' ); ?></a>
+		<a title="<?php esc_attr_e( 'Email', 'digital-members-rfid' ); ?>" href="#TB_inline?width=600&height=200&inlineId=email_invoice" class="thickbox email_link page-title-action" data-order="<?php echo esc_html( $order->id ); ?>"><?php esc_html_e( 'Email', 'digital-members-rfid' ); ?></a>
 	<?php } else { ?>
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'New Order', 'paid-memberships-pro' ); ?></h1>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'New Order', 'digital-members-rfid' ); ?></h1>
 	<?php } ?>
 	<hr class="wp-header-end">
 
@@ -411,14 +411,14 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				if ( ! empty( $order->id ) ) {
 						echo esc_html( $order->id );
 				} else {
-					echo '<p class="description">' . __( 'This will be generated when you save.', 'paid-memberships-pro' ) . '</p>';
+					echo '<p class="description">' . __( 'This will be generated when you save.', 'digital-members-rfid' ) . '</p>';
 				}
 					?>
 					</td>
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="code"><?php _e( 'Code', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="code"><?php _e( 'Code', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 						if ( in_array( 'code', $read_only_fields ) ) {
@@ -429,12 +429,12 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 						}
 					?>
 					<?php if ( $order_id < 0 ) { ?>
-						<p class="description"><?php esc_html_e( 'Randomly generated for you.', 'paid-memberships-pro' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Randomly generated for you.', 'digital-members-rfid' ); ?></p>
 					<?php } ?>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="user_id"><?php _e( 'User ID', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="user_id"><?php _e( 'User ID', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 						if ( in_array( 'user_id', $read_only_fields ) && $order_id > 0 ) {
@@ -447,7 +447,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="membership_id"><?php esc_html_e( 'Membership Level ID', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="membership_id"><?php esc_html_e( 'Membership Level ID', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 						if ( in_array( 'membership_id', $read_only_fields ) && $order_id > 0 ) {
@@ -460,7 +460,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_name"><?php esc_html_e( 'Billing Name', 'paid-memberships-pro' ); ?>:</label>
+				<th scope="row" valign="top"><label for="billing_name"><?php esc_html_e( 'Billing Name', 'digital-members-rfid' ); ?>:</label>
 				</th>
 				<td>
 					<?php
@@ -474,7 +474,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_street"><?php esc_html_e( 'Billing Street', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_street"><?php esc_html_e( 'Billing Street', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -487,7 +487,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 									<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_city"><?php esc_html_e( 'Billing City', 'paid-memberships-pro' ); ?>:</label>
+				<th scope="row" valign="top"><label for="billing_city"><?php esc_html_e( 'Billing City', 'digital-members-rfid' ); ?>:</label>
 				</th>
 				<td>
 					<?php
@@ -500,7 +500,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 									<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_state"><?php esc_html_e( 'Billing State', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_state"><?php esc_html_e( 'Billing State', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -513,7 +513,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 									<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_zip"><?php esc_html_e( 'Billing Postal Code', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_zip"><?php esc_html_e( 'Billing Postal Code', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -526,7 +526,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 									<?php } ?>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_country"><?php esc_html_e( 'Billing Country', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_country"><?php esc_html_e( 'Billing Country', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -540,7 +540,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="billing_phone"><?php esc_html_e( 'Billing Phone', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="billing_phone"><?php esc_html_e( 'Billing Phone', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -570,18 +570,18 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			$codes = $wpdb->get_results($sqlQuery, OBJECT);
 			if ( ! empty( $codes ) ) { ?>
 			<tr>
-				<th scope="row" valign="top"><label for="discount_code_id"><?php esc_html_e( 'Discount Code', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="discount_code_id"><?php esc_html_e( 'Discount Code', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 						if ( in_array( 'discount_code_id', $read_only_fields ) && $order_id > 0 ) {
 							if( ! empty( $order->discount_code ) ) {
 								echo esc_html( $order->discount_code->code );
 							} else {
-								esc_html_e( 'N/A', 'paid-memberships-pro' );
+								esc_html_e( 'N/A', 'digital-members-rfid' );
 							}
 						} else { ?>
 							<select id="discount_code_id" name="discount_code_id">
-								<option value="0" <?php selected( $discount_code_id, 0); ?>>-- <?php _e("None", 'paid-memberships-pro' );?> --</option>
+								<option value="0" <?php selected( $discount_code_id, 0); ?>>-- <?php _e("None", 'digital-members-rfid' );?> --</option>
 								<?php foreach ( $codes as $code ) { ?>
 									<option value="<?php echo esc_attr( $code->id ); ?>" <?php selected( $discount_code_id, $code->id ); ?>><?php echo esc_html( $code->code ); ?></option>
 								<?php } ?>
@@ -592,7 +592,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			</tr>
 			<?php } ?>
 			<tr>
-				<th scope="row" valign="top"><label for="subtotal"><?php _e( 'Sub Total', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="subtotal"><?php _e( 'Sub Total', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'subtotal', $read_only_fields ) && $order_id > 0 ) {
@@ -605,7 +605,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="tax"><?php esc_html_e( 'Tax', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="tax"><?php esc_html_e( 'Tax', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'tax', $read_only_fields ) && $order_id > 0 ) {
@@ -622,7 +622,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				$coupons = apply_filters( 'dmrfid_orders_show_coupon_amounts', false );
 				if ( ! empty( $coupons ) ) { ?>
 				<tr>
-					<th scope="row" valign="top"><label for="couponamount"><?php esc_html_e( 'Coupon Amount', 'paid-memberships-pro' ); ?>:</label>
+					<th scope="row" valign="top"><label for="couponamount"><?php esc_html_e( 'Coupon Amount', 'digital-members-rfid' ); ?>:</label>
 					</th>
 					<td>
 					<?php
@@ -640,7 +640,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				}
 			?>
 			<tr>
-				<th scope="row" valign="top"><label for="total"><?php esc_html_e( 'Total', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="total"><?php esc_html_e( 'Total', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'total', $read_only_fields ) && $order_id > 0 ) {
@@ -654,7 +654,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="payment_type"><?php esc_html_e( 'Payment Type', 'paid-memberships-pro' ); ?>:</label>
+				<th scope="row" valign="top"><label for="payment_type"><?php esc_html_e( 'Payment Type', 'digital-members-rfid' ); ?>:</label>
 				</th>
 				<td>
 					<?php
@@ -665,11 +665,11 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 											<input id="payment_type" name="payment_type" type="text" size="50"
 												   value="<?php echo esc_attr( $order->payment_type ); ?>"/>
 					<?php } ?>
-					<p class="description"><?php esc_html_e( 'e.g. PayPal Express, PayPal Standard, Credit Card.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php esc_html_e( 'e.g. PayPal Express, PayPal Standard, Credit Card.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="cardtype"><?php esc_html_e( 'Card Type', 'paid-memberships-pro' ); ?></label></th>
+				<th scope="row" valign="top"><label for="cardtype"><?php esc_html_e( 'Card Type', 'digital-members-rfid' ); ?></label></th>
 				<td>
 					<?php
 					if ( in_array( 'cardtype', $read_only_fields ) && $order_id > 0 ) {
@@ -679,11 +679,11 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 											<input id="cardtype" name="cardtype" type="text" size="50"
 												   value="<?php echo esc_attr( $order->cardtype ); ?>"/>
 					<?php } ?>
-					<p class="description"><?php esc_html_e( 'e.g. Visa, MasterCard, AMEX, etc', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php esc_html_e( 'e.g. Visa, MasterCard, AMEX, etc', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<tr>
-				<th scope="row" valign="top"><label for="accountnumber"><?php esc_html_e( 'Account Number', 'paid-memberships-pro' ); ?>
+				<th scope="row" valign="top"><label for="accountnumber"><?php esc_html_e( 'Account Number', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -694,7 +694,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 											<input id="accountnumber" name="accountnumber" type="text" size="50"
 												   value="<?php echo esc_attr( $order->accountnumber ); ?>"/>
 					<?php } ?>
-					<p class="description"><?php esc_html_e( 'Obscure all but last 4 digits.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Obscure all but last 4 digits.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<?php
@@ -703,7 +703,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 
 				<tr>
 				    <th scope="row" valign="top"><label
-						for="expirationmonth"><?php esc_html_e( 'Expiration Month', 'paid-memberships-pro' ); ?>:</label></th>
+						for="expirationmonth"><?php esc_html_e( 'Expiration Month', 'digital-members-rfid' ); ?>:</label></th>
 				    <td>
 					<?php echo esc_html( $order->expirationmonth . '/' . $order->expirationyear ); ?>
 				    </td>
@@ -714,7 +714,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 						?>
 							<tr>
 								<th scope="row" valign="top"><label
-							for="expirationmonth"><?php esc_html_e( 'Expiration Month', 'paid-memberships-pro' ); ?>:</label></th>
+							for="expirationmonth"><?php esc_html_e( 'Expiration Month', 'digital-members-rfid' ); ?>:</label></th>
 					<td>
 						<input id="expirationmonth" name="expirationmonth" type="text" size="10"
 				   value="<?php echo esc_attr( $order->expirationmonth ); ?>"/>
@@ -722,7 +722,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row" valign="top"><label for="expirationyear"><?php esc_html_e( 'Expiration Year', 'paid-memberships-pro' ); ?>
+					<th scope="row" valign="top"><label for="expirationyear"><?php esc_html_e( 'Expiration Year', 'digital-members-rfid' ); ?>
 				:</label></th>
 					<td>
 						<input id="expirationyear" name="expirationyear" type="text" size="10"
@@ -732,7 +732,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				</tr>
 			<?php } ?>
 			<tr>
-				<th scope="row" valign="top"><label for="status"><?php esc_html_e( 'Status', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="status"><?php esc_html_e( 'Status', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'status', $read_only_fields ) && $order_id > 0 ) {
@@ -754,7 +754,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="gateway"><?php esc_html_e( 'Gateway', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="gateway"><?php esc_html_e( 'Gateway', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'gateway', $read_only_fields ) && $order_id > 0 ) {
@@ -777,7 +777,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			</tr>
 			<tr>
 				<th scope="row" valign="top"><label
-						for="gateway_environment"><?php esc_html_e( 'Gateway Environment', 'paid-memberships-pro' ); ?>:</label></th>
+						for="gateway_environment"><?php esc_html_e( 'Gateway Environment', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'gateway_environment', $read_only_fields ) && $order_id > 0 ) {
@@ -785,8 +785,8 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					} else {
 					?>
 						<select name="gateway_environment">
-							<option value="sandbox" <?php if ( $order->gateway_environment == 'sandbox' ) { ?>selected="selected"<?php } ?>><?php esc_html_e( 'Sandbox/Testing', 'paid-memberships-pro' ); ?></option>
-							<option value="live" <?php if ( $order->gateway_environment == 'live' ) { ?>selected="selected"<?php } ?>><?php esc_html_e( 'Live/Production', 'paid-memberships-pro' ); ?></option>
+							<option value="sandbox" <?php if ( $order->gateway_environment == 'sandbox' ) { ?>selected="selected"<?php } ?>><?php esc_html_e( 'Sandbox/Testing', 'digital-members-rfid' ); ?></option>
+							<option value="live" <?php if ( $order->gateway_environment == 'live' ) { ?>selected="selected"<?php } ?>><?php esc_html_e( 'Live/Production', 'digital-members-rfid' ); ?></option>
 						</select>
 					<?php } ?>
 				</td>
@@ -794,7 +794,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 
 			<tr>
 				<th scope="row" valign="top"><label
-						for="payment_transaction_id"><?php _e( 'Payment Transaction ID', 'paid-memberships-pro' ); ?>:</label></th>
+						for="payment_transaction_id"><?php _e( 'Payment Transaction ID', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'payment_transaction_id', $read_only_fields ) && $order_id > 0 ) {
@@ -804,12 +804,12 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 											<input id="payment_transaction_id" name="payment_transaction_id" type="text" size="50"
 												   value="<?php echo esc_attr( $order->payment_transaction_id ); ?>"/>
 					<?php } ?>
-					<p class="description"><?php esc_html_e( 'Generated by the gateway. Useful to cross reference orders.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Generated by the gateway. Useful to cross reference orders.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top"><label
-						for="subscription_transaction_id"><?php esc_html_e( 'Subscription Transaction ID', 'paid-memberships-pro' ); ?>
+						for="subscription_transaction_id"><?php esc_html_e( 'Subscription Transaction ID', 'digital-members-rfid' ); ?>
 						:</label></th>
 				<td>
 					<?php
@@ -820,12 +820,12 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 											<input id="subscription_transaction_id" name="subscription_transaction_id" type="text" size="50"
 												   value="<?php echo esc_attr( $order->subscription_transaction_id ); ?>"/>
 					<?php } ?>
-					<p class="description"><?php esc_html_e( 'Generated by the gateway. Useful to cross reference subscriptions.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php esc_html_e( 'Generated by the gateway. Useful to cross reference subscriptions.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 
 			<tr>
-				<th scope="row" valign="top"><label for="ts_month"><?php esc_html_e( 'Date', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="ts_month"><?php esc_html_e( 'Date', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'timestamp', $read_only_fields ) && $order_id > 0 ) {
@@ -858,7 +858,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 						</select>
 						<input name="ts_day" type="text" size="2" value="<?php echo esc_attr( $day ); ?>"/>
 						<input name="ts_year" type="text" size="4" value="<?php echo esc_attr( $year ); ?>"/>
-						<?php esc_html_e( 'at', 'paid-memberships-pro' ); ?>
+						<?php esc_html_e( 'at', 'digital-members-rfid' ); ?>
 						<input name="ts_hour" type="text" size="2" value="<?php echo esc_attr( $hour ); ?>"/> :
 						<input name="ts_minute" type="text" size="2" value="<?php echo esc_attr( $minute ); ?>"/>
 					<?php } ?>
@@ -870,7 +870,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			if ( ! empty( $affiliates ) ) {
 				?>
 				<tr>
-					<th scope="row" valign="top"><label for="affiliate_id"><?php esc_html_e( 'Affiliate ID', 'paid-memberships-pro' ); ?>
+					<th scope="row" valign="top"><label for="affiliate_id"><?php esc_html_e( 'Affiliate ID', 'digital-members-rfid' ); ?>
 							:</label></th>
 					<td>
 						<?php
@@ -883,7 +883,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row" valign="top"><label for="affiliate_subid"><?php esc_html_e( 'Affiliate SubID', 'paid-memberships-pro' ); ?>
+					<th scope="row" valign="top"><label for="affiliate_subid"><?php esc_html_e( 'Affiliate SubID', 'digital-members-rfid' ); ?>
 							:</label></th>
 					<td>
 						<?php
@@ -904,7 +904,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				if( !empty( $tospage_id ) || !empty( $consent_entry ) ) {
 				?>
 				<tr>
-					<th scope="row" valign="top"><label for="tos_consent"><?php esc_html_e( 'TOS Consent', 'paid-memberships-pro' ); ?>:</label></th>
+					<th scope="row" valign="top"><label for="tos_consent"><?php esc_html_e( 'TOS Consent', 'digital-members-rfid' ); ?>:</label></th>
 					<td id="tos_consent">
 						<?php
 							if( !empty( $consent_entry ) ) {
@@ -919,7 +919,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				}
 			?>
 			<tr>
-				<th scope="row" valign="top"><label for="notes"><?php esc_html_e( 'Notes', 'paid-memberships-pro' ); ?>:</label></th>
+				<th scope="row" valign="top"><label for="notes"><?php esc_html_e( 'Notes', 'digital-members-rfid' ); ?>:</label></th>
 				<td>
 					<?php
 					if ( in_array( 'notes', $read_only_fields ) && $order_id > 0 ) {						
@@ -946,8 +946,8 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			}
 			?>
 			"/>
-			<input name="save" type="submit" class="button-primary" value="<?php esc_attr_e( 'Save Order', 'paid-memberships-pro' ); ?>"/>
-			<input name="cancel" type="button" class="cancel button-secondary" value="<?php esc_attr_e( 'Cancel', 'paid-memberships-pro' ); ?>"
+			<input name="save" type="submit" class="button-primary" value="<?php esc_attr_e( 'Save Order', 'digital-members-rfid' ); ?>"/>
+			<input name="cancel" type="button" class="cancel button-secondary" value="<?php esc_attr_e( 'Cancel', 'digital-members-rfid' ); ?>"
 				   onclick="location.href='<?php echo esc_url( get_admin_url( null, '/admin.php?page=dmrfid-orders' ) ); ?>';"/>
 		</p>
 
@@ -957,8 +957,8 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 
 	<form id="posts-filter" method="get" action="">
 
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'Orders', 'paid-memberships-pro' ); ?></h1>
-		<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => -1 ), get_admin_url(null, 'admin.php' ) ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New Order', 'paid-memberships-pro' ); ?></a>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'Orders', 'digital-members-rfid' ); ?></h1>
+		<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => -1 ), get_admin_url(null, 'admin.php' ) ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New Order', 'digital-members-rfid' ); ?></a>
 
 		<?php
 		// build the export URL
@@ -979,7 +979,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 		);
 		$export_url = add_query_arg( $url_params, $export_url );
 		?>
-		<a target="_blank" href="<?php echo esc_url( $export_url ); ?>" class="page-title-action"><?php esc_html_e( 'Export to CSV', 'paid-memberships-pro' ); ?></a>
+		<a target="_blank" href="<?php echo esc_url( $export_url ); ?>" class="page-title-action"><?php esc_html_e( 'Export to CSV', 'digital-members-rfid' ); ?></a>
 		
 		<hr class="wp-header-end">
 
@@ -999,23 +999,23 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 
 		<ul class="subsubsub">
 			<li>
-				<?php esc_html_e( 'Show', 'paid-memberships-pro' ); ?>
+				<?php esc_html_e( 'Show', 'digital-members-rfid' ); ?>
 				<select id="filter" name="filter">
-					<option value="all" <?php selected( $filter, 'all' ); ?>><?php esc_html_e( 'All', 'paid-memberships-pro' ); ?></option>
+					<option value="all" <?php selected( $filter, 'all' ); ?>><?php esc_html_e( 'All', 'digital-members-rfid' ); ?></option>
 					<option
-						value="within-a-date-range" <?php selected( $filter, 'within-a-date-range' ); ?>><?php esc_html_e( 'Within a Date Range', 'paid-memberships-pro' ); ?></option>
+						value="within-a-date-range" <?php selected( $filter, 'within-a-date-range' ); ?>><?php esc_html_e( 'Within a Date Range', 'digital-members-rfid' ); ?></option>
 					<option
-						value="predefined-date-range" <?php selected( $filter, 'predefined-date-range' ); ?>><?php esc_html_e( 'Predefined Date Range', 'paid-memberships-pro' ); ?></option>
+						value="predefined-date-range" <?php selected( $filter, 'predefined-date-range' ); ?>><?php esc_html_e( 'Predefined Date Range', 'digital-members-rfid' ); ?></option>
 					<option
-						value="within-a-level" <?php selected( $filter, 'within-a-level' ); ?>><?php esc_html_e( 'Within a Level', 'paid-memberships-pro' ); ?></option>
+						value="within-a-level" <?php selected( $filter, 'within-a-level' ); ?>><?php esc_html_e( 'Within a Level', 'digital-members-rfid' ); ?></option>
 					<option
-						value="with-discount-code" <?php selected( $filter, 'with-discount-code' ); ?>><?php esc_html_e( 'With a Discount Code', 'paid-memberships-pro' ); ?></option>
+						value="with-discount-code" <?php selected( $filter, 'with-discount-code' ); ?>><?php esc_html_e( 'With a Discount Code', 'digital-members-rfid' ); ?></option>
 					<option
-						value="within-a-status" <?php selected( $filter, 'within-a-status' ); ?>><?php esc_html_e( 'Within a Status', 'paid-memberships-pro' ); ?></option>
+						value="within-a-status" <?php selected( $filter, 'within-a-status' ); ?>><?php esc_html_e( 'Within a Status', 'digital-members-rfid' ); ?></option>
 					<option 
-						value="only-paid" <?php selected( $filter, 'only-paid' ); ?>><?php esc_html_e( 'Only Paid Orders', 'paid-memberships-pro' ); ?></option>
+						value="only-paid" <?php selected( $filter, 'only-paid' ); ?>><?php esc_html_e( 'Only Paid Orders', 'digital-members-rfid' ); ?></option>
 					<option 
-						value="only-free" <?php selected( $filter, 'only-free' ); ?>><?php esc_html_e( 'Only Free Orders', 'paid-memberships-pro' ); ?></option>
+						value="only-free" <?php selected( $filter, 'only-free' ); ?>><?php esc_html_e( 'Only Free Orders', 'digital-members-rfid' ); ?></option>
 
 					<?php $custom_filters = apply_filters( 'dmrfid_admin_orders_filters', array() ); ?>
 					<?php foreach( $custom_filters as $value => $name ) { ?>
@@ -1023,7 +1023,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					<?php } ?>
 				</select>
 
-				<span id="from"><?php esc_html_e( 'From', 'paid-memberships-pro' ); ?></span>
+				<span id="from"><?php esc_html_e( 'From', 'digital-members-rfid' ); ?></span>
 
 				<select id="start-month" name="start-month">
 					<?php for ( $i = 1; $i < 13; $i ++ ) { ?>
@@ -1038,7 +1038,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					   value="<?php echo esc_attr( $start_year ); ?>"/>
 
 
-				<span id="to"><?php esc_html_e( 'To', 'paid-memberships-pro' ); ?></span>
+				<span id="to"><?php esc_html_e( 'To', 'digital-members-rfid' ); ?></span>
 
 				<select id="end-month" name="end-month">
 					<?php for ( $i = 1; $i < 13; $i ++ ) { ?>
@@ -1051,18 +1051,18 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 				<input id='end-day' name="end-day" type="text" size="2" value="<?php echo esc_attr( $end_day ); ?>"/>
 				<input id='end-year' name="end-year" type="text" size="4" value="<?php echo esc_attr( $end_year ); ?>"/>
 
-				<span id="filterby"><?php esc_html_e( 'filter by ', 'paid-memberships-pro' ); ?></span>
+				<span id="filterby"><?php esc_html_e( 'filter by ', 'digital-members-rfid' ); ?></span>
 
 				<select id="predefined-date" name="predefined-date">
 
 					<option
-						value="<?php echo 'This Month'; ?>" <?php selected( $predefined_date, 'This Month' ); ?>><?php esc_html_e( 'This Month', 'paid-memberships-pro' ); ?></option>
+						value="<?php echo 'This Month'; ?>" <?php selected( $predefined_date, 'This Month' ); ?>><?php esc_html_e( 'This Month', 'digital-members-rfid' ); ?></option>
 					<option
-						value="<?php echo 'Last Month'; ?>" <?php selected( $predefined_date, 'Last Month' ); ?>><?php esc_html_e( 'Last Month', 'paid-memberships-pro' ); ?></option>
+						value="<?php echo 'Last Month'; ?>" <?php selected( $predefined_date, 'Last Month' ); ?>><?php esc_html_e( 'Last Month', 'digital-members-rfid' ); ?></option>
 					<option
-						value="<?php echo 'This Year'; ?>" <?php selected( $predefined_date, 'This Year' ); ?>><?php esc_html_e( 'This Year', 'paid-memberships-pro' ); ?></option>
+						value="<?php echo 'This Year'; ?>" <?php selected( $predefined_date, 'This Year' ); ?>><?php esc_html_e( 'This Year', 'digital-members-rfid' ); ?></option>
 					<option
-						value="<?php echo 'Last Year'; ?>" <?php selected( $predefined_date, 'Last Year' ); ?>><?php esc_html_e( 'Last Year', 'paid-memberships-pro' ); ?></option>
+						value="<?php echo 'Last Year'; ?>" <?php selected( $predefined_date, 'Last Year' ); ?>><?php esc_html_e( 'Last Year', 'digital-members-rfid' ); ?></option>
 
 				</select>
 
@@ -1101,7 +1101,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					<?php } ?>
 				</select>
 
-				<input id="submit" class="button" type="submit" value="<?php esc_attr_e( 'Filter', 'paid-memberships-pro' ); ?>"/>
+				<input id="submit" class="button" type="submit" value="<?php esc_attr_e( 'Filter', 'digital-members-rfid' ); ?>"/>
 			</li>
 		</ul>
 
@@ -1235,10 +1235,10 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 		</script>
 
 		<p class="search-box">
-			<label class="hidden" for="post-search-input"><?php esc_html_e( 'Search Orders', 'paid-memberships-pro' ); ?>:</label>
+			<label class="hidden" for="post-search-input"><?php esc_html_e( 'Search Orders', 'digital-members-rfid' ); ?>:</label>
 			<input type="hidden" name="page" value="dmrfid-orders"/>
 			<input id="post-search-input" type="text" value="<?php echo esc_attr( $s ); ?>" name="s"/>
-			<input class="button" type="submit" value="<?php esc_attr_e( 'Search Orders', 'paid-memberships-pro' ); ?>"/>
+			<input class="button" type="submit" value="<?php esc_attr_e( 'Search Orders', 'digital-members-rfid' ); ?>"/>
 		</p>
 
 		<?php
@@ -1311,25 +1311,25 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 
 		if ( $order_ids ) {
 			?>
-			<p class="clear"><?php printf( __( '%d orders found.', 'paid-memberships-pro' ), $totalrows ); ?></span></p>
+			<p class="clear"><?php printf( __( '%d orders found.', 'digital-members-rfid' ), $totalrows ); ?></span></p>
 			<?php
 		}
 		?>
 		<table class="widefat">
 			<thead>
 			<tr class="thead">
-				<th><?php esc_html_e( 'ID', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Code', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Username', 'paid-memberships-pro' ); ?></th>
+				<th><?php esc_html_e( 'ID', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Code', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Username', 'digital-members-rfid' ); ?></th>
 				<?php do_action( 'dmrfid_orders_extra_cols_header', $order_ids ); ?>
-				<th><?php esc_html_e( 'Level', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Total', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Payment', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Gateway', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Transaction IDs', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Status', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Date', 'paid-memberships-pro' ); ?></th>
-				<th><?php esc_html_e( 'Discount Code', 'paid-memberships-pro' );?></th>
+				<th><?php esc_html_e( 'Level', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Total', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Payment', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Gateway', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Transaction IDs', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Status', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Date', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Discount Code', 'digital-members-rfid' );?></th>
 			</tr>
 			</thead>
 			<tbody id="orders" class="list:order orders-list">
@@ -1351,22 +1351,22 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 						<br />
 						<div class="row-actions">
 							<span class="edit">
-								<a title="<?php esc_attr_e( 'Edit', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Edit', 'paid-memberships-pro' ); ?></a>
+								<a title="<?php esc_attr_e( 'Edit', 'digital-members-rfid' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Edit', 'digital-members-rfid' ); ?></a>
 							</span> |
 							<span class="copy">
-								<a title="<?php esc_attr_e( 'Copy', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => '-1', 'copy' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Copy', 'paid-memberships-pro' ); ?></a>
+								<a title="<?php esc_attr_e( 'Copy', 'digital-members-rfid' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => '-1', 'copy' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Copy', 'digital-members-rfid' ); ?></a>
 							</span> |
 							<span class="delete">
-							<?php $delete_prompt = sprintf( __( 'Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?', 'paid-memberships-pro' ), str_replace( "'", '', $order->code ) ); ?>
+							<?php $delete_prompt = sprintf( __( 'Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?', 'digital-members-rfid' ), str_replace( "'", '', $order->code ) ); ?>
 								<a href='javascript:dmrfid_askfirst("<?php echo esc_attr
-								( $delete_prompt ) ?>", "admin.php?page=dmrfid-orders&delete=<?php echo $order->id; ?>"); void(0);'><?php esc_html_e( 'Delete', 'paid-memberships-pro' ); ?></a>
+								( $delete_prompt ) ?>", "admin.php?page=dmrfid-orders&delete=<?php echo $order->id; ?>"); void(0);'><?php esc_html_e( 'Delete', 'digital-members-rfid' ); ?></a>
 							</span> |
 							<span class="print">
-								<a target="_blank" title="<?php esc_attr_e( 'Print', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'dmrfid_orders_print_view', 'order' => $order->id ), admin_url('admin-ajax.php' ) ) ); ?>"><?php esc_html_e( 'Print', 'paid-memberships-pro' ); ?></a>
+								<a target="_blank" title="<?php esc_attr_e( 'Print', 'digital-members-rfid' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'dmrfid_orders_print_view', 'order' => $order->id ), admin_url('admin-ajax.php' ) ) ); ?>"><?php esc_html_e( 'Print', 'digital-members-rfid' ); ?></a>
 							</span> |
 							<span class="email">
 								<a href="#TB_inline?width=600&height=200&inlineId=email_invoice" class="thickbox email_link"
-								   data-order="<?php echo esc_attr( $order->id ); ?>"><?php esc_html_e( 'Email', 'paid-memberships-pro' ); ?></a>
+								   data-order="<?php echo esc_attr( $order->id ); ?>"><?php esc_html_e( 'Email', 'digital-members-rfid' ); ?></a>
 							</span>
 							<?php
 							// Set up the hover actions for this user
@@ -1390,9 +1390,9 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 						<?php if ( ! empty( $order->user ) ) { ?>
 							<a href="user-edit.php?user_id=<?php echo esc_attr( $order->user->ID ); ?>"><?php echo esc_html( $order->user->user_login ); ?></a>
 						<?php } elseif ( $order->user_id > 0 ) { ?>
-							[<?php esc_html_e( 'deleted', 'paid-memberships-pro' ); ?>]
+							[<?php esc_html_e( 'deleted', 'digital-members-rfid' ); ?>]
 						<?php } else { ?>
-							[<?php esc_html_e( 'none', 'paid-memberships-pro' ); ?>]
+							[<?php esc_html_e( 'none', 'digital-members-rfid' ); ?>]
 						<?php } ?>	
 					</td>
 					<?php do_action( 'dmrfid_orders_extra_cols_body', $order ); ?>
@@ -1402,9 +1402,9 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 							if ( ! empty( $level ) ) {
 								echo esc_html( $level->name );
 							} elseif ( $order->membership_id > 0 ) { ?>
-								[<?php esc_html_e( 'deleted', 'paid-memberships-pro' ); ?>]
+								[<?php esc_html_e( 'deleted', 'digital-members-rfid' ); ?>]
 							<?php } else { ?>
-								[<?php esc_html_e( 'none', 'paid-memberships-pro' ); ?>]
+								[<?php esc_html_e( 'none', 'digital-members-rfid' ); ?>]
 							<?php }
 						?>
 					</td>
@@ -1446,22 +1446,22 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 						?>
 					</td>
 					<td>
-						<?php esc_html_e( 'Payment', 'paid-memberships-pro' ); ?>: 
+						<?php esc_html_e( 'Payment', 'digital-members-rfid' ); ?>: 
 						<?php
 						if ( ! empty( $order->payment_transaction_id ) ) {
 							echo esc_html( $order->payment_transaction_id );
 						} else {
-							esc_html_e( 'N/A', 'paid-memberships-pro' );
+							esc_html_e( 'N/A', 'digital-members-rfid' );
 						}
 						?>
 						<br/>
-						<?php esc_html_e( 'Subscription', 'paid-memberships-pro' ); ?>
+						<?php esc_html_e( 'Subscription', 'digital-members-rfid' ); ?>
 						: 
 						<?php
 						if ( ! empty( $order->subscription_transaction_id ) ) {
 							echo esc_html( $order->subscription_transaction_id );
 						} else {
-							esc_html_e( 'N/A', 'paid-memberships-pro' );
+							esc_html_e( 'N/A', 'digital-members-rfid' );
 						}
 						?>
 					</td>
@@ -1472,7 +1472,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 					</td>
 					<td>
 						<?php if ( $order->getDiscountCode() ) { ?>
-							<a title="<?php esc_attr_e('edit', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $order->discount_code->id ), admin_url('admin.php' ) ) ); ?>">
+							<a title="<?php esc_attr_e('edit', 'digital-members-rfid' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $order->discount_code->id ), admin_url('admin.php' ) ) ); ?>">
 								<?php echo esc_html( $order->discount_code->code ); ?>
 							</a>
 						<?php } ?>							
@@ -1484,7 +1484,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			if ( ! $order_ids ) {
 				?>
 				<tr>
-					<td colspan="9"><p><?php esc_html_e( 'No orders found.', 'paid-memberships-pro' ); ?></p></td>
+					<td colspan="9"><p><?php esc_html_e( 'No orders found.', 'digital-members-rfid' ); ?></p></td>
 				</tr>
 				<?php
 			}

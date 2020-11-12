@@ -16,11 +16,11 @@ function dmrfid_add_privacy_policy_content() {
 	}
 
 	$content = '';
-	$content .= '<h2>' . __( 'Data Collected to Manage Your Membership', 'paid-memberships-pro' ) . '</h2>';
-	$content .= '<p>' . __( "At checkout, we will collect your name, email address, username, and password. This information is used to setup your account for our site. If you are redirected to an offsite payment gateway to complete your payment, we may store this information in a temporary session variable to setup your account when you return to our site.", 'paid-memberships-pro' ) . '</p>';
-	$content .= '<p>' . __( "At checkout, we may also collect your billing address and phone number. This information is used to confirm your credit card. The billing address and phone number are saved by our site to prepopulate the checkout form for future purchases and so we can get in touch with you if needed to discuss your order.", 'paid-memberships-pro' ) . '</p>';
-	$content .= '<p>' . __( "At checkout, we may also collect your credit card number, expiration date, and security code. This information is passed to our payment gateway to process your purchase. The last 4 digits of your credit card number and the expiration date are saved by our site to use for reference and to send you an email if your credit card will expire before the next recurring payment.", 'paid-memberships-pro' ) . '</p>';
-	$content .= '<p>' . __( "When logged in, we use cookies to track some of your activity on our site including logins, visits, and page views.", 'paid-memberships-pro' ) . '</p>';
+	$content .= '<h2>' . __( 'Data Collected to Manage Your Membership', 'digital-members-rfid' ) . '</h2>';
+	$content .= '<p>' . __( "At checkout, we will collect your name, email address, username, and password. This information is used to setup your account for our site. If you are redirected to an offsite payment gateway to complete your payment, we may store this information in a temporary session variable to setup your account when you return to our site.", 'digital-members-rfid' ) . '</p>';
+	$content .= '<p>' . __( "At checkout, we may also collect your billing address and phone number. This information is used to confirm your credit card. The billing address and phone number are saved by our site to prepopulate the checkout form for future purchases and so we can get in touch with you if needed to discuss your order.", 'digital-members-rfid' ) . '</p>';
+	$content .= '<p>' . __( "At checkout, we may also collect your credit card number, expiration date, and security code. This information is passed to our payment gateway to process your purchase. The last 4 digits of your credit card number and the expiration date are saved by our site to use for reference and to send you an email if your credit card will expire before the next recurring payment.", 'digital-members-rfid' ) . '</p>';
+	$content .= '<p>' . __( "When logged in, we use cookies to track some of your activity on our site including logins, visits, and page views.", 'digital-members-rfid' ) . '</p>';
 
 	wp_add_privacy_policy_content( 'Digital Members RFID', $content );
 }
@@ -78,14 +78,14 @@ function dmrfid_personal_data_eraser( $email_address, $page = 1 ) {
 			$num_items_retained += $num_orders;
 			// We could have used _n below, but that doesn't work well with our script for generating the .pot file.
 			if( $num_orders == 1 ) {
-				$messages[] = __( '1 DmRFID order was retained for business records.', 'paid-memberships-pro' );
+				$messages[] = __( '1 DmRFID order was retained for business records.', 'digital-members-rfid' );
 			} else {
-				$messages[] = sprintf( __( '%d DmRFID orders were retained for business records.', 'paid-memberships-pro' ), $num_orders );
+				$messages[] = sprintf( __( '%d DmRFID orders were retained for business records.', 'digital-members-rfid' ), $num_orders );
 			}
 		}
 
 		// Warn the admin if this user has an active subscription
-		$messages[] = __( "Please note that data erasure will not cancel a user's membership level or any active subscriptions. Please edit or delete the user through the WordPress dashboard.", 'paid-memberships-pro' );
+		$messages[] = __( "Please note that data erasure will not cancel a user's membership level or any active subscriptions. Please edit or delete the user through the WordPress dashboard.", 'digital-members-rfid' );
 	}
 
 	// Set done to false if we still have stuff to erase.
@@ -172,34 +172,34 @@ function dmrfid_personal_data_exporter( $email_address, $page = 1 ) {
 		$history = $wpdb->get_results( $sqlQuery );
 		foreach( $history as $item ) {
 			if( $item->enddate === null || $item->enddate == '0000-00-00 00:00:00' ) {
-				$item->enddate = __( 'Never', 'paid-memberships-pro' );
+				$item->enddate = __( 'Never', 'digital-members-rfid' );
 			} else {
 				$item->enddate = date( get_option( 'date_format' ), strtotime( $item->enddate, current_time( 'timestamp' ) ) );
 			}
 
 			$history_data_to_export = array(
 				array(
-					'name'  => __( 'Level ID', 'paid-memberships-pro' ),
+					'name'  => __( 'Level ID', 'digital-members-rfid' ),
 					'value' => $item->membership_id, 
 				),
 				array(
-					'name'  => __( 'Start Date', 'paid-memberships-pro' ),
+					'name'  => __( 'Start Date', 'digital-members-rfid' ),
 					'value' => date( get_option( 'date_format' ), strtotime( $item->startdate, current_time( 'timestamp' ) ) ),
 				),
 				array(
-					'name'  => __( 'Date Modified', 'paid-memberships-pro' ),
+					'name'  => __( 'Date Modified', 'digital-members-rfid' ),
 					'value' => date( get_option( 'date_format' ), strtotime( $item->modified, current_time( 'timestamp' ) ) ),
 				),
 				array(
-					'name'  => __( 'End Date', 'paid-memberships-pro' ),
+					'name'  => __( 'End Date', 'digital-members-rfid' ),
 					'value' => $item->enddate,
 				),
 				array(
-					'name'  => __( 'Level Cost', 'paid-memberships-pro' ),
+					'name'  => __( 'Level Cost', 'digital-members-rfid' ),
 					'value' => dmrfid_getLevelCost( $item, false, true ),
 				),
 				array(
-					'name' => __( 'Status', 'paid-memberships-pro' ),
+					'name' => __( 'Status', 'digital-members-rfid' ),
 					'value' => $item->status,
 				),
 			);
@@ -226,103 +226,103 @@ function dmrfid_personal_data_exporter( $email_address, $page = 1 ) {
 			
 			$order_data_to_export = array(
 				array(
-					'name' => __( 'Order ID', 'paid-memberships-pro' ),
+					'name' => __( 'Order ID', 'digital-members-rfid' ),
 					'value' => $order->id,
 				),
 				array(
-					'name' => __( 'Order Code', 'paid-memberships-pro' ),
+					'name' => __( 'Order Code', 'digital-members-rfid' ),
 					'value' => $order->code,
 				),
 				array(
-					'name' => __( 'Order Date', 'paid-memberships-pro' ),
+					'name' => __( 'Order Date', 'digital-members-rfid' ),
 					'value' => date( get_option( 'date_format' ), $order->getTimestamp() ),
 				),
 				array(
-					'name' => __( 'Level', 'paid-memberships-pro' ),
+					'name' => __( 'Level', 'digital-members-rfid' ),
 					'value' => $order->membership_level->name,
 				),
 				array(
-					'name' => __( 'Billing Name', 'paid-memberships-pro' ),
+					'name' => __( 'Billing Name', 'digital-members-rfid' ),
 					'value' => $order->billing->name,
 				),
 				array(
-					'name' => __( 'Billing Street', 'paid-memberships-pro' ),
+					'name' => __( 'Billing Street', 'digital-members-rfid' ),
 					'value' => $order->billing->street,
 				),
 				array(
-					'name' => __( 'Billing City', 'paid-memberships-pro' ),
+					'name' => __( 'Billing City', 'digital-members-rfid' ),
 					'value' => $order->billing->city,
 				),
 				array(
-					'name' => __( 'Billing State', 'paid-memberships-pro' ),
+					'name' => __( 'Billing State', 'digital-members-rfid' ),
 					'value' => $order->billing->state,
 				),
 				array(
-					'name' => __( 'Billing Postal Code', 'paid-memberships-pro' ),
+					'name' => __( 'Billing Postal Code', 'digital-members-rfid' ),
 					'value' => $order->billing->zip,
 				),
 				array(
-					'name' => __( 'Billing Country', 'paid-memberships-pro' ),
+					'name' => __( 'Billing Country', 'digital-members-rfid' ),
 					'value' => $order->billing->country,
 				),
 				array(
-					'name' => __( 'Billing Phone', 'paid-memberships-pro' ),
+					'name' => __( 'Billing Phone', 'digital-members-rfid' ),
 					'value' => formatPhone( $order->billing->phone ),
 				),
 				array(
-					'name' => __( 'Sub Total', 'paid-memberships-pro' ),
+					'name' => __( 'Sub Total', 'digital-members-rfid' ),
 					'value' => $order->subtotal,
 				),
 				array(
-					'name' => __( 'Tax', 'paid-memberships-pro' ),
+					'name' => __( 'Tax', 'digital-members-rfid' ),
 					'value' => $order->tax,
 				),
 				array(
-					'name' => __( 'Coupon Amount', 'paid-memberships-pro' ),
+					'name' => __( 'Coupon Amount', 'digital-members-rfid' ),
 					'value' => $order->couponamount,
 				),
 				array(
-					'name' => __( 'Total', 'paid-memberships-pro' ),
+					'name' => __( 'Total', 'digital-members-rfid' ),
 					'value' => $order->total,
 				),
 				array(
-					'name' => __( 'Payment Type', 'paid-memberships-pro' ),
+					'name' => __( 'Payment Type', 'digital-members-rfid' ),
 					'value' => $order->payment_type,
 				),
 				array(
-					'name' => __( 'Card Type', 'paid-memberships-pro' ),
+					'name' => __( 'Card Type', 'digital-members-rfid' ),
 					'value' => $order->cardtype,
 				),
 				array(
-					'name' => __( 'Account Number', 'paid-memberships-pro' ),
+					'name' => __( 'Account Number', 'digital-members-rfid' ),
 					'value' => $order->accountnumber,
 				),
 				array(
-					'name' => __( 'Expiration Month', 'paid-memberships-pro' ),
+					'name' => __( 'Expiration Month', 'digital-members-rfid' ),
 					'value' => $order->expirationmonth,
 				),
 				array(
-					'name' => __( 'Expiration Year', 'paid-memberships-pro' ),
+					'name' => __( 'Expiration Year', 'digital-members-rfid' ),
 					'value' => $order->expirationyear,
 				),
 				array(
-					'name' => __( 'Status', 'paid-memberships-pro' ),
+					'name' => __( 'Status', 'digital-members-rfid' ),
 					'value' => $order->status,
 				),
 				array(
-					'name' => __( 'Gateway', 'paid-memberships-pro' ),
+					'name' => __( 'Gateway', 'digital-members-rfid' ),
 					'value' => $order->gateway,
 				),
 				array(
-					'name' => __( 'Gateway Environment', 'paid-memberships-pro' ),
+					'name' => __( 'Gateway Environment', 'digital-members-rfid' ),
 					'value' => $order->gateway_environment,
 				),
 				array(
-					'name' => __( 'Payment Transaction ID', 'paid-memberships-pro' ),
+					'name' => __( 'Payment Transaction ID', 'digital-members-rfid' ),
 					'value' => $order->payment_transaction_id,
 				),
 				array(
-					'name' => __( 'Subscription Transaction ID', 'paid-memberships-pro' ),
+					'name' => __( 'Subscription Transaction ID', 'digital-members-rfid' ),
 					'value' => $order->subscription_transaction_id,
 				),
 				// Note: Order notes, session_id, and paypal_token are excluded.
@@ -351,22 +351,22 @@ function dmrfid_personal_data_exporter( $email_address, $page = 1 ) {
  */
 function dmrfid_get_personal_user_meta_fields() {
 	$fields = array(
-		'dmrfid_bfirstname' => __( 'Billing First Name', 'paid-memberships-pro' ),
-		'dmrfid_blastname' => __( 'Billing Last Name', 'paid-memberships-pro' ),
-		'dmrfid_baddress1' => __( 'Billing Address 1', 'paid-memberships-pro' ),
-		'dmrfid_baddress2' => __( 'Billing Address 2', 'paid-memberships-pro' ),
-		'dmrfid_bcity' => __( 'Billing City', 'paid-memberships-pro' ),
-		'dmrfid_bstate' => __( 'Billing State/Province', 'paid-memberships-pro' ),
-		'dmrfid_bzipcode' => __( 'Billing Postal Code', 'paid-memberships-pro' ),
-		'dmrfid_bphone' => __( 'Billing Phone Number', 'paid-memberships-pro' ),
-		'dmrfid_bcountry' => __( 'Billing Country', 'paid-memberships-pro' ),
-		'dmrfid_CardType' => __( 'Credit Card Type', 'paid-memberships-pro' ),
-		'dmrfid_AccountNumber' => __( 'Credit Card Account Number', 'paid-memberships-pro' ),
-		'dmrfid_ExpirationMonth' => __( 'Credit Card Expiration Month', 'paid-memberships-pro' ),
-		'dmrfid_ExpirationYear' => __( 'Credit Card Expiration Year', 'paid-memberships-pro' ),
-		'dmrfid_logins' => __( 'Login Data', 'paid-memberships-pro' ),
-		'dmrfid_visits' => __( 'Visits Data', 'paid-memberships-pro' ),
-		'dmrfid_views' => __( 'Views Data', 'paid-memberships-pro' ),
+		'dmrfid_bfirstname' => __( 'Billing First Name', 'digital-members-rfid' ),
+		'dmrfid_blastname' => __( 'Billing Last Name', 'digital-members-rfid' ),
+		'dmrfid_baddress1' => __( 'Billing Address 1', 'digital-members-rfid' ),
+		'dmrfid_baddress2' => __( 'Billing Address 2', 'digital-members-rfid' ),
+		'dmrfid_bcity' => __( 'Billing City', 'digital-members-rfid' ),
+		'dmrfid_bstate' => __( 'Billing State/Province', 'digital-members-rfid' ),
+		'dmrfid_bzipcode' => __( 'Billing Postal Code', 'digital-members-rfid' ),
+		'dmrfid_bphone' => __( 'Billing Phone Number', 'digital-members-rfid' ),
+		'dmrfid_bcountry' => __( 'Billing Country', 'digital-members-rfid' ),
+		'dmrfid_CardType' => __( 'Credit Card Type', 'digital-members-rfid' ),
+		'dmrfid_AccountNumber' => __( 'Credit Card Account Number', 'digital-members-rfid' ),
+		'dmrfid_ExpirationMonth' => __( 'Credit Card Expiration Month', 'digital-members-rfid' ),
+		'dmrfid_ExpirationYear' => __( 'Credit Card Expiration Year', 'digital-members-rfid' ),
+		'dmrfid_logins' => __( 'Login Data', 'digital-members-rfid' ),
+		'dmrfid_visits' => __( 'Visits Data', 'digital-members-rfid' ),
+		'dmrfid_views' => __( 'Views Data', 'digital-members-rfid' ),
 	);
 
 	$fields = apply_filters( 'dmrfid_get_personal_user_meta_fields', $fields );
@@ -517,7 +517,7 @@ function dmrfid_consent_to_text( $entry ) {
 				  date( get_option( 'date_format' ), $entry['timestamp'] ) );
 
 	if( !dmrfid_is_consent_current( $entry ) ) {
-		$s .= ' ' . __( 'That post has since been updated.', 'paid-memberships-pro' );
+		$s .= ' ' . __( 'That post has since been updated.', 'digital-members-rfid' );
 	}
 
 	return $s;

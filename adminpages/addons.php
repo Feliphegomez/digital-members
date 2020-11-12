@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_addons")))
 	{
-		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
+		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
 	}	
 	
 	global $wpdb, $msg, $msgt, $dmrfid_addons;
@@ -78,7 +78,7 @@
 	}
 
 	?>
-	<h1 class="wp-heading-inline"><?php esc_html_e( 'Add Ons', 'paid-memberships-pro' ); ?></h1>
+	<h1 class="wp-heading-inline"><?php esc_html_e( 'Add Ons', 'digital-members-rfid' ); ?></h1>
 	<hr class="wp-header-end">
 	
 	<?php
@@ -86,16 +86,16 @@
 	?>
 	
 	<p>
-		<?php printf(__('Last checked on %s at %s.', 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $addons_timestamp), date_i18n(get_option('time_format'), $addons_timestamp));?> &nbsp;	
-		<a class="button" href="<?php echo admin_url("admin.php?page=dmrfid-addons&force-check=1&plugin_status=" . $status);?>"><?php _e('Check Again', 'paid-memberships-pro' ); ?></a>
+		<?php printf(__('Last checked on %s at %s.', 'digital-members-rfid' ), date_i18n(get_option('date_format'), $addons_timestamp), date_i18n(get_option('time_format'), $addons_timestamp));?> &nbsp;	
+		<a class="button" href="<?php echo admin_url("admin.php?page=dmrfid-addons&force-check=1&plugin_status=" . $status);?>"><?php _e('Check Again', 'digital-members-rfid' ); ?></a>
 	</p>
 
 	<ul class="subsubsub">
-		<li class="all"><a href="admin.php?page=dmrfid-addons&plugin_status=all" <?php if(empty($status) || $status == "all") { ?>class="current"<?php } ?>><?php _e('All', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($all_visible_addons);?>)</span></a> |</li>
-		<li class="active"><a href="admin.php?page=dmrfid-addons&plugin_status=active" <?php if($status == "active") { ?>class="current"<?php } ?>><?php _e('Active', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($active_addons);?>)</span></a> |</li>
-		<li class="inactive"><a href="admin.php?page=dmrfid-addons&plugin_status=inactive" <?php if($status == "inactive") { ?>class="current"<?php } ?>><?php _e('Inactive', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($inactive_addons);?>)</span></a> |</li>
-		<li class="update"><a href="admin.php?page=dmrfid-addons&plugin_status=update" <?php if($status == "update") { ?>class="current"<?php } ?>><?php _e('Update Available', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($update_available_addons);?>)</span></a> |</li>
-		<li class="uninstalled"><a href="admin.php?page=dmrfid-addons&plugin_status=uninstalled" <?php if($status == "uninstalled") { ?>class="current"<?php } ?>><?php _e('Not Installed', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($not_installed_addons);?>)</span></a></li>
+		<li class="all"><a href="admin.php?page=dmrfid-addons&plugin_status=all" <?php if(empty($status) || $status == "all") { ?>class="current"<?php } ?>><?php _e('All', 'digital-members-rfid' ); ?> <span class="count">(<?php echo count($all_visible_addons);?>)</span></a> |</li>
+		<li class="active"><a href="admin.php?page=dmrfid-addons&plugin_status=active" <?php if($status == "active") { ?>class="current"<?php } ?>><?php _e('Active', 'digital-members-rfid' ); ?> <span class="count">(<?php echo count($active_addons);?>)</span></a> |</li>
+		<li class="inactive"><a href="admin.php?page=dmrfid-addons&plugin_status=inactive" <?php if($status == "inactive") { ?>class="current"<?php } ?>><?php _e('Inactive', 'digital-members-rfid' ); ?> <span class="count">(<?php echo count($inactive_addons);?>)</span></a> |</li>
+		<li class="update"><a href="admin.php?page=dmrfid-addons&plugin_status=update" <?php if($status == "update") { ?>class="current"<?php } ?>><?php _e('Update Available', 'digital-members-rfid' ); ?> <span class="count">(<?php echo count($update_available_addons);?>)</span></a> |</li>
+		<li class="uninstalled"><a href="admin.php?page=dmrfid-addons&plugin_status=uninstalled" <?php if($status == "uninstalled") { ?>class="current"<?php } ?>><?php _e('Not Installed', 'digital-members-rfid' ); ?> <span class="count">(<?php echo count($not_installed_addons);?>)</span></a></li>
 	</ul>
 
 	<table class="wp-list-table widefat plugins">
@@ -106,9 +106,9 @@
 			<label class="screen-reader-text" for="cb-select-all-1"><?php _e('Select All'); ?></label><input id="cb-select-all-1" type="checkbox">
 			*/ ?>
 		</th>	
-		<th scope="col" id="name" class="manage-column column-name" style=""><?php _e('Add On Name', 'paid-memberships-pro' ); ?></th>
-		<th scope="col" id="type" class="manage-column column-type" style=""><?php _e('Type', 'paid-memberships-pro' ); ?></th>
-		<th scope="col" id="description" class="manage-column column-description" style=""><?php _e('Description', 'paid-memberships-pro' ); ?></th>		
+		<th scope="col" id="name" class="manage-column column-name" style=""><?php _e('Add On Name', 'digital-members-rfid' ); ?></th>
+		<th scope="col" id="type" class="manage-column column-type" style=""><?php _e('Type', 'digital-members-rfid' ); ?></th>
+		<th scope="col" id="description" class="manage-column column-description" style=""><?php _e('Description', 'digital-members-rfid' ); ?></th>		
 	</tr>
 	</thead>
 	<tbody id="the-list">
@@ -132,7 +132,7 @@
 			?>
 			<tr>
 				<td></td>
-				<td colspan="3"><p><?php _e('No Add Ons found.', 'paid-memberships-pro' ); ?></p></td>	
+				<td colspan="3"><p><?php _e('No Add Ons found.', 'digital-members-rfid' ); ?></p></td>	
 			</tr>
 			<?php
 			}
@@ -193,31 +193,31 @@
 								if($plugin_data['License'] == 'wordpress.org')
 								{
 									//wordpress.org
-									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'digital-members-rfid' ) . '</a></span>';
 								}
 								elseif($plugin_data['License'] == 'free')
 								{
 									//free
-									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'paid-memberships-pro' ) . '</a></span>';
-									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $dmrfid_license_key . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'digital-members-rfid' ) . '</a></span>';
+									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $dmrfid_license_key . '">' . __('Download', 'digital-members-rfid' ) . '</a></span>';
 								}
 								elseif(empty($dmrfid_license_key))
 								{
 									//no key
-									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=dmrfid-license') . '">' . __('Update License', 'paid-memberships-pro' ) . '</a></span>';
-									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['PluginURI'] . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=dmrfid-license') . '">' . __('Update License', 'digital-members-rfid' ) . '</a></span>';
+									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['PluginURI'] . '">' . __('Download', 'digital-members-rfid' ) . '</a></span>';
 								}
 								elseif(dmrfid_license_isValid($dmrfid_license_key, $plugin_data['License']))
 								{
 									//valid key
-									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'paid-memberships-pro' ) . '</a></span>';
-									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $dmrfid_license_key . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';									
+									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'digital-members-rfid' ) . '</a></span>';
+									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $dmrfid_license_key . '">' . __('Download', 'digital-members-rfid' ) . '</a></span>';									
 								}
 								else
 								{
 									//invalid key
-									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=dmrfid-license') . '">' . __('Update License', 'paid-memberships-pro' ) . '</a></span>';
-									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['PluginURI'] . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=dmrfid-license') . '">' . __('Update License', 'digital-members-rfid' ) . '</a></span>';
+									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['PluginURI'] . '">' . __('Download', 'digital-members-rfid' ) . '</a></span>';
 								}
 							}
 							elseif($context === 'active' || $context === 'active update')
@@ -237,15 +237,15 @@
 					<td class="column-type">
 						<?php
 							if($addon['License'] == 'free')
-								_e("DmRFID Free", 'paid-memberships-pro' );
+								_e("DmRFID Free", 'digital-members-rfid' );
 							elseif($addon['License'] == 'core')
-								_e("DmRFID Core", 'paid-memberships-pro' );
+								_e("DmRFID Core", 'digital-members-rfid' );
 							elseif($addon['License'] == 'plus')
-								_e("DmRFID Plus", 'paid-memberships-pro' );
+								_e("DmRFID Plus", 'digital-members-rfid' );
 							elseif($addon['License'] == 'wordpress.org')
-								_e("WordPress.org", 'paid-memberships-pro' );
+								_e("WordPress.org", 'digital-members-rfid' );
 							else
-								_e("N/A", 'paid-memberships-pro' );
+								_e("N/A", 'digital-members-rfid' );
 						?>
 					</td>
 					<td class="column-description desc">

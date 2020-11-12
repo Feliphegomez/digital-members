@@ -28,9 +28,9 @@ if( $current_user->ID ) {
 // Process the msg param.
 if ( isset($_REQUEST['msg'] ) ) {
     if ( $_REQUEST['msg'] == 1 ) {
-        $dmrfid_msg = __( 'Your membership status has been updated - Thank you!', 'paid-memberships-pro' );
+        $dmrfid_msg = __( 'Your membership status has been updated - Thank you!', 'digital-members-rfid' );
     } else {
-        $dmrfid_msg = __( 'Sorry, your request could not be completed - please try again in a few moments.', 'paid-memberships-pro' );
+        $dmrfid_msg = __( 'Sorry, your request could not be completed - please try again in a few moments.', 'digital-members-rfid' );
         $dmrfid_msgt = 'dmrfid_error';
     }
 } else {

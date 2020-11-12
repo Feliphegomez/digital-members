@@ -254,11 +254,11 @@ function dmrfid_login_the_title( $title, $id = NULL ) {
 	}
 
 	if ( is_user_logged_in() ) {
-		$title = __( 'Welcome', 'paid-memberships-pro' );
+		$title = __( 'Welcome', 'digital-members-rfid' );
 	} elseif ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] === 'reset_pass' ) {
-		$title = __( 'Lost Password', 'paid-memberships-pro' );
+		$title = __( 'Lost Password', 'digital-members-rfid' );
 	} elseif ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] === 'rp' ) {
-		$title = __( 'Reset Password', 'paid-memberships-pro' );
+		$title = __( 'Reset Password', 'digital-members-rfid' );
 	}
 
 	return $title;
@@ -278,11 +278,11 @@ function dmrfid_login_document_title_parts( $titleparts ) {
 	}
 	
 	if ( is_user_logged_in() ) {
-		$titleparts['title'] = __( 'Welcome', 'paid-memberships-pro' );
+		$titleparts['title'] = __( 'Welcome', 'digital-members-rfid' );
 	} elseif ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] === 'reset_pass' ) {
-		$titleparts['title'] = __( 'Lost Password', 'paid-memberships-pro' );
+		$titleparts['title'] = __( 'Lost Password', 'digital-members-rfid' );
 	} elseif ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] === 'rp' ) {
-		$titleparts['title'] = __( 'Reset Password', 'paid-memberships-pro' );
+		$titleparts['title'] = __( 'Reset Password', 'digital-members-rfid' );
 	}
 
 	return $titleparts;
@@ -306,27 +306,27 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 	if ( isset( $_GET['action'] ) ) {
 		switch ( sanitize_text_field( $_GET['action'] ) ) {
 			case 'failed':
-				$message = __( 'There was a problem with your username or password.', 'paid-memberships-pro' );
+				$message = __( 'There was a problem with your username or password.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'invalid_username':
-				$message = __( 'Unknown username. Check again or try your email address.', 'paid-memberships-pro' );
+				$message = __( 'Unknown username. Check again or try your email address.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'empty_username':
-				$message = __( 'Empty username. Please enter your username and try again.', 'paid-memberships-pro' );
+				$message = __( 'Empty username. Please enter your username and try again.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'empty_password':
-				$message = __( 'Empty password. Please enter your password and try again.', 'paid-memberships-pro' );
+				$message = __( 'Empty password. Please enter your password and try again.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'incorrect_password':
-				$message = __( 'The password you entered for the user is incorrect. Please try again.', 'paid-memberships-pro' );
+				$message = __( 'The password you entered for the user is incorrect. Please try again.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'recovered':
-				$message = __( 'Check your email for the confirmation link.', 'paid-memberships-pro' );
+				$message = __( 'Check your email for the confirmation link.', 'digital-members-rfid' );
 				break;
 		}
 	}
@@ -335,11 +335,11 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 	if ( isset( $_GET['loggedout'] ) ) {
 		switch ( sanitize_text_field( $_GET['loggedout'] ) ) {
 			case 'true':
-				$message = __( 'You are now logged out.', 'paid-memberships-pro' );
+				$message = __( 'You are now logged out.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_success';
 				break;
 			default:
-				$message = __( 'There was a problem logging you out.', 'paid-memberships-pro' );
+				$message = __( 'There was a problem logging you out.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 		}
@@ -350,10 +350,10 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 
 		switch ( sanitize_text_field( $_GET['checkemail'] ) ) {
 			case 'confirm':
-				$message = __( 'Check your email for a link to reset your password.', 'paid-memberships-pro' );
+				$message = __( 'Check your email for a link to reset your password.', 'digital-members-rfid' );
 				break;
 			default:
-				$message = __( 'There was an unexpected error regarding your email. Please try again', 'paid-memberships-pro' );
+				$message = __( 'There was an unexpected error regarding your email. Please try again', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 		}
@@ -363,11 +363,11 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 	if ( isset( $_GET['login'] ) ) {
 		switch ( sanitize_text_field( $_GET['login'] ) ) {
 			case 'invalidkey':
-				$message = __( 'Your reset password key is invalid.', 'paid-memberships-pro' );
+				$message = __( 'Your reset password key is invalid.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'expiredkey':
-				$message = __( 'Your reset password key is expired, please request a new key from the password reset page.', 'paid-memberships-pro' );
+				$message = __( 'Your reset password key is expired, please request a new key from the password reset page.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			default:
@@ -379,11 +379,11 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 	if ( isset( $_GET['password'] ) ) {
 		switch( $_GET['password'] ) {
 			case 'changed':
-				$message = __( 'Your password has successfully been updated.', 'paid-memberships-pro' );
+				$message = __( 'Your password has successfully been updated.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_success';
 				break;
 			default:
-				$message = __( 'There was a problem updating your password', 'paid-memberships-pro' );
+				$message = __( 'There was a problem updating your password', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 		}
 	}
@@ -397,27 +397,27 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 	if ( isset( $password_reset_errors ) ) {
 		switch ( $password_reset_errors ) {
 			case 'invalidcombo':
-				$message = __( 'There is no account with that username or email address.', 'paid-memberships-pro' );
+				$message = __( 'There is no account with that username or email address.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'empty_username':
-				$message = __( 'Please enter a valid username.', 'paid-memberships-pro' );
+				$message = __( 'Please enter a valid username.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'invalid_email':
-				$message = __( "You've entered an invalid email address.", 'paid-memberships-pro' );
+				$message = __( "You've entered an invalid email address.", 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'password_reset_mismatch':
-				$message = __( 'New passwords do not match.', 'paid-memberships-pro' );
+				$message = __( 'New passwords do not match.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'password_reset_empty':
-				$message = __( 'Please complete all fields.', 'paid-memberships-pro' );
+				$message = __( 'Please complete all fields.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 			case 'retrieve_password_email_failure':
-				$message = __( 'The email could not be sent. This site may not be correctly configured to send emails.', 'paid-memberships-pro' );
+				$message = __( 'The email could not be sent. This site may not be correctly configured to send emails.', 'digital-members-rfid' );
 				$msgt = 'dmrfid_error';
 				break;
 		}
@@ -461,7 +461,7 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_login_wrap' ); ?>">
 					<?php 
 						if ( ! dmrfid_is_login_page() ) {
-							echo $before_title . esc_html( 'Log In', 'paid-memberships-pro' ) . $after_title;
+							echo $before_title . esc_html( 'Log In', 'digital-members-rfid' ) . $after_title;
 						}
 					?>
 					<?php
@@ -483,12 +483,12 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password_wrap' ); ?>">
 				<?php 
 					if ( ! dmrfid_is_login_page() ) {
-						echo $before_title . esc_html( 'Password Reset', 'paid-memberships-pro' ) . $after_title;
+						echo $before_title . esc_html( 'Password Reset', 'digital-members-rfid' ) . $after_title;
 					}
 				?>
 				<p class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password-instructions' ); ?>">
 					<?php
-						esc_html_e( 'Please enter your username or email address. You will receive a link to create a new password via email.', 'paid-memberships-pro' );
+						esc_html_e( 'Please enter your username or email address. You will receive a link to create a new password via email.', 'digital-members-rfid' );
 					?>
 				</p>
 				<?php
@@ -503,7 +503,7 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password_wrap' ); ?>">
 				<?php 
 					if ( ! dmrfid_is_login_page() ) {
-						echo $before_title . esc_html( 'Reset Password', 'paid-memberships-pro' ) . $after_title;
+						echo $before_title . esc_html( 'Reset Password', 'digital-members-rfid' ) . $after_title;
 					}
 				?>
 				<?php dmrfid_reset_password_form(); ?>
@@ -513,7 +513,7 @@ function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true
 	} else {
 		// Already signed in.
 		if ( isset( $_REQUEST['login'] ) && isset( $_REQUEST['key'] ) ) {
-			esc_html_e( 'You are already signed in.', 'paid-memberships-pro' );
+			esc_html_e( 'You are already signed in.', 'digital-members-rfid' );
 		} elseif ( ! empty( $display_if_logged_in ) ) { ?>
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_logged_in_welcome_wrap' ); ?>">
 				<?php dmrfid_logged_in_welcome( $show_menu, $show_logout_link ); ?>
@@ -548,12 +548,12 @@ function dmrfid_lost_password_form() { ?>
 	<form id="lostpasswordform" class="<?php echo dmrfid_get_element_class( 'dmrfid_form', 'lostpasswordform' ); ?>" action="<?php echo wp_lostpassword_url(); ?>" method="post">
 		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password-fields' ); ?>">
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password-field dmrfid_lost_password-field-user_login', 'dmrfid_lost_password-field-user_login' ); ?>">
-				<label for="user_login"><?php esc_html_e( 'Username or Email Address', 'paid-memberships-pro' ); ?></label>
+				<label for="user_login"><?php esc_html_e( 'Username or Email Address', 'digital-members-rfid' ); ?></label>
 				<input type="text" name="user_login" id="user_login" class="<?php echo dmrfid_get_element_class( 'input', 'user_login' ); ?>" size="20" />
 			</div>
 		</div> <!-- end dmrfid_lost_password-fields -->
 		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
-			<input type="submit" name="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e( 'Get New Password', 'paid-memberships-pro' ); ?>" />
+			<input type="submit" name="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e( 'Get New Password', 'digital-members-rfid' ); ?>" />
 		</div>
 	</form>
 	<?php
@@ -637,18 +637,18 @@ function dmrfid_reset_password_form() {
 			<input type="hidden" name="rp_key" value="<?php echo esc_attr( sanitize_text_field( $_REQUEST['key'] ) ); ?>" />
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password-fields' ); ?>">
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password-field dmrfid_reset_password-field-pass1', 'dmrfid_reset_password-field-pass1' ); ?>">
-					<label for="pass1"><?php esc_html_e( 'New Password', 'paid-memberships-pro' ) ?></label>
+					<label for="pass1"><?php esc_html_e( 'New Password', 'digital-members-rfid' ) ?></label>
 					<input type="password" name="pass1" id="pass1" class="<?php echo dmrfid_get_element_class( 'input pass1', 'pass1' ); ?>" size="20" value="" autocomplete="off" />
-					<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength Indicator', 'paid-memberships-pro' ); ?></div>
+					<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength Indicator', 'digital-members-rfid' ); ?></div>
 					<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php echo wp_get_password_hint(); ?></p>
 				</div>
 				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password-field dmrfid_reset_password-field-pass2', 'dmrfid_reset_password-field-pass2' ); ?>">
-					<label for="pass2"><?php esc_html_e( 'Confirm New Password', 'paid-memberships-pro' ) ?></label>
+					<label for="pass2"><?php esc_html_e( 'Confirm New Password', 'digital-members-rfid' ) ?></label>
 					<input type="password" name="pass2" id="pass2" class="<?php echo dmrfid_get_element_class( 'input', 'pass2' ); ?>" size="20" value="" autocomplete="off" />
 				</div>
 			</div> <!-- end dmrfid_reset_password-fields -->
 			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
-				<input type="submit" name="submit" id="resetpass-button" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e( 'Reset Password', 'paid-memberships-pro' ); ?>" />
+				<input type="submit" name="submit" id="resetpass-button" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e( 'Reset Password', 'digital-members-rfid' ); ?>" />
 			</div>
 		</form>
 		<?php
@@ -666,21 +666,21 @@ function dmrfid_login_forms_handler_nav( $dmrfid_form ) { ?>
 			$links = array();
 
 			if ( $dmrfid_form != 'login' ) {
-				$links['login'] = sprintf( '<a href="%s">%s</a>', esc_url( dmrfid_login_url() ), esc_html__( 'Log In', 'paid-memberships-pro' ) );
+				$links['login'] = sprintf( '<a href="%s">%s</a>', esc_url( dmrfid_login_url() ), esc_html__( 'Log In', 'digital-members-rfid' ) );
 			}
 
 			if ( apply_filters( 'dmrfid_show_register_link', get_option( 'users_can_register' ) ) ) {
 				$levels_page_id = dmrfid_getOption( 'levels_page_id' );
 
 				if ( $levels_page_id && dmrfid_are_any_visible_levels() ) {
-					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( dmrfid_url( 'levels' ) ), esc_html__( 'Join Now', 'paid-memberships-pro' ) );
+					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( dmrfid_url( 'levels' ) ), esc_html__( 'Join Now', 'digital-members-rfid' ) );
 				} else {
-					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), esc_html__( 'Register', 'paid-memberships-pro' ) );
+					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), esc_html__( 'Register', 'digital-members-rfid' ) );
 				}
 			}
 
 			if ( $dmrfid_form != 'lost_password' ) {
-				$links['lost_password'] = sprintf( '<a href="%s">%s</a>', esc_url( add_query_arg( 'action', urlencode( 'reset_pass' ), dmrfid_login_url() ) ), esc_html__( 'Lost Password?', 'paid-memberships-pro' ) );
+				$links['lost_password'] = sprintf( '<a href="%s">%s</a>', esc_url( add_query_arg( 'action', urlencode( 'reset_pass' ), dmrfid_login_url() ) ), esc_html__( 'Lost Password?', 'digital-members-rfid' ) );
 			}
 
 			$links = apply_filters( 'dmrfid_login_forms_handler_nav', $links, $dmrfid_form );
@@ -758,7 +758,7 @@ function dmrfid_do_password_reset() {
             reset_password( $user, $_POST['pass1'] );
             wp_redirect( add_query_arg( urlencode( 'password' ), urlencode( 'changed' ), $redirect_url ) );
         } else {
-           esc_html_e( 'Invalid Request', 'paid-memberships-pro' );
+           esc_html_e( 'Invalid Request', 'digital-members-rfid' );
         }
 
         exit;
@@ -827,7 +827,7 @@ add_filter( 'wp_new_user_notification_email', 'dmrfid_new_user_notification_emai
 
 	// For some reason, WP core doesn't recognize this error.
 	if ( ! empty( $username ) && empty( $password ) ) {
-		$user = new WP_Error( 'invalid_username', __( 'There was a problem with your username or password.', 'paid-memberships-pro' ) );
+		$user = new WP_Error( 'invalid_username', __( 'There was a problem with your username or password.', 'digital-members-rfid' ) );
 	}
 
 	// check what page the login attempt is coming from
@@ -899,7 +899,7 @@ function dmrfid_logged_in_welcome( $show_menu = true, $show_logout_link = true )
 		<h3 class="<?php echo dmrfid_get_element_class( 'dmrfid_member_display_name' ); ?>">
 			<?php
 				/* translators: a generated link to the user's account or profile page */
-				printf( esc_html__( 'Welcome, %s', 'paid-memberships-pro' ), $user_account_link );
+				printf( esc_html__( 'Welcome, %s', 'digital-members-rfid' ), $user_account_link );
 			?>
 		</h3>
 
@@ -933,7 +933,7 @@ function dmrfid_logged_in_welcome( $show_menu = true, $show_logout_link = true )
 		 *
 		 */
 		if ( ! empty ( $show_logout_link ) ) { ?>
-			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_member_log_out' ); ?>"><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Log Out', 'paid-memberships-pro' ); ?></a></div>
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_member_log_out' ); ?>"><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Log Out', 'digital-members-rfid' ); ?></a></div>
 			<?php
 		}
 	}

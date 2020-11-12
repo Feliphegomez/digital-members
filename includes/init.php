@@ -173,7 +173,7 @@ add_action('init', 'dmrfid_set_current_user');
  * Add Membership Level to Users page in WordPress dashboard.
  */
 function dmrfid_manage_users_columns($columns) {
-    $columns['dmrfid_membership_level'] = __('Membership Level', 'paid-memberships-pro' );
+    $columns['dmrfid_membership_level'] = __('Membership Level', 'digital-members-rfid' );
     return $columns;
 }
 
@@ -195,7 +195,7 @@ function dmrfid_manage_users_custom_column($column_data, $column_name, $user_id)
             $column_data = implode(', ', $level_names);
         }
         else
-            $column_data = __('None', 'paid-memberships-pro' );
+            $column_data = __('None', 'digital-members-rfid' );
     }
     return $column_data;
 }

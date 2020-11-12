@@ -15,7 +15,7 @@
 
 global $dmrfid_reports;
 
-$dmrfid_reports['memberships'] = __('Membership Stats', 'paid-memberships-pro' );
+$dmrfid_reports['memberships'] = __('Membership Stats', 'digital-members-rfid' );
 
 //queue Google Visualization JS on report page
 function dmrfid_report_memberships_init() {
@@ -58,16 +58,16 @@ function dmrfid_report_memberships_widget() {
 	<thead>
 		<tr>
 			<th scope="col">&nbsp;</th>
-			<th scope="col"><?php _e('Signups', 'paid-memberships-pro' ); ?></th>
-			<th scope="col"><?php _e('All Cancellations', 'paid-memberships-pro' ); ?></th>
+			<th scope="col"><?php _e('Signups', 'digital-members-rfid' ); ?></th>
+			<th scope="col"><?php _e('All Cancellations', 'digital-members-rfid' ); ?></th>
 		</tr>
 	</thead>
 	<?php
 		$reports = array(
-			'today'=> __('Today', 'paid-memberships-pro' ),
-			'this month'=> __('This Month', 'paid-memberships-pro' ),
-			'this year'=> __('This Year', 'paid-memberships-pro' ),
-			'all time'=> __('All Time', 'paid-memberships-pro' ),
+			'today'=> __('Today', 'digital-members-rfid' ),
+			'this month'=> __('This Month', 'digital-members-rfid' ),
+			'this year'=> __('This Year', 'digital-members-rfid' ),
+			'all time'=> __('All Time', 'digital-members-rfid' ),
 		);
 
 		foreach( $reports as $report_type => $report_name ) {
@@ -111,7 +111,7 @@ function dmrfid_report_memberships_widget() {
 	</table>
 	<?php if ( function_exists( 'dmrfid_report_memberships_page' ) ) { ?>
 		<p class="dmrfid_report-button">
-			<a class="button button-primary" href="<?php echo esc_url(admin_url( 'admin.php?page=dmrfid-reports&report=memberships')); ?>"><?php _e('Details', 'paid-memberships-pro' );?></a>
+			<a class="button button-primary" href="<?php echo esc_url(admin_url( 'admin.php?page=dmrfid-reports&report=memberships')); ?>"><?php _e('Details', 'digital-members-rfid' );?></a>
 		</p>
 	<?php } ?>
 </span>
@@ -342,22 +342,22 @@ function dmrfid_report_memberships_page()
 	?>
 	<form id="posts-filter" method="get" action="">
 	<h1>
-		<?php _e('Membership Stats', 'paid-memberships-pro' );?>
+		<?php _e('Membership Stats', 'digital-members-rfid' );?>
 	</h1>
 	<ul class="subsubsub">
 		<li>
-			<?php _e('Show', 'paid-memberships-pro' )?>
+			<?php _e('Show', 'digital-members-rfid' )?>
 			<select id="period" name="period">
-				<option value="daily" <?php selected($period, "daily");?>><?php _e('Daily', 'paid-memberships-pro' );?></option>
-				<option value="monthly" <?php selected($period, "monthly");?>><?php _e('Monthly', 'paid-memberships-pro' );?></option>
-				<option value="annual" <?php selected($period, "annual");?>><?php _e('Annual', 'paid-memberships-pro' );?></option>
+				<option value="daily" <?php selected($period, "daily");?>><?php _e('Daily', 'digital-members-rfid' );?></option>
+				<option value="monthly" <?php selected($period, "monthly");?>><?php _e('Monthly', 'digital-members-rfid' );?></option>
+				<option value="annual" <?php selected($period, "annual");?>><?php _e('Annual', 'digital-members-rfid' );?></option>
 			</select>
 			<select id="type" name="type">
-				<option value="signup_v_all" <?php selected($type, "signup_v_all");?>><?php _e('Signups vs. All Cancellations', 'paid-memberships-pro' );?></option>
-				<option value="signup_v_cancel" <?php selected($type, "signup_v_cancel");?>><?php _e('Signups vs. Cancellations', 'paid-memberships-pro' );?></option>
-				<option value="signup_v_expiration" <?php selected($type, "signup_v_expiration");?>><?php _e('Signups vs. Expirations', 'paid-memberships-pro' );?></option>
+				<option value="signup_v_all" <?php selected($type, "signup_v_all");?>><?php _e('Signups vs. All Cancellations', 'digital-members-rfid' );?></option>
+				<option value="signup_v_cancel" <?php selected($type, "signup_v_cancel");?>><?php _e('Signups vs. Cancellations', 'digital-members-rfid' );?></option>
+				<option value="signup_v_expiration" <?php selected($type, "signup_v_expiration");?>><?php _e('Signups vs. Expirations', 'digital-members-rfid' );?></option>
 			</select>
-			<span id="for"><?php _e('for', 'paid-memberships-pro' )?></span>
+			<span id="for"><?php _e('for', 'digital-members-rfid' )?></span>
 			<select id="month" name="month">
 				<?php for($i = 1; $i < 13; $i++) { ?>
 					<option value="<?php echo esc_attr($i);?>" <?php selected($month, $i);?>><?php echo esc_html(date_i18n("F", mktime(0, 0, 0, $i, 2)));?></option>
@@ -368,11 +368,11 @@ function dmrfid_report_memberships_page()
 					<option value="<?php echo esc_attr($i);?>" <?php selected($year, $i);?>><?php echo esc_html($i);?></option>
 				<?php } ?>
 			</select>
-			<span id="for"><?php _e('for', 'paid-memberships-pro' )?></span>
+			<span id="for"><?php _e('for', 'digital-members-rfid' )?></span>
 			<select name="level">
-				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' );?></option>
-				<option value="paid-levels" <?php if(isset($_REQUEST['level']) && $_REQUEST['level'] == "paid-levels"){?> selected="selected" <?php }?>><?php _e( 'All Paid Levels', 'paid-memberships-pro' ); ?></option>
-				<option value="free-levels" <?php if(isset($_REQUEST['level']) && $_REQUEST['level'] == "free-levels"){?> selected="selected" <?php }?>><?php _e( 'All Free Levels', 'paid-memberships-pro' ); ?></option>
+				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'digital-members-rfid' );?></option>
+				<option value="paid-levels" <?php if(isset($_REQUEST['level']) && $_REQUEST['level'] == "paid-levels"){?> selected="selected" <?php }?>><?php _e( 'All Paid Levels', 'digital-members-rfid' ); ?></option>
+				<option value="free-levels" <?php if(isset($_REQUEST['level']) && $_REQUEST['level'] == "free-levels"){?> selected="selected" <?php }?>><?php _e( 'All Free Levels', 'digital-members-rfid' ); ?></option>
 				<?php
 					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->dmrfid_membership_levels ORDER BY name");
 					foreach($levels as $level)
@@ -391,7 +391,7 @@ function dmrfid_report_memberships_page()
 			$codes = $wpdb->get_results($sqlQuery, OBJECT);
 			if ( ! empty( $codes ) ) { ?>
 			<select id="discount_code" name="discount_code">
-				<option value="" <?php if ( empty( $discount_code ) ) { ?>selected="selected"<?php } ?>><?php _e('All Codes', 'paid-memberships-pro' );?></option>
+				<option value="" <?php if ( empty( $discount_code ) ) { ?>selected="selected"<?php } ?>><?php _e('All Codes', 'digital-members-rfid' );?></option>
 				<?php foreach ( $codes as $code ) { ?>
 					<option value="<?php echo esc_attr($code->id); ?>" <?php selected( $discount_code, $code->id ); ?>><?php echo esc_html($code->code); ?></option>
 				<?php } ?>
@@ -399,7 +399,7 @@ function dmrfid_report_memberships_page()
 			<?php } ?>
 			<input type="hidden" name="page" value="dmrfid-reports" />
 			<input type="hidden" name="report" value="memberships" />
-			<input type="submit" class="button" value="<?php esc_attr_e('Generate Report', 'paid-memberships-pro' );?>" />
+			<input type="submit" class="button" value="<?php esc_attr_e('Generate Report', 'digital-members-rfid' );?>" />
 		</li>
 	</ul>
 

@@ -29,15 +29,15 @@ const all_levels = [{ value: 0, label: "Non-Members" }].concat( dmrfid.all_level
  export default registerBlockType(
      'dmrfid/membership',
      {
-         title: __( 'Require Membership Block', 'paid-memberships-pro' ),
-         description: __( 'Control the visibility of nested blocks for members or non-members.', 'paid-memberships-pro' ),
+         title: __( 'Require Membership Block', 'digital-members-rfid' ),
+         description: __( 'Control the visibility of nested blocks for members or non-members.', 'digital-members-rfid' ),
          category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'visibility',
          },
-         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'digital-members-rfid' ) ],
          attributes: {
              levels: {
                  type: 'array',
@@ -59,7 +59,7 @@ const all_levels = [{ value: 0, label: "Non-Members" }].concat( dmrfid.all_level
                     <PanelBody>
                         <SelectControl
                             multiple
-                            label={ __( 'Select levels to show content to:', 'paid-memberships-pro' ) }
+                            label={ __( 'Select levels to show content to:', 'digital-members-rfid' ) }
                             value={ levels }
                             onChange={ levels => { setAttributes( { levels } ) } }
                             options={ all_levels }
@@ -67,11 +67,11 @@ const all_levels = [{ value: 0, label: "Non-Members" }].concat( dmrfid.all_level
                     </PanelBody>
                 </InspectorControls>,
                 isSelected && <div className="dmrfid-block-require-membership-element" >
-                  <span className="dmrfid-block-title">{ __( 'Require Membership', 'paid-memberships-pro' ) }</span>
+                  <span className="dmrfid-block-title">{ __( 'Require Membership', 'digital-members-rfid' ) }</span>
                   <PanelBody>
                       <SelectControl
                           multiple
-                          label={ __( 'Select levels to show content to:', 'paid-memberships-pro' ) }
+                          label={ __( 'Select levels to show content to:', 'digital-members-rfid' ) }
                           value={ levels }
                           onChange={ levels => { setAttributes( { levels } ) } }
                           options={ all_levels }
@@ -85,7 +85,7 @@ const all_levels = [{ value: 0, label: "Non-Members" }].concat( dmrfid.all_level
                   />
                 </div>,
                 ! isSelected && <div className="dmrfid-block-require-membership-element" >
-                  <span className="dmrfid-block-title">{ __( 'Require Membership', 'paid-memberships-pro' ) }</span>
+                  <span className="dmrfid-block-title">{ __( 'Require Membership', 'digital-members-rfid' ) }</span>
                   <InnerBlocks
                       renderAppender={ () => (
                         <InnerBlocks.ButtonBlockAppender />

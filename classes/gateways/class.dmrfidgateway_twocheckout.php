@@ -56,7 +56,7 @@
 		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['twocheckout']))
-				$gateways['twocheckout'] = __('2Checkout', 'paid-memberships-pro' );
+				$gateways['twocheckout'] = __('2Checkout', 'digital-members-rfid' );
 
 			return $gateways;
 		}
@@ -112,12 +112,12 @@
 		<tr class="dmrfid_settings_divider gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
-				<h2 class="title"><?php esc_html_e( '2Checkout Settings', 'paid-memberships-pro' ); ?></h2>
+				<h2 class="title"><?php esc_html_e( '2Checkout Settings', 'digital-members-rfid' ); ?></h2>
 			</td>
 		</tr>
 		<tr class="gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="twocheckout_apiusername"><?php _e('API Username', 'paid-memberships-pro' );?>:</label>
+				<label for="twocheckout_apiusername"><?php _e('API Username', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="twocheckout_apiusername" name="twocheckout_apiusername" value="<?php echo esc_attr($values['twocheckout_apiusername'])?>" class="regular-text code" />
@@ -126,37 +126,37 @@
 		</tr>
 		<tr class="gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="twocheckout_apipassword"><?php _e('API Password', 'paid-memberships-pro' );?>:</label>
+				<label for="twocheckout_apipassword"><?php _e('API Password', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" id="twocheckout_apipassword" name="twocheckout_apipassword" value="<?php echo esc_attr($values['twocheckout_apipassword'])?>" class="regular-text code" />
-				<p class="description"><?php esc_html_e( 'Password for the API user created.', 'paid-memberships-pro' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Password for the API user created.', 'digital-members-rfid' ); ?></p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="twocheckout_accountnumber"><?php _e('Account Number', 'paid-memberships-pro' );?>:</label>
+				<label for="twocheckout_accountnumber"><?php _e('Account Number', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" name="twocheckout_accountnumber" value="<?php echo $values['twocheckout_accountnumber']?>" class="regular-text code" />
-				<p class="description"><?php esc_html_e( 'Click on the profile icon in 2Checkout to find your Account Number.', 'paid-memberships-pro' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Click on the profile icon in 2Checkout to find your Account Number.', 'digital-members-rfid' ); ?></p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label for="twocheckout_secretword"><?php _e('Secret Word', 'paid-memberships-pro' );?>:</label>
+				<label for="twocheckout_secretword"><?php _e('Secret Word', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
 				<input type="text" name="twocheckout_secretword" size="60" value="<?php echo $values['twocheckout_secretword']?>" />
-				<p class="description"><?php _e('Go to Account &raquo; Site Management. Look under Checkout Options to find the Secret Word.', 'paid-memberships-pro' ); ?></p>
+				<p class="description"><?php _e('Go to Account &raquo; Site Management. Look under Checkout Options to find the Secret Word.', 'digital-members-rfid' ); ?></p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<th scope="row" valign="top">
-				<label><?php _e('TwoCheckout INS URL', 'paid-memberships-pro' );?>:</label>
+				<label><?php _e('TwoCheckout INS URL', 'digital-members-rfid' );?>:</label>
 			</th>
 			<td>
-				<p><?php _e('To fully integrate with 2Checkout, be sure to use the following for your INS URL and Approved URL', 'paid-memberships-pro' );?></p>
+				<p><?php _e('To fully integrate with 2Checkout, be sure to use the following for your INS URL and Approved URL', 'digital-members-rfid' );?></p>
 				<p><code><?php echo admin_url("admin-ajax.php") . "?action=twocheckout-ins";?></code></p>
 
 			</td>
@@ -202,7 +202,7 @@
 			?>
 			<span id="dmrfid_submit_span">
 				<input type="hidden" name="submit-checkout" value="1" />
-				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit-checkout', 'dmrfid_btn-submit-checkout' ); ?>" value="<?php if($dmrfid_requirebilling) { _e('Check Out with 2Checkout', 'paid-memberships-pro' ); } else { _e('Submit and Confirm', 'paid-memberships-pro' );}?> &raquo;" />
+				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit-checkout', 'dmrfid_btn-submit-checkout' ); ?>" value="<?php if($dmrfid_requirebilling) { _e('Check Out with 2Checkout', 'digital-members-rfid' ); } else { _e('Submit and Confirm', 'digital-members-rfid' );}?> &raquo;" />
 			</span>
 			<?php
 

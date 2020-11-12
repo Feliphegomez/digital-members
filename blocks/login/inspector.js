@@ -26,7 +26,7 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody>
 					<ToggleControl
-						label={__("Display 'Welcome' content when logged in.", "paid-memberships-pro")}
+						label={__("Display 'Welcome' content when logged in.", "digital-members-rfid")}
 						checked={display_if_logged_in}
 						onChange={(value) => {
 							this.props.setAttributes({
@@ -35,7 +35,7 @@ export default class Inspector extends Component {
 						}}
 					/>
 					<ToggleControl
-						label={__("Display the 'Log In Widget' menu.", "paid-memberships-pro")}
+						label={__("Display the 'Log In Widget' menu.", "digital-members-rfid")}
 						help={__("Assign the menu under Appearance > Menus.")}
 						checked={show_menu}
 						onChange={(value) => {
@@ -45,7 +45,7 @@ export default class Inspector extends Component {
 						}}
 					/>
 					<ToggleControl
-						label={__("Display a 'Log Out' link.", "paid-memberships-pro")}
+						label={__("Display a 'Log Out' link.", "digital-members-rfid")}
 						checked={show_logout_link}
 						onChange={(value) => {
 							this.props.setAttributes({

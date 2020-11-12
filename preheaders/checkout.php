@@ -34,7 +34,7 @@ if ( dmrfid_getOption( "gateway", true ) == "paypal" ) {
 
 //let's add an error now, if an invalid gateway is set
 if ( ! in_array( $gateway, $valid_gateways ) ) {
-	$dmrfid_msg  = __( "Invalid gateway.", 'paid-memberships-pro' );
+	$dmrfid_msg  = __( "Invalid gateway.", 'digital-members-rfid' );
 	$dmrfid_msgt = "dmrfid_error";
 }
 
@@ -69,12 +69,12 @@ global $wpdb, $current_user, $dmrfid_requirebilling;
 
 if ( ! dmrfid_isLevelFree( $dmrfid_level ) ) {
 	//require billing and ssl
-	$pagetitle            = __( "Checkout: Payment Information", 'paid-memberships-pro' );
+	$pagetitle            = __( "Checkout: Payment Information", 'digital-members-rfid' );
 	$dmrfid_requirebilling = true;
 	$besecure             = dmrfid_getOption( "use_ssl" );
 } else {
 	//no payment so we don't need ssl
-	$pagetitle            = __( "Set Up Your Account", 'paid-memberships-pro' );
+	$pagetitle            = __( "Set Up Your Account", 'digital-members-rfid' );
 	$dmrfid_requirebilling = false;
 	$besecure             = false;
 }
@@ -298,7 +298,7 @@ if ( $submit && $dmrfid_msgt != "dmrfid_error" ) {
 
 	//make sure javascript is ok
 	if ( apply_filters( "dmrfid_require_javascript_for_checkout", true ) && ! empty( $_REQUEST['checkjavascript'] ) && empty( $_REQUEST['javascriptok'] ) ) {
-		dmrfid_setMessage( __( "There are JavaScript errors on the page. Please contact the webmaster.", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "There are JavaScript errors on the page. Please contact the webmaster.", 'digital-members-rfid' ), "dmrfid_error" );
 	}
 
 	// If we're skipping the account fields and there is no user, we need to create a username and password.
@@ -333,32 +333,32 @@ if ( $submit && $dmrfid_msgt != "dmrfid_error" ) {
 	}
 
 	if ( ! empty( $dmrfid_error_fields ) ) {
-		dmrfid_setMessage( __( "Please complete all required fields.", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "Please complete all required fields.", 'digital-members-rfid' ), "dmrfid_error" );
 	}
 	if ( ! empty( $password ) && $password != $password2 ) {
-		dmrfid_setMessage( __( "Your passwords do not match. Please try again.", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "Your passwords do not match. Please try again.", 'digital-members-rfid' ), "dmrfid_error" );
 		$dmrfid_error_fields[] = "password";
 		$dmrfid_error_fields[] = "password2";
 	}
 	if ( strcasecmp($bemail, $bconfirmemail) !== 0 ) {
-		dmrfid_setMessage( __( "Your email addresses do not match. Please try again.", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "Your email addresses do not match. Please try again.", 'digital-members-rfid' ), "dmrfid_error" );
 		$dmrfid_error_fields[] = "bemail";
 		$dmrfid_error_fields[] = "bconfirmemail";
 	}
 	if ( ! empty( $bemail ) && ! is_email( $bemail ) ) {
-		dmrfid_setMessage( __( "The email address entered is in an invalid format. Please try again.", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "The email address entered is in an invalid format. Please try again.", 'digital-members-rfid' ), "dmrfid_error" );
 		$dmrfid_error_fields[] = "bemail";
 		$dmrfid_error_fields[] = "bconfirmemail";
 	}
 	if ( ! empty( $tospage ) && empty( $tos ) ) {
-		dmrfid_setMessage( sprintf( __( "Please check the box to agree to the %s.", 'paid-memberships-pro' ), $tospage->post_title ), "dmrfid_error" );
+		dmrfid_setMessage( sprintf( __( "Please check the box to agree to the %s.", 'digital-members-rfid' ), $tospage->post_title ), "dmrfid_error" );
 		$dmrfid_error_fields[] = "tospage";
 	}
 	if ( ! in_array( $gateway, $valid_gateways ) ) {
-		dmrfid_setMessage( __( "Invalid gateway.", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "Invalid gateway.", 'digital-members-rfid' ), "dmrfid_error" );
 	}
 	if ( ! empty( $fullname ) ) {
-		dmrfid_setMessage( __( "Are you a spammer?", 'paid-memberships-pro' ), "dmrfid_error" );
+		dmrfid_setMessage( __( "Are you a spammer?", 'digital-members-rfid' ), "dmrfid_error" );
 	}
 
 	if ( $dmrfid_msgt == "dmrfid_error" ) {
@@ -379,12 +379,12 @@ if ( $submit && $dmrfid_msgt != "dmrfid_error" ) {
 		}
 
 		if ( ! empty( $ouser->user_login ) ) {
-			dmrfid_setMessage( __( "That username is already taken. Please try another.", 'paid-memberships-pro' ), "dmrfid_error" );
+			dmrfid_setMessage( __( "That username is already taken. Please try another.", 'digital-members-rfid' ), "dmrfid_error" );
 			$dmrfid_error_fields[] = "username";
 		}
 
 		if ( ! empty( $oldemail ) ) {
-			dmrfid_setMessage( __( "That email address is already in use. Please log in, or use a different email address.", 'paid-memberships-pro' ), "dmrfid_error" );
+			dmrfid_setMessage( __( "That email address is already in use. Please log in, or use a different email address.", 'digital-members-rfid' ), "dmrfid_error" );
 			$dmrfid_error_fields[] = "bemail";
 			$dmrfid_error_fields[] = "bconfirmemail";
 		}
@@ -416,7 +416,7 @@ if ( $submit && $dmrfid_msgt != "dmrfid_error" ) {
 				}
 
 				if ( ! $recaptcha_valid ) {
-					$dmrfid_msg  = sprintf( __( "reCAPTCHA failed. (%s) Please try again.", 'paid-memberships-pro' ), $recaptcha_errors );
+					$dmrfid_msg  = sprintf( __( "reCAPTCHA failed. (%s) Please try again.", 'digital-members-rfid' ), $recaptcha_errors );
 					$dmrfid_msgt = "dmrfid_error";
 				} else {
 					// Your code here to handle a successful verification
@@ -442,13 +442,13 @@ if ( $submit && $dmrfid_msgt != "dmrfid_error" ) {
 					$dmrfid_processed = $morder->process();
 
 					if ( ! empty( $dmrfid_processed ) ) {
-						$dmrfid_msg       = __( "Payment accepted.", 'paid-memberships-pro' );
+						$dmrfid_msg       = __( "Payment accepted.", 'digital-members-rfid' );
 						$dmrfid_msgt      = "dmrfid_success";
 						$dmrfid_confirmed = true;
 					} else {
 						$dmrfid_msg = !empty( $morder->error ) ? $morder->error : null;
 						if ( empty( $dmrfid_msg ) ) {
-							$dmrfid_msg = __( "Unknown error generating account. Please contact us to set up your membership.", 'paid-memberships-pro' );
+							$dmrfid_msg = __( "Unknown error generating account. Please contact us to set up your membership.", 'digital-members-rfid' );
 						}
 						
 						if ( ! empty( $morder->error_type ) ) {
@@ -534,7 +534,7 @@ if ( ! empty( $dmrfid_confirmed ) ) {
 				$e_msg = $user_id->get_error_message();
 			}
 
-			$dmrfid_msg  = __( "Your payment was accepted, but there was an error setting up your account. Please contact us.", 'paid-memberships-pro' ) . sprintf( " %s", $e_msg ); // Dirty 'don't break translation hack.
+			$dmrfid_msg  = __( "Your payment was accepted, but there was an error setting up your account. Please contact us.", 'digital-members-rfid' ) . sprintf( " %s", $e_msg ); // Dirty 'don't break translation hack.
 			$dmrfid_msgt = "dmrfid_error";
 		} elseif ( apply_filters( 'dmrfid_setup_new_user', true, $user_id, $new_user_array, $dmrfid_level ) ) {
 
@@ -770,10 +770,10 @@ if ( ! empty( $dmrfid_confirmed ) ) {
 			// test that the order object contains data
 			$test = (array) $morder;
 			if ( ! empty( $test ) && $morder->cancel() ) {
-				$dmrfid_msg = __( "IMPORTANT: Something went wrong during membership creation. Your credit card authorized, but we cancelled the order immediately. You should not try to submit this form again. Please contact the site owner to fix this issue.", 'paid-memberships-pro' );
+				$dmrfid_msg = __( "IMPORTANT: Something went wrong during membership creation. Your credit card authorized, but we cancelled the order immediately. You should not try to submit this form again. Please contact the site owner to fix this issue.", 'digital-members-rfid' );
 				$morder    = null;
 			} else {
-				$dmrfid_msg = __( "IMPORTANT: Something went wrong during membership creation. Your credit card was charged, but we couldn't assign your membership. You should not submit this form again. Please contact the site owner to fix this issue.", 'paid-memberships-pro' );
+				$dmrfid_msg = __( "IMPORTANT: Something went wrong during membership creation. Your credit card was charged, but we couldn't assign your membership. You should not submit this form again. Please contact the site owner to fix this issue.", 'digital-members-rfid' );
 			}
 		}
 	}
@@ -784,9 +784,9 @@ if ( empty( $submit ) ) {
 	//show message if the payment gateway is not setup yet
 	if ( $dmrfid_requirebilling && ! dmrfid_getOption( "gateway", true ) ) {
 		if ( dmrfid_isAdmin() ) {
-			$dmrfid_msg = sprintf( __( 'You must <a href="%s">set up a Payment Gateway</a> before any payments will be processed.', 'paid-memberships-pro' ), get_admin_url( null, '/admin.php?page=dmrfid-paymentsettings' ) );
+			$dmrfid_msg = sprintf( __( 'You must <a href="%s">set up a Payment Gateway</a> before any payments will be processed.', 'digital-members-rfid' ), get_admin_url( null, '/admin.php?page=dmrfid-paymentsettings' ) );
 		} else {
-			$dmrfid_msg = __( "A Payment Gateway must be set up before any payments will be processed.", 'paid-memberships-pro' );
+			$dmrfid_msg = __( "A Payment Gateway must be set up before any payments will be processed.", 'digital-members-rfid' );
 		}
 		$dmrfid_msgt = "";
 	}

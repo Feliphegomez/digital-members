@@ -159,17 +159,17 @@ if ($submit) {
     }
 	
     if (!empty($missing_billing_field)) {
-        $dmrfid_msg = __("Please complete all required fields.", 'paid-memberships-pro' );
+        $dmrfid_msg = __("Please complete all required fields.", 'digital-members-rfid' );
         $dmrfid_msgt = "dmrfid_error";
     } elseif ($bemail != $bconfirmemail) {
-        $dmrfid_msg = __("Your email addresses do not match. Please try again.", 'paid-memberships-pro' );
+        $dmrfid_msg = __("Your email addresses do not match. Please try again.", 'digital-members-rfid' );
         $dmrfid_msgt = "dmrfid_error";
     } elseif (!is_email($bemail)) {
-        $dmrfid_msg = __("The email address entered is in an invalid format. Please try again.", 'paid-memberships-pro' );
+        $dmrfid_msg = __("The email address entered is in an invalid format. Please try again.", 'digital-members-rfid' );
         $dmrfid_msgt = "dmrfid_error";
     } else {
         //all good. update billing info.
-        $dmrfid_msg = __("All good!", 'paid-memberships-pro' );
+        $dmrfid_msg = __("All good!", 'digital-members-rfid' );
 
         //change this
         $order_id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE user_id = '" . $current_user->ID . "' AND membership_id = '" . $current_user->membership_level->ID . "' AND status = 'success' ORDER BY id DESC LIMIT 1");
@@ -236,13 +236,13 @@ if ($submit) {
             dmrfid_replaceUserMeta($current_user->ID, $meta_keys, $meta_values);
 
             //message
-            $dmrfid_msg = sprintf(__('Information updated. <a href="%s">&laquo; back to my account</a>', 'paid-memberships-pro' ), dmrfid_url("account"));
+            $dmrfid_msg = sprintf(__('Information updated. <a href="%s">&laquo; back to my account</a>', 'digital-members-rfid' ), dmrfid_url("account"));
             $dmrfid_msgt = "dmrfid_success";
         } else {
             $dmrfid_msg = $morder->error;
 
             if (!$dmrfid_msg)
-                $dmrfid_msg = __("Error updating billing information.", 'paid-memberships-pro' );
+                $dmrfid_msg = __("Error updating billing information.", 'digital-members-rfid' );
             $dmrfid_msgt = "dmrfid_error";
         }
     }

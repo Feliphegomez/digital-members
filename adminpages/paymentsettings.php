@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_paymentsettings")))
 	{
-		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
+		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
 	}
 
 	global $wpdb, $dmrfid_currency_symbol, $msg, $msgt;
@@ -16,7 +16,7 @@
 	//check nonce for saving settings
 	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['dmrfid_paymentsettings_nonce']) || !check_admin_referer('savesettings', 'dmrfid_paymentsettings_nonce'))) {
 		$msg = -1;
-		$msgt = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
+		$msgt = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
 		unset($_REQUEST['savesettings']);
 	}
 
@@ -63,7 +63,7 @@
 
 		//assume success
 		$msg = true;
-		$msgt = __("Your payment settings have been updated.", 'paid-memberships-pro' );
+		$msgt = __("Your payment settings have been updated.", 'digital-members-rfid' );
 	}
 
 	/*
@@ -109,22 +109,22 @@
 	<form action="" method="post" enctype="multipart/form-data">
 		<?php wp_nonce_field('savesettings', 'dmrfid_paymentsettings_nonce');?>
 
-        <h1 class="wp-heading-inline"><?php esc_html_e( 'Payment Gateway', 'paid-memberships-pro' );?> &amp; <?php esc_html_e( 'SSL Settings', 'paid-memberships-pro' ); ?></h1>
+        <h1 class="wp-heading-inline"><?php esc_html_e( 'Payment Gateway', 'digital-members-rfid' );?> &amp; <?php esc_html_e( 'SSL Settings', 'digital-members-rfid' ); ?></h1>
         <hr class="wp-header-end">
 
-		<p><?php _e('Learn more about <a title="Digital Members RFID - SSL Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link1">SSL</a> or <a title="Digital Members RFID - Payment Gateway Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-3-payment-gateway-security/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=step-3-payment-gateway-security">Payment Gateway Settings</a>.', 'paid-memberships-pro' ); ?></p>
+		<p><?php _e('Learn more about <a title="Digital Members RFID - SSL Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link1">SSL</a> or <a title="Digital Members RFID - Payment Gateway Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-3-payment-gateway-security/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=step-3-payment-gateway-security">Payment Gateway Settings</a>.', 'digital-members-rfid' ); ?></p>
 
 		<table class="form-table">
 		<tbody>
 			<tr class="dmrfid_settings_divider">
 				<td colspan="2">
 					<hr />
-					<h3><?php _e('Choose a Gateway', 'paid-memberships-pro' ); ?></h3>
+					<h3><?php _e('Choose a Gateway', 'digital-members-rfid' ); ?></h3>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="gateway"><?php _e('Payment Gateway', 'paid-memberships-pro' );?>:</label>
+					<label for="gateway"><?php _e('Payment Gateway', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<select id="gateway" name="gateway" onchange="dmrfid_changeGateway(jQuery(this).val());">
@@ -139,18 +139,18 @@
 						?>
 					</select>
 					<?php if( dmrfid_onlyFreeLevels() ) { ?>
-						<div id="dmrfid-default-gateway-message" style="display:none;"><p class="description"><?php echo __( 'This gateway is for membership sites with Free levels or for sites that accept payment offline.', 'paid-memberships-pro' ) . '<br/>' . __( 'It is not connected to a live gateway environment and cannot accept payments.', 'paid-memberships-pro' ); ?></p></div>
+						<div id="dmrfid-default-gateway-message" style="display:none;"><p class="description"><?php echo __( 'This gateway is for membership sites with Free levels or for sites that accept payment offline.', 'digital-members-rfid' ) . '<br/>' . __( 'It is not connected to a live gateway environment and cannot accept payments.', 'digital-members-rfid' ); ?></p></div>
 					<?php } ?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="gateway_environment"><?php _e('Gateway Environment', 'paid-memberships-pro' );?>:</label>
+					<label for="gateway_environment"><?php _e('Gateway Environment', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<select name="gateway_environment">
-						<option value="sandbox" <?php selected( $gateway_environment, "sandbox" ); ?>><?php _e('Sandbox/Testing', 'paid-memberships-pro' );?></option>
-						<option value="live" <?php selected( $gateway_environment, "live" ); ?>><?php _e('Live/Production', 'paid-memberships-pro' );?></option>
+						<option value="sandbox" <?php selected( $gateway_environment, "sandbox" ); ?>><?php _e('Sandbox/Testing', 'digital-members-rfid' );?></option>
+						<option value="live" <?php selected( $gateway_environment, "live" ); ?>><?php _e('Live/Production', 'digital-members-rfid' );?></option>
 					</select>
 					<script>
 						function dmrfid_changeGateway(gateway)
@@ -184,12 +184,12 @@
 			<tr class="dmrfid_settings_divider">
 				<td colspan="2">
 					<hr />
-					<h3><?php _e('Currency and Tax Settings', 'paid-memberships-pro' ); ?></h3>
+					<h3><?php _e('Currency and Tax Settings', 'digital-members-rfid' ); ?></h3>
 				</td>
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("currency"));?>" <?php if(!empty($gateway) && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource" && $gateway != "payflowpro" && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "gourl") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
-					<label for="currency"><?php _e('Currency', 'paid-memberships-pro' );?>:</label>
+					<label for="currency"><?php _e('Currency', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<select name="currency">
@@ -205,12 +205,12 @@
 						}
 					?>
 					</select>
-					<p class="description"><?php _e( 'Not all currencies will be supported by every gateway. Please check with your gateway.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php _e( 'Not all currencies will be supported by every gateway. Please check with your gateway.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("accepted_credit_cards"));?>" <?php if(!empty($gateway) && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "stripe" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
-					<label for="creditcards"><?php _e('Accepted Credit Card Types', 'paid-memberships-pro' );?></label>
+					<label for="creditcards"><?php _e('Accepted Credit Card Types', 'digital-members-rfid' );?></label>
 				</th>
 				<td>
 					<input type="checkbox" id="creditcards_visa" name="creditcards_visa" value="1" <?php if(in_array("Visa", $dmrfid_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_visa">Visa</label><br />
@@ -224,43 +224,43 @@
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("tax_rate"));?>" <?php if(!empty($gateway) && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
-					<label for="tax"><?php _e('Sales Tax', 'paid-memberships-pro' );?> (<?php _e('optional', 'paid-memberships-pro' );?>)</label>
+					<label for="tax"><?php _e('Sales Tax', 'digital-members-rfid' );?> (<?php _e('optional', 'digital-members-rfid' );?>)</label>
 				</th>
 				<td>
-					<?php _e('Tax State', 'paid-memberships-pro' );?>:
-					<input type="text" id="tax_state" name="tax_state" value="<?php echo esc_attr($tax_state)?>" class="small-text" /> (<?php _e('abbreviation, e.g. "PA"', 'paid-memberships-pro' );?>)
-					&nbsp; <?php _e('Tax Rate', 'paid-memberships-pro' ); ?>:
-					<input type="text" id="tax_rate" name="tax_rate" size="10" value="<?php echo esc_attr($tax_rate)?>" class="small-text" /> (<?php _e('decimal, e.g. "0.06"', 'paid-memberships-pro' );?>)
-					<p class="description"><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="https://www.paidmembershipspro.com/non-us-taxes-paid-memberships-pro/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=non-us-taxes-paid-memberships-pro">dmrfid_tax filter</a>.', 'paid-memberships-pro' );?></p>
+					<?php _e('Tax State', 'digital-members-rfid' );?>:
+					<input type="text" id="tax_state" name="tax_state" value="<?php echo esc_attr($tax_state)?>" class="small-text" /> (<?php _e('abbreviation, e.g. "PA"', 'digital-members-rfid' );?>)
+					&nbsp; <?php _e('Tax Rate', 'digital-members-rfid' ); ?>:
+					<input type="text" id="tax_rate" name="tax_rate" size="10" value="<?php echo esc_attr($tax_rate)?>" class="small-text" /> (<?php _e('decimal, e.g. "0.06"', 'digital-members-rfid' );?>)
+					<p class="description"><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="https://www.paidmembershipspro.com/non-us-taxes-digital-members-rfid/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=non-us-taxes-digital-members-rfid">dmrfid_tax filter</a>.', 'digital-members-rfid' );?></p>
 				</td>
 			</tr>
 
 			<tr class="dmrfid_settings_divider">
 				<td colspan="2">
 					<hr />
-					<h3><?php _e('SSL Settings', 'paid-memberships-pro' ); ?></h3>
+					<h3><?php _e('SSL Settings', 'digital-members-rfid' ); ?></h3>
 				</td>
 			</tr>
 			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("use_ssl"));?>">
 				<th scope="row" valign="top">
-					<label for="use_ssl"><?php _e('Force SSL', 'paid-memberships-pro' );?>:</label>
+					<label for="use_ssl"><?php _e('Force SSL', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<?php
 						if( dmrfid_check_site_url_for_https() ) {
 							//entire site is over HTTPS
 							?>
-							<p class="description"><?php _e( 'Your Site URL starts with https:// and so DmRFID will allow your entire site to be served over HTTPS.', 'paid-memberships-pro' ); ?></p>
+							<p class="description"><?php _e( 'Your Site URL starts with https:// and so DmRFID will allow your entire site to be served over HTTPS.', 'digital-members-rfid' ); ?></p>
 							<?php
 						} else {
 							//site is not over HTTPS, show setting
 							?>
 							<select id="use_ssl" name="use_ssl">
-								<option value="0" <?php if(empty($use_ssl)) { ?>selected="selected"<?php } ?>><?php _e('No', 'paid-memberships-pro' );?></option>
-								<option value="1" <?php if(!empty($use_ssl) && $use_ssl == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes', 'paid-memberships-pro' );?></option>
-								<option value="2" <?php if(!empty($use_ssl) && $use_ssl == 2) { ?>selected="selected"<?php } ?>><?php _e('Yes (with JavaScript redirects)', 'paid-memberships-pro' );?></option>
+								<option value="0" <?php if(empty($use_ssl)) { ?>selected="selected"<?php } ?>><?php _e('No', 'digital-members-rfid' );?></option>
+								<option value="1" <?php if(!empty($use_ssl) && $use_ssl == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes', 'digital-members-rfid' );?></option>
+								<option value="2" <?php if(!empty($use_ssl) && $use_ssl == 2) { ?>selected="selected"<?php } ?>><?php _e('Yes (with JavaScript redirects)', 'digital-members-rfid' );?></option>
 							</select>
-							<p class="description"><?php _e('Recommended: Yes. Try the JavaScript redirects setting if you are having issues with infinite redirect loops.', 'paid-memberships-pro' ); ?></p>
+							<p class="description"><?php _e('Recommended: Yes. Try the JavaScript redirects setting if you are having issues with infinite redirect loops.', 'digital-members-rfid' ); ?></p>
 							<?php
 						}
 					?>
@@ -268,26 +268,26 @@
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="sslseal"><?php _e('SSL Seal Code', 'paid-memberships-pro' );?>:</label>
+					<label for="sslseal"><?php _e('SSL Seal Code', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<textarea id="sslseal" name="sslseal" rows="3" cols="50" class="large-text"><?php echo stripslashes(esc_textarea($sslseal))?></textarea>
-					<p class="description"><?php _e('Your <strong><a target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link2">SSL Certificate</a></strong> must be installed by your web host. Use this field to display your seal or other trusted merchant images. This field does not accept JavaScript.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php _e('Your <strong><a target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link2">SSL Certificate</a></strong> must be installed by your web host. Use this field to display your seal or other trusted merchant images. This field does not accept JavaScript.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="nuclear_HTTPS"><?php _e('Extra HTTPS URL Filter', 'paid-memberships-pro' );?>:</label>
+					<label for="nuclear_HTTPS"><?php _e('Extra HTTPS URL Filter', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
-					<input type="checkbox" id="nuclear_HTTPS" name="nuclear_HTTPS" value="1" <?php if(!empty($nuclear_HTTPS)) { ?>checked="checked"<?php } ?> /> <label for="nuclear_HTTPS"><?php _e('Pass all generated HTML through a URL filter to add HTTPS to URLs used on secure pages. Check this if you are using SSL and have warnings on your checkout pages.', 'paid-memberships-pro' );?></label>
+					<input type="checkbox" id="nuclear_HTTPS" name="nuclear_HTTPS" value="1" <?php if(!empty($nuclear_HTTPS)) { ?>checked="checked"<?php } ?> /> <label for="nuclear_HTTPS"><?php _e('Pass all generated HTML through a URL filter to add HTTPS to URLs used on secure pages. Check this if you are using SSL and have warnings on your checkout pages.', 'digital-members-rfid' );?></label>
 				</td>
 			</tr>
 
 		</tbody>
 		</table>
 		<p class="submit">
-			<input name="savesettings" type="submit" class="button button-primary" value="<?php _e('Save Settings', 'paid-memberships-pro' );?>" />
+			<input name="savesettings" type="submit" class="button button-primary" value="<?php _e('Save Settings', 'digital-members-rfid' );?>" />
 		</p>
 	</form>
 

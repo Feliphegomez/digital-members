@@ -28,8 +28,8 @@ const {
 export default registerBlockType(
      'dmrfid/checkout-button',
      {
-         title: __( 'Membership Checkout Button', 'paid-memberships-pro' ),
-         description: __( 'Displays a button-styled link to Membership Checkout for the specified level.', 'paid-memberships-pro' ),
+         title: __( 'Membership Checkout Button', 'digital-members-rfid' ),
+         description: __( 'Displays a button-styled link to Membership Checkout for the specified level.', 'digital-members-rfid' ),
          category: 'dmrfid',
          icon: {
             background: '#2997c8',
@@ -37,9 +37,9 @@ export default registerBlockType(
             src: 'migrate',
          },
          keywords: [ 
-             __( 'dmrfid', 'paid-memberships-pro' ), 
-             __( 'buy', 'paid-memberships-pro' ),
-             __( 'level', 'paid-memberships-pro' ),
+             __( 'dmrfid', 'digital-members-rfid' ), 
+             __( 'buy', 'digital-members-rfid' ),
+             __( 'level', 'digital-members-rfid' ),
          ],
          supports: {
          },
@@ -65,18 +65,18 @@ export default registerBlockType(
                 </div>,
                 isSelected && <div className="dmrfid-block-element">
                    <TextControl
-                       label={ __( 'Button Text', 'paid-memberships-pro' ) }
+                       label={ __( 'Button Text', 'digital-members-rfid' ) }
                        value={ text }
                        onChange={ text => setAttributes( { text } ) }
                    />
                    <SelectControl
-                       label={ __( 'Membership Level', 'paid-memberships-pro' ) }
+                       label={ __( 'Membership Level', 'digital-members-rfid' ) }
                        value={ level }
                        onChange={ level => setAttributes( { level } ) }
                        options={ window.dmrfid.all_level_values_and_labels }
                    />
                    <TextControl
-                       label={ __( 'CSS Class', 'paid-memberships-pro' ) }
+                       label={ __( 'CSS Class', 'digital-members-rfid' ) }
                        value={ css_class }
                        onChange={ css_class => setAttributes( { css_class } ) }
                    />

@@ -1,1 +1,1 @@
-wp.i18n.setLocaleData( { '': {} }, 'paid-memberships-pro' );
+wp.i18n.setLocaleData( { '': {} }, 'digital-members-rfid' );

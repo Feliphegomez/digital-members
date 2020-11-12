@@ -34,7 +34,7 @@ function dmrfid_page_meta() {
     </ul>
 	<?php
 		if( 'post' == get_post_type( $post ) && $in_member_cat ) { ?>
-		<p class="dmrfid_meta_notice">* <?php _e("This post is already protected for this level because it is within a category that requires membership.", 'paid-memberships-pro' );?></p>
+		<p class="dmrfid_meta_notice">* <?php _e("This post is already protected for this level because it is within a category that requires membership.", 'digital-members-rfid' );?></p>
 	<?php
 		}
 
@@ -103,8 +103,8 @@ function dmrfid_page_save( $post_id ) {
  * Wrapper to add meta boxes
  */
 function dmrfid_page_meta_wrapper() {
-	add_meta_box( 'dmrfid_page_meta', __( 'Require Membership', 'paid-memberships-pro' ), 'dmrfid_page_meta', 'page', 'side', 'high' );
-	add_meta_box( 'dmrfid_page_meta', __( 'Require Membership', 'paid-memberships-pro' ), 'dmrfid_page_meta', 'post', 'side', 'high' );
+	add_meta_box( 'dmrfid_page_meta', __( 'Require Membership', 'digital-members-rfid' ), 'dmrfid_page_meta', 'page', 'side', 'high' );
+	add_meta_box( 'dmrfid_page_meta', __( 'Require Membership', 'digital-members-rfid' ), 'dmrfid_page_meta', 'post', 'side', 'high' );
 }
 if ( is_admin() ) {
 	add_action( 'admin_menu', 'dmrfid_page_meta_wrapper' );
@@ -128,11 +128,11 @@ function dmrfid_taxonomy_meta( $term ) {
 	if( ! empty( $protectedlevels ) ) {
 	?>
 	<tr class="form-field">
-		<th scope="row" valign="top"><?php _e( 'Membership Levels', 'paid-memberships-pro' ); ?></label></th>
+		<th scope="row" valign="top"><?php _e( 'Membership Levels', 'digital-members-rfid' ); ?></label></th>
 		<td>
 			<p><strong>
 				<?php echo implode(', ',$protectedlevels); ?></strong></p>
-			<p class="description"><?php _e( 'Only members of these levels will be able to view posts in this category.', 'paid-memberships-pro' ); ?></p>
+			<p class="description"><?php _e( 'Only members of these levels will be able to view posts in this category.', 'digital-members-rfid' ); ?></p>
 		</td>
 	</tr>
 	<?php

@@ -34,7 +34,7 @@
 				$this->fromname = dmrfid_getOption("from_name");
 			
 			if(!$this->subject)
-				$this->subject = sprintf(__("An Email From %s", 'paid-memberships-pro' ), get_option("blogname"));
+				$this->subject = sprintf(__("An Email From %s", 'digital-members-rfid' ), get_option("blogname"));
 			
 			//decode the subject line in case there are apostrophes/etc in it
 			$this->subject = html_entity_decode($this->subject, ENT_QUOTES, 'UTF-8');
@@ -47,18 +47,18 @@
 			$this->attachments = array();
 			
 			//load the template			
-			$locale = apply_filters("plugin_locale", get_locale(), "paid-memberships-pro");
+			$locale = apply_filters("plugin_locale", get_locale(), "digital-members-rfid");
 
-			if(file_exists(get_stylesheet_directory() . "/paid-memberships-pro/email/" . $locale . "/" . $this->template . ".html"))
-				$this->body = file_get_contents(get_stylesheet_directory() . "/paid-memberships-pro/email/" . $locale . "/" . $this->template . ".html");	//localized email folder in child theme
-			elseif(file_exists(get_stylesheet_directory() . "/paid-memberships-pro/email/" . $this->template . ".html"))
-				$this->body = file_get_contents(get_stylesheet_directory() . "/paid-memberships-pro/email/" . $this->template . ".html");	//email folder in child theme
+			if(file_exists(get_stylesheet_directory() . "/digital-members-rfid/email/" . $locale . "/" . $this->template . ".html"))
+				$this->body = file_get_contents(get_stylesheet_directory() . "/digital-members-rfid/email/" . $locale . "/" . $this->template . ".html");	//localized email folder in child theme
+			elseif(file_exists(get_stylesheet_directory() . "/digital-members-rfid/email/" . $this->template . ".html"))
+				$this->body = file_get_contents(get_stylesheet_directory() . "/digital-members-rfid/email/" . $this->template . ".html");	//email folder in child theme
 			elseif(file_exists(get_stylesheet_directory() . "/membership-email-" . $this->template . ".html"))
 				$this->body = file_get_contents(get_stylesheet_directory() . "/membership-email-" . $this->template . ".html");			//membership-email- file in child theme
-			elseif(file_exists(get_template_directory() . "/paid-memberships-pro/email/" . $locale . "/" . $this->template . ".html"))	
-				$this->body = file_get_contents(get_template_directory() . "/paid-memberships-pro/email/" . $locale . "/" . $this->template . ".html");	//localized email folder in parent theme
-			elseif(file_exists(get_template_directory() . "/paid-memberships-pro/email/" . $this->template . ".html"))
-				$this->body = file_get_contents(get_template_directory() . "/paid-memberships-pro/email/" . $this->template . ".html");	//email folder in parent theme
+			elseif(file_exists(get_template_directory() . "/digital-members-rfid/email/" . $locale . "/" . $this->template . ".html"))	
+				$this->body = file_get_contents(get_template_directory() . "/digital-members-rfid/email/" . $locale . "/" . $this->template . ".html");	//localized email folder in parent theme
+			elseif(file_exists(get_template_directory() . "/digital-members-rfid/email/" . $this->template . ".html"))
+				$this->body = file_get_contents(get_template_directory() . "/digital-members-rfid/email/" . $this->template . ".html");	//email folder in parent theme
 			elseif(file_exists(get_template_directory() . "/membership-email-" . $this->template . ".html"))
 				$this->body = file_get_contents(get_template_directory() . "/membership-email-" . $this->template . ".html");			//membership-email- file in parent theme			
 			elseif(file_exists(WP_LANG_DIR . '/dmrfid/email/' . $locale . "/" . $this->template . ".html"))
@@ -75,7 +75,7 @@
 				$this->body = $this->data['body'];																						//data passed in
 
 			//header and footer
-			/* This is handled for all emails via the dmrfid_send_html function in paid-memberships-pro now
+			/* This is handled for all emails via the dmrfid_send_html function in digital-members-rfid now
 			if(file_exists(get_template_directory() . "/email_header.html"))
 			{
 				$this->body = file_get_contents(get_template_directory() . "/email_header.html") . "\n" . $this->body;
@@ -168,7 +168,7 @@
 				return false;
 			
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__('Your membership at %s has been CANCELLED', 'paid-memberships-pro'), get_option("blogname"));
+			$this->subject = sprintf(__('Your membership at %s has been CANCELLED', 'digital-members-rfid'), get_option("blogname"));
 
 			$this->data = array("user_email" => $user->user_email, "display_name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "siteemail" => dmrfid_getOption("from_email"));
 
@@ -179,7 +179,7 @@
 				$this->data['membership_level_name'] = dmrfid_implodeToEnglish($wpdb->get_col("SELECT name FROM $wpdb->dmrfid_membership_levels WHERE id IN('" . implode("','", $old_level_id) . "')"));
 			} else {
 				$this->data['membership_id'] = '';
-				$this->data['membership_level_name'] = __('All Levels', 'paid-memberships-pro' );
+				$this->data['membership_level_name'] = __('All Levels', 'digital-members-rfid' );
 			}
 
 			$this->template = apply_filters("dmrfid_email_template", "cancel", $this);
@@ -201,7 +201,7 @@
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
 			$this->email = get_bloginfo("admin_email");
-			$this->subject = sprintf(__("Membership for %s at %s has been CANCELLED", 'paid-memberships-pro'), $user->user_login, get_option("blogname"));			
+			$this->subject = sprintf(__("Membership for %s at %s has been CANCELLED", 'digital-members-rfid'), $user->user_login, get_option("blogname"));			
 
 			$this->data = array("user_login" => $user->user_login, "user_email" => $user->user_email, "display_name" => $user->display_name, "sitename" => get_option("blogname"), "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url());
 			
@@ -224,7 +224,7 @@
 					$this->data['enddate'] = "";
 			} else {
 				$this->data['membership_id'] = '';
-				$this->data['membership_level_name'] = __('All Levels', 'paid-memberships-pro' );
+				$this->data['membership_level_name'] = __('All Levels', 'digital-members-rfid' );
 				$this->data['startdate'] = '';
 				$this->data['enddate'] = '';
 			}
@@ -251,7 +251,7 @@
 			}
 			
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Your membership confirmation for %s", 'paid-memberships-pro' ), get_option("blogname"));	
+			$this->subject = sprintf(__("Your membership confirmation for %s", 'digital-members-rfid' ), get_option("blogname"));	
 			
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -310,7 +310,7 @@
 																	 $invoice->billing->phone);
 				
 				if($invoice->getDiscountCode())
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $invoice->discount_code->code . "</p>\n";
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $invoice->discount_code->code . "</p>\n";
 				else
 					$this->data["discount_code"] = "";
 			}
@@ -319,7 +319,7 @@
 				$this->template = "checkout_free";		
 				global $discount_code;
 				if(!empty($discount_code))
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $discount_code . "</p>\n";		
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $discount_code . "</p>\n";		
 				else
 					$this->data["discount_code"] = "";		
 			}						
@@ -328,14 +328,14 @@
 				$this->template = "checkout_freetrial";
 				global $discount_code;
 				if(!empty($discount_code))
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $discount_code . "</p>\n";		
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $discount_code . "</p>\n";		
 				else
 					$this->data["discount_code"] = "";	
 			}
 			
 			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
 			if($enddate)
-				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
+				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'digital-members-rfid' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
 			else
 				$this->data["membership_expiration"] = "";
 			
@@ -357,7 +357,7 @@
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
 			$this->email = get_bloginfo("admin_email");
-			$this->subject = sprintf(__("Member Checkout for %s at %s", 'paid-memberships-pro' ), $user->membership_level->name, get_option("blogname"));	
+			$this->subject = sprintf(__("Member Checkout for %s at %s", 'digital-members-rfid' ), $user->membership_level->name, get_option("blogname"));	
 			
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -410,7 +410,7 @@
 																	 $invoice->billing->phone);
 				
 				if($invoice->getDiscountCode())
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $invoice->discount_code->code . "</p>\n";
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $invoice->discount_code->code . "</p>\n";
 				else
 					$this->data["discount_code"] = "";
 			}
@@ -419,7 +419,7 @@
 				$this->template = "checkout_free_admin";		
 				global $discount_code;
 				if(!empty($discount_code))
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $discount_code . "</p>\n";		
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $discount_code . "</p>\n";		
 				else
 					$this->data["discount_code"] = "";	
 			}						
@@ -431,7 +431,7 @@
 			
 			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
 			if($enddate)
-				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
+				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'digital-members-rfid' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
 			else
 				$this->data["membership_expiration"] = "";
 			
@@ -448,7 +448,7 @@
 				return false;
 			
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Your billing information has been updated at %s", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("Your billing information has been updated at %s", "digital-members-rfid"), get_option("blogname"));
 
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -502,7 +502,7 @@
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
 			$this->email = get_bloginfo("admin_email");
-			$this->subject = sprintf(__("Billing information has been updated for %s at %s", "paid-memberships-pro"), $user->user_login, get_option("blogname"));
+			$this->subject = sprintf(__("Billing information has been updated for %s at %s", "digital-members-rfid"), $user->user_login, get_option("blogname"));
 			
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -551,7 +551,7 @@
 				return false;
 			
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Membership Payment Failed at %s", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("Membership Payment Failed at %s", "digital-members-rfid"), get_option("blogname"));
 			
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -598,7 +598,7 @@
 			$user = get_userdata($invoice->user_id);
 			
 			$this->email = $email;
-			$this->subject = sprintf(__("Membership Payment Failed For %s at %s", "paid-memberships-pro"), $user->display_name, get_option("blogname"));
+			$this->subject = sprintf(__("Membership Payment Failed For %s at %s", "digital-members-rfid"), $user->display_name, get_option("blogname"));
 			
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -646,7 +646,7 @@
 				return false;
 			
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Credit Card on File Expiring Soon at %s", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("Credit Card on File Expiring Soon at %s", "digital-members-rfid"), get_option("blogname"));
 			
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -697,7 +697,7 @@
 			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 			
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("INVOICE for %s membership", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("INVOICE for %s membership", "digital-members-rfid"), get_option("blogname"));
 
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -737,16 +737,16 @@
 		
 			if($invoice->getDiscountCode()) {
 				if(!empty($invoice->discount_code->code))
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $invoice->discount_code->code . "</p>\n";
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $invoice->discount_code->code . "</p>\n";
 				else
-					$this->data["discount_code"] = "<p>" . __("Discount Code", 'paid-memberships-pro' ) . ": " . $invoice->discount_code . "</p>\n";
+					$this->data["discount_code"] = "<p>" . __("Discount Code", 'digital-members-rfid' ) . ": " . $invoice->discount_code . "</p>\n";
 			} else {
 				$this->data["discount_code"] = "";
 			}
 		
 			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
 			if($enddate)
-				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
+				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'digital-members-rfid' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
 			else
 				$this->data["membership_expiration"] = "";
 
@@ -774,7 +774,7 @@
 			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 						
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Your trial at %s is ending soon", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("Your trial at %s is ending soon", "digital-members-rfid"), get_option("blogname"));
 
 			$this->data = array(
 				"subject" => $this->subject, 
@@ -810,7 +810,7 @@
 				return false;						
 						
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Your membership at %s has ended", "paid-memberships-pro"), get_option("blogname"));			
+			$this->subject = sprintf(__("Your membership at %s has ended", "digital-members-rfid"), get_option("blogname"));			
 
 			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url(), "display_name" => $user->display_name, "user_email" => $user->user_email, "levels_link" => dmrfid_url("levels"));
 
@@ -837,7 +837,7 @@
 			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 						
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Your membership at %s will end soon", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("Your membership at %s will end soon", "digital-members-rfid"), get_option("blogname"));
 
 			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "membership_id" => $user->membership_level->id, "membership_level_name" => $user->membership_level->name, "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url(), "enddate" => date_i18n(get_option('date_format'), $user->membership_level->enddate), "display_name" => $user->display_name, "user_email" => $user->user_email);
 
@@ -862,28 +862,28 @@
 				$membership_level_name = $user->membership_level->name;
 				$membership_level_id = '';
 			} else {
-				$membership_level_name = __('None', 'paid-memberships-pro');
+				$membership_level_name = __('None', 'digital-members-rfid');
 				$membership_level_id = $user->membership_level->id;
 			}
 						
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Your membership at %s has been changed", "paid-memberships-pro"), get_option("blogname"));
+			$this->subject = sprintf(__("Your membership at %s has been changed", "digital-members-rfid"), get_option("blogname"));
 
 			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "display_name" => $user->display_name, "user_login" => $user->user_login, "user_email" => $user->user_email, "sitename" => get_option("blogname"), "membership_id" => $membership_level_id, "membership_level_name" => $membership_level_name, "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url());
 
 			if(!empty($user->membership_level) && !empty($user->membership_level->ID)) {
-				$this->data["membership_change"] = sprintf(__("The new level is %s", 'paid-memberships-pro' ), $user->membership_level->name);
+				$this->data["membership_change"] = sprintf(__("The new level is %s", 'digital-members-rfid' ), $user->membership_level->name);
 			} else {
-				$this->data["membership_change"] = __("Your membership has been cancelled", "paid-memberships-pro");
+				$this->data["membership_change"] = __("Your membership has been cancelled", "digital-members-rfid");
 			}
 
 			if(!empty($user->membership_level->enddate))
 			{
-					$this->data["membership_change"] .= ". " . sprintf(__("This membership will expire on %s", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $user->membership_level->enddate));
+					$this->data["membership_change"] .= ". " . sprintf(__("This membership will expire on %s", 'digital-members-rfid' ), date_i18n(get_option('date_format'), $user->membership_level->enddate));
 			}
 			elseif(!empty($this->expiration_changed))
 			{
-				$this->data["membership_change"] .= ". " . __("This membership does not expire", 'paid-memberships-pro' );
+				$this->data["membership_change"] .= ". " . __("This membership does not expire", 'digital-members-rfid' );
 			}
 
 			$this->template = apply_filters("dmrfid_email_template", "admin_change", $this);
@@ -912,28 +912,28 @@
 				$membership_level_name = $user->membership_level->name;
 				$membership_level_id = '';
 			} else {
-				$membership_level_name = __('None', 'paid-memberships-pro');
+				$membership_level_name = __('None', 'digital-members-rfid');
 				$membership_level_id = $user->membership_level->id;
 			}
 
 			$this->email = get_bloginfo("admin_email");
-			$this->subject = sprintf(__("Membership for %s at %s has been changed", "paid-memberships-pro"), $user->user_login, get_option("blogname"));
+			$this->subject = sprintf(__("Membership for %s at %s has been changed", "digital-members-rfid"), $user->user_login, get_option("blogname"));
 
 			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "display_name" => $user->display_name, "user_login" => $user->user_login, "user_email" => $user->user_email, "sitename" => get_option("blogname"), "membership_id" => $membership_level_id, "membership_level_name" => $membership_level_name, "siteemail" => get_bloginfo("admin_email"), "login_link" => dmrfid_login_url());
 
 			if(!empty($user->membership_level) && !empty($user->membership_level->ID)) {
-				$this->data["membership_change"] = sprintf(__("The new level is %s", 'paid-memberships-pro' ), $user->membership_level->name);
+				$this->data["membership_change"] = sprintf(__("The new level is %s", 'digital-members-rfid' ), $user->membership_level->name);
 			} else {
-				$this->data["membership_change"] = __("Membership has been cancelled", 'paid-memberships-pro' );	
+				$this->data["membership_change"] = __("Membership has been cancelled", 'digital-members-rfid' );	
 			}
 			
 			if(!empty($user->membership_level) && !empty($user->membership_level->enddate))
 			{
-					$this->data["membership_change"] .= ". " . sprintf(__("This membership will expire on %s", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $user->membership_level->enddate));
+					$this->data["membership_change"] .= ". " . sprintf(__("This membership will expire on %s", 'digital-members-rfid' ), date_i18n(get_option('date_format'), $user->membership_level->enddate));
 			}
 			elseif(!empty($this->expiration_changed))
 			{
-				$this->data["membership_change"] .= ". " . __("This membership does not expire", 'paid-memberships-pro' );
+				$this->data["membership_change"] .= ". " . __("This membership does not expire", 'digital-members-rfid' );
 			}
 
 			$this->template = apply_filters("dmrfid_email_template", "admin_change_admin", $this);
@@ -964,13 +964,13 @@
 			$level = dmrfid_getLevel($order->membership_id);
 
 			$this->email = $user->user_email;
-			$this->subject = __('Invoice for Order #: ', 'paid-memberships-pro') . $order->code;
+			$this->subject = __('Invoice for Order #: ', 'digital-members-rfid') . $order->code;
 
 			// Load invoice template
-			if ( file_exists( get_stylesheet_directory() . '/paid-memberships-pro/pages/orders-email.php' ) ) {
-				$template = get_stylesheet_directory() . '/paid-memberships-pro/pages/orders-email.php';
-			} elseif ( file_exists( get_template_directory() . '/paid-memberships-pro/pages/orders-email.php' ) ) {
-				$template = get_template_directory() . '/paid-memberships-pro/pages/orders-email.php';
+			if ( file_exists( get_stylesheet_directory() . '/digital-members-rfid/pages/orders-email.php' ) ) {
+				$template = get_stylesheet_directory() . '/digital-members-rfid/pages/orders-email.php';
+			} elseif ( file_exists( get_template_directory() . '/digital-members-rfid/pages/orders-email.php' ) ) {
+				$template = get_template_directory() . '/digital-members-rfid/pages/orders-email.php';
 			} else {
 				$template = DMRFID_DIR . '/adminpages/templates/orders-email.php';
 			}
@@ -1011,7 +1011,7 @@
 				return false;
 				
 			$this->email = $user->user_email;
-			$this->subject = sprintf(__("Payment action required for your %s membership", 'paid-memberships-pro' ), get_option("blogname"));	
+			$this->subject = sprintf(__("Payment action required for your %s membership", 'digital-members-rfid' ), get_option("blogname"));	
 			
 			$this->template = "payment_action";
 
@@ -1048,7 +1048,7 @@
 				return false;
 				
 			$this->email = get_bloginfo("admin_email");
-			$this->subject = sprintf(__("Payment action required: membership for %s at %s", 'paid-memberships-pro' ), $user->user_login, get_option("blogname"));	
+			$this->subject = sprintf(__("Payment action required: membership for %s at %s", 'digital-members-rfid' ), $user->user_login, get_option("blogname"));	
 			
 			$this->template = "payment_action_admin";
 
@@ -1090,7 +1090,7 @@
 
 <p>If you did not request this membership change and would like more information please contact us at !!siteemail!!</p>
 
-<p>Log in to your membership account here: !!login_link!!</p>", 'paid-memberships-pro' );
+<p>Log in to your membership account here: !!login_link!!</p>", 'digital-members-rfid' );
 					break;
 				//repeat above for each template
 			}

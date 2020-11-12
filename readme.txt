@@ -21,7 +21,7 @@ Users can select a membership level, complete checkout, and immediately become m
 * Create unlimited [membership levels with flexible pricing](https://www.paidmembershipspro.com/documentation/membership-levels/) including free memberships, trials, recurring payments and subscriptions, one-time payments, and more.
 * Integrate with [Stripe](https://www.paidmembershipspro.com/gateway/stripe/), [PayPal](https://www.paidmembershipspro.com/gateway/paypal/), and other [popular gateways](https://www.paidmembershipspro.com/gateway/).
 * Manage your full membership data, import and export members or orders, and [view reports](https://www.paidmembershipspro.com/documentation/reports/) on sales and revenue, cancellations, expirations, and signups.
-* [100% GPL, fully open source](https://www.paidmembershipspro.com/features/paid-memberships-pro-is-100-gpl/), and integrated with loads of third-party platforms.
+* [100% GPL, fully open source](https://www.paidmembershipspro.com/features/digital-members-rfid-is-100-gpl/), and integrated with loads of third-party platforms.
 
 [youtube https://www.youtube.com/watch?v=-M3aoEHvGZ4]
 
@@ -69,8 +69,8 @@ All of our payment gateways are included in the plugin. Choose from [Stripe](htt
 Extend the features of your membership site or integrate with third-party services through our library of over 75 Add Ons. Some of the most popular features include:
 
 * [WooCommerce Integration](https://www.paidmembershipspro.com/add-ons/dmrfid-woocommerce/) to sell membership as a product or offer members-only discounts in your shop.
-* Integrate members with [email marketing](https://www.paidmembershipspro.com/email-marketing-integrations-paid-memberships-pro/) platforms including [Mailchimp](https://www.paidmembershipspro.com/add-ons/dmrfid-mailchimp-integration/).
-* [Manage Affiliates](https://www.paidmembershipspro.com/managing-affiliates-with-paid-memberships-pro/) with Add Ons or use a popular third-party systems like [AffiliateWP](https://www.paidmembershipspro.com/using-affiliatewp-with-paid-memberships-pro/).
+* Integrate members with [email marketing](https://www.paidmembershipspro.com/email-marketing-integrations-digital-members-rfid/) platforms including [Mailchimp](https://www.paidmembershipspro.com/add-ons/dmrfid-mailchimp-integration/).
+* [Manage Affiliates](https://www.paidmembershipspro.com/managing-affiliates-with-digital-members-rfid/) with Add Ons or use a popular third-party systems like [AffiliateWP](https://www.paidmembershipspro.com/using-affiliatewp-with-digital-members-rfid/).
 * [Zapier Integration](https://www.paidmembershipspro.com/add-ons/dmrfid-zapier/) to connect with thousands of third-party applications.
 * Let members [log in or join with their social media profiles](https://www.paidmembershipspro.com/add-ons/social-login-add-on/).
 * Design your site [using popular Page Builders](https://www.paidmembershipspro.com/using-page-builders-to-enhance-your-sites-membership-pages/) like Elementor, Page Builder by SiteOrigin, Beaver Builder, and Divi. We offer 15 core membership blocks for the WordPress Block Editor (Gutenberg).
@@ -81,7 +81,7 @@ Extend the features of your membership site or integrate with third-party servic
 
 = Digital Members RFID is a free membership plugin for WordPress =
 
-Our plugin is 100% GPL and available from the WordPress repository or on our site at [www.paidmembershipspro.com](https://www.paidmembershipspro.com). The full version of the plugin is offered with no restrictions or additional licenses required. Developers should get involved at [our GitHub page](https://github.com/strangerstudios/paid-memberships-pro/).
+Our plugin is 100% GPL and available from the WordPress repository or on our site at [www.paidmembershipspro.com](https://www.paidmembershipspro.com). The full version of the plugin is offered with no restrictions or additional licenses required. Developers should get involved at [our GitHub page](https://github.com/strangerstudios/digital-members-rfid/).
 
 == Installation ==
 
@@ -112,17 +112,17 @@ Go to Memberships > Dashboard in the WordPress admin to begin setup. Our [Initia
 Please visit [our support site at https://www.paidmembershipspro.com](https://www.paidmembershipspro.com) for more documentation and our support forums.
 
 = I found a bug in the plugin. =
-Please post it in the [WordPress support forum](https://wordpress.org/support/plugin/paid-memberships-pro/) and we'll fix it right away. Thanks for helping.
+Please post it in the [WordPress support forum](https://wordpress.org/support/plugin/digital-members-rfid/) and we'll fix it right away. Thanks for helping.
 
 = My site is broken or blank or not letting me log in after activating Digital Members RFID =
 This is typically caused by a conflict with another plugin that is trying to redirect around the login/register pages or trying to redirect from HTTP to HTTPS, etc.
 
-To regain access to your site, FTP to your site and rename the `wp-content/plugins/paid-memberships-pro` folder to wp-content/plugins/paid-memberships-pro-d (or anything different). Now WP will not be able to find DmRFID, and you can gain access to /wp-admin/ again. From there, visit the plugins page to fully deactivate Digital Members RFID. (You'll want to rename the folder back to paid-memberships-pro again.)
+To regain access to your site, FTP to your site and rename the `wp-content/plugins/digital-members-rfid` folder to wp-content/plugins/digital-members-rfid-d (or anything different). Now WP will not be able to find DmRFID, and you can gain access to /wp-admin/ again. From there, visit the plugins page to fully deactivate Digital Members RFID. (You'll want to rename the folder back to digital-members-rfid again.)
 
 Long term, you will need to find and fix the conflict. We can usually do this for you very quickly if you sign up for support at https://www.paidmembershipspro.com/pricing/ and send us your WP admin and FTP credentials.
 
 = Does DmRFID Support Multisite/Network Installs? =
-"Supporting multisite" means different things to different people. [This guide covers the three primary ways](https://www.paidmembershipspro.com/network-multisite-mega-post-paid-memberships-pro/) you can use Digital Members RFID in a network.
+"Supporting multisite" means different things to different people. [This guide covers the three primary ways](https://www.paidmembershipspro.com/network-multisite-mega-post-digital-members-rfid/) you can use Digital Members RFID in a network.
 
 Out of the box DmRFID will basically act as a stand alone plugin for each site. Each site has its own list of membership levels, members, payment settings, etc.
 
@@ -138,7 +138,7 @@ Not sure? You can find out by doing a bit a research.
 1. [Check our compatibility page](https://www.paidmembershipspro.com/documentation/compatibility/).
 2. [Check our Add Ons](https://www.paidmembershipspro.com/add-ons/).
 3. [Do a search on our site](https://www.paidmembershipspro.com/).
-4. [Ask in the forums here](https://wordpress.org/support/plugin/paid-memberships-pro/).
+4. [Ask in the forums here](https://wordpress.org/support/plugin/digital-members-rfid/).
 
 == Screenshots ==
 

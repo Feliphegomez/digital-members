@@ -146,9 +146,9 @@ function paid_memberships_pro_admin_enqueue_sendwp_installer() {
     // @todo verify text domain matches that of your plugin.
     wp_localize_script('dmrfid_sendwp_installer', 'paid_memberships_pro_sendwp_vars', array(
         'nonce'  =>  wp_create_nonce( 'dmrfid_sendwp_install_nonce' ),
-        'security_failed_message'    =>  esc_html__( 'Security failed to check dmrfid_sendwp_install_nonce', 'paid-memberships-pro'),
-        'user_capability_message'    =>  esc_html__( 'Ask an administrator for install_plugins capability', 'paid-memberships-pro'),
-        'sendwp_connected_message'    =>  esc_html__( 'SendWP is already connected.', 'paid-memberships-pro'),
+        'security_failed_message'    =>  esc_html__( 'Security failed to check dmrfid_sendwp_install_nonce', 'digital-members-rfid'),
+        'user_capability_message'    =>  esc_html__( 'Ask an administrator for install_plugins capability', 'digital-members-rfid'),
+        'sendwp_connected_message'    =>  esc_html__( 'SendWP is already connected.', 'digital-members-rfid'),
         ) 
     );
 }

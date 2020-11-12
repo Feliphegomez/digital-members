@@ -14,9 +14,9 @@ class DmRFID_Widget_Member_Login extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname'   => 'widget_dmrfid_member_login',
-			'description' => __( 'Display a login form and optional "Logged In" member content.', 'paid-memberships-pro' ),
+			'description' => __( 'Display a login form and optional "Logged In" member content.', 'digital-members-rfid' ),
 		);
-		parent::__construct( 'dmrfid-member-login', esc_html__( 'Log In - DmRFID', 'paid-memberships-pro' ), $widget_ops );
+		parent::__construct( 'dmrfid-member-login', esc_html__( 'Log In - DmRFID', 'digital-members-rfid' ), $widget_ops );
 		$this->alt_option_name = 'widget_dmrfid_member_login';
 
 		add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
@@ -101,17 +101,17 @@ class DmRFID_Widget_Member_Login extends WP_Widget {
 		?>
 		<p>
 			<input class="checkbox" type="checkbox" <?php checked( $display_if_logged_in ); ?> id="<?php echo $this->get_field_id( 'display_if_logged_in' ); ?>" name="<?php echo $this->get_field_name( 'display_if_logged_in' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'display_if_logged_in' ); ?>"><?php esc_html_e( 'Display "Welcome" content when logged in.', 'paid-memberships-pro' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'display_if_logged_in' ); ?>"><?php esc_html_e( 'Display "Welcome" content when logged in.', 'digital-members-rfid' ); ?></label>
 		</p>
 
 		<p>
 			<input class="checkbox" type="checkbox" <?php checked( $show_logout_link ); ?> id="<?php echo $this->get_field_id( 'show_logout_link' ); ?>" name="<?php echo $this->get_field_name( 'show_logout_link' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'show_logout_link' ); ?>"><?php esc_html_e( 'Display a "Log Out" link.', 'paid-memberships-pro' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'show_logout_link' ); ?>"><?php esc_html_e( 'Display a "Log Out" link.', 'digital-members-rfid' ); ?></label>
 		</p>
 
 		<p>
 			<input class="checkbox" type="checkbox" <?php checked( $show_menu ); ?> id="<?php echo $this->get_field_id( 'show_menu' ); ?>" name="<?php echo $this->get_field_name( 'show_menu' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'show_menu' ); ?>"><?php esc_html_e( 'Display the "Log In Widget" menu.', 'paid-memberships-pro' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'show_menu' ); ?>"><?php esc_html_e( 'Display the "Log In Widget" menu.', 'digital-members-rfid' ); ?></label>
 		</p>
 		<?php
 			$allowed_nav_menus_link_html = array (
@@ -121,7 +121,7 @@ class DmRFID_Widget_Member_Login extends WP_Widget {
 					'title' => array(),
 				),
 			);
-			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Digital Members RFID - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'paid-memberships-pro' ), $allowed_nav_menus_link_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-nav-menus/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
+			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Digital Members RFID - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'digital-members-rfid' ), $allowed_nav_menus_link_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-nav-menus/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
 	}
 }
 /* End Member Login Widget */

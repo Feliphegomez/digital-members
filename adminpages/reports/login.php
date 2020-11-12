@@ -13,7 +13,7 @@
 	* dmrfid_report_{slug}_page()     to show up when users click on the report page widget.
 */
 global $dmrfid_reports;
-$dmrfid_reports['login'] = __('Visits, Views, and Logins', 'paid-memberships-pro');
+$dmrfid_reports['login'] = __('Visits, Views, and Logins', 'digital-members-rfid');
 
 function dmrfid_report_login_widget() {
 	global $wpdb;
@@ -28,38 +28,38 @@ function dmrfid_report_login_widget() {
 	<thead>
 		<tr>
 			<th scope="col">&nbsp;</th>
-			<th scope="col"><?php _e('Visits','paid-memberships-pro'); ?></th>
-			<th scope="col"><?php _e('Views','paid-memberships-pro'); ?></th>
-			<th scope="col"><?php _e('Logins','paid-memberships-pro'); ?></th>
+			<th scope="col"><?php _e('Visits','digital-members-rfid'); ?></th>
+			<th scope="col"><?php _e('Views','digital-members-rfid'); ?></th>
+			<th scope="col"><?php _e('Logins','digital-members-rfid'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<th scope="row"><?php _e('Today','paid-memberships-pro'); ?></th>
+			<th scope="row"><?php _e('Today','digital-members-rfid'); ?></th>
 			<td><?php echo number_format_i18n($visits['today']); ?></td>
 			<td><?php echo number_format_i18n($views['today']); ?></td>
 			<td><?php echo number_format_i18n($logins['today']);?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?php _e('This Week','paid-memberships-pro'); ?></th>
+			<th scope="row"><?php _e('This Week','digital-members-rfid'); ?></th>
 			<td><?php echo number_format_i18n($visits['week']); ?></td>
 			<td><?php echo number_format_i18n($views['week']); ?></td>
 			<td><?php echo number_format_i18n($logins['week']); ?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?php _e('This Month','paid-memberships-pro'); ?></th>
+			<th scope="row"><?php _e('This Month','digital-members-rfid'); ?></th>
 			<td><?php echo number_format_i18n($visits['month']); ?></td>
 			<td><?php echo number_format_i18n($views['month']); ?></td>
 			<td><?php echo number_format_i18n($logins['month']); ?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?php _e('Year to Date','paid-memberships-pro'); ?></th>
+			<th scope="row"><?php _e('Year to Date','digital-members-rfid'); ?></th>
 			<td><?php echo number_format_i18n($visits['ytd']); ?></td>
 			<td><?php echo number_format_i18n($views['ytd']); ?></td>
 			<td><?php echo number_format_i18n($logins['ytd']);?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?php _e('All Time','paid-memberships-pro'); ?></th>
+			<th scope="row"><?php _e('All Time','digital-members-rfid'); ?></th>
 			<td><?php echo number_format_i18n($visits['alltime']); ?></td>
 			<td><?php echo number_format_i18n($views['alltime']);?></td>
 			<td><?php echo number_format_i18n($logins['alltime']); ?></td>
@@ -68,7 +68,7 @@ function dmrfid_report_login_widget() {
 	</table>
 	<?php if ( function_exists( 'dmrfid_report_login_page' ) ) { ?>
 		<p class="dmrfid_report-button">
-			<a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=dmrfid-reports&report=login' ); ?>"><?php _e('Details', 'paid-memberships-pro' );?></a>
+			<a class="button button-primary" href="<?php echo admin_url( 'admin.php?page=dmrfid-reports&report=login' ); ?>"><?php _e('Details', 'digital-members-rfid' );?></a>
 		</p>
 	<?php } ?>	
 </span>
@@ -96,13 +96,13 @@ function dmrfid_report_login_page()
 ?>
 	<form id="posts-filter" method="get" action="">	
 	<h1>
-		<?php _e('Visits, Views, and Logins Report', 'paid-memberships-pro');?>
+		<?php _e('Visits, Views, and Logins Report', 'digital-members-rfid');?>
 	</h1>		
 	<ul class="subsubsub">
 		<li>			
-			<?php _e( 'Show', 'Dropdown label, e.g. Show All Users', 'paid-memberships-pro' )?> <select name="l" onchange="jQuery('#posts-filter').submit();">
-				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Users', 'paid-memberships-pro')?></option>
-				<option value="all" <?php if($l == "all") { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro')?></option>
+			<?php _e( 'Show', 'Dropdown label, e.g. Show All Users', 'digital-members-rfid' )?> <select name="l" onchange="jQuery('#posts-filter').submit();">
+				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Users', 'digital-members-rfid')?></option>
+				<option value="all" <?php if($l == "all") { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'digital-members-rfid')?></option>
 				<?php
 					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->dmrfid_membership_levels ORDER BY name");
 					foreach($levels as $level)
@@ -116,7 +116,7 @@ function dmrfid_report_login_page()
 		</li>
 	</ul>
 	<p class="search-box">
-		<label class="hidden" for="post-search-input"><?php _e( 'Search', 'Search form label', 'paid-memberships-pro')?> <?php if(empty($l)) echo "Users"; else echo "Members";?>:</label>
+		<label class="hidden" for="post-search-input"><?php _e( 'Search', 'Search form label', 'digital-members-rfid')?> <?php if(empty($l)) echo "Users"; else echo "Members";?>:</label>
 		<input type="hidden" name="page" value="dmrfid-reports" />		
 		<input type="hidden" name="report" value="login" />		
 		<input id="post-search-input" type="text" value="<?php echo esc_attr($s)?>" name="s"/>
@@ -175,26 +175,26 @@ function dmrfid_report_login_page()
 	<table class="widefat">
 		<thead>
 			<tr class="thead">
-				<th><?php _e('ID', 'paid-memberships-pro')?></th>
-				<th><?php _e('Username', 'paid-memberships-pro')?></th>	
-				<th><?php _e('Name', 'paid-memberships-pro')?></th>
-				<th><?php _e('Level', 'paid-memberships-pro')?></th>	
-				<th><?php _e('Joined', 'paid-memberships-pro')?></th>
-				<th><?php _e('Expires', 'paid-memberships-pro')?></th>
-				<th><?php _e('Last Visit', 'paid-memberships-pro')?></th>
-				<th><?php _e('Visits This Week', 'paid-memberships-pro')?></th>
-				<th><?php _e('Visits This Month', 'paid-memberships-pro')?></th>				
-				<th><?php _e('Visits This Year', 'paid-memberships-pro')?></th>
-				<th><?php _e('Visits All Time', 'paid-memberships-pro')?></th>
-				<th><?php _e('Views This Week', 'paid-memberships-pro')?></th>
-				<th><?php _e('Views This Month', 'paid-memberships-pro')?></th>				
-				<th><?php _e('Views This Year', 'paid-memberships-pro')?></th>
-				<th><?php _e('Views All Time', 'paid-memberships-pro')?></th>
-				<th><?php _e('Last Login', 'paid-memberships-pro')?></th>
-				<th><?php _e('Logins This Week', 'paid-memberships-pro')?></th>
-				<th><?php _e('Logins This Month', 'paid-memberships-pro')?></th>				
-				<th><?php _e('Logins This Year', 'paid-memberships-pro')?></th>
-				<th><?php _e('Logins All Time', 'paid-memberships-pro')?></th>
+				<th><?php _e('ID', 'digital-members-rfid')?></th>
+				<th><?php _e('Username', 'digital-members-rfid')?></th>	
+				<th><?php _e('Name', 'digital-members-rfid')?></th>
+				<th><?php _e('Level', 'digital-members-rfid')?></th>	
+				<th><?php _e('Joined', 'digital-members-rfid')?></th>
+				<th><?php _e('Expires', 'digital-members-rfid')?></th>
+				<th><?php _e('Last Visit', 'digital-members-rfid')?></th>
+				<th><?php _e('Visits This Week', 'digital-members-rfid')?></th>
+				<th><?php _e('Visits This Month', 'digital-members-rfid')?></th>				
+				<th><?php _e('Visits This Year', 'digital-members-rfid')?></th>
+				<th><?php _e('Visits All Time', 'digital-members-rfid')?></th>
+				<th><?php _e('Views This Week', 'digital-members-rfid')?></th>
+				<th><?php _e('Views This Month', 'digital-members-rfid')?></th>				
+				<th><?php _e('Views This Year', 'digital-members-rfid')?></th>
+				<th><?php _e('Views All Time', 'digital-members-rfid')?></th>
+				<th><?php _e('Last Login', 'digital-members-rfid')?></th>
+				<th><?php _e('Logins This Week', 'digital-members-rfid')?></th>
+				<th><?php _e('Logins This Month', 'digital-members-rfid')?></th>				
+				<th><?php _e('Logins This Year', 'digital-members-rfid')?></th>
+				<th><?php _e('Logins All Time', 'digital-members-rfid')?></th>
 			</tr>
 		</thead>
 		<tbody id="users" class="list:user user-list">	
@@ -258,7 +258,7 @@ function dmrfid_report_login_page()
 				{
 				?>
 				<tr>
-					<td colspan="9"><p><?php _e('No members found.', 'paid-memberships-pro')?> <?php if($l) { ?><a href="?page=dmrfid-memberslist&s=<?php echo esc_attr($s)?>"><?php _e('Search all levels', 'paid-memberships-pro')?></a>.<?php } ?></p></td>
+					<td colspan="9"><p><?php _e('No members found.', 'digital-members-rfid')?> <?php if($l) { ?><a href="?page=dmrfid-memberslist&s=<?php echo esc_attr($s)?>"><?php _e('Search all levels', 'digital-members-rfid')?></a>.<?php } ?></p></td>
 				</tr>
 				<?php
 				}

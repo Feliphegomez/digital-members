@@ -938,16 +938,16 @@
 					//we should probably notify the admin
 					$dmrfidemail = new DmRFIDEmail();
 					$dmrfidemail->template = "subscription_cancel_error";
-					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%s. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), strval($this->user_id)) . "</p><p>Error: " . $this->error . "</p>");
-					$dmrfidemail->data["body"] .= '<p>' . __('User Email', 'paid-memberships-pro') . ': ' . $order_user->user_email . '</p>';
-					$dmrfidemail->data["body"] .= '<p>' . __('Username', 'paid-memberships-pro') . ': ' . $order_user->user_login . '</p>';
-					$dmrfidemail->data["body"] .= '<p>' . __('User Display Name', 'paid-memberships-pro') . ': ' . $order_user->display_name . '</p>';
-					$dmrfidemail->data["body"] .= '<p>' . __('Order', 'paid-memberships-pro') . ': ' . $this->code . '</p>';
-					$dmrfidemail->data["body"] .= '<p>' . __('Gateway', 'paid-memberships-pro') . ': ' . $this->gateway . '</p>';
-					$dmrfidemail->data["body"] .= '<p>' . __('Subscription Transaction ID', 'paid-memberships-pro') . ': ' . $this->subscription_transaction_id . '</p>';
+					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%s. You will want to check your payment gateway to see if their subscription is still active.", 'digital-members-rfid' ), strval($this->user_id)) . "</p><p>Error: " . $this->error . "</p>");
+					$dmrfidemail->data["body"] .= '<p>' . __('User Email', 'digital-members-rfid') . ': ' . $order_user->user_email . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Username', 'digital-members-rfid') . ': ' . $order_user->user_login . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('User Display Name', 'digital-members-rfid') . ': ' . $order_user->display_name . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Order', 'digital-members-rfid') . ': ' . $this->code . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Gateway', 'digital-members-rfid') . ': ' . $this->gateway . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Subscription Transaction ID', 'digital-members-rfid') . ': ' . $this->subscription_transaction_id . '</p>';
 					$dmrfidemail->data["body"] .= '<hr />';
-					$dmrfidemail->data["body"] .= '<p>' . __('Edit User', 'paid-memberships-pro') . ': ' . esc_url( add_query_arg( 'user_id', $this->user_id, self_admin_url( 'user-edit.php' ) ) ) . '</p>';
-					$dmrfidemail->data["body"] .= '<p>' . __('Edit Order', 'paid-memberships-pro') . ': ' . esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => $this->id ), admin_url('admin.php' ) ) ) . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Edit User', 'digital-members-rfid') . ': ' . esc_url( add_query_arg( 'user_id', $this->user_id, self_admin_url( 'user-edit.php' ) ) ) . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Edit Order', 'digital-members-rfid') . ': ' . esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => $this->id ), admin_url('admin.php' ) ) ) . '</p>';
 					$dmrfidemail->sendEmail(get_bloginfo("admin_email"));
 				} else {
 					//Note: status would have been set to cancelled by the gateway class. So we don't have to update it here.

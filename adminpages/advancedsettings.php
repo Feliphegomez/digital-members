@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_advancedsettings")))
 	{
-		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
+		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
 	}
 
 	global $wpdb, $msg, $msgt, $allowedposttags;
@@ -10,7 +10,7 @@
 	//check nonce for saving settings
 	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['dmrfid_advancedsettings_nonce']) || !check_admin_referer('savesettings', 'dmrfid_advancedsettings_nonce'))) {
 		$msg = -1;
-		$msgt = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
+		$msgt = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
 		unset($_REQUEST['savesettings']);
 	}
 	
@@ -65,7 +65,7 @@
         
 		// Assume success.
 		$msg = true;
-		$msgt = __("Your advanced settings have been updated.", 'paid-memberships-pro' );
+		$msgt = __("Your advanced settings have been updated.", 'digital-members-rfid' );
 	}
 
 	// Dashboard settings.
@@ -103,17 +103,17 @@
 	// Default settings.
 	if(!$nonmembertext)
 	{
-		$nonmembertext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Join Now</a>', 'paid-memberships-pro' ), "!!levels_page_url!!" );
+		$nonmembertext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Join Now</a>', 'digital-members-rfid' ), "!!levels_page_url!!" );
 		dmrfid_setOption("nonmembertext", $nonmembertext);
 	}
 	if(!$notloggedintext)
 	{
-		$notloggedintext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Log In</a> <a href="%s">Join Now</a>', 'paid-memberships-pro' ), '!!login_url!!', "!!levels_page_url!!" );
+		$notloggedintext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Log In</a> <a href="%s">Join Now</a>', 'digital-members-rfid' ), '!!login_url!!', "!!levels_page_url!!" );
 		dmrfid_setOption("notloggedintext", $notloggedintext);
 	}
 	if(!$rsstext)
 	{
-		$rsstext = __( 'This content is for members only. Visit the site and log in/register to read.', 'paid-memberships-pro' );
+		$rsstext = __( 'This content is for members only. Visit the site and log in/register to read.', 'digital-members-rfid' );
 		dmrfid_setOption("rsstext", $rsstext);
 	}
 
@@ -129,26 +129,26 @@
 	<form action="" method="post" enctype="multipart/form-data">
 		<?php wp_nonce_field('savesettings', 'dmrfid_advancedsettings_nonce');?>
 		
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'Advanced Settings', 'paid-memberships-pro' ); ?></h1>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'Advanced Settings', 'digital-members-rfid' ); ?></h1>
 		<hr class="wp-header-end">
 		<div class="dmrfid_admin_section dmrfid_admin_section-restrict-dashboard">
-			<h2 class="title"><?php esc_html_e( 'Restrict Dashboard Access', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'Restrict Dashboard Access', 'digital-members-rfid' ); ?></h2>
 			<table class="form-table">
 			<tbody>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="block_dashboard"><?php _e('WordPress Dashboard', 'paid-memberships-pro' );?></label>
+						<label for="block_dashboard"><?php _e('WordPress Dashboard', 'digital-members-rfid' );?></label>
 					</th>
 					<td>
-						<input id="block_dashboard" name="block_dashboard" type="checkbox" value="yes" <?php checked( $block_dashboard, 'yes' ); ?> /> <label for="block_dashboard"><?php _e('Block all users with the Subscriber role from accessing the Dashboard.', 'paid-memberships-pro' );?></label>
+						<input id="block_dashboard" name="block_dashboard" type="checkbox" value="yes" <?php checked( $block_dashboard, 'yes' ); ?> /> <label for="block_dashboard"><?php _e('Block all users with the Subscriber role from accessing the Dashboard.', 'digital-members-rfid' );?></label>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="hide_toolbar"><?php _e('WordPress Toolbar', 'paid-memberships-pro' );?></label>
+						<label for="hide_toolbar"><?php _e('WordPress Toolbar', 'digital-members-rfid' );?></label>
 					</th>
 					<td>
-						<input id="hide_toolbar" name="hide_toolbar" type="checkbox" value="yes" <?php checked( $hide_toolbar, 'yes' ); ?> /> <label for="hide_toolbar"><?php _e('Hide the Toolbar from all users with the Subscriber role.', 'paid-memberships-pro' );?></label>
+						<input id="hide_toolbar" name="hide_toolbar" type="checkbox" value="yes" <?php checked( $hide_toolbar, 'yes' ); ?> /> <label for="hide_toolbar"><?php _e('Hide the Toolbar from all users with the Subscriber role.', 'digital-members-rfid' );?></label>
 					</td>
 				</tr>
 			</tbody>
@@ -156,34 +156,34 @@
 		</div> <!-- end dmrfid_admin_section-restrict-dashboard -->
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-message-settings">
-			<h2 class="title"><?php esc_html_e( 'Message Settings', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'Message Settings', 'digital-members-rfid' ); ?></h2>
 			<table class="form-table">
 			<tbody>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="nonmembertext"><?php _e('Message for Logged-in Non-members', 'paid-memberships-pro' );?>:</label>
+						<label for="nonmembertext"><?php _e('Message for Logged-in Non-members', 'digital-members-rfid' );?>:</label>
 					</th>
 					<td>
 						<textarea name="nonmembertext" rows="3" cols="50" class="large-text"><?php echo stripslashes($nonmembertext)?></textarea>
-						<p class="description"><?php _e('This message replaces the post content for non-members. Available variables', 'paid-memberships-pro' );?>: <code>!!levels!!</code> <code>!!referrer!!</code> <code>!!levels_page_url!!</code></p>
+						<p class="description"><?php _e('This message replaces the post content for non-members. Available variables', 'digital-members-rfid' );?>: <code>!!levels!!</code> <code>!!referrer!!</code> <code>!!levels_page_url!!</code></p>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="notloggedintext"><?php _e('Message for Logged-out Users', 'paid-memberships-pro' );?>:</label>
+						<label for="notloggedintext"><?php _e('Message for Logged-out Users', 'digital-members-rfid' );?>:</label>
 					</th>
 					<td>
 						<textarea name="notloggedintext" rows="3" cols="50" class="large-text"><?php echo stripslashes($notloggedintext)?></textarea>
-						<p class="description"><?php _e('This message replaces the post content for logged-out visitors.', 'paid-memberships-pro' );?> <?php _e('Available variables', 'paid-memberships-pro' );?>: <code>!!levels!!</code> <code>!!referrer!!</code> <code>!!login_url!!</code> <code>!!levels_page_url!!</code></p>
+						<p class="description"><?php _e('This message replaces the post content for logged-out visitors.', 'digital-members-rfid' );?> <?php _e('Available variables', 'digital-members-rfid' );?>: <code>!!levels!!</code> <code>!!referrer!!</code> <code>!!login_url!!</code> <code>!!levels_page_url!!</code></p>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="rsstext"><?php _e('Message for RSS Feed', 'paid-memberships-pro' );?>:</label>
+						<label for="rsstext"><?php _e('Message for RSS Feed', 'digital-members-rfid' );?>:</label>
 					</th>
 					<td>
 						<textarea name="rsstext" rows="3" cols="50" class="large-text"><?php echo stripslashes($rsstext)?></textarea>
-						<p class="description"><?php _e('This message replaces the post content in RSS feeds.', 'paid-memberships-pro' );?> <?php _e('Available variables', 'paid-memberships-pro' );?>: <code>!!levels!!</code></p>
+						<p class="description"><?php _e('This message replaces the post content in RSS feeds.', 'digital-members-rfid' );?> <?php _e('Available variables', 'digital-members-rfid' );?>: <code>!!levels!!</code></p>
 					</td>
 				</tr>
 			</tbody>
@@ -191,28 +191,28 @@
 		</div> <!-- end dmrfid_admin_section-message-settings -->
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-content-settings">
-			<h2 class="title"><?php esc_html_e( 'Content Settings', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'Content Settings', 'digital-members-rfid' ); ?></h2>
 			<table class="form-table">
 			<tbody>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="filterqueries"><?php _e("Filter searches and archives?", 'paid-memberships-pro' );?></label>
+						<label for="filterqueries"><?php _e("Filter searches and archives?", 'digital-members-rfid' );?></label>
 					</th>
 					<td>
 						<select id="filterqueries" name="filterqueries">
-							<option value="0" <?php if(!$filterqueries) { ?>selected="selected"<?php } ?>><?php _e('No - Non-members will see restricted posts/pages in searches and archives.', 'paid-memberships-pro' );?></option>
-							<option value="1" <?php if($filterqueries == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Only members will see restricted posts/pages in searches and archives.', 'paid-memberships-pro' );?></option>
+							<option value="0" <?php if(!$filterqueries) { ?>selected="selected"<?php } ?>><?php _e('No - Non-members will see restricted posts/pages in searches and archives.', 'digital-members-rfid' );?></option>
+							<option value="1" <?php if($filterqueries == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Only members will see restricted posts/pages in searches and archives.', 'digital-members-rfid' );?></option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="showexcerpts"><?php _e('Show Excerpts to Non-Members?', 'paid-memberships-pro' );?></label>
+						<label for="showexcerpts"><?php _e('Show Excerpts to Non-Members?', 'digital-members-rfid' );?></label>
 	            </th>
 	            <td>
 	                <select id="showexcerpts" name="showexcerpts">
-	                    <option value="0" <?php if(!$showexcerpts) { ?>selected="selected"<?php } ?>><?php _e('No - Hide excerpts.', 'paid-memberships-pro' );?></option>
-	                    <option value="1" <?php if($showexcerpts == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Show excerpts.', 'paid-memberships-pro' );?></option>
+	                    <option value="0" <?php if(!$showexcerpts) { ?>selected="selected"<?php } ?>><?php _e('No - Hide excerpts.', 'digital-members-rfid' );?></option>
+	                    <option value="1" <?php if($showexcerpts == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Show excerpts.', 'digital-members-rfid' );?></option>
 	                </select>
 	            </td>
 	            </tr>
@@ -221,32 +221,32 @@
 		</div> <!-- end dmrfid_admin_section-content-settings -->
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-checkout-settings">
-			<h2 class="title"><?php esc_html_e( 'Checkout Settings', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'Checkout Settings', 'digital-members-rfid' ); ?></h2>
 			<table class="form-table">
 			<tbody>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="tospage"><?php _e('Require Terms of Service on signups?', 'paid-memberships-pro' );?></label>
+						<label for="tospage"><?php _e('Require Terms of Service on signups?', 'digital-members-rfid' );?></label>
 					</th>
 					<td>
 						<?php
 							wp_dropdown_pages(array("name"=>"tospage", "show_option_none"=>"No", "selected"=>$tospage));
 						?>
 						<br />
-						<p class="description"><?php _e('If yes, create a WordPress page containing your TOS agreement and assign it using the dropdown above.', 'paid-memberships-pro' );?></p>
+						<p class="description"><?php _e('If yes, create a WordPress page containing your TOS agreement and assign it using the dropdown above.', 'digital-members-rfid' );?></p>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="recaptcha"><?php _e('Use reCAPTCHA?', 'paid-memberships-pro' );?>:</label>
+						<label for="recaptcha"><?php _e('Use reCAPTCHA?', 'digital-members-rfid' );?>:</label>
 					</th>
 					<td>
 						<select id="recaptcha" name="recaptcha" onchange="dmrfid_updateRecaptchaTRs();">
-							<option value="0" <?php if(!$recaptcha) { ?>selected="selected"<?php } ?>><?php _e('No', 'paid-memberships-pro' );?></option>
-							<option value="1" <?php if($recaptcha == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Free memberships only.', 'paid-memberships-pro' );?></option>
-							<option value="2" <?php if($recaptcha == 2) { ?>selected="selected"<?php } ?>><?php _e('Yes - All memberships.', 'paid-memberships-pro' );?></option>
+							<option value="0" <?php if(!$recaptcha) { ?>selected="selected"<?php } ?>><?php _e('No', 'digital-members-rfid' );?></option>
+							<option value="1" <?php if($recaptcha == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Free memberships only.', 'digital-members-rfid' );?></option>
+							<option value="2" <?php if($recaptcha == 2) { ?>selected="selected"<?php } ?>><?php _e('Yes - All memberships.', 'digital-members-rfid' );?></option>
 						</select>
-						<p class="description"><?php _e('A free reCAPTCHA key is required.', 'paid-memberships-pro' );?> <a href="https://www.google.com/recaptcha/admin/create"><?php _e('Click here to signup for reCAPTCHA', 'paid-memberships-pro' );?></a>.</p>
+						<p class="description"><?php _e('A free reCAPTCHA key is required.', 'digital-members-rfid' );?> <a href="https://www.google.com/recaptcha/admin/create"><?php _e('Click here to signup for reCAPTCHA', 'digital-members-rfid' );?></a>.</p>
 					</td>
 				</tr>
 			</tbody>
@@ -254,23 +254,23 @@
 			<table class="form-table" id="recaptcha_settings" <?php if(!$recaptcha) { ?>style="display: none;"<?php } ?>>
 			<tbody>
 				<tr>
-					<th scope="row" valign="top"><label for="recaptcha_version"><?php _e( 'reCAPTCHA Version', 'paid-memberships-pro' );?>:</label></th>
+					<th scope="row" valign="top"><label for="recaptcha_version"><?php _e( 'reCAPTCHA Version', 'digital-members-rfid' );?>:</label></th>
 					<td>					
 						<select id="recaptcha_version" name="recaptcha_version">
-							<option value="2_checkbox" <?php selected( '2_checkbox', $recaptcha_version ); ?>><?php _e( ' v2 - Checkbox', 'paid-memberships-pro' ); ?></option>
-							<option value="3_invisible" <?php selected( '3_invisible', $recaptcha_version ); ?>><?php _e( 'v3 - Invisible', 'paid-memberships-pro' ); ?></option>
+							<option value="2_checkbox" <?php selected( '2_checkbox', $recaptcha_version ); ?>><?php _e( ' v2 - Checkbox', 'digital-members-rfid' ); ?></option>
+							<option value="3_invisible" <?php selected( '3_invisible', $recaptcha_version ); ?>><?php _e( 'v3 - Invisible', 'digital-members-rfid' ); ?></option>
 						</select>
-						<p class="description"><?php _e( 'Changing your version will require new API keys.', 'paid-memberships-pro' ); ?></p>
+						<p class="description"><?php _e( 'Changing your version will require new API keys.', 'digital-members-rfid' ); ?></p>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="recaptcha_publickey"><?php _e('reCAPTCHA Site Key', 'paid-memberships-pro' );?>:</label></th>
+					<th scope="row"><label for="recaptcha_publickey"><?php _e('reCAPTCHA Site Key', 'digital-members-rfid' );?>:</label></th>
 					<td>
 						<input type="text" id="recaptcha_publickey" name="recaptcha_publickey" value="<?php echo esc_attr($recaptcha_publickey);?>" class="regular-text code" />
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="recaptcha_privatekey"><?php _e('reCAPTCHA Secret Key', 'paid-memberships-pro' );?>:</label></th>
+					<th scope="row"><label for="recaptcha_privatekey"><?php _e('reCAPTCHA Secret Key', 'digital-members-rfid' );?>:</label></th>
 					<td>
 						<input type="text" id="recaptcha_privatekey" name="recaptcha_privatekey" value="<?php echo esc_attr($recaptcha_privatekey);?>" class="regular-text code" />
 					</td>
@@ -280,44 +280,44 @@
 		</div> <!-- end dmrfid_admin_section-checkout-settings -->
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-communication-settings">
-			<h2 class="title"><?php esc_html_e( 'Communication Settings', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'Communication Settings', 'digital-members-rfid' ); ?></h2>
 			<table class="form-table">
 				<tr>
-					<th><?php _e( 'Notifications', 'paid-memberships-pro' ); ?></th>
+					<th><?php _e( 'Notifications', 'digital-members-rfid' ); ?></th>
 					<td>
 						<select name="maxnotificationpriority">
 							<option value="5" <?php selected( $maxnotificationpriority, 5 ); ?>>
-								<?php _e( 'Show all notifications.', 'paid-memberships-pro' ); ?>
+								<?php _e( 'Show all notifications.', 'digital-members-rfid' ); ?>
 							</option>
 							<option value="1" <?php selected( $maxnotificationpriority, 1 ); ?>>
-								<?php _e( 'Show only security notifications.', 'paid-memberships-pro' ); ?>
+								<?php _e( 'Show only security notifications.', 'digital-members-rfid' ); ?>
 							</option>
 						</select>
 						<br />
-						<p class="description"><?php _e('Notifications are occasionally shown on the Digital Members RFID settings pages.', 'paid-memberships-pro' );?></p>
+						<p class="description"><?php _e('Notifications are occasionally shown on the Digital Members RFID settings pages.', 'digital-members-rfid' );?></p>
 					</td>
 				</tr>
 				<tr>
 					<th>
-						<label for="activity_email_frequency"><?php _e('Activity Email Frequency', 'paid-memberships-pro' );?></label>
+						<label for="activity_email_frequency"><?php _e('Activity Email Frequency', 'digital-members-rfid' );?></label>
 					</th>
 					<td>
 						<select name="activity_email_frequency">
 							<option value="day" <?php selected( $activity_email_frequency, 'day' ); ?>>
-								<?php _e( 'Daily', 'paid-memberships-pro' ); ?>
+								<?php _e( 'Daily', 'digital-members-rfid' ); ?>
 							</option>
 							<option value="week" <?php selected( $activity_email_frequency, 'week' ); ?>>
-								<?php _e( 'Weekly', 'paid-memberships-pro' ); ?>
+								<?php _e( 'Weekly', 'digital-members-rfid' ); ?>
 							</option>
 							<option value="month" <?php selected( $activity_email_frequency, 'month' ); ?>>
-								<?php _e( 'Monthly', 'paid-memberships-pro' ); ?>
+								<?php _e( 'Monthly', 'digital-members-rfid' ); ?>
 							</option>
 							<option value="never" <?php selected( $activity_email_frequency, 'never' ); ?>>
-								<?php _e( 'Never', 'paid-memberships-pro' ); ?>
+								<?php _e( 'Never', 'digital-members-rfid' ); ?>
 							</option>
 						</select>
 						<br />
-						<p class="description"><?php _e( 'Send periodic sales and revenue updates from this site to the administration email address.', 'paid-memberships-pro' );?></p>
+						<p class="description"><?php _e( 'Send periodic sales and revenue updates from this site to the administration email address.', 'digital-members-rfid' );?></p>
 					</td>
 				</tr>
 			</tbody>
@@ -325,25 +325,25 @@
 		</div> <!-- end dmrfid_admin_section-communication-settings -->
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-other-settings">
-			<h2 class="title"><?php esc_html_e( 'Other Settings', 'paid-memberships-pro' ); ?></h2>
+			<h2 class="title"><?php esc_html_e( 'Other Settings', 'digital-members-rfid' ); ?></h2>
 			<table class="form-table">
 			<tbody>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="hideads"><?php _e("Hide Ads From Members?", 'paid-memberships-pro' );?></label>
+						<label for="hideads"><?php _e("Hide Ads From Members?", 'digital-members-rfid' );?></label>
 					</th>
 					<td>
 						<select id="hideads" name="hideads" onchange="dmrfid_updateHideAdsTRs();">
-							<option value="0" <?php if(!$hideads) { ?>selected="selected"<?php } ?>><?php _e('No', 'paid-memberships-pro' );?></option>
-							<option value="1" <?php if($hideads == 1) { ?>selected="selected"<?php } ?>><?php _e('Hide Ads From All Members', 'paid-memberships-pro' );?></option>
-							<option value="2" <?php if($hideads == 2) { ?>selected="selected"<?php } ?>><?php _e('Hide Ads From Certain Members', 'paid-memberships-pro' );?></option>
+							<option value="0" <?php if(!$hideads) { ?>selected="selected"<?php } ?>><?php _e('No', 'digital-members-rfid' );?></option>
+							<option value="1" <?php if($hideads == 1) { ?>selected="selected"<?php } ?>><?php _e('Hide Ads From All Members', 'digital-members-rfid' );?></option>
+							<option value="2" <?php if($hideads == 2) { ?>selected="selected"<?php } ?>><?php _e('Hide Ads From Certain Members', 'digital-members-rfid' );?></option>
 						</select>
 					</td>
 				</tr>
 				<tr id="hideads_explanation" <?php if($hideads < 2) { ?>style="display: none;"<?php } ?>>
 					<th scope="row" valign="top">&nbsp;</th>
 					<td>
-						<p><?php _e('To hide ads in your template code, use code like the following', 'paid-memberships-pro' );?>:</p>
+						<p><?php _e('To hide ads in your template code, use code like the following', 'digital-members-rfid' );?>:</p>
 					<pre lang="PHP">
 if ( function_exists( 'dmrfid_displayAds' ) && dmrfid_displayAds() ) {
 	//insert ad code here
@@ -352,7 +352,7 @@ if ( function_exists( 'dmrfid_displayAds' ) && dmrfid_displayAds() ) {
 				</tr>			
 				<tr id="hideadslevels_tr" <?php if($hideads != 2) { ?>style="display: none;"<?php } ?>>
 					<th scope="row" valign="top">
-						<label for="hideadslevels"><?php _e('Choose Levels to Hide Ads From', 'paid-memberships-pro' );?>:</label>
+						<label for="hideadslevels"><?php _e('Choose Levels to Hide Ads From', 'digital-members-rfid' );?>:</label>
 					</th>
 					<td>
 						<div class="checkbox_box" <?php if(count($levels) > 5) { ?>style="height: 100px; overflow: auto;"<?php } ?>>
@@ -386,12 +386,12 @@ if ( function_exists( 'dmrfid_displayAds' ) && dmrfid_displayAds() ) {
 				<?php if(is_multisite()) { ?>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="redirecttosubscription"><?php _e('Redirect all traffic from registration page to /susbcription/?', 'paid-memberships-pro' );?>: <em>(<?php _e('multisite only', 'paid-memberships-pro' );?>)</em></label>
+						<label for="redirecttosubscription"><?php _e('Redirect all traffic from registration page to /susbcription/?', 'digital-members-rfid' );?>: <em>(<?php _e('multisite only', 'digital-members-rfid' );?>)</em></label>
 					</th>
 					<td>
 						<select id="redirecttosubscription" name="redirecttosubscription">
-							<option value="0" <?php if(!$redirecttosubscription) { ?>selected="selected"<?php } ?>><?php _e('No', 'paid-memberships-pro' );?></option>
-							<option value="1" <?php if($redirecttosubscription == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes', 'paid-memberships-pro' );?></option>
+							<option value="0" <?php if(!$redirecttosubscription) { ?>selected="selected"<?php } ?>><?php _e('No', 'digital-members-rfid' );?></option>
+							<option value="1" <?php if($redirecttosubscription == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes', 'digital-members-rfid' );?></option>
 						</select>
 					</td>
 				</tr>
@@ -469,12 +469,12 @@ if ( function_exists( 'dmrfid_displayAds' ) && dmrfid_displayAds() ) {
 		        ?>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="uninstall"><?php _e('Uninstall DmRFID on deletion?', 'paid-memberships-pro' );?></label>
+						<label for="uninstall"><?php _e('Uninstall DmRFID on deletion?', 'digital-members-rfid' );?></label>
 					</th>
 					<td>
 						<select id="uninstall" name="uninstall">
-							<option value="0" <?php if ( ! $uninstall ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'paid-memberships-pro' );?></option>
-							<option value="1" <?php if ( $uninstall == 1 ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes - Delete all DmRFID Data.', 'paid-memberships-pro' );?></option>
+							<option value="0" <?php if ( ! $uninstall ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'digital-members-rfid' );?></option>
+							<option value="1" <?php if ( $uninstall == 1 ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes - Delete all DmRFID Data.', 'digital-members-rfid' );?></option>
 						</select>
 						<p class="description"><?php esc_html_e( 'To delete all DmRFID data from the database, set to Yes, deactivate DmRFID, and then click to delete DmRFID from the plugins page.' ); ?></p>
 					</td>
@@ -522,7 +522,7 @@ if ( function_exists( 'dmrfid_displayAds' ) && dmrfid_displayAds() ) {
 		</div> <!-- end dmrfid_admin_section-other-settings -->
 
 		<p class="submit">
-			<input name="savesettings" type="submit" class="button button-primary" value="<?php _e('Save Settings', 'paid-memberships-pro' );?>" />
+			<input name="savesettings" type="submit" class="button button-primary" value="<?php _e('Save Settings', 'digital-members-rfid' );?>" />
 		</p>
 	</form>
 

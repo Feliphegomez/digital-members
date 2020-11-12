@@ -40,9 +40,9 @@ function dmrfid_delete_user_form_notice( $current_user, $userids ) {
 	if ( ! empty( $userids_have_levels ) ) { ?>
 		<div class="notice notice-error inline">
 			<?php if ( count( $userids ) > 1 ) {
-				_e( '<p><strong>Warning:</strong> One or more users for deletion have an active membership level. Deleting a user will also cancel their membership and recurring subscription.</p>', 'paid-memberships-pro' );
+				_e( '<p><strong>Warning:</strong> One or more users for deletion have an active membership level. Deleting a user will also cancel their membership and recurring subscription.</p>', 'digital-members-rfid' );
 			} else {
-				_e( '<p><strong>Warning:</strong> This user has an active membership level. Deleting a user will also cancel their membership and recurring subscription.</p>', 'paid-memberships-pro' );
+				_e( '<p><strong>Warning:</strong> This user has an active membership level. Deleting a user will also cancel their membership and recurring subscription.</p>', 'digital-members-rfid' );
 			}
 		?>
 		</div>

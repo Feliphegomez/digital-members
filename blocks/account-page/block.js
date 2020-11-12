@@ -21,15 +21,15 @@
  export default registerBlockType(
      'dmrfid/account-page',
      {
-         title: __( 'Membership Account Page', 'paid-memberships-pro' ),
-         description: __( 'Displays the sections of the Membership Account page as selected below.', 'paid-memberships-pro' ),
+         title: __( 'Membership Account Page', 'digital-members-rfid' ),
+         description: __( 'Displays the sections of the Membership Account page as selected below.', 'digital-members-rfid' ),
          category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'admin-users',
          },
-         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'digital-members-rfid' ) ],
          supports: {
          },
          attributes: {
@@ -55,8 +55,8 @@
              return [
                 isSelected && <Inspector { ...{ setAttributes, ...props} } />,
                 <div className="dmrfid-block-element">
-                  <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                  <span className="dmrfid-block-subtitle">{ __( 'Membership Account Page', 'paid-memberships-pro' ) }</span>
+                  <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'digital-members-rfid' ) }</span>
+                  <span className="dmrfid-block-subtitle">{ __( 'Membership Account Page', 'digital-members-rfid' ) }</span>
                 </div>
             ];
          },

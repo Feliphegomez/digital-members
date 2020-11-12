@@ -169,7 +169,7 @@
 		{
 			//response 4? send an email to the admin
 			$dmrfidemail = new DmRFIDEmail();
-			$dmrfidemail->data = array("body"=>__("<p>A payment is being held for review within Authorize.net.</p><p>Payment Information From Authorize.net", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($fields, true)));
+			$dmrfidemail->data = array("body"=>__("<p>A payment is being held for review within Authorize.net.</p><p>Payment Information From Authorize.net", 'digital-members-rfid' ) . ":<br />" . nl2br(var_export($fields, true)));
 			$dmrfidemail->sendEmail(get_bloginfo("admin_email"));
 		}
 	}
