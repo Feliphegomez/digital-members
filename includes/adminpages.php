@@ -44,7 +44,7 @@ function dmrfid_add_pages() {
 	}
 
 	// Top level menu
-	add_menu_page( __( 'Miembros', 'digital-members-rfid' ), __( 'Memberships', 'digital-members-rfid' ), 'dmrfid_memberships_menu', 'dmrfid-dashboard', $top_menu_cap, 'dashicons-groups', 30 );
+	add_menu_page( __( 'Memberships', 'digital-members-rfid' ), __( 'Miembros', 'digital-members-rfid' ), 'dmrfid_memberships_menu', 'dmrfid-dashboard', $top_menu_cap, 'dashicons-groups', 30 );
 	
 	// Main submenus
 	add_submenu_page( 'dmrfid-dashboard', __( 'Dashboard', 'digital-members-rfid' ), __( 'Dashboard', 'digital-members-rfid' ), 'dmrfid_dashboard', 'dmrfid-dashboard', 'dmrfid_dashboard' );
