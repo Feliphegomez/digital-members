@@ -9,49 +9,49 @@
  */
 add_meta_box(
 	'dmrfid_dashboard_welcome',
-	__( 'Welcome to Digital Members RFID', 'digital-members-rfid' ),
+	__( 'Bienvenido a Digital Members RFID', 'digital-members-rfid' ),
 	'dmrfid_dashboard_welcome_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'normal'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_sales',
-	__( 'Sales and Revenue', 'digital-members-rfid' ),
+	__( 'Ventas e ingresos', 'digital-members-rfid' ),
 	'dmrfid_report_sales_widget',
 	'toplevel_page_dmrfid-dashboard',
 	'advanced'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_membership_stats',
-	__( 'Membership Stats', 'digital-members-rfid' ),
+	__( 'Estadísticas de membresía', 'digital-members-rfid' ),
 	'dmrfid_report_memberships_widget',
 	'toplevel_page_dmrfid-dashboard',
 	'advanced'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_logins',
-	__( 'Visits, Views, and Logins', 'digital-members-rfid' ),
+	__( 'Visitas, vistas e inicios de sesión', 'digital-members-rfid' ),
 	'dmrfid_report_login_widget',
 	'toplevel_page_dmrfid-dashboard',
 	'advanced'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_recent_members',
-	__( 'Recent Members', 'digital-members-rfid' ),
+	__( 'Miembros recientes', 'digital-members-rfid' ),
 	'dmrfid_dashboard_report_recent_members_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'side'
 );
 add_meta_box(
 	'dmrfid_dashboard_report_recent_orders',
-	__( 'Recent Orders', 'digital-members-rfid' ),
+	__( 'Órdenes recientes', 'digital-members-rfid' ),
 	'dmrfid_dashboard_report_recent_orders_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'side'
 );
 add_meta_box(
 	'dmrfid_dashboard_news_updates',
-	__( 'Digital Members RFID News and Updates', 'digital-members-rfid' ),
+	__( 'Noticias y actualizaciones de RFID para miembros digitales', 'digital-members-rfid' ),
 	'dmrfid_dashboard_news_updates_callback',
 	'toplevel_page_dmrfid-dashboard',
 	'side'
