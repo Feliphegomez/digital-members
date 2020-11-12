@@ -48,7 +48,7 @@ function dmrfid_add_pages() {
 	
 	// Main submenus
 	add_submenu_page( 'dmrfid-dashboard', __( 'Dashboard', 'digital-members-rfid' ), __( 'Tablero', 'digital-members-rfid' ), 'dmrfid_dashboard', 'dmrfid-dashboard', 'dmrfid_dashboard' );
-	$list_table_hook = add_submenu_page( 'dmrfid-dashboard', __( 'Miembros', 'digital-members-rfid' ), __( 'Members', 'digital-members-rfid' ), 'dmrfid_memberslist', 'dmrfid-memberslist', 'dmrfid_memberslist' );
+	$list_table_hook = add_submenu_page( 'dmrfid-dashboard', __( 'Members', 'digital-members-rfid' ), __( 'Miembros', 'digital-members-rfid' ), 'dmrfid_memberslist', 'dmrfid-memberslist', 'dmrfid_memberslist' );
 	add_submenu_page( 'dmrfid-dashboard', __( 'Orders', 'digital-members-rfid' ), __( 'Pedidos', 'digital-members-rfid' ), 'dmrfid_orders', 'dmrfid-orders', 'dmrfid_orders' );
 	add_submenu_page( 'dmrfid-dashboard', __( 'Reports', 'digital-members-rfid' ), __( 'Informes', 'digital-members-rfid' ), 'dmrfid_reports', 'dmrfid-reports', 'dmrfid_reports' );
 	add_submenu_page( 'dmrfid-dashboard', __( 'Settings', 'digital-members-rfid' ), __( 'Configuraciones', 'digital-members-rfid' ), 'dmrfid_membershiplevels', 'dmrfid-membershiplevels', 'dmrfid_membershiplevels' );
