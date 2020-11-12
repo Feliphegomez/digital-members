@@ -4,9 +4,9 @@
 */
 //init code
 function pmpro_init() {
-	require_once(PMPRO_DIR . '/includes/countries.php');
-	require_once(PMPRO_DIR . '/includes/states.php');
-	require_once(PMPRO_DIR . '/includes/currencies.php');
+	require_once(DMRFID_DIR . '/includes/countries.php');
+	require_once(DMRFID_DIR . '/includes/states.php');
+	require_once(DMRFID_DIR . '/includes/currencies.php');
 
 	global $pmpro_pages, $pmpro_core_pages, $pmpro_ready, $pmpro_currencies, $pmpro_currency, $pmpro_currency_symbol;
 	$pmpro_pages = array();
@@ -72,7 +72,7 @@ function pmpro_wp()
 			if(!empty($post->post_content) && strpos($post->post_content, "[pmpro_" . $pmpro_page_name . "]") !== false)
 			{
 				//preheader
-				require_once(PMPRO_DIR . "/preheaders/" . $pmpro_page_name . ".php");
+				require_once(DMRFID_DIR . "/preheaders/" . $pmpro_page_name . ".php");
 
 				//add class to body
 				$pmpro_body_classes[] = "pmpro-" . str_replace("_", "-", $pmpro_page_name);
@@ -93,7 +93,7 @@ function pmpro_wp()
 				$pmpro_body_classes[] = "pmpro-" . str_replace("_", "-", $pmpro_page_name);
 				
 				//shortcode has params, but we still want to load the preheader
-				require_once(PMPRO_DIR . "/preheaders/" . $pmpro_page_name . ".php");
+				require_once(DMRFID_DIR . "/preheaders/" . $pmpro_page_name . ".php");
 			}
 		}
 	}

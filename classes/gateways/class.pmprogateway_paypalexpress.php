@@ -249,9 +249,9 @@
 
 			if(($gateway == "paypal" || $default_gateway == "paypal") && !pmpro_isLevelFree($pmpro_level)) {
 				wp_register_script( 'pmpro_paypal',
-                            plugins_url( 'js/pmpro-paypal.js', PMPRO_BASE_FILE ),
+                            plugins_url( 'js/pmpro-paypal.js', DMRFID_BASE_FILE ),
                             array( 'jquery' ),
-                            PMPRO_VERSION );
+                            DMRFID_VERSION );
 				//wp_localize_script( 'pmpro_paypal', 'pmpro_paypal', array());
 				wp_enqueue_script( 'pmpro_paypal' );
 			}

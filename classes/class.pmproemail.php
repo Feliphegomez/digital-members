@@ -65,12 +65,12 @@
 				$this->body = file_get_contents(WP_LANG_DIR . '/pmpro/email/' . $locale . "/" . $this->template . ".html");				//localized email folder in WP language folder
 			elseif(file_exists(WP_LANG_DIR . '/pmpro/email/' . $this->template . ".html"))
 				$this->body = file_get_contents(WP_LANG_DIR . '/pmpro/email/' . $this->template . ".html");								//email folder in WP language folder
-			elseif(file_exists(PMPRO_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html"))
-				$this->body = file_get_contents(PMPRO_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html");					//email folder in PMPro language folder
+			elseif(file_exists(DMRFID_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html"))
+				$this->body = file_get_contents(DMRFID_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html");					//email folder in PMPro language folder
 			elseif($this->getDefaultEmailTemplate($this->template))
 				$this->body = $this->getDefaultEmailTemplate($this->template);
-			elseif(file_exists(PMPRO_DIR . "/email/" . $this->template . ".html"))
-				$this->body = file_get_contents(PMPRO_DIR . "/email/" . $this->template . ".html");										//default template in plugin
+			elseif(file_exists(DMRFID_DIR . "/email/" . $this->template . ".html"))
+				$this->body = file_get_contents(DMRFID_DIR . "/email/" . $this->template . ".html");										//default template in plugin
 			elseif(!empty($this->data) && !empty($this->data['body']))
 				$this->body = $this->data['body'];																						//data passed in
 
@@ -972,7 +972,7 @@
 			} elseif ( file_exists( get_template_directory() . '/paid-memberships-pro/pages/orders-email.php' ) ) {
 				$template = get_template_directory() . '/paid-memberships-pro/pages/orders-email.php';
 			} else {
-				$template = PMPRO_DIR . '/adminpages/templates/orders-email.php';
+				$template = DMRFID_DIR . '/adminpages/templates/orders-email.php';
 			}
 
 			ob_start();

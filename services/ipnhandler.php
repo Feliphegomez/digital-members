@@ -9,13 +9,13 @@ if ( ! defined( "ABSPATH" ) ) {
 }
 
 //uncomment to log requests in logs/ipn.txt
-//define('PMPRO_IPN_DEBUG', true);
+//define('DMRFID_IPN_DEBUG', true);
 
 //some globals
 global $wpdb, $gateway_environment, $logstr;
 $logstr = "";    //will put debug info here and write to ipnlog.txt
 
-define( 'PMPRO_DOING_WEBHOOK', 'paypal' );
+define( 'DMRFID_DOING_WEBHOOK', 'paypal' );
 
 //validate?
 if ( ! pmpro_ipnValidate() ) {
@@ -365,19 +365,19 @@ function pmpro_ipnExit() {
 		//- dont log if constant is undefined or defined but false
 		//- log to file if constant is set to TRUE or 'log'
 		//- log to file if constant is defined to a valid email address
-		if ( defined( 'PMPRO_IPN_DEBUG' ) ) {
-			if( PMPRO_IPN_DEBUG === false ){
+		if ( defined( 'DMRFID_IPN_DEBUG' ) ) {
+			if( DMRFID_IPN_DEBUG === false ){
 				//dont log here. false mean no.
 				//should avoid counterintuitive interpretation of false.
-			} elseif ( PMPRO_IPN_DEBUG === "log" ) {
+			} elseif ( DMRFID_IPN_DEBUG === "log" ) {
 				//file
 				$logfile = apply_filters( 'pmpro_ipn_logfile', dirname( __FILE__ ) . "/../logs/ipn.txt" );
 				$loghandle = fopen( $logfile, "a+" );
 				fwrite( $loghandle, $logstr );
 				fclose( $loghandle );
-			} elseif ( is_email( PMPRO_IPN_DEBUG ) ) {
+			} elseif ( is_email( DMRFID_IPN_DEBUG ) ) {
 				//email to specified address
-				wp_mail( PMPRO_IPN_DEBUG, get_option( "blogname" ) . " IPN Log", nl2br( $logstr ) );							
+				wp_mail( DMRFID_IPN_DEBUG, get_option( "blogname" ) . " IPN Log", nl2br( $logstr ) );							
 			} else {
 				//email to admin
 				wp_mail( get_option( "admin_email" ), get_option( "blogname" ) . " IPN Log", nl2br( $logstr ) );							
@@ -414,7 +414,7 @@ function pmpro_ipnValidate() {
 		"httpversion" => "1.1",
 		"Host"        => "www.paypal.com",
 		"Connection"  => "Close",
-		"user-agent"  => PMPRO_USER_AGENT
+		"user-agent"  => DMRFID_USER_AGENT
 	);
 
 	$fp = wp_remote_post( $paypal_url, $paypal_params );

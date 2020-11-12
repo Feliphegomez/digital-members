@@ -1,6 +1,6 @@
 <?php
 	//set this in your wp-config.php for debugging
-	//define('PMPRO_INS_DEBUG', true);
+	//define('DMRFID_INS_DEBUG', true);
 
 	//in case the file is loaded directly
 	if(!defined("ABSPATH"))
@@ -14,13 +14,13 @@
 
 	// Require TwoCheckout class
 	if(!class_exists("Twocheckout"))
-		require_once(PMPRO_DIR . "/includes/lib/Twocheckout/Twocheckout.php");
+		require_once(DMRFID_DIR . "/includes/lib/Twocheckout/Twocheckout.php");
 
 	//some globals
 	global $wpdb, $gateway_environment, $logstr;
 	$logstr = "";	//will put debug info here and write to inslog.txt
 
-	define( 'PMPRO_DOING_WEBHOOK', 'twocheckout' );
+	define( 'DMRFID_DOING_WEBHOOK', 'twocheckout' );
 
 	//validate?
 	if( ! pmpro_twocheckoutValidate() ) {
@@ -199,18 +199,18 @@
 		$logstr = var_export($_REQUEST, true) . "Logged On: " . date_i18n("m/d/Y H:i:s") . "\n" . $logstr . "\n-------------\n";
 
 		//log in file or email?
-		if(defined('PMPRO_INS_DEBUG') && PMPRO_INS_DEBUG === "log")
+		if(defined('DMRFID_INS_DEBUG') && DMRFID_INS_DEBUG === "log")
 		{
 			//file
 			$loghandle = fopen(dirname(__FILE__) . "/../logs/ipn.txt", "a+");
 			fwrite($loghandle, $logstr);
 			fclose($loghandle);
 		}
-		elseif(defined('PMPRO_INS_DEBUG'))
+		elseif(defined('DMRFID_INS_DEBUG'))
 		{
 			//email
-			if(strpos(PMPRO_INS_DEBUG, "@"))
-				$log_email = PMPRO_INS_DEBUG;	//constant defines a specific email address
+			if(strpos(DMRFID_INS_DEBUG, "@"))
+				$log_email = DMRFID_INS_DEBUG;	//constant defines a specific email address
 			else
 				$log_email = get_option("admin_email");
 

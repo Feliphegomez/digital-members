@@ -38,7 +38,7 @@ function pmpro_getAddons() {
 		$timeout = apply_filters( 'pmpro_get_addons_timeout', 5 );
 
 		// get em
-		$remote_addons = wp_remote_get( PMPRO_LICENSE_SERVER . 'addons/', $timeout );
+		$remote_addons = wp_remote_get( DMRFID_LICENSE_SERVER . 'addons/', $timeout );
 
 		// make sure we have at least an array to pass back
 		if ( empty( $addons ) ) {
@@ -153,7 +153,7 @@ function pmpro_update_plugins_filter( $value ) {
  */
 function pmpro_http_request_args_for_addons( $args, $url ) {
 	// If this is an SSL request and we are performing an upgrade routine, disable SSL verification.
-	if ( strpos( $url, 'https://' ) !== false && strpos( $url, PMPRO_LICENSE_SERVER ) !== false && strpos( $url, 'download' ) !== false ) {
+	if ( strpos( $url, 'https://' ) !== false && strpos( $url, DMRFID_LICENSE_SERVER ) !== false && strpos( $url, 'download' ) !== false ) {
 		$args['sslverify'] = false;
 	}
 

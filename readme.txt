@@ -292,7 +292,7 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Fixed issue where the chosen discount code was not shown after submitting when adding a new order through the dashboard.
 * BUG FIX/ENHANCEMENT: Using "PMPro" in the admin activity email subject to keep the line shorter and avoid issues when replacing the word "member" via gettext.
 * ENHANCEMENT: Added a pmpro_allow_weak_passwords filter. You can set this to return true (like this https://gist.github.com/ideadude/5a12119b9ce1c2aad87b2d69cb8f9505) to allow weak passwords on the change password and reset password pages. Note that at this time, weak passwords are still allowed on the checkout page no matter the value of this filter. We expect to change that in the future. For now, you can use our PMPro Strong Passwords plugin to force strong passwords at checkout.
-* REFACTOR: Updated the logic around checking the PMPRO_IPN_DEBUG constant in the IPN handler. (Thanks, Mirco Babini)
+* REFACTOR: Updated the logic around checking the DMRFID_IPN_DEBUG constant in the IPN handler. (Thanks, Mirco Babini)
 
 = 2.3.2 - 2020-05-07 =
 * BUG FIX: Fixed errors calling is_main_query() that came up with certain themes.
@@ -336,7 +336,7 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * ENHANCEMENT: Added `getSubscriptionStatus` method to the Stripe gateway API class. This fixes issues with the PMPro Subscription Check Add-On.
 * ENHANCEMENT: Added !!levels_page_url!! and !!login_url!! as replacement variables in Advanced Settings > Message Settings. Using these by default on new installs.
 * ENHANCEMENT: Improved Block Editor code and webpack configuration.
-* ENHANCEMENT: Added support for `PMPRO_AUTHNET_SILENT_POST_DEBUG` to "log" data to /logs/ or send an email to an email address different from the site admin.
+* ENHANCEMENT: Added support for `DMRFID_AUTHNET_SILENT_POST_DEBUG` to "log" data to /logs/ or send an email to an email address different from the site admin.
 * ENHANCEMENT: Added time fields to Memberships > Orders admin page when vieweing, updating or saving an order.
 * ENHANCEMENT: Added pmpro_admin_orders_filters and pmpro_admin_orders_query_condition filters to add new filters to the orders page in the dashboard. (Thanks, Mirco Babini)
 * ENHANCEMENT: Added an SVG icon to the PMPro blocks category.
@@ -816,7 +816,7 @@ up the lines of text.
 * BUG: Fixed bug when using the testing gateway.
 * BUG: Avoiding issues where is_user_logged in is not yet available for the pmpro_search_filter() function. (Thanks, d_enajetic)
 * ENHANCEMENT: Updated Italian translation. (Thanks again, Angelo)
-* ENHANCEMENT: You can now define('PMPRO_USE_SESSIONS', false); in your wp-config.php to force PMPro to skip the call to session_start. Note that PayPal Express and some addons require sessions to function.
+* ENHANCEMENT: You can now define('DMRFID_USE_SESSIONS', false); in your wp-config.php to force PMPro to skip the call to session_start. Note that PayPal Express and some addons require sessions to function.
 
 = 1.8.12 =
 * BUG: Fixed issue where "expiring soon" emails were sometimes sent more than needed.

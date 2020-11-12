@@ -20,7 +20,7 @@ if ( ! defined( "ABSPATH" ) ) {
 //globals
 global $wpdb;
 
-define( 'PMPRO_DOING_WEBHOOK', 'braintree' );
+define( 'DMRFID_DOING_WEBHOOK', 'braintree' );
 
 // Debug log
 global $logstr;
@@ -36,7 +36,7 @@ if ( version_compare( PHP_VERSION, '5.4.45', '<' ) ) {
 
 //load Braintree library, gateway class constructor does config
 if ( ! class_exists( '\Braintree' ) ) {
-	require_once( PMPRO_DIR . "/classes/gateways/class.pmprogateway_braintree.php" );
+	require_once( DMRFID_DIR . "/classes/gateways/class.pmprogateway_braintree.php" );
 }
 
 $gateway             = new PMProGateway_braintree();
@@ -646,18 +646,18 @@ function pmpro_braintreeWebhookExit() {
 		$debuglog = implode( "\n", $logstr );
 		
 		//log in file or email?
-		if ( defined( 'PMPRO_BRAINTREE_WEBHOOK_DEBUG' ) && PMPRO_BRAINTREE_WEBHOOK_DEBUG === "log" ) {
+		if ( defined( 'DMRFID_BRAINTREE_WEBHOOK_DEBUG' ) && DMRFID_BRAINTREE_WEBHOOK_DEBUG === "log" ) {
 			//file
 			$loghandle = fopen( dirname( __FILE__ ) . "/../logs/braintree-webhook.txt", "a+" );
 			fwrite( $loghandle, $debuglog );
 			fclose( $loghandle );
-		} else if ( defined( 'PMPRO_BRAINTREE_WEBHOOK_DEBUG' ) ) {
+		} else if ( defined( 'DMRFID_BRAINTREE_WEBHOOK_DEBUG' ) ) {
 			/**
 			 * @since 1.9.5 - BUG FIX: We specifically care about errors, not strings at position 0
 			 */
 			//email
-			if ( false !== strpos( PMPRO_BRAINTREE_WEBHOOK_DEBUG, "@" ) ) {
-				$log_email = PMPRO_BRAINTREE_WEBHOOK_DEBUG;    //constant defines a specific email address
+			if ( false !== strpos( DMRFID_BRAINTREE_WEBHOOK_DEBUG, "@" ) ) {
+				$log_email = DMRFID_BRAINTREE_WEBHOOK_DEBUG;    //constant defines a specific email address
 			} else {
 				$log_email = get_option( "admin_email" );
 			}

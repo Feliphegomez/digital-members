@@ -99,7 +99,7 @@ function pmpro_shortcode_account($atts, $content=null, $code="")
 										}
 
 										//To do: Only show CHANGE link if this level is in a group that has upgrade/downgrade rules
-										if(count($pmpro_levels) > 1 && !defined("PMPRO_DEFAULT_LEVEL")) {
+										if(count($pmpro_levels) > 1 && !defined("DMRFID_DEFAULT_LEVEL")) {
 											$pmpro_member_action_links['change'] = sprintf( '<a id="pmpro_actionlink-change" href="%s">%s</a>', pmpro_url( 'levels' ), esc_html__( 'Change', 'paid-memberships-pro' ) );
 										}
 

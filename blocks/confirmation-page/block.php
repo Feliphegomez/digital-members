@@ -44,7 +44,7 @@ function render_dynamic_block( $attributes ) {
  */
 function load_confirmation_preheader() {
 	if ( has_block( 'pmpro/confirmation-page' ) ) {
-		require_once( PMPRO_DIR . "/preheaders/confirmation.php" );
+		require_once( DMRFID_DIR . "/preheaders/confirmation.php" );
 	}
 }
 add_action( 'wp', __NAMESPACE__ . '\load_confirmation_preheader', 1 );

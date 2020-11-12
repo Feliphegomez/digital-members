@@ -44,7 +44,7 @@ function render_dynamic_block( $attributes ) {
  */
 function load_invoice_preheader() {
 	if ( has_block( 'pmpro/invoice-page' ) ) {
-		require_once( PMPRO_DIR . "/preheaders/invoice.php" );
+		require_once( DMRFID_DIR . "/preheaders/invoice.php" );
 	}
 }
 add_action( 'wp', __NAMESPACE__ . '\load_invoice_preheader', 1 );

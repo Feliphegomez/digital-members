@@ -29,7 +29,7 @@ function pmpro_stripe_apple_pay_controller() {
 
 	require_once ( ABSPATH . '/wp-admin/includes/file.php' );
 	WP_Filesystem();
-	echo $wp_filesystem->get_contents( PMPRO_DIR . '/includes/lib/stripe-apple-pay/apple-developer-merchantid-domain-association' );
+	echo $wp_filesystem->get_contents( DMRFID_DIR . '/includes/lib/stripe-apple-pay/apple-developer-merchantid-domain-association' );
 	exit;
 }
 add_action( 'template_redirect', 'pmpro_stripe_apple_pay_controller' );

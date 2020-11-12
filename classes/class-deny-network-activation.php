@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 class PMPro_Deny_Network_Activation {
 
 	public function init() {
-		register_activation_hook( PMPRO_BASE_FILE, array( $this, 'pmpro_check_network_activation' ) );
+		register_activation_hook( DMRFID_BASE_FILE, array( $this, 'pmpro_check_network_activation' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'wp_admin_style' ) );
 		add_action( 'network_admin_notices', array( $this, 'display_message_after_network_activation_attempt' ) );	
 	}

@@ -44,7 +44,7 @@ function render_dynamic_block( $attributes ) {
  */
 function load_billing_preheader() {
 	if ( has_block( 'pmpro/billing-page' ) ) {
-		require_once( PMPRO_DIR . "/preheaders/billing.php" );
+		require_once( DMRFID_DIR . "/preheaders/billing.php" );
 	}
 }
 add_action( 'wp', __NAMESPACE__ . '\load_billing_preheader', 1 );

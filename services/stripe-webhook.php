@@ -14,11 +14,11 @@
 	global $logstr;
 	$logstr = "";
 
-	define( 'PMPRO_DOING_WEBHOOK', 'stripe' );
+	define( 'DMRFID_DOING_WEBHOOK', 'stripe' );
 
-	//you can define a different # of seconds (define PMPRO_STRIPE_WEBHOOK_DELAY in your wp-config.php) if you need this webhook to delay more or less
-	if(!defined('PMPRO_STRIPE_WEBHOOK_DELAY'))
-		define('PMPRO_STRIPE_WEBHOOK_DELAY', 2);
+	//you can define a different # of seconds (define DMRFID_STRIPE_WEBHOOK_DELAY in your wp-config.php) if you need this webhook to delay more or less
+	if(!defined('DMRFID_STRIPE_WEBHOOK_DELAY'))
+		define('DMRFID_STRIPE_WEBHOOK_DELAY', 2);
 
 	//in case the file is loaded directly
 	if(!defined("ABSPATH"))
@@ -28,7 +28,7 @@
 	}
 
 	if(!class_exists("Stripe\Stripe")) {
-		require_once( PMPRO_DIR . "/includes/lib/Stripe/init.php" );
+		require_once( DMRFID_DIR . "/includes/lib/Stripe/init.php" );
 	}
 
 
@@ -411,7 +411,7 @@
 	function getUserFromInvoiceEvent($pmpro_stripe_event)
 	{
 		//pause here to give PMPro a chance to finish checkout
-		sleep(PMPRO_STRIPE_WEBHOOK_DELAY);
+		sleep(DMRFID_STRIPE_WEBHOOK_DELAY);
 
 		global $wpdb;
 
@@ -429,7 +429,7 @@
 	function getUserFromCustomerEvent($pmpro_stripe_event, $status = false, $checkplan = true)
 	{
 		//pause here to give PMPro a chance to finish checkout
-		sleep(PMPRO_STRIPE_WEBHOOK_DELAY);
+		sleep(DMRFID_STRIPE_WEBHOOK_DELAY);
 
 		global $wpdb;
 
@@ -458,7 +458,7 @@
 	function getOldOrderFromInvoiceEvent($pmpro_stripe_event)
 	{
 		//pause here to give PMPro a chance to finish checkout
-		sleep(PMPRO_STRIPE_WEBHOOK_DELAY);
+		sleep(DMRFID_STRIPE_WEBHOOK_DELAY);
 
 		global $wpdb;
 
@@ -515,7 +515,7 @@
 	function getOrderFromInvoiceEvent($pmpro_stripe_event)
 	{
 		//pause here to give PMPro a chance to finish checkout
-		sleep(PMPRO_STRIPE_WEBHOOK_DELAY);
+		sleep(DMRFID_STRIPE_WEBHOOK_DELAY);
 
 		$invoice_id = $pmpro_stripe_event->data->object->id;
 
@@ -541,18 +541,18 @@
 			echo $logstr;
 
 			//log in file or email?
-			if(defined('PMPRO_STRIPE_WEBHOOK_DEBUG') && PMPRO_STRIPE_WEBHOOK_DEBUG === "log")
+			if(defined('DMRFID_STRIPE_WEBHOOK_DEBUG') && DMRFID_STRIPE_WEBHOOK_DEBUG === "log")
 			{
 				//file
 				$loghandle = fopen(dirname(__FILE__) . "/../logs/stripe-webhook.txt", "a+");
 				fwrite($loghandle, $logstr);
 				fclose($loghandle);
 			}
-			elseif(defined('PMPRO_STRIPE_WEBHOOK_DEBUG') && false !== PMPRO_STRIPE_WEBHOOK_DEBUG )
+			elseif(defined('DMRFID_STRIPE_WEBHOOK_DEBUG') && false !== DMRFID_STRIPE_WEBHOOK_DEBUG )
 			{
 				//email
-				if(strpos(PMPRO_STRIPE_WEBHOOK_DEBUG, "@"))
-					$log_email = PMPRO_STRIPE_WEBHOOK_DEBUG;	//constant defines a specific email address
+				if(strpos(DMRFID_STRIPE_WEBHOOK_DEBUG, "@"))
+					$log_email = DMRFID_STRIPE_WEBHOOK_DEBUG;	//constant defines a specific email address
 				else
 					$log_email = get_option("admin_email");
 

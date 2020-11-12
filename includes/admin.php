@@ -3,7 +3,7 @@
 	Admin code.
 */
 
-require_once( PMPRO_DIR . '/includes/lib/SendWP/sendwp.php' );
+require_once( DMRFID_DIR . '/includes/lib/SendWP/sendwp.php' );
 /**
  * Redirect to Dashboard tab if the user hasn't been there yet.
  *
@@ -17,8 +17,8 @@ function pmpro_admin_init_redirect_to_dashboard() {
 
 	// Check if we should redirect to the dashboard
 	$pmpro_dashboard_version = get_option( 'pmpro_dashboard_version', 0 );
-	if ( version_compare( $pmpro_dashboard_version, PMPRO_VERSION ) < 0 ) {
-		update_option( 'pmpro_dashboard_version', PMPRO_VERSION, 'no' );
+	if ( version_compare( $pmpro_dashboard_version, DMRFID_VERSION ) < 0 ) {
+		update_option( 'pmpro_dashboard_version', DMRFID_VERSION, 'no' );
 		wp_redirect( admin_url( 'admin.php?page=pmpro-dashboard' ) );
 		exit;
 	}

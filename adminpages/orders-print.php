@@ -28,7 +28,7 @@ if ( file_exists( get_stylesheet_directory() . '/paid-memberships-pro/pages/orde
 } elseif ( file_exists( get_template_directory() . '/paid-memberships-pro/pages/orders-print.php' ) ) {
 	$template = get_template_directory() . '/paid-memberships-pro/pages/orders-print.php';
 } else {
-	$template = PMPRO_DIR . '/adminpages/templates/orders-print.php';
+	$template = DMRFID_DIR . '/adminpages/templates/orders-print.php';
 }
 
 require_once( $template );

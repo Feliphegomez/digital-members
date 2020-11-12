@@ -4,15 +4,15 @@ if ( ! function_exists( "current_user_can" ) || ( ! current_user_can( "manage_op
 	die( __( "You do not have permissions to perform this action.", 'paid-memberships-pro' ) );
 }
 
-define('PMPRO_BENCHMARK', true);
+define('DMRFID_BENCHMARK', true);
 
-if (!defined('PMPRO_BENCHMARK'))
-	define('PMPRO_BENCHMARK', false);
+if (!defined('DMRFID_BENCHMARK'))
+	define('DMRFID_BENCHMARK', false);
 
 $start_memory = memory_get_usage(true);;
 $start_time = microtime(true);
 
-if (true === PMPRO_BENCHMARK)
+if (true === DMRFID_BENCHMARK)
 {
 	error_log(str_repeat('-', 10) . date_i18n('Y-m-d H:i:s') . str_repeat('-', 10));
 }
@@ -374,7 +374,7 @@ if ( empty( $order_ids ) ) {
 	pmpro_transmit_order_content( $csv_fh, $filename, $headers );
 }
 
-if (PMPRO_BENCHMARK)
+if (DMRFID_BENCHMARK)
 {
 	$pre_action_time = microtime(true);
 	$pre_action_memory = memory_get_usage(true);
@@ -394,17 +394,17 @@ if ( $orders_found >= $max_orders_per_loop ) {
 $end        = 0;
 $time_limit = ini_get( 'max_execution_time' );
 
-if (PMPRO_BENCHMARK)
+if (DMRFID_BENCHMARK)
 {
-	error_log("PMPRO_BENCHMARK - Total records to process: {$orders_found}");
-	error_log("PMPRO_BENCHMARK - Will process {$iterations} iterations of max {$max_orders_per_loop} records per iteration.");
+	error_log("DMRFID_BENCHMARK - Total records to process: {$orders_found}");
+	error_log("DMRFID_BENCHMARK - Will process {$iterations} iterations of max {$max_orders_per_loop} records per iteration.");
 	$pre_iteration_time = microtime(true);
 	$pre_iteration_memory = memory_get_usage(true);
 }
 
 for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
 		$start_iteration_time = microtime(true);
 		$start_iteration_memory = memory_get_usage(true);
@@ -442,7 +442,7 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 	// get the order list we should process
 	$order_list = array_slice( $order_ids, $i_start, $max_orders_per_loop );
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
 		$pre_orderdata_time = microtime(true);
 		$pre_orderdata_memory = memory_get_usage(true);
@@ -531,7 +531,7 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 
 	} // end of foreach orders
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
 		$after_data_time = microtime(true);
 		$after_data_memory = memory_get_peak_usage(true);
@@ -541,8 +541,8 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 
 		list($sec, $usec) = explode('.', $time_processing_data);
 
-		error_log("PMPRO_BENCHMARK - Time processing data: {$sec}.{$usec} seconds");
-		error_log("PMPRO_BENCHMARK - Peak memory usage: " . number_format($memory_processing_data, false, '.', ',') . " bytes");
+		error_log("DMRFID_BENCHMARK - Time processing data: {$sec}.{$usec} seconds");
+		error_log("DMRFID_BENCHMARK - Peak memory usage: " . number_format($memory_processing_data, false, '.', ',') . " bytes");
 	}
 	$order_list = null;
 	wp_cache_flush();

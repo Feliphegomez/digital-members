@@ -13,7 +13,7 @@ use Stripe\ApplePayDomain as Stripe_ApplePayDomain;
 use Stripe\WebhookEndpoint as Stripe_Webhook;
 use Stripe\StripeClient as Stripe_Client; // Used for deleting webhook as of 2.4
 
-define( "PMPRO_STRIPE_API_VERSION", "2020-03-02" );
+define( "DMRFID_STRIPE_API_VERSION", "2020-03-02" );
 
 //include pmprogateway
 require_once( dirname( __FILE__ ) . "/class.pmprogateway.php" );
@@ -50,7 +50,7 @@ class PMProGateway_stripe extends PMProGateway {
 		if ( true === $this->dependencies() ) {
 			$this->loadStripeLibrary();
 			Stripe\Stripe::setApiKey( pmpro_getOption( "stripe_secretkey" ) );
-			Stripe\Stripe::setAPIVersion( PMPRO_STRIPE_API_VERSION );
+			Stripe\Stripe::setAPIVersion( DMRFID_STRIPE_API_VERSION );
 			self::$is_loaded = true;
 		}
 
@@ -71,7 +71,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 			$pmpro_stripe_error = true;
 			$msg                = - 1;
-			$msgt               = sprintf( __( "The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_PHP_MIN_VERSION );
+			$msgt               = sprintf( __( "The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_PHP_MIN_VERSION );
 
 			if ( ! is_admin() ) {
 				pmpro_setMessage( $msgt, "pmpro_error" );
@@ -111,7 +111,7 @@ class PMProGateway_stripe extends PMProGateway {
 	function loadStripeLibrary() {
 		//load Stripe library if it hasn't been loaded already (usually by another plugin using Stripe)
 		if ( ! class_exists( "Stripe\Stripe" ) ) {
-			require_once( PMPRO_DIR . "/includes/lib/Stripe/init.php" );
+			require_once( DMRFID_DIR . "/includes/lib/Stripe/init.php" );
 		}
 	}
 
@@ -309,7 +309,7 @@ class PMProGateway_stripe extends PMProGateway {
 		?>
 		<tr class="gateway gateway_stripe" <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <th><?php _e( 'Stripe API Version', 'paid-memberships-pro' ); ?>:</th>
-            <td><code><?php echo PMPRO_STRIPE_API_VERSION; ?></code></td>
+            <td><code><?php echo DMRFID_STRIPE_API_VERSION; ?></code></td>
         </tr>
 		<tr class="pmpro_settings_divider gateway gateway_stripe"
 		    <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
@@ -357,7 +357,7 @@ class PMProGateway_stripe extends PMProGateway {
 								<p id="pmpro_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is disabled.', 'paid-memberships-pro' ); ?> <a id="pmpro_stripe_rebuild_webhook" href="#">Rebuild Webhook</a></p>
 							</div>
 							<?php
-						} elseif ( $webhook['api_version'] < PMPRO_STRIPE_API_VERSION ) {
+						} elseif ( $webhook['api_version'] < DMRFID_STRIPE_API_VERSION ) {
 							// Check webhook API version.
 							?>
 							<div class="notice error inline">
@@ -670,9 +670,9 @@ class PMProGateway_stripe extends PMProGateway {
 				}
 
 				wp_register_script( 'pmpro_stripe',
-					plugins_url( 'js/pmpro-stripe.js', PMPRO_BASE_FILE ),
+					plugins_url( 'js/pmpro-stripe.js', DMRFID_BASE_FILE ),
 					array( 'jquery' ),
-					PMPRO_VERSION );
+					DMRFID_VERSION );
 				wp_localize_script( 'pmpro_stripe', 'pmproStripe', $localize_vars );
 				wp_enqueue_script( 'pmpro_stripe' );
 			}
@@ -777,7 +777,7 @@ class PMProGateway_stripe extends PMProGateway {
 			$create = Stripe_Webhook::create([
 				'url' => self::get_site_webhook_url(),
 				'enabled_events' => self::webhook_events(),
-				'api_version' => PMPRO_STRIPE_API_VERSION
+				'api_version' => DMRFID_STRIPE_API_VERSION
 			]);
 
 			if ( $create ) {

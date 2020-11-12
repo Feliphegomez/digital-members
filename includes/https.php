@@ -156,7 +156,7 @@ function pmpro_replaceURLsInBuffer($buffer) {
 			* http://anysubdomain.domain.com
 			* http://any.number.of.sub.domains.domain.com
 		*/
-		$buffer = preg_replace("/http\:\/\/([a-zA-Z0-9\.\-]*" . str_replace(".", "\.", PMPRO_DOMAIN) . ")/i", "https://$1", $buffer);		
+		$buffer = preg_replace("/http\:\/\/([a-zA-Z0-9\.\-]*" . str_replace(".", "\.", DMRFID_DOMAIN) . ")/i", "https://$1", $buffer);		
 	}
 	
 	return $buffer;

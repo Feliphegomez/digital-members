@@ -10,7 +10,7 @@
 	}		
 	
 	//this script must be enabled to run
-	if(!defined('PMPRO_GETFILE_ENABLED') || !PMPRO_GETFILE_ENABLED)
+	if(!defined('DMRFID_GETFILE_ENABLED') || !DMRFID_GETFILE_ENABLED)
 		die("The getfile script is not enabled.");
 	
 	//prevent loops when redirecting to .php files

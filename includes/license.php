@@ -11,20 +11,20 @@
 	- Once the license is activated all "nags" will be disabled in the dashboard and member links will be added where appropriate.
     - This plugin will function 100% even if the support license is not installed.
     - If no support license is detected on this site, prompts will show in the admin to encourage you to purchase one.
-	- You can override these prompts by setting the PMPRO_LICENSE_NAG constant to false.
+	- You can override these prompts by setting the DMRFID_LICENSE_NAG constant to false.
 */
 
 /*
 	Developers, add this line to your wp-config.php to remove PMPro license nags even if no license has been purchased.
 	
-	define('PMPRO_LICENSE_NAG', false);	//consider purchasing a license at https://www.paidmembershipspro.com/pricing/
+	define('DMRFID_LICENSE_NAG', false);	//consider purchasing a license at https://www.paidmembershipspro.com/pricing/
 */
 
 /*
 	Constants
 */
-# define('PMPRO_LICENSE_SERVER', 'https://license.paidmembe r s h i pspro.com/');
-define('PMPRO_LICENSE_SERVER', 'none');
+# define('DMRFID_LICENSE_SERVER', 'https://license.paidmembe r s h i pspro.com/');
+define('DMRFID_LICENSE_SERVER', 'none');
 
 /*
 	Check license.
@@ -86,7 +86,7 @@ function pmpro_license_check_key($key = NULL) {
 	if(!empty($key))
 	{
 		//check license server
-		$url = add_query_arg(array('license'=>$key, 'domain'=>site_url()), PMPRO_LICENSE_SERVER);
+		$url = add_query_arg(array('license'=>$key, 'domain'=>site_url()), DMRFID_LICENSE_SERVER);
 
         /**
          * Filter to change the timeout for this wp_remote_get() request.

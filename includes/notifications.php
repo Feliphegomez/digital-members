@@ -67,7 +67,7 @@ function pmpro_get_next_notification() {
 	
 	// If debugging, clear the transient and get a specific notification.
 	if ( ! empty( $_REQUEST['pmpro_notification'] ) ) {
-		delete_transient( 'pmpro_notifications_' . PMPRO_VERSION );
+		delete_transient( 'pmpro_notifications_' . DMRFID_VERSION );
 		$pmpro_notifications = pmpro_get_all_notifications();
 				
 		if ( !empty( $pmpro_notifications ) ) {
@@ -114,11 +114,11 @@ function pmpro_get_next_notification() {
  * Get notifications from the notification server.
  */
 function pmpro_get_all_notifications() {
-	$pmpro_notifications = get_transient( 'pmpro_notifications_' . PMPRO_VERSION );
+	$pmpro_notifications = get_transient( 'pmpro_notifications_' . DMRFID_VERSION );
 		
 	if ( empty( $pmpro_notifications ) ) {
 		// Set to NULL in case the below times out or fails, this way we only check once a day.
-		set_transient( 'pmpro_notifications_' . PMPRO_VERSION, 'NULL', 86400 );
+		set_transient( 'pmpro_notifications_' . DMRFID_VERSION, 'NULL', 86400 );
 		
 		// We use the filter to hit our testing servers.
 		$pmpro_notification_url = apply_filters( 'pmpro_notifications_url', esc_url( 'https://notifications.paidmembershipspro.com/v2/notifications.json' ) );
@@ -129,7 +129,7 @@ function pmpro_get_all_notifications() {
 		
 		// Update transient if we got something.
 		if ( ! empty( $pmpro_notifications ) ) {
-			set_transient( 'pmpro_notifications_' . PMPRO_VERSION, $pmpro_notifications, 86400 );
+			set_transient( 'pmpro_notifications_' . DMRFID_VERSION, $pmpro_notifications, 86400 );
 		}
 	}
 	
@@ -545,7 +545,7 @@ add_action( 'wp_ajax_pmpro_hide_notice', 'pmpro_hide_notice' );
  * Show Powered by Digital Members RFID comment (only visible in source) in the footer.
  */
 function pmpro_link() { ?>
-Memberships powered by Digital Members RFID v<?php echo PMPRO_VERSION; ?>.
+Memberships powered by Digital Members RFID v<?php echo DMRFID_VERSION; ?>.
 <?php }
 function pmpro_footer_link() {
 	if ( ! pmpro_getOption( 'hide_footer_link' ) ) { ?>

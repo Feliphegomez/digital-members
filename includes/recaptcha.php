@@ -26,7 +26,7 @@ function pmpro_init_recaptcha() {
 	if($recaptcha) {
 		global $recaptcha_publickey, $recaptcha_privatekey;
 		
-		require_once(PMPRO_DIR . '/includes/lib/recaptchalib.php' );
+		require_once(DMRFID_DIR . '/includes/lib/recaptchalib.php' );
 		
 		function pmpro_recaptcha_get_html ($pubkey, $error = null, $use_ssl = false) {
 
@@ -131,7 +131,7 @@ add_action( 'wp', 'pmpro_init_recaptcha', 5 );
  * AJAX Method to Validate a ReCAPTCHA Response Token
  */
 function pmpro_wp_ajax_validate_recaptcha() {
-	require_once( PMPRO_DIR . '/includes/lib/recaptchalib.php' );
+	require_once( DMRFID_DIR . '/includes/lib/recaptchalib.php' );
 	
 	$recaptcha_privatekey = pmpro_getOption( 'recaptcha_privatekey' );
 	

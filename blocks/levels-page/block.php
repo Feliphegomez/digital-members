@@ -44,7 +44,7 @@ function render_dynamic_block( $attributes ) {
  */
 function load_levels_preheader() {
 	if ( has_block( 'pmpro/levels-page' ) ) {
-		require_once( PMPRO_DIR . "/preheaders/levels.php" );
+		require_once( DMRFID_DIR . "/preheaders/levels.php" );
 	}
 }
 add_action( 'wp', __NAMESPACE__ . '\load_levels_preheader', 1 );

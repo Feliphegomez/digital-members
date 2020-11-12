@@ -6,8 +6,8 @@ if($current_user->ID)
     $current_user->membership_level = pmpro_getMembershipLevelForUser($current_user->ID);
 
 //is there a default level to redirect to?
-if (defined("PMPRO_DEFAULT_LEVEL"))
-    $default_level = intval(PMPRO_DEFAULT_LEVEL);
+if (defined("DMRFID_DEFAULT_LEVEL"))
+    $default_level = intval(DMRFID_DEFAULT_LEVEL);
 else
     $default_level = false;
 

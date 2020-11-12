@@ -17,7 +17,7 @@ function pmpro_start_session() {
     }
 
     //if the session hasn't been started yet, start it (ignore if running from command line)
-    if (!defined('PMPRO_USE_SESSIONS') || PMPRO_USE_SESSIONS == true) {
+    if (!defined('DMRFID_USE_SESSIONS') || DMRFID_USE_SESSIONS == true) {
         if (defined('STDIN')) {
             //command line
         } else {
@@ -41,7 +41,7 @@ add_action('pmpro_checkout_preheader_before_get_level_at_checkout', 'pmpro_start
  * @since 1.9.2
  */
 function pmpro_close_session() {
-    if (!defined('PMPRO_USE_SESSIONS') || PMPRO_USE_SESSIONS == true) {
+    if (!defined('DMRFID_USE_SESSIONS') || DMRFID_USE_SESSIONS == true) {
         if (defined('STDIN')) {
             //command line
         } else {

@@ -47,7 +47,7 @@ function pmpro_compatibility_checker () {
         if ( ( $value['check_type'] == 'constant' && defined( $value['check_value'] ) )
           || ( $value['check_type'] == 'function' && function_exists( $value['check_value'] ) )
           || ( $value['check_type'] == 'class' && class_exists( $value['check_value'] ) ) ) {
-            include( PMPRO_DIR . '/includes/compatibility/' . $value['file'] ) ;
+            include( DMRFID_DIR . '/includes/compatibility/' . $value['file'] ) ;
         }
     }
 }
@@ -67,7 +67,7 @@ function pmpro_compatibility_checker_themes(){
         if ( ( $value['check_type'] == 'constant' && defined( $value['check_value'] ) )
           || ( $value['check_type'] == 'function' && function_exists( $value['check_value'] ) )
           || ( $value['check_type'] == 'class' && class_exists( $value['check_value'] ) ) ) {
-            include( PMPRO_DIR . '/includes/compatibility/' . $value['file'] ) ;
+            include( DMRFID_DIR . '/includes/compatibility/' . $value['file'] ) ;
         }
     }
 

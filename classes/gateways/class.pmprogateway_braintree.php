@@ -70,7 +70,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			if ( version_compare( PHP_VERSION, '5.4.45', '<' )) {
 
 				$msg = -1;
-				$msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_PHP_MIN_VERSION );
+				$msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_PHP_MIN_VERSION );
 
 				pmpro_setMessage( $msgt, "pmpro_error" );
 				return false;
@@ -110,7 +110,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		{
 			//load Braintree library if it hasn't been loaded already (usually by another plugin using Braintree)
 			if(!class_exists("\Braintree"))
-				require_once( PMPRO_DIR . "/includes/lib/Braintree/lib/Braintree.php");
+				require_once( DMRFID_DIR . "/includes/lib/Braintree/lib/Braintree.php");
 		}
 
 		/**
@@ -368,9 +368,9 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			if(($gateway == "braintree" || $default_gateway == "braintree")) {
 				wp_enqueue_script("stripe", "https://js.braintreegateway.com/v1/braintree.js", array(), NULL);
 				wp_register_script( 'pmpro_braintree',
-                            plugins_url( 'js/pmpro-braintree.js', PMPRO_BASE_FILE ),
+                            plugins_url( 'js/pmpro-braintree.js', DMRFID_BASE_FILE ),
                             array( 'jquery' ),
-                            PMPRO_VERSION );
+                            DMRFID_VERSION );
 				wp_localize_script( 'pmpro_braintree', 'pmpro_braintree', array(
 					'encryptionkey' => pmpro_getOption( 'braintree_encryptionkey' )
 				));
@@ -501,7 +501,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 						if($pmpro_show_cvv) { ?>
 							<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-cvv', 'pmpro_payment-cvv' ); ?>">
 								<label for="CVV"><?php _e('CVV', 'paid-memberships-pro' );?></label>
-								<input id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr(sanitize_text_field($_REQUEST['CVV'])); }?>" class="<?php echo pmpro_get_element_class( 'input', 'CVV' ); ?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo pmpro_https_filter(PMPRO_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
+								<input id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr(sanitize_text_field($_REQUEST['CVV'])); }?>" class="<?php echo pmpro_get_element_class( 'input', 'CVV' ); ?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo pmpro_https_filter(DMRFID_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
 							</div>
 					<?php } ?>
 					<?php if($pmpro_show_discount_code) { ?>

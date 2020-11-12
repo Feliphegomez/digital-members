@@ -15,8 +15,8 @@ function pmpro_cron_expire_memberships()
 	//look for memberships that expired before today
 	$sqlQuery = "SELECT mu.user_id, mu.membership_id, mu.startdate, mu.enddate FROM $wpdb->pmpro_memberships_users mu WHERE mu.status = 'active' AND mu.enddate IS NOT NULL AND mu.enddate <> '0000-00-00 00:00:00' AND DATE(mu.enddate) <= '" . esc_sql( $today ) . "' ORDER BY mu.enddate";
 
-	if(defined('PMPRO_CRON_LIMIT'))
-		$sqlQuery .= " LIMIT " . PMPRO_CRON_LIMIT;
+	if(defined('DMRFID_CRON_LIMIT'))
+		$sqlQuery .= " LIMIT " . DMRFID_CRON_LIMIT;
 
 	$expired = $wpdb->get_results($sqlQuery);
 
@@ -90,8 +90,8 @@ function pmpro_cron_expiration_warnings()
 		$interval_end
 	);
 
-	if(defined('PMPRO_CRON_LIMIT'))
-		$sqlQuery .= " LIMIT " . PMPRO_CRON_LIMIT;
+	if(defined('DMRFID_CRON_LIMIT'))
+		$sqlQuery .= " LIMIT " . DMRFID_CRON_LIMIT;
 
 	$expiring_soon = $wpdb->get_results($sqlQuery);
 
@@ -148,8 +148,8 @@ function pmpro_cron_credit_card_expiring_warnings()
 						AND (um3.meta_value IS NULL OR CONCAT(um2.meta_value, '-', um1.meta_value, '-01') <> um3.meta_value)
 				";
 
-	if(defined('PMPRO_CRON_LIMIT'))
-		$sqlQuery .= " LIMIT " . PMPRO_CRON_LIMIT;
+	if(defined('DMRFID_CRON_LIMIT'))
+		$sqlQuery .= " LIMIT " . DMRFID_CRON_LIMIT;
 
 	$cc_expiring_user_ids = $wpdb->get_col($sqlQuery);
 

@@ -23,9 +23,9 @@ function pmpro_enqueue_scripts() {
             $frontend_css_rtl = plugins_url('css/frontend-rtl.css',dirname(__FILE__) );
         }
     }
-    wp_enqueue_style('pmpro_frontend', $frontend_css, array(), PMPRO_VERSION, "screen");
+    wp_enqueue_style('pmpro_frontend', $frontend_css, array(), DMRFID_VERSION, "screen");
     if( $frontend_css_rtl ) {
-        wp_enqueue_style('pmpro_frontend_rtl', $frontend_css_rtl, array(), PMPRO_VERSION, "screen");
+        wp_enqueue_style('pmpro_frontend_rtl', $frontend_css_rtl, array(), DMRFID_VERSION, "screen");
     }
 
     // Print styles.
@@ -35,14 +35,14 @@ function pmpro_enqueue_scripts() {
         $print_css = get_template_directory_uri() . "/paid-memberships-pro/print.css";
     else
         $print_css = plugins_url('css/print.css',dirname(__FILE__) );
-    wp_enqueue_style('pmpro_print', $print_css, array(), PMPRO_VERSION, "print");
+    wp_enqueue_style('pmpro_print', $print_css, array(), DMRFID_VERSION, "print");
     
     // Checkout page JS
     if ( pmpro_is_checkout() ) {
         wp_register_script( 'pmpro_checkout',
                             plugins_url( 'js/pmpro-checkout.js', dirname(__FILE__) ),
                             array( 'jquery' ),
-                            PMPRO_VERSION );
+                            DMRFID_VERSION );
 
         wp_localize_script( 'pmpro_checkout', 'pmpro', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -67,7 +67,7 @@ function pmpro_enqueue_scripts() {
         wp_register_script( 'pmpro_login',
                             plugins_url( 'js/pmpro-login.js', dirname(__FILE__) ),
                             array( 'jquery', 'password-strength-meter' ),
-                            PMPRO_VERSION );
+                            DMRFID_VERSION );
 
         /**
          * Filter to allow weak passwords on the 
@@ -98,7 +98,7 @@ function pmpro_admin_enqueue_scripts() {
     wp_register_script( 'pmpro_admin',
                         plugins_url( 'js/pmpro-admin.js', dirname(__FILE__) ),
                         array( 'jquery', 'jquery-ui-sortable' ),
-                        PMPRO_VERSION );
+                        DMRFID_VERSION );
     $all_levels = pmpro_getAllLevels( true, true );
     $all_level_values_and_labels = array();
     foreach( $all_levels as $level ) {
@@ -128,9 +128,9 @@ function pmpro_admin_enqueue_scripts() {
             $admin_css_rtl = plugins_url('css/admin-rtl.css',dirname(__FILE__) );
         }
     }
-    wp_enqueue_style('pmpro_admin', $admin_css, array(), PMPRO_VERSION, "screen");
+    wp_enqueue_style('pmpro_admin', $admin_css, array(), DMRFID_VERSION, "screen");
     if( $admin_css_rtl ) {
-        wp_enqueue_style('pmpro_admin_rtl', $admin_css_rtl, array(), PMPRO_VERSION, "screen");
+        wp_enqueue_style('pmpro_admin_rtl', $admin_css_rtl, array(), DMRFID_VERSION, "screen");
     }
 }
 add_action( 'admin_enqueue_scripts', 'pmpro_admin_enqueue_scripts' );

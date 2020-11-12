@@ -51,7 +51,7 @@ function render_dynamic_block( $attributes ) {
  */
 function load_checkout_preheader() {
 	if ( has_block( 'pmpro/checkout-page' ) ) {
-		require_once( PMPRO_DIR . "/preheaders/checkout.php" );
+		require_once( DMRFID_DIR . "/preheaders/checkout.php" );
 	}
 }
 add_action( 'wp', __NAMESPACE__ . '\load_checkout_preheader', 1 );

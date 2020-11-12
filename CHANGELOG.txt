@@ -138,7 +138,7 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Fixed issue where the chosen discount code was not shown after submitting when adding a new order through the dashboard.
 * BUG FIX/ENHANCEMENT: Using "PMPro" in the admin activity email subject to keep the line shorter and avoid issues when replacing the word "member" via gettext.
 * ENHANCEMENT: Added a pmpro_allow_weak_passwords filter. You can set this to return true (like this https://gist.github.com/ideadude/5a12119b9ce1c2aad87b2d69cb8f9505) to allow weak passwords on the change password and reset password pages. Note that at this time, weak passwords are still allowed on the checkout page no matter the value of this filter. We expect to change that in the future. For now, you can use our PMPro Strong Passwords plugin to force strong passwords at checkout.
-* REFACTOR: Updated the logic around checking the PMPRO_IPN_DEBUG constant in the IPN handler. (Thanks, Mirco Babini)
+* REFACTOR: Updated the logic around checking the DMRFID_IPN_DEBUG constant in the IPN handler. (Thanks, Mirco Babini)
 
 = 2.3.2 - 2020-05-07 =
 * BUG FIX: Fixed errors calling is_main_query() that came up with certain themes.
@@ -182,7 +182,7 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * ENHANCEMENT: Added `getSubscriptionStatus` method to the Stripe gateway API class. This fixes issues with the PMPro Subscription Check Add-On.
 * ENHANCEMENT: Added !!levels_page_url!! and !!login_url!! as replacement variables in Advanced Settings > Message Settings. Using these by default on new installs.
 * ENHANCEMENT: Improved Block Editor code and webpack configuration.
-* ENHANCEMENT: Added support for `PMPRO_AUTHNET_SILENT_POST_DEBUG` to "log" data to /logs/ or send an email to an email address different from the site admin.
+* ENHANCEMENT: Added support for `DMRFID_AUTHNET_SILENT_POST_DEBUG` to "log" data to /logs/ or send an email to an email address different from the site admin.
 * ENHANCEMENT: Added time fields to Memberships > Orders admin page when vieweing, updating or saving an order.
 * ENHANCEMENT: Added pmpro_admin_orders_filters and pmpro_admin_orders_query_condition filters to add new filters to the orders page in the dashboard. (Thanks, Mirco Babini)
 * ENHANCEMENT: Added an SVG icon to the PMPro blocks category.
@@ -662,7 +662,7 @@ up the lines of text.
 * BUG: Fixed bug when using the testing gateway.
 * BUG: Avoiding issues where is_user_logged in is not yet available for the pmpro_search_filter() function. (Thanks, d_enajetic)
 * ENHANCEMENT: Updated Italian translation. (Thanks again, Angelo)
-* ENHANCEMENT: You can now define('PMPRO_USE_SESSIONS', false); in your wp-config.php to force PMPro to skip the call to session_start. Note that PayPal Express and some addons require sessions to function.
+* ENHANCEMENT: You can now define('DMRFID_USE_SESSIONS', false); in your wp-config.php to force PMPro to skip the call to session_start. Note that PayPal Express and some addons require sessions to function.
 
 = 1.8.12 =
 * BUG: Fixed issue where "expiring soon" emails were sometimes sent more than needed.
@@ -869,7 +869,7 @@ up the lines of text.
 = 1.8.6.4 =
 * BUG/ENHANCEMENT: Now expiring members before sending expiration warnings.
 * BUG: Now adding a specific user agent to IPN requests to PayPal (and other gateways) to avoid 403 errors.
-* ENHANCEMENT: Added a constant PMPRO_USER_AGENT used in all outside HTTP requests. The user agent will look like "Digital Members RFID v1.8.6.4;http://yourdomain.com".
+* ENHANCEMENT: Added a constant DMRFID_USER_AGENT used in all outside HTTP requests. The user agent will look like "Digital Members RFID v1.8.6.4;http://yourdomain.com".
 
 = 1.8.6.3 =
 * SECURITY: No longer showing email addresses in output when cron jobs are processed by non-admins. (Thanks, Daniel Bachhuber)
@@ -957,7 +957,7 @@ up the lines of text.
 * BUG: Fixed broken links when adminpages/admin_header.php is loaded outside of the PMPro settings tabs.
 * BUG: Fixed issue with PMPro page templates being loaded from child themes. (Thanks, SeventhQueen)
 * BUG: Fixed bug where gateway subscriptions would sometimes be cancelled even if an admin unchecked the "cancel at gateway" option when changing a user's level on the edit user page. (Thanks, Scott Noelle)
-* ENHANCEMENT: Added debugging to the Braintree webhook. Use define('PMPRO_BRAINTREE_WEBHOOK_DEBUG', true); in your wp-config.php to have debug emails sent to the admin when the Braintree webhook is hit.
+* ENHANCEMENT: Added debugging to the Braintree webhook. Use define('DMRFID_BRAINTREE_WEBHOOK_DEBUG', true); in your wp-config.php to have debug emails sent to the admin when the Braintree webhook is hit.
 * ENHANCEMENT: Updated email fields on checkout and billing update form to use the "email" field type instead of "text". If you need to revert this back to "text" type, use the pmpro_email_field_type filter like this: apply_filters('pmpro_email_field_type', '__return_false'); (Thanks, Yann Kozon)
 * ENHANCEMENT: French translation updated and now includes email templates. (Thanks, Jean-Christophe Michel)
 * ENHANCEMENT: Added the pmpro_is_ready filter. This should be used by gateway plugins to set the $pmpro_gateway_ready global variable.
@@ -1075,7 +1075,7 @@ up the lines of text.
 * Avoiding some warnings.
 
 = 1.7.15 =
-* SECURITY FIX: The /services/getfile.php script has been disabled by default. You must set the PMPRO_GETFILE_ENABLED constant to true or 1 to allow the script to run. Additionally, the script will strip ../ and /. type strings out of the URI when looking for files to get and will not read any files using the extensions set via the pmpro_getfile_extension_blacklist filter. By default inc, php, php3, php4, php5, phps, and phtml file types are not allowed. (Thanks, Kacper Szurek)
+* SECURITY FIX: The /services/getfile.php script has been disabled by default. You must set the DMRFID_GETFILE_ENABLED constant to true or 1 to allow the script to run. Additionally, the script will strip ../ and /. type strings out of the URI when looking for files to get and will not read any files using the extensions set via the pmpro_getfile_extension_blacklist filter. By default inc, php, php3, php4, php5, phps, and phtml file types are not allowed. (Thanks, Kacper Szurek)
 * BUG: Fixed issue with Stripe integration where existing members checking out for new recurring subscriptions would receive extra charges. Now deleting the old Stripe subscription and any related open invoices and creating a new subscription instead of just updating the old subscription. (Thanks, Antonv and Thomas Sjolshagen)
 * BUG: Fixed issue with Braintree integration where the billing address associated with a credit card was not being updated via the update billing page. (Thanks, Keith Abramo)
 * BUG: Fixed issue where pmpro_next_payment() would return a 0 timestamp instead of false when there is no previous order. (Thanks, Thomas Sjolshagen)
@@ -1084,7 +1084,7 @@ up the lines of text.
 * BUG: Now urlencoding the API Username and Password sent through the PayPal APIs in case your values have + or other special characters in them. (Thanks, mrschmiddy)
 * BUG: Now showing cycle number in the Fee column of the members list. E.g. a level that is $10 every 3 months will now show up as $10.00 + $10.00/3 Months.
 * BUG: Fixed bug where user first_name and last_name were being overwritten by PayPal values when using PayPal Standard.
-* ENHANCEMENT: Added PMPRO_CRON_LIMIT constant, which can be used to limit the number of records processed by each scheduled cron job. This can for example, keep your server from going over PHP time limits or email limits. Use define('PMPRO_CRON_LIMIT', 100); to set the limit to 100.
+* ENHANCEMENT: Added DMRFID_CRON_LIMIT constant, which can be used to limit the number of records processed by each scheduled cron job. This can for example, keep your server from going over PHP time limits or email limits. Use define('DMRFID_CRON_LIMIT', 100); to set the limit to 100.
 * BUG: Discount code AJAX calls now going through admin-ajax.php, fixing issues where the Themed Profiles module of Theme My Login would block those calls. (Thanks, Tony)
 * ENHANCEMENT: Removed the "CardType" field at checkout and now using the jquery.creditCardValidator script to determine the card type on form submit.
 * BUG: No longer setting $order->subtotal and invoice total to the billing amount (vs the initial price) for recurring payments with Cybersource, PayPal Standard, PayPal Express or Twocheckout. (Thanks, Joce Nunes)
@@ -1181,8 +1181,8 @@ up the lines of text.
 * Fixed issues where extra emails were being sent out when users cancelled a membership when using Stripe.
 * Generally made the Stripe integration better and ready for version 2.0.
 * The Stripe webhook will now add a 5 second delay before processing most requests. This is to ensure that PMPro has time to update the order during checkout (Stripe can sometimes receive a charge or cancellation, then send the webhook, and WP can process that in the split second it takes PMPro to save an order during checkout.). This prevents duplicate orders in the PMPro DB on some charges and fixes some issues with cancellations.
-* Setting constant PMPRO_STRIPE_WEBHOOK_DEBUG to true will send an email to the WP admin every time the Stripe Webhook is hit. You can also set it to an alternative email address or "log" to have it added to ../paid-memberships-pro/logs/stripe-webhook.txt.
-* Setting constant PMPRO_IPN_DEBUG to true will send an email to the WP admin every time the IPN handler is hit. You can also set it to an alternative email address or "log" to have it added to ../paid-memberships-pro/logs/ipn.txt.
+* Setting constant DMRFID_STRIPE_WEBHOOK_DEBUG to true will send an email to the WP admin every time the Stripe Webhook is hit. You can also set it to an alternative email address or "log" to have it added to ../paid-memberships-pro/logs/stripe-webhook.txt.
+* Setting constant DMRFID_IPN_DEBUG to true will send an email to the WP admin every time the IPN handler is hit. You can also set it to an alternative email address or "log" to have it added to ../paid-memberships-pro/logs/ipn.txt.
 * Now showing the PMPro order ID/code in INVOICE emails instead of the Stripe order id when using the Stripe gateway.
 
 = 1.7.8.1 =
@@ -1205,7 +1205,7 @@ up the lines of text.
 * Added a third "short" parameter to the pmpro_getLevelCost() function. If set to true the "The price for membership is" text is left off the beginning. The new levels page uses this param.
 * Updated the table on the levels page to have one "Price" column showing the cost and expiration text. The text is generated using pmpro_getLevelCost and pmpro_getLevelExpiration instead of its own rules.
 * Updated level cost text to say $1/mo instead of $1 now and then $1/mo, etc. (Thanks, louy on GitHub.)
-* Added a debug by email method for the Authorize.net Silent Post handler. Add define('PMPRO_AUTHNET_SILENT_POST_DEBUG', true); to your wp-config.php. We will probably move the other services to debug by email as well.
+* Added a debug by email method for the Authorize.net Silent Post handler. Add define('DMRFID_AUTHNET_SILENT_POST_DEBUG', true); to your wp-config.php. We will probably move the other services to debug by email as well.
 * PMPro will now only filter the from name and email if the default values are detected (WordPress <wordpress@sitename.com>). This fixes issues where the from name and email on form emails or other plugin emails were being swapped out with the PMPro settings, which was not always desirable. (Thanks, Helen Hou-Sandi and others.)
 * Added an "Only Filter PMPro Emails?" option to the email settings. If checked, only emails sent through the PMProEmail class will have their from name and email adjusted to match the PMPro email settings.
 * Added filter options to orders page in admin and export. (Thanks, HTCIA and Harsha Venkatesh)
@@ -1241,7 +1241,7 @@ up the lines of text.
 * Added $force parameter to pmpro_getMembershipLevelForUser($user_id, $force). If set to true, it will ignore the cached value and pull the level from the DB.
 * Added autocomplete="off" to credit card account number field on checkout and update billing pages.
 * Added an optional $seed parameter to pmpro_getDiscountCode() which will add $seed to the scrambled string. Useful when generating many discount codes quickly and time() might not have changed.
-* Now hiding "Change Membership Level" link from Member Links section of Membership Account page if PMPRO_DEFAULT_LEVEL is defined.
+* Now hiding "Change Membership Level" link from Member Links section of Membership Account page if DMRFID_DEFAULT_LEVEL is defined.
 * Clearing the AccountNumber value at checkout if it is XXXX..., e.g. when we mask the Stripe CC number. This way users will know they need to re-enter the credit card again. (Thanks, Gary)
 * Fixed bug on checkout page where html classes for the bstate field were being set based on the bcity value instead.
 * Fixed bug where there was no space after the "." in some level cost text. (Thanks, multiple observers ;)
@@ -1572,7 +1572,7 @@ up the lines of text.
 * Fix for !!billing_country!! in emails. (Somehow a previous fix for this got overwritten. My bad.)
 * Settings $pmpro_level->code_id to $discount_code_id if a valid discount code is applied to a level at checkout. This is
 useful for determining if/what discount code was applied to the level when processing it in hooks.
-* Added pmpro_getDomainFromURL() and using that to set PMPRO_URL.
+* Added pmpro_getDomainFromURL() and using that to set DMRFID_URL.
 * New hooks when orders are added/updated: pmpro_update_order (before update), pmpro_updated_order (after update), pmpro_add_order (before add), pmpro_added_order (after add). (Thanks, zookatron!)
 
 = 1.4.8 =

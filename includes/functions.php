@@ -333,14 +333,14 @@ function pmpro_loadTemplate( $page_name = null, $where = 'local', $type = 'pages
 	if ( $where == 'local' ) {
 		// template paths in order of priority (array gets reversed)
 		$default_templates = array(
-			PMPRO_DIR . "/{$type}/{$page_name}.{$ext}", // default plugin path
+			DMRFID_DIR . "/{$type}/{$page_name}.{$ext}", // default plugin path
 			get_template_directory() . "/paid-memberships-pro/{$type}/{$page_name}.{$ext}", // parent theme
 			get_stylesheet_directory() . "/paid-memberships-pro/{$type}/{$page_name}.{$ext}", // child / active theme
 		);
 	} elseif ( $where == 'url' ) {
 		// template paths in order of priority (array gets reversed)
 		$default_templates = array(
-			PMPRO_URL . "/{$type}/{$page_name}.{$ext}", // default plugin path
+			DMRFID_URL . "/{$type}/{$page_name}.{$ext}", // default plugin path
 			get_template_directory_uri() . "/paid-memberships-pro/{$type}/{$page_name}.{$ext}", // parent theme
 			get_stylesheet_directory_uri() . "/paid-memberships-pro/{$type}/{$page_name}.{$ext}", // child / active theme
 		);
@@ -3428,9 +3428,9 @@ function pmpro_insert_or_replace( $table, $data, $format, $primary_key = 'id' ) 
  */
 function pmpro_doing_webhook( $gateway = null ){
 
-	if( defined( 'PMPRO_DOING_WEBHOOK' ) && !empty ( PMPRO_DOING_WEBHOOK ) ){
+	if( defined( 'DMRFID_DOING_WEBHOOK' ) && !empty ( DMRFID_DOING_WEBHOOK ) ){
 		if( $gateway !== null ){
-			if( PMPRO_DOING_WEBHOOK == $gateway ){
+			if( DMRFID_DOING_WEBHOOK == $gateway ){
 				return true;
 			} else {
 				return false;	

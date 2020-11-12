@@ -14,7 +14,7 @@
 
 	global $wpdb;
 
-	define( 'PMPRO_DOING_WEBHOOK', 'authnet' );
+	define( 'DMRFID_DOING_WEBHOOK', 'authnet' );
 
 	//some code taken from http://www.merchant-account-services.org/blog/handling-authorizenet-arb-subscription-failures/
 	// Flag if this is an ARB transaction. Set to false by default.
@@ -45,15 +45,15 @@
 	$logstr .= "\n----\n";
 	
 	// Saving a log file or sending an email
-	if(defined('PMPRO_AUTHNET_SILENT_POST_DEBUG') && PMPRO_AUTHNET_SILENT_POST_DEBUG === "log")
+	if(defined('DMRFID_AUTHNET_SILENT_POST_DEBUG') && DMRFID_AUTHNET_SILENT_POST_DEBUG === "log")
 	{
 		//file
 		$loghandle = fopen(dirname(__FILE__) . "/../logs/authnet-silent-post.txt", "a+");
 		fwrite($loghandle, $logstr);
 		fclose($loghandle);
-	} elseif(defined('PMPRO_AUTHNET_SILENT_POST_DEBUG') && false !== PMPRO_AUTHNET_SILENT_POST_DEBUG) {
-		if(strpos(PMPRO_AUTHNET_SILENT_POST_DEBUG, "@"))
-			$log_email = PMPRO_AUTHNET_SILENT_POST_DEBUG;	//constant defines a specific email address
+	} elseif(defined('DMRFID_AUTHNET_SILENT_POST_DEBUG') && false !== DMRFID_AUTHNET_SILENT_POST_DEBUG) {
+		if(strpos(DMRFID_AUTHNET_SILENT_POST_DEBUG, "@"))
+			$log_email = DMRFID_AUTHNET_SILENT_POST_DEBUG;	//constant defines a specific email address
 		else
 			$log_email = get_option("admin_email");
 			

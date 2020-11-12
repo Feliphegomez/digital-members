@@ -16,61 +16,61 @@ function pmpro_checkForUpgrades()
 
 	//default options
 	if(!$pmpro_db_version) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1.php");
 		$pmpro_db_version = pmpro_upgrade_1();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.115) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_1_15.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_1_15.php");
 		$pmpro_db_version = pmpro_upgrade_1_1_15();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.23) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_2_3.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_2_3.php");
 		$pmpro_db_version = pmpro_upgrade_1_2_3();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.318) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_3_18.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_3_18.php");
 		$pmpro_db_version = pmpro_upgrade_1_3_18();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.4) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_4.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_4.php");
 		$pmpro_db_version = pmpro_upgrade_1_4();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.42) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_4_2.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_4_2.php");
 		$pmpro_db_version = pmpro_upgrade_1_4_2();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.48) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_4_8.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_4_8.php");
 		$pmpro_db_version = pmpro_upgrade_1_4_8();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.5) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_5.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_5.php");
 		$pmpro_db_version = pmpro_upgrade_1_5();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.59) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_5_9.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_5_9.php");
 		$pmpro_db_version = pmpro_upgrade_1_5_9();
 	}
 
 	//upgrading from early early versions of PMPro
 	if($pmpro_db_version < 1.6) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_6.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_6.php");
 		$pmpro_db_version = pmpro_upgrade_1_6();
 	}
 
@@ -83,7 +83,7 @@ function pmpro_checkForUpgrades()
 		if($wpdb->last_error == "Unknown column 'id' in 'field list'")
 		{
 			//redo 1.5 fix
-			require_once(PMPRO_DIR . "/includes/updates/upgrade_1_5.php");
+			require_once(DMRFID_DIR . "/includes/updates/upgrade_1_5.php");
 			pmpro_upgrade_1_5();
 		}
 
@@ -134,14 +134,14 @@ function pmpro_checkForUpgrades()
 	}
 
 	//fix subscription ids on stripe orders
-	require_once(PMPRO_DIR . "/includes/updates/upgrade_1_8_6_9.php");	//need to include this for AJAX calls
+	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_6_9.php");	//need to include this for AJAX calls
 	if($pmpro_db_version < 1.869) {		
 		$pmpro_db_version = pmpro_upgrade_1_8_6_9();
 	}
 
 	//Remove extra cron jobs inserted in version 1.8.7 and 1.8.7.1
 	if($pmpro_db_version < 1.87) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_8_7.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_7.php");
 		$pmpro_db_version = pmpro_upgrade_1_8_7();
 	}
 	
@@ -151,7 +151,7 @@ function pmpro_checkForUpgrades()
 		* Fixing old $0 Stripe orders.
 		* Fixing old Authorize.net orders with empty status.
 	*/	
-	require_once(PMPRO_DIR . "/includes/updates/upgrade_1_8_8.php");
+	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_8.php");
 	if($pmpro_db_version < 1.88) {		
 		$pmpro_db_version = pmpro_upgrade_1_8_8();			
 	}
@@ -163,7 +163,7 @@ function pmpro_checkForUpgrades()
 		  since the Stripe class isn't loaded for PHP < 5.3.29
 	*/	
 	if (version_compare( PHP_VERSION, '5.3.29', '>=' )) {
-		require_once(PMPRO_DIR . "/includes/updates/upgrade_1_8_9_1.php");
+		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_9_1.php");
 		if($pmpro_db_version < 1.891) {			
 			$pmpro_db_version = pmpro_upgrade_1_8_9_1();
 		}
@@ -186,7 +186,7 @@ function pmpro_checkForUpgrades()
 		v1.8.9.3 (db v1.91)
 		* Fixing incorrect start and end dates.	
 	*/
-	require_once(PMPRO_DIR . "/includes/updates/upgrade_1_8_9_3.php");
+	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_9_3.php");
 	if($pmpro_db_version < 1.91) {
 		$pmpro_db_version = pmpro_upgrade_1_8_9_3();			
 	}
@@ -215,7 +215,7 @@ function pmpro_checkForUpgrades()
 		pmpro_setOption("db_version", "1.93");
 	}
 
-	require_once( PMPRO_DIR . "/includes/updates/upgrade_1_9_4.php" );	
+	require_once( DMRFID_DIR . "/includes/updates/upgrade_1_9_4.php" );	
 	if($pmpro_db_version < 1.94) {
 		$pmpro_db_version = pmpro_upgrade_1_9_4();
 	}
@@ -243,7 +243,7 @@ function pmpro_checkForUpgrades()
 	 * Fixing subscription_transaction_id
 	 * for orders created through a Stripe Update.
 	 */
-	require_once( PMPRO_DIR . "/includes/updates/upgrade_2_4.php" );	
+	require_once( DMRFID_DIR . "/includes/updates/upgrade_2_4.php" );	
  	if($pmpro_db_version < 2.4) {
  		$pmpro_db_version = pmpro_upgrade_2_4();
  	}

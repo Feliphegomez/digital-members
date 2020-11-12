@@ -36,8 +36,8 @@ $key = get_option( 'pmpro_license_key', '' );
 $pmpro_license_check = get_option( 'pmpro_license_check', array( 'license' => false, 'enddate' => 0 ) );
 
 //html for license settings page
-if ( defined( 'PMPRO_DIR' ) ) {
-	require_once( PMPRO_DIR . '/adminpages/admin_header.php' );
+if ( defined( 'DMRFID_DIR' ) ) {
+	require_once( DMRFID_DIR . '/adminpages/admin_header.php' );
 } ?>
 	<div class="about-wrap">
 		<h2><?php _e('Digital Members RFID Support License', 'paid-memberships-pro' );?></h2>
@@ -79,7 +79,7 @@ if ( defined( 'PMPRO_DIR' ) ) {
 			
 			<div class="clearfix"></div>
 
-			<img class="pmpro_icon alignright" src="<?php echo PMPRO_URL?>/images/Paid-Memberships-Pro_icon.png" border="0" alt="Digital Members RFID(c) - All Rights Reserved" />
+			<img class="pmpro_icon alignright" src="<?php echo DMRFID_URL?>/images/Paid-Memberships-Pro_icon.png" border="0" alt="Digital Members RFID(c) - All Rights Reserved" />
 			<?php
 				$allowed_pmpro_license_strings_html = array (
 					'a' => array (

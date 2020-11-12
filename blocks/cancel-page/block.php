@@ -44,7 +44,7 @@ function render_dynamic_block( $attributes ) {
  */
 function load_cancel_preheader() {
 	if ( has_block( 'pmpro/cancel-page' ) ) {
-		require_once( PMPRO_DIR . "/preheaders/cancel.php" );
+		require_once( DMRFID_DIR . "/preheaders/cancel.php" );
 	}
 }
 add_action( 'wp', __NAMESPACE__ . '\load_cancel_preheader', 1 );

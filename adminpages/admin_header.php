@@ -149,16 +149,16 @@
 		PMProGateway_braintree::dependencies();
 	} elseif($gateway == "stripe" && version_compare( PHP_VERSION, '5.3.29', '<' ) ) {
         $msg = -1;
-        $msgt = sprintf(__("The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
+        $msgt = sprintf(__("The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_MIN_PHP_VERSION );
     } elseif($gateway == "braintree" && version_compare( PHP_VERSION, '5.4.45', '<' ) ) {
         $msg = -1;
-        $msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
+        $msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_MIN_PHP_VERSION );
     }
 
-	//if no errors yet, let's check and bug them if < our PMPRO_PHP_MIN_VERSION
-	if( empty($msgt) && version_compare( PHP_VERSION, PMPRO_MIN_PHP_VERSION, '<' ) ) {
+	//if no errors yet, let's check and bug them if < our DMRFID_PHP_MIN_VERSION
+	if( empty($msgt) && version_compare( PHP_VERSION, DMRFID_MIN_PHP_VERSION, '<' ) ) {
 		$msg = 1;
-		$msgt = sprintf(__("We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), PMPRO_MIN_PHP_VERSION );
+		$msgt = sprintf(__("We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_MIN_PHP_VERSION );
 	}
 
 	if( ! empty( $msg ) && $view != 'pmpro-dashboard' ) { ?>
@@ -167,15 +167,15 @@
 
 <div class="wrap pmpro_admin">
 	<div class="pmpro_banner">
-		<a class="pmpro_logo" title="Digital Members RFID - Membership Plugin for WordPress" target="_blank" href="<?php echo pmpro_https_filter("https://www.paidmembershipspro.com/?utm_source=plugin&utm_medium=pmpro-admin-header&utm_campaign=homepage")?>"><img src="<?php echo PMPRO_URL?>/images/Paid-Memberships-Pro.png" width="350" height="75" border="0" alt="Digital Members RFID(c) - All Rights Reserved" /></a>
+		<a class="pmpro_logo" title="Digital Members RFID - Membership Plugin for WordPress" target="_blank" href="<?php echo pmpro_https_filter("https://www.paidmembershipspro.com/?utm_source=plugin&utm_medium=pmpro-admin-header&utm_campaign=homepage")?>"><img src="<?php echo DMRFID_URL?>/images/Paid-Memberships-Pro.png" width="350" height="75" border="0" alt="Digital Members RFID(c) - All Rights Reserved" /></a>
 		<div class="pmpro_meta">
-			<span class="pmpro_version">v<?php echo PMPRO_VERSION?></span>
+			<span class="pmpro_version">v<?php echo DMRFID_VERSION?></span>
 			<a target="_blank" href="<?php echo pmpro_https_filter("https://www.paidmembershipspro.com/documentation/?utm_source=plugin&utm_medium=pmpro-admin-header&utm_campaign=documentation")?>"><?php _e('Documentation', 'paid-memberships-pro' );?></a>
 			<a target="_blank" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=pmpro-admin-header&utm_campaign=pricing&utm_content=get-support"><?php _e('Get Support', 'paid-memberships-pro' );?></a>
 
 			<?php if ( pmpro_license_isValid() ) { ?>
 				<?php printf(__( '<a class="pmpro_license_tag pmpro_license_tag-valid" href="%s">Valid License</a>', 'paid-memberships-pro' ), admin_url( 'admin.php?page=pmpro-license' ) ); ?>				
-			<?php } elseif ( ! defined( 'PMPRO_LICENSE_NAG' ) || PMPRO_LICENSE_NAG == true ) { ?>
+			<?php } elseif ( ! defined( 'DMRFID_LICENSE_NAG' ) || DMRFID_LICENSE_NAG == true ) { ?>
 				<?php printf(__( '<a class="pmpro_license_tag pmpro_license_tag-invalid" href="%s">No License</a>', 'paid-memberships-pro' ), admin_url( 'admin.php?page=pmpro-license' ) ); ?>
 			<?php } ?>
 

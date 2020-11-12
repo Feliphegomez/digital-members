@@ -46,7 +46,7 @@ function pmpro_removeUpdate($update) {
 */
 function pmpro_enqueue_update_js() {
 	if(!empty($_REQUEST['page']) && $_REQUEST['page'] == 'pmpro-updates') {
-		wp_enqueue_script( 'pmpro-updates', plugin_dir_url( dirname(__FILE__) ) . 'js/updates.js', array('jquery'), PMPRO_VERSION );
+		wp_enqueue_script( 'pmpro-updates', plugin_dir_url( dirname(__FILE__) ) . 'js/updates.js', array('jquery'), DMRFID_VERSION );
 	}
 }
 add_action('admin_enqueue_scripts', 'pmpro_enqueue_update_js');

@@ -236,15 +236,15 @@ function pmpro_reports() {
 	wp_enqueue_script( 'wp-lists' );
 	wp_enqueue_script( 'postbox' );
 
-	require_once( PMPRO_DIR . '/adminpages/reports.php' );
+	require_once( DMRFID_DIR . '/adminpages/reports.php' );
 }
 
 function pmpro_memberslist() {
-	require_once( PMPRO_DIR . '/adminpages/memberslist.php' );
+	require_once( DMRFID_DIR . '/adminpages/memberslist.php' );
 }
 
 function pmpro_discountcodes() {
-	require_once( PMPRO_DIR . '/adminpages/discountcodes.php' );
+	require_once( DMRFID_DIR . '/adminpages/discountcodes.php' );
 }
 
 function pmpro_dashboard() {
@@ -253,43 +253,43 @@ function pmpro_dashboard() {
 	wp_enqueue_script( 'wp-lists' );
 	wp_enqueue_script( 'postbox' );
 
-	require_once( PMPRO_DIR . '/adminpages/dashboard.php' );
+	require_once( DMRFID_DIR . '/adminpages/dashboard.php' );
 }
 
 function pmpro_membershiplevels() {
-	require_once( PMPRO_DIR . '/adminpages/membershiplevels.php' );
+	require_once( DMRFID_DIR . '/adminpages/membershiplevels.php' );
 }
 
 function pmpro_pagesettings() {
-	require_once( PMPRO_DIR . '/adminpages/pagesettings.php' );
+	require_once( DMRFID_DIR . '/adminpages/pagesettings.php' );
 }
 
 function pmpro_paymentsettings() {
-	require_once( PMPRO_DIR . '/adminpages/paymentsettings.php' );
+	require_once( DMRFID_DIR . '/adminpages/paymentsettings.php' );
 }
 
 function pmpro_emailsettings() {
-	require_once( PMPRO_DIR . '/adminpages/emailsettings.php' );
+	require_once( DMRFID_DIR . '/adminpages/emailsettings.php' );
 }
 
 function pmpro_advancedsettings() {
-	require_once( PMPRO_DIR . '/adminpages/advancedsettings.php' );
+	require_once( DMRFID_DIR . '/adminpages/advancedsettings.php' );
 }
 
 function pmpro_addons() {
-	require_once( PMPRO_DIR . '/adminpages/addons.php' );
+	require_once( DMRFID_DIR . '/adminpages/addons.php' );
 }
 
 function pmpro_orders() {
-	require_once( PMPRO_DIR . '/adminpages/orders.php' );
+	require_once( DMRFID_DIR . '/adminpages/orders.php' );
 }
 
 function pmpro_license_settings_page() {
-	require_once( PMPRO_DIR . '/adminpages/license.php' );
+	require_once( DMRFID_DIR . '/adminpages/license.php' );
 }
 
 function pmpro_updates() {
-	require_once( PMPRO_DIR . '/adminpages/updates.php' );
+	require_once( DMRFID_DIR . '/adminpages/updates.php' );
 }
 
 /**
@@ -396,7 +396,7 @@ function pmpro_add_action_links( $links ) {
 	);
 	return array_merge( $new_links, $links );
 }
-add_filter( 'plugin_action_links_' . plugin_basename( PMPRO_DIR . '/paid-memberships-pro.php' ), 'pmpro_add_action_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( DMRFID_DIR . '/paid-memberships-pro.php' ), 'pmpro_add_action_links' );
 
 /**
  * Add links to the plugin row meta

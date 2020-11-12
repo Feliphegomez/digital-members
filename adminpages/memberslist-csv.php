@@ -5,10 +5,10 @@
 		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
 	}
 
-	if (!defined('PMPRO_BENCHMARK'))
-		define('PMPRO_BENCHMARK', false);
+	if (!defined('DMRFID_BENCHMARK'))
+		define('DMRFID_BENCHMARK', false);
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
 		error_log(str_repeat('-', 10) . date_i18n('Y-m-d H:i:s') . str_repeat('-', 10));
 		$start_time = microtime(true);
@@ -230,7 +230,7 @@
 
 	$users_found = count($theusers);
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
 		$pre_action_time = microtime(true);
 		$pre_action_memory = memory_get_usage(true);
@@ -253,10 +253,10 @@
 	$end = 0;
 	$time_limit = ini_get('max_execution_time');
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
-		error_log("PMPRO_BENCHMARK - Total records to process: {$users_found}");
-		error_log("PMPRO_BENCHMARK - Will process {$iterations} iterations of max {$max_users_per_loop} records per iteration.");
+		error_log("DMRFID_BENCHMARK - Total records to process: {$users_found}");
+		error_log("DMRFID_BENCHMARK - Will process {$iterations} iterations of max {$max_users_per_loop} records per iteration.");
 		$pre_iteration_time = microtime(true);
 		$pre_iteration_memory = memory_get_usage(true);
 	}
@@ -264,7 +264,7 @@
 	//to manage memory footprint, we'll iterate through the membership list multiple times
 	for ( $ic = 1 ; $ic <= $iterations ; $ic++ ) {
 
-		if (PMPRO_BENCHMARK)
+		if (DMRFID_BENCHMARK)
 		{
 			$start_iteration_time = microtime(true);
 			$start_iteration_memory = memory_get_usage(true);
@@ -337,7 +337,7 @@
 		$usr_data = $wpdb->get_results($userSql);
 		$userSql = null;
 
-		if (PMPRO_BENCHMARK)
+		if (DMRFID_BENCHMARK)
 		{
 			$pre_userdata_time = microtime(true);
 			$pre_userdata_memory = memory_get_usage(true);
@@ -444,7 +444,7 @@
 			$csvoutput = null;
 		} // end of foreach usr_data
 
-		if (PMPRO_BENCHMARK)
+		if (DMRFID_BENCHMARK)
 		{
 			$end_of_iteration_time = microtime(true);
 			$end_of_iteration_memory = memory_get_usage(true);
@@ -453,7 +453,7 @@
 		//keep memory consumption low(ish)
 		wp_cache_flush();
 
-		if (PMPRO_BENCHMARK)
+		if (DMRFID_BENCHMARK)
 		{
 			$after_flush_time = microtime(true);
 			$after_flush_memory = memory_get_usage(true);
@@ -468,11 +468,11 @@
 
 			$memory_used = $end_of_iteration_memory - $start_iteration_memory;
 
-			error_log("PMPRO_BENCHMARK - For iteration #{$ic} of {$iterations} - Records processed: " . count($usr_data));
-			error_log("PMPRO_BENCHMARK - \tTime processing whole iteration: " . date_i18n("H:i:s", $iteration_sec) . ".{$iteration_sec}");
-			error_log("PMPRO_BENCHMARK - \tTime processing user data for iteration: " . date_i18n("H:i:s", $udata_sec) . ".{$udata_sec}");
-			error_log("PMPRO_BENCHMARK - \tTime flushing cache: " . date_i18n("H:i:s", $flush_sec) . ".{$flush_usec}");
-			error_log("PMPRO_BENCHMARK - \tAdditional memory used during iteration: ".number_format($memory_used, 2, '.', ',') . " bytes");
+			error_log("DMRFID_BENCHMARK - For iteration #{$ic} of {$iterations} - Records processed: " . count($usr_data));
+			error_log("DMRFID_BENCHMARK - \tTime processing whole iteration: " . date_i18n("H:i:s", $iteration_sec) . ".{$iteration_sec}");
+			error_log("DMRFID_BENCHMARK - \tTime processing user data for iteration: " . date_i18n("H:i:s", $udata_sec) . ".{$udata_sec}");
+			error_log("DMRFID_BENCHMARK - \tTime flushing cache: " . date_i18n("H:i:s", $flush_sec) . ".{$flush_usec}");
+			error_log("DMRFID_BENCHMARK - \tAdditional memory used during iteration: ".number_format($memory_used, 2, '.', ',') . " bytes");
 		}
 
 		//need to increase max running time?
@@ -480,7 +480,7 @@
 
 	} // end of foreach iteration
 
-	if (PMPRO_BENCHMARK)
+	if (DMRFID_BENCHMARK)
 	{
 		$after_data_time = microtime(true);
 		$after_data_memory = memory_get_peak_usage(true);
@@ -490,8 +490,8 @@
 
 		list($sec, $usec) = explode('.', $time_processing_data);
 
-		error_log("PMPRO_BENCHMARK - Time processing data: {$sec}.{$usec} seconds");
-		error_log("PMPRO_BENCHMARK - Peak memory usage: " . number_format($memory_processing_data, false, '.', ',') . " bytes");
+		error_log("DMRFID_BENCHMARK - Time processing data: {$sec}.{$usec} seconds");
+		error_log("DMRFID_BENCHMARK - Peak memory usage: " . number_format($memory_processing_data, false, '.', ',') . " bytes");
 	}
 
 	// free memory

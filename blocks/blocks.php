@@ -48,17 +48,17 @@ function pmpro_block_editor_scripts() {
 	// Enqueue the bundled block JS file.
 	wp_enqueue_script(
 		'pmpro-blocks-editor-js',
-		plugins_url( 'js/blocks.build.js', PMPRO_BASE_FILE ),
+		plugins_url( 'js/blocks.build.js', DMRFID_BASE_FILE ),
 		array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor', 'pmpro_admin'),
-		PMPRO_VERSION
+		DMRFID_VERSION
 	);
 
 	// Enqueue optional editor only styles.
 	wp_enqueue_style(
 		'pmpro-blocks-editor-css',
-		plugins_url( 'css/blocks.editor.css', PMPRO_BASE_FILE ),
+		plugins_url( 'css/blocks.editor.css', DMRFID_BASE_FILE ),
 		array(),
-		PMPRO_VERSION
+		DMRFID_VERSION
 	);
 
 	// Adding translation functionality to Gutenberg blocks/JS.

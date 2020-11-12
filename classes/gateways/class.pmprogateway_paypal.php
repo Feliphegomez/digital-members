@@ -238,16 +238,16 @@
 				}
 
 				wp_register_script( 'pmpro_paypal',
-                            plugins_url( 'js/pmpro-paypal.js', PMPRO_BASE_FILE ),
+                            plugins_url( 'js/pmpro-paypal.js', DMRFID_BASE_FILE ),
                             $dependencies,
-                            PMPRO_VERSION );
+                            DMRFID_VERSION );
 				wp_localize_script( 'pmpro_paypal', 'pmpro_paypal', $data );
 				wp_enqueue_script( 'pmpro_paypal' );
 			}
 		}
 
 		static function get_cardinal_jwt() {
-			require_once( PMPRO_DIR . '/includes/lib/php-jwt/JWT.php' );
+			require_once( DMRFID_DIR . '/includes/lib/php-jwt/JWT.php' );
 
 			$key = pmpro_getOption( 'paypal_cardinal_apikey' );
 			$now = current_time( 'timestamp' );

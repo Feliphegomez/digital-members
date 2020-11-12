@@ -9,7 +9,7 @@ function pmpro_upgrade_1_8_8() {
 	global $wpdb;
 	
 	//Running the cron job cleanup again.
-	require_once(PMPRO_DIR . "/includes/updates/upgrade_1_8_7.php");
+	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_7.php");
 	pmpro_upgrade_1_8_7();
 	
 	//Fixing old Authorize.net orders with empty status.

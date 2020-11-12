@@ -21,7 +21,7 @@ function pmpro_beaver_builder_settings_form( $form, $id ) {
 	if ( 'row' !== $id ) {
 		return $form;
 	}
-	if ( ! defined( 'PMPRO_VERSION' ) ) {
+	if ( ! defined( 'DMRFID_VERSION' ) ) {
 		return $form;
 	}
 	global $membership_levels;
@@ -80,7 +80,7 @@ add_filter( 'fl_builder_register_settings_form', 'pmpro_beaver_builder_settings_
  * @return bool True if visible, false if not.
  */
 function pmpro_beaver_builder_check_field_connections( $is_visible, $node ) {
-	if ( ! defined( 'PMPRO_VERSION' ) ) {
+	if ( ! defined( 'DMRFID_VERSION' ) ) {
 		return $is_visible;
 	}
 	if ( 'row' === $node->type ) {
@@ -112,7 +112,7 @@ add_filter( 'fl_builder_is_node_visible', 'pmpro_beaver_builder_check_field_conn
  * @return array The updated form array.
  */
 function pmpro_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
-	if ( ! defined( 'PMPRO_VERSION' ) ) {
+	if ( ! defined( 'DMRFID_VERSION' ) ) {
 		return $form;
 	}
 	$modules = FLBuilderModel::get_enabled_modules(); // * getting all active modules slug
