@@ -23,30 +23,30 @@
 	define( 'DMRFID_DOING_WEBHOOK', 'twocheckout' );
 
 	//validate?
-	if( ! pmpro_twocheckoutValidate() ) {
+	if( ! dmrfid_twocheckoutValidate() ) {
 
 		inslog("(!!FAILED VALIDATION!!)");
 
 		//validation failed
-		pmpro_twocheckoutExit();
+		dmrfid_twocheckoutExit();
 	}
 
 	//assign posted variables to local variables
-	$message_type = pmpro_getParam( 'message_type', 'REQUEST' );
-	$md5_hash = pmpro_getParam( 'md5_hash', 'REQUEST' );
-	$txn_id = pmpro_getParam( 'sale_id', 'REQUEST' );
-	$recurring = pmpro_getParam( 'recurring', 'REQUEST' );
-	$order_id = pmpro_getParam( 'merchant_order_id', 'REQUEST' );
-	$order_number = pmpro_getParam( 'order_number', 'REQUEST' );
+	$message_type = dmrfid_getParam( 'message_type', 'REQUEST' );
+	$md5_hash = dmrfid_getParam( 'md5_hash', 'REQUEST' );
+	$txn_id = dmrfid_getParam( 'sale_id', 'REQUEST' );
+	$recurring = dmrfid_getParam( 'recurring', 'REQUEST' );
+	$order_id = dmrfid_getParam( 'merchant_order_id', 'REQUEST' );
+	$order_number = dmrfid_getParam( 'order_number', 'REQUEST' );
 	if(empty($order_id))
-		$order_id = pmpro_getParam( 'vendor_order_id', 'REQUEST' );
-	$product_id = pmpro_getParam( 'item_id_1', 'REQUEST' ); // Should be item 0 or 1?
+		$order_id = dmrfid_getParam( 'vendor_order_id', 'REQUEST' );
+	$product_id = dmrfid_getParam( 'item_id_1', 'REQUEST' ); // Should be item 0 or 1?
 	if(empty($order_id))
 		$order_id = $product_id;
-	$invoice_status = pmpro_getParam( 'invoice_status', 'REQUEST' ); // On single we need to check for deposited
-	$fraud_status = pmpro_getParam( 'fraud_status', 'REQUEST' ); // Check fraud status?
-	$invoice_list_amount = pmpro_getParam( 'invoice_list_amount', 'REQUEST' ); // Price paid by customer in seller currency code
-	$customer_email = pmpro_getParam( 'customer_email', 'REQUEST', '', 'sanitize_email' );
+	$invoice_status = dmrfid_getParam( 'invoice_status', 'REQUEST' ); // On single we need to check for deposited
+	$fraud_status = dmrfid_getParam( 'fraud_status', 'REQUEST' ); // Check fraud status?
+	$invoice_list_amount = dmrfid_getParam( 'invoice_list_amount', 'REQUEST' ); // Price paid by customer in seller currency code
+	$customer_email = dmrfid_getParam( 'customer_email', 'REQUEST', '', 'sanitize_email' );
 
 	// No message = return processing
 	if( empty($message_type) ) {
@@ -61,14 +61,14 @@
 		if( ! empty ( $morder ) && ! empty ( $morder->status ) && $morder->status === 'success' ) {
 			inslog( "Checkout was already processed (" . $morder->code . "). Ignoring this request." );
 		}
-		elseif (pmpro_insChangeMembershipLevel( $order_number, $morder ) ) {
+		elseif (dmrfid_insChangeMembershipLevel( $order_number, $morder ) ) {
 			inslog( "Checkout processed (" . $morder->code . ") success!" );
 		}
 		else {
 			inslog( "ERROR: Couldn't change level for order (" . $morder->code . ")." );
 		}
 
-		pmpro_twocheckoutExit(pmpro_url("confirmation", "?level=" . $morder->membership_level->id));
+		dmrfid_twocheckoutExit(dmrfid_url("confirmation", "?level=" . $morder->membership_level->id));
 	}
 
 	// First Payment (checkout) (Will probably want to update order, but not send another email/etc)
@@ -84,7 +84,7 @@
 		if( ! empty ( $morder ) && ! empty ( $morder->status ) && $morder->status === 'success' ) {
 			inslog( "Checkout was already processed (" . $morder->code . "). Ignoring this request." );
 		}
-		elseif (pmpro_insChangeMembershipLevel( $txn_id, $morder ) ) {
+		elseif (dmrfid_insChangeMembershipLevel( $txn_id, $morder ) ) {
 			inslog( "Checkout processed (" . $morder->code . ") success!" );
 
 		}
@@ -92,7 +92,7 @@
 			inslog( "ERROR: Couldn't change level for order (" . $morder->code . ")." );
 		}
 
-		pmpro_twocheckoutExit(pmpro_url("confirmation", "?level=" . $morder->membership_level->id));
+		dmrfid_twocheckoutExit(dmrfid_url("confirmation", "?level=" . $morder->membership_level->id));
 	}
 
 	// Recurring Payment Success (recurring installment success and recurring is true)
@@ -106,11 +106,11 @@
 			$morder->getUser();
 
 			//update membership
-			if( pmpro_insChangeMembershipLevel( $txn_id, $morder ) ) {
+			if( dmrfid_insChangeMembershipLevel( $txn_id, $morder ) ) {
 				inslog( "Checkout processed (" . $morder->code . ") success!" );
 
 				//hook for successful subscription payments
-				do_action("pmpro_subscription_payment_completed", $morder);
+				do_action("dmrfid_subscription_payment_completed", $morder);
 
 			}
 			else {
@@ -118,10 +118,10 @@
 			}
 		}
 		else {
-			pmpro_insSaveOrder( $txn_id, $last_subscr_order );
+			dmrfid_insSaveOrder( $txn_id, $last_subscr_order );
 		}
 
-		pmpro_twocheckoutExit();
+		dmrfid_twocheckoutExit();
 	}
 
 	// Recurring Payment Failed (recurring installment failed and recurring is true)
@@ -129,9 +129,9 @@
 		//is this a first payment?
 		$last_subscr_order = new MemberOrder();
 		$last_subscr_order->getLastMemberOrderBySubscriptionTransactionID( $txn_id );
-		pmpro_insFailedPayment( $last_subscr_order );
+		dmrfid_insFailedPayment( $last_subscr_order );
 
-		pmpro_twocheckoutExit();
+		dmrfid_twocheckoutExit();
 	}
 
 
@@ -144,14 +144,14 @@
 		$morder->getUser();
 
 		// stop membership
-		if ( pmpro_insRecurringStopped( $morder ) ) {
+		if ( dmrfid_insRecurringStopped( $morder ) ) {
 			inslog( "Recurring stopped for order (" . $morder->code . ")!" );
 		}
 		else {
 			inslog( "Recurring NOT stopped for order (" . $morder->code . ")!" );
 		}
 
-		pmpro_twocheckoutExit();
+		dmrfid_twocheckoutExit();
 	}
 
 
@@ -163,21 +163,21 @@
 		$morder->getUser();
 
 		// stop membership
-		if ( pmpro_insRecurringRestarted( $morder ) ) {
+		if ( dmrfid_insRecurringRestarted( $morder ) ) {
 			inslog( "Recurring restarted for order (" . $morder->code . ")!" );
 		}
 		else {
 			inslog( "Recurring NOT restarted for order (" . $morder->code . ")!" );
 		}
 
-		pmpro_twocheckoutExit();
+		dmrfid_twocheckoutExit();
 	}
 	*/
 
 	//Other
 	//if we got here, this is a different kind of txn
-	inslog("The PMPro INS handler does not process this type of message. message_type = " . $message_type);
-	pmpro_twocheckoutExit();
+	inslog("The DmRFID INS handler does not process this type of message. message_type = " . $message_type);
+	dmrfid_twocheckoutExit();
 
 	/*
 		Add message to inslog string
@@ -191,7 +191,7 @@
 	/*
 		Output inslog and exit;
 	*/
-	function pmpro_twocheckoutExit($redirect = false)
+	function dmrfid_twocheckoutExit($redirect = false)
 	{
 		global $logstr;
 		//echo $logstr;
@@ -226,7 +226,7 @@
 	/*
 		Validate the $_POST with TwoCheckout
 	*/
-	function pmpro_twocheckoutValidate() {
+	function dmrfid_twocheckoutValidate() {
 		$params = array();
 		foreach ( $_REQUEST as $k => $v )
 			$params[$k] = $v;
@@ -237,9 +237,9 @@
 
 		//is this a return call or notification
 		if(empty($params['message_type']))
-			$check = Twocheckout_Return::check( $params, pmpro_getOption( 'twocheckout_secretword' ) );
+			$check = Twocheckout_Return::check( $params, dmrfid_getOption( 'twocheckout_secretword' ) );
 		else
-			$check = Twocheckout_Notification::check( $params, pmpro_getOption( 'twocheckout_secretword' ) );
+			$check = Twocheckout_Notification::check( $params, dmrfid_getOption( 'twocheckout_secretword' ) );
 
 		if( empty ( $check ) )
 			$r = false;	//HTTP failure
@@ -256,7 +256,7 @@
 		 * @param bool $r true or false if the request is valid
 		 * @param mixed $check remote post object from request to Twocheckout
 		 */
-		$r = apply_filters('pmpro_twocheckout_validate', $r, $check);
+		$r = apply_filters('dmrfid_twocheckout_validate', $r, $check);
 
 		return $check['response_code'] === 'Success';
 	}
@@ -264,15 +264,15 @@
 	/*
 		Change the membership level. We also update the membership order to include filtered valus.
 	*/
-	function pmpro_insChangeMembershipLevel($txn_id, &$morder)
+	function dmrfid_insChangeMembershipLevel($txn_id, &$morder)
 	{
-		$recurring = pmpro_getParam( 'recurring', 'POST' );
+		$recurring = dmrfid_getParam( 'recurring', 'POST' );
 
 		//filter for level
-		$morder->membership_level = apply_filters("pmpro_inshandler_level", $morder->membership_level, $morder->user_id);
+		$morder->membership_level = apply_filters("dmrfid_inshandler_level", $morder->membership_level, $morder->user_id);
 
 		//set the start date to current_time('mysql') but allow filters (documented in preheaders/checkout.php)
-		$startdate = apply_filters("pmpro_checkout_start_date", "'" . current_time('mysql') . "'", $morder->user_id, $morder->membership_level);
+		$startdate = apply_filters("dmrfid_checkout_start_date", "'" . current_time('mysql') . "'", $morder->user_id, $morder->membership_level);
 
 		//fix expiration date
 		if(!empty($morder->membership_level->expiration_number))
@@ -285,7 +285,7 @@
 		}
 
 		//filter the enddate (documented in preheaders/checkout.php)
-		$enddate = apply_filters("pmpro_checkout_end_date", $enddate, $morder->user_id, $morder->membership_level, $startdate);
+		$enddate = apply_filters("dmrfid_checkout_end_date", $enddate, $morder->user_id, $morder->membership_level, $startdate);
 
 		//get discount code
 		$morder->getDiscountCode();
@@ -315,14 +315,14 @@
 			'startdate' => $startdate,
 			'enddate' => $enddate);
 
-		global $pmpro_error;
-		if(!empty($pmpro_error))
+		global $dmrfid_error;
+		if(!empty($dmrfid_error))
 		{
-			echo $pmpro_error;
-			inslog($pmpro_error);
+			echo $dmrfid_error;
+			inslog($dmrfid_error);
 		}
 
-		if( pmpro_changeMembershipLevel($custom_level, $morder->user_id) !== false ) {
+		if( dmrfid_changeMembershipLevel($custom_level, $morder->user_id) !== false ) {
 			//update order status and transaction ids
 			$morder->status = "success";
 			$morder->payment_transaction_id = $txn_id;
@@ -335,7 +335,7 @@
 			//add discount code use
 			if(!empty($discount_code) && !empty($use_discount_code))
 			{
-				$wpdb->query("INSERT INTO $wpdb->pmpro_discount_codes_uses (code_id, user_id, order_id, timestamp) VALUES('" . $discount_code_id . "', '" . $morder->user_id . "', '" . $morder->id . "', '" . current_time('mysql') . "')");
+				$wpdb->query("INSERT INTO $wpdb->dmrfid_discount_codes_uses (code_id, user_id, order_id, timestamp) VALUES('" . $discount_code_id . "', '" . $morder->user_id . "', '" . $morder->id . "', '" . current_time('mysql') . "')");
 			}
 
 			//save first and last name fields
@@ -353,7 +353,7 @@
 			}
 
 			//hook
-			do_action("pmpro_after_checkout", $morder->user_id, $morder);
+			do_action("dmrfid_after_checkout", $morder->user_id, $morder);
 
 			//setup some values for the emails
 			if(!empty($morder))
@@ -370,12 +370,12 @@
 			$user->membership_level = $morder->membership_level;		//make sure they have the right level info
 
 			//send email to member
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendCheckoutEmail($user, $invoice);
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendCheckoutEmail($user, $invoice);
 
 			//send email to admin
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendCheckoutAdminEmail($user, $invoice);
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendCheckoutAdminEmail($user, $invoice);
 
 			return true;
 		}
@@ -387,21 +387,21 @@
 		Send an email RE a failed payment.
 		$last_order passed in is the previous order for this subscription.
 	*/
-	function pmpro_insFailedPayment( $last_order ) {
+	function dmrfid_insFailedPayment( $last_order ) {
 		//hook to do other stuff when payments fail
-		do_action("pmpro_subscription_payment_failed", $last_order);
+		do_action("dmrfid_subscription_payment_failed", $last_order);
 
 		//create a blank order for the email
 		$morder = new MemberOrder();
 		$morder->user_id = $last_order->user_id;
 
 		// Email the user and ask them to update their credit card information
-		$pmproemail = new PMProEmail();
-		$pmproemail->sendBillingFailureEmail($user, $morder);
+		$dmrfidemail = new DmRFIDEmail();
+		$dmrfidemail->sendBillingFailureEmail($user, $morder);
 
 		// Email admin so they are aware of the failure
-		$pmproemail = new PMProEmail();
-		$pmproemail->sendBillingFailureAdminEmail(get_bloginfo("admin_email"), $morder);
+		$dmrfidemail = new DmRFIDEmail();
+		$dmrfidemail->sendBillingFailureAdminEmail(get_bloginfo("admin_email"), $morder);
 
 		inslog("Payment failed. Emails sent to " . $user->user_email . " and " . get_bloginfo("admin_email") . ".");
 
@@ -412,11 +412,11 @@
 		Save a new order from IPN info.
 		$last_order passed in is the previous order for this subscription.
 	*/
-	function pmpro_insSaveOrder( $txn_id, $last_order ) {
+	function dmrfid_insSaveOrder( $txn_id, $last_order ) {
 		global $wpdb;
 
 		//check that txn_id has not been previously processed
-		$old_txn = $wpdb->get_var("SELECT payment_transaction_id FROM $wpdb->pmpro_membership_orders WHERE payment_transaction_id = '" . $txn_id . "' LIMIT 1");
+		$old_txn = $wpdb->get_var("SELECT payment_transaction_id FROM $wpdb->dmrfid_membership_orders WHERE payment_transaction_id = '" . $txn_id . "' LIMIT 1");
 
 		if( empty( $old_txn ) ) {
 
@@ -445,8 +445,8 @@
 			$morder->getMemberOrderByID( $morder->id );
 
 			//email the user their invoice
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendInvoiceEmail( get_userdata( $last_order->user_id ), $morder );
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendInvoiceEmail( get_userdata( $last_order->user_id ), $morder );
 
 			inslog( "New order (" . $morder->code . ") created." );
 
@@ -463,23 +463,23 @@
 		Cancel a subscription and send an email RE a recurring.
 		$morder passed in is the previous order for this subscription.
 	*/
-	function pmpro_insRecurringStopped( $morder ) {
-		global $pmpro_error;
+	function dmrfid_insRecurringStopped( $morder ) {
+		global $dmrfid_error;
 		//hook to do other stuff when payments stop		
-		do_action( 'pmpro_subscription_recurring_stopped', $morder );
-    do_action( 'pmpro_subscription_recuring_stopped', $morder );    // Keeping the mispelled version in case. Will deprecate.
+		do_action( 'dmrfid_subscription_recurring_stopped', $morder );
+    do_action( 'dmrfid_subscription_recuring_stopped', $morder );    // Keeping the mispelled version in case. Will deprecate.
     
-		$worked = pmpro_changeMembershipLevel( false, $morder->user->ID , 'inactive');
+		$worked = dmrfid_changeMembershipLevel( false, $morder->user->ID , 'inactive');
 		if( $worked === true ) {
-			//$pmpro_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
-			//$pmpro_msgt = "pmpro_success";
+			//$dmrfid_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
+			//$dmrfid_msgt = "dmrfid_success";
 
 			//send an email to the member
-			$myemail = new PMProEmail();
+			$myemail = new DmRFIDEmail();
 			$myemail->sendCancelEmail();
 
 			//send an email to the admin
-			$myemail = new PMProEmail();
+			$myemail = new DmRFIDEmail();
 			$myemail->sendCancelAdminEmail( $morder->user, $morder->membership_level->id );
 
 			inslog("Subscription cancelled due to 'recurring stopped' INS notification.");
@@ -496,24 +496,24 @@
 		Restart a subscription and send an email RE a recurring.
 		$morder passed in is the previous order for this subscription.
 	*/
-	function pmpro_insRecurringRestarted( $morder ) {
-		global $pmpro_error;
+	function dmrfid_insRecurringRestarted( $morder ) {
+		global $dmrfid_error;
 		//hook to do other stuff when payments restart
-		do_action( 'pmpro_subscription_recuring_restarted', $morder);
-		do_action( 'pmpro_subscription_recurring_restarted', $morder);
+		do_action( 'dmrfid_subscription_recuring_restarted', $morder);
+		do_action( 'dmrfid_subscription_recurring_restarted', $morder);
 
-		$worked = pmpro_changeMembershipLevel( $morder->membership_level->id, $morder->user->ID );
+		$worked = dmrfid_changeMembershipLevel( $morder->membership_level->id, $morder->user->ID );
 		if( $worked === true ) {
-			//$pmpro_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
-			//$pmpro_msgt = "pmpro_success";
+			//$dmrfid_msg = __("Your membership has been cancelled.", 'paid-memberships-pro' );
+			//$dmrfid_msgt = "dmrfid_success";
 
 			//send an email to the member
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendCheckoutEmail( $morder->user, $morder );
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendCheckoutEmail( $morder->user, $morder );
 
 			//send email to admin
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendCheckoutAdminEmail( $morder->user, $morder );
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendCheckoutAdminEmail( $morder->user, $morder );
 
 			inslog("Subscription restarted due to 'recurring restarted' INS notification.");
 

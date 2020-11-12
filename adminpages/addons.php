@@ -1,11 +1,11 @@
 <?php
 	//only admins can get this
-	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_addons")))
+	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_addons")))
 	{
 		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
 	}	
 	
-	global $wpdb, $msg, $msgt, $pmpro_addons;
+	global $wpdb, $msg, $msgt, $dmrfid_addons;
 	
 	wp_enqueue_script( 'plugin-install' );
 	add_thickbox();
@@ -18,19 +18,19 @@
 	{
 		wp_version_check(array(), true);
 		wp_update_plugins();
-		$pmpro_license_key = get_option("pmpro_license_key", "");
-		pmpro_license_isValid($pmpro_license_key, NULL, true);
+		$dmrfid_license_key = get_option("dmrfid_license_key", "");
+		dmrfid_license_isValid($dmrfid_license_key, NULL, true);
 	}
 	
 	//some vars
-	$addons = pmpro_getAddons();
-	$addons_timestamp = get_option("pmpro_addons_timestamp", false);
+	$addons = dmrfid_getAddons();
+	$addons_timestamp = get_option("dmrfid_addons_timestamp", false);
 	$plugin_info = get_site_transient( 'update_plugins' );
-	$pmpro_license_key = get_option("pmpro_license_key", "");
+	$dmrfid_license_key = get_option("dmrfid_license_key", "");
 	
 	//get plugin status for filters
 	if(!empty($_REQUEST['plugin_status']))
-		$status = pmpro_sanitize_with_safelist($_REQUEST['plugin_status'], array('', 'all', 'active', 'inactive', 'update', 'uninstalled'));
+		$status = dmrfid_sanitize_with_safelist($_REQUEST['plugin_status'], array('', 'all', 'active', 'inactive', 'update', 'uninstalled'));
 
 	//make sure we have an approved status
 	$approved_statuses = array('all', 'active', 'inactive', 'update', 'uninstalled');
@@ -82,20 +82,20 @@
 	<hr class="wp-header-end">
 	
 	<?php
-		pmpro_showMessage();
+		dmrfid_showMessage();
 	?>
 	
 	<p>
 		<?php printf(__('Last checked on %s at %s.', 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $addons_timestamp), date_i18n(get_option('time_format'), $addons_timestamp));?> &nbsp;	
-		<a class="button" href="<?php echo admin_url("admin.php?page=pmpro-addons&force-check=1&plugin_status=" . $status);?>"><?php _e('Check Again', 'paid-memberships-pro' ); ?></a>
+		<a class="button" href="<?php echo admin_url("admin.php?page=dmrfid-addons&force-check=1&plugin_status=" . $status);?>"><?php _e('Check Again', 'paid-memberships-pro' ); ?></a>
 	</p>
 
 	<ul class="subsubsub">
-		<li class="all"><a href="admin.php?page=pmpro-addons&plugin_status=all" <?php if(empty($status) || $status == "all") { ?>class="current"<?php } ?>><?php _e('All', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($all_visible_addons);?>)</span></a> |</li>
-		<li class="active"><a href="admin.php?page=pmpro-addons&plugin_status=active" <?php if($status == "active") { ?>class="current"<?php } ?>><?php _e('Active', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($active_addons);?>)</span></a> |</li>
-		<li class="inactive"><a href="admin.php?page=pmpro-addons&plugin_status=inactive" <?php if($status == "inactive") { ?>class="current"<?php } ?>><?php _e('Inactive', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($inactive_addons);?>)</span></a> |</li>
-		<li class="update"><a href="admin.php?page=pmpro-addons&plugin_status=update" <?php if($status == "update") { ?>class="current"<?php } ?>><?php _e('Update Available', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($update_available_addons);?>)</span></a> |</li>
-		<li class="uninstalled"><a href="admin.php?page=pmpro-addons&plugin_status=uninstalled" <?php if($status == "uninstalled") { ?>class="current"<?php } ?>><?php _e('Not Installed', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($not_installed_addons);?>)</span></a></li>
+		<li class="all"><a href="admin.php?page=dmrfid-addons&plugin_status=all" <?php if(empty($status) || $status == "all") { ?>class="current"<?php } ?>><?php _e('All', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($all_visible_addons);?>)</span></a> |</li>
+		<li class="active"><a href="admin.php?page=dmrfid-addons&plugin_status=active" <?php if($status == "active") { ?>class="current"<?php } ?>><?php _e('Active', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($active_addons);?>)</span></a> |</li>
+		<li class="inactive"><a href="admin.php?page=dmrfid-addons&plugin_status=inactive" <?php if($status == "inactive") { ?>class="current"<?php } ?>><?php _e('Inactive', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($inactive_addons);?>)</span></a> |</li>
+		<li class="update"><a href="admin.php?page=dmrfid-addons&plugin_status=update" <?php if($status == "update") { ?>class="current"<?php } ?>><?php _e('Update Available', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($update_available_addons);?>)</span></a> |</li>
+		<li class="uninstalled"><a href="admin.php?page=dmrfid-addons&plugin_status=uninstalled" <?php if($status == "uninstalled") { ?>class="current"<?php } ?>><?php _e('Not Installed', 'paid-memberships-pro' ); ?> <span class="count">(<?php echo count($not_installed_addons);?>)</span></a></li>
 	</ul>
 
 	<table class="wp-list-table widefat plugins">
@@ -199,24 +199,24 @@
 								{
 									//free
 									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'paid-memberships-pro' ) . '</a></span>';
-									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $pmpro_license_key . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $dmrfid_license_key . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
 								}
-								elseif(empty($pmpro_license_key))
+								elseif(empty($dmrfid_license_key))
 								{
 									//no key
-									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=pmpro-license') . '">' . __('Update License', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=dmrfid-license') . '">' . __('Update License', 'paid-memberships-pro' ) . '</a></span>';
 									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['PluginURI'] . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
 								}
-								elseif(pmpro_license_isValid($pmpro_license_key, $plugin_data['License']))
+								elseif(dmrfid_license_isValid($dmrfid_license_key, $plugin_data['License']))
 								{
 									//valid key
 									$actions['install'] = '<span class="install"><a href="' . wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $plugin_data['Slug']), 'install-plugin_' . $plugin_data['Slug']) . '">' . __('Install Now', 'paid-memberships-pro' ) . '</a></span>';
-									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $pmpro_license_key . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';									
+									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['Download'] . '?key=' . $dmrfid_license_key . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';									
 								}
 								else
 								{
 									//invalid key
-									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=pmpro-license') . '">' . __('Update License', 'paid-memberships-pro' ) . '</a></span>';
+									$actions['settings'] = '<span class="settings"><a href="' . admin_url('admin.php?page=dmrfid-license') . '">' . __('Update License', 'paid-memberships-pro' ) . '</a></span>';
 									$actions['download'] = '<span class="download"><a target="_blank" href="' . $plugin_data['PluginURI'] . '">' . __('Download', 'paid-memberships-pro' ) . '</a></span>';
 								}
 							}
@@ -237,11 +237,11 @@
 					<td class="column-type">
 						<?php
 							if($addon['License'] == 'free')
-								_e("PMPro Free", 'paid-memberships-pro' );
+								_e("DmRFID Free", 'paid-memberships-pro' );
 							elseif($addon['License'] == 'core')
-								_e("PMPro Core", 'paid-memberships-pro' );
+								_e("DmRFID Core", 'paid-memberships-pro' );
 							elseif($addon['License'] == 'plus')
-								_e("PMPro Plus", 'paid-memberships-pro' );
+								_e("DmRFID Plus", 'paid-memberships-pro' );
 							elseif($addon['License'] == 'wordpress.org')
 								_e("WordPress.org", 'paid-memberships-pro' );
 							else
@@ -272,7 +272,7 @@
 								);
 							} elseif ( ! empty( $plugin_data['PluginURI'] ) ) {
 								$plugin_meta[] = sprintf( '<a target="_blank" href="%s">%s</a>',
-									esc_url( $plugin_data['PluginURI'] ) . '?utm_source=plugin&utm_medium=pmpro-addons&utm_campaign=add-ons',
+									esc_url( $plugin_data['PluginURI'] ) . '?utm_source=plugin&utm_medium=dmrfid-addons&utm_campaign=add-ons',
 									__( 'Visit plugin site' )
 								);
 							}

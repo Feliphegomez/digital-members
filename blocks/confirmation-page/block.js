@@ -1,5 +1,5 @@
 /**
- * Block: PMPro Membership Confirmation
+ * Block: DmRFID Membership Confirmation
  *
  * Displays the Membership Confirmation template.
  *
@@ -17,26 +17,26 @@
   * Register block
   */
  export default registerBlockType(
-     'pmpro/confirmation-page',
+     'dmrfid/confirmation-page',
      {
          title: __( 'Membership Confirmation Page', 'paid-memberships-pro' ),
          description: __( 'Displays the member\'s Membership Confirmation after Membership Checkout.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'yes',
          },
-         keywords: [ __( 'pmpro', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
          supports: {
          },
          attributes: {
          },
          edit(){
              return [
-                <div className="pmpro-block-element">
-                   <span className="pmpro-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                   <span className="pmpro-block-subtitle">{ __( 'Membership Confirmation Page', 'paid-memberships-pro' ) }</span>
+                <div className="dmrfid-block-element">
+                   <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
+                   <span className="dmrfid-block-subtitle">{ __( 'Membership Confirmation Page', 'paid-memberships-pro' ) }</span>
                 </div>
             ];
          },

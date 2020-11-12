@@ -67,7 +67,7 @@ SUCH DAMAGE.
    e-mail me.    
 **/ 
 
-class pmpro_mimetype { 
+class dmrfid_mimetype { 
    function getType($filename) { 
       // get base name of the filename provided by user 
       $filename = basename($filename); 
@@ -237,7 +237,7 @@ class pmpro_mimetype {
          "ice" => "x-conference-xcooltalk" 
       ); 
 
-      $mimetypes = apply_filters( 'pmpro_mimetypes_array', $mimetypes );
+      $mimetypes = apply_filters( 'dmrfid_mimetypes_array', $mimetypes );
 
       return $mimetypes;
    } 

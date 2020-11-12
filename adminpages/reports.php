@@ -3,7 +3,7 @@
  * The Memberships Reports admin page for Digital Members RFID
  */
 
-global $pmpro_reports;
+global $dmrfid_reports;
 
 /**
 * Load the Digital Members RFID dashboard-area header
@@ -14,44 +14,44 @@ require_once( dirname( __FILE__ ) . '/admin_header.php' );
 if ( ! empty( $_REQUEST[ 'report' ] ) ) {
 	//view a single report
 	$report = sanitize_text_field( $_REQUEST[ 'report' ] );
-	call_user_func( 'pmpro_report_' . $report . '_page' ); ?>
+	call_user_func( 'dmrfid_report_' . $report . '_page' ); ?>
 	<hr />
-	<a class="button button-primary" href="<?php echo admin_url("admin.php?page=pmpro-reports");?>"><?php _e( 'Back to Reports Dashboard', 'paid-memberships-pro' ); ?></a>
+	<a class="button button-primary" href="<?php echo admin_url("admin.php?page=dmrfid-reports");?>"><?php _e( 'Back to Reports Dashboard', 'paid-memberships-pro' ); ?></a>
 	<?php
 } else {
-	$pieces = array_chunk( $pmpro_reports, ceil( count( $pmpro_reports ) / 2 ), true );
+	$pieces = array_chunk( $dmrfid_reports, ceil( count( $dmrfid_reports ) / 2 ), true );
 	foreach ( $pieces[0] as $report => $title ) {
 		add_meta_box(
-			'pmpro_report_' . $report,
+			'dmrfid_report_' . $report,
 			$title,
-			'pmpro_report_' . $report . '_widget',
-			'memberships_page_pmpro-reports',
+			'dmrfid_report_' . $report . '_widget',
+			'memberships_page_dmrfid-reports',
 			'advanced'
 		);
 	}
 	
 	foreach ( $pieces[1] as $report => $title ) {
 		add_meta_box(
-			'pmpro_report_' . $report,
+			'dmrfid_report_' . $report,
 			$title,
-			'pmpro_report_' . $report . '_widget',
-			'memberships_page_pmpro-reports',
+			'dmrfid_report_' . $report . '_widget',
+			'memberships_page_dmrfid-reports',
 			'side'
 		);
 	}
 	
 	?>
-	<form id="pmpro-reports-form" method="post" action="admin-post.php">
+	<form id="dmrfid-reports-form" method="post" action="admin-post.php">
 
 		<div class="dashboard-widgets-wrap">
 			<div id="dashboard-widgets" class="metabox-holder">
 
 				<div id="postbox-container-1" class="postbox-container">
-					<?php do_meta_boxes( 'memberships_page_pmpro-reports', 'advanced', '' ); ?>
+					<?php do_meta_boxes( 'memberships_page_dmrfid-reports', 'advanced', '' ); ?>
 				</div>
 
 				<div id="postbox-container-2" class="postbox-container">
-					<?php do_meta_boxes( 'memberships_page_pmpro-reports', 'side', '' ); ?>
+					<?php do_meta_boxes( 'memberships_page_dmrfid-reports', 'side', '' ); ?>
 				</div>
 
 				<br class="clear">
@@ -69,7 +69,7 @@ if ( ! empty( $_REQUEST[ 'report' ] ) ) {
 		  // close postboxes that should be closed
 		  $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
 		  // postboxes setup
-		  postboxes.add_postbox_toggles('memberships_page_pmpro-reports');
+		  postboxes.add_postbox_toggles('memberships_page_dmrfid-reports');
 	  });
 	  //]]>
 	</script>

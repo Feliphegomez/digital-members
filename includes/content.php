@@ -2,7 +2,7 @@
 /*
 	Functions to detect member content and protect it.
 */
-function pmpro_has_membership_access($post_id = NULL, $user_id = NULL, $return_membership_levels = false)
+function dmrfid_has_membership_access($post_id = NULL, $user_id = NULL, $return_membership_levels = false)
 {
 	global $post, $wpdb, $current_user;
 
@@ -46,7 +46,7 @@ function pmpro_has_membership_access($post_id = NULL, $user_id = NULL, $return_m
 	}
 
 	// Allow plugins and themes to find the protected post        
-    $mypost = apply_filters( 'pmpro_membership_access_post', $mypost, $myuser );
+    $mypost = apply_filters( 'dmrfid_membership_access_post', $mypost, $myuser );
 	
 	if(isset($mypost->post_type) && $mypost->post_type == "post")
 	{
@@ -55,18 +55,18 @@ function pmpro_has_membership_access($post_id = NULL, $user_id = NULL, $return_m
 		if(!$post_categories)
 		{
 			//just check for entries in the memberships_pages table
-			$sqlQuery = "SELECT m.id, m.name FROM $wpdb->pmpro_memberships_pages mp LEFT JOIN $wpdb->pmpro_membership_levels m ON mp.membership_id = m.id WHERE mp.page_id = '" . $mypost->ID . "'";
+			$sqlQuery = "SELECT m.id, m.name FROM $wpdb->dmrfid_memberships_pages mp LEFT JOIN $wpdb->dmrfid_membership_levels m ON mp.membership_id = m.id WHERE mp.page_id = '" . $mypost->ID . "'";
 		}
 		else
 		{
 			//are any of the post categories associated with membership levels? also check the memberships_pages table
-			$sqlQuery = "(SELECT m.id, m.name FROM $wpdb->pmpro_memberships_categories mc LEFT JOIN $wpdb->pmpro_membership_levels m ON mc.membership_id = m.id WHERE mc.category_id IN(" . implode(",", $post_categories) . ") AND m.id IS NOT NULL) UNION (SELECT m.id, m.name FROM $wpdb->pmpro_memberships_pages mp LEFT JOIN $wpdb->pmpro_membership_levels m ON mp.membership_id = m.id WHERE mp.page_id = '" . $mypost->ID . "')";
+			$sqlQuery = "(SELECT m.id, m.name FROM $wpdb->dmrfid_memberships_categories mc LEFT JOIN $wpdb->dmrfid_membership_levels m ON mc.membership_id = m.id WHERE mc.category_id IN(" . implode(",", $post_categories) . ") AND m.id IS NOT NULL) UNION (SELECT m.id, m.name FROM $wpdb->dmrfid_memberships_pages mp LEFT JOIN $wpdb->dmrfid_membership_levels m ON mp.membership_id = m.id WHERE mp.page_id = '" . $mypost->ID . "')";
 		}
 	}
 	else
 	{
 		//are any membership levels associated with this page?
-		$sqlQuery = "SELECT m.id, m.name FROM $wpdb->pmpro_memberships_pages mp LEFT JOIN $wpdb->pmpro_membership_levels m ON mp.membership_id = m.id WHERE mp.page_id = '" . $mypost->ID . "'";
+		$sqlQuery = "SELECT m.id, m.name FROM $wpdb->dmrfid_memberships_pages mp LEFT JOIN $wpdb->dmrfid_membership_levels m ON mp.membership_id = m.id WHERE mp.page_id = '" . $mypost->ID . "'";
 	}
 
 
@@ -96,8 +96,8 @@ function pmpro_has_membership_access($post_id = NULL, $user_id = NULL, $return_m
 		}
 		elseif(!empty($myuser->ID))
 		{
-			$myuser->membership_level = pmpro_getMembershipLevelForUser($myuser->ID); // kept in for legacy filter users below.
-			$myuser->membership_levels = pmpro_getMembershipLevelsForUser($myuser->ID);
+			$myuser->membership_level = dmrfid_getMembershipLevelForUser($myuser->ID); // kept in for legacy filter users below.
+			$myuser->membership_levels = dmrfid_getMembershipLevelsForUser($myuser->ID);
 			$mylevelids = array();
 			foreach($myuser->membership_levels as $curlevel) {
 				$mylevelids[] = $curlevel->id;
@@ -125,10 +125,10 @@ function pmpro_has_membership_access($post_id = NULL, $user_id = NULL, $return_m
 		The generic filter is run first. Then if there is a filter for this post type, that is run.
 	*/
 	//general filter for all posts
-	$hasaccess = apply_filters("pmpro_has_membership_access_filter", $hasaccess, $mypost, $myuser, $post_membership_levels);
+	$hasaccess = apply_filters("dmrfid_has_membership_access_filter", $hasaccess, $mypost, $myuser, $post_membership_levels);
 	//filter for this post type
-	if( isset($mypost->post_type) && has_filter("pmpro_has_membership_access_filter_" . $mypost->post_type))
-		$hasaccess = apply_filters("pmpro_has_membership_access_filter_" . $mypost->post_type, $hasaccess, $mypost, $myuser, $post_membership_levels);
+	if( isset($mypost->post_type) && has_filter("dmrfid_has_membership_access_filter_" . $mypost->post_type))
+		$hasaccess = apply_filters("dmrfid_has_membership_access_filter_" . $mypost->post_type, $hasaccess, $mypost, $myuser, $post_membership_levels);
 
 	//return
 	if($return_membership_levels)
@@ -137,17 +137,17 @@ function pmpro_has_membership_access($post_id = NULL, $user_id = NULL, $return_m
 		return $hasaccess;
 }
 
-function pmpro_search_filter($query)
+function dmrfid_search_filter($query)
 {
-    global $current_user, $wpdb, $pmpro_pages;
+    global $current_user, $wpdb, $dmrfid_pages;
 	
-    //hide pmpro pages from search results
+    //hide dmrfid pages from search results
     if( ! $query->is_admin && $query->is_search && empty( $query->query['post_parent'] ) ) {
         //avoiding post_parent queries for now
 		if( empty( $query->query_vars['post_parent'] ) ) {
-			$query->set('post__not_in', $pmpro_pages );
+			$query->set('post__not_in', $dmrfid_pages );
 		}
-		$query->set('post__not_in', $pmpro_pages ); // id of page or post
+		$query->set('post__not_in', $dmrfid_pages ); // id of page or post
     }
 
     // If this is a post type query, get the queried post types into an array.	
@@ -165,26 +165,26 @@ function pmpro_search_filter($query)
 	/**
 	 * Filter which post types to hide members-only content from search.
 	 *
-	 * @param array $pmpro_search_filter_post_types The post types to include in the search filter.
+	 * @param array $dmrfid_search_filter_post_types The post types to include in the search filter.
 	 * The default included post types are page and post.
 	 *
-	 * @return array $pmpro_search_filter_post_types.
+	 * @return array $dmrfid_search_filter_post_types.
 	 */
-	$pmpro_search_filter_post_types = apply_filters( 'pmpro_search_filter_post_types', array( 'page', 'post' ) );
-	if ( ! is_array( $pmpro_search_filter_post_types ) ) {
-		$pmpro_search_filter_post_types = array( $pmpro_search_filter_post_types );		
+	$dmrfid_search_filter_post_types = apply_filters( 'dmrfid_search_filter_post_types', array( 'page', 'post' ) );
+	if ( ! is_array( $dmrfid_search_filter_post_types ) ) {
+		$dmrfid_search_filter_post_types = array( $dmrfid_search_filter_post_types );		
 	}
 
     //hide member pages from non-members (make sure they aren't hidden from members)
 	if( !$query->is_admin &&
 	    !$query->is_singular &&
 	    empty($query->query['post_parent']) &&
-	    ( empty($query->query_vars['post_type']) || array_intersect( $query_var_post_types, $pmpro_search_filter_post_types ) ) &&
+	    ( empty($query->query_vars['post_type']) || array_intersect( $query_var_post_types, $dmrfid_search_filter_post_types ) ) &&
 	    ( ( ! defined('REST_REQUEST') || ( defined( 'REST_REQUEST' ) && false === REST_REQUEST  ) ) )
 	) { 
 		//get page ids that are in my levels
         if( ! empty( $current_user->ID ) ) {
-			$levels = pmpro_getMembershipLevelsForUser($current_user->ID);
+			$levels = dmrfid_getMembershipLevelsForUser($current_user->ID);
 		} else {
 			$levels = false;
 		}
@@ -201,7 +201,7 @@ function pmpro_search_filter($query)
 
 					$sql = $wpdb->prepare("
 						SELECT page_id
-						FROM {$wpdb->pmpro_memberships_pages}
+						FROM {$wpdb->dmrfid_memberships_pages}
 						WHERE membership_id = %d",
 						$level->ID
 					);
@@ -214,9 +214,9 @@ function pmpro_search_filter($query)
 
         //get hidden page ids
         if( ! empty( $my_pages ) ) {
-			$sql = "SELECT page_id FROM $wpdb->pmpro_memberships_pages WHERE page_id NOT IN(" . implode(',', $my_pages) . ")";
+			$sql = "SELECT page_id FROM $wpdb->dmrfid_memberships_pages WHERE page_id NOT IN(" . implode(',', $my_pages) . ")";
 		} else {
-			$sql = "SELECT page_id FROM $wpdb->pmpro_memberships_pages";
+			$sql = "SELECT page_id FROM $wpdb->dmrfid_memberships_pages";
 		}
         $hidden_page_ids = array_values(array_unique($wpdb->get_col($sql)));
 		
@@ -228,21 +228,21 @@ function pmpro_search_filter($query)
 		}
 				
         //get categories that are filtered by level, but not my level
-        global $pmpro_my_cats;
-		$pmpro_my_cats = array();
+        global $dmrfid_my_cats;
+		$dmrfid_my_cats = array();
 
         if( $levels ) {
             foreach( $levels as $key => $level ) {
-                $member_cats = pmpro_getMembershipCategories($level->id);
-                $pmpro_my_cats = array_unique(array_merge($pmpro_my_cats, $member_cats));
+                $member_cats = dmrfid_getMembershipCategories($level->id);
+                $dmrfid_my_cats = array_unique(array_merge($dmrfid_my_cats, $member_cats));
             }
         }
 		
         //get hidden cats
-        if( ! empty( $pmpro_my_cats ) ) {
-			$sql = "SELECT category_id FROM $wpdb->pmpro_memberships_categories WHERE category_id NOT IN(" . implode(',', $pmpro_my_cats) . ")";
+        if( ! empty( $dmrfid_my_cats ) ) {
+			$sql = "SELECT category_id FROM $wpdb->dmrfid_memberships_categories WHERE category_id NOT IN(" . implode(',', $dmrfid_my_cats) . ")";
 		} else {
-			$sql = "SELECT category_id FROM $wpdb->pmpro_memberships_categories";
+			$sql = "SELECT category_id FROM $wpdb->dmrfid_memberships_categories";
 		}							
         $hidden_cat_ids = array_values(array_unique($wpdb->get_col($sql)));
 				
@@ -251,46 +251,46 @@ function pmpro_search_filter($query)
             $query->set( 'category__not_in', $hidden_cat_ids );
 						
 			//filter so posts in this member's categories are allowed
-			add_action( 'posts_where', 'pmpro_posts_where_unhide_cats' );
+			add_action( 'posts_where', 'dmrfid_posts_where_unhide_cats' );
 		}
     }
 
     return $query;
 }
-$filterqueries = pmpro_getOption("filterqueries");
+$filterqueries = dmrfid_getOption("filterqueries");
 if( ! empty( $filterqueries ) ) {
-	add_filter( 'pre_get_posts', 'pmpro_search_filter' );
+	add_filter( 'pre_get_posts', 'dmrfid_search_filter' );
 }
 
 /*
  * Find taxonomy filters and make sure member categories are not hidden from members.
  * @since 1.7.15
 */
-function pmpro_posts_where_unhide_cats($where) {
-	global $pmpro_my_cats, $wpdb;
+function dmrfid_posts_where_unhide_cats($where) {
+	global $dmrfid_my_cats, $wpdb;
 	
 	//if we have member cats, make sure they are allowed in taxonomy queries
-	if( ! empty( $where ) && ! empty( $pmpro_my_cats ) ) {
+	if( ! empty( $where ) && ! empty( $dmrfid_my_cats ) ) {
 		$pattern = "/$wpdb->posts.ID NOT IN \(\s*SELECT object_id\s*FROM dev_term_relationships\s*WHERE term_taxonomy_id IN \((.*)\)\s*\)/";
 		$replacement = $wpdb->posts . '.ID NOT IN (
 						SELECT tr1.object_id
 						FROM ' . $wpdb->term_relationships . ' tr1
-							LEFT JOIN ' . $wpdb->term_relationships . ' tr2 ON tr1.object_id = tr2.object_id AND tr2.term_taxonomy_id IN(' . implode($pmpro_my_cats) . ')
+							LEFT JOIN ' . $wpdb->term_relationships . ' tr2 ON tr1.object_id = tr2.object_id AND tr2.term_taxonomy_id IN(' . implode($dmrfid_my_cats) . ')
 						WHERE tr1.term_taxonomy_id IN(${1}) AND tr2.term_taxonomy_id IS NULL ) ';
 		$where = preg_replace( $pattern, $replacement, $where );
 	}
 	
 	//remove filter for next query
-	remove_action( 'posts_where', 'pmpro_posts_where_unhide_cats' );
+	remove_action( 'posts_where', 'dmrfid_posts_where_unhide_cats' );
 	
 	return $where;
 }
 
-function pmpro_membership_content_filter( $content, $skipcheck = false ) {
+function dmrfid_membership_content_filter( $content, $skipcheck = false ) {
 	global $post, $current_user;
 	
 	if( ! $skipcheck ) {
-		$hasaccess = pmpro_has_membership_access(NULL, NULL, true);
+		$hasaccess = dmrfid_has_membership_access(NULL, NULL, true);
 		if( is_array( $hasaccess ) ) {
 			//returned an array to give us the membership level values
 			$post_membership_levels_ids = $hasaccess[1];
@@ -304,7 +304,7 @@ function pmpro_membership_content_filter( $content, $skipcheck = false ) {
 		return $content;
 	} else {
 		//if show excerpts is set, return just the excerpt
-		if( pmpro_getOption( "showexcerpts" ) ) {
+		if( dmrfid_getOption( "showexcerpts" ) ) {
 			//show excerpt
 			global $post;
 			if( $post->post_excerpt ) {
@@ -347,40 +347,40 @@ function pmpro_membership_content_filter( $content, $skipcheck = false ) {
 			$content = "";
 		}
 
-		$content = pmpro_get_no_access_message( $content, $post_membership_levels_ids, $post_membership_levels_names );
+		$content = dmrfid_get_no_access_message( $content, $post_membership_levels_ids, $post_membership_levels_names );
 	}
 
 	return $content;
 }
-add_filter('the_content', 'pmpro_membership_content_filter', 5);
-add_filter('the_content_rss', 'pmpro_membership_content_filter', 5);
-add_filter('comment_text_rss', 'pmpro_membership_content_filter', 5);
+add_filter('the_content', 'dmrfid_membership_content_filter', 5);
+add_filter('the_content_rss', 'dmrfid_membership_content_filter', 5);
+add_filter('comment_text_rss', 'dmrfid_membership_content_filter', 5);
 
 /*
-	If the_excerpt is called, we want to disable the_content filters so the PMPro messages aren't added to the content before AND after the excerpt.
+	If the_excerpt is called, we want to disable the_content filters so the DmRFID messages aren't added to the content before AND after the excerpt.
 */
-function pmpro_membership_excerpt_filter($content, $skipcheck = false) {		
-	remove_filter('the_content', 'pmpro_membership_content_filter', 5);	
-	$content = pmpro_membership_content_filter($content, $skipcheck);
-	add_filter('the_content', 'pmpro_membership_content_filter', 5);
+function dmrfid_membership_excerpt_filter($content, $skipcheck = false) {		
+	remove_filter('the_content', 'dmrfid_membership_content_filter', 5);	
+	$content = dmrfid_membership_content_filter($content, $skipcheck);
+	add_filter('the_content', 'dmrfid_membership_content_filter', 5);
 	
 	return $content;
 }
 
-function pmpro_membership_get_excerpt_filter_start($content, $skipcheck = false) {	
-	remove_filter('the_content', 'pmpro_membership_content_filter', 5);		
+function dmrfid_membership_get_excerpt_filter_start($content, $skipcheck = false) {	
+	remove_filter('the_content', 'dmrfid_membership_content_filter', 5);		
 	return $content;
 }
 
-function pmpro_membership_get_excerpt_filter_end($content, $skipcheck = false) {	
-	add_filter('the_content', 'pmpro_membership_content_filter', 5);		
+function dmrfid_membership_get_excerpt_filter_end($content, $skipcheck = false) {	
+	add_filter('the_content', 'dmrfid_membership_content_filter', 5);		
 	return $content;
 }
-add_filter('the_excerpt', 'pmpro_membership_excerpt_filter', 15);
-add_filter('get_the_excerpt', 'pmpro_membership_get_excerpt_filter_start', 1);
-add_filter('get_the_excerpt', 'pmpro_membership_get_excerpt_filter_end', 100);
+add_filter('the_excerpt', 'dmrfid_membership_excerpt_filter', 15);
+add_filter('get_the_excerpt', 'dmrfid_membership_get_excerpt_filter_start', 1);
+add_filter('get_the_excerpt', 'dmrfid_membership_get_excerpt_filter_end', 100);
 
-function pmpro_comments_filter($comments, $post_id = NULL) {
+function dmrfid_comments_filter($comments, $post_id = NULL) {
 	global $post, $wpdb, $current_user;
 	if(!$post_id)
 		$post_id = $post->ID;
@@ -390,7 +390,7 @@ function pmpro_comments_filter($comments, $post_id = NULL) {
 
 	global $post, $current_user;
 
-	$hasaccess = pmpro_has_membership_access(NULL, NULL, true);
+	$hasaccess = dmrfid_has_membership_access(NULL, NULL, true);
 	if( is_array( $hasaccess ) ) {
 		//returned an array to give us the membership level values
 		$post_membership_levels_ids = $hasaccess[1];
@@ -436,38 +436,38 @@ function pmpro_comments_filter($comments, $post_id = NULL) {
 	}
 	return $comments;
 }
-add_filter("comments_array", "pmpro_comments_filter", 10, 2);
-add_filter("comments_open", "pmpro_comments_filter", 10, 2);
+add_filter("comments_array", "dmrfid_comments_filter", 10, 2);
+add_filter("comments_open", "dmrfid_comments_filter", 10, 2);
 
 //keep non-members from getting to certain pages (attachments, etc)
-function pmpro_hide_pages_redirect() {
+function dmrfid_hide_pages_redirect() {
 	global $post;
 
 	if( ! is_admin() && ! empty( $post->ID ) ) {
 		if( $post->post_type == "attachment" ) {
 			//check if the user has access to the parent
-			if( ! pmpro_has_membership_access( $post->ID ) ) {
-				wp_redirect( pmpro_url( "levels" ) );
+			if( ! dmrfid_has_membership_access( $post->ID ) ) {
+				wp_redirect( dmrfid_url( "levels" ) );
 				exit;
 			}
 		}
 	}
 }
-add_action( 'wp', 'pmpro_hide_pages_redirect' );
+add_action( 'wp', 'dmrfid_hide_pages_redirect' );
 
 /**
  * Adds custom classes to the array of post classes.
  *
- * pmpro-level-required = this post requires at least one level
- * pmpro-level-1 = this post requires level 1
- * pmpro-has-access = this post is usually locked, but the current user has access to this post
+ * dmrfid-level-required = this post requires at least one level
+ * dmrfid-level-1 = this post requires level 1
+ * dmrfid-has-access = this post is usually locked, but the current user has access to this post
  *
  * @param array $classes Classes for the post element.
  * @return array
  *
  * @since 1.8.5.4
  */
-function pmpro_post_classes( $classes, $class, $post_id ) {	
+function dmrfid_post_classes( $classes, $class, $post_id ) {	
 	
 	$post = get_post($post_id);
 	
@@ -475,39 +475,39 @@ function pmpro_post_classes( $classes, $class, $post_id ) {
 		return $classes;
 	
 	$post_levels = array();
-	$post_levels = pmpro_has_membership_access( $post->ID, NULL, true );
+	$post_levels = dmrfid_has_membership_access( $post->ID, NULL, true );
 	
 	if( ! empty( $post_levels ) ) {
 		if( ! empty( $post_levels[1] ) ) {
-			$classes[] = 'pmpro-level-required';
+			$classes[] = 'dmrfid-level-required';
 			foreach( $post_levels[1] as $post_level ) {
-				$classes[] = 'pmpro-level-' . $post_level[0];
+				$classes[] = 'dmrfid-level-' . $post_level[0];
 			}
 		}
 		if(!empty($post_levels[0]) && $post_levels[0] == true) {
-			$classes[] = 'pmpro-has-access';
+			$classes[] = 'dmrfid-has-access';
 		} else {
-			$classes[] = 'pmpro-no-access';
+			$classes[] = 'dmrfid-no-access';
 		}
 	}
 	return $classes;
 }
-add_filter( 'post_class', 'pmpro_post_classes', 10, 3 );
+add_filter( 'post_class', 'dmrfid_post_classes', 10, 3 );
 
 /**
  * Adds custom classes to the array of body classes.
  * Same as the above, but acts on the "queried object" instead of the post global.
  *
- * pmpro-body-level-required = this post requires at least one level
- * pmpro-body-level-1 = this post requires level 1
- * pmpro-body-has-access = this post is usually locked, but the current user has access to this post
+ * dmrfid-body-level-required = this post requires at least one level
+ * dmrfid-body-level-1 = this post requires level 1
+ * dmrfid-body-has-access = this post is usually locked, but the current user has access to this post
  *
  * @param array $classes Classes for the body element.
  * @return array
  *
  * @since 1.8.6.1
  */
-function pmpro_body_classes( $classes ) {	
+function dmrfid_body_classes( $classes ) {	
 	
 	$post = get_queried_object();
 	
@@ -515,19 +515,19 @@ function pmpro_body_classes( $classes ) {
 		return $classes;
 	
 	$post_levels = array();
-	$post_levels = pmpro_has_membership_access($post->ID,NULL,true);
+	$post_levels = dmrfid_has_membership_access($post->ID,NULL,true);
 	
 	if( ! empty( $post_levels ) ) {
 		if( ! empty( $post_levels[1] ) ) {
-			$classes[] = 'pmpro-body-level-required';
+			$classes[] = 'dmrfid-body-level-required';
 			foreach( $post_levels[1] as $post_level ) {
-				$classes[] = 'pmpro-body-level-' . $post_level[0];
+				$classes[] = 'dmrfid-body-level-' . $post_level[0];
 			}
 		}
 		if( ! empty( $post_levels[0] ) && $post_levels[0] == true) {
-			$classes[] = 'pmpro-body-has-access';
+			$classes[] = 'dmrfid-body-has-access';
 		}
 	}
 	return $classes;
 }
-add_filter( 'body_class', 'pmpro_body_classes' );
+add_filter( 'body_class', 'dmrfid_body_classes' );

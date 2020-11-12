@@ -1,6 +1,6 @@
 <?php
 
-class PMPro_Discount_Code{
+class DmRFID_Discount_Code{
 
     function __construct( $code = NULL ) {
 
@@ -25,7 +25,7 @@ class PMPro_Discount_Code{
 
         $discount_code = new stdClass();
         $discount_code->id = '';
-        $discount_code->code = pmpro_getDiscountCode();
+        $discount_code->code = dmrfid_getDiscountCode();
         $discount_code->starts = date( 'Y-m-d' );
         $discount_code->expires = date( 'Y-m-d', time() + 86400 );
         $discount_code->uses = '';
@@ -58,7 +58,7 @@ class PMPro_Discount_Code{
         $dcobj = $wpdb->get_row(
             $wpdb->prepare(
                 "SELECT * 
-                FROM $wpdb->pmpro_discount_codes 
+                FROM $wpdb->dmrfid_discount_codes 
                 WHERE code = %s",
                 $code
             ),
@@ -79,8 +79,8 @@ class PMPro_Discount_Code{
         $levels = $wpdb->get_results( 
             $wpdb->prepare(
                 "SELECT cl.* 
-                FROM $wpdb->pmpro_discount_codes_levels cl 
-                LEFT JOIN $wpdb->pmpro_discount_codes cd 
+                FROM $wpdb->dmrfid_discount_codes_levels cl 
+                LEFT JOIN $wpdb->dmrfid_discount_codes cd 
                 ON cl.code_id = cd.id 
                 WHERE cd.code = %s",
                 $code
@@ -138,7 +138,7 @@ class PMPro_Discount_Code{
         // Get the discount code by code, then call function
         $id = intval( $id );
 
-        $code = $wpdb->get_var("SELECT code FROM $wpdb->pmpro_discount_codes WHERE `id` =" . $id );
+        $code = $wpdb->get_var("SELECT code FROM $wpdb->dmrfid_discount_codes WHERE `id` =" . $id );
 
         return $this->get_discount_code_by_code( $code );
 
@@ -151,7 +151,7 @@ class PMPro_Discount_Code{
         // See if code exists;
         if ( isset( $this->code ) && ! empty( $this->code ) ) {
             // see if row exists.
-            $results = $wpdb->get_row( "SELECT * FROM $wpdb->pmpro_discount_codes WHERE code = '" . $this->code . "' LIMIT 1" );
+            $results = $wpdb->get_row( "SELECT * FROM $wpdb->dmrfid_discount_codes WHERE code = '" . $this->code . "' LIMIT 1" );
 
             if ( $results ) {
 
@@ -175,7 +175,7 @@ class PMPro_Discount_Code{
 
         } else {
 
-            $this->code = pmpro_getDiscountCode();
+            $this->code = dmrfid_getDiscountCode();
 
             if ( ! isset( $this->starts ) || empty( $this->starts ) ) {
                 $this->starts = date( 'Y-m-d' );
@@ -193,10 +193,10 @@ class PMPro_Discount_Code{
         // If the code doesn't exist, create it otherwise update it.
         if ( empty( $this->id ) ) {
 
-            $before_action = 'pmpro_add_discount_code';
-            $after_action = 'pmpro_added_discount_code';
+            $before_action = 'dmrfid_add_discount_code';
+            $after_action = 'dmrfid_added_discount_code';
 
-            $this->sqlQuery = "INSERT INTO $wpdb->pmpro_discount_codes ( `code`, `starts`, `expires`, `uses` ) 
+            $this->sqlQuery = "INSERT INTO $wpdb->dmrfid_discount_codes ( `code`, `starts`, `expires`, `uses` ) 
                                VALUES ('" . $this->code . "',
                                        '" . $this->starts ."',
                                        '" . $this->expires ."',
@@ -204,10 +204,10 @@ class PMPro_Discount_Code{
                                )";                      
         } else {
             
-            $before_action = 'pmpro_update_discount_code';
-            $after_action = 'pmpro_updated_discount_code';
+            $before_action = 'dmrfid_update_discount_code';
+            $after_action = 'dmrfid_updated_discount_code';
 
-            $this->sqlQuery = "UPDATE $wpdb->pmpro_discount_codes
+            $this->sqlQuery = "UPDATE $wpdb->dmrfid_discount_codes
                                 SET  `code` = '" . $this->code ."',
                                     `starts` = '" . $this->starts . "',
                                     `expires` = '" . $this->expires . "',
@@ -226,14 +226,14 @@ class PMPro_Discount_Code{
 
         // Delete levels if 0 or false is passed through.
         if ( isset( $this->levels ) && ( $this->levels == 0 || $this->levels == false ) ) {
-            $wpdb->delete( $wpdb->pmpro_discount_codes_levels, array( 'code_id' => $this->id ), array( '%d' ) );
+            $wpdb->delete( $wpdb->dmrfid_discount_codes_levels, array( 'code_id' => $this->id ), array( '%d' ) );
         }
 
         // Insert discount code level/billing data if it's set in the discount code object.
         if ( isset( $this->levels ) && is_array( $this->levels ) ) {
 
            // Nuke the levels table and rebuild it.
-           $wpdb->delete( $wpdb->pmpro_discount_codes_levels, array( 'code_id' => $this->id ), array( '%d' ) );
+           $wpdb->delete( $wpdb->dmrfid_discount_codes_levels, array( 'code_id' => $this->id ), array( '%d' ) );
 
             foreach ( $this->levels as $key => $data ) {
                 $level_id = intval( $key );
@@ -247,7 +247,7 @@ class PMPro_Discount_Code{
                 $expiration_number = $data['expiration_number'];
                 $expiration_period = $data['expiration_period'];
 
-                $this->sqlQuery = "INSERT INTO $wpdb->pmpro_discount_codes_levels 
+                $this->sqlQuery = "INSERT INTO $wpdb->dmrfid_discount_codes_levels 
                 ( `code_id`, `level_id`, `initial_payment`, `billing_amount`, `cycle_number`, `cycle_period`, `billing_limit`, `trial_amount`, `trial_limit`, `expiration_number`, `expiration_period`) 
                 VALUES ( " . intval( $this->id ) . ",
                         " . intval( $level_id ) . ",

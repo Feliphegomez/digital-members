@@ -1,3 +1,3 @@
 <?php
-	echo pmpro_shortcode_login('');
+	echo dmrfid_shortcode_login('');
 ?>

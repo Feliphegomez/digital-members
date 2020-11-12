@@ -1,5 +1,5 @@
 <?php
-	class PMProEmail
+	class DmRFIDEmail
 	{
 		function __construct()
 		{
@@ -28,10 +28,10 @@
 				$this->email = $current_user->user_email;
 				
 			if(!$this->from)
-				$this->from = pmpro_getOption("from_email");
+				$this->from = dmrfid_getOption("from_email");
 			
 			if(!$this->fromname)
-				$this->fromname = pmpro_getOption("from_name");
+				$this->fromname = dmrfid_getOption("from_name");
 			
 			if(!$this->subject)
 				$this->subject = sprintf(__("An Email From %s", 'paid-memberships-pro' ), get_option("blogname"));
@@ -61,12 +61,12 @@
 				$this->body = file_get_contents(get_template_directory() . "/paid-memberships-pro/email/" . $this->template . ".html");	//email folder in parent theme
 			elseif(file_exists(get_template_directory() . "/membership-email-" . $this->template . ".html"))
 				$this->body = file_get_contents(get_template_directory() . "/membership-email-" . $this->template . ".html");			//membership-email- file in parent theme			
-			elseif(file_exists(WP_LANG_DIR . '/pmpro/email/' . $locale . "/" . $this->template . ".html"))
-				$this->body = file_get_contents(WP_LANG_DIR . '/pmpro/email/' . $locale . "/" . $this->template . ".html");				//localized email folder in WP language folder
-			elseif(file_exists(WP_LANG_DIR . '/pmpro/email/' . $this->template . ".html"))
-				$this->body = file_get_contents(WP_LANG_DIR . '/pmpro/email/' . $this->template . ".html");								//email folder in WP language folder
+			elseif(file_exists(WP_LANG_DIR . '/dmrfid/email/' . $locale . "/" . $this->template . ".html"))
+				$this->body = file_get_contents(WP_LANG_DIR . '/dmrfid/email/' . $locale . "/" . $this->template . ".html");				//localized email folder in WP language folder
+			elseif(file_exists(WP_LANG_DIR . '/dmrfid/email/' . $this->template . ".html"))
+				$this->body = file_get_contents(WP_LANG_DIR . '/dmrfid/email/' . $this->template . ".html");								//email folder in WP language folder
 			elseif(file_exists(DMRFID_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html"))
-				$this->body = file_get_contents(DMRFID_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html");					//email folder in PMPro language folder
+				$this->body = file_get_contents(DMRFID_DIR . "/languages/email/" . $locale . "/" . $this->template . ".html");					//email folder in DmRFID language folder
 			elseif($this->getDefaultEmailTemplate($this->template))
 				$this->body = $this->getDefaultEmailTemplate($this->template);
 			elseif(file_exists(DMRFID_DIR . "/email/" . $this->template . ".html"))
@@ -75,7 +75,7 @@
 				$this->body = $this->data['body'];																						//data passed in
 
 			//header and footer
-			/* This is handled for all emails via the pmpro_send_html function in paid-memberships-pro now
+			/* This is handled for all emails via the dmrfid_send_html function in paid-memberships-pro now
 			if(file_exists(get_template_directory() . "/email_header.html"))
 			{
 				$this->body = file_get_contents(get_template_directory() . "/email_header.html") . "\n" . $this->body;
@@ -91,7 +91,7 @@
 				$this->data = array("body"=>$data);											
 				
 			//filter for data
-			$this->data = apply_filters("pmpro_email_data", $this->data, $this);	//filter
+			$this->data = apply_filters("dmrfid_email_data", $this->data, $this);	//filter
 			
 			//swap data into body
 			if(is_array($this->data))
@@ -105,21 +105,21 @@
 			}
 			
 			//filters
-			$temail = apply_filters("pmpro_email_filter", $this);		//allows filtering entire email at once
+			$temail = apply_filters("dmrfid_email_filter", $this);		//allows filtering entire email at once
 
 			if ( empty( $temail ) ) {
 				return false;
 			}
 
-			$this->email = apply_filters("pmpro_email_recipient", $temail->email, $this);
-			$this->from = apply_filters("pmpro_email_sender", $temail->from, $this);
-			$this->fromname = apply_filters("pmpro_email_sender_name", $temail->fromname, $this);
+			$this->email = apply_filters("dmrfid_email_recipient", $temail->email, $this);
+			$this->from = apply_filters("dmrfid_email_sender", $temail->from, $this);
+			$this->fromname = apply_filters("dmrfid_email_sender_name", $temail->fromname, $this);
 			$this->add_from_to_headers();
-			$this->subject = apply_filters("pmpro_email_subject", $temail->subject, $this);
-			$this->template = apply_filters("pmpro_email_template", $temail->template, $this);
-			$this->body = apply_filters("pmpro_email_body", $temail->body, $this);
-			$this->headers = apply_filters("pmpro_email_headers", $temail->headers, $this);
-			$this->attachments = apply_filters("pmpro_email_attachments", $temail->attachments, $this);
+			$this->subject = apply_filters("dmrfid_email_subject", $temail->subject, $this);
+			$this->template = apply_filters("dmrfid_email_template", $temail->template, $this);
+			$this->body = apply_filters("dmrfid_email_body", $temail->body, $this);
+			$this->headers = apply_filters("dmrfid_email_headers", $temail->headers, $this);
+			$this->attachments = apply_filters("dmrfid_email_attachments", $temail->attachments, $this);
 			
 			if(wp_mail($this->email,$this->subject,$this->body,$this->headers,$this->attachments))
 			{
@@ -170,19 +170,19 @@
 			$this->email = $user->user_email;
 			$this->subject = sprintf(__('Your membership at %s has been CANCELLED', 'paid-memberships-pro'), get_option("blogname"));
 
-			$this->data = array("user_email" => $user->user_email, "display_name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "siteemail" => pmpro_getOption("from_email"));
+			$this->data = array("user_email" => $user->user_email, "display_name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "siteemail" => dmrfid_getOption("from_email"));
 
 			if(!empty($old_level_id)) {
 				if(!is_array($old_level_id))
 					$old_level_id = array($old_level_id);
 				$this->data['membership_id'] = $old_level_id[0];	//pass just the first as the level id
-				$this->data['membership_level_name'] = pmpro_implodeToEnglish($wpdb->get_col("SELECT name FROM $wpdb->pmpro_membership_levels WHERE id IN('" . implode("','", $old_level_id) . "')"));
+				$this->data['membership_level_name'] = dmrfid_implodeToEnglish($wpdb->get_col("SELECT name FROM $wpdb->dmrfid_membership_levels WHERE id IN('" . implode("','", $old_level_id) . "')"));
 			} else {
 				$this->data['membership_id'] = '';
 				$this->data['membership_level_name'] = __('All Levels', 'paid-memberships-pro' );
 			}
 
-			$this->template = apply_filters("pmpro_email_template", "cancel", $this);
+			$this->template = apply_filters("dmrfid_email_template", "cancel", $this);
 			return $this->sendEmail();
 		}
 		
@@ -196,28 +196,28 @@
 				return false;
 			
 			//check settings
-			$send = pmpro_getOption("email_admin_cancels");
+			$send = dmrfid_getOption("email_admin_cancels");
 			if(empty($send))
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
 			$this->email = get_bloginfo("admin_email");
 			$this->subject = sprintf(__("Membership for %s at %s has been CANCELLED", 'paid-memberships-pro'), $user->user_login, get_option("blogname"));			
 
-			$this->data = array("user_login" => $user->user_login, "user_email" => $user->user_email, "display_name" => $user->display_name, "sitename" => get_option("blogname"), "siteemail" => pmpro_getOption("from_email"), "login_link" => pmpro_login_url());
+			$this->data = array("user_login" => $user->user_login, "user_email" => $user->user_email, "display_name" => $user->display_name, "sitename" => get_option("blogname"), "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url());
 			
 			if(!empty($old_level_id)) {
 				if(!is_array($old_level_id))
 					$old_level_id = array($old_level_id);
 				$this->data['membership_id'] = $old_level_id[0];	//pass just the first as the level id
-				$this->data['membership_level_name'] = pmpro_implodeToEnglish($wpdb->get_col("SELECT name FROM $wpdb->pmpro_membership_levels WHERE id IN('" . implode("','", $old_level_id) . "')"));
+				$this->data['membership_level_name'] = dmrfid_implodeToEnglish($wpdb->get_col("SELECT name FROM $wpdb->dmrfid_membership_levels WHERE id IN('" . implode("','", $old_level_id) . "')"));
 
 				//start and end date
-				$startdate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(startdate, '+00:00', @@global.time_zone)) as startdate FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . $user->ID . "' AND membership_id = '" . $old_level_id[0] . "' AND status IN('inactive', 'cancelled', 'admin_cancelled') ORDER BY id DESC");
+				$startdate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(startdate, '+00:00', @@global.time_zone)) as startdate FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND membership_id = '" . $old_level_id[0] . "' AND status IN('inactive', 'cancelled', 'admin_cancelled') ORDER BY id DESC");
 				if(!empty($startdate))
 					$this->data['startdate'] = date_i18n(get_option('date_format'), $startdate);
 				else
 					$this->data['startdate'] = "";
-				$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) as enddate FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . $user->ID . "' AND membership_id = '" . $old_level_id[0] . "' AND status IN('inactive', 'cancelled', 'admin_cancelled') ORDER BY id DESC");
+				$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) as enddate FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND membership_id = '" . $old_level_id[0] . "' AND status IN('inactive', 'cancelled', 'admin_cancelled') ORDER BY id DESC");
 				if(!empty($enddate))
 					$this->data['enddate'] = date_i18n(get_option('date_format'), $enddate);
 				else
@@ -229,7 +229,7 @@
 				$this->data['enddate'] = '';
 			}
 
-			$this->template = apply_filters("pmpro_email_template", "cancel_admin", $this);
+			$this->template = apply_filters("dmrfid_email_template", "cancel_admin", $this);
 
 			return $this->sendEmail();
 		}
@@ -243,7 +243,7 @@
 			if(!$user)
 				return false;
 				
-			$confirmation_in_email = get_pmpro_membership_level_meta( $user->membership_level->id, 'confirmation_in_email', true );
+			$confirmation_in_email = get_dmrfid_membership_level_meta( $user->membership_level->id, 'confirmation_in_email', true );
 			if ( ! empty( $confirmation_in_email ) ) {
 				$confirmation_message = $user->membership_level->confirmation;
 			} else {
@@ -259,35 +259,35 @@
 								"display_name" => $user->display_name,
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"membership_level_confirmation_message" => $confirmation_message,
-								"membership_cost" => pmpro_getLevelCost($user->membership_level),								
-								"login_link" => pmpro_login_url(),
+								"membership_cost" => dmrfid_getLevelCost($user->membership_level),								
+								"login_link" => dmrfid_login_url(),
 								"display_name" => $user->display_name,
 								"user_email" => $user->user_email,								
 							);						
 						
-			if(!empty($invoice) && !pmpro_isLevelFree($user->membership_level))
+			if(!empty($invoice) && !dmrfid_isLevelFree($user->membership_level))
 			{									
 				if($invoice->gateway == "paypalexpress")
 					$this->template = "checkout_express";
 				elseif($invoice->gateway == "check")
 				{
 					$this->template = "checkout_check";
-					$this->data["instructions"] = wpautop(pmpro_getOption("instructions"));
+					$this->data["instructions"] = wpautop(dmrfid_getOption("instructions"));
 				}
-				elseif(pmpro_isLevelTrial($user->membership_level))
+				elseif(dmrfid_isLevelTrial($user->membership_level))
 					$this->template = "checkout_trial";
 				else
 					$this->template = "checkout_paid";
 
 				//BUG: Didn't apply template filter before it was being used in sendEmail()
-				$this->template = apply_filters("pmpro_email_template", $this->template, $this);
+				$this->template = apply_filters("dmrfid_email_template", $this->template, $this);
 
 				$this->data["invoice_id"] = $invoice->code;
-				$this->data["invoice_total"] = pmpro_formatPrice($invoice->total);
+				$this->data["invoice_total"] = dmrfid_formatPrice($invoice->total);
 				$this->data["invoice_date"] = date_i18n( get_option( 'date_format' ), $invoice->getTimestamp() );
 				$this->data["billing_name"] = $invoice->billing->name;
 				$this->data["billing_street"] = $invoice->billing->street;
@@ -300,7 +300,7 @@
 				$this->data["accountnumber"] = hideCardNumber($invoice->accountnumber);
 				$this->data["expirationmonth"] = $invoice->expirationmonth;
 				$this->data["expirationyear"] = $invoice->expirationyear;
-				$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+				$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																	 $invoice->billing->street,
 																	 "", //address 2
 																	 $invoice->billing->city,
@@ -314,7 +314,7 @@
 				else
 					$this->data["discount_code"] = "";
 			}
-			elseif(pmpro_isLevelFree($user->membership_level))
+			elseif(dmrfid_isLevelFree($user->membership_level))
 			{
 				$this->template = "checkout_free";		
 				global $discount_code;
@@ -333,7 +333,7 @@
 					$this->data["discount_code"] = "";	
 			}
 			
-			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
+			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
 			if($enddate)
 				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
 			else
@@ -352,7 +352,7 @@
 				return false;
 			
 			//check settings
-			$send = pmpro_getOption("email_admin_checkout");
+			$send = dmrfid_getOption("email_admin_checkout");
 			if(empty($send))
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
@@ -364,30 +364,30 @@
 								"name" => $user->display_name, 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
-								"membership_cost" => pmpro_getLevelCost($user->membership_level),								
-								"login_link" => pmpro_login_url(),
+								"membership_cost" => dmrfid_getLevelCost($user->membership_level),								
+								"login_link" => dmrfid_login_url(),
 								"display_name" => $user->display_name,
 								"user_email" => $user->user_email,								
 							);						
 			
-			if(!empty($invoice) && !pmpro_isLevelFree($user->membership_level))
+			if(!empty($invoice) && !dmrfid_isLevelFree($user->membership_level))
 			{									
 				if($invoice->gateway == "paypalexpress")
 					$this->template = "checkout_express_admin";
 				elseif($invoice->gateway == "check")
 					$this->template = "checkout_check_admin";					
-				elseif(pmpro_isLevelTrial($user->membership_level))
+				elseif(dmrfid_isLevelTrial($user->membership_level))
 					$this->template = "checkout_trial_admin";
 				else
 					$this->template = "checkout_paid_admin";
 
-				$this->template = apply_filters( "pmpro_email_template", $this->template, $this );
+				$this->template = apply_filters( "dmrfid_email_template", $this->template, $this );
 
 				$this->data["invoice_id"] = $invoice->code;
-				$this->data["invoice_total"] = pmpro_formatPrice($invoice->total);
+				$this->data["invoice_total"] = dmrfid_formatPrice($invoice->total);
 				$this->data["invoice_date"] = date_i18n(get_option('date_format'), $invoice->getTimestamp());
 				$this->data["billing_name"] = $invoice->billing->name;
 				$this->data["billing_street"] = $invoice->billing->street;
@@ -400,7 +400,7 @@
 				$this->data["accountnumber"] = hideCardNumber($invoice->accountnumber);
 				$this->data["expirationmonth"] = $invoice->expirationmonth;
 				$this->data["expirationyear"] = $invoice->expirationyear;
-				$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+				$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																	 $invoice->billing->street,
 																	 "", //address 2
 																	 $invoice->billing->city,
@@ -414,7 +414,7 @@
 				else
 					$this->data["discount_code"] = "";
 			}
-			elseif(pmpro_isLevelFree($user->membership_level))
+			elseif(dmrfid_isLevelFree($user->membership_level))
 			{
 				$this->template = "checkout_free_admin";		
 				global $discount_code;
@@ -429,7 +429,7 @@
 				$this->data["discount_code"] = "";
 			}			
 			
-			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
+			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
 			if($enddate)
 				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
 			else
@@ -455,7 +455,7 @@
 								"name" => $user->display_name, 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"display_name" => $user->display_name,
@@ -471,9 +471,9 @@
 								"accountnumber" => hideCardNumber($invoice->accountnumber),
 								"expirationmonth" => $invoice->expirationmonth,
 								"expirationyear" => $invoice->expirationyear,
-								"login_link" => pmpro_login_url()
+								"login_link" => dmrfid_login_url()
 							);
-			$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+			$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																 $invoice->billing->street,
 																 "", //address 2
 																 $invoice->billing->city,
@@ -482,7 +482,7 @@
 																 $invoice->billing->country,
 																 $invoice->billing->phone);
 
-			$this->template = apply_filters( "pmpro_email_template", "billing", $this );
+			$this->template = apply_filters( "dmrfid_email_template", "billing", $this );
 
 			return $this->sendEmail();
 		}
@@ -497,7 +497,7 @@
 				return false;
 			
 			//check settings
-			$send = pmpro_getOption("email_admin_billing");
+			$send = dmrfid_getOption("email_admin_billing");
 			if(empty($send))
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
@@ -509,7 +509,7 @@
 								"name" => $user->display_name, 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"display_name" => $user->display_name,
@@ -525,9 +525,9 @@
 								"accountnumber" => hideCardNumber($invoice->accountnumber),
 								"expirationmonth" => $invoice->expirationmonth,
 								"expirationyear" => $invoice->expirationyear,
-								"login_link" => pmpro_login_url()
+								"login_link" => dmrfid_login_url()
 							);
-			$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+			$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																 $invoice->billing->street,
 																 "", //address 2
 																 $invoice->billing->city,
@@ -536,7 +536,7 @@
 																 $invoice->billing->country,
 																 $invoice->billing->phone);
 
-			$this->template = apply_filters( "pmpro_email_template", "billing_admin", $this );
+			$this->template = apply_filters( "dmrfid_email_template", "billing_admin", $this );
 
 			return $this->sendEmail();
 		}
@@ -558,7 +558,7 @@
 								"name" => $user->display_name, 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"display_name" => $user->display_name,
@@ -574,9 +574,9 @@
 								"accountnumber" => hideCardNumber($invoice->accountnumber),
 								"expirationmonth" => $invoice->expirationmonth,
 								"expirationyear" => $invoice->expirationyear,
-								"login_link" => pmpro_login_url(pmpro_url("billing"))
+								"login_link" => dmrfid_login_url(dmrfid_url("billing"))
 							);
-			$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+			$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																 $invoice->billing->street,
 																 "", //address 2
 																 $invoice->billing->city,
@@ -585,7 +585,7 @@
 																 $invoice->billing->country,
 																 $invoice->billing->phone);
 
-			$this->template = apply_filters("pmpro_email_template", "billing_failure", $this);
+			$this->template = apply_filters("dmrfid_email_template", "billing_failure", $this);
 
 			return $this->sendEmail();
 		}				
@@ -605,7 +605,7 @@
 								"name" => "Admin", 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"display_name" => $user->display_name,
@@ -621,9 +621,9 @@
 								"accountnumber" => hideCardNumber($invoice->accountnumber),
 								"expirationmonth" => $invoice->expirationmonth,
 								"expirationyear" => $invoice->expirationyear,
-								"login_link" => pmpro_login_url( get_edit_user_link( $user->ID ) )
+								"login_link" => dmrfid_login_url( get_edit_user_link( $user->ID ) )
 							);
-			$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+			$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																 $invoice->billing->street,
 																 "", //address 2
 																 $invoice->billing->city,
@@ -631,7 +631,7 @@
 																 $invoice->billing->zip,
 																 $invoice->billing->country,
 																 $invoice->billing->phone);
-			$this->template = apply_filters("pmpro_email_template", "billing_failure_admin", $this);
+			$this->template = apply_filters("dmrfid_email_template", "billing_failure_admin", $this);
 
 			return $this->sendEmail();
 		}
@@ -653,7 +653,7 @@
 								"name" => $user->display_name, 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"display_name" => $user->display_name,
@@ -669,9 +669,9 @@
 								"accountnumber" => hideCardNumber($invoice->accountnumber),
 								"expirationmonth" => $invoice->expirationmonth,
 								"expirationyear" => $invoice->expirationyear,
-								"login_link" => pmpro_login_url(pmpro_url("billing"))
+								"login_link" => dmrfid_login_url(dmrfid_url("billing"))
 							);
-			$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+			$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																 $invoice->billing->street,
 																 "", //address 2
 																 $invoice->billing->city,
@@ -680,7 +680,7 @@
 																 $invoice->billing->country,
 																 $invoice->billing->phone);
 
-			$this->template = apply_filters("pmpro_email_template", "credit_card_expiring", $this);
+			$this->template = apply_filters("dmrfid_email_template", "credit_card_expiring", $this);
 
 			return $this->sendEmail();
 		}
@@ -694,7 +694,7 @@
 			if(!$user || !$invoice)
 				return false;
 			
-			$user->membership_level = pmpro_getMembershipLevelForUser($user->ID);
+			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 			
 			$this->email = $user->user_email;
 			$this->subject = sprintf(__("INVOICE for %s membership", "paid-memberships-pro"), get_option("blogname"));
@@ -704,13 +704,13 @@
 								"name" => $user->display_name, 
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"membership_id" => $user->membership_level->id,
 								"membership_level_name" => $user->membership_level->name,
 								"display_name" => $user->display_name,
 								"user_email" => $user->user_email,	
 								"invoice_id" => $invoice->code,
-								"invoice_total" => pmpro_formatPrice($invoice->total),
+								"invoice_total" => dmrfid_formatPrice($invoice->total),
 								"invoice_date" => date_i18n(get_option('date_format'), $invoice->getTimestamp()),
 								"billing_name" => $invoice->billing->name,
 								"billing_street" => $invoice->billing->street,
@@ -723,10 +723,10 @@
 								"accountnumber" => hideCardNumber($invoice->accountnumber),
 								"expirationmonth" => $invoice->expirationmonth,
 								"expirationyear" => $invoice->expirationyear,
-								"login_link" => pmpro_login_url(),
-								"invoice_link" => pmpro_login_url(pmpro_url("invoice", "?invoice=" . $invoice->code)
+								"login_link" => dmrfid_login_url(),
+								"invoice_link" => dmrfid_login_url(dmrfid_url("invoice", "?invoice=" . $invoice->code)
 							));
-			$this->data["billing_address"] = pmpro_formatAddress($invoice->billing->name,
+			$this->data["billing_address"] = dmrfid_formatAddress($invoice->billing->name,
 																 $invoice->billing->street,
 																 "", //address 2
 																 $invoice->billing->city,
@@ -744,14 +744,14 @@
 				$this->data["discount_code"] = "";
 			}
 		
-			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
+			$enddate = $wpdb->get_var("SELECT UNIX_TIMESTAMP(CONVERT_TZ(enddate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $user->ID . "' AND status = 'active' LIMIT 1");
 			if($enddate)
 				$this->data["membership_expiration"] = "<p>" . sprintf(__("This membership will expire on %s.", 'paid-memberships-pro' ), date_i18n(get_option('date_format'), $enddate)) . "</p>\n";
 			else
 				$this->data["membership_expiration"] = "";
 
 
-			$this->template = apply_filters("pmpro_email_template", "invoice", $this);
+			$this->template = apply_filters("dmrfid_email_template", "invoice", $this);
 
 			return $this->sendEmail();
 		}
@@ -767,11 +767,11 @@
 			
 			//make sure we have the current membership level data
 			/*$user->membership_level = $wpdb->get_row("SELECT l.id AS ID, l.name AS name, UNIX_TIMESTAMP(CONVERT_TZ(mu.startdate, '+00:00', @@global.time_zone)) as startdate, mu.billing_amount, mu.cycle_number, mu.cycle_period, mu.trial_amount, mu.trial_limit
-														FROM {$wpdb->pmpro_membership_levels} AS l
-														JOIN {$wpdb->pmpro_memberships_users} AS mu ON (l.id = mu.membership_id)
+														FROM {$wpdb->dmrfid_membership_levels} AS l
+														JOIN {$wpdb->dmrfid_memberships_users} AS mu ON (l.id = mu.membership_id)
 														WHERE mu.user_id = " . $user->ID . "
 														LIMIT 1");*/
-			$user->membership_level = pmpro_getMembershipLevelForUser($user->ID);
+			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 						
 			$this->email = $user->user_email;
 			$this->subject = sprintf(__("Your trial at %s is ending soon", "paid-memberships-pro"), get_option("blogname"));
@@ -783,19 +783,19 @@
 				"sitename" => get_option("blogname"), 				
 				"membership_id" => $user->membership_level->id,
 				"membership_level_name" => $user->membership_level->name, 
-				"siteemail" => pmpro_getOption("from_email"), 
-				"login_link" => pmpro_login_url(), 
+				"siteemail" => dmrfid_getOption("from_email"), 
+				"login_link" => dmrfid_login_url(), 
 				"display_name" => $user->display_name, 
 				"user_email" => $user->user_email, 
-				"billing_amount" => pmpro_formatPrice($user->membership_level->billing_amount), 
+				"billing_amount" => dmrfid_formatPrice($user->membership_level->billing_amount), 
 				"cycle_number" => $user->membership_level->cycle_number, 
 				"cycle_period" => $user->membership_level->cycle_period, 
-				"trial_amount" => pmpro_formatPrice($user->membership_level->trial_amount), 
+				"trial_amount" => dmrfid_formatPrice($user->membership_level->trial_amount), 
 				"trial_limit" => $user->membership_level->trial_limit,
 				"trial_end" => date_i18n(get_option('date_format'), strtotime(date_i18n("m/d/Y", $user->membership_level->startdate) . " + " . $user->membership_level->trial_limit . " " . $user->membership_level->cycle_period), current_time("timestamp"))
 			);
 
-			$this->template = apply_filters("pmpro_email_template", "trial_ending", $this);
+			$this->template = apply_filters("dmrfid_email_template", "trial_ending", $this);
 
 			return $this->sendEmail();
 		}
@@ -812,9 +812,9 @@
 			$this->email = $user->user_email;
 			$this->subject = sprintf(__("Your membership at %s has ended", "paid-memberships-pro"), get_option("blogname"));			
 
-			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "siteemail" => pmpro_getOption("from_email"), "login_link" => pmpro_login_url(), "display_name" => $user->display_name, "user_email" => $user->user_email, "levels_link" => pmpro_url("levels"));
+			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url(), "display_name" => $user->display_name, "user_email" => $user->user_email, "levels_link" => dmrfid_url("levels"));
 
-			$this->template = apply_filters("pmpro_email_template", "membership_expired", $this);
+			$this->template = apply_filters("dmrfid_email_template", "membership_expired", $this);
 
 			return $this->sendEmail();
 		}
@@ -830,18 +830,18 @@
 			
 			//make sure we have the current membership level data
 			/*$user->membership_level = $wpdb->get_row("SELECT l.id AS ID, l.name AS name, UNIX_TIMESTAMP(CONVERT_TZ(mu.enddate, '+00:00', @@global.time_zone)) as enddate
-														FROM {$wpdb->pmpro_membership_levels} AS l
-														JOIN {$wpdb->pmpro_memberships_users} AS mu ON (l.id = mu.membership_id)
+														FROM {$wpdb->dmrfid_membership_levels} AS l
+														JOIN {$wpdb->dmrfid_memberships_users} AS mu ON (l.id = mu.membership_id)
 														WHERE mu.user_id = " . $user->ID . "
 														LIMIT 1");*/
-			$user->membership_level = pmpro_getMembershipLevelForUser($user->ID);
+			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 						
 			$this->email = $user->user_email;
 			$this->subject = sprintf(__("Your membership at %s will end soon", "paid-memberships-pro"), get_option("blogname"));
 
-			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "membership_id" => $user->membership_level->id, "membership_level_name" => $user->membership_level->name, "siteemail" => pmpro_getOption("from_email"), "login_link" => pmpro_login_url(), "enddate" => date_i18n(get_option('date_format'), $user->membership_level->enddate), "display_name" => $user->display_name, "user_email" => $user->user_email);
+			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "user_login" => $user->user_login, "sitename" => get_option("blogname"), "membership_id" => $user->membership_level->id, "membership_level_name" => $user->membership_level->name, "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url(), "enddate" => date_i18n(get_option('date_format'), $user->membership_level->enddate), "display_name" => $user->display_name, "user_email" => $user->user_email);
 
-			$this->template = apply_filters("pmpro_email_template", "membership_expiring", $this);
+			$this->template = apply_filters("dmrfid_email_template", "membership_expiring", $this);
 
 			return $this->sendEmail();
 		}
@@ -856,7 +856,7 @@
 				return false;
 			
 			//make sure we have the current membership level data
-			$user->membership_level = pmpro_getMembershipLevelForUser($user->ID, true);
+			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID, true);
 
 			if(!empty($user->membership_level) && !empty($user->membership_level->name)) {
 				$membership_level_name = $user->membership_level->name;
@@ -869,7 +869,7 @@
 			$this->email = $user->user_email;
 			$this->subject = sprintf(__("Your membership at %s has been changed", "paid-memberships-pro"), get_option("blogname"));
 
-			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "display_name" => $user->display_name, "user_login" => $user->user_login, "user_email" => $user->user_email, "sitename" => get_option("blogname"), "membership_id" => $membership_level_id, "membership_level_name" => $membership_level_name, "siteemail" => pmpro_getOption("from_email"), "login_link" => pmpro_login_url());
+			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "display_name" => $user->display_name, "user_login" => $user->user_login, "user_email" => $user->user_email, "sitename" => get_option("blogname"), "membership_id" => $membership_level_id, "membership_level_name" => $membership_level_name, "siteemail" => dmrfid_getOption("from_email"), "login_link" => dmrfid_login_url());
 
 			if(!empty($user->membership_level) && !empty($user->membership_level->ID)) {
 				$this->data["membership_change"] = sprintf(__("The new level is %s", 'paid-memberships-pro' ), $user->membership_level->name);
@@ -886,7 +886,7 @@
 				$this->data["membership_change"] .= ". " . __("This membership does not expire", 'paid-memberships-pro' );
 			}
 
-			$this->template = apply_filters("pmpro_email_template", "admin_change", $this);
+			$this->template = apply_filters("dmrfid_email_template", "admin_change", $this);
 
 			return $this->sendEmail();
 		}
@@ -901,12 +901,12 @@
 				return false;
 			
 			//check settings
-			$send = pmpro_getOption("email_admin_changes");
+			$send = dmrfid_getOption("email_admin_changes");
 			if(empty($send))
 				return true;	//didn't send, but we also don't want to indicate failure because the settings say to not send
 			
 			//make sure we have the current membership level data
-			$user->membership_level = pmpro_getMembershipLevelForUser($user->ID, true);
+			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID, true);
 						
 			if(!empty($user->membership_level) && !empty($user->membership_level->name)) {
 				$membership_level_name = $user->membership_level->name;
@@ -919,7 +919,7 @@
 			$this->email = get_bloginfo("admin_email");
 			$this->subject = sprintf(__("Membership for %s at %s has been changed", "paid-memberships-pro"), $user->user_login, get_option("blogname"));
 
-			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "display_name" => $user->display_name, "user_login" => $user->user_login, "user_email" => $user->user_email, "sitename" => get_option("blogname"), "membership_id" => $membership_level_id, "membership_level_name" => $membership_level_name, "siteemail" => get_bloginfo("admin_email"), "login_link" => pmpro_login_url());
+			$this->data = array("subject" => $this->subject, "name" => $user->display_name, "display_name" => $user->display_name, "user_login" => $user->user_login, "user_email" => $user->user_email, "sitename" => get_option("blogname"), "membership_id" => $membership_level_id, "membership_level_name" => $membership_level_name, "siteemail" => get_bloginfo("admin_email"), "login_link" => dmrfid_login_url());
 
 			if(!empty($user->membership_level) && !empty($user->membership_level->ID)) {
 				$this->data["membership_change"] = sprintf(__("The new level is %s", 'paid-memberships-pro' ), $user->membership_level->name);
@@ -936,7 +936,7 @@
 				$this->data["membership_change"] .= ". " . __("This membership does not expire", 'paid-memberships-pro' );
 			}
 
-			$this->template = apply_filters("pmpro_email_template", "admin_change_admin", $this);
+			$this->template = apply_filters("dmrfid_email_template", "admin_change_admin", $this);
 
 			return $this->sendEmail();
 		}
@@ -961,7 +961,7 @@
 			if(!$user || !$order)
 				return false;
 
-			$level = pmpro_getLevel($order->membership_id);
+			$level = dmrfid_getLevel($order->membership_id);
 
 			$this->email = $user->user_email;
 			$this->subject = __('Invoice for Order #: ', 'paid-memberships-pro') . $order->code;
@@ -983,12 +983,12 @@
 
 			$this->data = array(
 				'order_code' => $order->code,
-				'login_link' => pmpro_login_url(),
-				'invoice_link' => pmpro_login_url(pmpro_url("invoice", "?invoice=" . $order->code)),
+				'login_link' => dmrfid_login_url(),
+				'invoice_link' => dmrfid_login_url(dmrfid_url("invoice", "?invoice=" . $order->code)),
 				'invoice' => $invoice
 			);
 
-			$this->template = apply_filters("pmpro_email_template", "billable_invoice", $this);
+			$this->template = apply_filters("dmrfid_email_template", "billable_invoice", $this);
 
 			return $this->sendEmail();
 		}
@@ -1015,7 +1015,7 @@
 			
 			$this->template = "payment_action";
 
-			$this->template = apply_filters("pmpro_email_template", $this->template, $this);
+			$this->template = apply_filters("dmrfid_email_template", $this->template, $this);
 
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -1023,7 +1023,7 @@
 								"display_name" => $user->display_name,
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"invoice_url" => $invoice_url,
 							);
 						
@@ -1052,7 +1052,7 @@
 			
 			$this->template = "payment_action_admin";
 
-			$this->template = apply_filters("pmpro_email_template", $this->template, $this);
+			$this->template = apply_filters("dmrfid_email_template", $this->template, $this);
 
 			$this->data = array(
 								"subject" => $this->subject, 
@@ -1060,7 +1060,7 @@
 								"display_name" => $user->display_name,
 								"user_login" => $user->user_login,
 								"sitename" => get_option("blogname"),
-								"siteemail" => pmpro_getOption("from_email"),
+								"siteemail" => dmrfid_getOption("from_email"),
 								"user_email" => $user->user_email,
 								"invoice_url" => $invoice_url,
 							);

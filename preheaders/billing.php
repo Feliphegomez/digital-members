@@ -1,15 +1,15 @@
 <?php
 
-global $wpdb, $current_user, $pmpro_msg, $pmpro_msgt, $bfirstname, $blastname, $baddress1, $baddress2, $bcity, $bstate, $bzipcode, $bcountry, $bphone, $bemail, $bconfirmemail, $CardType, $AccountNumber, $ExpirationMonth, $ExpirationYear, $pmpro_requirebilling;
+global $wpdb, $current_user, $dmrfid_msg, $dmrfid_msgt, $bfirstname, $blastname, $baddress1, $baddress2, $bcity, $bstate, $bzipcode, $bcountry, $bphone, $bemail, $bconfirmemail, $CardType, $AccountNumber, $ExpirationMonth, $ExpirationYear, $dmrfid_requirebilling;
 
 // Redirect non-user to the login page; pass the Billing page as the redirect_to query arg.
 if ( ! is_user_logged_in() ) {
-	$billing_url = pmpro_url( 'billing' );
-    wp_redirect( add_query_arg( 'redirect_to', urlencode( $billing_url ), pmpro_login_url() ) );
+	$billing_url = dmrfid_url( 'billing' );
+    wp_redirect( add_query_arg( 'redirect_to', urlencode( $billing_url ), dmrfid_login_url() ) );
     exit;
 } else {
     // Get the current user's membership level. 
-    $current_user->membership_level = pmpro_getMembershipLevelForUser( $current_user->ID );
+    $current_user->membership_level = dmrfid_getMembershipLevelForUser( $current_user->ID );
 }
 
 //need to be secure?
@@ -20,7 +20,7 @@ if (empty($user_order->gateway)) {
     //no order
     $besecure = false;
 } elseif ($user_order->gateway == "paypalexpress") {
-    $besecure = pmpro_getOption("use_ssl");
+    $besecure = dmrfid_getOption("use_ssl");
     //still they might have website payments pro setup
     if ($gateway == "paypal") {
         //$besecure = true;
@@ -32,11 +32,11 @@ if (empty($user_order->gateway)) {
     $show_check_payment_instructions = true;
 } else {
     //$besecure = true;
-    $besecure = pmpro_getOption("use_ssl");
+    $besecure = dmrfid_getOption("use_ssl");
 }
 
 // this variable is checked sometimes to know if the page should show billing fields
-$pmpro_requirebilling = true;
+$dmrfid_requirebilling = true;
 
 // Set the gateway, ideally using the gateway used to pay for the last order (if it exists)
 if ( ! empty( $user_order->gateway ) ) {
@@ -49,7 +49,7 @@ if ( ! empty( $user_order->gateway ) ) {
 wp_enqueue_script( 'jquery.creditCardValidator', plugins_url( '/js/jquery.creditCardValidator.js', dirname( __FILE__ ) ), array( 'jquery' ) );
 
 //action to run extra code for gateways/etc
-do_action( 'pmpro_billing_preheader' );
+do_action( 'dmrfid_billing_preheader' );
 
 //_x stuff in case they clicked on the image button with their mouse
 if (isset($_REQUEST['update-billing']))
@@ -131,7 +131,7 @@ if ($submit) {
     if (!isset($CVV))
         $CVV = "";
 
-    $pmpro_required_billing_fields = array(
+    $dmrfid_required_billing_fields = array(
         "bfirstname" => $bfirstname,
         "blastname" => $blastname,
         "baddress1" => $baddress1,
@@ -149,9 +149,9 @@ if ($submit) {
     );
     
     //filter
-    $pmpro_required_billing_fields = apply_filters("pmpro_required_billing_fields", $pmpro_required_billing_fields);
+    $dmrfid_required_billing_fields = apply_filters("dmrfid_required_billing_fields", $dmrfid_required_billing_fields);
 	
-    foreach ($pmpro_required_billing_fields as $key => $field) {
+    foreach ($dmrfid_required_billing_fields as $key => $field) {
         if (!$field) {            
 			$missing_billing_field = true;
             break;
@@ -159,20 +159,20 @@ if ($submit) {
     }
 	
     if (!empty($missing_billing_field)) {
-        $pmpro_msg = __("Please complete all required fields.", 'paid-memberships-pro' );
-        $pmpro_msgt = "pmpro_error";
+        $dmrfid_msg = __("Please complete all required fields.", 'paid-memberships-pro' );
+        $dmrfid_msgt = "dmrfid_error";
     } elseif ($bemail != $bconfirmemail) {
-        $pmpro_msg = __("Your email addresses do not match. Please try again.", 'paid-memberships-pro' );
-        $pmpro_msgt = "pmpro_error";
+        $dmrfid_msg = __("Your email addresses do not match. Please try again.", 'paid-memberships-pro' );
+        $dmrfid_msgt = "dmrfid_error";
     } elseif (!is_email($bemail)) {
-        $pmpro_msg = __("The email address entered is in an invalid format. Please try again.", 'paid-memberships-pro' );
-        $pmpro_msgt = "pmpro_error";
+        $dmrfid_msg = __("The email address entered is in an invalid format. Please try again.", 'paid-memberships-pro' );
+        $dmrfid_msgt = "dmrfid_error";
     } else {
         //all good. update billing info.
-        $pmpro_msg = __("All good!", 'paid-memberships-pro' );
+        $dmrfid_msg = __("All good!", 'paid-memberships-pro' );
 
         //change this
-        $order_id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_membership_orders WHERE user_id = '" . $current_user->ID . "' AND membership_id = '" . $current_user->membership_level->ID . "' AND status = 'success' ORDER BY id DESC LIMIT 1");
+        $order_id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE user_id = '" . $current_user->ID . "' AND membership_id = '" . $current_user->membership_level->ID . "' AND status = 'success' ORDER BY id DESC LIMIT 1");
         if ($order_id) {
             $morder = new MemberOrder($order_id);
 
@@ -202,7 +202,7 @@ if ($submit) {
             $morder->billing->zip = $bzipcode;
             $morder->billing->phone = $bphone;
 
-            //$gateway = pmpro_getOption("gateway");
+            //$gateway = dmrfid_getOption("gateway");
             $morder->gateway = $gateway;
             $morder->setGateway();
 			
@@ -213,56 +213,56 @@ if ($submit) {
 			 *
 			 * @param object $order the order object used to update billing			 
 			 */
-			$morder = apply_filters( "pmpro_billing_order", $morder );
+			$morder = apply_filters( "dmrfid_billing_order", $morder );
 			
             $worked = $morder->updateBilling();
 
             if ($worked) {
                 //send email to member
-                $pmproemail = new PMProEmail();
-                $pmproemail->sendBillingEmail($current_user, $morder);
+                $dmrfidemail = new DmRFIDEmail();
+                $dmrfidemail->sendBillingEmail($current_user, $morder);
 
                 //send email to admin
-                $pmproemail = new PMProEmail();
-                $pmproemail->sendBillingAdminEmail($current_user, $morder);
+                $dmrfidemail = new DmRFIDEmail();
+                $dmrfidemail->sendBillingAdminEmail($current_user, $morder);
             }
         } else
             $worked = true;
 
         if ($worked) {
             //update the user meta too
-            $meta_keys = array("pmpro_bfirstname", "pmpro_blastname", "pmpro_baddress1", "pmpro_baddress2", "pmpro_bcity", "pmpro_bstate", "pmpro_bzipcode", "pmpro_bcountry", "pmpro_bphone", "pmpro_bemail", "pmpro_CardType", "pmpro_AccountNumber", "pmpro_ExpirationMonth", "pmpro_ExpirationYear");
+            $meta_keys = array("dmrfid_bfirstname", "dmrfid_blastname", "dmrfid_baddress1", "dmrfid_baddress2", "dmrfid_bcity", "dmrfid_bstate", "dmrfid_bzipcode", "dmrfid_bcountry", "dmrfid_bphone", "dmrfid_bemail", "dmrfid_CardType", "dmrfid_AccountNumber", "dmrfid_ExpirationMonth", "dmrfid_ExpirationYear");
             $meta_values = array($bfirstname, $blastname, $baddress1, $baddress2, $bcity, $bstate, $bzipcode, $bcountry, $bphone, $bemail, $CardType, hideCardNumber($AccountNumber), $ExpirationMonth, $ExpirationYear);
-            pmpro_replaceUserMeta($current_user->ID, $meta_keys, $meta_values);
+            dmrfid_replaceUserMeta($current_user->ID, $meta_keys, $meta_values);
 
             //message
-            $pmpro_msg = sprintf(__('Information updated. <a href="%s">&laquo; back to my account</a>', 'paid-memberships-pro' ), pmpro_url("account"));
-            $pmpro_msgt = "pmpro_success";
+            $dmrfid_msg = sprintf(__('Information updated. <a href="%s">&laquo; back to my account</a>', 'paid-memberships-pro' ), dmrfid_url("account"));
+            $dmrfid_msgt = "dmrfid_success";
         } else {
-            $pmpro_msg = $morder->error;
+            $dmrfid_msg = $morder->error;
 
-            if (!$pmpro_msg)
-                $pmpro_msg = __("Error updating billing information.", 'paid-memberships-pro' );
-            $pmpro_msgt = "pmpro_error";
+            if (!$dmrfid_msg)
+                $dmrfid_msg = __("Error updating billing information.", 'paid-memberships-pro' );
+            $dmrfid_msgt = "dmrfid_error";
         }
     }
 } else {
     //default values from DB
-    $bfirstname = get_user_meta($current_user->ID, "pmpro_bfirstname", true);
-    $blastname = get_user_meta($current_user->ID, "pmpro_blastname", true);
-    $baddress1 = get_user_meta($current_user->ID, "pmpro_baddress1", true);
-    $baddress2 = get_user_meta($current_user->ID, "pmpro_baddress2", true);
-    $bcity = get_user_meta($current_user->ID, "pmpro_bcity", true);
-    $bstate = get_user_meta($current_user->ID, "pmpro_bstate", true);
-    $bzipcode = get_user_meta($current_user->ID, "pmpro_bzipcode", true);
-    $bcountry = get_user_meta($current_user->ID, "pmpro_bcountry", true);
-    $bphone = get_user_meta($current_user->ID, "pmpro_bphone", true);
-    $bemail = get_user_meta($current_user->ID, "pmpro_bemail", true);
-    $bconfirmemail = get_user_meta($current_user->ID, "pmpro_bemail", true);
-    $CardType = get_user_meta($current_user->ID, "pmpro_CardType", true);
-    //$AccountNumber = hideCardNumber(get_user_meta($current_user->ID, "pmpro_AccountNumber", true), false);
-    $ExpirationMonth = get_user_meta($current_user->ID, "pmpro_ExpirationMonth", true);
-    $ExpirationYear = get_user_meta($current_user->ID, "pmpro_ExpirationYear", true);
+    $bfirstname = get_user_meta($current_user->ID, "dmrfid_bfirstname", true);
+    $blastname = get_user_meta($current_user->ID, "dmrfid_blastname", true);
+    $baddress1 = get_user_meta($current_user->ID, "dmrfid_baddress1", true);
+    $baddress2 = get_user_meta($current_user->ID, "dmrfid_baddress2", true);
+    $bcity = get_user_meta($current_user->ID, "dmrfid_bcity", true);
+    $bstate = get_user_meta($current_user->ID, "dmrfid_bstate", true);
+    $bzipcode = get_user_meta($current_user->ID, "dmrfid_bzipcode", true);
+    $bcountry = get_user_meta($current_user->ID, "dmrfid_bcountry", true);
+    $bphone = get_user_meta($current_user->ID, "dmrfid_bphone", true);
+    $bemail = get_user_meta($current_user->ID, "dmrfid_bemail", true);
+    $bconfirmemail = get_user_meta($current_user->ID, "dmrfid_bemail", true);
+    $CardType = get_user_meta($current_user->ID, "dmrfid_CardType", true);
+    //$AccountNumber = hideCardNumber(get_user_meta($current_user->ID, "dmrfid_AccountNumber", true), false);
+    $ExpirationMonth = get_user_meta($current_user->ID, "dmrfid_ExpirationMonth", true);
+    $ExpirationYear = get_user_meta($current_user->ID, "dmrfid_ExpirationYear", true);
 }
 
 // Avoid a warning in the filter below.
@@ -274,4 +274,4 @@ if ( empty( $morder ) ) {
  * Hook to run actions after the billing page preheader has loaded.
  * @since 2.1
  */
-do_action( 'pmpro_billing_after_preheader', $morder );
+do_action( 'dmrfid_billing_after_preheader', $morder );

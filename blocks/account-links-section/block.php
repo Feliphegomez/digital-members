@@ -5,7 +5,7 @@
  * @package blocks/account-links-section
  **/
 
-namespace PMPro\blocks\account_links_section;
+namespace DmRFID\blocks\account_links_section;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -24,7 +24,7 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  */
 function register_dynamic_block() {
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/account-links-section', [
+	register_block_type( 'dmrfid/account-links-section', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -35,5 +35,5 @@ function register_dynamic_block() {
  * @return string
  **/
 function render_dynamic_block() {
-	return pmpro_shortcode_account( array( 'sections' => 'links' ) );
+	return dmrfid_shortcode_account( array( 'sections' => 'links' ) );
 }

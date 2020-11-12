@@ -15,24 +15,24 @@ use Stripe\StripeClient as Stripe_Client; // Used for deleting webhook as of 2.4
 
 define( "DMRFID_STRIPE_API_VERSION", "2020-03-02" );
 
-//include pmprogateway
-require_once( dirname( __FILE__ ) . "/class.pmprogateway.php" );
+//include dmrfidgateway
+require_once( dirname( __FILE__ ) . "/class.dmrfidgateway.php" );
 
 //load classes init method
-add_action( 'init', array( 'PMProGateway_stripe', 'init' ) );
+add_action( 'init', array( 'DmRFIDGateway_stripe', 'init' ) );
 
 // loading plugin activation actions
-add_action( 'activate_paid-memberships-pro', array( 'PMProGateway_stripe', 'pmpro_activation' ) );
-add_action( 'deactivate_paid-memberships-pro', array( 'PMProGateway_stripe', 'pmpro_deactivation' ) );
+add_action( 'activate_paid-memberships-pro', array( 'DmRFIDGateway_stripe', 'dmrfid_activation' ) );
+add_action( 'deactivate_paid-memberships-pro', array( 'DmRFIDGateway_stripe', 'dmrfid_deactivation' ) );
 
 /**
- * PMProGateway_stripe Class
+ * DmRFIDGateway_stripe Class
  *
  * Handles Stripe integration.
  *
  * @since  1.4
  */
-class PMProGateway_stripe extends PMProGateway {
+class DmRFIDGateway_stripe extends DmRFIDGateway {
 	/**
 	 * @var bool    Is the Stripe/PHP Library loaded
 	 */
@@ -45,11 +45,11 @@ class PMProGateway_stripe extends PMProGateway {
 	 */
 	function __construct( $gateway = null ) {
 		$this->gateway             = $gateway;
-		$this->gateway_environment = pmpro_getOption( "gateway_environment" );
+		$this->gateway_environment = dmrfid_getOption( "gateway_environment" );
 
 		if ( true === $this->dependencies() ) {
 			$this->loadStripeLibrary();
-			Stripe\Stripe::setApiKey( pmpro_getOption( "stripe_secretkey" ) );
+			Stripe\Stripe::setApiKey( dmrfid_getOption( "stripe_secretkey" ) );
 			Stripe\Stripe::setAPIVersion( DMRFID_STRIPE_API_VERSION );
 			self::$is_loaded = true;
 		}
@@ -65,16 +65,16 @@ class PMProGateway_stripe extends PMProGateway {
 	 * @since 1.8.13.6 - Add json dependency
 	 */
 	public static function dependencies() {
-		global $msg, $msgt, $pmpro_stripe_error;
+		global $msg, $msgt, $dmrfid_stripe_error;
 
 		if ( version_compare( PHP_VERSION, '5.3.29', '<' ) ) {
 
-			$pmpro_stripe_error = true;
+			$dmrfid_stripe_error = true;
 			$msg                = - 1;
 			$msgt               = sprintf( __( "The Stripe Gateway requires PHP 5.3.29 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_PHP_MIN_VERSION );
 
 			if ( ! is_admin() ) {
-				pmpro_setMessage( $msgt, "pmpro_error" );
+				dmrfid_setMessage( $msgt, "dmrfid_error" );
 			}
 
 			return false;
@@ -84,13 +84,13 @@ class PMProGateway_stripe extends PMProGateway {
 
 		foreach ( $modules as $module ) {
 			if ( ! extension_loaded( $module ) ) {
-				$pmpro_stripe_error = true;
+				$dmrfid_stripe_error = true;
 				$msg                = - 1;
 				$msgt               = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Stripe', $module );
 
 				//throw error on checkout page
 				if ( ! is_admin() ) {
-					pmpro_setMessage( $msgt, 'pmpro_error' );
+					dmrfid_setMessage( $msgt, 'dmrfid_error' );
 				}
 
 				return false;
@@ -122,85 +122,85 @@ class PMProGateway_stripe extends PMProGateway {
 	 */
 	static function init() {
 		//make sure Stripe is a gateway option
-		add_filter( 'pmpro_gateways', array( 'PMProGateway_stripe', 'pmpro_gateways' ) );
+		add_filter( 'dmrfid_gateways', array( 'DmRFIDGateway_stripe', 'dmrfid_gateways' ) );
 
 		//add fields to payment settings
-		add_filter( 'pmpro_payment_options', array( 'PMProGateway_stripe', 'pmpro_payment_options' ) );
-		add_filter( 'pmpro_payment_option_fields', array(
-			'PMProGateway_stripe',
-			'pmpro_payment_option_fields'
+		add_filter( 'dmrfid_payment_options', array( 'DmRFIDGateway_stripe', 'dmrfid_payment_options' ) );
+		add_filter( 'dmrfid_payment_option_fields', array(
+			'DmRFIDGateway_stripe',
+			'dmrfid_payment_option_fields'
 		), 10, 2 );
 
 		//add some fields to edit user page (Updates)
-		add_action( 'pmpro_after_membership_level_profile_fields', array(
-			'PMProGateway_stripe',
+		add_action( 'dmrfid_after_membership_level_profile_fields', array(
+			'DmRFIDGateway_stripe',
 			'user_profile_fields'
 		) );
-		add_action( 'profile_update', array( 'PMProGateway_stripe', 'user_profile_fields_save' ) );
+		add_action( 'profile_update', array( 'DmRFIDGateway_stripe', 'user_profile_fields_save' ) );
 
 		//old global RE showing billing address or not
-		global $pmpro_stripe_lite;
-		$pmpro_stripe_lite = apply_filters( "pmpro_stripe_lite", ! pmpro_getOption( "stripe_billingaddress" ) );    //default is oposite of the stripe_billingaddress setting
-		add_filter( 'pmpro_required_billing_fields', array( 'PMProGateway_stripe', 'pmpro_required_billing_fields' ) );
+		global $dmrfid_stripe_lite;
+		$dmrfid_stripe_lite = apply_filters( "dmrfid_stripe_lite", ! dmrfid_getOption( "stripe_billingaddress" ) );    //default is oposite of the stripe_billingaddress setting
+		add_filter( 'dmrfid_required_billing_fields', array( 'DmRFIDGateway_stripe', 'dmrfid_required_billing_fields' ) );
 
 		//updates cron
-		add_action( 'pmpro_cron_stripe_subscription_updates', array(
-			'PMProGateway_stripe',
-			'pmpro_cron_stripe_subscription_updates'
+		add_action( 'dmrfid_cron_stripe_subscription_updates', array(
+			'DmRFIDGateway_stripe',
+			'dmrfid_cron_stripe_subscription_updates'
 		) );
 		
 		//AJAX services for creating/disabling webhooks
-		add_action( 'wp_ajax_pmpro_stripe_create_webhook', array( 'PMProGateway_stripe', 'wp_ajax_pmpro_stripe_create_webhook' ) );
-		add_action( 'wp_ajax_pmpro_stripe_delete_webhook', array( 'PMProGateway_stripe', 'wp_ajax_pmpro_stripe_delete_webhook' ) );
-		add_action( 'wp_ajax_pmpro_stripe_rebuild_webhook', array( 'PMProGateway_stripe', 'wp_ajax_pmpro_stripe_rebuild_webhook' ) );
+		add_action( 'wp_ajax_dmrfid_stripe_create_webhook', array( 'DmRFIDGateway_stripe', 'wp_ajax_dmrfid_stripe_create_webhook' ) );
+		add_action( 'wp_ajax_dmrfid_stripe_delete_webhook', array( 'DmRFIDGateway_stripe', 'wp_ajax_dmrfid_stripe_delete_webhook' ) );
+		add_action( 'wp_ajax_dmrfid_stripe_rebuild_webhook', array( 'DmRFIDGateway_stripe', 'wp_ajax_dmrfid_stripe_rebuild_webhook' ) );
 
 		/*
-            Filter pmpro_next_payment to get actual value
+            Filter dmrfid_next_payment to get actual value
             via the Stripe API. This is disabled by default
             for performance reasons, but you can enable it
             by copying this line into a custom plugin or
             your active theme's functions.php and uncommenting
             it there.
         */
-		//add_filter('pmpro_next_payment', array('PMProGateway_stripe', 'pmpro_next_payment'), 10, 3);
+		//add_filter('dmrfid_next_payment', array('DmRFIDGateway_stripe', 'dmrfid_next_payment'), 10, 3);
 
 		//code to add at checkout if Stripe is the current gateway
-		$default_gateway = pmpro_getOption( 'gateway' );
-		$current_gateway = pmpro_getGateway();
+		$default_gateway = dmrfid_getOption( 'gateway' );
+		$current_gateway = dmrfid_getGateway();
 
 		// $_REQUEST['review'] here means the PayPal Express review pag
 		if ( ( $default_gateway == "stripe" || $current_gateway == "stripe" ) && empty( $_REQUEST['review'] ) )
 		{
-			add_action( 'pmpro_after_checkout_preheader', array(
-				'PMProGateway_stripe',
-				'pmpro_checkout_after_preheader'
+			add_action( 'dmrfid_after_checkout_preheader', array(
+				'DmRFIDGateway_stripe',
+				'dmrfid_checkout_after_preheader'
 			) );
 			
-			add_action( 'pmpro_billing_preheader', array( 'PMProGateway_stripe', 'pmpro_checkout_after_preheader' ) );
-			add_filter( 'pmpro_checkout_order', array( 'PMProGateway_stripe', 'pmpro_checkout_order' ) );
-			add_filter( 'pmpro_billing_order', array( 'PMProGateway_stripe', 'pmpro_checkout_order' ) );
-			add_filter( 'pmpro_include_billing_address_fields', array(
-				'PMProGateway_stripe',
-				'pmpro_include_billing_address_fields'
+			add_action( 'dmrfid_billing_preheader', array( 'DmRFIDGateway_stripe', 'dmrfid_checkout_after_preheader' ) );
+			add_filter( 'dmrfid_checkout_order', array( 'DmRFIDGateway_stripe', 'dmrfid_checkout_order' ) );
+			add_filter( 'dmrfid_billing_order', array( 'DmRFIDGateway_stripe', 'dmrfid_checkout_order' ) );
+			add_filter( 'dmrfid_include_billing_address_fields', array(
+				'DmRFIDGateway_stripe',
+				'dmrfid_include_billing_address_fields'
 			) );
-			add_filter( 'pmpro_include_cardtype_field', array(
-				'PMProGateway_stripe',
-				'pmpro_include_billing_address_fields'
+			add_filter( 'dmrfid_include_cardtype_field', array(
+				'DmRFIDGateway_stripe',
+				'dmrfid_include_billing_address_fields'
 			) );
-			add_filter( 'pmpro_include_payment_information_fields', array(
-				'PMProGateway_stripe',
-				'pmpro_include_payment_information_fields'
+			add_filter( 'dmrfid_include_payment_information_fields', array(
+				'DmRFIDGateway_stripe',
+				'dmrfid_include_payment_information_fields'
 			) );
 
 			//make sure we clean up subs we will be cancelling after checkout before processing
-			add_action( 'pmpro_checkout_before_processing', array(
-				'PMProGateway_stripe',
-				'pmpro_checkout_before_processing'
+			add_action( 'dmrfid_checkout_before_processing', array(
+				'DmRFIDGateway_stripe',
+				'dmrfid_checkout_before_processing'
 			) );
 		}
 
-		add_action( 'pmpro_payment_option_fields', array( 'PMProGateway_stripe', 'pmpro_set_up_apple_pay' ), 10, 2 );
-		add_action( 'init', array( 'PMProGateway_stripe', 'clear_saved_subscriptions' ) );
+		add_action( 'dmrfid_payment_option_fields', array( 'DmRFIDGateway_stripe', 'dmrfid_set_up_apple_pay' ), 10, 2 );
+		add_action( 'init', array( 'DmRFIDGateway_stripe', 'clear_saved_subscriptions' ) );
 	}
 
 	/**
@@ -213,7 +213,7 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		global $current_user;
-		$preserve = get_user_meta( $current_user->ID, 'pmpro_stripe_dont_cancel', true );
+		$preserve = get_user_meta( $current_user->ID, 'dmrfid_stripe_dont_cancel', true );
 
 		// Clean up the subscription timeout values (if applicable)
 		if ( ! empty( $preserve ) ) {
@@ -226,7 +226,7 @@ class PMProGateway_stripe extends PMProGateway {
 				}
 			}
 
-			update_user_meta( $current_user->ID, 'pmpro_stripe_dont_cancel', $preserve );
+			update_user_meta( $current_user->ID, 'dmrfid_stripe_dont_cancel', $preserve );
 		}
 	}
 
@@ -235,7 +235,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_gateways( $gateways ) {
+	static function dmrfid_gateways( $gateways ) {
 		if ( empty( $gateways['stripe'] ) ) {
 			$gateways['stripe'] = __( 'Stripe', 'paid-memberships-pro' );
 		}
@@ -273,7 +273,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_payment_options( $options ) {
+	static function dmrfid_payment_options( $options ) {
 		//get stripe options
 		$stripe_options = self::getGatewayOptions();
 
@@ -288,9 +288,9 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_payment_option_fields( $values, $gateway ) {
+	static function dmrfid_payment_option_fields( $values, $gateway ) {
 
-		$stripe = new PMProGateway_stripe();
+		$stripe = new DmRFIDGateway_stripe();
 
 		if ( ! empty( $values['stripe_publishablekey'] ) && ! empty( $values['stripe_secretkey'] ) ) {
 		
@@ -311,7 +311,7 @@ class PMProGateway_stripe extends PMProGateway {
             <th><?php _e( 'Stripe API Version', 'paid-memberships-pro' ); ?>:</th>
             <td><code><?php echo DMRFID_STRIPE_API_VERSION; ?></code></td>
         </tr>
-		<tr class="pmpro_settings_divider gateway gateway_stripe"
+		<tr class="dmrfid_settings_divider gateway gateway_stripe"
 		    <?php if ( $gateway != "stripe" ) { ?>style="display: none;"<?php } ?>>
             <td colspan="2">
 				<hr />
@@ -328,7 +328,7 @@ class PMProGateway_stripe extends PMProGateway {
 				$public_key_prefix = substr( $values['stripe_publishablekey'], 0, 3 );
 				if ( ! empty( $values['stripe_publishablekey'] ) && $public_key_prefix != 'pk_' ) {
 					?>
-                    <p class="pmpro_red"><strong><?php _e( 'Your Publishable Key appears incorrect.', 'paid-memberships-pro' ); ?></strong></p>
+                    <p class="dmrfid_red"><strong><?php _e( 'Your Publishable Key appears incorrect.', 'paid-memberships-pro' ); ?></strong></p>
 					<?php
 				}
 				?>
@@ -348,33 +348,33 @@ class PMProGateway_stripe extends PMProGateway {
             </th>
             <td>
 				<?php if ( ! empty( $webhook ) && is_array( $webhook ) ) { ?>
-				<button type="button" id="pmpro_stripe_create_webhook" class="button button-secondary" style="display: none;"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'paid-memberships-pro' ); ?></button>
+				<button type="button" id="dmrfid_stripe_create_webhook" class="button button-secondary" style="display: none;"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'paid-memberships-pro' ); ?></button>
 					<?php 
 						if ( 'disabled' === $webhook['status'] ) {
 							// Check webhook status.
 							?>
 							<div class="notice error inline">
-								<p id="pmpro_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is disabled.', 'paid-memberships-pro' ); ?> <a id="pmpro_stripe_rebuild_webhook" href="#">Rebuild Webhook</a></p>
+								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is disabled.', 'paid-memberships-pro' ); ?> <a id="dmrfid_stripe_rebuild_webhook" href="#">Rebuild Webhook</a></p>
 							</div>
 							<?php
 						} elseif ( $webhook['api_version'] < DMRFID_STRIPE_API_VERSION ) {
 							// Check webhook API version.
 							?>
 							<div class="notice error inline">
-								<p id="pmpro_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is using an old API version.', 'paid-memberships-pro' ); ?> <a id="pmpro_stripe_rebuild_webhook" href="#"><?php _e( 'Rebuild Webhook', 'paid-memberships-pro' ); ?></a></p>
+								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'A webhook is set up in Stripe, but it is using an old API version.', 'paid-memberships-pro' ); ?> <a id="dmrfid_stripe_rebuild_webhook" href="#"><?php _e( 'Rebuild Webhook', 'paid-memberships-pro' ); ?></a></p>
 							</div>
 							<?php
 						} else {
 							?>
 							<div class="notice notice-success inline">
-								<p id="pmpro_stripe_webhook_notice"><?php _e( 'Your webhook is enabled.', 'paid-memberships-pro' ); ?> <a id="pmpro_stripe_delete_webhook" href="#"><?php _e( 'Disable Webhook', 'paid-memberships-pro' ); ?></a></p>
+								<p id="dmrfid_stripe_webhook_notice"><?php _e( 'Your webhook is enabled.', 'paid-memberships-pro' ); ?> <a id="dmrfid_stripe_delete_webhook" href="#"><?php _e( 'Disable Webhook', 'paid-memberships-pro' ); ?></a></p>
 							</div>
 							<?php
 						}
 					 } else { ?>
-				<button type="button" id="pmpro_stripe_create_webhook" class="button button-secondary"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'paid-memberships-pro' ); ?></button>
+				<button type="button" id="dmrfid_stripe_create_webhook" class="button button-secondary"><span class="dashicons dashicons-update-alt"></span> <?php _e( 'Create Webhook' ,'paid-memberships-pro' ); ?></button>
 				<div class="notice error inline">
-					<p id="pmpro_stripe_webhook_notice"><?php _e('A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'paid-memberships-pro' );?></p>
+					<p id="dmrfid_stripe_webhook_notice"><?php _e('A webhook in Stripe is required to process recurring payments, manage failed payments, and synchronize cancellations.', 'paid-memberships-pro' );?></p>
 				</div>
 				<?php } ?>
 			<p class="description"><?php esc_html_e( 'Webhook URL', 'paid-memberships-pro' ); ?>:
@@ -429,18 +429,18 @@ class PMProGateway_stripe extends PMProGateway {
 							),
 						);
 						if ( empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" ) {
-							$payment_request_error = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
+							$payment_request_error = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
 						} elseif ( substr( $values['stripe_publishablekey'], 0, 8 ) !== "pk_live_" && substr( $values['stripe_publishablekey'], 0, 8 ) !== "pk_test_" ) {
 							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe publishable key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "pk_live_" or "pk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your publishable key</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
 						} elseif ( substr( $values['stripe_secretkey'], 0, 8 ) !== "sk_live_" && substr( $values['stripe_secretkey'], 0, 8 ) !== "sk_test_" ) {
 							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe secret key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "sk_live_" or "sk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your secret key</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
-						} elseif ( ! $stripe->pmpro_does_apple_pay_domain_exist() ) {
+						} elseif ( ! $stripe->dmrfid_does_apple_pay_domain_exist() ) {
 							$payment_request_error = sprintf( wp_kses( __( 'Your domain could not be registered with Apple to enable Apple Pay. Please try <a target="_blank" href="%s" title="Apple Pay Settings Page in Stripe">registering your domain manually from the Apple Pay settings page in Stripe</a>.', 'paid-memberships-pro' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/settings/payments/apple_pay' );
 						}
 						if ( ! empty( $payment_request_error ) ) {
 							?>
 							<div class="notice error inline">
-								<p id="pmpro_stripe_payment_request_button_notice"><?php echo( $payment_request_error ); ?></p>
+								<p id="dmrfid_stripe_payment_request_button_notice"><?php echo( $payment_request_error ); ?></p>
 							</div>
 							<?php
 						}
@@ -448,7 +448,7 @@ class PMProGateway_stripe extends PMProGateway {
 					?>
             </td>
         </tr>
-        <?php if ( ! function_exists( 'pmproappe_pmpro_valid_gateways' ) ) {
+        <?php if ( ! function_exists( 'dmrfidappe_dmrfid_valid_gateways' ) ) {
 				$allowed_appe_html = array (
 					'a' => array (
 						'href' => array(),
@@ -460,7 +460,7 @@ class PMProGateway_stripe extends PMProGateway {
 				if ( $gateway != "stripe" ) { 
 					echo ' style="display: none;"';
 				}
-				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Digital Members RFID - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'paid-memberships-pro' ), $allowed_appe_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=add-ons&utm_content=pmpro-add-paypal-express-option-checkout' ) . '</p></td></tr>';
+				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Digital Members RFID - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'paid-memberships-pro' ), $allowed_appe_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=dmrfid-add-paypal-express-option-checkout' ) . '</p></td></tr>';
 		} ?>
 		<?php
 	}
@@ -468,10 +468,10 @@ class PMProGateway_stripe extends PMProGateway {
 	/**
 	 * AJAX callback to create webhooks.
 	 */
-	static function wp_ajax_pmpro_stripe_create_webhook() {
+	static function wp_ajax_dmrfid_stripe_create_webhook() {
 		$secretkey = sanitize_text_field( $_REQUEST['secretkey'] );
 		
-		$stripe = new PMProGateway_stripe();
+		$stripe = new DmRFIDGateway_stripe();
 		Stripe\Stripe::setApiKey( $secretkey );
 		
 		$r = $stripe::update_webhook_events();
@@ -509,10 +509,10 @@ class PMProGateway_stripe extends PMProGateway {
 	/**
 	 * AJAX callback to disable webhooks.
 	 */
-	static function wp_ajax_pmpro_stripe_delete_webhook() {
+	static function wp_ajax_dmrfid_stripe_delete_webhook() {
 		$secretkey = sanitize_text_field( $_REQUEST['secretkey'] );
 		
-		$stripe = new PMProGateway_stripe();
+		$stripe = new DmRFIDGateway_stripe();
 		Stripe\Stripe::setApiKey( $secretkey );
 		
 		$webhook = self::does_webhook_exist();
@@ -560,10 +560,10 @@ class PMProGateway_stripe extends PMProGateway {
 	/**
 	 * AJAX callback to disable webhooks.
 	 */
-	static function wp_ajax_pmpro_stripe_rebuild_webhook() {
+	static function wp_ajax_dmrfid_stripe_rebuild_webhook() {
 		$secretkey = sanitize_text_field( $_REQUEST['secretkey'] );
 		
-		$stripe = new PMProGateway_stripe();
+		$stripe = new DmRFIDGateway_stripe();
 		Stripe\Stripe::setApiKey( $secretkey );
 		
 		$webhook = self::does_webhook_exist();
@@ -636,27 +636,27 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_checkout_after_preheader( $order ) {
+	static function dmrfid_checkout_after_preheader( $order ) {
 
-		global $gateway, $pmpro_level, $current_user, $pmpro_requirebilling, $pmpro_pages;
+		global $gateway, $dmrfid_level, $current_user, $dmrfid_requirebilling, $dmrfid_pages;
 
-		$default_gateway = pmpro_getOption( "gateway" );
+		$default_gateway = dmrfid_getOption( "gateway" );
 
 		if ( $gateway == "stripe" || $default_gateway == "stripe" ) {
 			//stripe js library
 			wp_enqueue_script( "stripe", "https://js.stripe.com/v3/", array(), null );
 
-			if ( ! function_exists( 'pmpro_stripe_javascript' ) ) {
+			if ( ! function_exists( 'dmrfid_stripe_javascript' ) ) {
 
 				$localize_vars = array(
-					'publishableKey' => pmpro_getOption( 'stripe_publishablekey' ),
-					'verifyAddress'  => apply_filters( 'pmpro_stripe_verify_address', pmpro_getOption( 'stripe_billingaddress' ) ),
+					'publishableKey' => dmrfid_getOption( 'stripe_publishablekey' ),
+					'verifyAddress'  => apply_filters( 'dmrfid_stripe_verify_address', dmrfid_getOption( 'stripe_billingaddress' ) ),
 					'ajaxUrl'        => admin_url( "admin-ajax.php" ),
 					'msgAuthenticationValidated' => __( 'Verification steps confirmed. Your payment is processing.', 'paid-memberships-pro' ),
-					'pmpro_require_billing' => $pmpro_requirebilling,
+					'dmrfid_require_billing' => $dmrfid_requirebilling,
 					'restUrl' => get_rest_url(),
 					'siteName' => get_bloginfo( 'name' ),
-					'updatePaymentRequestButton' => apply_filters( 'pmpro_stripe_update_payment_request_button', true ),
+					'updatePaymentRequestButton' => apply_filters( 'dmrfid_stripe_update_payment_request_button', true ),
 				);
 
 				if ( ! empty( $order ) ) {
@@ -669,12 +669,12 @@ class PMProGateway_stripe extends PMProGateway {
 					}
 				}
 
-				wp_register_script( 'pmpro_stripe',
-					plugins_url( 'js/pmpro-stripe.js', DMRFID_BASE_FILE ),
+				wp_register_script( 'dmrfid_stripe',
+					plugins_url( 'js/dmrfid-stripe.js', DMRFID_BASE_FILE ),
 					array( 'jquery' ),
 					DMRFID_VERSION );
-				wp_localize_script( 'pmpro_stripe', 'pmproStripe', $localize_vars );
-				wp_enqueue_script( 'pmpro_stripe' );
+				wp_localize_script( 'dmrfid_stripe', 'dmrfidStripe', $localize_vars );
+				wp_enqueue_script( 'dmrfid_stripe' );
 			}
 		}
 	}
@@ -683,14 +683,14 @@ class PMProGateway_stripe extends PMProGateway {
 	 * Don't require the CVV.
 	 * Don't require address fields if they are set to hide.
 	 */
-	static function pmpro_required_billing_fields( $fields ) {
-		global $pmpro_stripe_lite, $current_user, $bemail, $bconfirmemail;
+	static function dmrfid_required_billing_fields( $fields ) {
+		global $dmrfid_stripe_lite, $current_user, $bemail, $bconfirmemail;
 
 		//CVV is not required if set that way at Stripe. The Stripe JS will require it if it is required.
 		unset( $fields['CVV'] );
 
 		//if using stripe lite, remove some fields from the required array
-		if ( $pmpro_stripe_lite ) {
+		if ( $dmrfid_stripe_lite ) {
 			//some fields to remove
 			$remove = array(
 				'bfirstname',
@@ -726,7 +726,7 @@ class PMProGateway_stripe extends PMProGateway {
 	static function get_webhooks( $limit = 10 ) {		
 		if ( ! class_exists( 'Stripe\WebhookEndpoint' ) ) {
 			// Load Stripe library.
-			new PMProGateway_stripe();
+			new DmRFIDGateway_stripe();
 			if ( ! class_exists( 'Stripe\WebhookEndpoint' ) ) {
 				// Couldn't load library.
 				return false;
@@ -734,7 +734,7 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		try {
-			$webhooks = Stripe_Webhook::all( [ 'limit' => apply_filters( 'pmpro_stripe_webhook_retrieve_limit', $limit ) ] );
+			$webhooks = Stripe_Webhook::all( [ 'limit' => apply_filters( 'dmrfid_stripe_webhook_retrieve_limit', $limit ) ] );
 		} catch (\Throwable $th) {
 			$webhooks = $th->getMessage();
 		} catch (\Exception $e) {
@@ -754,12 +754,12 @@ class PMProGateway_stripe extends PMProGateway {
 	}
 
 	/**
-	 * List of current enabled events required for PMPro to work.
+	 * List of current enabled events required for DmRFID to work.
 	 * 
 	 * @since 2.4
 	 */
 	static function webhook_events() {
-		return apply_filters( 'pmpro_stripe_webhook_events', array(
+		return apply_filters( 'dmrfid_stripe_webhook_events', array(
 			'invoice.payment_succeeded',
 			'invoice.payment_action_required',
 			'customer.subscription.deleted',
@@ -809,10 +809,10 @@ class PMProGateway_stripe extends PMProGateway {
 		$webhook_id = false;
 		if ( ! empty( $webhooks ) && ! empty( $webhooks['data'] ) ) {
 
-			$pmpro_webhook_url = self::get_site_webhook_url();
+			$dmrfid_webhook_url = self::get_site_webhook_url();
 
 			foreach( $webhooks as $webhook ) {
-				if ( $webhook->url == $pmpro_webhook_url ) {
+				if ( $webhook->url == $dmrfid_webhook_url ) {
 					$webhook_id = $webhook->id;
 					$webhook_events = $webhook->enabled_events;
 					$webhook_api_version = $webhook->api_version;
@@ -845,15 +845,15 @@ class PMProGateway_stripe extends PMProGateway {
 	static function check_missing_webhook_events( $webhook_events ) {
 
 		// Get required events
-		$pmpro_webhook_events = self::webhook_events();
+		$dmrfid_webhook_events = self::webhook_events();
 
 		// No missing events if webhook event is "All Events" selected.
 		if ( is_array( $webhook_events ) && $webhook_events[0] === '*' ) {
 			return false;
 		} 
 
-		if ( count( array_diff( $pmpro_webhook_events, $webhook_events ) ) ) {
-			$events = array_unique( array_merge( $pmpro_webhook_events, $webhook_events ) );
+		if ( count( array_diff( $dmrfid_webhook_events, $webhook_events ) ) ) {
+			$events = array_unique( array_merge( $dmrfid_webhook_events, $webhook_events ) );
 			// Force reset of indexes for Stripe.
 			$events = array_values( $events );
 		} else {
@@ -915,7 +915,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 */
 	function delete_webhook( $webhook_id, $secretkey = false ) {
 		if ( empty( $secretkey ) ) {
-			$secretkey = pmpro_getOption( "stripe_secretkey" );
+			$secretkey = dmrfid_getOption( "stripe_secretkey" );
 		}
 		if ( is_array( $webhook_id ) ) {
 			$webhook_id = $webhook_id['webhook_id'];
@@ -938,7 +938,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_checkout_order( $morder ) {
+	static function dmrfid_checkout_order( $morder ) {
 
 		// Create a code for the order.
 		if ( empty( $morder->code ) ) {
@@ -974,8 +974,8 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		//stripe lite code to get name from other sources if available
-		global $pmpro_stripe_lite, $current_user;
-		if ( ! empty( $pmpro_stripe_lite ) && empty( $morder->FirstName ) && empty( $morder->LastName ) ) {
+		global $dmrfid_stripe_lite, $current_user;
+		if ( ! empty( $dmrfid_stripe_lite ) && empty( $morder->FirstName ) && empty( $morder->LastName ) ) {
 			if ( ! empty( $current_user->ID ) ) {
 				$morder->FirstName = get_user_meta( $current_user->ID, "first_name", true );
 				$morder->LastName  = get_user_meta( $current_user->ID, "last_name", true );
@@ -993,12 +993,12 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_after_checkout( $user_id, $morder ) {
+	static function dmrfid_after_checkout( $user_id, $morder ) {
 		global $gateway;
 
 		if ( $gateway == "stripe" ) {
 			if ( self::$is_loaded && ! empty( $morder ) && ! empty( $morder->Gateway ) && ! empty( $morder->Gateway->customer ) && ! empty( $morder->Gateway->customer->id ) ) {
-				update_user_meta( $user_id, "pmpro_stripe_customerid", $morder->Gateway->customer->id );
+				update_user_meta( $user_id, "dmrfid_stripe_customerid", $morder->Gateway->customer->id );
 			}
 		}
 	}
@@ -1007,9 +1007,9 @@ class PMProGateway_stripe extends PMProGateway {
 	 * Check settings if billing address should be shown.
 	 * @since 1.8
 	 */
-	static function pmpro_include_billing_address_fields( $include ) {
+	static function dmrfid_include_billing_address_fields( $include ) {
 		//check settings RE showing billing address
-		if ( ! pmpro_getOption( "stripe_billingaddress" ) ) {
+		if ( ! dmrfid_getOption( "stripe_billingaddress" ) ) {
 			$include = false;
 		}
 
@@ -1020,44 +1020,44 @@ class PMProGateway_stripe extends PMProGateway {
 	 * Use our own payment fields at checkout. (Remove the name attributes.)
 	 * @since 1.8
 	 */
-	static function pmpro_include_payment_information_fields( $include ) {
+	static function dmrfid_include_payment_information_fields( $include ) {
 		//global vars
-		global $pmpro_requirebilling, $pmpro_show_discount_code, $discount_code, $CardType, $AccountNumber, $ExpirationMonth, $ExpirationYear;
+		global $dmrfid_requirebilling, $dmrfid_show_discount_code, $discount_code, $CardType, $AccountNumber, $ExpirationMonth, $ExpirationYear;
 
 		//get accepted credit cards
-		$pmpro_accepted_credit_cards        = pmpro_getOption( "accepted_credit_cards" );
-		$pmpro_accepted_credit_cards        = explode( ",", $pmpro_accepted_credit_cards );
-		$pmpro_accepted_credit_cards_string = pmpro_implodeToEnglish( $pmpro_accepted_credit_cards );
+		$dmrfid_accepted_credit_cards        = dmrfid_getOption( "accepted_credit_cards" );
+		$dmrfid_accepted_credit_cards        = explode( ",", $dmrfid_accepted_credit_cards );
+		$dmrfid_accepted_credit_cards_string = dmrfid_implodeToEnglish( $dmrfid_accepted_credit_cards );
 
 		//include ours
 		?>
-        <div id="pmpro_payment_information_fields" class="<?php echo pmpro_get_element_class( 'pmpro_checkout', 'pmpro_payment_information_fields' ); ?>"
-		     <?php if ( ! $pmpro_requirebilling || apply_filters( "pmpro_hide_payment_information_fields", false ) ) { ?>style="display: none;"<?php } ?>>
+        <div id="dmrfid_payment_information_fields" class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout', 'dmrfid_payment_information_fields' ); ?>"
+		     <?php if ( ! $dmrfid_requirebilling || apply_filters( "dmrfid_hide_payment_information_fields", false ) ) { ?>style="display: none;"<?php } ?>>
             <h3>
-                <span class="<?php echo pmpro_get_element_class( 'pmpro_checkout-h3-name' ); ?>"><?php _e( 'Payment Information', 'paid-memberships-pro' ); ?></span>
-                <span class="<?php echo pmpro_get_element_class( 'pmpro_checkout-h3-msg' ); ?>"><?php printf( __( 'We Accept %s', 'paid-memberships-pro' ), $pmpro_accepted_credit_cards_string ); ?></span>
+                <span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e( 'Payment Information', 'paid-memberships-pro' ); ?></span>
+                <span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf( __( 'We Accept %s', 'paid-memberships-pro' ), $dmrfid_accepted_credit_cards_string ); ?></span>
             </h3>
-			<?php $sslseal = pmpro_getOption( "sslseal" ); ?>
+			<?php $sslseal = dmrfid_getOption( "sslseal" ); ?>
 			<?php if ( ! empty( $sslseal ) ) { ?>
-            <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-fields-display-seal' ); ?>">
+            <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-fields-display-seal' ); ?>">
 				<?php } ?>
 		<?php
-			if ( pmpro_getOption( 'stripe_payment_request_button' ) ) { ?>
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_checkout-field-payment-request-button', 'pmpro_checkout-field-payment-request-button' ); ?>">
+			if ( dmrfid_getOption( 'stripe_payment_request_button' ) ) { ?>
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_checkout-field-payment-request-button', 'dmrfid_checkout-field-payment-request-button' ); ?>">
 					<div id="payment-request-button"><!-- Alternate payment method will be inserted here. --></div>
-					<h4 class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-credit-card', 'pmpro_payment-credit-card' ); ?>"><?php esc_html_e( 'Pay with Credit Card', 'paid-memberships-pro' ); ?></h4>
+					<h4 class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-credit-card', 'dmrfid_payment-credit-card' ); ?>"><?php esc_html_e( 'Pay with Credit Card', 'paid-memberships-pro' ); ?></h4>
 				</div>
 				<?php
 			}
 		?>
-                <div class="pmpro_checkout-fields<?php if ( ! empty( $sslseal ) ) { ?> pmpro_checkout-fields-leftcol<?php } ?>">
+                <div class="dmrfid_checkout-fields<?php if ( ! empty( $sslseal ) ) { ?> dmrfid_checkout-fields-leftcol<?php } ?>">
 					<?php
-					$pmpro_include_cardtype_field = apply_filters( 'pmpro_include_cardtype_field', false );
-					if ( $pmpro_include_cardtype_field ) { ?>
-                        <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-card-type', 'pmpro_payment-card-type' ); ?>">
+					$dmrfid_include_cardtype_field = apply_filters( 'dmrfid_include_cardtype_field', false );
+					if ( $dmrfid_include_cardtype_field ) { ?>
+                        <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-card-type', 'dmrfid_payment-card-type' ); ?>">
                             <label for="CardType"><?php _e( 'Card Type', 'paid-memberships-pro' ); ?></label>
-                            <select id="CardType" class="<?php echo pmpro_get_element_class( 'CardType' ); ?>">
-								<?php foreach ( $pmpro_accepted_credit_cards as $cc ) { ?>
+                            <select id="CardType" class="<?php echo dmrfid_get_element_class( 'CardType' ); ?>">
+								<?php foreach ( $dmrfid_accepted_credit_cards as $cc ) { ?>
                                     <option value="<?php echo $cc ?>"
 									        <?php if ( $CardType == $cc ) { ?>selected="selected"<?php } ?>><?php echo $cc ?></option>
 								<?php } ?>
@@ -1067,39 +1067,39 @@ class PMProGateway_stripe extends PMProGateway {
                         <input type="hidden" id="CardType" name="CardType"
                                value="<?php echo esc_attr( $CardType ); ?>"/>
 					<?php } ?>
-                    <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-account-number', 'pmpro_payment-account-number' ); ?>">
+                    <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-account-number', 'dmrfid_payment-account-number' ); ?>">
                         <label for="AccountNumber"><?php _e( 'Card Number', 'paid-memberships-pro' ); ?></label>
                         <div id="AccountNumber"></div>
                     </div>
-                    <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-expiration', 'pmpro_payment-expiration' ); ?>">
+                    <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-expiration', 'dmrfid_payment-expiration' ); ?>">
                         <label for="Expiry"><?php _e( 'Expiration Date', 'paid-memberships-pro' ); ?></label>
                         <div id="Expiry"></div>
                     </div>
 					<?php
-					$pmpro_show_cvv = apply_filters( "pmpro_show_cvv", true );
-					if ( $pmpro_show_cvv ) { ?>
-                        <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-cvv', 'pmpro_payment-cvv' ); ?>">
+					$dmrfid_show_cvv = apply_filters( "dmrfid_show_cvv", true );
+					if ( $dmrfid_show_cvv ) { ?>
+                        <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-cvv', 'dmrfid_payment-cvv' ); ?>">
                             <label for="CVV"><?php _e( 'CVC', 'paid-memberships-pro' ); ?></label>
                             <div id="CVV"></div>
                         </div>
 					<?php } ?>
-					<?php if ( $pmpro_show_discount_code ) { ?>
-                        <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-discount-code', 'pmpro_payment-discount-code' ); ?>">
+					<?php if ( $dmrfid_show_discount_code ) { ?>
+                        <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-discount-code', 'dmrfid_payment-discount-code' ); ?>">
                             <label for="discount_code"><?php _e( 'Discount Code', 'paid-memberships-pro' ); ?></label>
-                            <input class="<?php echo pmpro_get_element_class( 'input pmpro_alter_price', 'discount_code' ); ?>"
+                            <input class="<?php echo dmrfid_get_element_class( 'input dmrfid_alter_price', 'discount_code' ); ?>"
                                    id="discount_code" name="discount_code" type="text" size="10"
                                    value="<?php echo esc_attr( $discount_code ) ?>"/>
                             <input type="button" id="discount_code_button" name="discount_code_button"
                                    value="<?php _e( 'Apply', 'paid-memberships-pro' ); ?>"/>
-                            <p id="discount_code_message" class="<?php echo pmpro_get_element_class( 'pmpro_message' ); ?>" style="display: none;"></p>
+                            <p id="discount_code_message" class="<?php echo dmrfid_get_element_class( 'dmrfid_message' ); ?>" style="display: none;"></p>
                         </div>
 					<?php } ?>
-                </div> <!-- end pmpro_checkout-fields -->
+                </div> <!-- end dmrfid_checkout-fields -->
 				<?php if ( ! empty( $sslseal ) ) { ?>
-                <div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-fields-rightcol pmpro_sslseal', 'pmpro_sslseal' ); ?>"><?php echo stripslashes( $sslseal ); ?></div>
-            </div> <!-- end pmpro_checkout-fields-display-seal -->
+                <div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-fields-rightcol dmrfid_sslseal', 'dmrfid_sslseal' ); ?>"><?php echo stripslashes( $sslseal ); ?></div>
+            </div> <!-- end dmrfid_checkout-fields-display-seal -->
 		<?php } ?>
-        </div> <!-- end pmpro_payment_information_fields -->
+        </div> <!-- end dmrfid_payment_information_fields -->
 		<?php
 
 		//don't include the default
@@ -1112,7 +1112,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 * @since 1.8
 	 */
 	static function user_profile_fields( $user ) {
-		global $wpdb, $current_user, $pmpro_currency_symbol;
+		global $wpdb, $current_user, $dmrfid_currency_symbol;
 
 		$cycles        = array(
 			__( 'Day(s)', 'paid-memberships-pro' )   => 'Day',
@@ -1124,13 +1124,13 @@ class PMProGateway_stripe extends PMProGateway {
 		$current_month = date_i18n( "m" );
 
 		//make sure the current user has privileges
-		$membership_level_capability = apply_filters( "pmpro_edit_member_capability", "manage_options" );
+		$membership_level_capability = apply_filters( "dmrfid_edit_member_capability", "manage_options" );
 		if ( ! current_user_can( $membership_level_capability ) ) {
 			return false;
 		}
 
 		//more privelges they should have
-		$show_membership_level = apply_filters( "pmpro_profile_show_membership_level", true, $user );
+		$show_membership_level = apply_filters( "dmrfid_profile_show_membership_level", true, $user );
 		if ( ! $show_membership_level ) {
 			return false;
 		}
@@ -1148,11 +1148,11 @@ class PMProGateway_stripe extends PMProGateway {
 			$sub = $last_order->Gateway->getSubscription( $last_order );
 		}
 
-		$customer_id = $user->pmpro_stripe_customerid;
+		$customer_id = $user->dmrfid_stripe_customerid;
 
 		if ( empty( $sub ) ) {
 			//make sure we delete stripe updates
-			update_user_meta( $user->ID, "pmpro_stripe_updates", array() );
+			update_user_meta( $user->ID, "dmrfid_stripe_updates", array() );
 
 			//if the last order has a sub id, let the admin know there is no sub at Stripe
 			if ( ! empty( $last_order ) && $last_order->gateway == "stripe" && ! empty( $last_order->subscription_transaction_id ) && strpos( $last_order->subscription_transaction_id, "sub_" ) !== false ) {
@@ -1177,7 +1177,7 @@ class PMProGateway_stripe extends PMProGateway {
                     <th><label for="membership_level"><?php _e( "Update", 'paid-memberships-pro' ); ?></label></th>
                     <td id="updates_td">
 						<?php
-						$old_updates = $user->pmpro_stripe_updates;
+						$old_updates = $user->dmrfid_stripe_updates;
 						if ( is_array( $old_updates ) ) {
 							$updates = array_merge(
 								array(
@@ -1246,7 +1246,7 @@ class PMProGateway_stripe extends PMProGateway {
 							</span>
                                 <span class="updates_billing"
 								      <?php if ( $update['when'] == "now" ) { ?>style="display: none;"<?php } ?>>
-								<?php echo $pmpro_currency_symbol ?><input name="updates_billing_amount[]" type="text"
+								<?php echo $dmrfid_currency_symbol ?><input name="updates_billing_amount[]" type="text"
                                                                            size="10"
                                                                            value="<?php echo esc_attr( $update['billing_amount'] ); ?>"/>
 								<small><?php _e( 'per', 'paid-memberships-pro' ); ?></small>
@@ -1345,7 +1345,7 @@ class PMProGateway_stripe extends PMProGateway {
 		global $wpdb;
 
 		//check capabilities
-		$membership_level_capability = apply_filters( "pmpro_edit_member_capability", "manage_options" );
+		$membership_level_capability = apply_filters( "dmrfid_edit_member_capability", "manage_options" );
 		if ( ! current_user_can( $membership_level_capability ) ) {
 			return false;
 		}
@@ -1364,7 +1364,7 @@ class PMProGateway_stripe extends PMProGateway {
 			$update = array();
 
 			//all updates have these values
-			$update['when']           = pmpro_sanitize_with_safelist( $_POST['updates_when'][ $i ], array(
+			$update['when']           = dmrfid_sanitize_with_safelist( $_POST['updates_when'][ $i ], array(
 				'now',
 				'payment',
 				'date'
@@ -1387,7 +1387,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 			//if when is now, update the subscription
 			if ( $update['when'] == "now" ) {
-				PMProGateway_stripe::updateSubscription( $update, $user_id );
+				DmRFIDGateway_stripe::updateSubscription( $update, $user_id );
 
 				continue;
 			} elseif ( $update['when'] == 'date' ) {
@@ -1403,10 +1403,10 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		//save in user meta
-		update_user_meta( $user_id, "pmpro_stripe_updates", $updates );
+		update_user_meta( $user_id, "dmrfid_stripe_updates", $updates );
 
 		//save date of next on-date update to make it easier to query for these in cron job
-		update_user_meta( $user_id, "pmpro_stripe_next_on_date_update", $next_on_date_update );
+		update_user_meta( $user_id, "dmrfid_stripe_next_on_date_update", $next_on_date_update );
 	}
 
 	/**
@@ -1414,8 +1414,8 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_activation() {
-		pmpro_maybe_schedule_event( time(), 'daily', 'pmpro_cron_stripe_subscription_updates' );
+	static function dmrfid_activation() {
+		dmrfid_maybe_schedule_event( time(), 'daily', 'dmrfid_cron_stripe_subscription_updates' );
 	}
 
 	/**
@@ -1423,8 +1423,8 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_deactivation() {
-		wp_clear_scheduled_hook( 'pmpro_cron_stripe_subscription_updates' );
+	static function dmrfid_deactivation() {
+		wp_clear_scheduled_hook( 'dmrfid_cron_stripe_subscription_updates' );
 	}
 
 	/**
@@ -1432,13 +1432,13 @@ class PMProGateway_stripe extends PMProGateway {
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_cron_stripe_subscription_updates() {
+	static function dmrfid_cron_stripe_subscription_updates() {
 		global $wpdb;
 
 		//get all updates for today (or before today)
 		$sqlQuery = "SELECT *
 					 FROM $wpdb->usermeta
-					 WHERE meta_key = 'pmpro_stripe_next_on_date_update'
+					 WHERE meta_key = 'dmrfid_stripe_next_on_date_update'
 						AND meta_value IS NOT NULL
 						AND meta_value <> ''
 						AND meta_value < '" . date_i18n( "Y-m-d", strtotime( "+1 day", current_time( 'timestamp' ) ) ) . "'";
@@ -1454,13 +1454,13 @@ class PMProGateway_stripe extends PMProGateway {
 
 				//if user is missing, delete the update info and continue
 				if ( empty( $user ) || empty( $user->ID ) ) {
-					delete_user_meta( $user_id, "pmpro_stripe_updates" );
-					delete_user_meta( $user_id, "pmpro_stripe_next_on_date_update" );
+					delete_user_meta( $user_id, "dmrfid_stripe_updates" );
+					delete_user_meta( $user_id, "dmrfid_stripe_next_on_date_update" );
 
 					continue;
 				}
 
-				$user_updates        = $user->pmpro_stripe_updates;
+				$user_updates        = $user->dmrfid_stripe_updates;
 				$next_on_date_update = "";
 
 				//loop through updates looking for updates happening today or earlier
@@ -1469,7 +1469,7 @@ class PMProGateway_stripe extends PMProGateway {
 						if ( $ud['when'] == 'date' &&
 						     $ud['date_year'] . "-" . $ud['date_month'] . "-" . $ud['date_day'] <= date_i18n( "Y-m-d", current_time( 'timestamp' ) )
 						) {
-							PMProGateway_stripe::updateSubscription( $ud, $user_id );
+							DmRFIDGateway_stripe::updateSubscription( $ud, $user_id );
 
 							//remove update from list
 							unset( $user_updates[ $key ] );
@@ -1485,10 +1485,10 @@ class PMProGateway_stripe extends PMProGateway {
 				}
 
 				//save updates in case we removed some
-				update_user_meta( $user_id, "pmpro_stripe_updates", $user_updates );
+				update_user_meta( $user_id, "dmrfid_stripe_updates", $user_updates );
 
 				//save date of next on-date update to make it easier to query for these in cron job
-				update_user_meta( $user_id, "pmpro_stripe_next_on_date_update", $next_on_date_update );
+				update_user_meta( $user_id, "dmrfid_stripe_next_on_date_update", $next_on_date_update );
 			}
 		}
 	}
@@ -1499,7 +1499,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 * because of an expired credit card/etc and a user checks out to renew their subscription
 	 * instead of updating their billing information via the billing info page.
 	 */
-	static function pmpro_checkout_before_processing() {
+	static function dmrfid_checkout_before_processing() {
 		global $wpdb, $current_user;
 
 		// we're only worried about cases where the user is logged in
@@ -1508,21 +1508,21 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		// make sure we're checking out with Stripe
-		$current_gateway = pmpro_getGateway();
+		$current_gateway = dmrfid_getGateway();
 		if ( $current_gateway != 'stripe' ) {
 			return;
 		}
 
-		//check the $pmpro_cancel_previous_subscriptions filter
-		//this is used in add ons like Gift Memberships to stop PMPro from cancelling old memberships
-		$pmpro_cancel_previous_subscriptions = true;
-		$pmpro_cancel_previous_subscriptions = apply_filters( 'pmpro_cancel_previous_subscriptions', $pmpro_cancel_previous_subscriptions );
-		if ( ! $pmpro_cancel_previous_subscriptions ) {
+		//check the $dmrfid_cancel_previous_subscriptions filter
+		//this is used in add ons like Gift Memberships to stop DmRFID from cancelling old memberships
+		$dmrfid_cancel_previous_subscriptions = true;
+		$dmrfid_cancel_previous_subscriptions = apply_filters( 'dmrfid_cancel_previous_subscriptions', $dmrfid_cancel_previous_subscriptions );
+		if ( ! $dmrfid_cancel_previous_subscriptions ) {
 			return;
 		}
 
 		//get user and membership level
-		$membership_level = pmpro_getMembershipLevelForUser( $current_user->ID );
+		$membership_level = dmrfid_getMembershipLevelForUser( $current_user->ID );
 
 		//no level, then probably no subscription at Stripe anymore
 		if ( empty( $membership_level ) ) {
@@ -1532,9 +1532,9 @@ class PMProGateway_stripe extends PMProGateway {
 		/**
 		 * Filter which levels to cancel at the gateway.
 		 * MMPU will set this to all levels that are going to be cancelled during this checkout.
-		 * Others may want to display this by add_filter('pmpro_stripe_levels_to_cancel_before_checkout', __return_false);
+		 * Others may want to display this by add_filter('dmrfid_stripe_levels_to_cancel_before_checkout', __return_false);
 		 */
-		$levels_to_cancel = apply_filters( 'pmpro_stripe_levels_to_cancel_before_checkout', array( $membership_level->id ), $current_user );
+		$levels_to_cancel = apply_filters( 'dmrfid_stripe_levels_to_cancel_before_checkout', array( $membership_level->id ), $current_user );
 
 		foreach ( $levels_to_cancel as $level_to_cancel ) {
 			//get the last order for this user/level
@@ -1548,21 +1548,21 @@ class PMProGateway_stripe extends PMProGateway {
 					$last_order->Gateway->cancelSubscriptionAtGateway( $subscription, true );
 
 					//Stripe was probably going to cancel this subscription 7 days past the payment failure (maybe just one hour, use a filter for sure)
-					$memberships_users_row = $wpdb->get_row( "SELECT * FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . $current_user->ID . "' AND membership_id = '" . $level_to_cancel . "' AND status = 'active' LIMIT 1" );
+					$memberships_users_row = $wpdb->get_row( "SELECT * FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . $current_user->ID . "' AND membership_id = '" . $level_to_cancel . "' AND status = 'active' LIMIT 1" );
 
 					if ( ! empty( $memberships_users_row ) && ( empty( $memberships_users_row->enddate ) || $memberships_users_row->enddate == '0000-00-00 00:00:00' ) ) {
 						/**
 						 * Filter graced period days when canceling existing subscriptions at checkout.
 						 *
 						 * @param int $days Grace period defaults to 3 days
-						 * @param object $membership Membership row from pmpro_memberships_users including membership_id, user_id, and enddate
+						 * @param object $membership Membership row from dmrfid_memberships_users including membership_id, user_id, and enddate
 						 *
 						 * @since 1.9.4
 						 *
 						 */
-						$days_grace  = apply_filters( 'pmpro_stripe_days_grace_when_canceling_existing_subscriptions_at_checkout', 3, $memberships_users_row );
+						$days_grace  = apply_filters( 'dmrfid_stripe_days_grace_when_canceling_existing_subscriptions_at_checkout', 3, $memberships_users_row );
 						$new_enddate = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) + 3600 * 24 * $days_grace );
-						$wpdb->update( $wpdb->pmpro_memberships_users, array( 'enddate' => $new_enddate ), array(
+						$wpdb->update( $wpdb->dmrfid_memberships_users, array( 'enddate' => $new_enddate ), array(
 							'user_id'       => $current_user->ID,
 							'membership_id' => $level_to_cancel,
 							'status'        => 'active'
@@ -1588,9 +1588,9 @@ class PMProGateway_stripe extends PMProGateway {
 		);
 
 		foreach ( $steps as $key => $step ) {
-			do_action( "pmpro_process_order_before_{$step}", $order );
+			do_action( "dmrfid_process_order_before_{$step}", $order );
 			$this->$step( $order );
-			do_action( "pmpro_process_order_after_{$step}", $order );
+			do_action( "dmrfid_process_order_after_{$step}", $order );
 			if ( ! empty( $order->error ) ) {
 				return false;
 			}
@@ -1609,11 +1609,11 @@ class PMProGateway_stripe extends PMProGateway {
 	 * @since 1.4
 	 */
 	function charge( &$order ) {
-		global $pmpro_currency, $pmpro_currencies;
+		global $dmrfid_currency, $dmrfid_currencies;
 		$currency_unit_multiplier = 100; //ie 100 cents per USD
 
 		//account for zero-decimal currencies like the Japanese Yen
-		if ( is_array( $pmpro_currencies[ $pmpro_currency ] ) && isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] ) && $pmpro_currencies[ $pmpro_currency ]['decimals'] == 0 ) {
+		if ( is_array( $dmrfid_currencies[ $dmrfid_currency ] ) && isset( $dmrfid_currencies[ $dmrfid_currency ]['decimals'] ) && $dmrfid_currencies[ $dmrfid_currency ]['decimals'] == 0 ) {
 			$currency_unit_multiplier = 1;
 		}
 
@@ -1628,7 +1628,7 @@ class PMProGateway_stripe extends PMProGateway {
 		//tax
 		$order->subtotal = $amount;
 		$tax             = $order->getTax( true );
-		$amount          = pmpro_round_price( (float) $order->subtotal + (float) $tax );
+		$amount          = dmrfid_round_price( (float) $order->subtotal + (float) $tax );
 
 		//create a customer
 		$result = $this->getCustomer( $order );
@@ -1642,9 +1642,9 @@ class PMProGateway_stripe extends PMProGateway {
 		try {
 			$params = array(
 					"amount"      => $amount * $currency_unit_multiplier, # amount in cents, again
-					"currency"    => strtolower( $pmpro_currency ),
+					"currency"    => strtolower( $dmrfid_currency ),
 					"customer"    => $this->customer->id,
-					"description" => apply_filters( 'pmpro_stripe_order_description', "Order #" . $order->code . ", " . trim( $order->FirstName . " " . $order->LastName ) . " (" . $order->Email . ")", $order )
+					"description" => apply_filters( 'dmrfid_stripe_order_description', "Order #" . $order->code . ", " . trim( $order->FirstName . " " . $order->LastName ) . " (" . $order->Email . ")", $order )
 				);
 			/**
 			 * Filter params used to create the Stripe charge.
@@ -1654,7 +1654,7 @@ class PMProGateway_stripe extends PMProGateway {
 		 	 * @param array  $params 	Array of params sent to Stripe.
 			 * @param object $order		Order object for this checkout.
 			 */
-			$params = apply_filters( 'pmpro_stripe_charge_params', $params, $order );
+			$params = apply_filters( 'dmrfid_stripe_charge_params', $params, $order );
 			$response = Stripe_Charge::create( $params );
 		} catch ( \Throwable $e ) {
 			//$order->status = "error";
@@ -1737,7 +1737,7 @@ class PMProGateway_stripe extends PMProGateway {
 		} else {
 			//try based on user id
 			if ( ! empty( $user_id ) ) {
-				$customer_id = get_user_meta( $user_id, "pmpro_stripe_customerid", true );
+				$customer_id = get_user_meta( $user_id, "dmrfid_stripe_customerid", true );
 			}
 
 			//look up by transaction id
@@ -1797,7 +1797,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 				//if we found it, save to user meta for future reference
 				if ( ! empty( $customer_id ) ) {
-					update_user_meta( $user_id, "pmpro_stripe_customerid", $customer_id );
+					update_user_meta( $user_id, "dmrfid_stripe_customerid", $customer_id );
 				}
 			}
 		}
@@ -1847,18 +1847,18 @@ class PMProGateway_stripe extends PMProGateway {
 
 				if ( ! empty( $user_id ) ) {
 					//user logged in/etc
-					update_user_meta( $user_id, "pmpro_stripe_customerid", $this->customer->id );
+					update_user_meta( $user_id, "dmrfid_stripe_customerid", $this->customer->id );
 				} else {
 					//user not registered yet, queue it up
-					global $pmpro_stripe_customer_id;
-					$pmpro_stripe_customer_id = $this->customer->id;
-					if ( ! function_exists( 'pmpro_user_register_stripe_customerid' ) ) {
-						function pmpro_user_register_stripe_customerid( $user_id ) {
-							global $pmpro_stripe_customer_id;
-							update_user_meta( $user_id, "pmpro_stripe_customerid", $pmpro_stripe_customer_id );
+					global $dmrfid_stripe_customer_id;
+					$dmrfid_stripe_customer_id = $this->customer->id;
+					if ( ! function_exists( 'dmrfid_user_register_stripe_customerid' ) ) {
+						function dmrfid_user_register_stripe_customerid( $user_id ) {
+							global $dmrfid_stripe_customer_id;
+							update_user_meta( $user_id, "dmrfid_stripe_customerid", $dmrfid_stripe_customer_id );
 						}
 
-						add_action( "user_register", "pmpro_user_register_stripe_customerid" );
+						add_action( "user_register", "dmrfid_user_register_stripe_customerid" );
 					}
 				}
 
@@ -1896,29 +1896,29 @@ class PMProGateway_stripe extends PMProGateway {
 
 			if ( ! empty( $user_id ) ) {
 				//user logged in/etc
-				update_user_meta( $user_id, "pmpro_stripe_customerid", $this->customer->id );
+				update_user_meta( $user_id, "dmrfid_stripe_customerid", $this->customer->id );
 			} else {
 				//user not registered yet, queue it up
-				global $pmpro_stripe_customer_id;
-				$pmpro_stripe_customer_id = $this->customer->id;
-				if ( ! function_exists( 'pmpro_user_register_stripe_customerid' ) ) {
-					function pmpro_user_register_stripe_customerid( $user_id ) {
-						global $pmpro_stripe_customer_id;
-						update_user_meta( $user_id, "pmpro_stripe_customerid", $pmpro_stripe_customer_id );
+				global $dmrfid_stripe_customer_id;
+				$dmrfid_stripe_customer_id = $this->customer->id;
+				if ( ! function_exists( 'dmrfid_user_register_stripe_customerid' ) ) {
+					function dmrfid_user_register_stripe_customerid( $user_id ) {
+						global $dmrfid_stripe_customer_id;
+						update_user_meta( $user_id, "dmrfid_stripe_customerid", $dmrfid_stripe_customer_id );
 					}
 
-					add_action( "user_register", "pmpro_user_register_stripe_customerid" );
+					add_action( "user_register", "dmrfid_user_register_stripe_customerid" );
 				}
 			}
 
-			return apply_filters( 'pmpro_stripe_create_customer', $this->customer );
+			return apply_filters( 'dmrfid_stripe_create_customer', $this->customer );
 		}
 
 		return false;
 	}
 
 	/**
-	 * Get a Stripe subscription from a PMPro order
+	 * Get a Stripe subscription from a DmRFID order
 	 *
 	 * @since 1.8
 	 */
@@ -1970,7 +1970,7 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		//we really want to test against the order codes of all orders with the same subscription_transaction_id (customer id)
-		$codes = $wpdb->get_col( "SELECT code FROM $wpdb->pmpro_membership_orders WHERE user_id = '" . esc_sql( $order->user_id ) . "' AND subscription_transaction_id = '" . esc_sql( $order->subscription_transaction_id ) . "' AND status NOT IN('refunded', 'review', 'token', 'error')" );
+		$codes = $wpdb->get_col( "SELECT code FROM $wpdb->dmrfid_membership_orders WHERE user_id = '" . esc_sql( $order->user_id ) . "' AND subscription_transaction_id = '" . esc_sql( $order->subscription_transaction_id ) . "' AND status NOT IN('refunded', 'review', 'token', 'error')" );
 
 		//find the one for this order
 		foreach ( $subscriptions->data as $sub ) {
@@ -2004,12 +2004,12 @@ class PMProGateway_stripe extends PMProGateway {
 	 * @since 1.4
 	 */
 	function subscribe( &$order, $checkout = true ) {
-		global $pmpro_currency, $pmpro_currencies;
+		global $dmrfid_currency, $dmrfid_currencies;
 
 		$currency_unit_multiplier = 100; //ie 100 cents per USD
 
 		//account for zero-decimal currencies like the Japanese Yen
-		if ( is_array( $pmpro_currencies[ $pmpro_currency ] ) && isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] ) && $pmpro_currencies[ $pmpro_currency ]['decimals'] == 0 ) {
+		if ( is_array( $dmrfid_currencies[ $dmrfid_currency ] ) && isset( $dmrfid_currencies[ $dmrfid_currency ]['decimals'] ) && $dmrfid_currencies[ $dmrfid_currency ]['decimals'] == 0 ) {
 			$currency_unit_multiplier = 1;
 		}
 
@@ -2019,7 +2019,7 @@ class PMProGateway_stripe extends PMProGateway {
 		}
 
 		//filter order before subscription. use with care.
-		$order = apply_filters( "pmpro_subscribe_order", $order, $this );
+		$order = apply_filters( "dmrfid_subscribe_order", $order, $this );
 
 		//figure out the user
 		if ( ! empty( $order->user_id ) ) {
@@ -2043,7 +2043,7 @@ class PMProGateway_stripe extends PMProGateway {
 		//figure out the amounts
 		$amount     = $order->PaymentAmount;
 		$amount_tax = $order->getTaxForPrice( $amount );
-		$amount     = pmpro_round_price( (float) $amount + (float) $amount_tax );
+		$amount     = dmrfid_round_price( (float) $amount + (float) $amount_tax );
 
 		/*
             There are two parts to the trial. Part 1 is simply the delay until the first payment
@@ -2067,7 +2067,7 @@ class PMProGateway_stripe extends PMProGateway {
 		$order->ProfileStartDate = date_i18n( "Y-m-d", strtotime( "+ " . $trial_period_days . " Day", current_time( "timestamp" ) ) ) . "T0:0:0";
 
 		//filter the start date
-		$order->ProfileStartDate = apply_filters( "pmpro_profile_start_date", $order->ProfileStartDate, $order );
+		$order->ProfileStartDate = apply_filters( "dmrfid_profile_start_date", $order->ProfileStartDate, $order );
 
 		//convert back to days
 		$trial_period_days = ceil( abs( strtotime( date_i18n( "Y-m-d" ), current_time( "timestamp" ) ) - strtotime( $order->ProfileStartDate, current_time( "timestamp" ) ) ) / 86400 );
@@ -2101,7 +2101,7 @@ class PMProGateway_stripe extends PMProGateway {
 			//now amount to equal the trial #s
 			$amount     = $order->TrialAmount;
 			$amount_tax = $order->getTaxForPrice( $amount );
-			$amount     = pmpro_round_price( (float) $amount + (float) $amount_tax );
+			$amount     = dmrfid_round_price( (float) $amount + (float) $amount_tax );
 		}
 
 		//create a plan
@@ -2112,11 +2112,11 @@ class PMProGateway_stripe extends PMProGateway {
 				"interval"          => strtolower( $order->BillingPeriod ),
 				"trial_period_days" => $trial_period_days,
 				'product'           => array( 'name' => $order->membership_name . " for order " . $order->code ),
-				"currency"          => strtolower( $pmpro_currency ),
+				"currency"          => strtolower( $dmrfid_currency ),
 				"id"                => $order->code
 			);
 
-			$plan = Stripe_Plan::create( apply_filters( 'pmpro_stripe_create_plan_array', $plan ) );
+			$plan = Stripe_Plan::create( apply_filters( 'dmrfid_stripe_create_plan_array', $plan ) );
 		} catch ( \Throwable $e ) {
 			$order->error      = __( "Error creating plan with Stripe:", 'paid-memberships-pro' ) . $e->getMessage();
 			$order->shorterror = $order->error;
@@ -2131,8 +2131,8 @@ class PMProGateway_stripe extends PMProGateway {
 
 		// before subscribing, let's clear out the updates so we don't trigger any during sub
 		if ( ! empty( $user_id ) ) {
-			$old_user_updates = get_user_meta( $user_id, "pmpro_stripe_updates", true );
-			update_user_meta( $user_id, "pmpro_stripe_updates", array() );
+			$old_user_updates = get_user_meta( $user_id, "dmrfid_stripe_updates", true );
+			update_user_meta( $user_id, "dmrfid_stripe_updates", array() );
 		}
 
 
@@ -2143,14 +2143,14 @@ class PMProGateway_stripe extends PMProGateway {
 		// subscribe to the plan
 		try {
 			$subscription = array( "plan" => $order->code );
-			$result       = $this->customer->subscriptions->create( apply_filters( 'pmpro_stripe_create_subscription_array', $subscription ) );
+			$result       = $this->customer->subscriptions->create( apply_filters( 'dmrfid_stripe_create_subscription_array', $subscription ) );
 		} catch ( \Throwable $e ) {
 			//try to delete the plan
 			$plan->delete();
 
 			//give the user any old updates back
 			if ( ! empty( $user_id ) ) {
-				update_user_meta( $user_id, "pmpro_stripe_updates", $old_user_updates );
+				update_user_meta( $user_id, "dmrfid_stripe_updates", $old_user_updates );
 			}
 
 			//return error
@@ -2164,7 +2164,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 			//give the user any old updates back
 			if ( ! empty( $user_id ) ) {
-				update_user_meta( $user_id, "pmpro_stripe_updates", $old_user_updates );
+				update_user_meta( $user_id, "dmrfid_stripe_updates", $old_user_updates );
 			}
 
 			//return error
@@ -2191,21 +2191,21 @@ class PMProGateway_stripe extends PMProGateway {
 
 			//update user meta
 			if ( ! empty( $user_id ) ) {
-				update_user_meta( $user_id, "pmpro_stripe_updates", $new_user_updates );
+				update_user_meta( $user_id, "dmrfid_stripe_updates", $new_user_updates );
 			} else {
 				//need to remember the user updates to save later
-				global $pmpro_stripe_updates;
-				$pmpro_stripe_updates = $new_user_updates;
-				function pmpro_user_register_stripe_updates( $user_id ) {
-					global $pmpro_stripe_updates;
-					update_user_meta( $user_id, "pmpro_stripe_updates", $pmpro_stripe_updates );
+				global $dmrfid_stripe_updates;
+				$dmrfid_stripe_updates = $new_user_updates;
+				function dmrfid_user_register_stripe_updates( $user_id ) {
+					global $dmrfid_stripe_updates;
+					update_user_meta( $user_id, "dmrfid_stripe_updates", $dmrfid_stripe_updates );
 				}
 
-				add_action( "user_register", "pmpro_user_register_stripe_updates" );
+				add_action( "user_register", "dmrfid_user_register_stripe_updates" );
 			}
 		} else {
 			//give them their old updates back
-			update_user_meta( $user_id, "pmpro_stripe_updates", $old_user_updates );
+			update_user_meta( $user_id, "dmrfid_stripe_updates", $old_user_updates );
 		}
 
 		return true;
@@ -2220,7 +2220,7 @@ class PMProGateway_stripe extends PMProGateway {
 			$user_id = $current_user->ID;
 		}
 
-		$preserve = get_user_meta( $user_id, 'pmpro_stripe_dont_cancel', true );
+		$preserve = get_user_meta( $user_id, 'dmrfid_stripe_dont_cancel', true );
 
 		// No previous values found, init the array
 		if ( empty( $preserve ) ) {
@@ -2230,7 +2230,7 @@ class PMProGateway_stripe extends PMProGateway {
 		// Store or update the subscription ID timestamp (for cleanup)
 		$preserve[ $subscription_id ] = current_time( 'timestamp' );
 
-		update_user_meta( $user_id, 'pmpro_stripe_dont_cancel', $preserve );
+		update_user_meta( $user_id, 'dmrfid_stripe_dont_cancel', $preserve );
 	}
 
 	/**
@@ -2240,7 +2240,7 @@ class PMProGateway_stripe extends PMProGateway {
 		global $wpdb;
 
 		//get level for user
-		$user_level = pmpro_getMembershipLevelForUser( $user_id );
+		$user_level = dmrfid_getMembershipLevelForUser( $user_id );
 
 		//get current plan at Stripe to get payment date
 		$last_order = new MemberOrder();
@@ -2256,13 +2256,13 @@ class PMProGateway_stripe extends PMProGateway {
 			//cancel the old subscription
 			if ( ! $last_order->Gateway->cancelSubscriptionAtGateway( $subscription, true ) ) {
 				//throw error and halt save
-				if ( ! function_exists( 'pmpro_stripe_user_profile_fields_save_error' ) ) {
+				if ( ! function_exists( 'dmrfid_stripe_user_profile_fields_save_error' ) ) {
 					//throw error and halt save
-					function pmpro_stripe_user_profile_fields_save_error( $errors, $update, $user ) {
-						$errors->add( 'pmpro_stripe_updates', __( 'Could not cancel the old subscription. Updates have not been processed.', 'paid-memberships-pro' ) );
+					function dmrfid_stripe_user_profile_fields_save_error( $errors, $update, $user ) {
+						$errors->add( 'dmrfid_stripe_updates', __( 'Could not cancel the old subscription. Updates have not been processed.', 'paid-memberships-pro' ) );
 					}
 
-					add_filter( 'user_profile_update_errors', 'pmpro_stripe_user_profile_fields_save_error', 10, 3 );
+					add_filter( 'user_profile_update_errors', 'dmrfid_stripe_user_profile_fields_save_error', 10, 3 );
 				}
 
 				//stop processing updates
@@ -2291,7 +2291,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 		//need filter to reset ProfileStartDate
 		$profile_start_date = $update_order->ProfileStartDate;
-		add_filter( 'pmpro_profile_start_date', function ( $startdate, $order ) use ( $profile_start_date ) {
+		add_filter( 'dmrfid_profile_start_date', function ( $startdate, $order ) use ( $profile_start_date ) {
 			return "{$profile_start_date}T0:0:0";
 		}, 10, 2 );
 
@@ -2300,7 +2300,7 @@ class PMProGateway_stripe extends PMProGateway {
 		$update_order->Gateway->process_subscriptions( $update_order );
 
 		//update membership
-		$sqlQuery = "UPDATE $wpdb->pmpro_memberships_users
+		$sqlQuery = "UPDATE $wpdb->dmrfid_memberships_users
 						SET billing_amount = '" . esc_sql( $update['billing_amount'] ) . "',
 							cycle_number = '" . esc_sql( $update['cycle_number'] ) . "',
 							cycle_period = '" . esc_sql( $update['cycle_period'] ) . "',
@@ -2334,9 +2334,9 @@ class PMProGateway_stripe extends PMProGateway {
 		);
 
 		foreach ( $steps as $key => $step ) {
-			do_action( "pmpro_update_billing_before_{$step}", $order );
+			do_action( "dmrfid_update_billing_before_{$step}", $order );
 			$this->$step( $order );
-			do_action( "pmpro_update_billing_after_{$step}", $order );
+			do_action( "dmrfid_update_billing_after_{$step}", $order );
 			if ( ! empty( $order->error ) ) {
 				return false;
 			}
@@ -2387,7 +2387,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 * @since 1.4
 	 */
 	function cancel( &$order, $update_status = true ) {
-		global $pmpro_stripe_event;
+		global $dmrfid_stripe_event;
 
 		//no matter what happens below, we're going to cancel the order in our system
 		if ( $update_status ) {
@@ -2407,7 +2407,7 @@ class PMProGateway_stripe extends PMProGateway {
 			$subscription = $this->getSubscription( $order );
 
 			if ( ! empty( $subscription )
-			     && ( empty( $pmpro_stripe_event ) || empty( $pmpro_stripe_event->type ) || $pmpro_stripe_event->type != 'customer.subscription.deleted' ) ) {
+			     && ( empty( $dmrfid_stripe_event ) || empty( $dmrfid_stripe_event->type ) || $dmrfid_stripe_event->type != 'customer.subscription.deleted' ) ) {
 				if ( $this->cancelSubscriptionAtGateway( $subscription ) ) {
 					//we're okay, going to return true later
 				} else {
@@ -2422,7 +2422,7 @@ class PMProGateway_stripe extends PMProGateway {
                 Clear updates for this user. (But not if checking out, we would have already done that.)
             */
 			if ( empty( $_REQUEST['submit-checkout'] ) ) {
-				update_user_meta( $order->user_id, "pmpro_stripe_updates", array() );
+				update_user_meta( $order->user_id, "dmrfid_stripe_updates", array() );
 			}
 
 			return true;
@@ -2481,7 +2481,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 			// Sometimes we don't want to cancel the local membership when Stripe sends its webhook.
 			if ( $preserve_local_membership ) {
-				PMProGateway_stripe::ignoreCancelWebhookForThisSubscription( $subscription->id, $order->user_id );
+				DmRFIDGateway_stripe::ignoreCancelWebhookForThisSubscription( $subscription->id, $order->user_id );
 			}
 
 			// Cancel
@@ -2496,11 +2496,11 @@ class PMProGateway_stripe extends PMProGateway {
 	}
 
 	/**
-	 * Filter pmpro_next_payment to get date via API if possible
+	 * Filter dmrfid_next_payment to get date via API if possible
 	 *
 	 * @since 1.8.6
 	 */
-	static function pmpro_next_payment( $timestamp, $user_id, $order_status ) {
+	static function dmrfid_next_payment( $timestamp, $user_id, $order_status ) {
 		//find the last order for this user
 		if ( ! empty( $user_id ) ) {
 			//get last order
@@ -2533,7 +2533,7 @@ class PMProGateway_stripe extends PMProGateway {
 	/**
 	 * Refund a payment or invoice
 	 *
-	 * @param object &$order Related PMPro order object.
+	 * @param object &$order Related DmRFID order object.
 	 * @param string $transaction_id Payment or Invoice id to void.
 	 *
 	 * @return bool                     True or false if the void worked
@@ -2546,7 +2546,7 @@ class PMProGateway_stripe extends PMProGateway {
 	/**
 	 * Refund a payment or invoice
 	 *
-	 * @param object &$order Related PMPro order object.
+	 * @param object &$order Related DmRFID order object.
 	 * @param string $transaction_id Payment or invoice id to void.
 	 *
 	 * @return bool                   True or false if the refund worked.
@@ -2759,11 +2759,11 @@ class PMProGateway_stripe extends PMProGateway {
 
 	function create_payment_intent( &$order ) {
 
-		global $pmpro_currencies, $pmpro_currency;
+		global $dmrfid_currencies, $dmrfid_currency;
 
 		// Account for zero-decimal currencies like the Japanese Yen
 		$currency_unit_multiplier = 100; //ie 100 cents per USD
-		if ( is_array( $pmpro_currencies[ $pmpro_currency ] ) && isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] ) && $pmpro_currencies[ $pmpro_currency ]['decimals'] == 0 ) {
+		if ( is_array( $dmrfid_currencies[ $dmrfid_currency ] ) && isset( $dmrfid_currencies[ $dmrfid_currency ]['decimals'] ) && $dmrfid_currencies[ $dmrfid_currency ]['decimals'] == 0 ) {
 			$currency_unit_multiplier = 1;
 		}
 
@@ -2771,15 +2771,15 @@ class PMProGateway_stripe extends PMProGateway {
 		$order->subtotal = $amount;
 		$tax             = $order->getTax( true );
 
-		$amount = pmpro_round_price( (float) $order->subtotal + (float) $tax );
+		$amount = dmrfid_round_price( (float) $order->subtotal + (float) $tax );
 
 		$params = array(
 			'customer'            => $this->customer->id,
 			'payment_method'      => $this->payment_method->id,
 			'amount'              => $amount * $currency_unit_multiplier,
-			'currency'            => $pmpro_currency,
+			'currency'            => $dmrfid_currency,
 			'confirmation_method' => 'manual',
-			'description'         => apply_filters( 'pmpro_stripe_order_description', "Order #" . $order->code . ", " . trim( $order->FirstName . " " . $order->LastName ) . " (" . $order->Email . ")", $order ),
+			'description'         => apply_filters( 'dmrfid_stripe_order_description', "Order #" . $order->code . ", " . trim( $order->FirstName . " " . $order->LastName ) . " (" . $order->Email . ")", $order ),
 			'setup_future_usage'  => 'off_session',
 		);
 
@@ -2791,7 +2791,7 @@ class PMProGateway_stripe extends PMProGateway {
 	 	 * @param array  $params 	Array of params sent to Stripe.
 		 * @param object $order		Order object for this checkout.
 		 */
-		$params = apply_filters( 'pmpro_stripe_payment_intent_params', $params, $order );
+		$params = apply_filters( 'dmrfid_stripe_payment_intent_params', $params, $order );
 
 		try {
 			$payment_intent = Stripe_PaymentIntent::create( $params );
@@ -2811,14 +2811,14 @@ class PMProGateway_stripe extends PMProGateway {
 
 	function process_subscriptions( &$order ) {
 
-		if ( ! pmpro_isLevelRecurring( $order->membership_level ) ) {
+		if ( ! dmrfid_isLevelRecurring( $order->membership_level ) ) {
 			return true;
 		}
 
 		//before subscribing, let's clear out the updates so we don't trigger any during sub
 		if ( ! empty( $user_id ) ) {
-			$old_user_updates = get_user_meta( $user_id, "pmpro_stripe_updates", true );
-			update_user_meta( $user_id, "pmpro_stripe_updates", array() );
+			$old_user_updates = get_user_meta( $user_id, "dmrfid_stripe_updates", true );
+			update_user_meta( $user_id, "dmrfid_stripe_updates", array() );
 		}
 
 		$this->set_setup_intent( $order );
@@ -2829,7 +2829,7 @@ class PMProGateway_stripe extends PMProGateway {
 
 			//give the user any old updates back
 			if ( ! empty( $user_id ) ) {
-				update_user_meta( $user_id, "pmpro_stripe_updates", $old_user_updates );
+				update_user_meta( $user_id, "dmrfid_stripe_updates", $old_user_updates );
 			}
 
 			return false;
@@ -2843,18 +2843,18 @@ class PMProGateway_stripe extends PMProGateway {
 
 		//update user meta
 		if ( ! empty( $user_id ) ) {
-			update_user_meta( $user_id, "pmpro_stripe_updates", $new_user_updates );
+			update_user_meta( $user_id, "dmrfid_stripe_updates", $new_user_updates );
 		} else {
 			//need to remember the user updates to save later
-			global $pmpro_stripe_updates;
-			$pmpro_stripe_updates = $new_user_updates;
+			global $dmrfid_stripe_updates;
+			$dmrfid_stripe_updates = $new_user_updates;
 			
-			if( ! function_exists( 'pmpro_user_register_stripe_updates' ) ) {
-				function pmpro_user_register_stripe_updates( $user_id ) {
-					global $pmpro_stripe_updates;
-					update_user_meta( $user_id, 'pmpro_stripe_updates', $pmpro_stripe_updates );
+			if( ! function_exists( 'dmrfid_user_register_stripe_updates' ) ) {
+				function dmrfid_user_register_stripe_updates( $user_id ) {
+					global $dmrfid_stripe_updates;
+					update_user_meta( $user_id, 'dmrfid_stripe_updates', $dmrfid_stripe_updates );
 				}
-				add_action( 'user_register', 'pmpro_user_register_stripe_updates' );
+				add_action( 'user_register', 'dmrfid_user_register_stripe_updates' );
 			}
 		}
 
@@ -2863,16 +2863,16 @@ class PMProGateway_stripe extends PMProGateway {
 
 	function create_plan( &$order ) {
 
-		global $pmpro_currencies, $pmpro_currency;
+		global $dmrfid_currencies, $dmrfid_currency;
 		
 		//figure out the amounts
 		$amount     = $order->PaymentAmount;
 		$amount_tax = $order->getTaxForPrice( $amount );
-		$amount     = pmpro_round_price( (float) $amount + (float) $amount_tax );
+		$amount     = dmrfid_round_price( (float) $amount + (float) $amount_tax );
 
 		// Account for zero-decimal currencies like the Japanese Yen
 		$currency_unit_multiplier = 100; //ie 100 cents per USD
-		if ( is_array( $pmpro_currencies[ $pmpro_currency ] ) && isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] ) && $pmpro_currencies[ $pmpro_currency ]['decimals'] == 0 ) {
+		if ( is_array( $dmrfid_currencies[ $dmrfid_currency ] ) && isset( $dmrfid_currencies[ $dmrfid_currency ]['decimals'] ) && $dmrfid_currencies[ $dmrfid_currency ]['decimals'] == 0 ) {
 			$currency_unit_multiplier = 1;
 		}
 
@@ -2899,7 +2899,7 @@ class PMProGateway_stripe extends PMProGateway {
 		$order->ProfileStartDate = date_i18n( "Y-m-d", strtotime( "+ " . $trial_period_days . " Day", current_time( "timestamp" ) ) ) . "T0:0:0";
 
 		//filter the start date
-		$order->ProfileStartDate = apply_filters( "pmpro_profile_start_date", $order->ProfileStartDate, $order );
+		$order->ProfileStartDate = apply_filters( "dmrfid_profile_start_date", $order->ProfileStartDate, $order );
 
 		//convert back to days
 		$trial_period_days = ceil( abs( strtotime( date_i18n( "Y-m-d" ), current_time( "timestamp" ) ) - strtotime( $order->ProfileStartDate, current_time( "timestamp" ) ) ) / 86400 );
@@ -2931,10 +2931,10 @@ class PMProGateway_stripe extends PMProGateway {
 				"interval"          => strtolower( $order->BillingPeriod ),
 				"trial_period_days" => $trial_period_days,
 				'product'           => array( 'name' => $order->membership_name . " for order " . $order->code ),
-				"currency"          => strtolower( $pmpro_currency ),
+				"currency"          => strtolower( $dmrfid_currency ),
 				"id"                => $order->code
 			);
-			$order->plan = Stripe_Plan::create( apply_filters( 'pmpro_stripe_create_plan_array', $plan ) );
+			$order->plan = Stripe_Plan::create( apply_filters( 'dmrfid_stripe_create_plan_array', $plan ) );
 		} catch ( Stripe\Error\Base $e ) {
 			$order->error = $e->getMessage();
 
@@ -3084,7 +3084,7 @@ class PMProGateway_stripe extends PMProGateway {
 		if ( 'requires_action' == $this->payment_intent->status ) {
 			$order->errorcode = true;
 			$order->error = __( 'Customer authentication is required to complete this transaction. Please complete the verification steps issued by your payment provider.', 'paid-memberships-pro' );
-			$order->error_type = 'pmpro_alert';
+			$order->error_type = 'dmrfid_alert';
 
 			return false;
 		}
@@ -3110,9 +3110,9 @@ class PMProGateway_stripe extends PMProGateway {
 	/**
  	 * Get available Apple Pay domains.
  	 */
-	function pmpro_get_apple_pay_domains( $limit = 10 ) {
+	function dmrfid_get_apple_pay_domains( $limit = 10 ) {
 		try {
-			$apple_pay_domains = Stripe_ApplePayDomain::all( [ 'limit' => apply_filters( 'pmpro_stripe_apple_pay_domain_retrieve_limit', $limit ) ] );
+			$apple_pay_domains = Stripe_ApplePayDomain::all( [ 'limit' => apply_filters( 'dmrfid_stripe_apple_pay_domain_retrieve_limit', $limit ) ] );
 		} catch (\Throwable $th) {
 			$apple_pay_domains = $th->getMessage();
 	   	}
@@ -3125,7 +3125,7 @@ class PMProGateway_stripe extends PMProGateway {
  	 * 
  	 * @since 2.4
  	 */
-	function pmpro_create_apple_pay_domain() {
+	function dmrfid_create_apple_pay_domain() {
 		try {
 			$create = Stripe_ApplePayDomain::create([
 				'domain_name' => $_SERVER['HTTP_HOST'],
@@ -3142,8 +3142,8 @@ class PMProGateway_stripe extends PMProGateway {
  	 * 
  	 * @since 2.4
  	 */
-	function pmpro_does_apple_pay_domain_exist() {
-		$apple_pay_domains = $this->pmpro_get_apple_pay_domains();
+	function dmrfid_does_apple_pay_domain_exist() {
+		$apple_pay_domains = $this->dmrfid_get_apple_pay_domains();
 		if ( empty( $apple_pay_domains ) ) {
 			return false;
 		}
@@ -3156,7 +3156,7 @@ class PMProGateway_stripe extends PMProGateway {
 		return false;
    }
 
-	public static function pmpro_set_up_apple_pay( $payment_option_values, $gateway  ) {
+	public static function dmrfid_set_up_apple_pay( $payment_option_values, $gateway  ) {
 		// Check that we just saved Stripe settings.
 		if ( $gateway != 'stripe' || empty( $_REQUEST['savesettings'] ) ) {
 			return;
@@ -3172,12 +3172,12 @@ class PMProGateway_stripe extends PMProGateway {
 		// Make sure that Apple Pay is set up.
 		// TODO: Apple Pay API functions don't seem to work with
 		//       test API keys. Need to figure this out.
-		$stripe = new PMProGateway_stripe();
-		if ( ! $stripe->pmpro_does_apple_pay_domain_exist() ) {
+		$stripe = new DmRFIDGateway_stripe();
+		if ( ! $stripe->dmrfid_does_apple_pay_domain_exist() ) {
 			// 1. Make sure domain association file available.
 			flush_rewrite_rules();
 			// 2. Register Domain with Apple.
-			$stripe->pmpro_create_apple_pay_domain();
+			$stripe->dmrfid_create_apple_pay_domain();
 		}
    }
 

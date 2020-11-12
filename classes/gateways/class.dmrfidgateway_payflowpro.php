@@ -1,11 +1,11 @@
 <?php
-	//include pmprogateway
-	require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+	//include dmrfidgateway
+	require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 
 	//load classes init method
-	add_action('init', array('PMProGateway_payflowpro', 'init'));
+	add_action('init', array('DmRFIDGateway_payflowpro', 'init'));
 
-	class PMProGateway_payflowpro extends PMProGateway
+	class DmRFIDGateway_payflowpro extends DmRFIDGateway
 	{
 		function __construct($gateway = NULL)
 		{
@@ -21,11 +21,11 @@
 		static function init()
 		{
 			//make sure Payflow Pro/PayPal Pro is a gateway option
-			add_filter('pmpro_gateways', array('PMProGateway_payflowpro', 'pmpro_gateways'));
+			add_filter('dmrfid_gateways', array('DmRFIDGateway_payflowpro', 'dmrfid_gateways'));
 
 			//add fields to payment settings
-			add_filter('pmpro_payment_options', array('PMProGateway_payflowpro', 'pmpro_payment_options'));
-			add_filter('pmpro_payment_option_fields', array('PMProGateway_payflowpro', 'pmpro_payment_option_fields'), 10, 2);
+			add_filter('dmrfid_payment_options', array('DmRFIDGateway_payflowpro', 'dmrfid_payment_options'));
+			add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_payflowpro', 'dmrfid_payment_option_fields'), 10, 2);
 		}
 
 		/**
@@ -33,7 +33,7 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_gateways($gateways)
+		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['payflowpro']))
 				$gateways['payflowpro'] = __('Payflow Pro/PayPal Pro', 'paid-memberships-pro' );
@@ -71,10 +71,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_options($options)
+		static function dmrfid_payment_options($options)
 		{
 			//get stripe options
-			$payflowpro_options = PMProGateway_payflowpro::getGatewayOptions();
+			$payflowpro_options = DmRFIDGateway_payflowpro::getGatewayOptions();
 
 			//merge with others.
 			$options = array_merge($payflowpro_options, $options);
@@ -87,10 +87,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_option_fields($values, $gateway)
+		static function dmrfid_payment_option_fields($values, $gateway)
 		{
 		?>
-		<tr class="pmpro_settings_divider gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
+		<tr class="dmrfid_settings_divider gateway gateway_payflowpro" <?php if($gateway != "payflowpro") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
 				<h2 class="title"><?php esc_html_e( 'Payflow Pro Settings', 'paid-memberships-pro' ); ?></h2>
@@ -142,7 +142,7 @@
 							'title' => array(),
 						),
 					);
-					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
+					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
 				?>
 				</p>
 			</td>
@@ -164,7 +164,7 @@
 				{
 					$this->void($order, $authorization_id);
 					$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
-					$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+					$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 					return $this->subscribe($order);
 				}
 				else
@@ -180,10 +180,10 @@
 				if($this->charge($order))
 				{
 					//set up recurring billing
-					if(pmpro_isLevelRecurring($order->membership_level))
+					if(dmrfid_isLevelRecurring($order->membership_level))
 					{
 						$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
-						$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+						$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 						if($this->subscribe($order))
 						{
 							return true;
@@ -257,7 +257,7 @@
 			 *
 			 * @since 1.8.5.6
 			 */
-			$nvpStr = apply_filters('pmpro_payflow_authorize_nvpstr', $nvpStr, $this);
+			$nvpStr = apply_filters('dmrfid_payflow_authorize_nvpstr', $nvpStr, $this);
 
 			//for debugging, let's attach this to the class object
 			$this->nvpStr = $nvpStr;
@@ -290,7 +290,7 @@
 			 *
 			 * @since 1.8.5.6
 			 */
-			$nvpStr = apply_filters('pmpro_payflow_void_nvpstr', $nvpStr, $this);
+			$nvpStr = apply_filters('dmrfid_payflow_void_nvpstr', $nvpStr, $this);
 
 			$this->httpParsedResponseAr = $this->PPHttpPost('V', $nvpStr);
 
@@ -307,7 +307,7 @@
 
 		function charge(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
@@ -316,11 +316,11 @@
 			$amount = $order->InitialPayment;
 			$amount_tax = $order->getTaxForPrice($amount);
 			$order->subtotal = $amount;
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 
 			//paypal profile stuff
 			$nvpStr = "";
-			$nvpStr .="&AMT=" . $amount . "&TAXAMT=" . $amount_tax . "&CURRENCY=" . $pmpro_currency;
+			$nvpStr .="&AMT=" . $amount . "&TAXAMT=" . $amount_tax . "&CURRENCY=" . $dmrfid_currency;
 			/* PayFlow Pro doesn't use IPN so this is a little confusing */
 			// $nvpStr .= "&NOTIFYURL=" . urlencode( add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') ) );
 			//$nvpStr .= "&L_BILLINGTYPE0=RecurringPayments&L_BILLINGAGREEMENTDESCRIPTION0=" . $order->PaymentAmount;
@@ -346,7 +346,7 @@
 			 *
 			 * @since 1.8.5.6
 			 */
-			$nvpStr = apply_filters('pmpro_payflow_charge_nvpstr', $nvpStr, $this);
+			$nvpStr = apply_filters('dmrfid_payflow_charge_nvpstr', $nvpStr, $this);
 
 			$this->nvpStr = $nvpStr;
 			$this->httpParsedResponseAr = $this->PPHttpPost('S', $nvpStr);
@@ -366,18 +366,18 @@
 
 		function subscribe(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
 
 			//filter order before subscription. use with care.
-			$order = apply_filters("pmpro_subscribe_order", $order, $this);
+			$order = apply_filters("dmrfid_subscribe_order", $order, $this);
 
 			//taxes on the amount
 			$amount = $order->PaymentAmount;
 			$amount_tax = $order->getTaxForPrice($amount);
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 
 			if($order->BillingPeriod == "Day")
 				$payperiod = "DAYS";
@@ -390,12 +390,12 @@
 
 			//paypal profile stuff
 			$nvpStr = "&ACTION=A";
-			$nvpStr .="&AMT=" . $amount . "&TAXAMT=" . $amount_tax . "&CURRENCY=" . $pmpro_currency;
+			$nvpStr .="&AMT=" . $amount . "&TAXAMT=" . $amount_tax . "&CURRENCY=" . $dmrfid_currency;
 			/* PayFlow Pro doesn't use IPN so this is a little confusing */
 			// $nvpStr .= "&NOTIFYURL=" . urlencode( add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') ) );
 			//$nvpStr .= "&L_BILLINGTYPE0=RecurringPayments&L_BILLINGAGREEMENTDESCRIPTION0=" . $order->PaymentAmount;
 
-			$nvpStr .= "&PROFILENAME=" . urlencode( apply_filters( 'pmpro_paypal_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")) );
+			$nvpStr .= "&PROFILENAME=" . urlencode( apply_filters( 'dmrfid_paypal_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")) );
 
 			$nvpStr .= "&PAYPERIOD=" . $payperiod;
 			$nvpStr .= "&FREQUENCY=" . $order->BillingFrequency;
@@ -429,7 +429,7 @@
 			$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $trial_period_days . " Day", current_time("timestamp"))) . "T0:0:0";
 
 			//filter the start date
-			$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+			$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 
 			//convert back to days
 			$trial_period_days = ceil(abs(strtotime(date_i18n("Y-m-d"), current_time('timestamp')) - strtotime($order->ProfileStartDate, current_time("timestamp"))) / 86400);
@@ -473,7 +473,7 @@
 			 *
 			 * @since 1.8.5.6
 			 */
-			$nvpStr = apply_filters('pmpro_payflow_subscribe_nvpstr', $nvpStr, $this);
+			$nvpStr = apply_filters('dmrfid_payflow_subscribe_nvpstr', $nvpStr, $this);
 
 			$this->nvpStr = $nvpStr;
 			$this->httpParsedResponseAr = $this->PPHttpPost('R', $nvpStr);
@@ -500,7 +500,7 @@
 			/* PayFlow Pro doesn't use IPN so this is a little confusing */
 			// $nvpStr .= "&NOTIFYURL=" . urlencode( add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') ) );
 
-			$nvpStr .= "&PROFILENAME=" . urlencode( apply_filters( 'pmpro_paypal_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")) );
+			$nvpStr .= "&PROFILENAME=" . urlencode( apply_filters( 'dmrfid_paypal_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")) );
 
 			$nvpStr .= "&CUSTIP=" . $_SERVER['REMOTE_ADDR']; // . "&INVNUM=" . $order->code;
 
@@ -523,7 +523,7 @@
 			 *
 			 * @since 1.8.5.6
 			 */
-			$nvpStr = apply_filters('pmpro_payflow_update_nvpstr', $nvpStr, $this);
+			$nvpStr = apply_filters('dmrfid_payflow_update_nvpstr', $nvpStr, $this);
 
 			$this->nvpStr = $nvpStr;
 			$this->httpParsedResponseAr = $this->PPHttpPost('R', $nvpStr);
@@ -555,7 +555,7 @@
 			 *
 			 * @since 1.8.5.6
 			 */
-			$nvpStr = apply_filters('pmpro_payflow_cancel_nvpstr', $nvpStr, $this);
+			$nvpStr = apply_filters('dmrfid_payflow_cancel_nvpstr', $nvpStr, $this);
 
 			$this->nvpStr = $nvpStr;
 			$this->httpParsedResponseAr = $this->PPHttpPost('R', $nvpStr);
@@ -587,10 +587,10 @@
 			global $gateway_environment;
 			$environment = $gateway_environment;
 
-			$PARTNER = pmpro_getOption("payflow_partner");
-			$VENDOR = pmpro_getOption("payflow_vendor");
-			$USER = pmpro_getOption("payflow_user");
-			$PWD = pmpro_getOption("payflow_pwd");
+			$PARTNER = dmrfid_getOption("payflow_partner");
+			$VENDOR = dmrfid_getOption("payflow_vendor");
+			$USER = dmrfid_getOption("payflow_user");
+			$PWD = dmrfid_getOption("payflow_pwd");
 			$API_Endpoint = "https://payflowpro.paypal.com";
 			if("sandbox" === $environment || "beta-sandbox" === $environment) {
 				$API_Endpoint = "https://pilot-payflowpro.paypal.com";

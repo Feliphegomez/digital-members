@@ -1,25 +1,25 @@
-.pmpro_admin {
+.dmrfid_admin {
 	background: url(../images/Paid-Memberships-Pro_watermark.png) bottom left no-repeat !important;
 }
 
-.pmpro_admin .pmpro_banner h2 {
+.dmrfid_admin .dmrfid_banner h2 {
 	float: right;
 }
 
-.pmpro_admin .pmpro_banner .pmpro_meta {
+.dmrfid_admin .dmrfid_banner .dmrfid_meta {
 	float: right;
 }
 
-.pmpro_admin .pmpro_banner .pmpro_meta .pmpro_tag-blue {
+.dmrfid_admin .dmrfid_banner .dmrfid_meta .dmrfid_tag-blue {
 	margin: 0 5px 0 0;
 }
 
-.pmpro_admin .pmpro_banner .pmpro_logo {
+.dmrfid_admin .dmrfid_banner .dmrfid_logo {
 	float: right;
 	margin: 0 0 0 1em;
 }
 
-.pmpro_admin .pmpro_banner ul.pmpro_menu li {
+.dmrfid_admin .dmrfid_banner ul.dmrfid_menu li {
 	border-left: 1px solid #CCC;
 	border-right: none;
 }
@@ -29,28 +29,28 @@
 /* discount levels */
 
 /* pagination */
-div.pmpro_pagination {
+div.dmrfid_pagination {
 	float: left;
 }
 
 /* add ons */
 
-.pmpro_admin .widgets-holder-wrap .widget {
+.dmrfid_admin .widgets-holder-wrap .widget {
 	float: right;
 	margin: 0 0 1% 1%;
 }
 
-.pmpro_admin .widgets-holder-wrap .widget-title .status-label {
+.dmrfid_admin .widgets-holder-wrap .widget-title .status-label {
 	float: right;
 	margin: 0 0 0 5px;
 }
 
-.pmpro_admin .widgets-holder-wrap .widget-title .version {
+.dmrfid_admin .widgets-holder-wrap .widget-title .version {
 	left: 10px;
 	left: auto;
 }
 
-.pmpro_admin .widgets-holder-wrap .widget-inside .addon-thumb {
+.dmrfid_admin .widgets-holder-wrap .widget-inside .addon-thumb {
 	float: left;
 	margin: 10px 10px 0 0;
 }

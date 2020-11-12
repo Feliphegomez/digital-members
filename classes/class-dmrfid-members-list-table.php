@@ -4,7 +4,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
-class PMPro_Members_List_Table extends WP_List_Table {
+class DmRFID_Members_List_Table extends WP_List_Table {
 	/**
 	 * The text domain of this plugin.
 	 *
@@ -102,13 +102,13 @@ class PMPro_Members_List_Table extends WP_List_Table {
 			$columns['enddate'] = 'Cancelled';
 		}
 
-		// Should be deprecated in favor of "pmpro_manage_memberslist_columns".
+		// Should be deprecated in favor of "dmrfid_manage_memberslist_columns".
 		// Is applied to all members lists, regardless of screen.
-		$columns = apply_filters( 'pmpro_memberslist_extra_cols', $columns );
+		$columns = apply_filters( 'dmrfid_memberslist_extra_cols', $columns );
 
 		// Re-implementing old hook, will be deprecated.
 		ob_start();
-		do_action( 'pmpro_memberslist_extra_cols_header' );
+		do_action( 'dmrfid_memberslist_extra_cols_header' );
 		$extra_cols = ob_get_clean();
 		preg_match_all( '/<th>(.*?)<\/th>/s', $extra_cols, $matches );
 		$custom_field_num = 0;
@@ -119,8 +119,8 @@ class PMPro_Members_List_Table extends WP_List_Table {
 
 		// Shortcut for editing columns in default memberslist location.
 		$current_screen = get_current_screen();
-		if ( ! empty( $current_screen ) && 'memberships_page_pmpro-memberslist' === $current_screen->id ) {
-			$columns = apply_filters( 'pmpro_manage_memberslist_columns', $columns );
+		if ( ! empty( $current_screen ) && 'memberships_page_dmrfid-memberslist' === $current_screen->id ) {
+			$columns = apply_filters( 'dmrfid_manage_memberslist_columns', $columns );
 		}
 
 		return $columns;
@@ -225,16 +225,16 @@ class PMPro_Members_List_Table extends WP_List_Table {
 		<p>
 			<?php _e( 'No members found.', 'paid-memberships-pro' ); ?>
 			<?php if ( $l ) { ?>
-				<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-memberslist', 's' => $s ) ) ); ?>"><?php _e( 'Search all levels', 'paid-memberships-pro' );?></a>
+				<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 's' => $s ) ) ); ?>"><?php _e( 'Search all levels', 'paid-memberships-pro' );?></a>
 			<?php } ?>
 		</p>
 		<hr />
 		<p><?php _e( 'You can also try searching:', 'paid-memberships-pro' ); ?>
 		<ul class="ul-disc">
 			<li><a href="<?php echo esc_url( add_query_arg( array( 's' => $s ), admin_url( 'users.php' ) ) ); ?>"><?php _e( 'All Users', 'paid-memberships-pro' ); ?></a></li>
-			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-memberslist', 'l' => 'cancelled', 's' => $s ) ) ); ?>"><?php _e( 'Cancelled Members', 'paid-memberships-pro' ); ?></a></li>
-			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-memberslist', 'l' => 'expired', 's' => $s ) ) ); ?>"><?php _e( 'Expired Members', 'paid-memberships-pro' ); ?></a></li>
-			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-memberslist', 'l' => 'oldmembers', 's' => $s ) ) ); ?>"><?php _e( 'Old Members', 'paid-memberships-pro' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'cancelled', 's' => $s ) ) ); ?>"><?php _e( 'Cancelled Members', 'paid-memberships-pro' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'expired', 's' => $s ) ) ); ?>"><?php _e( 'Expired Members', 'paid-memberships-pro' ); ?></a></li>
+			<li><a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-memberslist', 'l' => 'oldmembers', 's' => $s ) ) ); ?>"><?php _e( 'Old Members', 'paid-memberships-pro' ); ?></a></li>
 		</ul>
 		<?php
 	}
@@ -302,9 +302,9 @@ class PMPro_Members_List_Table extends WP_List_Table {
 		$sqlQuery .= 
 			"	
 			FROM $wpdb->users u 
-			LEFT JOIN $wpdb->pmpro_memberships_users mu
+			LEFT JOIN $wpdb->dmrfid_memberships_users mu
 			ON u.ID = mu.user_id
-			LEFT JOIN $wpdb->pmpro_membership_levels m
+			LEFT JOIN $wpdb->dmrfid_membership_levels m
 			ON mu.membership_id = m.id
 			";
 			
@@ -313,7 +313,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 		}
 
 		if ( 'oldmembers' === $l || 'expired' === $l || 'cancelled' === $l ) {
-				$sqlQuery .= " LEFT JOIN $wpdb->pmpro_memberships_users mu2 ON u.ID = mu2.user_id AND mu2.status = 'active' ";
+				$sqlQuery .= " LEFT JOIN $wpdb->dmrfid_memberships_users mu2 ON u.ID = mu2.user_id AND mu2.status = 'active' ";
 		}
 		
 		$sqlQuery .= ' WHERE mu.membership_id > 0 ';
@@ -342,7 +342,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 			$sqlQuery .= " LIMIT $start, $limit ";
 		}
 
-		$sqlQuery = apply_filters("pmpro_members_list_sql", $sqlQuery);
+		$sqlQuery = apply_filters("dmrfid_members_list_sql", $sqlQuery);
 		
 		if( $count ) {
 			$sql_table_data = $wpdb->get_var( $sqlQuery );
@@ -375,7 +375,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 			'enddate' 			=> 'mu.enddate',
 		);
 		
-		$allowed_orderbys = apply_filters('pmpro_memberslist_allowed_orderbys', $allowed_orderbys );
+		$allowed_orderbys = apply_filters('dmrfid_memberslist_allowed_orderbys', $allowed_orderbys );
 		
 	 	if ( ! empty( $allowed_orderbys[$orderby] ) ) {
 			$orderby = $allowed_orderbys[$orderby];
@@ -395,16 +395,16 @@ class PMPro_Members_List_Table extends WP_List_Table {
 	 * @return mixed
 	 */
 	public function column_default( $item, $column_name ) {
-		$item = (array) apply_filters( 'pmpro_members_list_user', (object) $item );
+		$item = (array) apply_filters( 'dmrfid_members_list_user', (object) $item );
 		if ( isset( $item[ $column_name ] ) ) {
-			// If the user is adding content via the "pmpro_members_list_user" filter.
+			// If the user is adding content via the "dmrfid_members_list_user" filter.
 			echo( esc_html( $item[ $column_name ] ) );
 		} elseif ( 0 === strpos( $column_name, 'custom_field_' ) ) {
-			// If the user is adding content via the "pmpro_memberslist_extra_cols_body" hook.
+			// If the user is adding content via the "dmrfid_memberslist_extra_cols_body" hook.
 			// Re-implementing old hook, will be deprecated.
 			$user_object = get_userdata( $item['ID'] );
 			ob_start();
-			do_action( 'pmpro_memberslist_extra_cols_body', $user_object );
+			do_action( 'dmrfid_memberslist_extra_cols_body', $user_object );
 			$extra_cols = ob_get_clean();
 			preg_match_all( '/<td>(.*?)<\/td>/s', $extra_cols, $matches );
 			$custom_field_num_arr = explode( 'custom_field_', $column_name );
@@ -414,7 +414,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 			}
 		} else {
 			// The preferred ways of doing things.
-			do_action( 'pmpro_manage_memberslist_custom_column', $column_name, $item['ID'] );
+			do_action( 'dmrfid_manage_memberslist_custom_column', $column_name, $item['ID'] );
 		}
 	}
 
@@ -437,11 +437,11 @@ class PMPro_Members_List_Table extends WP_List_Table {
 	public function column_username( $item ) {
 		$avatar   = get_avatar( $item['ID'], 32 );
 		$userlink = '<a href="user-edit.php?user_id=' . $item['ID'] . '">' . $item['user_login'] . '</a>';
-		$userlink = apply_filters( 'pmpro_members_list_user_link', $userlink, get_userdata( $item['ID'] ) );
+		$userlink = apply_filters( 'dmrfid_members_list_user_link', $userlink, get_userdata( $item['ID'] ) );
 		$output   = $avatar . ' <strong>' . $userlink . '</strong><br />';
 
 		// Set up the hover actions for this user.
-		$actions      = apply_filters( 'pmpro_memberslist_user_row_actions', array(), (object) $item );
+		$actions      = apply_filters( 'dmrfid_memberslist_user_row_actions', array(), (object) $item );
 		$action_count = count( $actions );
 		$i            = 0;
 		if ( $action_count ) {
@@ -506,7 +506,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 	 */
 	public function column_address( $item ) {
 		$user_object = get_userdata( $item['ID'] );
-		return pmpro_formatAddress( trim( $user_object->pmpro_bfirstname . ' ' . $user_object->pmpro_blastname ), $user_object->pmpro_baddress1, $user_object->pmpro_baddress2, $user_object->pmpro_bcity, $user_object->pmpro_bstate, $user_object->pmpro_bzipcode, $user_object->pmpro_bcountry, $user_object->pmpro_bphone );
+		return dmrfid_formatAddress( trim( $user_object->dmrfid_bfirstname . ' ' . $user_object->dmrfid_blastname ), $user_object->dmrfid_baddress1, $user_object->dmrfid_baddress2, $user_object->dmrfid_bcity, $user_object->dmrfid_bstate, $user_object->dmrfid_bzipcode, $user_object->dmrfid_bcountry, $user_object->dmrfid_bphone );
 	}
 
 	/**
@@ -543,7 +543,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 		} else {
 			// Display the member's initial payment.
 			if ( (float)$item['initial_payment'] > 0 ) {
-				$fee .= pmpro_formatPrice( $item['initial_payment'] );
+				$fee .= dmrfid_formatPrice( $item['initial_payment'] );
 			}
 			// If there is a recurring payment, show a plus sign.
 			if ( (float)$item['initial_payment'] > 0 && (float)$item['billing_amount'] > 0 ) {
@@ -551,7 +551,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 			}
 			// If there is a recurring payment, show the recurring payment amount and cycle.
 			if ( (float)$item['billing_amount'] > 0 ) {
-				$fee .= pmpro_formatPrice( $item['billing_amount'] );
+				$fee .= dmrfid_formatPrice( $item['billing_amount'] );
 				$fee .= esc_html( ' per ', 'paid-memberships-pro' );
 				if ( $item['cycle_number'] > 1 ) {
 					$fee .= $item['cycle_number'] . " " . $item['cycle_period'] . "s";
@@ -600,9 +600,9 @@ class PMPro_Members_List_Table extends WP_List_Table {
 	public function column_enddate( $item ) {
 		$user_object = get_userdata( $item['ID'] );
 		if ( 0 == $item['enddate'] ) {
-			return __( apply_filters( 'pmpro_memberslist_expires_column', 'Never', $user_object ), 'paid-memberships-pro');
+			return __( apply_filters( 'dmrfid_memberslist_expires_column', 'Never', $user_object ), 'paid-memberships-pro');
 		} else {
-			return apply_filters( 'pmpro_memberslist_expires_column', date_i18n( get_option('date_format'), $item['enddate'] ), $user_object );
+			return apply_filters( 'dmrfid_memberslist_expires_column', date_i18n( get_option('date_format'), $item['enddate'] ), $user_object );
 		}
 	}
 
@@ -624,7 +624,7 @@ class PMPro_Members_List_Table extends WP_List_Table {
 			<select name="l" onchange="jQuery('#current-page-selector').val('1'); jQuery('#member-list-form').submit();">
 				<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' );?></option>
 				<?php
-					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->pmpro_membership_levels ORDER BY name");
+					$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->dmrfid_membership_levels ORDER BY name");
 					foreach($levels as $level)
 					{
 				?>

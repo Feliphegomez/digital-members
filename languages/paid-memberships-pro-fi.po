@@ -135,7 +135,7 @@ msgid "Payment Gateway &amp; SSL"
 msgstr "Maksuväylä &amp; SSL"
 
 #: adminpages/admin_header.php:162 adminpages/memberslist.php:168
-#: shortcodes/pmpro_account.php:106
+#: shortcodes/dmrfid_account.php:106
 msgid "Email"
 msgstr "Sähköposti"
 
@@ -232,7 +232,7 @@ msgstr "Piilota mainokset tilaajilta?"
 #: adminpages/advancedsettings.php:148 adminpages/advancedsettings.php:207
 #: adminpages/advancedsettings.php:219 adminpages/membershiplevels.php:658
 #: adminpages/paymentsettings.php:210
-#: classes/gateways/class.pmprogateway_stripe.php:174 includes/profile.php:101
+#: classes/gateways/class.dmrfidgateway_stripe.php:174 includes/profile.php:101
 msgid "No"
 msgstr "Ei"
 
@@ -266,7 +266,7 @@ msgstr "vain multisite"
 
 #: adminpages/advancedsettings.php:208 adminpages/membershiplevels.php:658
 #: adminpages/paymentsettings.php:211
-#: classes/gateways/class.pmprogateway_stripe.php:175 includes/profile.php:102
+#: classes/gateways/class.dmrfidgateway_stripe.php:175 includes/profile.php:102
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -393,8 +393,8 @@ msgid "Start Date"
 msgstr "﻿Alkamispäivä"
 
 #: adminpages/discountcodes.php:371
-#: classes/gateways/class.pmprogateway_braintree.php:321
-#: classes/gateways/class.pmprogateway_stripe.php:455 pages/billing.php:262
+#: classes/gateways/class.dmrfidgateway_braintree.php:321
+#: classes/gateways/class.dmrfidgateway_stripe.php:455 pages/billing.php:262
 #: pages/checkout.php:562
 msgid "Expiration Date"
 msgstr "﻿Päättymispäivä"
@@ -433,25 +433,25 @@ msgstr "Maksu"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
 msgid "Day(s)"
 msgstr "Päivä(ä)"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
 msgid "Week(s)"
 msgstr "Viikko(a)"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
 msgid "Month(s)"
 msgstr "Kuukautta"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
 msgid "Year(s)"
 msgstr "Vuotta"
 
@@ -596,8 +596,8 @@ msgid "From Name"
 msgstr "Kuka (nimi)"
 
 #: adminpages/emailsettings.php:94
-msgid "Only Filter PMPro Emails?"
-msgstr "Filtteröi vain PMPro-Sähköposteja?"
+msgid "Only Filter DmRFID Emails?"
+msgstr "Filtteröi vain DmRFID-Sähköposteja?"
 
 #: adminpages/emailsettings.php:98
 msgid "If unchecked, all emails from \"WordPress &lt;"
@@ -650,10 +650,10 @@ msgstr "Uudet Käyttäjät"
 #: adminpages/emailsettings.php:168
 msgid ""
 "Default WP notification email. (Recommended: Leave unchecked. Members will still "
-"get an email confirmation from PMPro after checkout.)"
+"get an email confirmation from DmRFID after checkout.)"
 msgstr ""
 "Wordpressin oletussähköposti. (Suositus: Jätä tyhjäksi. Tilaajat saavat "
-"jokatapauksessa sähköpostin PMPro:lta maksamisen jälkeen."
+"jokatapauksessa sähköpostin DmRFID:lta maksamisen jälkeen."
 
 #: adminpages/membershiplevels.php:120
 msgid "Membership level updated successfully."
@@ -716,7 +716,7 @@ msgid "Billing Details"
 msgstr "Laskutuksen asetukset"
 
 #: adminpages/membershiplevels.php:372
-#: classes/gateways/class.pmprogateway_stripe.php:620
+#: classes/gateways/class.dmrfidgateway_stripe.php:620
 msgid "per"
 msgstr ""
 
@@ -739,17 +739,17 @@ msgid ""
 msgstr ""
 
 #: adminpages/membershiplevels.php:395 adminpages/membershiplevels.php:397
-#: classes/gateways/class.pmprogateway_cybersource.php:101
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:123
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:123
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 msgid "Note"
 msgstr "Huomio"
 
 #: adminpages/membershiplevels.php:395
 msgid ""
 "After saving this level, make note of the ID and create a \"Plan\" in your "
-"Braintree dashboard with the same settings and the \"Plan ID\" set to <em>pmpro_#</"
+"Braintree dashboard with the same settings and the \"Plan ID\" set to <em>dmrfid_#</"
 "em>, where # is the level ID."
 msgstr ""
 
@@ -810,7 +810,7 @@ msgid "Save Level"
 msgstr "Tallenna taso"
 
 #: adminpages/membershiplevels.php:517 adminpages/orders.php:561
-#: pages/billing.php:339 pages/cancel.php:71 shortcodes/pmpro_account.php:70
+#: pages/billing.php:339 pages/cancel.php:71 shortcodes/dmrfid_account.php:70
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -827,7 +827,7 @@ msgid "Drag and drop membership levels to reorder them on the Levels page."
 msgstr "Vedä ja pudota tilaajatasot uudelleen järjestääksesi ne Tilaajataso sivulla."
 
 #: adminpages/membershiplevels.php:586 pages/cancel.php:53 pages/confirmation.php:83
-#: pages/invoice.php:70 shortcodes/pmpro_account.php:46
+#: pages/invoice.php:70 shortcodes/dmrfid_account.php:46
 msgid "Expiration"
 msgstr "﻿Päättymispäivä"
 
@@ -887,7 +887,7 @@ msgid "%d members found."
 msgstr "%d tilaajaa löytyi."
 
 #: adminpages/memberslist.php:165 pages/checkout.php:180
-#: shortcodes/pmpro_account.php:105
+#: shortcodes/dmrfid_account.php:105
 msgid "Username"
 msgstr "Käyttäjänimi"
 
@@ -905,7 +905,7 @@ msgid "Billing Address"
 msgstr "﻿Laskutusosoite"
 
 #: adminpages/memberslist.php:171 adminpages/reports/login.php:145
-#: classes/gateways/class.pmprogateway_authorizenet.php:303
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:303
 msgid "Membership"
 msgstr "Tilaaja"
 
@@ -1025,8 +1025,8 @@ msgstr "﻿Maksutyyppi"
 msgid "e.g. PayPal Express, PayPal Standard, Credit Card."
 msgstr "kuten. PayPal Express, PayPal Standard, Luottokortti."
 
-#: adminpages/orders.php:389 classes/gateways/class.pmprogateway_braintree.php:304
-#: classes/gateways/class.pmprogateway_stripe.php:409 pages/billing.php:247
+#: adminpages/orders.php:389 classes/gateways/class.dmrfidgateway_braintree.php:304
+#: classes/gateways/class.dmrfidgateway_stripe.php:409 pages/billing.php:247
 #: pages/checkout.php:516
 msgid "Card Type"
 msgstr "﻿Korttityyppi"
@@ -1035,7 +1035,7 @@ msgstr "﻿Korttityyppi"
 msgid "e.g. Visa, MasterCard, AMEX, etc"
 msgstr "kuten. Visa, MasterCard, jne"
 
-#: adminpages/orders.php:398 classes/gateways/class.pmprogateway_twocheckout.php:148
+#: adminpages/orders.php:398 classes/gateways/class.dmrfidgateway_twocheckout.php:148
 msgid "Account Number"
 msgstr "Tilinumero"
 
@@ -1090,7 +1090,7 @@ msgid "Generated by the gateway. Useful to cross reference subscriptions."
 msgstr ""
 
 #: adminpages/orders.php:493 adminpages/orders.php:920 pages/invoice.php:107
-#: shortcodes/pmpro_account.php:122
+#: shortcodes/dmrfid_account.php:122
 msgid "Date"
 msgstr "﻿Päiväys"
 
@@ -1173,7 +1173,7 @@ msgid "%d orders found."
 msgstr "﻿%d tilausta löytyi."
 
 #: adminpages/orders.php:912 adminpages/reports/login.php:143
-#: classes/gateways/class.pmprogateway_payflowpro.php:116
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:116
 msgid "User"
 msgstr "Käyttäjä"
 
@@ -1374,7 +1374,7 @@ msgid ""
 "US only. If values are given, tax will be applied for any members ordering from the "
 "selected state.<br />For non-US or more complex tax rules, use the <a target="
 "\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-taxes-paid-"
-"memberships-pro/\">pmpro_tax filter</a>."
+"memberships-pro/\">dmrfid_tax filter</a>."
 msgstr ""
 
 #: adminpages/paymentsettings.php:206
@@ -1580,313 +1580,313 @@ msgid ""
 "check your payment gateway to see if their subscription is still active."
 msgstr ""
 
-#: classes/class.pmproemail.php:37
+#: classes/class.dmrfidemail.php:37
 #, php-format
 msgid "An Email From %s"
 msgstr "﻿Sähköposti %s"
 
-#: classes/class.pmproemail.php:134
+#: classes/class.dmrfidemail.php:134
 #, php-format
 msgid "Your membership at %s has been CANCELLED"
 msgstr ""
 
-#: classes/class.pmproemail.php:156
+#: classes/class.dmrfidemail.php:156
 #, php-format
 msgid "Membership for %s at %s has been CANCELLED"
 msgstr ""
 
-#: classes/class.pmproemail.php:187
+#: classes/class.dmrfidemail.php:187
 #, php-format
 msgid "Your membership confirmation for %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:240 classes/class.pmproemail.php:249
-#: classes/class.pmproemail.php:258 classes/class.pmproemail.php:337
-#: classes/class.pmproemail.php:346 classes/class.pmproemail.php:657
-#: classes/gateways/class.pmprogateway_braintree.php:362
-#: classes/gateways/class.pmprogateway_stripe.php:496 pages/checkout.php:75
+#: classes/class.dmrfidemail.php:240 classes/class.dmrfidemail.php:249
+#: classes/class.dmrfidemail.php:258 classes/class.dmrfidemail.php:337
+#: classes/class.dmrfidemail.php:346 classes/class.dmrfidemail.php:657
+#: classes/gateways/class.dmrfidgateway_braintree.php:362
+#: classes/gateways/class.dmrfidgateway_stripe.php:496 pages/checkout.php:75
 #: pages/checkout.php:85 pages/checkout.php:603 pages/confirmation.php:52
 #: pages/invoice.php:33
 msgid "Discount Code"
 msgstr "Alennuskoodi"
 
-#: classes/class.pmproemail.php:265 classes/class.pmproemail.php:358
-#: classes/class.pmproemail.php:663
+#: classes/class.dmrfidemail.php:265 classes/class.dmrfidemail.php:358
+#: classes/class.dmrfidemail.php:663
 #, php-format
 msgid "This membership will expire on %s."
 msgstr ""
 
-#: classes/class.pmproemail.php:287
+#: classes/class.dmrfidemail.php:287
 #, php-format
 msgid "Member Checkout for %s at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:375
+#: classes/class.dmrfidemail.php:375
 #, php-format
 msgid "Your billing information has been udpated at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:428
+#: classes/class.dmrfidemail.php:428
 #, php-format
 msgid "Billing information has been udpated for %s at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:476
+#: classes/class.dmrfidemail.php:476
 #, php-format
 msgid "Membership Payment Failed at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:522
+#: classes/class.dmrfidemail.php:522
 #, php-format
 msgid "Membership Payment Failed For %s at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:569
+#: classes/class.dmrfidemail.php:569
 #, php-format
 msgid "Credit Card on File Expiring Soon at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:617
+#: classes/class.dmrfidemail.php:617
 #, php-format
 msgid "INVOICE for %s membership"
 msgstr ""
 
-#: classes/class.pmproemail.php:688
+#: classes/class.dmrfidemail.php:688
 #, php-format
 msgid "Your trial at %s is ending soon"
 msgstr ""
 
-#: classes/class.pmproemail.php:722
+#: classes/class.dmrfidemail.php:722
 #, php-format
 msgid "Your membership at %s has ended"
 msgstr ""
 
-#: classes/class.pmproemail.php:747
+#: classes/class.dmrfidemail.php:747
 #, php-format
 msgid "Your membership at %s will end soon"
 msgstr ""
 
-#: classes/class.pmproemail.php:767
+#: classes/class.dmrfidemail.php:767
 #, php-format
 msgid "Your membership at %s has been changed"
 msgstr ""
 
-#: classes/class.pmproemail.php:771 classes/class.pmproemail.php:809
+#: classes/class.dmrfidemail.php:771 classes/class.dmrfidemail.php:809
 #, php-format
 msgid "The new level is %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:773
+#: classes/class.dmrfidemail.php:773
 msgid "Your membership has been cancelled"
 msgstr ""
 
-#: classes/class.pmproemail.php:777 classes/class.pmproemail.php:815
+#: classes/class.dmrfidemail.php:777 classes/class.dmrfidemail.php:815
 #, php-format
 msgid "This membership will expire on %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:781 classes/class.pmproemail.php:819
+#: classes/class.dmrfidemail.php:781 classes/class.dmrfidemail.php:819
 msgid "This membership does not expire"
 msgstr ""
 
-#: classes/class.pmproemail.php:805
+#: classes/class.dmrfidemail.php:805
 #, php-format
 msgid "Membership for %s at %s has been changed"
 msgstr ""
 
-#: classes/class.pmproemail.php:811
+#: classes/class.dmrfidemail.php:811
 msgid "Membership has been cancelled"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway.php:55
-#: classes/gateways/class.pmprogateway_authorizenet.php:171
-#: classes/gateways/class.pmprogateway_check.php:193
-#: classes/gateways/class.pmprogateway_cybersource.php:171
-#: classes/gateways/class.pmprogateway_payflowpro.php:164
-#: classes/gateways/class.pmprogateway_paypal.php:247
+#: classes/gateways/class.dmrfidgateway.php:55
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:171
+#: classes/gateways/class.dmrfidgateway_check.php:193
+#: classes/gateways/class.dmrfidgateway_cybersource.php:171
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:164
+#: classes/gateways/class.dmrfidgateway_paypal.php:247
 msgid "Unknown error: Authorization failed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway.php:106
-#: classes/gateways/class.pmprogateway.php:111
-#: classes/gateways/class.pmprogateway.php:129
-#: classes/gateways/class.pmprogateway_authorizenet.php:222
-#: classes/gateways/class.pmprogateway_authorizenet.php:227
-#: classes/gateways/class.pmprogateway_authorizenet.php:244
-#: classes/gateways/class.pmprogateway_check.php:244
-#: classes/gateways/class.pmprogateway_check.php:249
-#: classes/gateways/class.pmprogateway_check.php:267
-#: classes/gateways/class.pmprogateway_cybersource.php:222
-#: classes/gateways/class.pmprogateway_cybersource.php:227
-#: classes/gateways/class.pmprogateway_cybersource.php:245
-#: classes/gateways/class.pmprogateway_payflowpro.php:187
-#: classes/gateways/class.pmprogateway_payflowpro.php:192
-#: classes/gateways/class.pmprogateway_paypal.php:270
+#: classes/gateways/class.dmrfidgateway.php:106
+#: classes/gateways/class.dmrfidgateway.php:111
+#: classes/gateways/class.dmrfidgateway.php:129
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:222
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:227
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:249
+#: classes/gateways/class.dmrfidgateway_check.php:267
+#: classes/gateways/class.dmrfidgateway_cybersource.php:222
+#: classes/gateways/class.dmrfidgateway_cybersource.php:227
+#: classes/gateways/class.dmrfidgateway_cybersource.php:245
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:187
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:192
+#: classes/gateways/class.dmrfidgateway_paypal.php:270
 msgid "Unknown error: Payment failed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway.php:113
-#: classes/gateways/class.pmprogateway_authorizenet.php:228
-#: classes/gateways/class.pmprogateway_check.php:251
-#: classes/gateways/class.pmprogateway_cybersource.php:229
+#: classes/gateways/class.dmrfidgateway.php:113
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:228
+#: classes/gateways/class.dmrfidgateway_check.php:251
+#: classes/gateways/class.dmrfidgateway_cybersource.php:229
 msgid ""
 "A partial payment was made that we could not void. Please contact the site owner "
 "immediately to correct this."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:39
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:39
 #: paid-memberships-pro.php:123
 msgid "Authorize.net"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:93
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:93
 msgid "Authorize.net Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:98
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:98
 msgid "Login Name"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
 msgid "Transaction Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:114
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:114
 msgid "Silent Post URL"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:117
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:117
 msgid "To fully integrate with Authorize.net, be sure to set your Silent Post URL to"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:908
-#: classes/gateways/class.pmprogateway_authorizenet.php:909
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:908
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:909
 msgid "Could not connect to Authorize.net"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:76 paid-memberships-pro.php:124
+#: classes/gateways/class.dmrfidgateway_braintree.php:76 paid-memberships-pro.php:124
 msgid "Braintree Payments"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:132
+#: classes/gateways/class.dmrfidgateway_braintree.php:132
 msgid "Braintree Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:137
-#: classes/gateways/class.pmprogateway_cybersource.php:106
+#: classes/gateways/class.dmrfidgateway_braintree.php:137
+#: classes/gateways/class.dmrfidgateway_cybersource.php:106
 msgid "Merchant ID"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:145
+#: classes/gateways/class.dmrfidgateway_braintree.php:145
 msgid "Public Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:153
+#: classes/gateways/class.dmrfidgateway_braintree.php:153
 msgid "Private Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:161
+#: classes/gateways/class.dmrfidgateway_braintree.php:161
 msgid "Client-Side Encryption Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:169
-#: classes/gateways/class.pmprogateway_stripe.php:182
+#: classes/gateways/class.dmrfidgateway_braintree.php:169
+#: classes/gateways/class.dmrfidgateway_stripe.php:182
 msgid "Web Hook URL"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:173
+#: classes/gateways/class.dmrfidgateway_braintree.php:173
 msgid "To fully integrate with Braintree, be sure to set your Web Hook URL to"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:283
-#: classes/gateways/class.pmprogateway_stripe.php:388 pages/checkout.php:494
+#: classes/gateways/class.dmrfidgateway_braintree.php:283
+#: classes/gateways/class.dmrfidgateway_stripe.php:388 pages/checkout.php:494
 #, php-format
 msgid "We Accept %s"
 msgstr "Maksuvälineenä käyvät %s"
 
-#: classes/gateways/class.pmprogateway_braintree.php:283
-#: classes/gateways/class.pmprogateway_stripe.php:388 pages/checkout.php:494
+#: classes/gateways/class.dmrfidgateway_braintree.php:283
+#: classes/gateways/class.dmrfidgateway_stripe.php:388 pages/checkout.php:494
 msgid "Payment Information"
 msgstr "Maksutiedot"
 
-#: classes/gateways/class.pmprogateway_braintree.php:316
-#: classes/gateways/class.pmprogateway_stripe.php:450 pages/billing.php:257
+#: classes/gateways/class.dmrfidgateway_braintree.php:316
+#: classes/gateways/class.dmrfidgateway_stripe.php:450 pages/billing.php:257
 #: pages/checkout.php:557
 msgid "Card Number"
 msgstr "﻿Kortin numero"
 
-#: classes/gateways/class.pmprogateway_braintree.php:353
-#: classes/gateways/class.pmprogateway_stripe.php:487 pages/billing.php:294
+#: classes/gateways/class.dmrfidgateway_braintree.php:353
+#: classes/gateways/class.dmrfidgateway_stripe.php:487 pages/billing.php:294
 #: pages/checkout.php:594
 msgctxt "Credit card security code, CVV/CCV/CVV2"
 msgid "CVV"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:354
-#: classes/gateways/class.pmprogateway_stripe.php:488 pages/billing.php:295
+#: classes/gateways/class.dmrfidgateway_braintree.php:354
+#: classes/gateways/class.dmrfidgateway_stripe.php:488 pages/billing.php:295
 #: pages/checkout.php:595
 msgctxt "link to CVV help"
 msgid "what's this?"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:364
-#: classes/gateways/class.pmprogateway_stripe.php:498 pages/checkout.php:87
+#: classes/gateways/class.dmrfidgateway_braintree.php:364
+#: classes/gateways/class.dmrfidgateway_stripe.php:498 pages/checkout.php:87
 #: pages/checkout.php:605
 msgid "Apply"
 msgstr "﻿Käytä"
 
-#: classes/gateways/class.pmprogateway_braintree.php:419
-#: classes/gateways/class.pmprogateway_stripe.php:1026
+#: classes/gateways/class.dmrfidgateway_braintree.php:419
+#: classes/gateways/class.dmrfidgateway_stripe.php:1026
 msgid "Unknown error: Initial payment failed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:478
+#: classes/gateways/class.dmrfidgateway_braintree.php:478
 msgid "Error during settlement:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:487
+#: classes/gateways/class.dmrfidgateway_braintree.php:487
 msgid "Error during charge:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:579
+#: classes/gateways/class.dmrfidgateway_braintree.php:579
 msgid "Failed to update customer."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:627
+#: classes/gateways/class.dmrfidgateway_braintree.php:627
 msgid "Failed to create customer."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:634
+#: classes/gateways/class.dmrfidgateway_braintree.php:634
 msgid "Error creating customer record with Braintree:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:734
+#: classes/gateways/class.dmrfidgateway_braintree.php:734
 msgid "Error subscribing customer to plan with Braintree:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:749
+#: classes/gateways/class.dmrfidgateway_braintree.php:749
 msgid "Failed to subscribe with Braintree:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:787
-#: classes/gateways/class.pmprogateway_braintree.php:800
-#: classes/gateways/class.pmprogateway_braintree.php:807
+#: classes/gateways/class.dmrfidgateway_braintree.php:787
+#: classes/gateways/class.dmrfidgateway_braintree.php:800
+#: classes/gateways/class.dmrfidgateway_braintree.php:807
 msgid "Could not find the subscription."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_check.php:48 paid-memberships-pro.php:117
+#: classes/gateways/class.dmrfidgateway_check.php:48 paid-memberships-pro.php:117
 msgid "Pay by Check"
 msgstr "Shekkimaksu"
 
-#: classes/gateways/class.pmprogateway_check.php:100
+#: classes/gateways/class.dmrfidgateway_check.php:100
 msgid "Pay by Check Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_check.php:105
+#: classes/gateways/class.dmrfidgateway_check.php:105
 msgid "Instructions"
 msgstr "Ohjeistus"
 
-#: classes/gateways/class.pmprogateway_check.php:109
+#: classes/gateways/class.dmrfidgateway_check.php:109
 msgid ""
 "Who to write the check out to. Where to mail it. Shown on checkout, confirmation, "
 "and invoice pages."
@@ -1894,76 +1894,76 @@ msgstr ""
 "Kenelle kirjoittaa shekki ja minne se postitetaan. Näytetään tilaamisen, "
 "tilausvahvistuksen ja ostoskorin yhteydessä."
 
-#: classes/gateways/class.pmprogateway_cybersource.php:42
+#: classes/gateways/class.dmrfidgateway_cybersource.php:42
 msgid "CyberSource"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_cybersource.php:96
+#: classes/gateways/class.dmrfidgateway_cybersource.php:96
 msgid "CyberSource Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
 msgid ""
 "This gateway option is in beta. Some functionality may not be available. Please "
 "contact Digital Members RFID with any issues you run into. <strong>Please be sure "
 "to upgrade Digital Members RFID to the latest versions when available.</strong>"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_cybersource.php:114
+#: classes/gateways/class.dmrfidgateway_cybersource.php:114
 msgid "Transaction Security Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:39
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:39
 msgid "Payflow Pro/PayPal Pro"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:95
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:95
 msgid "Payflow Pro Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:100
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:100
 msgid "Partner"
 msgstr "Yhteistyökumppani"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:108
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:108
 msgid "Vendor"
 msgstr "﻿Myyjä"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:124 pages/checkout.php:189
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:124 pages/checkout.php:189
 msgid "Password"
 msgstr "﻿Salasana"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:132
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:132
 msgid "IPN Handler"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:137
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:137
 #, php-format
 msgid ""
 "Payflow does not use IPN. To sync recurring subscriptions, please see <a target="
 "\"_blank\" href=\"%s\">this addon</a>."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:194
-#: classes/gateways/class.pmprogateway_paypal.php:277
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:194
+#: classes/gateways/class.dmrfidgateway_paypal.php:277
 msgid ""
 "A partial payment was made that we could not refund. Please contact the site owner "
 "immediately to correct this."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:57 paid-memberships-pro.php:120
+#: classes/gateways/class.dmrfidgateway_paypal.php:57 paid-memberships-pro.php:120
 msgid "PayPal Website Payments Pro"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:113
-#: classes/gateways/class.pmprogateway_paypalexpress.php:118
-#: classes/gateways/class.pmprogateway_paypalstandard.php:112
+#: classes/gateways/class.dmrfidgateway_paypal.php:113
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:118
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:112
 msgid "PayPal Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:123
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:123
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 msgid ""
 "We do not recommend using PayPal Standard. We suggest using PayPal Express, Website "
 "Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target=\"_blank\" href="
@@ -1971,224 +1971,224 @@ msgid ""
 "memberships-pro/\">More information on why can be found here.</a>"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:123
-#: classes/gateways/class.pmprogateway_paypalexpress.php:128
-#: classes/gateways/class.pmprogateway_paypalstandard.php:122
+#: classes/gateways/class.dmrfidgateway_paypal.php:123
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:128
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:122
 msgid "Gateway Account Email"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:131
-#: classes/gateways/class.pmprogateway_paypalexpress.php:136
-#: classes/gateways/class.pmprogateway_paypalstandard.php:130
-#: classes/gateways/class.pmprogateway_twocheckout.php:121
+#: classes/gateways/class.dmrfidgateway_paypal.php:131
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:136
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:130
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:121
 msgid "API Username"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:139
-#: classes/gateways/class.pmprogateway_paypalexpress.php:144
-#: classes/gateways/class.pmprogateway_paypalstandard.php:138
-#: classes/gateways/class.pmprogateway_twocheckout.php:130
+#: classes/gateways/class.dmrfidgateway_paypal.php:139
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:144
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:138
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:130
 msgid "API Password"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:147
-#: classes/gateways/class.pmprogateway_paypalexpress.php:152
-#: classes/gateways/class.pmprogateway_paypalstandard.php:146
+#: classes/gateways/class.dmrfidgateway_paypal.php:147
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:152
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:146
 msgid "API Signature"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:155
-#: classes/gateways/class.pmprogateway_paypalexpress.php:160
-#: classes/gateways/class.pmprogateway_paypalstandard.php:154
+#: classes/gateways/class.dmrfidgateway_paypal.php:155
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:160
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:154
 msgid "IPN Handler URL"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:158
+#: classes/gateways/class.dmrfidgateway_paypal.php:158
 msgid ""
 "This URL is passed to PayPal for all new charges and subscriptions. You SHOULD NOT "
 "set this in your PayPal account settings."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:178
-#: classes/gateways/class.pmprogateway_paypalexpress.php:402
-#: classes/gateways/class.pmprogateway_paypalstandard.php:202 pages/checkout.php:295
+#: classes/gateways/class.dmrfidgateway_paypal.php:178
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:402
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:202 pages/checkout.php:295
 msgid "Check Out with PayPal"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:408
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208 pages/checkout.php:713
+#: classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:408
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208 pages/checkout.php:713
 msgid "Submit and Check Out"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:408
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
-#: classes/gateways/class.pmprogateway_twocheckout.php:214 pages/checkout.php:713
+#: classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:408
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:214 pages/checkout.php:713
 msgid "Submit and Confirm"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:605
-#: classes/gateways/class.pmprogateway_paypalexpress.php:740
-#: classes/gateways/class.pmprogateway_paypalstandard.php:466
+#: classes/gateways/class.dmrfidgateway_paypal.php:605
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:740
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:466
 msgid ""
 "Please contact the site owner or cancel your subscription from within PayPal to "
 "make sure you are not charged going forward."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:63
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:63
 #: paid-memberships-pro.php:119
 msgid "PayPal Express"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:163
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:163
 msgid "To fully integrate with PayPal, be sure to set your IPN Handler URL to "
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:268
-#: classes/gateways/class.pmprogateway_paypalexpress.php:320
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:268
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:320
 msgid "The PayPal Token was lost."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:60
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:60
 #: paid-memberships-pro.php:122
 msgid "PayPal Standard"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:157
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:157
 msgid ""
 "Here is your IPN URL for reference. You SHOULD NOT set this in your PayPal settings."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:94 paid-memberships-pro.php:118
+#: classes/gateways/class.dmrfidgateway_stripe.php:94 paid-memberships-pro.php:118
 msgid "Stripe"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:149
+#: classes/gateways/class.dmrfidgateway_stripe.php:149
 msgid "Stripe Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:154
+#: classes/gateways/class.dmrfidgateway_stripe.php:154
 msgid "Secret Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:162
+#: classes/gateways/class.dmrfidgateway_stripe.php:162
 msgid "Publishable Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:170
+#: classes/gateways/class.dmrfidgateway_stripe.php:170
 msgid "Show Billing Address Fields"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:177
+#: classes/gateways/class.dmrfidgateway_stripe.php:177
 msgid ""
 "Stripe doesn't require billing address fields. Choose 'No' to hide them on the "
 "checkout page.<br /><strong>If No, make sure you disable address verification in "
 "the Stripe dashboard settings.</strong>"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:185
+#: classes/gateways/class.dmrfidgateway_stripe.php:185
 msgid "To fully integrate with Stripe, be sure to set your Web Hook URL to"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:568
+#: classes/gateways/class.dmrfidgateway_stripe.php:568
 msgid "Subscription Updates"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:572
+#: classes/gateways/class.dmrfidgateway_stripe.php:572
 msgid ""
 "Subscription updates, allow you to change the member's subscription values at "
 "predefined times. Be sure to click Update Profile after making changes."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:574
+#: classes/gateways/class.dmrfidgateway_stripe.php:574
 msgid ""
 "Subscription updates, allow you to change the member's subscription values at "
 "predefined times. Be sure to click Update User after making changes."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:579 pages/billing.php:338
+#: classes/gateways/class.dmrfidgateway_stripe.php:579 pages/billing.php:338
 msgid "Update"
 msgstr "﻿Päivitä"
 
-#: classes/gateways/class.pmprogateway_stripe.php:770
+#: classes/gateways/class.dmrfidgateway_stripe.php:770
 msgid "Could not cancel the old subscription. Updates have not been processed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:1204
+#: classes/gateways/class.dmrfidgateway_stripe.php:1204
 msgid "Error creating customer record with Stripe:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:1261
-#: classes/gateways/class.pmprogateway_stripe.php:1411
+#: classes/gateways/class.dmrfidgateway_stripe.php:1261
+#: classes/gateways/class.dmrfidgateway_stripe.php:1411
 msgid "Error creating plan with Stripe:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:1442
+#: classes/gateways/class.dmrfidgateway_stripe.php:1442
 msgid "Error subscribing customer to plan with Stripe:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:1538
+#: classes/gateways/class.dmrfidgateway_stripe.php:1538
 msgid "Could not cancel old subscription."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:1555
+#: classes/gateways/class.dmrfidgateway_stripe.php:1555
 msgid "Could not find the customer."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:60
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:60
 #: paid-memberships-pro.php:125
 msgid "2Checkout"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:116
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:116
 msgid "2Checkout Settings"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:125
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:125
 msgid ""
 "Go to Account &raquo; User Management in 2Checkout and create a user with API "
 "Access and API Updating."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:134
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:134
 msgid "Password for the API user created."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:139
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:139
 msgid "API Private Key"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:143
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:143
 msgid ""
 "Go to API in 2Checkout and generate a new key pair. Paste the Private Key here."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:152
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:152
 msgid "Click on the profile icon in 2Checkout to find your Account Number."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:157
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:157
 msgid "Secret Word"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:161
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:161
 msgid ""
 "Go to Account &raquo; Site Management. Look under Checkout Options to find the "
 "Secret Word."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:166
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:166
 msgid "TwoCheckout INS URL"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:169
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:169
 msgid ""
 "To fully integrate with 2Checkout, be sure to use the following for your INS URL "
 "and Approved URL"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:214
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:214
 msgid "Check Out with 2Checkout"
 msgstr ""
 
@@ -2217,7 +2217,7 @@ msgid "<span class=\"ab-icon\"></span>Memberships"
 msgstr ""
 
 #: includes/adminpages.php:265
-msgid "View PMPro Documentation"
+msgid "View DmRFID Documentation"
 msgstr ""
 
 #: includes/adminpages.php:265
@@ -2594,7 +2594,7 @@ msgid "logout"
 msgstr "﻿uloskirjaus"
 
 #: pages/billing.php:25 pages/cancel.php:52 pages/invoice.php:109 pages/levels.php:13
-#: shortcodes/pmpro_account.php:44 shortcodes/pmpro_account.php:123
+#: shortcodes/dmrfid_account.php:44 shortcodes/dmrfid_account.php:123
 msgid "Level"
 msgstr "Taso"
 
@@ -2702,7 +2702,7 @@ msgstr "﻿Kyllä, peruuta tilini"
 msgid "No, keep my account"
 msgstr "﻿Ei, pidä tilini"
 
-#: pages/cancel.php:48 shortcodes/pmpro_account.php:40
+#: pages/cancel.php:48 shortcodes/dmrfid_account.php:40
 msgid "My Memberships"
 msgstr ""
 
@@ -2732,7 +2732,7 @@ msgstr ""
 #: pages/checkout.php:60
 #, php-format
 msgid ""
-"<p class=\"pmpro_level_discount_applied\">The <strong>%s</strong> code has been "
+"<p class=\"dmrfid_level_discount_applied\">The <strong>%s</strong> code has been "
 "applied to your order.</p>"
 msgstr ""
 
@@ -2904,7 +2904,7 @@ msgstr "Ilmainen"
 msgid "Select"
 msgstr "Valitse"
 
-#: pages/levels.php:57 shortcodes/pmpro_account.php:59
+#: pages/levels.php:57 shortcodes/dmrfid_account.php:59
 msgid "Renew"
 msgstr "Uusi"
 
@@ -3094,47 +3094,47 @@ msgid ""
 "user's membership is cancelled on your site if it should be."
 msgstr ""
 
-#: shortcodes/pmpro_account.php:45
+#: shortcodes/dmrfid_account.php:45
 msgid "Billing"
 msgstr "﻿Laskutus"
 
-#: shortcodes/pmpro_account.php:62
+#: shortcodes/dmrfid_account.php:62
 msgid "Update Billing Info"
 msgstr "﻿Päivitä laskutustiedot"
 
-#: shortcodes/pmpro_account.php:68
+#: shortcodes/dmrfid_account.php:68
 msgid "Change"
 msgstr "﻿Päivitä"
 
-#: shortcodes/pmpro_account.php:90
+#: shortcodes/dmrfid_account.php:90
 msgid "View all Membership Options"
 msgstr ""
 
-#: shortcodes/pmpro_account.php:99
+#: shortcodes/dmrfid_account.php:99
 msgid "My Account"
 msgstr "﻿Oma tili"
 
-#: shortcodes/pmpro_account.php:110
+#: shortcodes/dmrfid_account.php:110
 msgid "Edit Profile"
 msgstr "﻿Muokkaa profiilia"
 
-#: shortcodes/pmpro_account.php:111
+#: shortcodes/dmrfid_account.php:111
 msgid "Change Password"
 msgstr "﻿Muuta salasanasi"
 
-#: shortcodes/pmpro_account.php:118
+#: shortcodes/dmrfid_account.php:118
 msgid "Past Invoices"
 msgstr "﻿Edelliset laskut"
 
-#: shortcodes/pmpro_account.php:124
+#: shortcodes/dmrfid_account.php:124
 msgid "Amount"
 msgstr "Määrä"
 
-#: shortcodes/pmpro_account.php:152
+#: shortcodes/dmrfid_account.php:152
 msgid "View All Invoices"
 msgstr "﻿Näytä kaikki laskut"
 
-#: shortcodes/pmpro_account.php:159
+#: shortcodes/dmrfid_account.php:159
 msgid "Member Links"
 msgstr ""
 

@@ -5,7 +5,7 @@
  * @package blocks/account-invoices-section
  **/
 
-namespace PMPro\blocks\account_invoices_section;
+namespace DmRFID\blocks\account_invoices_section;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -24,7 +24,7 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  */
 function register_dynamic_block() {
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/account-invoices-section', [
+	register_block_type( 'dmrfid/account-invoices-section', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -35,5 +35,5 @@ function register_dynamic_block() {
  * @return string
  **/
 function render_dynamic_block() {
-	return pmpro_shortcode_account( array( 'sections' => 'invoices' ) );
+	return dmrfid_shortcode_account( array( 'sections' => 'invoices' ) );
 }

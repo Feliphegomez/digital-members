@@ -40,7 +40,7 @@ export default class Inspector extends Component {
                       help={ __( 'The level to link to for checkout button', 'paid-memberships-pro' ) }
                       value={ level }
                       onChange={ level => setAttributes( { level } ) }
-                      options={ window.pmpro.all_level_values_and_labels }
+                      options={ window.dmrfid.all_level_values_and_labels }
                   />
               </PanelBody>
               <PanelBody>

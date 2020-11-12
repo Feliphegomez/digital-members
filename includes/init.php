@@ -1,121 +1,121 @@
 <?php
 /*
-	Code that runs on the init, set_current_user, or wp hooks to set up PMPro
+	Code that runs on the init, set_current_user, or wp hooks to set up DmRFID
 */
 //init code
-function pmpro_init() {
+function dmrfid_init() {
 	require_once(DMRFID_DIR . '/includes/countries.php');
 	require_once(DMRFID_DIR . '/includes/states.php');
 	require_once(DMRFID_DIR . '/includes/currencies.php');
 
-	global $pmpro_pages, $pmpro_core_pages, $pmpro_ready, $pmpro_currencies, $pmpro_currency, $pmpro_currency_symbol;
-	$pmpro_pages = array();
-	$pmpro_pages["account"] = pmpro_getOption("account_page_id");
-	$pmpro_pages["billing"] = pmpro_getOption("billing_page_id");
-	$pmpro_pages["cancel"] = pmpro_getOption("cancel_page_id");
-	$pmpro_pages["checkout"] = pmpro_getOption("checkout_page_id");
-	$pmpro_pages["confirmation"] = pmpro_getOption("confirmation_page_id");
-	$pmpro_pages["invoice"] = pmpro_getOption("invoice_page_id");
-	$pmpro_pages["levels"] = pmpro_getOption("levels_page_id");
-	$pmpro_pages["login"] = pmpro_getOption("login_page_id");
-	$pmpro_pages["member_profile_edit"] = pmpro_getOption("member_profile_edit_page_id");
+	global $dmrfid_pages, $dmrfid_core_pages, $dmrfid_ready, $dmrfid_currencies, $dmrfid_currency, $dmrfid_currency_symbol;
+	$dmrfid_pages = array();
+	$dmrfid_pages["account"] = dmrfid_getOption("account_page_id");
+	$dmrfid_pages["billing"] = dmrfid_getOption("billing_page_id");
+	$dmrfid_pages["cancel"] = dmrfid_getOption("cancel_page_id");
+	$dmrfid_pages["checkout"] = dmrfid_getOption("checkout_page_id");
+	$dmrfid_pages["confirmation"] = dmrfid_getOption("confirmation_page_id");
+	$dmrfid_pages["invoice"] = dmrfid_getOption("invoice_page_id");
+	$dmrfid_pages["levels"] = dmrfid_getOption("levels_page_id");
+	$dmrfid_pages["login"] = dmrfid_getOption("login_page_id");
+	$dmrfid_pages["member_profile_edit"] = dmrfid_getOption("member_profile_edit_page_id");
 
 	//save this in case we want a clean version of the array with just the core pages
-	$pmpro_core_pages = $pmpro_pages;
+	$dmrfid_core_pages = $dmrfid_pages;
 
-	$pmpro_ready = pmpro_is_ready();
+	$dmrfid_ready = dmrfid_is_ready();
 
 	/**
 	 * This action is documented in /adminpages/pagesettings.php
 	 */
-	$extra_pages = apply_filters('pmpro_extra_page_settings', array());
+	$extra_pages = apply_filters('dmrfid_extra_page_settings', array());
 	foreach($extra_pages as $name => $page)
-		$pmpro_pages[$name] = pmpro_getOption($name . '_page_id');
+		$dmrfid_pages[$name] = dmrfid_getOption($name . '_page_id');
 
 
 	//set currency
-	$pmpro_currency = pmpro_getOption("currency");
-	if(!$pmpro_currency)
+	$dmrfid_currency = dmrfid_getOption("currency");
+	if(!$dmrfid_currency)
 	{
-		global $pmpro_default_currency;
-		$pmpro_currency = $pmpro_default_currency;
+		global $dmrfid_default_currency;
+		$dmrfid_currency = $dmrfid_default_currency;
 	}
 
 	//figure out what symbol to show for currency
-	if(!empty($pmpro_currencies[$pmpro_currency]) && is_array($pmpro_currencies[$pmpro_currency])) {
-		if ( isset( $pmpro_currencies[$pmpro_currency]['symbol'] ) ) {
-			$pmpro_currency_symbol = $pmpro_currencies[$pmpro_currency]['symbol'];
+	if(!empty($dmrfid_currencies[$dmrfid_currency]) && is_array($dmrfid_currencies[$dmrfid_currency])) {
+		if ( isset( $dmrfid_currencies[$dmrfid_currency]['symbol'] ) ) {
+			$dmrfid_currency_symbol = $dmrfid_currencies[$dmrfid_currency]['symbol'];
 		} else {
-			$pmpro_currency_symbol = '';
+			$dmrfid_currency_symbol = '';
 		}
-	} elseif(!empty($pmpro_currencies[$pmpro_currency]) && strpos($pmpro_currencies[$pmpro_currency], "(") !== false)
-		$pmpro_currency_symbol = pmpro_getMatches("/\((.*)\)/", $pmpro_currencies[$pmpro_currency], true);
+	} elseif(!empty($dmrfid_currencies[$dmrfid_currency]) && strpos($dmrfid_currencies[$dmrfid_currency], "(") !== false)
+		$dmrfid_currency_symbol = dmrfid_getMatches("/\((.*)\)/", $dmrfid_currencies[$dmrfid_currency], true);
 	else
-		$pmpro_currency_symbol = $pmpro_currency . " ";	//just use the code
+		$dmrfid_currency_symbol = $dmrfid_currency . " ";	//just use the code
 }
-add_action("init", "pmpro_init");
+add_action("init", "dmrfid_init");
 
 //this code runs after $post is set, but before template output
-function pmpro_wp()
+function dmrfid_wp()
 {
 	if(!is_admin())
 	{
-		global $post, $pmpro_pages, $pmpro_core_pages, $pmpro_page_name, $pmpro_page_id, $pmpro_body_classes;
+		global $post, $dmrfid_pages, $dmrfid_core_pages, $dmrfid_page_name, $dmrfid_page_id, $dmrfid_body_classes;
 
 		//no pages yet?
-		if(empty($pmpro_pages))
+		if(empty($dmrfid_pages))
 			return;
 
 		//run the appropriate preheader function
-		foreach($pmpro_core_pages as $pmpro_page_name => $pmpro_page_id)
+		foreach($dmrfid_core_pages as $dmrfid_page_name => $dmrfid_page_id)
 		{
-			if(!empty($post->post_content) && strpos($post->post_content, "[pmpro_" . $pmpro_page_name . "]") !== false)
+			if(!empty($post->post_content) && strpos($post->post_content, "[dmrfid_" . $dmrfid_page_name . "]") !== false)
 			{
 				//preheader
-				require_once(DMRFID_DIR . "/preheaders/" . $pmpro_page_name . ".php");
+				require_once(DMRFID_DIR . "/preheaders/" . $dmrfid_page_name . ".php");
 
 				//add class to body
-				$pmpro_body_classes[] = "pmpro-" . str_replace("_", "-", $pmpro_page_name);
+				$dmrfid_body_classes[] = "dmrfid-" . str_replace("_", "-", $dmrfid_page_name);
 
 				//shortcode
-				function pmpro_pages_shortcode($atts, $content=null, $code="")
+				function dmrfid_pages_shortcode($atts, $content=null, $code="")
 				{
-					global $pmpro_page_name;
-					$temp_content = pmpro_loadTemplate($pmpro_page_name, 'local', 'pages');
-					return apply_filters("pmpro_pages_shortcode_" . $pmpro_page_name, $temp_content);
+					global $dmrfid_page_name;
+					$temp_content = dmrfid_loadTemplate($dmrfid_page_name, 'local', 'pages');
+					return apply_filters("dmrfid_pages_shortcode_" . $dmrfid_page_name, $temp_content);
 				}
-				add_shortcode("pmpro_" . $pmpro_page_name, "pmpro_pages_shortcode");
+				add_shortcode("dmrfid_" . $dmrfid_page_name, "dmrfid_pages_shortcode");
 				break;	//only the first page found gets a shortcode replacement
 			}
-			elseif(!empty($pmpro_page_id) && is_page($pmpro_page_id))
+			elseif(!empty($dmrfid_page_id) && is_page($dmrfid_page_id))
 			{
 				//add class to body
-				$pmpro_body_classes[] = "pmpro-" . str_replace("_", "-", $pmpro_page_name);
+				$dmrfid_body_classes[] = "dmrfid-" . str_replace("_", "-", $dmrfid_page_name);
 				
 				//shortcode has params, but we still want to load the preheader
-				require_once(DMRFID_DIR . "/preheaders/" . $pmpro_page_name . ".php");
+				require_once(DMRFID_DIR . "/preheaders/" . $dmrfid_page_name . ".php");
 			}
 		}
 	}
 }
-add_action("wp", "pmpro_wp", 1);
+add_action("wp", "dmrfid_wp", 1);
 
 /*
-	Add PMPro page names to the BODY class.
+	Add DmRFID page names to the BODY class.
 */
-function pmpro_body_class($classes)
+function dmrfid_body_class($classes)
 {
-	global $pmpro_body_classes;
+	global $dmrfid_body_classes;
 
-	if(is_array($pmpro_body_classes))
-		$classes = array_merge($pmpro_body_classes, $classes);
+	if(is_array($dmrfid_body_classes))
+		$classes = array_merge($dmrfid_body_classes, $classes);
 
 	return $classes;
 }
-add_filter("body_class", "pmpro_body_class");
+add_filter("body_class", "dmrfid_body_class");
 
 //add membership level to current user object
-function pmpro_set_current_user()
+function dmrfid_set_current_user()
 {
 	//this code runs at the beginning of the plugin
 	global $current_user, $wpdb;
@@ -123,20 +123,20 @@ function pmpro_set_current_user()
 	$id = intval($current_user->ID);
 	if($id)
 	{
-		$current_user->membership_level = pmpro_getMembershipLevelForUser($current_user->ID);
+		$current_user->membership_level = dmrfid_getMembershipLevelForUser($current_user->ID);
 		if(!empty($current_user->membership_level))
 		{
-			$current_user->membership_level->categories = pmpro_getMembershipCategories($current_user->membership_level->ID);
+			$current_user->membership_level->categories = dmrfid_getMembershipCategories($current_user->membership_level->ID);
 		}
-		$current_user->membership_levels = pmpro_getMembershipLevelsForUser($current_user->ID);
+		$current_user->membership_levels = dmrfid_getMembershipLevelsForUser($current_user->ID);
 	}
 
 	//hiding ads?
-	$hideads = pmpro_getOption("hideads");
-	$hideadslevels = pmpro_getOption("hideadslevels");
+	$hideads = dmrfid_getOption("hideads");
+	$hideadslevels = dmrfid_getOption("hideadslevels");
 	if(!is_array($hideadslevels))
 		$hideadslevels = explode(",", $hideadslevels);
-	if($hideads == 1 && pmpro_hasMembershipLevel() || $hideads == 2 && pmpro_hasMembershipLevel($hideadslevels))
+	if($hideads == 1 && dmrfid_hasMembershipLevel() || $hideads == 2 && dmrfid_hasMembershipLevel($hideadslevels))
 	{
 		//disable ads in ezAdsense
 		if(class_exists("ezAdSense"))
@@ -155,39 +155,39 @@ function pmpro_set_current_user()
 		}
 
 		//set a global variable to hide ads
-		global $pmpro_display_ads;
-		$pmpro_display_ads = false;
+		global $dmrfid_display_ads;
+		$dmrfid_display_ads = false;
 	}
 	else
 	{
-		global $pmpro_display_ads;
-		$pmpro_display_ads = true;
+		global $dmrfid_display_ads;
+		$dmrfid_display_ads = true;
 	}
 
-	do_action("pmpro_after_set_current_user");
+	do_action("dmrfid_after_set_current_user");
 }
-add_action('set_current_user', 'pmpro_set_current_user');
-add_action('init', 'pmpro_set_current_user');
+add_action('set_current_user', 'dmrfid_set_current_user');
+add_action('init', 'dmrfid_set_current_user');
 
 /*
  * Add Membership Level to Users page in WordPress dashboard.
  */
-function pmpro_manage_users_columns($columns) {
-    $columns['pmpro_membership_level'] = __('Membership Level', 'paid-memberships-pro' );
+function dmrfid_manage_users_columns($columns) {
+    $columns['dmrfid_membership_level'] = __('Membership Level', 'paid-memberships-pro' );
     return $columns;
 }
 
-function pmpro_sortable_column($columns)
+function dmrfid_sortable_column($columns)
 {
-	// $columns['pmpro_membership_level'] = ['level', 'desc'];
-	$columns['pmpro_membership_level'] = array( 'level', 'desc' );
+	// $columns['dmrfid_membership_level'] = ['level', 'desc'];
+	$columns['dmrfid_membership_level'] = array( 'level', 'desc' );
 	return $columns;
 }
 
-function pmpro_manage_users_custom_column($column_data, $column_name, $user_id) {
+function dmrfid_manage_users_custom_column($column_data, $column_name, $user_id) {
 
-    if($column_name == 'pmpro_membership_level') {
-        $levels = pmpro_getMembershipLevelsForUser($user_id);
+    if($column_name == 'dmrfid_membership_level') {
+        $levels = dmrfid_getMembershipLevelsForUser($user_id);
         $level_names = array();
         if(!empty($levels)) {
             foreach($levels as $key => $level)
@@ -200,19 +200,19 @@ function pmpro_manage_users_custom_column($column_data, $column_name, $user_id) 
     return $column_data;
 }
 
-function pmpro_sortable_column_query($query) {
+function dmrfid_sortable_column_query($query) {
     global $wpdb;
 
 	$vars = $query->query_vars;
 
 	if($vars['orderby'] == 'level'){
-		$query->query_from .= " LEFT JOIN {$wpdb->prefix}pmpro_memberships_users AS pmpro_mu ON {$wpdb->prefix}users.ID = pmpro_mu.user_id AND pmpro_mu.status = 'active'";
-		$query->query_orderby = "ORDER BY pmpro_mu.membership_id " . $vars['order'] . ", {$wpdb->prefix}users.user_registered";
+		$query->query_from .= " LEFT JOIN {$wpdb->prefix}dmrfid_memberships_users AS dmrfid_mu ON {$wpdb->prefix}users.ID = dmrfid_mu.user_id AND dmrfid_mu.status = 'active'";
+		$query->query_orderby = "ORDER BY dmrfid_mu.membership_id " . $vars['order'] . ", {$wpdb->prefix}users.user_registered";
 	}
 
 }
 
-add_filter('manage_users_columns', 'pmpro_manage_users_columns');
-add_filter('manage_users_custom_column', 'pmpro_manage_users_custom_column', 10, 3);
-add_filter( 'manage_users_sortable_columns', 'pmpro_sortable_column' );
-add_action('pre_user_query','pmpro_sortable_column_query');
+add_filter('manage_users_columns', 'dmrfid_manage_users_columns');
+add_filter('manage_users_custom_column', 'dmrfid_manage_users_custom_column', 10, 3);
+add_filter( 'manage_users_sortable_columns', 'dmrfid_sortable_column' );
+add_action('pre_user_query','dmrfid_sortable_column_query');

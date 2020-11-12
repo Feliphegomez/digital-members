@@ -1,6 +1,6 @@
 <?php
 
-	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_memberslistcsv")))
+	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_memberslistcsv")))
 	{
 		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
 	}
@@ -24,13 +24,13 @@
 	 *                4000 records: ~70-100 MB of addl. memory (memory_limit needs to be >= 256MB)
 	 *                6000 records: ~100-140 MB of addl. memory (memory_limit needs to be >= 256MB)
 	 *
-	 * NOTE: Use the pmpro_before_members_list_csv_export hook to increase memory "on-the-fly"
-	 *       Can reset with the pmpro_after_members_list_csv_export hook
+	 * NOTE: Use the dmrfid_before_members_list_csv_export hook to increase memory "on-the-fly"
+	 *       Can reset with the dmrfid_after_members_list_csv_export hook
 	 *
 	 * @since 1.8.7
 	 */
 	//set the number of users we'll load to try and protect ourselves from OOM errors
-	$max_users_per_loop = apply_filters('pmpro_set_max_user_per_export_loop', 2000);
+	$max_users_per_loop = apply_filters('dmrfid_set_max_user_per_export_loop', 2000);
 
 	global $wpdb;
 
@@ -100,15 +100,15 @@
 		array("metavalues", "first_name"),
 		array("metavalues", "last_name"),
 		array("theuser", "user_email"),
-		array("metavalues", "pmpro_bfirstname"),
-		array("metavalues", "pmpro_blastname"),
-		array("metavalues", "pmpro_baddress1"),
-		array("metavalues", "pmpro_baddress2"),
-		array("metavalues", "pmpro_bcity"),
-		array("metavalues", "pmpro_bstate"),
-		array("metavalues", "pmpro_bzipcode"),
-		array("metavalues", "pmpro_bcountry"),
-		array("metavalues", "pmpro_bphone"),
+		array("metavalues", "dmrfid_bfirstname"),
+		array("metavalues", "dmrfid_blastname"),
+		array("metavalues", "dmrfid_baddress1"),
+		array("metavalues", "dmrfid_baddress2"),
+		array("metavalues", "dmrfid_bcity"),
+		array("metavalues", "dmrfid_bstate"),
+		array("metavalues", "dmrfid_bzipcode"),
+		array("metavalues", "dmrfid_bcountry"),
+		array("metavalues", "dmrfid_bphone"),
 		array("theuser", "membership"),
 		array("theuser", "initial_payment"),
 		array("theuser", "billing_amount"),
@@ -119,13 +119,13 @@
 	);
 
 	//filter
-	$default_columns = apply_filters("pmpro_members_list_csv_default_columns", $default_columns);
+	$default_columns = apply_filters("dmrfid_members_list_csv_default_columns", $default_columns);
 
 	//set the preferred date format:
-	$dateformat = apply_filters("pmpro_memberslist_csv_dateformat","Y-m-d");
+	$dateformat = apply_filters("dmrfid_memberslist_csv_dateformat","Y-m-d");
 
 	//any extra columns
-	$extra_columns = apply_filters("pmpro_members_list_csv_extra_columns", array());
+	$extra_columns = apply_filters("dmrfid_members_list_csv_extra_columns", array());
 	if(!empty($extra_columns))
 	{
 		foreach($extra_columns as $heading => $callback)
@@ -134,7 +134,7 @@
 		}
 	}
 
-	$csv_file_header = apply_filters("pmpro_members_list_csv_heading", $csv_file_header);
+	$csv_file_header = apply_filters("dmrfid_members_list_csv_heading", $csv_file_header);
 	$csv_file_header .= "\n";
 
 	//generate SQL for list of users to process
@@ -146,15 +146,15 @@
 	if ($s)
 		$sqlQuery .= "LEFT JOIN {$wpdb->usermeta} um ON u.ID = um.user_id ";
 
-	$sqlQuery .= "LEFT JOIN {$wpdb->pmpro_memberships_users} mu ON u.ID = mu.user_id ";
-	$sqlQuery .= "LEFT JOIN {$wpdb->pmpro_membership_levels} m ON mu.membership_id = m.id ";
+	$sqlQuery .= "LEFT JOIN {$wpdb->dmrfid_memberships_users} mu ON u.ID = mu.user_id ";
+	$sqlQuery .= "LEFT JOIN {$wpdb->dmrfid_membership_levels} m ON mu.membership_id = m.id ";
 
 	$former_members = in_array($l, array( "oldmembers", "expired", "cancelled"));
 	$former_member_join = null;
 
 	if($former_members)
 	{
-		$former_member_join = "LEFT JOIN {$wpdb->pmpro_memberships_users} mu2 ON u.ID = mu2.user_id AND mu2.status = 'active' ";
+		$former_member_join = "LEFT JOIN {$wpdb->dmrfid_memberships_users} mu2 ON u.ID = mu2.user_id AND mu2.status = 'active' ";
 		$sqlQuery .= $former_member_join;
 	}
 
@@ -206,11 +206,11 @@
 	* Filter to change/manipulate the SQL for the list of members export
 	* @since v1.9.0    Re-introduced
 	*/
-	$sqlQuery = apply_filters('pmpro_members_list_sql', $sqlQuery);
+	$sqlQuery = apply_filters('dmrfid_members_list_sql', $sqlQuery);
 
 	// Generate a temporary file to store the data in.
 	$tmp_dir = sys_get_temp_dir();
-	$filename = tempnam( $tmp_dir, 'pmpro_ml_');
+	$filename = tempnam( $tmp_dir, 'dmrfid_ml_');
 
 	// open in append mode
 	$csv_fh = fopen($filename, 'a');
@@ -225,7 +225,7 @@
 	if (empty($theusers)) {
 
 		// send the data to the remote browser
-		pmpro_transmit_content($csv_fh, $filename, $headers);
+		dmrfid_transmit_content($csv_fh, $filename, $headers);
 	}
 
 	$users_found = count($theusers);
@@ -236,7 +236,7 @@
 		$pre_action_memory = memory_get_usage(true);
 	}
 
-	do_action('pmpro_before_members_list_csv_export', $theusers);
+	do_action('dmrfid_before_members_list_csv_export', $theusers);
 
 	$i_start = 0;
 	$i_limit = 0;
@@ -322,8 +322,8 @@
 				m.name as membership
 			FROM {$wpdb->users} u
 			LEFT JOIN {$wpdb->usermeta} um ON u.ID = um.user_id
-			LEFT JOIN {$wpdb->pmpro_memberships_users} mu ON u.ID = mu.user_id
-			LEFT JOIN {$wpdb->pmpro_membership_levels} m ON mu.membership_id = m.id
+			LEFT JOIN {$wpdb->dmrfid_memberships_users} mu ON u.ID = mu.user_id
+			LEFT JOIN {$wpdb->dmrfid_membership_levels} m ON mu.membership_id = m.id
 			{$former_member_join}
 			WHERE u.ID BETWEEN %d AND %d AND mu.membership_id > 0 {$filter} {$search}
 			GROUP BY u.ID
@@ -368,8 +368,8 @@
 				SELECT
 					c.id,
 					c.code
-				FROM {$wpdb->pmpro_discount_codes_uses} cu
-				LEFT JOIN $wpdb->pmpro_discount_codes c ON cu.code_id = c.id
+				FROM {$wpdb->dmrfid_discount_codes_uses} cu
+				LEFT JOIN $wpdb->dmrfid_discount_codes c ON cu.code_id = c.id
 				WHERE cu.user_id = %d
 				ORDER BY c.id DESC
 				LIMIT 1",
@@ -397,23 +397,23 @@
 				{
 					//checking $object->property. note the double $$
 					$val = isset(${$col[0]}->{$col[1]}) ? ${$col[0]}->{$col[1]} : null;
-					array_push($csvoutput, pmpro_enclose($val));	//output the value
+					array_push($csvoutput, dmrfid_enclose($val));	//output the value
 				}
 			}
 
 			//joindate and enddate
-			array_push($csvoutput, pmpro_enclose(date($dateformat, $theuser->joindate)));
+			array_push($csvoutput, dmrfid_enclose(date($dateformat, $theuser->joindate)));
 
 			if($theuser->membership_id)
 			{
 				if($theuser->enddate)
-					array_push($csvoutput, pmpro_enclose(apply_filters("pmpro_memberslist_expires_column", date_i18n($dateformat, $theuser->enddate), $theuser)));
+					array_push($csvoutput, dmrfid_enclose(apply_filters("dmrfid_memberslist_expires_column", date_i18n($dateformat, $theuser->enddate), $theuser)));
 				else
-					array_push($csvoutput, pmpro_enclose(apply_filters("pmpro_memberslist_expires_column", "Never", $theuser)));
+					array_push($csvoutput, dmrfid_enclose(apply_filters("dmrfid_memberslist_expires_column", "Never", $theuser)));
 			}
 			elseif($l == "oldmembers" && $theuser->enddate)
 			{
-				array_push($csvoutput, pmpro_enclose(date($dateformat, $theuser->enddate)));
+				array_push($csvoutput, dmrfid_enclose(date($dateformat, $theuser->enddate)));
 			}
 			else
 				array_push($csvoutput, "N/A");
@@ -425,7 +425,7 @@
 				{
 					$val = call_user_func($callback, $theuser, $heading);
 					$val = !empty($val) ? $val : null;
-					array_push( $csvoutput, pmpro_enclose($val) );
+					array_push( $csvoutput, dmrfid_enclose($val) );
 				}
 			}
 
@@ -498,17 +498,17 @@
 	$usr_data = null;
 
 	// send the data to the remote browser
-	pmpro_transmit_content($csv_fh, $filename, $headers);
+	dmrfid_transmit_content($csv_fh, $filename, $headers);
 
 	exit;
 
-	function pmpro_enclose($s)
+	function dmrfid_enclose($s)
 	{
 		return "\"" . str_replace("\"", "\\\"", $s) . "\"";
 	}
 
 	// responsible for trasnmitting content of file to remote browser
-	function pmpro_transmit_content( $csv_fh, $filename, $headers = array() ) {
+	function dmrfid_transmit_content( $csv_fh, $filename, $headers = array() ) {
 
 		//close the temp file
 		fclose($csv_fh);
@@ -565,6 +565,6 @@
 		}
 
 		//allow user to clean up after themselves
-		do_action('pmpro_after_members_list_csv_export');
+		do_action('dmrfid_after_members_list_csv_export');
 		exit;
 	}

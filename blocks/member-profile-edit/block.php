@@ -5,7 +5,7 @@
  * @package blocks/membership
  **/
 
-namespace PMPro\blocks\membership_profile_edit;
+namespace DmRFID\blocks\membership_profile_edit;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -26,7 +26,7 @@ function register_dynamic_block() {
 
 	// Hook server side rendering into render callback.
 	register_block_type(
-		'pmpro/member-profile-edit',
+		'dmrfid/member-profile-edit',
 		array(
 			'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 		)
@@ -41,8 +41,8 @@ function register_dynamic_block() {
  **/
 function render_dynamic_block( $attributes ) {
 	if ( function_exists( 'apply_shortcodes' ) ) {
-		return apply_shortcodes( '[pmpro_member_profile_edit]' );
+		return apply_shortcodes( '[dmrfid_member_profile_edit]' );
 	} else {
-		return do_shortcode( '[pmpro_member_profile_edit]' );
+		return do_shortcode( '[dmrfid_member_profile_edit]' );
 	}
 }

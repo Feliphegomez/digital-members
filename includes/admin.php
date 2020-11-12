@@ -9,34 +9,34 @@ require_once( DMRFID_DIR . '/includes/lib/SendWP/sendwp.php' );
  *
  * @since 1.10
  */
-function pmpro_admin_init_redirect_to_dashboard() {
+function dmrfid_admin_init_redirect_to_dashboard() {
 	// Can the current user view the dashboard?
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
 
 	// Check if we should redirect to the dashboard
-	$pmpro_dashboard_version = get_option( 'pmpro_dashboard_version', 0 );
-	if ( version_compare( $pmpro_dashboard_version, DMRFID_VERSION ) < 0 ) {
-		update_option( 'pmpro_dashboard_version', DMRFID_VERSION, 'no' );
-		wp_redirect( admin_url( 'admin.php?page=pmpro-dashboard' ) );
+	$dmrfid_dashboard_version = get_option( 'dmrfid_dashboard_version', 0 );
+	if ( version_compare( $dmrfid_dashboard_version, DMRFID_VERSION ) < 0 ) {
+		update_option( 'dmrfid_dashboard_version', DMRFID_VERSION, 'no' );
+		wp_redirect( admin_url( 'admin.php?page=dmrfid-dashboard' ) );
 		exit;
 	}
 }
-add_action( 'admin_init', 'pmpro_admin_init_redirect_to_dashboard' );
+add_action( 'admin_init', 'dmrfid_admin_init_redirect_to_dashboard' );
 
 /**
  * Block Subscibers from accessing the WordPress Dashboard.
  *
  * @since 2.3.4
  */
-function pmpro_block_dashboard_redirect() {
-	if ( pmpro_block_dashboard() ) {
-		wp_redirect( pmpro_url( 'account' ) );
+function dmrfid_block_dashboard_redirect() {
+	if ( dmrfid_block_dashboard() ) {
+		wp_redirect( dmrfid_url( 'account' ) );
 		exit;
 	}
 }
-add_action( 'admin_init', 'pmpro_block_dashboard_redirect', 9 );
+add_action( 'admin_init', 'dmrfid_block_dashboard_redirect', 9 );
 
 /**
  * Is the current user blocked from the dashboard
@@ -44,10 +44,10 @@ add_action( 'admin_init', 'pmpro_block_dashboard_redirect', 9 );
  *
  * @since 2.3
  */
-function pmpro_block_dashboard() {
+function dmrfid_block_dashboard() {
 	global $current_user;
 
-	$block_dashboard = pmpro_getOption( 'block_dashboard' );
+	$block_dashboard = dmrfid_getOption( 'block_dashboard' );
 
 	if ( ! wp_doing_ajax()
 			&& ! empty( $block_dashboard )
@@ -59,7 +59,7 @@ function pmpro_block_dashboard() {
 	} else {
 		$block = false;
 	}	
-	$block = apply_filters( 'pmpro_block_dashboard', $block );
+	$block = apply_filters( 'dmrfid_block_dashboard', $block );
 
 	return $block;
 }

@@ -9,15 +9,15 @@
  * Member Login Widget for Digital Members RFID
  *
  */
-class PMPro_Widget_Member_Login extends WP_Widget {
+class DmRFID_Widget_Member_Login extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array(
-			'classname'   => 'widget_pmpro_member_login',
+			'classname'   => 'widget_dmrfid_member_login',
 			'description' => __( 'Display a login form and optional "Logged In" member content.', 'paid-memberships-pro' ),
 		);
-		parent::__construct( 'pmpro-member-login', esc_html__( 'Log In - PMPro', 'paid-memberships-pro' ), $widget_ops );
-		$this->alt_option_name = 'widget_pmpro_member_login';
+		parent::__construct( 'dmrfid-member-login', esc_html__( 'Log In - DmRFID', 'paid-memberships-pro' ), $widget_ops );
+		$this->alt_option_name = 'widget_dmrfid_member_login';
 
 		add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( $this, 'flush_widget_cache' ) );
@@ -27,7 +27,7 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 	function widget( $args, $instance ) {
 		$cache = array();
 		if ( ! $this->is_preview() ) {
-			$cache = wp_cache_get( 'widget_pmpro_member_login', 'widget' );
+			$cache = wp_cache_get( 'widget_dmrfid_member_login', 'widget' );
 		}
 
 		if ( ! is_array( $cache ) ) {
@@ -58,7 +58,7 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 
 		<?php
 			// Display the widget if there is anything to show.			
-			$content = pmpro_login_forms_handler( $show_menu, $show_logout_link, $display_if_logged_in, 'widget', false );			
+			$content = dmrfid_login_forms_handler( $show_menu, $show_logout_link, $display_if_logged_in, 'widget', false );			
 			if ( ! empty( $content ) ) {
 				echo $before_widget;
 				echo $content;
@@ -68,7 +68,7 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 			
 		<?php if ( ! $this->is_preview() ) {
 			$cache[ $args['widget_id'] ] = ob_get_flush();
-			wp_cache_set( 'widget_pmpro_member_login', $cache, 'widget' );
+			wp_cache_set( 'widget_dmrfid_member_login', $cache, 'widget' );
 		} else {
 			ob_end_flush();
 		}
@@ -83,15 +83,15 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset( $alloptions['widget_pmpro_member_login'] ) ) {
-			delete_option( 'widget_pmpro_member_login' );
+		if ( isset( $alloptions['widget_dmrfid_member_login'] ) ) {
+			delete_option( 'widget_dmrfid_member_login' );
 		}
 
 		return $instance;
 	}
 
 	function flush_widget_cache() {
-		wp_cache_delete( 'widget_pmpro_member_login', 'widget' );
+		wp_cache_delete( 'widget_dmrfid_member_login', 'widget' );
 	}
 
 	function form( $instance ) { 
@@ -121,7 +121,7 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 					'title' => array(),
 				),
 			);
-			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Digital Members RFID - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'paid-memberships-pro' ), $allowed_nav_menus_link_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-nav-menus/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
+			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Digital Members RFID - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'paid-memberships-pro' ), $allowed_nav_menus_link_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-nav-menus/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
 	}
 }
 /* End Member Login Widget */
@@ -129,7 +129,7 @@ class PMPro_Widget_Member_Login extends WP_Widget {
 /**
  * Register the Widgets
  */
-function pmpro_register_widgets() {
-	register_widget( 'PMPro_Widget_Member_Login' );
+function dmrfid_register_widgets() {
+	register_widget( 'DmRFID_Widget_Member_Login' );
 }
-add_action( 'widgets_init', 'pmpro_register_widgets' );
+add_action( 'widgets_init', 'dmrfid_register_widgets' );

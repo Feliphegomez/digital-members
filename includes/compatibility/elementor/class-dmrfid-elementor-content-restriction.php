@@ -4,14 +4,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use Elementor\Controls_Manager;
 
-class PMPro_Elementor_Content_Restriction extends PMPro_Elementor {
+class DmRFID_Elementor_Content_Restriction extends DmRFID_Elementor {
 	protected function content_restriction() {
 		// Setup controls
 		$this->register_controls();
 
 		// Filter elementor render_content hook
-		add_action( 'elementor/widget/render_content', array( $this, 'pmpro_elementor_render_content' ), 10, 2 );
-		add_action( 'elementor/frontend/section/should_render', array( $this, 'pmpro_elementor_should_render' ), 10, 2 );
+		add_action( 'elementor/widget/render_content', array( $this, 'dmrfid_elementor_render_content' ), 10, 2 );
+		add_action( 'elementor/frontend/section/should_render', array( $this, 'dmrfid_elementor_should_render' ), 10, 2 );
 
 	}
 
@@ -25,7 +25,7 @@ class PMPro_Elementor_Content_Restriction extends PMPro_Elementor {
 	// Define controls
 	public function add_controls( $element, $args ) {
 		$element->add_control(
-			'pmpro_require_membership_heading', array(
+			'dmrfid_require_membership_heading', array(
 				'label'     => __( 'Require Membership Level', 'paid-memberships-pro' ),
 				'type'      => Controls_Manager::HEADING,
                 'separator' => 'before',
@@ -33,9 +33,9 @@ class PMPro_Elementor_Content_Restriction extends PMPro_Elementor {
 		);
 
 		$element->add_control(
-            'pmpro_require_membership', array(
+            'dmrfid_require_membership', array(
                 'type'        => Controls_Manager::SELECT2,
-                'options'     => pmpro_elementor_get_all_levels(),
+                'options'     => dmrfid_elementor_get_all_levels(),
                 'multiple'    => 'true',
 				'label_block' => 'true',
 				'description' => __( 'Require membership level to see this content.', 'paid-memberships-pro' ),
@@ -50,16 +50,16 @@ class PMPro_Elementor_Content_Restriction extends PMPro_Elementor {
 	 * @return boolean whether to show or hide section.
 	 * @since 2.3
 	 */
-	public function pmpro_elementor_should_render( $should_render, $element ) {
+	public function dmrfid_elementor_should_render( $should_render, $element ) {
 
 		// Don't hide content in editor mode.
 		if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
             return $should_render;
         }
 
-		$should_render = $this->pmpro_elementor_has_access( $element );
+		$should_render = $this->dmrfid_elementor_has_access( $element );
 
-		return apply_filters( 'pmpro_elementor_section_access', $should_render, $element );
+		return apply_filters( 'dmrfid_elementor_section_access', $should_render, $element );
 	}
 
 	/**
@@ -67,14 +67,14 @@ class PMPro_Elementor_Content_Restriction extends PMPro_Elementor {
 	 * @return string Returns the content set from Elementor.
 	 * @since 2.0
 	 */
-	public function pmpro_elementor_render_content( $content, $widget ){
+	public function dmrfid_elementor_render_content( $content, $widget ){
 
         // Don't hide content in editor mode.
         if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
             return $content;
         }
 
-		$show = $this->pmpro_elementor_has_access( $widget );
+		$show = $this->dmrfid_elementor_has_access( $widget );
 		
 		if ( ! $show ) {
 			$content = '';
@@ -88,25 +88,25 @@ class PMPro_Elementor_Content_Restriction extends PMPro_Elementor {
 	 * @return bool True or false based if the user has access to the content or not.
 	 * @since 2.3
 	 */
-	public function pmpro_elementor_has_access( $element ) {
+	public function dmrfid_elementor_has_access( $element ) {
 
 		$element_settings = $element->get_active_settings();
 
-		$restricted_levels = $element_settings['pmpro_require_membership'];
+		$restricted_levels = $element_settings['dmrfid_require_membership'];
 
 		// Just bail if the content isn't restricted at all.
 		if ( ! $restricted_levels ) {
 			return true;
 		}
 		
-		if ( ! pmpro_hasMembershipLevel( $restricted_levels ) ) {
+		if ( ! dmrfid_hasMembershipLevel( $restricted_levels ) ) {
 			$access = false;
 		} else {
 			$access = true;
 		}
 
-		return apply_filters( 'pmpro_elementor_has_access', $access, $element, $restricted_levels );
+		return apply_filters( 'dmrfid_elementor_has_access', $access, $element, $restricted_levels );
 	}
 }
 
-new PMPro_Elementor_Content_Restriction;
+new DmRFID_Elementor_Content_Restriction;

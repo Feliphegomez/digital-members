@@ -22,7 +22,7 @@ export default class Inspector extends Component {
     }
 
     render() {
-        const { attributes: { pmpro_default_level }, setAttributes } = this.props;
+        const { attributes: { dmrfid_default_level }, setAttributes } = this.props;
 
         return (
           <InspectorControls>
@@ -30,9 +30,9 @@ export default class Inspector extends Component {
              <SelectControl
                  label={ __( 'Membership Level', 'paid-memberships-pro' ) }
                  help={ __( 'Choose a default level for Membership Checkout.', 'paid-memberships-pro' ) }
-                 value={ pmpro_default_level }
-                 onChange={ pmpro_default_level => setAttributes( { pmpro_default_level } ) }
-                 options={ [''].concat( window.pmpro.all_level_values_and_labels ) }
+                 value={ dmrfid_default_level }
+                 onChange={ dmrfid_default_level => setAttributes( { dmrfid_default_level } ) }
+                 options={ [''].concat( window.dmrfid.all_level_values_and_labels ) }
              />
           </PanelBody>
           </InspectorControls>

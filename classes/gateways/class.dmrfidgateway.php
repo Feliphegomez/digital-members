@@ -1,6 +1,6 @@
 <?php	
-	//require_once(dirname(__FILE__) . "/class.pmprogateway.php");
-	class PMProGateway
+	//require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
+	class DmRFIDGateway
 	{
 		function __construct($gateway = NULL)
 		{
@@ -17,7 +17,7 @@
 				if($this->authorize($order))
 				{						
 					$this->void($order);										
-					if(!pmpro_isLevelTrial($order->membership_level))
+					if(!dmrfid_isLevelTrial($order->membership_level))
 					{
 						//subscription will start today with a 1 period trial
 						$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -46,7 +46,7 @@
 						$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 					}
 					
-					$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+					$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 					return $this->subscribe($order);
 				}
 				else
@@ -62,9 +62,9 @@
 				if($this->charge($order))
 				{							
 					//set up recurring billing					
-					if(pmpro_isLevelRecurring($order->membership_level))
+					if(dmrfid_isLevelRecurring($order->membership_level))
 					{						
-						if(!pmpro_isLevelTrial($order->membership_level))
+						if(!dmrfid_isLevelTrial($order->membership_level))
 						{
 							//subscription will start today with a 1 period trial
 							$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -93,7 +93,7 @@
 							$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 						}
 						
-						$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+						$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 						if($this->subscribe($order))
 						{
 							return true;
@@ -176,7 +176,7 @@
 				$order->code = $order->getRandomCode();
 			
 			//filter order before subscription. use with care.
-			$order = apply_filters("pmpro_subscribe_order", $order, $this);
+			$order = apply_filters("dmrfid_subscribe_order", $order, $this);
 						
 			//simulate a successful subscription processing
 			$order->status = "success";		

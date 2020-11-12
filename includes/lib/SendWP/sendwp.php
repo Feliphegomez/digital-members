@@ -15,7 +15,7 @@ function wp_ajax_paid_memberships_pro_sendwp_remote_install_handler () {
 
     // Verify nonce
     // Also check current user can install plugins
-    $security = check_ajax_referer('pmpro_sendwp_install_nonce', 'sendwp_nonce', false);
+    $security = check_ajax_referer('dmrfid_sendwp_install_nonce', 'sendwp_nonce', false);
     if ( ! $security ) {
         ob_end_clean();
         echo json_encode( array( 'error' => true, 'debug' => '!security') );
@@ -113,7 +113,7 @@ function paid_memberships_pro_sendwp_disconnect() {
     }
 
     // Check nonce same for installation
-    $security = check_ajax_referer('pmpro_sendwp_install_nonce', 'sendwp_nonce', false);
+    $security = check_ajax_referer('dmrfid_sendwp_install_nonce', 'sendwp_nonce', false);
 
     if ( ! $security ) {
         return;
@@ -138,15 +138,15 @@ function paid_memberships_pro_admin_enqueue_sendwp_installer() {
 
     //Register the JavaScript file
     wp_enqueue_script(
-        'pmpro_sendwp_installer', 
+        'dmrfid_sendwp_installer', 
         //@TODO Make sure this URL is correct
         plugins_url('installer.js', __FILE__)
     );
     // Print a nonce for the JavaScript to send back for verification
     // @todo verify text domain matches that of your plugin.
-    wp_localize_script('pmpro_sendwp_installer', 'paid_memberships_pro_sendwp_vars', array(
-        'nonce'  =>  wp_create_nonce( 'pmpro_sendwp_install_nonce' ),
-        'security_failed_message'    =>  esc_html__( 'Security failed to check pmpro_sendwp_install_nonce', 'paid-memberships-pro'),
+    wp_localize_script('dmrfid_sendwp_installer', 'paid_memberships_pro_sendwp_vars', array(
+        'nonce'  =>  wp_create_nonce( 'dmrfid_sendwp_install_nonce' ),
+        'security_failed_message'    =>  esc_html__( 'Security failed to check dmrfid_sendwp_install_nonce', 'paid-memberships-pro'),
         'user_capability_message'    =>  esc_html__( 'Ask an administrator for install_plugins capability', 'paid-memberships-pro'),
         'sendwp_connected_message'    =>  esc_html__( 'SendWP is already connected.', 'paid-memberships-pro'),
         ) 

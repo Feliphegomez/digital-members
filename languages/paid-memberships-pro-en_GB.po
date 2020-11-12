@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: pmpro\n"
+"Project-Id-Version: dmrfid\n"
 "POT-Creation-Date: 2014-01-31 10:16+0100\n"
 "PO-Revision-Date: 2014-01-31 10:20+0100\n"
 "Last-Translator: \n"
@@ -387,9 +387,9 @@ msgstr ""
 
 #: pages/invoice.php:33 pages/checkout.php:66 pages/checkout.php:76
 #: pages/checkout.php:577 pages/confirmation.php:52
-#: classes/class.pmproemail.php:228 classes/class.pmproemail.php:237
-#: classes/class.pmproemail.php:246 classes/class.pmproemail.php:325
-#: classes/class.pmproemail.php:334 classes/class.pmproemail.php:645
+#: classes/class.dmrfidemail.php:228 classes/class.dmrfidemail.php:237
+#: classes/class.dmrfidemail.php:246 classes/class.dmrfidemail.php:325
+#: classes/class.dmrfidemail.php:334 classes/class.dmrfidemail.php:645
 msgid "Discount Code"
 msgstr ""
 
@@ -553,7 +553,7 @@ msgstr ""
 #: pages/checkout.php:51
 #, php-format
 msgid ""
-"<p class=\"pmpro_level_discount_applied\">The <strong>%s</strong> code has "
+"<p class=\"dmrfid_level_discount_applied\">The <strong>%s</strong> code has "
 "been applied to your order.</p>"
 msgstr ""
 
@@ -894,228 +894,228 @@ msgid ""
 "active."
 msgstr ""
 
-#: classes/class.pmproemail.php:37
+#: classes/class.dmrfidemail.php:37
 #, php-format
 msgid "An Email From %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:122
+#: classes/class.dmrfidemail.php:122
 #, php-format
 msgid "Your membership at %s has been CANCELLED"
 msgstr ""
 
-#: classes/class.pmproemail.php:144
+#: classes/class.dmrfidemail.php:144
 #, php-format
 msgid "Membership for %s at %s has been CANCELLED"
 msgstr ""
 
-#: classes/class.pmproemail.php:175
+#: classes/class.dmrfidemail.php:175
 #, php-format
 msgid "Your membership confirmation for %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:253 classes/class.pmproemail.php:346
-#: classes/class.pmproemail.php:651
+#: classes/class.dmrfidemail.php:253 classes/class.dmrfidemail.php:346
+#: classes/class.dmrfidemail.php:651
 #, php-format
 msgid "This membership will expire on %s."
 msgstr ""
 
-#: classes/class.pmproemail.php:275
+#: classes/class.dmrfidemail.php:275
 #, php-format
 msgid "Member Checkout for %s at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:363
+#: classes/class.dmrfidemail.php:363
 #, php-format
 msgid "Your billing information has been udpated at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:416
+#: classes/class.dmrfidemail.php:416
 #, php-format
 msgid "Billing information has been udpated for %s at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:464
+#: classes/class.dmrfidemail.php:464
 #, php-format
 msgid "Membership Payment Failed at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:510
+#: classes/class.dmrfidemail.php:510
 #, php-format
 msgid "Membership Payment Failed For %s at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:557
+#: classes/class.dmrfidemail.php:557
 #, php-format
 msgid "Credit Card on File Expiring Soon at %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:605
+#: classes/class.dmrfidemail.php:605
 #, php-format
 msgid "INVOICE for %s membership"
 msgstr ""
 
-#: classes/class.pmproemail.php:676
+#: classes/class.dmrfidemail.php:676
 #, php-format
 msgid "Your trial at %s is ending soon"
 msgstr ""
 
-#: classes/class.pmproemail.php:710
+#: classes/class.dmrfidemail.php:710
 #, php-format
 msgid "Your membership at %s has ended"
 msgstr ""
 
-#: classes/class.pmproemail.php:735
+#: classes/class.dmrfidemail.php:735
 #, php-format
 msgid "Your membership at %s will end soon"
 msgstr ""
 
-#: classes/class.pmproemail.php:755
+#: classes/class.dmrfidemail.php:755
 #, php-format
 msgid "Your membership at %s has been changed"
 msgstr ""
 
-#: classes/class.pmproemail.php:759
+#: classes/class.dmrfidemail.php:759
 #, php-format
 msgid "The new level is %s."
 msgstr ""
 
-#: classes/class.pmproemail.php:761
+#: classes/class.dmrfidemail.php:761
 msgid "Your membership has been cancelled"
 msgstr ""
 
-#: classes/class.pmproemail.php:765 classes/class.pmproemail.php:803
+#: classes/class.dmrfidemail.php:765 classes/class.dmrfidemail.php:803
 #, php-format
 msgid "This membership will expire on %s"
 msgstr ""
 
-#: classes/class.pmproemail.php:769 classes/class.pmproemail.php:807
+#: classes/class.dmrfidemail.php:769 classes/class.dmrfidemail.php:807
 msgid "This membership does not expire"
 msgstr ""
 
-#: classes/class.pmproemail.php:793
+#: classes/class.dmrfidemail.php:793
 #, php-format
 msgid "Membership for %s at %s has been changed"
 msgstr ""
 
-#: classes/class.pmproemail.php:797
+#: classes/class.dmrfidemail.php:797
 #, php-format
 msgid "The new level is %s. This membership is free"
 msgstr ""
 
-#: classes/class.pmproemail.php:799
+#: classes/class.dmrfidemail.php:799
 msgid "membership has been cancelled"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_check.php:60
-#: classes/gateways/class.pmprogateway_paypal.php:27
-#: classes/gateways/class.pmprogateway_authorizenet.php:55
-#: classes/gateways/class.pmprogateway_payflowpro.php:27
-#: classes/gateways/class.pmprogateway_sagepay.php:81
-#: classes/gateways/class.pmprogateway.php:55
-#: classes/gateways/class.pmprogateway_cybersource.php:57
+#: classes/gateways/class.dmrfidgateway_check.php:60
+#: classes/gateways/class.dmrfidgateway_paypal.php:27
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:55
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:27
+#: classes/gateways/class.dmrfidgateway_sagepay.php:81
+#: classes/gateways/class.dmrfidgateway.php:55
+#: classes/gateways/class.dmrfidgateway_cybersource.php:57
 msgid "Unknown error: Authorization failed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_check.php:111
-#: classes/gateways/class.pmprogateway_check.php:116
-#: classes/gateways/class.pmprogateway_check.php:134
-#: classes/gateways/class.pmprogateway_paypal.php:50
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
-#: classes/gateways/class.pmprogateway_authorizenet.php:111
-#: classes/gateways/class.pmprogateway_authorizenet.php:128
-#: classes/gateways/class.pmprogateway_payflowpro.php:50
-#: classes/gateways/class.pmprogateway_payflowpro.php:55
-#: classes/gateways/class.pmprogateway_sagepay.php:140
-#: classes/gateways/class.pmprogateway_sagepay.php:145
-#: classes/gateways/class.pmprogateway_sagepay.php:168
-#: classes/gateways/class.pmprogateway.php:106
-#: classes/gateways/class.pmprogateway.php:111
-#: classes/gateways/class.pmprogateway.php:129
-#: classes/gateways/class.pmprogateway_cybersource.php:108
-#: classes/gateways/class.pmprogateway_cybersource.php:113
-#: classes/gateways/class.pmprogateway_cybersource.php:131
+#: classes/gateways/class.dmrfidgateway_check.php:111
+#: classes/gateways/class.dmrfidgateway_check.php:116
+#: classes/gateways/class.dmrfidgateway_check.php:134
+#: classes/gateways/class.dmrfidgateway_paypal.php:50
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:111
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:128
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:50
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:55
+#: classes/gateways/class.dmrfidgateway_sagepay.php:140
+#: classes/gateways/class.dmrfidgateway_sagepay.php:145
+#: classes/gateways/class.dmrfidgateway_sagepay.php:168
+#: classes/gateways/class.dmrfidgateway.php:106
+#: classes/gateways/class.dmrfidgateway.php:111
+#: classes/gateways/class.dmrfidgateway.php:129
+#: classes/gateways/class.dmrfidgateway_cybersource.php:108
+#: classes/gateways/class.dmrfidgateway_cybersource.php:113
+#: classes/gateways/class.dmrfidgateway_cybersource.php:131
 msgid "Unknown error: Payment failed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_check.php:118
-#: classes/gateways/class.pmprogateway_authorizenet.php:112
-#: classes/gateways/class.pmprogateway_sagepay.php:147
-#: classes/gateways/class.pmprogateway.php:113
-#: classes/gateways/class.pmprogateway_cybersource.php:115
+#: classes/gateways/class.dmrfidgateway_check.php:118
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:112
+#: classes/gateways/class.dmrfidgateway_sagepay.php:147
+#: classes/gateways/class.dmrfidgateway.php:113
+#: classes/gateways/class.dmrfidgateway_cybersource.php:115
 msgid ""
 "A partial payment was made that we could not void. Please contact the site "
 "owner immediately to correct this."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:61
-#: classes/gateways/class.pmprogateway_stripe.php:53
+#: classes/gateways/class.dmrfidgateway_braintree.php:61
+#: classes/gateways/class.dmrfidgateway_stripe.php:53
 msgid "Unknown error: Initial payment failed."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:120
+#: classes/gateways/class.dmrfidgateway_braintree.php:120
 msgid "Error during settlement:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:129
+#: classes/gateways/class.dmrfidgateway_braintree.php:129
 msgid "Error during charge:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:198
+#: classes/gateways/class.dmrfidgateway_braintree.php:198
 msgid "Failed to update customer."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:246
+#: classes/gateways/class.dmrfidgateway_braintree.php:246
 msgid "Failed to create customer."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:253
+#: classes/gateways/class.dmrfidgateway_braintree.php:253
 msgid "Error creating customer record with Braintree:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:344
+#: classes/gateways/class.dmrfidgateway_braintree.php:344
 msgid "Error subscribing customer to plan with Braintree:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:359
+#: classes/gateways/class.dmrfidgateway_braintree.php:359
 msgid "Failed to subscribe with Braintree:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_braintree.php:397
-#: classes/gateways/class.pmprogateway_braintree.php:410
-#: classes/gateways/class.pmprogateway_braintree.php:417
-#: classes/gateways/class.pmprogateway_stripe.php:344
-#: classes/gateways/class.pmprogateway_stripe.php:354
+#: classes/gateways/class.dmrfidgateway_braintree.php:397
+#: classes/gateways/class.dmrfidgateway_braintree.php:410
+#: classes/gateways/class.dmrfidgateway_braintree.php:417
+#: classes/gateways/class.dmrfidgateway_stripe.php:344
+#: classes/gateways/class.dmrfidgateway_stripe.php:354
 msgid "Could not find the subscription."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_paypal.php:57
-#: classes/gateways/class.pmprogateway_payflowpro.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:57
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:57
 msgid ""
 "A partial payment was made that we could not refund. Please contact the site "
 "owner immediately to correct this."
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:187
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:187
 #: adminpages/memberslist.php:151 adminpages/pagesettings.php:51
 #: adminpages/reports/login.php:143
 msgid "Membership"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:787
-#: classes/gateways/class.pmprogateway_authorizenet.php:788
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:787
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:788
 msgid "Could not connect to Authorize.net"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:192
+#: classes/gateways/class.dmrfidgateway_stripe.php:192
 msgid "Error creating customer record with Stripe:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:279
+#: classes/gateways/class.dmrfidgateway_stripe.php:279
 msgid "Error creating plan with Stripe:"
 msgstr ""
 
-#: classes/gateways/class.pmprogateway_stripe.php:295
+#: classes/gateways/class.dmrfidgateway_stripe.php:295
 msgid "Error subscribing customer to plan with Stripe:"
 msgstr ""
 
@@ -1263,7 +1263,7 @@ msgstr ""
 msgid ""
 "After saving this level, make note of the ID and create a \"Plan\" in your "
 "Braintree dashboard with the same settings and the \"Plan ID\" set to "
-"<em>pmpro_#</em>, where # is the level ID."
+"<em>dmrfid_#</em>, where # is the level ID."
 msgstr ""
 
 #: adminpages/membershiplevels.php:374
@@ -1860,7 +1860,7 @@ msgid ""
 "US only. If values are given, tax will be applied for any members ordering "
 "from the selected state.<br />For non-US or more complex tax rules, use the "
 "<a target=\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-"
-"taxes-paid-memberships-pro/\">pmpro_tax filter</a>."
+"taxes-paid-memberships-pro/\">dmrfid_tax filter</a>."
 msgstr ""
 
 #: adminpages/paymentsettings.php:469
@@ -2277,7 +2277,7 @@ msgstr ""
 #: adminpages/emailsettings.php:139
 msgid ""
 "Default WP notification email. (Recommended: Leave unchecked. Members will "
-"still get an email confirmation from PMPro after checkout.)"
+"still get an email confirmation from DmRFID after checkout.)"
 msgstr ""
 
 #: adminpages/advancedsettings.php:35

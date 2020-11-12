@@ -1,6 +1,6 @@
 <?php
 	//only admins can get this
-	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_advancedsettings")))
+	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_advancedsettings")))
 	{
 		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
 	}
@@ -8,7 +8,7 @@
 	global $wpdb, $msg, $msgt, $allowedposttags;
 
 	//check nonce for saving settings
-	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['pmpro_advancedsettings_nonce']) || !check_admin_referer('savesettings', 'pmpro_advancedsettings_nonce'))) {
+	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['dmrfid_advancedsettings_nonce']) || !check_admin_referer('savesettings', 'dmrfid_advancedsettings_nonce'))) {
 		$msg = -1;
 		$msgt = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
 		unset($_REQUEST['savesettings']);
@@ -18,49 +18,49 @@
 	if(!empty($_REQUEST['savesettings']))
 	{
 		// Dashboard settings.
-		pmpro_setOption( 'hide_toolbar' );
-		pmpro_setOption( 'block_dashboard' );
+		dmrfid_setOption( 'hide_toolbar' );
+		dmrfid_setOption( 'block_dashboard' );
 		
 		// Message settings.
 		// These use wp_kses for better security handling.
 		$nonmembertext = wp_kses(wp_unslash($_POST['nonmembertext']), $allowedposttags);
-		update_option('pmpro_nonmembertext', $nonmembertext);
+		update_option('dmrfid_nonmembertext', $nonmembertext);
 		
 		$notloggedintext = wp_kses(wp_unslash($_POST['notloggedintext']), $allowedposttags);
-		update_option('pmpro_notloggedintext', $notloggedintext);
+		update_option('dmrfid_notloggedintext', $notloggedintext);
 		
 		$rsstext = wp_kses(wp_unslash($_POST['rsstext']), $allowedposttags);
-		update_option('pmpro_rsstext', $rsstext);		
+		update_option('dmrfid_rsstext', $rsstext);		
 		
 		// Content settings.
-		pmpro_setOption("filterqueries");
-		pmpro_setOption("showexcerpts");		
+		dmrfid_setOption("filterqueries");
+		dmrfid_setOption("showexcerpts");		
 
 		// Checkout settings.
-		pmpro_setOption("tospage");
-		pmpro_setOption("recaptcha");
-		pmpro_setOption("recaptcha_version");
-		pmpro_setOption("recaptcha_publickey");
-		pmpro_setOption("recaptcha_privatekey");		
+		dmrfid_setOption("tospage");
+		dmrfid_setOption("recaptcha");
+		dmrfid_setOption("recaptcha_version");
+		dmrfid_setOption("recaptcha_publickey");
+		dmrfid_setOption("recaptcha_privatekey");		
 
 		// Communication settings.
-		pmpro_setOption("maxnotificationpriority");
-		pmpro_setOption("activity_email_frequency");
+		dmrfid_setOption("maxnotificationpriority");
+		dmrfid_setOption("activity_email_frequency");
 
 		// Other settings.
-		pmpro_setOption("hideads");
-		pmpro_setOption("hideadslevels");
-		pmpro_setOption("redirecttosubscription");
-		pmpro_setOption("uninstall");
+		dmrfid_setOption("hideads");
+		dmrfid_setOption("hideadslevels");
+		dmrfid_setOption("redirecttosubscription");
+		dmrfid_setOption("uninstall");
 
         /**
          * Filter to add custom settings to the advanced settings page.
          * @param array $settings Array of settings, each setting an array with keys field_name, field_type, label, description.
          */
-        $custom_settings = apply_filters('pmpro_custom_advanced_settings', array());
+        $custom_settings = apply_filters('dmrfid_custom_advanced_settings', array());
         foreach($custom_settings as $setting) {
         	if(!empty($setting['field_name']))
-        		pmpro_setOption($setting['field_name']);
+        		dmrfid_setOption($setting['field_name']);
         }
         
 		// Assume success.
@@ -69,55 +69,55 @@
 	}
 
 	// Dashboard settings.
-	$hide_toolbar = pmpro_getOption( 'hide_toolbar' );
-	$block_dashboard = pmpro_getOption( 'block_dashboard' );
+	$hide_toolbar = dmrfid_getOption( 'hide_toolbar' );
+	$block_dashboard = dmrfid_getOption( 'block_dashboard' );
 	
 	// Message settings.
-	$nonmembertext = pmpro_getOption("nonmembertext");
-	$notloggedintext = pmpro_getOption("notloggedintext");
-	$rsstext = pmpro_getOption("rsstext");
+	$nonmembertext = dmrfid_getOption("nonmembertext");
+	$notloggedintext = dmrfid_getOption("notloggedintext");
+	$rsstext = dmrfid_getOption("rsstext");
     
 	// Content settings.
-	$filterqueries = pmpro_getOption('filterqueries');
-	$showexcerpts = pmpro_getOption("showexcerpts");	
+	$filterqueries = dmrfid_getOption('filterqueries');
+	$showexcerpts = dmrfid_getOption("showexcerpts");	
 
 	// Checkout settings.
-	$tospage = pmpro_getOption("tospage");
-	$recaptcha = pmpro_getOption("recaptcha");
-	$recaptcha_version = pmpro_getOption("recaptcha_version");
-	$recaptcha_publickey = pmpro_getOption("recaptcha_publickey");
-	$recaptcha_privatekey = pmpro_getOption("recaptcha_privatekey");
+	$tospage = dmrfid_getOption("tospage");
+	$recaptcha = dmrfid_getOption("recaptcha");
+	$recaptcha_version = dmrfid_getOption("recaptcha_version");
+	$recaptcha_publickey = dmrfid_getOption("recaptcha_publickey");
+	$recaptcha_privatekey = dmrfid_getOption("recaptcha_privatekey");
 
 	// Communication settings.
-	$maxnotificationpriority = pmpro_getOption("maxnotificationpriority");
-	$activity_email_frequency = pmpro_getOption("activity_email_frequency");
+	$maxnotificationpriority = dmrfid_getOption("maxnotificationpriority");
+	$activity_email_frequency = dmrfid_getOption("activity_email_frequency");
 
 	// Other settings.
-	$hideads = pmpro_getOption("hideads");
-	$hideadslevels = pmpro_getOption("hideadslevels");
+	$hideads = dmrfid_getOption("hideads");
+	$hideadslevels = dmrfid_getOption("hideadslevels");
 	if( is_multisite() ) {
-		$redirecttosubscription = pmpro_getOption("redirecttosubscription");
+		$redirecttosubscription = dmrfid_getOption("redirecttosubscription");
 	}
-	$uninstall = pmpro_getOption('uninstall');
+	$uninstall = dmrfid_getOption('uninstall');
 
 	// Default settings.
 	if(!$nonmembertext)
 	{
 		$nonmembertext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Join Now</a>', 'paid-memberships-pro' ), "!!levels_page_url!!" );
-		pmpro_setOption("nonmembertext", $nonmembertext);
+		dmrfid_setOption("nonmembertext", $nonmembertext);
 	}
 	if(!$notloggedintext)
 	{
 		$notloggedintext = sprintf( __( 'This content is for !!levels!! members only.<br /><a href="%s">Log In</a> <a href="%s">Join Now</a>', 'paid-memberships-pro' ), '!!login_url!!', "!!levels_page_url!!" );
-		pmpro_setOption("notloggedintext", $notloggedintext);
+		dmrfid_setOption("notloggedintext", $notloggedintext);
 	}
 	if(!$rsstext)
 	{
 		$rsstext = __( 'This content is for members only. Visit the site and log in/register to read.', 'paid-memberships-pro' );
-		pmpro_setOption("rsstext", $rsstext);
+		dmrfid_setOption("rsstext", $rsstext);
 	}
 
-	$levels = $wpdb->get_results( "SELECT * FROM {$wpdb->pmpro_membership_levels}", OBJECT );
+	$levels = $wpdb->get_results( "SELECT * FROM {$wpdb->dmrfid_membership_levels}", OBJECT );
 
 	if ( empty( $activity_email_frequency ) ) {
 		$activity_email_frequency = 'week';
@@ -127,11 +127,11 @@
 ?>
 
 	<form action="" method="post" enctype="multipart/form-data">
-		<?php wp_nonce_field('savesettings', 'pmpro_advancedsettings_nonce');?>
+		<?php wp_nonce_field('savesettings', 'dmrfid_advancedsettings_nonce');?>
 		
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'Advanced Settings', 'paid-memberships-pro' ); ?></h1>
 		<hr class="wp-header-end">
-		<div class="pmpro_admin_section pmpro_admin_section-restrict-dashboard">
+		<div class="dmrfid_admin_section dmrfid_admin_section-restrict-dashboard">
 			<h2 class="title"><?php esc_html_e( 'Restrict Dashboard Access', 'paid-memberships-pro' ); ?></h2>
 			<table class="form-table">
 			<tbody>
@@ -153,9 +153,9 @@
 				</tr>
 			</tbody>
 			</table>
-		</div> <!-- end pmpro_admin_section-restrict-dashboard -->
+		</div> <!-- end dmrfid_admin_section-restrict-dashboard -->
 		<hr />
-		<div class="pmpro_admin_section pmpro_admin_section-message-settings">
+		<div class="dmrfid_admin_section dmrfid_admin_section-message-settings">
 			<h2 class="title"><?php esc_html_e( 'Message Settings', 'paid-memberships-pro' ); ?></h2>
 			<table class="form-table">
 			<tbody>
@@ -188,9 +188,9 @@
 				</tr>
 			</tbody>
 			</table>
-		</div> <!-- end pmpro_admin_section-message-settings -->
+		</div> <!-- end dmrfid_admin_section-message-settings -->
 		<hr />
-		<div class="pmpro_admin_section pmpro_admin_section-content-settings">
+		<div class="dmrfid_admin_section dmrfid_admin_section-content-settings">
 			<h2 class="title"><?php esc_html_e( 'Content Settings', 'paid-memberships-pro' ); ?></h2>
 			<table class="form-table">
 			<tbody>
@@ -218,9 +218,9 @@
 	            </tr>
 			</tbody>
 			</table>
-		</div> <!-- end pmpro_admin_section-content-settings -->
+		</div> <!-- end dmrfid_admin_section-content-settings -->
 		<hr />
-		<div class="pmpro_admin_section pmpro_admin_section-checkout-settings">
+		<div class="dmrfid_admin_section dmrfid_admin_section-checkout-settings">
 			<h2 class="title"><?php esc_html_e( 'Checkout Settings', 'paid-memberships-pro' ); ?></h2>
 			<table class="form-table">
 			<tbody>
@@ -241,7 +241,7 @@
 						<label for="recaptcha"><?php _e('Use reCAPTCHA?', 'paid-memberships-pro' );?>:</label>
 					</th>
 					<td>
-						<select id="recaptcha" name="recaptcha" onchange="pmpro_updateRecaptchaTRs();">
+						<select id="recaptcha" name="recaptcha" onchange="dmrfid_updateRecaptchaTRs();">
 							<option value="0" <?php if(!$recaptcha) { ?>selected="selected"<?php } ?>><?php _e('No', 'paid-memberships-pro' );?></option>
 							<option value="1" <?php if($recaptcha == 1) { ?>selected="selected"<?php } ?>><?php _e('Yes - Free memberships only.', 'paid-memberships-pro' );?></option>
 							<option value="2" <?php if($recaptcha == 2) { ?>selected="selected"<?php } ?>><?php _e('Yes - All memberships.', 'paid-memberships-pro' );?></option>
@@ -277,9 +277,9 @@
 				</tr>
 			</tbody>
 			</table>
-		</div> <!-- end pmpro_admin_section-checkout-settings -->
+		</div> <!-- end dmrfid_admin_section-checkout-settings -->
 		<hr />
-		<div class="pmpro_admin_section pmpro_admin_section-communication-settings">
+		<div class="dmrfid_admin_section dmrfid_admin_section-communication-settings">
 			<h2 class="title"><?php esc_html_e( 'Communication Settings', 'paid-memberships-pro' ); ?></h2>
 			<table class="form-table">
 				<tr>
@@ -322,9 +322,9 @@
 				</tr>
 			</tbody>
 			</table>
-		</div> <!-- end pmpro_admin_section-communication-settings -->
+		</div> <!-- end dmrfid_admin_section-communication-settings -->
 		<hr />
-		<div class="pmpro_admin_section pmpro_admin_section-other-settings">
+		<div class="dmrfid_admin_section dmrfid_admin_section-other-settings">
 			<h2 class="title"><?php esc_html_e( 'Other Settings', 'paid-memberships-pro' ); ?></h2>
 			<table class="form-table">
 			<tbody>
@@ -333,7 +333,7 @@
 						<label for="hideads"><?php _e("Hide Ads From Members?", 'paid-memberships-pro' );?></label>
 					</th>
 					<td>
-						<select id="hideads" name="hideads" onchange="pmpro_updateHideAdsTRs();">
+						<select id="hideads" name="hideads" onchange="dmrfid_updateHideAdsTRs();">
 							<option value="0" <?php if(!$hideads) { ?>selected="selected"<?php } ?>><?php _e('No', 'paid-memberships-pro' );?></option>
 							<option value="1" <?php if($hideads == 1) { ?>selected="selected"<?php } ?>><?php _e('Hide Ads From All Members', 'paid-memberships-pro' );?></option>
 							<option value="2" <?php if($hideads == 2) { ?>selected="selected"<?php } ?>><?php _e('Hide Ads From Certain Members', 'paid-memberships-pro' );?></option>
@@ -345,7 +345,7 @@
 					<td>
 						<p><?php _e('To hide ads in your template code, use code like the following', 'paid-memberships-pro' );?>:</p>
 					<pre lang="PHP">
-if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
+if ( function_exists( 'dmrfid_displayAds' ) && dmrfid_displayAds() ) {
 	//insert ad code here
 }</pre>
 					</td>
@@ -357,11 +357,11 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 					<td>
 						<div class="checkbox_box" <?php if(count($levels) > 5) { ?>style="height: 100px; overflow: auto;"<?php } ?>>
 							<?php
-								$hideadslevels = pmpro_getOption("hideadslevels");
+								$hideadslevels = dmrfid_getOption("hideadslevels");
 								if(!is_array($hideadslevels))
 									$hideadslevels = explode(",", $hideadslevels);
 
-								$sqlQuery = "SELECT * FROM $wpdb->pmpro_membership_levels ";
+								$sqlQuery = "SELECT * FROM $wpdb->dmrfid_membership_levels ";
 								$levels = $wpdb->get_results($sqlQuery, OBJECT);
 								foreach($levels as $level)
 								{
@@ -398,8 +398,8 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 				<?php } ?>			
 				<?php
 	            // Filter to Add More Advanced Settings for Misc Plugin Options, etc.
-	            if (has_action('pmpro_custom_advanced_settings')) {
-		            $custom_fields = apply_filters('pmpro_custom_advanced_settings', array());
+	            if (has_action('dmrfid_custom_advanced_settings')) {
+		            $custom_fields = apply_filters('dmrfid_custom_advanced_settings', array());
 		            foreach ($custom_fields as $field) {
 		            ?>
 		            <tr>
@@ -420,7 +420,7 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 		                                	foreach ($field['options'] as $key => $option) {
 		                                    	if(!$is_associative) $key = $option;
 		                                    	?>
-		                                    	<option value="<?php echo esc_attr($key); ?>" <?php selected($key, pmpro_getOption($field['field_name']));?>>
+		                                    	<option value="<?php echo esc_attr($key); ?>" <?php selected($key, dmrfid_getOption($field['field_name']));?>>
 		                                    		<?php echo esc_textarea($option); ?>
 		                                    	</option>
 		                               			<?php
@@ -434,7 +434,7 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 		                            <input id="<?php echo esc_attr( $field['field_name'] ); ?>"
 		                                   name="<?php echo esc_attr( $field['field_name'] ); ?>"
 		                                   type="<?php echo esc_attr( $field['field_type'] ); ?>"
-		                                   value="<?php echo esc_attr(pmpro_getOption($field['field_name'])); ?> "
+		                                   value="<?php echo esc_attr(dmrfid_getOption($field['field_name'])); ?> "
 		                                   class="regular-text">
 		                            <?php
 		                            break;
@@ -443,7 +443,7 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 		                            <textarea id="<?php echo esc_attr( $field['field_name'] ); ?>"
 		                                      name="<?php echo esc_attr( $field['field_name'] ); ?>"
 		                                      class="large-text">
-		                                <?php echo esc_textarea(pmpro_getOption($field['field_name'])); ?>
+		                                <?php echo esc_textarea(dmrfid_getOption($field['field_name'])); ?>
 		                            </textarea>
 		                            <?php
 		                            break;
@@ -451,7 +451,7 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 		                            break;
 		                    }
 							if ( ! empty( $field['description'] ) ) {
-								$allowed_pmpro_custom_advanced_settings_html = array (
+								$allowed_dmrfid_custom_advanced_settings_html = array (
 									'a' => array (
 										'href' => array(),
 										'target' => array(),
@@ -459,7 +459,7 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 									),
 								);
 								?>
-								<p class="description"><?php echo wp_kses( $field['description'], $allowed_pmpro_custom_advanced_settings_html ); ?></p>
+								<p class="description"><?php echo wp_kses( $field['description'], $allowed_dmrfid_custom_advanced_settings_html ); ?></p>
 								<?php } ?>
 		                </td>
 		            </tr>
@@ -469,20 +469,20 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 		        ?>
 				<tr>
 					<th scope="row" valign="top">
-						<label for="uninstall"><?php _e('Uninstall PMPro on deletion?', 'paid-memberships-pro' );?></label>
+						<label for="uninstall"><?php _e('Uninstall DmRFID on deletion?', 'paid-memberships-pro' );?></label>
 					</th>
 					<td>
 						<select id="uninstall" name="uninstall">
 							<option value="0" <?php if ( ! $uninstall ) { ?>selected="selected"<?php } ?>><?php _e( 'No', 'paid-memberships-pro' );?></option>
-							<option value="1" <?php if ( $uninstall == 1 ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes - Delete all PMPro Data.', 'paid-memberships-pro' );?></option>
+							<option value="1" <?php if ( $uninstall == 1 ) { ?>selected="selected"<?php } ?>><?php _e( 'Yes - Delete all DmRFID Data.', 'paid-memberships-pro' );?></option>
 						</select>
-						<p class="description"><?php esc_html_e( 'To delete all PMPro data from the database, set to Yes, deactivate PMPro, and then click to delete PMPro from the plugins page.' ); ?></p>
+						<p class="description"><?php esc_html_e( 'To delete all DmRFID data from the database, set to Yes, deactivate DmRFID, and then click to delete DmRFID from the plugins page.' ); ?></p>
 					</td>
 				</tr>
 	        </tbody>
 			</table>
 			<script>
-				function pmpro_updateHideAdsTRs()
+				function dmrfid_updateHideAdsTRs()
 				{
 					var hideads = jQuery('#hideads').val();
 					if(hideads == 2)
@@ -503,9 +503,9 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 						jQuery('#hideads_explanation').hide();
 					}
 				}
-				pmpro_updateHideAdsTRs();
+				dmrfid_updateHideAdsTRs();
 
-				function pmpro_updateRecaptchaTRs()
+				function dmrfid_updateRecaptchaTRs()
 				{
 					var recaptcha = jQuery('#recaptcha').val();
 					if(recaptcha > 0)
@@ -517,9 +517,9 @@ if ( function_exists( 'pmpro_displayAds' ) && pmpro_displayAds() ) {
 						jQuery('#recaptcha_settings').hide();
 					}
 				}
-				pmpro_updateRecaptchaTRs();
+				dmrfid_updateRecaptchaTRs();
 			</script>
-		</div> <!-- end pmpro_admin_section-other-settings -->
+		</div> <!-- end dmrfid_admin_section-other-settings -->
 
 		<p class="submit">
 			<input name="savesettings" type="submit" class="button button-primary" value="<?php _e('Save Settings', 'paid-memberships-pro' );?>" />

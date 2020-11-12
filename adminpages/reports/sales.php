@@ -1,42 +1,42 @@
 <?php
 /*
-	PMPro Report
+	DmRFID Report
 	Title: Sales
 	Slug: sales
 
 	For each report, add a line like:
-	global $pmpro_reports;
-	$pmpro_reports['slug'] = 'Title';
+	global $dmrfid_reports;
+	$dmrfid_reports['slug'] = 'Title';
 
 	For each report, also write two functions:
-	* pmpro_report_{slug}_widget()   to show up on the report homepage.
-	* pmpro_report_{slug}_page()     to show up when users click on the report page widget.
+	* dmrfid_report_{slug}_widget()   to show up on the report homepage.
+	* dmrfid_report_{slug}_page()     to show up when users click on the report page widget.
 */
-global $pmpro_reports;
-$gateway_environment = pmpro_getOption("gateway_environment");
+global $dmrfid_reports;
+$gateway_environment = dmrfid_getOption("gateway_environment");
 if($gateway_environment == "sandbox")
-	$pmpro_reports['sales'] = __('Sales and Revenue (Testing/Sandbox)', 'paid-memberships-pro' );
+	$dmrfid_reports['sales'] = __('Sales and Revenue (Testing/Sandbox)', 'paid-memberships-pro' );
 else
-	$pmpro_reports['sales'] = __('Sales and Revenue', 'paid-memberships-pro' );
+	$dmrfid_reports['sales'] = __('Sales and Revenue', 'paid-memberships-pro' );
 
 //queue Google Visualization JS on report page
-function pmpro_report_sales_init()
+function dmrfid_report_sales_init()
 {
-	if ( is_admin() && isset( $_REQUEST['report'] ) && $_REQUEST[ 'report' ] == 'sales' && isset( $_REQUEST['page'] ) && $_REQUEST[ 'page' ] == 'pmpro-reports' ) {
+	if ( is_admin() && isset( $_REQUEST['report'] ) && $_REQUEST[ 'report' ] == 'sales' && isset( $_REQUEST['page'] ) && $_REQUEST[ 'page' ] == 'dmrfid-reports' ) {
 		wp_enqueue_script( 'corechart', plugins_url( 'js/corechart.js',  plugin_dir_path( __DIR__ ) ) );
 	}
 
 }
-add_action("init", "pmpro_report_sales_init");
+add_action("init", "dmrfid_report_sales_init");
 
 //widget
-function pmpro_report_sales_widget() {
+function dmrfid_report_sales_widget() {
 	global $wpdb;
 ?>
 <style>
-	#pmpro_report_sales tbody td:last-child {text-align: right; }
+	#dmrfid_report_sales tbody td:last-child {text-align: right; }
 </style>
-<span id="pmpro_report_sales" class="pmpro_report-holder">
+<span id="dmrfid_report_sales" class="dmrfid_report-holder">
 	<table class="wp-list-table widefat fixed striped">
 	<thead>
 		<tr>
@@ -56,35 +56,35 @@ function pmpro_report_sales_widget() {
 	foreach ( $reports as $report_type => $report_name ) {
 		//sale prices stats
 		$count = 0;
-		$max_prices_count = apply_filters( 'pmpro_admin_reports_max_sale_prices', 5 );
-		$prices = pmpro_get_prices_paid( $report_type, $max_prices_count );	
+		$max_prices_count = apply_filters( 'dmrfid_admin_reports_max_sale_prices', 5 );
+		$prices = dmrfid_get_prices_paid( $report_type, $max_prices_count );	
 		?>
 		<tbody>
-			<tr class="pmpro_report_tr">
+			<tr class="dmrfid_report_tr">
 				<th scope="row">
 					<?php if( ! empty( $prices ) ) { ?>
-						<button class="pmpro_report_th pmpro_report_th_closed"><?php echo esc_html($report_name); ?></button>
+						<button class="dmrfid_report_th dmrfid_report_th_closed"><?php echo esc_html($report_name); ?></button>
 					<?php } else { ?>
 						<?php echo esc_html($report_name); ?>
 					<?php } ?>
 				</th>
-				<td><?php echo esc_html( number_format_i18n( pmpro_getSales( $report_type ) ) ); ?></td>
-				<td><?php echo esc_html(pmpro_formatPrice( pmpro_getRevenue( $report_type ) ) ); ?></td>
+				<td><?php echo esc_html( number_format_i18n( dmrfid_getSales( $report_type ) ) ); ?></td>
+				<td><?php echo esc_html(dmrfid_formatPrice( dmrfid_getRevenue( $report_type ) ) ); ?></td>
 			</tr>
 			<?php
 				//sale prices stats
 				$count = 0;
-				$max_prices_count = apply_filters( 'pmpro_admin_reports_max_sale_prices', 5 );
-				$prices = pmpro_get_prices_paid( $report_type, $max_prices_count );
+				$max_prices_count = apply_filters( 'dmrfid_admin_reports_max_sale_prices', 5 );
+				$prices = dmrfid_get_prices_paid( $report_type, $max_prices_count );
 				foreach ( $prices as $price => $quantity ) {
 					if ( $count++ >= $max_prices_count ) {
 						break;
 					}
 			?>
-				<tr class="pmpro_report_tr_sub" style="display: none;">
-					<th scope="row">- <?php echo esc_html( pmpro_formatPrice( $price ) );?></th>
+				<tr class="dmrfid_report_tr_sub" style="display: none;">
+					<th scope="row">- <?php echo esc_html( dmrfid_formatPrice( $price ) );?></th>
 					<td><?php echo esc_html( number_format_i18n( $quantity ) ); ?></td>
-					<td><?php echo esc_html( pmpro_formatPrice( $price * $quantity ) ); ?></td>
+					<td><?php echo esc_html( dmrfid_formatPrice( $price * $quantity ) ); ?></td>
 				</tr>
 			<?php
 			}
@@ -94,9 +94,9 @@ function pmpro_report_sales_widget() {
 	}
 	?>
 	</table>
-	<?php if ( function_exists( 'pmpro_report_sales_page' ) ) { ?>
-		<p class="pmpro_report-button">
-			<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=pmpro-reports&report=sales' ) ); ?>"><?php _e('Details', 'paid-memberships-pro' );?></a>
+	<?php if ( function_exists( 'dmrfid_report_sales_page' ) ) { ?>
+		<p class="dmrfid_report-button">
+			<a class="button button-primary" href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-reports&report=sales' ) ); ?>"><?php _e('Details', 'paid-memberships-pro' );?></a>
 		</p>
 	<?php } ?>
 </span>
@@ -104,9 +104,9 @@ function pmpro_report_sales_widget() {
 <?php
 }
 
-function pmpro_report_sales_page()
+function dmrfid_report_sales_page()
 {
-	global $wpdb, $pmpro_currency_symbol, $pmpro_currency, $pmpro_currencies;
+	global $wpdb, $dmrfid_currency_symbol, $dmrfid_currency, $dmrfid_currencies;
 
 	//get values from form
 	if(isset($_REQUEST['type']))
@@ -171,13 +171,13 @@ function pmpro_report_sales_page()
 	}
 
 	//testing or live data
-	$gateway_environment = pmpro_getOption("gateway_environment");
+	$gateway_environment = dmrfid_getOption("gateway_environment");
 
 	//get data
-	$sqlQuery = "SELECT $date_function(o.timestamp) as date, $type_function(o.total) as value FROM $wpdb->pmpro_membership_orders o ";
+	$sqlQuery = "SELECT $date_function(o.timestamp) as date, $type_function(o.total) as value FROM $wpdb->dmrfid_membership_orders o ";
 
 	if ( ! empty( $discount_code ) ) {
-		$sqlQuery .= "LEFT JOIN $wpdb->pmpro_discount_codes_uses dc ON o.id = dc.order_id ";
+		$sqlQuery .= "LEFT JOIN $wpdb->dmrfid_discount_codes_uses dc ON o.id = dc.order_id ";
 	}
 
 	$sqlQuery .= "WHERE o.total > 0 AND o.timestamp >= '" . esc_sql( $startdate ) . "' AND o.status NOT IN('refunded', 'review', 'token', 'error') AND o.gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
@@ -310,7 +310,7 @@ function pmpro_report_sales_page()
 		<select id="level" name="level">
 			<option value="" <?php if(!$l) { ?>selected="selected"<?php } ?>><?php _e('All Levels', 'paid-memberships-pro' );?></option>
 			<?php
-				$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->pmpro_membership_levels ORDER BY name");
+				$levels = $wpdb->get_results("SELECT id, name FROM $wpdb->dmrfid_membership_levels ORDER BY name");
 				foreach($levels as $level)
 				{
 			?>
@@ -320,7 +320,7 @@ function pmpro_report_sales_page()
 			?>
 		</select>
 		<?php
-		$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->pmpro_discount_codes ";
+		$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->dmrfid_discount_codes ";
 		$sqlQuery .= "ORDER BY id DESC ";
 		$codes = $wpdb->get_results($sqlQuery, OBJECT);
 		if ( ! empty( $codes ) ) { ?>
@@ -331,7 +331,7 @@ function pmpro_report_sales_page()
 			<?php } ?>
 		</select>
 		<?php } ?>
-		<input type="hidden" name="page" value="pmpro-reports" />
+		<input type="hidden" name="page" value="dmrfid-reports" />
 		<input type="hidden" name="report" value="sales" />
 		<input type="submit" class="button action" value="<?php _e('Generate Report', 'paid-memberships-pro' );?>" />
 	</div>
@@ -341,11 +341,11 @@ function pmpro_report_sales_page()
 		//update month/year when period dropdown is changed
 		jQuery(document).ready(function() {
 			jQuery('#period').change(function() {
-				pmpro_ShowMonthOrYear();
+				dmrfid_ShowMonthOrYear();
 			});
 		});
 
-		function pmpro_ShowMonthOrYear()
+		function dmrfid_ShowMonthOrYear()
 		{
 			var period = jQuery('#period').val();
 			if(period == 'daily')
@@ -368,7 +368,7 @@ function pmpro_report_sales_page()
 			}
 		}
 
-		pmpro_ShowMonthOrYear();
+		dmrfid_ShowMonthOrYear();
 
 		//draw the chart
 		google.charts.load('current', {'packages':['corechart']});
@@ -387,7 +387,7 @@ function pmpro_report_sales_page()
 							echo esc_html(date_i18n("M", mktime(0,0,0,$date,2)));
 						} else {
 						echo esc_html( $date );
-					} ?>', <?php echo esc_html( pmpro_round_price( $value ) );?>, <?php echo esc_html( pmpro_round_price( $average ) );?>],
+					} ?>', <?php echo esc_html( dmrfid_round_price( $value ) );?>, <?php echo esc_html( dmrfid_round_price( $average ) );?>],
 				<?php } ?>
 			]);
 
@@ -420,20 +420,20 @@ function pmpro_report_sales_page()
 			<?php
 				if($type != "sales")
 				{	
-					$decimals = isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] ) ? (int) $pmpro_currencies[ $pmpro_currency ]['decimals'] : 2;
+					$decimals = isset( $dmrfid_currencies[ $dmrfid_currency ]['decimals'] ) ? (int) $dmrfid_currencies[ $dmrfid_currency ]['decimals'] : 2;
 					
-					$decimal_separator = isset( $pmpro_currencies[ $pmpro_currency ]['decimal_separator'] ) ? $pmpro_currencies[ $pmpro_currency ]['decimal_separator'] : '.';
+					$decimal_separator = isset( $dmrfid_currencies[ $dmrfid_currency ]['decimal_separator'] ) ? $dmrfid_currencies[ $dmrfid_currency ]['decimal_separator'] : '.';
 					
-					$thousands_separator = isset( $pmpro_currencies[ $pmpro_currency ]['thousands_separator'] ) ? $pmpro_currencies[ $pmpro_currency ]['thousands_separator'] : ',';
+					$thousands_separator = isset( $dmrfid_currencies[ $dmrfid_currency ]['thousands_separator'] ) ? $dmrfid_currencies[ $dmrfid_currency ]['thousands_separator'] : ',';
 					
-					if ( pmpro_getCurrencyPosition() == 'right' ) {
+					if ( dmrfid_getCurrencyPosition() == 'right' ) {
 						$position = "suffix";
 					} else {
 						$position = "prefix";
 					}
 					?>
 					var formatter = new google.visualization.NumberFormat({
-						<?php echo esc_html( $position );?>: '<?php echo esc_html( html_entity_decode($pmpro_currency_symbol) ); ?>',
+						<?php echo esc_html( $position );?>: '<?php echo esc_html( html_entity_decode($dmrfid_currency_symbol) ); ?>',
 						'decimalSymbol': '<?php echo esc_html( html_entity_decode( $decimal_separator ) ); ?>',
 						'fractionDigits': <?php echo intval( $decimals ); ?>,
 						'groupingSymbol': '<?php echo esc_html( html_entity_decode( $thousands_separator ) ); ?>',
@@ -454,14 +454,14 @@ function pmpro_report_sales_page()
 }
 
 /*
-	Other code required for your reports. This file is loaded every time WP loads with PMPro enabled.
+	Other code required for your reports. This file is loaded every time WP loads with DmRFID enabled.
 */
 
 //get sales
-function pmpro_getSales($period, $levels = NULL)
+function dmrfid_getSales($period, $levels = NULL)
 {
 	//check for a transient
-	$cache = get_transient( 'pmpro_report_sales' );
+	$cache = get_transient( 'dmrfid_report_sales' );
 	if(!empty($cache) && !empty($cache[$period]) && !empty($cache[$period][$levels]))
 		return $cache[$period][$levels];
 
@@ -475,11 +475,11 @@ function pmpro_getSales($period, $levels = NULL)
 	else
 		$startdate = "";
 
-	$gateway_environment = pmpro_getOption("gateway_environment");
+	$gateway_environment = dmrfid_getOption("gateway_environment");
 
 	//build query
 	global $wpdb;
-	$sqlQuery = "SELECT COUNT(*) FROM $wpdb->pmpro_membership_orders WHERE total > 0 AND status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $startdate ) . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
+	$sqlQuery = "SELECT COUNT(*) FROM $wpdb->dmrfid_membership_orders WHERE total > 0 AND status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $startdate ) . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
 
 	//restrict by level
 	if(!empty($levels))
@@ -495,7 +495,7 @@ function pmpro_getSales($period, $levels = NULL)
 	else
 		$cache = array($period => array($levels => $sales));
 
-	set_transient( 'pmpro_report_sales', $cache, 3600*24 );
+	set_transient( 'dmrfid_report_sales', $cache, 3600*24 );
 
 	return $sales;
 }
@@ -505,9 +505,9 @@ function pmpro_getSales($period, $levels = NULL)
  *
  * @param  string $period time period to query.
  */
-function pmpro_get_prices_paid( $period, $count = NULL ) {
+function dmrfid_get_prices_paid( $period, $count = NULL ) {
 	// Check for a transient.
-	$cache = get_transient( 'pmpro_report_prices_paid' );
+	$cache = get_transient( 'dmrfid_report_prices_paid' );
 	if ( ! empty( $cache ) && ! empty( $cache[ $period . $count ] ) ) {
 		return $cache[ $period . $count ];
 	}
@@ -523,11 +523,11 @@ function pmpro_get_prices_paid( $period, $count = NULL ) {
 		$startdate = '1970-01-01';
 	}
 
-	$gateway_environment = pmpro_getOption( 'gateway_environment' );
+	$gateway_environment = dmrfid_getOption( 'gateway_environment' );
 
 	// Build query.
 	global $wpdb;
-	$sql_query = "SELECT ROUND(total,8) as rtotal, COUNT(*) as num FROM $wpdb->pmpro_membership_orders WHERE total > 0 AND status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . $startdate . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
+	$sql_query = "SELECT ROUND(total,8) as rtotal, COUNT(*) as num FROM $wpdb->dmrfid_membership_orders WHERE total > 0 AND status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . $startdate . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
 
 	// Restrict by level.
 	if ( ! empty( $levels ) ) {
@@ -545,7 +545,7 @@ function pmpro_get_prices_paid( $period, $count = NULL ) {
 	$prices_formatted = array();
 	foreach ( $prices as $price ) {
 		if ( isset( $price->rtotal ) ) {
-			$sql_query                         = "SELECT COUNT(*) FROM $wpdb->pmpro_membership_orders WHERE ROUND(total, 8) = '" . esc_sql( $price->rtotal ) . "' AND status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $startdate ) . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
+			$sql_query                         = "SELECT COUNT(*) FROM $wpdb->dmrfid_membership_orders WHERE ROUND(total, 8) = '" . esc_sql( $price->rtotal ) . "' AND status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $startdate ) . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
 			$sales                             = $wpdb->get_var( $sql_query );
 			$prices_formatted[ $price->rtotal ] = $sales;
 		}
@@ -560,16 +560,16 @@ function pmpro_get_prices_paid( $period, $count = NULL ) {
 		$cache = array( $period . $count => $prices_formatted );
 	}
 
-	set_transient( 'pmpro_report_prices_paid', $cache, 3600 * 24 );
+	set_transient( 'dmrfid_report_prices_paid', $cache, 3600 * 24 );
 
 	return $prices_formatted;
 }
 
 //get revenue
-function pmpro_getRevenue($period, $levels = NULL)
+function dmrfid_getRevenue($period, $levels = NULL)
 {
 	//check for a transient
-	$cache = get_transient("pmpro_report_revenue");
+	$cache = get_transient("dmrfid_report_revenue");
 	if(!empty($cache) && !empty($cache[$period]) && !empty($cache[$period][$levels]))
 		return $cache[$period][$levels];
 
@@ -583,11 +583,11 @@ function pmpro_getRevenue($period, $levels = NULL)
 	else
 		$startdate = "";
 
-	$gateway_environment = pmpro_getOption("gateway_environment");
+	$gateway_environment = dmrfid_getOption("gateway_environment");
 
 	//build query
 	global $wpdb;
-	$sqlQuery = "SELECT SUM(total) FROM $wpdb->pmpro_membership_orders WHERE status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $startdate ) . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
+	$sqlQuery = "SELECT SUM(total) FROM $wpdb->dmrfid_membership_orders WHERE status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $startdate ) . "' AND gateway_environment = '" . esc_sql( $gateway_environment ) . "' ";
 
 	//restrict by level
 	if(!empty($levels))
@@ -603,7 +603,7 @@ function pmpro_getRevenue($period, $levels = NULL)
 	else
 		$cache = array($period => array($levels => $revenue));
 
-	set_transient("pmpro_report_revenue", $cache, 3600*24);
+	set_transient("dmrfid_report_revenue", $cache, 3600*24);
 
 	return $revenue;
 }
@@ -616,9 +616,9 @@ function pmpro_getRevenue($period, $levels = NULL)
  * @param  array  $level_ids to include in report. Defaults to all.
  * @return float  revenue.
  */
-function pmpro_get_revenue_between_dates( $start_date, $end_date = '', $level_ids = null ) {
+function dmrfid_get_revenue_between_dates( $start_date, $end_date = '', $level_ids = null ) {
 	global $wpdb;
-	$sql_query = "SELECT SUM(total) FROM $wpdb->pmpro_membership_orders WHERE status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $start_date ) . " 00:00:00'";
+	$sql_query = "SELECT SUM(total) FROM $wpdb->dmrfid_membership_orders WHERE status NOT IN('refunded', 'review', 'token', 'error') AND timestamp >= '" . esc_sql( $start_date ) . " 00:00:00'";
 	if ( ! empty( $end_date ) ) {
 		$sql_query .= " AND timestamp <= '" . esc_sql( $end_date ) . " 23:59:59'";
 	}
@@ -629,11 +629,11 @@ function pmpro_get_revenue_between_dates( $start_date, $end_date = '', $level_id
 }
 
 //delete transients when an order goes through
-function pmpro_report_sales_delete_transients()
+function dmrfid_report_sales_delete_transients()
 {
-	delete_transient( 'pmpro_report_sales' );
-	delete_transient( 'pmpro_report_revenue' );
-	delete_transient( 'pmpro_report_prices_paid' );
+	delete_transient( 'dmrfid_report_sales' );
+	delete_transient( 'dmrfid_report_revenue' );
+	delete_transient( 'dmrfid_report_prices_paid' );
 }
-add_action("pmpro_after_checkout", "pmpro_report_sales_delete_transients");
-add_action("pmpro_updated_order", "pmpro_report_sales_delete_transients");
+add_action("dmrfid_after_checkout", "dmrfid_report_sales_delete_transients");
+add_action("dmrfid_updated_order", "dmrfid_report_sales_delete_transients");

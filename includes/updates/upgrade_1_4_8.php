@@ -1,5 +1,5 @@
 <?php
-function pmpro_upgrade_1_4_8()
+function dmrfid_upgrade_1_4_8()
 {
 	/*
 		Adding a billing_country field to the orders table.		
@@ -7,14 +7,14 @@ function pmpro_upgrade_1_4_8()
 
 	global $wpdb;
 	$wpdb->hide_errors();
-	$wpdb->pmpro_membership_orders = $wpdb->prefix . 'pmpro_membership_orders';
+	$wpdb->dmrfid_membership_orders = $wpdb->prefix . 'dmrfid_membership_orders';
 
 	//billing_country
 	$sqlQuery = "
-		ALTER TABLE  `" . $wpdb->pmpro_membership_orders . "` ADD  `billing_country` VARCHAR( 128 ) NOT NULL AFTER  `billing_zip`
+		ALTER TABLE  `" . $wpdb->dmrfid_membership_orders . "` ADD  `billing_country` VARCHAR( 128 ) NOT NULL AFTER  `billing_zip`
 	";
 	$wpdb->query($sqlQuery);
 
-	pmpro_setOption("db_version", "1.48");
+	dmrfid_setOption("db_version", "1.48");
 	return 1.48;
 }

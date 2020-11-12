@@ -5,7 +5,7 @@
  * @package blocks/checkout-button
  **/
 
-namespace PMPro\blocks\checkout_button;
+namespace DmRFID\blocks\checkout_button;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -25,8 +25,8 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
 function register_dynamic_block() {
 
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/checkout-button', [
-		'attributes' => array( 'all_levels' => pmpro_getAllLevels( true, true ) ),
+	register_block_type( 'dmrfid/checkout-button', [
+		'attributes' => array( 'all_levels' => dmrfid_getAllLevels( true, true ) ),
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -40,7 +40,7 @@ function register_dynamic_block() {
 function render_dynamic_block( $attributes ) {
 	$text      = 'Buy Now';
 	$level     = null;
-	$css_class = 'pmpro_btn';
+	$css_class = 'dmrfid_btn';
 
 	if ( ! empty( $attributes['level'] ) ) {
 		$level = $attributes['level'];
@@ -60,5 +60,5 @@ function render_dynamic_block( $attributes ) {
 		$css_class = null;
 	}
 
-	return( "<span class=\"" . pmpro_get_element_class( 'span_pmpro_checkout_button' ) . "\">" . pmpro_getCheckoutButton( $level, $text, $css_class ) . "</span>" );
+	return( "<span class=\"" . dmrfid_get_element_class( 'span_dmrfid_checkout_button' ) . "\">" . dmrfid_getCheckoutButton( $level, $text, $css_class ) . "</span>" );
 }

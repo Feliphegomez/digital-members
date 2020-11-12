@@ -4,32 +4,32 @@
  *
  * NOTE: Disabled for now until we need a new pointer.
  */
-///add_action( 'admin_enqueue_scripts', 'pmpro_enqueue_admin_pointer_scripts' );
+///add_action( 'admin_enqueue_scripts', 'dmrfid_enqueue_admin_pointer_scripts' );
 
 /**
  * Enqueue the scripts needed to builder admin pointers.
  * 
  * @return void
  */
-function pmpro_enqueue_admin_pointer_scripts() {
-	if ( ! current_user_can( 'pmpro_memberships_menu' ) ) {
+function dmrfid_enqueue_admin_pointer_scripts() {
+	if ( ! current_user_can( 'dmrfid_memberships_menu' ) ) {
 		return;
 	}
 	
 	wp_enqueue_style( 'wp-pointer' );
 	wp_enqueue_script( 'wp-pointer' );
-	add_action( 'admin_print_footer_scripts', 'pmpro_prepare_pointer_scripts' );
+	add_action( 'admin_print_footer_scripts', 'dmrfid_prepare_pointer_scripts' );
 }
 /**
- * Details about PMPro 2.0 that are added to the Admin Pointer
+ * Details about DmRFID 2.0 that are added to the Admin Pointer
  * 
  * @return void
  */
-function pmpro_prepare_pointer_scripts() {
+function dmrfid_prepare_pointer_scripts() {
 	// Just one pointer for now, but eventually we will have more
-	$id       = '#toplevel_page_pmpro-dashboard';
-	$content  = '<h3>' .  __( 'PMPro v2.0 Update', 'paid-memberships-pro' ) . '</h3>';
-	$content .= '<p>'. sprintf( __( "The Memberships menu has moved. Check out the new dashboard. The Membership Levels and Discount Codes pages can now be found under <a href=\"%s\">Settings</a>.", 'paid-memberships-pro' ) , 'admin.php?page=pmpro-membershiplevels' ). '</p>';
+	$id       = '#toplevel_page_dmrfid-dashboard';
+	$content  = '<h3>' .  __( 'DmRFID v2.0 Update', 'paid-memberships-pro' ) . '</h3>';
+	$content .= '<p>'. sprintf( __( "The Memberships menu has moved. Check out the new dashboard. The Membership Levels and Discount Codes pages can now be found under <a href=\"%s\">Settings</a>.", 'paid-memberships-pro' ) , 'admin.php?page=dmrfid-membershiplevels' ). '</p>';
 
 	$options  = array(
 		'content'  => $content,
@@ -39,12 +39,12 @@ function pmpro_prepare_pointer_scripts() {
 		),
 	);
 
-	$globally_dismissed_pointers = get_option( 'pmpro_dismissed_wp_pointers', array() );
+	$globally_dismissed_pointers = get_option( 'dmrfid_dismissed_wp_pointers', array() );
 	$user_dismissed_pointers = explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) );
 	$dismissed_pointers = array_merge( $globally_dismissed_pointers, $user_dismissed_pointers );
 
-	if ( ! in_array( 'pmpro_v2_menu_moved', $dismissed_pointers ) ) {
-		pmpro_build_pointer_script( $id, $options, __( 'Close', 'paid-memberships-pro' ) );
+	if ( ! in_array( 'dmrfid_v2_menu_moved', $dismissed_pointers ) ) {
+		dmrfid_build_pointer_script( $id, $options, __( 'Close', 'paid-memberships-pro' ) );
 	}
 }
 
@@ -59,7 +59,7 @@ function pmpro_prepare_pointer_scripts() {
  * @param  string  	$function JS code to run if button 2 is clicked.
  * @return void
  */
-function pmpro_build_pointer_script( $id, $options, $button1, $button2 = false, $function = '' ) {
+function dmrfid_build_pointer_script( $id, $options, $button1, $button2 = false, $function = '' ) {
 	?>
 <script type="text/javascript">
 	(function ($) {
@@ -78,7 +78,7 @@ function pmpro_build_pointer_script( $id, $options, $button1, $button2 = false, 
 			close: function () {
 				// Post to admin ajax to disable pointers when user clicks "Close"
 				$.post (ajaxurl, {
-					pointer: 'pmpro_v2_menu_moved',
+					pointer: 'dmrfid_v2_menu_moved',
 					action: 'dismiss-wp-pointer'
 				});
 			}
@@ -96,7 +96,7 @@ function pmpro_build_pointer_script( $id, $options, $button1, $button2 = false, 
 				jQuery ('#pointer-close').click (function () {
 					// Post to admin ajax to disable pointers when user clicks "Close"
 					$.post (ajaxurl, {
-						pointer: 'pmpro_v2_menu_moved',
+						pointer: 'dmrfid_v2_menu_moved',
 						action: 'dismiss-wp-pointer'
 					});
 				})

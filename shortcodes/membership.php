@@ -2,7 +2,7 @@
 /*
 	Shortcode to hide/show content based on membership level
 */
-function pmpro_shortcode_membership($atts, $content=null, $code="")
+function dmrfid_shortcode_membership($atts, $content=null, $code="")
 {
 	// $atts    ::= array of attributes
 	// $content ::= text within enclosing form of shortcode element
@@ -42,12 +42,12 @@ function pmpro_shortcode_membership($atts, $content=null, $code="")
 	}
 	else
 	{
-		//didn't specify a membership level, so use false so pmpro_hasMembershipLevel checks for any level
+		//didn't specify a membership level, so use false so dmrfid_hasMembershipLevel checks for any level
 		$levels = false;
 	}
 
 	//check their level
-	if(pmpro_hasMembershipLevel($levels))
+	if(dmrfid_hasMembershipLevel($levels))
 		   $hasaccess = true;
 
 	//is there a delay?
@@ -55,9 +55,9 @@ function pmpro_shortcode_membership($atts, $content=null, $code="")
 	{		
 		//okay, this post requires membership. start by getting the user's startdate
 		if(!empty($levels))
-			$sqlQuery = "SELECT UNIX_TIMESTAMP(CONVERT_TZ(startdate, '+00:00', @@global.time_zone)) FROM $wpdb->pmpro_memberships_users WHERE status = 'active' AND membership_id IN(" . implode(",", $levels) . ") AND user_id = '" . $current_user->ID . "' ORDER BY id LIMIT 1";
+			$sqlQuery = "SELECT UNIX_TIMESTAMP(CONVERT_TZ(startdate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE status = 'active' AND membership_id IN(" . implode(",", $levels) . ") AND user_id = '" . $current_user->ID . "' ORDER BY id LIMIT 1";
 		else
-			$sqlQuery = "SELECT UNIX_TIMESTAMP(CONVERT_TZ(startdate, '+00:00', @@global.time_zone)) FROM $wpdb->pmpro_memberships_users WHERE status = 'active' AND user_id = '" . $current_user->ID . "' ORDER BY id LIMIT 1";
+			$sqlQuery = "SELECT UNIX_TIMESTAMP(CONVERT_TZ(startdate, '+00:00', @@global.time_zone)) FROM $wpdb->dmrfid_memberships_users WHERE status = 'active' AND user_id = '" . $current_user->ID . "' ORDER BY id LIMIT 1";
 
 		$startdate = $wpdb->get_var($sqlQuery);
 
@@ -81,7 +81,7 @@ function pmpro_shortcode_membership($atts, $content=null, $code="")
 	}
 
 	// Filter the $hasaccess so we can overwrite this for other add ons.
-	$hasaccess = apply_filters( 'pmpro_member_shortcode_access', $hasaccess, $content, $levels, $delay );
+	$hasaccess = apply_filters( 'dmrfid_member_shortcode_access', $hasaccess, $content, $levels, $delay );
 
 	//to show or not to show
 	if($hasaccess)
@@ -91,8 +91,8 @@ function pmpro_shortcode_membership($atts, $content=null, $code="")
 			return '';
 		} else {
 			$content = '';
-			return pmpro_get_no_access_message( $content, $levels );
+			return dmrfid_get_no_access_message( $content, $levels );
 		}
 	}
 }
-add_shortcode("membership", "pmpro_shortcode_membership");
+add_shortcode("membership", "dmrfid_shortcode_membership");

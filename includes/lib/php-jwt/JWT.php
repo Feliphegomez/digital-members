@@ -1,6 +1,6 @@
 <?php
-// Added PMPro to namespace to avoid conflicts.
-namespace PMPro\Firebase\JWT;
+// Added DmRFID to namespace to avoid conflicts.
+namespace DmRFID\Firebase\JWT;
 use \DomainException;
 use \InvalidArgumentException;
 use \UnexpectedValueException;

@@ -1,7 +1,7 @@
 /**
- * Block: PMPro Checkout Button
+ * Block: DmRFID Checkout Button
  *
- * Add a styled link to the PMPro checkout page for a specific level.
+ * Add a styled link to the DmRFID checkout page for a specific level.
  *
  */
 
@@ -26,18 +26,18 @@ const {
  * Register block
  */
 export default registerBlockType(
-     'pmpro/checkout-button',
+     'dmrfid/checkout-button',
      {
          title: __( 'Membership Checkout Button', 'paid-memberships-pro' ),
          description: __( 'Displays a button-styled link to Membership Checkout for the specified level.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'migrate',
          },
          keywords: [ 
-             __( 'pmpro', 'paid-memberships-pro' ), 
+             __( 'dmrfid', 'paid-memberships-pro' ), 
              __( 'buy', 'paid-memberships-pro' ),
              __( 'level', 'paid-memberships-pro' ),
          ],
@@ -50,7 +50,7 @@ export default registerBlockType(
              },
              css_class: {
                  type: 'string',
-                 default: 'pmpro_btn',
+                 default: 'dmrfid_btn',
              },
              level: {
                   type: 'string'
@@ -63,7 +63,7 @@ export default registerBlockType(
                 <div className={ className }>
                   <a class={css_class} >{text}</a>
                 </div>,
-                isSelected && <div className="pmpro-block-element">
+                isSelected && <div className="dmrfid-block-element">
                    <TextControl
                        label={ __( 'Button Text', 'paid-memberships-pro' ) }
                        value={ text }
@@ -73,7 +73,7 @@ export default registerBlockType(
                        label={ __( 'Membership Level', 'paid-memberships-pro' ) }
                        value={ level }
                        onChange={ level => setAttributes( { level } ) }
-                       options={ window.pmpro.all_level_values_and_labels }
+                       options={ window.dmrfid.all_level_values_and_labels }
                    />
                    <TextControl
                        label={ __( 'CSS Class', 'paid-memberships-pro' ) }

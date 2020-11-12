@@ -1,11 +1,11 @@
 <?php
-	//include pmprogateway
-	require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+	//include dmrfidgateway
+	require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 
 	//load classes init method
-	add_action('init', array('PMProGateway_Twocheckout', 'init'));
+	add_action('init', array('DmRFIDGateway_Twocheckout', 'init'));
 
-	class PMProGateway_Twocheckout extends PMProGateway
+	class DmRFIDGateway_Twocheckout extends DmRFIDGateway
 	{
 		function __construct($gateway = NULL)
 		{
@@ -13,9 +13,9 @@
 				require_once(dirname(__FILE__) . "/../../includes/lib/Twocheckout/Twocheckout.php");
 
 			//set API connection vars
-			Twocheckout::sellerId(pmpro_getOption('twocheckout_accountnumber'));
-			Twocheckout::username(pmpro_getOption('twocheckout_apiusername'));
-			Twocheckout::password(pmpro_getOption('twocheckout_apipassword'));
+			Twocheckout::sellerId(dmrfid_getOption('twocheckout_accountnumber'));
+			Twocheckout::username(dmrfid_getOption('twocheckout_apiusername'));
+			Twocheckout::password(dmrfid_getOption('twocheckout_apipassword'));
 			Twocheckout::$verifySSL = false;
 
 			$this->gateway = $gateway;
@@ -30,21 +30,21 @@
 		static function init()
 		{
 			//make sure PayPal Express is a gateway option
-			add_filter('pmpro_gateways', array('PMProGateway_Twocheckout', 'pmpro_gateways'));
+			add_filter('dmrfid_gateways', array('DmRFIDGateway_Twocheckout', 'dmrfid_gateways'));
 
 			//add fields to payment settings
-			add_filter('pmpro_payment_options', array('PMProGateway_Twocheckout', 'pmpro_payment_options'));
-			add_filter('pmpro_payment_option_fields', array('PMProGateway_Twocheckout', 'pmpro_payment_option_fields'), 10, 2);
+			add_filter('dmrfid_payment_options', array('DmRFIDGateway_Twocheckout', 'dmrfid_payment_options'));
+			add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_Twocheckout', 'dmrfid_payment_option_fields'), 10, 2);
 
 			//code to add at checkout
-			$gateway = pmpro_getGateway();
+			$gateway = dmrfid_getGateway();
 			if($gateway == "twocheckout")
 			{
-				add_filter('pmpro_include_billing_address_fields', '__return_false');
-				add_filter('pmpro_include_payment_information_fields', '__return_false');
-				add_filter('pmpro_required_billing_fields', array('PMProGateway_Twocheckout', 'pmpro_required_billing_fields'));
-				add_filter('pmpro_checkout_default_submit_button', array('PMProGateway_Twocheckout', 'pmpro_checkout_default_submit_button'));
-				add_filter('pmpro_checkout_before_change_membership_level', array('PMProGateway_Twocheckout', 'pmpro_checkout_before_change_membership_level'), 10, 2);
+				add_filter('dmrfid_include_billing_address_fields', '__return_false');
+				add_filter('dmrfid_include_payment_information_fields', '__return_false');
+				add_filter('dmrfid_required_billing_fields', array('DmRFIDGateway_Twocheckout', 'dmrfid_required_billing_fields'));
+				add_filter('dmrfid_checkout_default_submit_button', array('DmRFIDGateway_Twocheckout', 'dmrfid_checkout_default_submit_button'));
+				add_filter('dmrfid_checkout_before_change_membership_level', array('DmRFIDGateway_Twocheckout', 'dmrfid_checkout_before_change_membership_level'), 10, 2);
 			}
 		}
 
@@ -53,7 +53,7 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_gateways($gateways)
+		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['twocheckout']))
 				$gateways['twocheckout'] = __('2Checkout', 'paid-memberships-pro' );
@@ -90,10 +90,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_options($options)
+		static function dmrfid_payment_options($options)
 		{
 			//get stripe options
-			$twocheckout_options = PMProGateway_Twocheckout::getGatewayOptions();
+			$twocheckout_options = DmRFIDGateway_Twocheckout::getGatewayOptions();
 
 			//merge with others.
 			$options = array_merge($twocheckout_options, $options);
@@ -106,10 +106,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_option_fields($values, $gateway)
+		static function dmrfid_payment_option_fields($values, $gateway)
 		{
 		?>
-		<tr class="pmpro_settings_divider gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
+		<tr class="dmrfid_settings_divider gateway gateway_twocheckout" <?php if($gateway != "twocheckout") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
 				<h2 class="title"><?php esc_html_e( '2Checkout Settings', 'paid-memberships-pro' ); ?></h2>
@@ -169,7 +169,7 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_required_billing_fields($fields)
+		static function dmrfid_required_billing_fields($fields)
 		{
 			unset($fields['bfirstname']);
 			unset($fields['blastname']);
@@ -194,15 +194,15 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_checkout_default_submit_button($show)
+		static function dmrfid_checkout_default_submit_button($show)
 		{
-			global $gateway, $pmpro_requirebilling;
+			global $gateway, $dmrfid_requirebilling;
 
 			//show our submit buttons
 			?>
-			<span id="pmpro_submit_span">
+			<span id="dmrfid_submit_span">
 				<input type="hidden" name="submit-checkout" value="1" />
-				<input type="submit" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-submit-checkout', 'pmpro_btn-submit-checkout' ); ?>" value="<?php if($pmpro_requirebilling) { _e('Check Out with 2Checkout', 'paid-memberships-pro' ); } else { _e('Submit and Confirm', 'paid-memberships-pro' );}?> &raquo;" />
+				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit-checkout', 'dmrfid_btn-submit-checkout' ); ?>" value="<?php if($dmrfid_requirebilling) { _e('Check Out with 2Checkout', 'paid-memberships-pro' ); } else { _e('Submit and Confirm', 'paid-memberships-pro' );}?> &raquo;" />
 			</span>
 			<?php
 
@@ -215,7 +215,7 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_checkout_before_change_membership_level($user_id, $morder)
+		static function dmrfid_checkout_before_change_membership_level($user_id, $morder)
 		{
 			global $wpdb, $discount_code_id;
 
@@ -228,9 +228,9 @@
 
 			//save discount code use
 			if(!empty($discount_code_id))
-				$wpdb->query("INSERT INTO $wpdb->pmpro_discount_codes_uses (code_id, user_id, order_id, timestamp) VALUES('" . $discount_code_id . "', '" . $user_id . "', '" . $morder->id . "', now())");
+				$wpdb->query("INSERT INTO $wpdb->dmrfid_discount_codes_uses (code_id, user_id, order_id, timestamp) VALUES('" . $discount_code_id . "', '" . $user_id . "', '" . $morder->id . "', now())");
 
-			do_action("pmpro_before_send_to_twocheckout", $user_id, $morder);
+			do_action("dmrfid_before_send_to_twocheckout", $user_id, $morder);
 
 			$morder->Gateway->sendToTwocheckout($morder);
 		}
@@ -258,10 +258,10 @@
 
 		function sendToTwocheckout(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 
 			$tco_args = array(
-				'sid' => pmpro_getOption("twocheckout_accountnumber"),
+				'sid' => dmrfid_getOption("twocheckout_accountnumber"),
 				'mode' => '2CO', // will always be 2CO according to docs (@see https://www.2checkout.com/documentation/checkout/parameter-sets/pass-through-products/)
 				'li_0_type' => 'product',
 				'li_0_name' => substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127),
@@ -269,28 +269,28 @@
 				'li_0_tangible' => 'N',
 				'li_0_product_id' => $order->code,
 				'merchant_order_id' => $order->code,
-				'currency_code' => $pmpro_currency,
+				'currency_code' => $dmrfid_currency,
 				'pay_method' => 'CC',
 				'purchase_step' => 'billing-information',
-				'x_receipt_link_url' => admin_url("admin-ajax.php") . "?action=twocheckout-ins" //pmpro_url("confirmation", "?level=" . $order->membership_level->id)
+				'x_receipt_link_url' => admin_url("admin-ajax.php") . "?action=twocheckout-ins" //dmrfid_url("confirmation", "?level=" . $order->membership_level->id)
 			);
 
 			//taxes on initial amount
 			$initial_payment = $order->InitialPayment;
 			$initial_payment_tax = $order->getTaxForPrice($initial_payment);
-			$initial_payment = pmpro_round_price((float)$initial_payment + (float)$initial_payment_tax);
+			$initial_payment = dmrfid_round_price((float)$initial_payment + (float)$initial_payment_tax);
 
 			//taxes on the amount (NOT CURRENTLY USED)
 			$amount = $order->PaymentAmount;
 			$amount_tax = $order->getTaxForPrice($amount);
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 
 			// Recurring membership
-			if( pmpro_isLevelRecurring( $order->membership_level ) ) {
+			if( dmrfid_isLevelRecurring( $order->membership_level ) ) {
 				$tco_args['li_0_startup_fee'] = number_format($initial_payment - $amount, 2, ".", "");		//negative amount for lower initial payments
 				$recurring_payment = number_format($order->membership_level->billing_amount, 2, ".", "");
 				$recurring_payment_tax = number_format($order->getTaxForPrice($recurring_payment), 2, ".", "");
-				$recurring_payment = number_format(pmpro_round_price((float)$recurring_payment + (float)$recurring_payment_tax), 2, ".", "");
+				$recurring_payment = number_format(dmrfid_round_price((float)$recurring_payment + (float)$recurring_payment_tax), 2, ".", "");
 				$tco_args['li_0_price'] = number_format($recurring_payment, 2, ".", "");
 
 				$tco_args['li_0_recurrence'] = ( $order->BillingFrequency == 1 ) ? $order->BillingFrequency . ' ' . $order->BillingPeriod : $order->BillingFrequency . ' ' . $order->BillingPeriod;
@@ -307,7 +307,7 @@
 
 			// Demo mode?
 			if(empty($order->gateway_environment))
-				$gateway_environment = pmpro_getOption("gateway_environment");
+				$gateway_environment = dmrfid_getOption("gateway_environment");
 			else
 				$gateway_environment = $order->gateway_environment;
 			if("sandbox" === $gateway_environment || "beta-sandbox" === $gateway_environment)
@@ -323,7 +323,7 @@
 			if(!empty($order->TrialBillingPeriod)) {
 				$trial_amount = $order->TrialAmount;
 				$trial_tax = $order->getTaxForPrice($trial_amount);
-				$trial_amount = pmpro_formatPrice(pmpro_round_price((float)$trial_amount + (float)$trial_tax), false, false);
+				$trial_amount = dmrfid_formatPrice(dmrfid_round_price((float)$trial_amount + (float)$trial_tax), false, false);
 				$tco_args['li_0_startup_fee'] = $trial_amount; // Negative trial amount
 			}
 
@@ -334,12 +334,12 @@
 			}
 
 			//anything modders might add
-			$additional_parameters = apply_filters( 'pmpro_twocheckout_return_url_parameters', array() );
+			$additional_parameters = apply_filters( 'dmrfid_twocheckout_return_url_parameters', array() );
 			if( ! empty( $additional_parameters ) )
 				foreach( $additional_parameters as $key => $value )
 					$ptpStr .= "&" . urlencode($key) . "=" . urlencode($value);
 
-			$ptpStr = apply_filters( 'pmpro_twocheckout_ptpstr', $ptpStr, $order );
+			$ptpStr = apply_filters( 'dmrfid_twocheckout_ptpstr', $ptpStr, $order );
 
 			///useful for debugging
 			///echo str_replace("&", "&<br />", $ptpStr);
@@ -366,7 +366,7 @@
 
 			// Demo mode?
 			if(empty($order->gateway_environment))
-				$gateway_environment = pmpro_getOption("gateway_environment");
+				$gateway_environment = dmrfid_getOption("gateway_environment");
 			else
 				$gateway_environment = $order->gateway_environment;
 

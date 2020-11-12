@@ -3,18 +3,18 @@
  * Add the "membership level" field to the edit user/profile page,
  * along with other membership-related fields.
  */
-function pmpro_membership_level_profile_fields($user)
+function dmrfid_membership_level_profile_fields($user)
 {
 	global $current_user;
 
-	$membership_level_capability = apply_filters("pmpro_edit_member_capability", "manage_options");
+	$membership_level_capability = apply_filters("dmrfid_edit_member_capability", "manage_options");
 	if(!current_user_can($membership_level_capability))
 		return false;
 
 	global $wpdb;
-	$user->membership_level = pmpro_getMembershipLevelForUser($user->ID);
+	$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 
-	$levels = $wpdb->get_results( "SELECT * FROM {$wpdb->pmpro_membership_levels}", OBJECT );
+	$levels = $wpdb->get_results( "SELECT * FROM {$wpdb->dmrfid_membership_levels}", OBJECT );
 
 	if(!$levels)
 		return "";
@@ -23,7 +23,7 @@ function pmpro_membership_level_profile_fields($user)
 <table class="form-table">
     <?php
 		$show_membership_level = true;
-		$show_membership_level = apply_filters("pmpro_profile_show_membership_level", $show_membership_level, $user);
+		$show_membership_level = apply_filters("dmrfid_profile_show_membership_level", $show_membership_level, $user);
 		if($show_membership_level)
 		{
 		?>
@@ -43,7 +43,7 @@ function pmpro_membership_level_profile_fields($user)
 				</select>
                 <span id="current_level_cost">
                 <?php
-                $membership_values = pmpro_getMembershipLevelForUser($user->ID);
+                $membership_values = dmrfid_getMembershipLevelForUser($user->ID);
 
 				//we tweak the initial payment here so the text here effectively shows the recurring amount
 				if(!empty($membership_values))
@@ -52,16 +52,16 @@ function pmpro_membership_level_profile_fields($user)
 					$membership_values->initial_payment = $membership_values->billing_amount;
 				}
 
-				if(empty($membership_values) || pmpro_isLevelFree($membership_values))
+				if(empty($membership_values) || dmrfid_isLevelFree($membership_values))
                 {
 					if(!empty($membership_values->original_initial_payment) && $membership_values->original_initial_payment > 0)
-						echo __('Paid', 'paid-memberships-pro' ) . " " . pmpro_formatPrice($membership_values->original_initial_payment) . ".";
+						echo __('Paid', 'paid-memberships-pro' ) . " " . dmrfid_formatPrice($membership_values->original_initial_payment) . ".";
 					else
 						_e('Not paying.', 'paid-memberships-pro' );
 				}
 				else
                 {
-                    echo pmpro_getLevelCost($membership_values, true, true);
+                    echo dmrfid_getLevelCost($membership_values, true, true);
                 }
                 ?>
                 </span>
@@ -72,10 +72,10 @@ function pmpro_membership_level_profile_fields($user)
 		}
 
 		$show_expiration = true;
-		$show_expiration = apply_filters("pmpro_profile_show_expiration", $show_expiration, $user);
+		$show_expiration = apply_filters("dmrfid_profile_show_expiration", $show_expiration, $user);
 		if ( $show_expiration ) {
 			//is there an end date?
-			$user->membership_level = pmpro_getMembershipLevelForUser($user->ID);
+			$user->membership_level = dmrfid_getMembershipLevelForUser($user->ID);
 			$end_date = (!empty($user->membership_level) && !empty($user->membership_level->enddate)); // Returned as UTC timestamp
 
 			$selected_expires_day =  date( 'j', $end_date ? $user->membership_level->enddate : current_time('timestamp') );
@@ -131,8 +131,8 @@ function pmpro_membership_level_profile_fields($user)
 		?>
 
 		<?php
-			$tospage_id = pmpro_getOption( 'tospage' );
-			$consent_log = pmpro_get_consent_log( $user->ID, true );
+			$tospage_id = dmrfid_getOption( 'tospage' );
+			$consent_log = dmrfid_get_consent_log( $user->ID, true );
 
 			if( !empty( $tospage_id ) || !empty( $consent_log ) ) {
 			?>
@@ -142,13 +142,13 @@ function pmpro_membership_level_profile_fields($user)
 					<?php
 						if( !empty( $consent_log ) ) {
 							if( count( $consent_log ) > 10 ) {
-								$scrollable = 'pmpro_scrollable';
+								$scrollable = 'dmrfid_scrollable';
 							} else {
 								$scrollable = '';
 							}
-							echo '<ul class="pmpro_consent_log ' . $scrollable . '">';
+							echo '<ul class="dmrfid_consent_log ' . $scrollable . '">';
 							foreach( $consent_log as $entry ) {
-								echo '<li>' . pmpro_consent_to_text( $entry ) . '</li>';
+								echo '<li>' . dmrfid_consent_to_text( $entry ) . '</li>';
 							}
 							echo '</ul>';
 						} else {
@@ -182,7 +182,7 @@ function pmpro_membership_level_profile_fields($user)
             //hide by default
 			jQuery(".more_level_options").hide();
 
-			function pmpro_checkForLevelChangeInProfile()
+			function dmrfid_checkForLevelChangeInProfile()
 			{
 				//cancelling sub or not
 				if($membership_level_select.val() == 0) {
@@ -215,19 +215,19 @@ function pmpro_membership_level_profile_fields($user)
 
 			//run check when fields change
             $membership_level_select.change(function() {
-                pmpro_checkForLevelChangeInProfile();
+                dmrfid_checkForLevelChangeInProfile();
             });
 			$expires_select.change(function() {
-                pmpro_checkForLevelChangeInProfile();
+                dmrfid_checkForLevelChangeInProfile();
             });
 			$expires_month_select.change(function() {
-                pmpro_checkForLevelChangeInProfile();
+                dmrfid_checkForLevelChangeInProfile();
             });
 			$expires_day_text.change(function() {
-                pmpro_checkForLevelChangeInProfile();
+                dmrfid_checkForLevelChangeInProfile();
             });
 			$expires_year_text.change(function() {
-                pmpro_checkForLevelChangeInProfile();
+                dmrfid_checkForLevelChangeInProfile();
             });
 
             jQuery("#cancel_subscription").change(function() {
@@ -245,20 +245,20 @@ function pmpro_membership_level_profile_fields($user)
         });
     </script>
 <?php
-	do_action("pmpro_after_membership_level_profile_fields", $user);
+	do_action("dmrfid_after_membership_level_profile_fields", $user);
 }
 
 /*
 	When applied, previous subscriptions won't be cancelled when changing membership levels.
 	Use a function here instead of __return_false so we can easily turn add and remove it.
 */
-function pmpro_cancel_previous_subscriptions_false()
+function dmrfid_cancel_previous_subscriptions_false()
 {
 	return false;
 }
 
 //save the fields on update
-function pmpro_membership_level_profile_fields_update()
+function dmrfid_membership_level_profile_fields_update()
 {
 	//get the user id
 	global $wpdb, $current_user, $user_ID;
@@ -267,7 +267,7 @@ function pmpro_membership_level_profile_fields_update()
 	if(!empty($_REQUEST['user_id']))
 		$user_ID = $_REQUEST['user_id'];
 
-	$membership_level_capability = apply_filters("pmpro_edit_member_capability", "manage_options");
+	$membership_level_capability = apply_filters("dmrfid_edit_member_capability", "manage_options");
 	if(!current_user_can($membership_level_capability))
 		return false;
 
@@ -285,10 +285,10 @@ function pmpro_membership_level_profile_fields_update()
 
 		//if the cancel at gateway box is not checked, don't cancel
 		if(empty($_REQUEST['cancel_subscription']))
-			add_filter('pmpro_cancel_previous_subscriptions', 'pmpro_cancel_previous_subscriptions_false');
+			add_filter('dmrfid_cancel_previous_subscriptions', 'dmrfid_cancel_previous_subscriptions_false');
 
 		//do the change
-        if(pmpro_changeMembershipLevel(intval($_REQUEST['membership_level']), $user_ID, $changed_or_cancelled))
+        if(dmrfid_changeMembershipLevel(intval($_REQUEST['membership_level']), $user_ID, $changed_or_cancelled))
         {
             //it changed. send email
             $level_changed = true;
@@ -305,7 +305,7 @@ function pmpro_membership_level_profile_fields_update()
 
 		//remove filter after ward
 		if(empty($_REQUEST['cancel_subscription']))
-			remove_filter('pmpro_cancel_previous_subscriptions', 'pmpro_cancel_previous_subscriptions_false');
+			remove_filter('dmrfid_cancel_previous_subscriptions', 'dmrfid_cancel_previous_subscriptions_false');
     }
 
 	//expiration change
@@ -313,20 +313,20 @@ function pmpro_membership_level_profile_fields_update()
 	{
 		//update the expiration date
 		$expiration_date = intval($_REQUEST['expires_year']) . "-" . str_pad(intval($_REQUEST['expires_month']), 2, "0", STR_PAD_LEFT) . "-" . str_pad(intval($_REQUEST['expires_day']), 2, "0", STR_PAD_LEFT);
-		$sqlQuery = "UPDATE $wpdb->pmpro_memberships_users SET enddate = '" . $expiration_date . "' WHERE status = 'active' AND membership_id = '" . intval($_REQUEST['membership_level']) . "' AND user_id = '" . $user_ID . "' LIMIT 1";
+		$sqlQuery = "UPDATE $wpdb->dmrfid_memberships_users SET enddate = '" . $expiration_date . "' WHERE status = 'active' AND membership_id = '" . intval($_REQUEST['membership_level']) . "' AND user_id = '" . $user_ID . "' LIMIT 1";
 		if($wpdb->query($sqlQuery))
 			$expiration_changed = true;
 	}
 	elseif(isset($_REQUEST['expires']))
 	{
 		//already blank? have to check for null or '0000-00-00 00:00:00' or '' here.
-		$sqlQuery = "SELECT user_id FROM $wpdb->pmpro_memberships_users WHERE (enddate IS NULL OR enddate = '' OR enddate = '0000-00-00 00:00:00') AND status = 'active' AND user_id = '" . $user_ID . "' LIMIT 1";
+		$sqlQuery = "SELECT user_id FROM $wpdb->dmrfid_memberships_users WHERE (enddate IS NULL OR enddate = '' OR enddate = '0000-00-00 00:00:00') AND status = 'active' AND user_id = '" . $user_ID . "' LIMIT 1";
 		$blank = $wpdb->get_var($sqlQuery);
 
 		if(empty($blank))
 		{
 			//null out the expiration
-			$sqlQuery = "UPDATE $wpdb->pmpro_memberships_users SET enddate = NULL WHERE status = 'active' AND membership_id = '" . intval($_REQUEST['membership_level']) . "' AND user_id = '" . $user_ID . "' LIMIT 1";
+			$sqlQuery = "UPDATE $wpdb->dmrfid_memberships_users SET enddate = NULL WHERE status = 'active' AND membership_id = '" . intval($_REQUEST['membership_level']) . "' AND user_id = '" . $user_ID . "' LIMIT 1";
 			if($wpdb->query($sqlQuery))
 				$expiration_changed = true;
 		}
@@ -336,26 +336,26 @@ function pmpro_membership_level_profile_fields_update()
 	if(!empty($level_changed) || !empty($expiration_changed))
 	{
 		//email to admin
-		$pmproemail = new PMProEmail();
+		$dmrfidemail = new DmRFIDEmail();
 		if(!empty($expiration_changed))
-			$pmproemail->expiration_changed = true;
-		$pmproemail->sendAdminChangeAdminEmail(get_userdata($user_ID));
+			$dmrfidemail->expiration_changed = true;
+		$dmrfidemail->sendAdminChangeAdminEmail(get_userdata($user_ID));
 
 		//send email
 		if(!empty($_REQUEST['send_admin_change_email']))
 		{
 			//email to member
-			$pmproemail = new PMProEmail();
+			$dmrfidemail = new DmRFIDEmail();
 			if(!empty($expiration_changed))
-				$pmproemail->expiration_changed = true;
-			$pmproemail->sendAdminChangeEmail(get_userdata($user_ID));
+				$dmrfidemail->expiration_changed = true;
+			$dmrfidemail->sendAdminChangeEmail(get_userdata($user_ID));
 		}
 	}
 }
-add_action( 'show_user_profile', 'pmpro_membership_level_profile_fields' );
-add_action( 'edit_user_profile', 'pmpro_membership_level_profile_fields' );
-add_action( 'personal_options_update', 'pmpro_membership_level_profile_fields_update' );
-add_action( 'edit_user_profile_update', 'pmpro_membership_level_profile_fields_update' );
+add_action( 'show_user_profile', 'dmrfid_membership_level_profile_fields' );
+add_action( 'edit_user_profile', 'dmrfid_membership_level_profile_fields' );
+add_action( 'personal_options_update', 'dmrfid_membership_level_profile_fields_update' );
+add_action( 'edit_user_profile_update', 'dmrfid_membership_level_profile_fields_update' );
 
 /**
  * Sanitizes the passed value.
@@ -364,19 +364,19 @@ add_action( 'edit_user_profile_update', 'pmpro_membership_level_profile_fields_u
  *
  * @return array|int|string|object     Sanitized value
  */
-function pmpro_sanitize( $value ) {
+function dmrfid_sanitize( $value ) {
 
 	if ( is_array( $value ) ) {
 
 		foreach ( $value as $key => $val ) {
-			$value[ $key ] = pmprorh_sanitize( $val );
+			$value[ $key ] = dmrfidrh_sanitize( $val );
 		}
 	}
 
 	if ( is_object( $value ) ) {
 
 		foreach ( $value as $key => $val ) {
-			$value->{$key} = pmprorh_sanitize( $val );
+			$value->{$key} = dmrfidrh_sanitize( $val );
 		}
 	}
 
@@ -397,15 +397,15 @@ function pmpro_sanitize( $value ) {
  *
  * @since 2.3
  */
-function pmpro_member_profile_edit_form() {
+function dmrfid_member_profile_edit_form() {
 	global $current_user;
 
 	if ( ! is_user_logged_in() ) {
-		echo '<div class="' . pmpro_get_element_class( 'pmpro_message pmpro_alert', 'pmpro_alert' ) . '"><a href="' . esc_url( pmpro_login_url() ) . '">' . esc_html__( 'Log in to edit your profile.', 'paid-memberships-pro' ) . '</a></div>';
+		echo '<div class="' . dmrfid_get_element_class( 'dmrfid_message dmrfid_alert', 'dmrfid_alert' ) . '"><a href="' . esc_url( dmrfid_login_url() ) . '">' . esc_html__( 'Log in to edit your profile.', 'paid-memberships-pro' ) . '</a></div>';
 		return;
 	}
 
-	do_action( 'pmpro_personal_options_update', $current_user->ID );
+	do_action( 'dmrfid_personal_options_update', $current_user->ID );
 
 	// Saving profile updates.
 	if ( isset( $_POST['action'] ) && $_POST['action'] == 'update-profile' && $current_user->ID == $_POST['user_id'] && wp_verify_nonce( $_POST['update_user_nonce'], 'update-user_' . $current_user->ID ) ) {
@@ -464,11 +464,11 @@ function pmpro_member_profile_edit_form() {
 		 * @param $update Whether this is a user update.
 		 * @param $user   User object (passed by reference).
 		 */
-		do_action_ref_array( 'pmpro_user_profile_update_errors', array( &$errors, $update, &$user ) );
+		do_action_ref_array( 'dmrfid_user_profile_update_errors', array( &$errors, $update, &$user ) );
 
 		// Show error messages.
 		if ( ! empty( $errors ) ) { ?>
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_message pmpro_error', 'pmpro_error' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_message dmrfid_error', 'dmrfid_error' ); ?>">
 				<?php
 					foreach ( $errors as $key => $value ) {
 						echo '<p>' . $value . '</p>';
@@ -479,7 +479,7 @@ function pmpro_member_profile_edit_form() {
 			// Save updated profile fields.
 			wp_update_user( $user );
 			?>
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_message pmpro_success', 'pmpro_success' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_message dmrfid_success', 'dmrfid_success' ); ?>">
 				<?php _e( 'Your profile has been updated.', 'paid-memberships-pro' ); ?>
 			</div>
 		<?php }
@@ -488,22 +488,22 @@ function pmpro_member_profile_edit_form() {
 		$user = $current_user;
 	}
 	?>
-	<div class="<?php echo pmpro_get_element_class( 'pmpro_member_profile_edit_wrap' ); ?>">
-		<form id="member-profile-edit" class="<?php echo pmpro_get_element_class( 'pmpro_form' ); ?>" action="" method="post"
+	<div class="<?php echo dmrfid_get_element_class( 'dmrfid_member_profile_edit_wrap' ); ?>">
+		<form id="member-profile-edit" class="<?php echo dmrfid_get_element_class( 'dmrfid_form' ); ?>" action="" method="post"
 			<?php
 				/**
-				 * Fires inside the member-profile-edit form tag in the pmpro_member_profile_edit_form function.
+				 * Fires inside the member-profile-edit form tag in the dmrfid_member_profile_edit_form function.
 				 *
 				 * @since 2.4.1
 				 */
-				do_action( 'pmpro_member_profile_edit_form_tag' );
+				do_action( 'dmrfid_member_profile_edit_form_tag' );
 			?>
 		>
 
 			<?php wp_nonce_field( 'update-user_' . $current_user->ID, 'update_user_nonce' ); ?>
 
 			<?php
-			$user_fields = apply_filters( 'pmpro_member_profile_edit_user_object_fields',
+			$user_fields = apply_filters( 'dmrfid_member_profile_edit_user_object_fields',
 				array(
 					'first_name'	=> __( 'First Name', 'paid-memberships-pro' ),
 					'last_name'		=> __( 'Last Name', 'paid-memberships-pro' ),
@@ -513,21 +513,21 @@ function pmpro_member_profile_edit_form() {
 			);
 			?>
 
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout_box-user' ); ?>">
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_member_profile_edit-fields' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout_box-user' ); ?>">
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_member_profile_edit-fields' ); ?>">
 				<?php foreach ( $user_fields as $field_key => $label ) { ?>
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_member_profile_edit-field pmpro_member_profile_edit-field- ' . $field_key, 'pmpro_member_profile_edit-field- ' . $field_key ); ?>">
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_member_profile_edit-field dmrfid_member_profile_edit-field- ' . $field_key, 'dmrfid_member_profile_edit-field- ' . $field_key ); ?>">
 						<label for="<?php echo esc_attr( $field_key ); ?>"><?php esc_html_e( $label ); ?></label>
 						<?php if ( current_user_can( 'manage_options' ) && $field_key === 'user_email' ) { ?>
-							<input type="text" readonly="readonly" name="user_email" id="user_email" value="<?php echo esc_attr( $user->user_email ); ?>" class="<?php echo pmpro_get_element_class( 'input', 'user_email' ); ?>" />
-							<p class="<?php echo pmpro_get_element_class( 'lite' ); ?>"><?php esc_html_e( 'Site administrators must use the WordPress dashboard to update their email address.', 'paid-memberships-pro' ); ?></p>
+							<input type="text" readonly="readonly" name="user_email" id="user_email" value="<?php echo esc_attr( $user->user_email ); ?>" class="<?php echo dmrfid_get_element_class( 'input', 'user_email' ); ?>" />
+							<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php esc_html_e( 'Site administrators must use the WordPress dashboard to update their email address.', 'paid-memberships-pro' ); ?></p>
 						<?php } else { ?>
-							<input type="text" name="<?php echo esc_attr( $field_key ); ?>" id="<?php echo esc_attr( $field_key ); ?>" value="<?php echo esc_attr( stripslashes( $user->{$field_key} ) ); ?>" class="<?php echo pmpro_get_element_class( 'input', $field_key ); ?>" />
+							<input type="text" name="<?php echo esc_attr( $field_key ); ?>" id="<?php echo esc_attr( $field_key ); ?>" value="<?php echo esc_attr( stripslashes( $user->{$field_key} ) ); ?>" class="<?php echo dmrfid_get_element_class( 'input', $field_key ); ?>" />
 						<?php } ?>
 	            	</div>
 				<?php } ?>
-				</div> <!-- end pmpro_member_profile_edit-fields -->
-			</div> <!-- end pmpro_checkout_box-user -->
+				</div> <!-- end dmrfid_member_profile_edit-fields -->
+			</div> <!-- end dmrfid_checkout_box-user -->
 
 			<?php
 				/**
@@ -537,17 +537,17 @@ function pmpro_member_profile_edit_form() {
 				 *
 				 * @param WP_User $current_user The current WP_User object.
 				 */
-				do_action( 'pmpro_show_user_profile', $current_user );
+				do_action( 'dmrfid_show_user_profile', $current_user );
 			?>
 			<input type="hidden" name="action" value="update-profile" />
 			<input type="hidden" name="user_id" value="<?php echo $current_user->ID; ?>" />
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_submit' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
 				<hr />
-				<input type="submit" name="submit" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-submit', 'pmpro_btn-submit' ); ?>" value="<?php _e( 'Update Profile', 'paid-memberships-pro' );?>" />
-				<input type="button" name="cancel" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-cancel', 'pmpro_btn-cancel' ); ?>" value="<?php _e( 'Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo pmpro_url( 'account'); ?>';" />
+				<input type="submit" name="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php _e( 'Update Profile', 'paid-memberships-pro' );?>" />
+				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php _e( 'Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo dmrfid_url( 'account'); ?>';" />
 			</div>
 		</form>
-	</div> <!-- end pmpro_member_profile_edit_wrap -->
+	</div> <!-- end dmrfid_member_profile_edit_wrap -->
 	<?php
 }
 
@@ -559,7 +559,7 @@ function pmpro_member_profile_edit_form() {
  *
  * @since 2.3
  */
-function pmpro_change_password_process() {
+function dmrfid_change_password_process() {
 	global $current_user;
 
 	// Make sure we're on the right page.
@@ -612,14 +612,14 @@ function pmpro_change_password_process() {
 
 		//setting some cookies
 		wp_set_current_user( $current_user->ID, $current_user->user_login );
-		wp_set_auth_cookie( $current_user->ID, true, apply_filters( 'pmpro_checkout_signon_secure', force_ssl_admin() ) );
+		wp_set_auth_cookie( $current_user->ID, true, apply_filters( 'dmrfid_checkout_signon_secure', force_ssl_admin() ) );
 
-		pmpro_setMessage( __( 'Your password has been updated.', 'paid-memberships-pro' ), 'pmpro_success' );
+		dmrfid_setMessage( __( 'Your password has been updated.', 'paid-memberships-pro' ), 'dmrfid_success' );
 	} else {
-		pmpro_setMessage( $error, 'pmpro_error' );
+		dmrfid_setMessage( $error, 'dmrfid_error' );
 	}
 }
-add_action( 'init', 'pmpro_change_password_process' );
+add_action( 'init', 'dmrfid_change_password_process' );
 
 
 /**
@@ -627,50 +627,50 @@ add_action( 'init', 'pmpro_change_password_process' );
  *
  * @since 2.3
  */
-function pmpro_change_password_form() {
-	global $current_user, $pmpro_msg, $pmpro_msgt;
+function dmrfid_change_password_form() {
+	global $current_user, $dmrfid_msg, $dmrfid_msgt;
 	?>
 	<h2><?php _e( 'Change Password', 'paid-memberships-pro' ); ?></h2>
-	<?php if ( ! empty( $pmpro_msg ) ) { ?>
-		<div class="<?php echo pmpro_get_element_class( 'pmpro_message ' . $pmpro_msgt, $pmpro_msgt ); ?>">
-			<?php echo esc_html( $pmpro_msg ); ?>
+	<?php if ( ! empty( $dmrfid_msg ) ) { ?>
+		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_message ' . $dmrfid_msgt, $dmrfid_msgt ); ?>">
+			<?php echo esc_html( $dmrfid_msg ); ?>
 		</div>
 	<?php } ?>
-	<div class="<?php echo pmpro_get_element_class( 'pmpro_change_password_wrap' ); ?>">
-		<form id="change-password" class="<?php echo pmpro_get_element_class( 'pmpro_form', 'change-password' ); ?>" action="" method="post">
+	<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password_wrap' ); ?>">
+		<form id="change-password" class="<?php echo dmrfid_get_element_class( 'dmrfid_form', 'change-password' ); ?>" action="" method="post">
 
 			<?php wp_nonce_field( 'change-password-user_' . $current_user->ID, 'change_password_user_nonce' ); ?>
 
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout_box-password' ); ?>">
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_change_password-fields' ); ?>">
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_change_password-field pmpro_change_password-field-password_current', 'pmpro_change_password-field-password_current' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout_box-password' ); ?>">
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-fields' ); ?>">
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-field dmrfid_change_password-field-password_current', 'dmrfid_change_password-field-password_current' ); ?>">
 						<label for="password_current"><?php _e( 'Current Password', 'paid-memberships-pro' ); ?></label></th>
-						<input type="password" name="password_current" id="password_current" value="" class="<?php echo pmpro_get_element_class( 'input', 'password_current' ); ?>" />
-						<span class="<?php echo pmpro_get_element_class( 'pmpro_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
-					</div> <!-- end pmpro_change_password-field-password_current -->
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_change_password-field pmpro_change_password-field-pass1', 'pmpro_change_password-field-pass1' ); ?>">
+						<input type="password" name="password_current" id="password_current" value="" class="<?php echo dmrfid_get_element_class( 'input', 'password_current' ); ?>" />
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
+					</div> <!-- end dmrfid_change_password-field-password_current -->
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-field dmrfid_change_password-field-pass1', 'dmrfid_change_password-field-pass1' ); ?>">
 						<label for="pass1"><?php _e( 'New Password', 'paid-memberships-pro' ); ?></label></th>
-						<input type="password" name="pass1" id="pass1" value="" class="<?php echo pmpro_get_element_class( 'input pass1', 'pass1' ); ?>" autocomplete="off" />
-						<span class="<?php echo pmpro_get_element_class( 'pmpro_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
+						<input type="password" name="pass1" id="pass1" value="" class="<?php echo dmrfid_get_element_class( 'input pass1', 'pass1' ); ?>" autocomplete="off" />
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
 						<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength Indicator', 'paid-memberships-pro' ); ?></div>
-						<p class="<?php echo pmpro_get_element_class( 'lite' ); ?>"><?php echo wp_get_password_hint(); ?></p>
-					</div> <!-- end pmpro_change_password-field-pass1 -->
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_change_password-field pmpro_change_password-field-pass2', 'pmpro_change_password-field-pass2' ); ?>">
+						<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php echo wp_get_password_hint(); ?></p>
+					</div> <!-- end dmrfid_change_password-field-pass1 -->
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_change_password-field dmrfid_change_password-field-pass2', 'dmrfid_change_password-field-pass2' ); ?>">
 						<label for="pass2"><?php _e( 'Confirm New Password', 'paid-memberships-pro' ); ?></label></th>
-						<input type="password" name="pass2" id="pass2" value="" class="<?php echo pmpro_get_element_class( 'input', 'pass2' ); ?>" autocomplete="off" />
-						<span class="<?php echo pmpro_get_element_class( 'pmpro_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
-					</div> <!-- end pmpro_change_password-field-pass2 -->
-				</div> <!-- end pmpro_change_password-fields -->
-			</div> <!-- end pmpro_checkout_box-password -->
+						<input type="password" name="pass2" id="pass2" value="" class="<?php echo dmrfid_get_element_class( 'input', 'pass2' ); ?>" autocomplete="off" />
+						<span class="<?php echo dmrfid_get_element_class( 'dmrfid_asterisk' ); ?>"> <abbr title="<?php _e( 'Required Field', 'paid-memberships-pro' ); ?>">*</abbr></span>
+					</div> <!-- end dmrfid_change_password-field-pass2 -->
+				</div> <!-- end dmrfid_change_password-fields -->
+			</div> <!-- end dmrfid_checkout_box-password -->
 
 			<input type="hidden" name="action" value="change-password" />
 			<input type="hidden" name="user_id" value="<?php echo esc_attr( $current_user->ID ); ?>" />
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_submit' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
 				<hr />
-				<input type="submit" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-submit', 'pmpro_btn-submit' ); ?>" value="<?php esc_attr_e('Change Password', 'paid-memberships-pro' );?>" />
-				<input type="button" name="cancel" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-cancel', 'pmpro_btn-cancel' ); ?>" value="<?php esc_attr_e('Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo esc_url( pmpro_url( 'account') ); ?>';" />
+				<input type="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e('Change Password', 'paid-memberships-pro' );?>" />
+				<input type="button" name="cancel" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-cancel', 'dmrfid_btn-cancel' ); ?>" value="<?php esc_attr_e('Cancel', 'paid-memberships-pro' );?>" onclick="location.href='<?php echo esc_url( dmrfid_url( 'account') ); ?>';" />
 			</div>
 		</form>
-	</div> <!-- end pmpro_change_password_wrap -->
+	</div> <!-- end dmrfid_change_password_wrap -->
 	<?php
 }

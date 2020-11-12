@@ -1,6 +1,6 @@
 <?php
 // only admins can get this
-if ( ! function_exists( 'current_user_can' ) || ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'pmpro_orders' ) ) ) {
+if ( ! function_exists( 'current_user_can' ) || ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'dmrfid_orders' ) ) ) {
 	die( __( 'You do not have permissions to perform this action.', 'paid-memberships-pro' ) );
 }
 
@@ -99,7 +99,7 @@ if ( isset( $_REQUEST['limit'] ) ) {
 	 *
 	 * @param int $limit The number of items to show per page.
 	 */
-	$limit = apply_filters( 'pmpro_orders_per_page', 15 );
+	$limit = apply_filters( 'dmrfid_orders_per_page', 15 );
 }
 
 $end   = $pn * $limit;
@@ -152,17 +152,17 @@ if ( empty( $filter ) || $filter === 'all' ) {
 	$condition = "o.total = 0";
 }
 
-$condition = apply_filters( 'pmpro_admin_orders_query_condition', $condition, $filter );
+$condition = apply_filters( 'dmrfid_admin_orders_query_condition', $condition, $filter );
 
 // deleting?
 if ( ! empty( $_REQUEST['delete'] ) ) {
 	$dorder = new MemberOrder( intval( $_REQUEST['delete'] ) );
 	if ( $dorder->deleteMe() ) {
-		$pmpro_msg  = __( 'Order deleted successfully.', 'paid-memberships-pro' );
-		$pmpro_msgt = 'success';
+		$dmrfid_msg  = __( 'Order deleted successfully.', 'paid-memberships-pro' );
+		$dmrfid_msgt = 'success';
 	} else {
-		$pmpro_msg  = __( 'Error deleting order.', 'paid-memberships-pro' );
-		$pmpro_msgt = 'error';
+		$dmrfid_msg  = __( 'Error deleting order.', 'paid-memberships-pro' );
+		$dmrfid_msgt = 'error';
 	}
 }
 
@@ -170,7 +170,7 @@ $thisyear = date( 'Y', $now );
 
 // this array stores fields that should be read only
 $read_only_fields = apply_filters(
-	'pmpro_orders_read_only_fields', array(
+	'dmrfid_orders_read_only_fields', array(
 		'code',
 		'payment_transaction_id',
 		'subscription_transaction_id',
@@ -232,7 +232,7 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 	}
 
 	// Hiding couponamount by default.
-	$coupons = apply_filters( 'pmpro_orders_show_coupon_amounts', false );
+	$coupons = apply_filters( 'dmrfid_orders_show_coupon_amounts', false );
 	if ( ! empty( $coupons ) ) {
 		if ( ! in_array( 'couponamount', $read_only_fields ) && isset( $_POST['couponamount'] ) ) {
 			$order->couponamount = sanitize_text_field( $_POST['couponamount'] );
@@ -259,7 +259,7 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 	}
 
 	if ( ! in_array( 'status', $read_only_fields ) && isset( $_POST['status'] ) ) {
-		$order->status = pmpro_sanitize_with_safelist( $_POST['status'], pmpro_getOrderStatuses() );
+		$order->status = dmrfid_sanitize_with_safelist( $_POST['status'], dmrfid_getOrderStatuses() );
 	}
 	if ( ! in_array( 'gateway', $read_only_fields ) && isset( $_POST['gateway'] ) ) {
 		$order->gateway = sanitize_text_field( $_POST['gateway'] );
@@ -279,7 +279,7 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 	}
 
 	// affiliate stuff
-	$affiliates = apply_filters( 'pmpro_orders_show_affiliate_ids', false );
+	$affiliates = apply_filters( 'dmrfid_orders_show_affiliate_ids', false );
 	if ( ! empty( $affiliates ) ) {
 		if ( ! in_array( 'affiliate_id', $read_only_fields ) ) {
 			$order->affiliate_id = sanitize_text_field( $_POST['affiliate_id'] );
@@ -291,7 +291,7 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 
 	// check nonce for saving
 	$nonceokay = true;
-	if ( empty( $_REQUEST['pmpro_orders_nonce'] ) || ! check_admin_referer( 'save', 'pmpro_orders_nonce' ) ) {
+	if ( empty( $_REQUEST['dmrfid_orders_nonce'] ) || ! check_admin_referer( 'save', 'dmrfid_orders_nonce' ) ) {
 		$nonceokay = false;
 	}
 
@@ -301,15 +301,15 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 		
 		// handle timestamp
 		if ( $order->updateTimestamp( intval( $_POST['ts_year'] ), intval( $_POST['ts_month'] ), intval( $_POST['ts_day'] ), intval( $_POST['ts_hour'] ) . ':' . intval( $_POST['ts_minute'] ) . ':00' ) !== false ) {
-			$pmpro_msg  = __( 'Order saved successfully.', 'paid-memberships-pro' );
-			$pmpro_msgt = 'success';
+			$dmrfid_msg  = __( 'Order saved successfully.', 'paid-memberships-pro' );
+			$dmrfid_msgt = 'success';
 		} else {
-			$pmpro_msg  = __( 'Error updating order timestamp.', 'paid-memberships-pro' );
-			$pmpro_msgt = 'error';
+			$dmrfid_msg  = __( 'Error updating order timestamp.', 'paid-memberships-pro' );
+			$dmrfid_msgt = 'error';
 		}
 	} else {
-		$pmpro_msg  = __( 'Error saving order.', 'paid-memberships-pro' );
-		$pmpro_msgt = 'error';
+		$dmrfid_msg  = __( 'Error saving order.', 'paid-memberships-pro' );
+		$dmrfid_msgt = 'error';
 	}
 	
 	// also update the discount code if needed
@@ -356,8 +356,8 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 			$order->expirationmonth = '';
 			$order->expirationyear = '';
 			$order->status = 'success';
-			$order->gateway = pmpro_getOption( 'gateway' );
-			$order->gateway_environment = pmpro_getOption( 'gateway_environment' );
+			$order->gateway = dmrfid_getOption( 'gateway' );
+			$order->gateway_environment = dmrfid_getOption( 'gateway_environment' );
 			$order->payment_transaction_id = '';
 			$order->subscription_transaction_id = '';
 			$order->affiliate_id = '';
@@ -369,9 +369,9 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 
 require_once( dirname( __FILE__ ) . '/admin_header.php' );
 
-if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
+if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 	// Load the email order modal.
-	pmpro_add_email_order_modal();
+	dmrfid_add_email_order_modal();
 }
 
 ?>
@@ -380,27 +380,27 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 
 	<?php if ( ! empty( $order->id ) ) { ?>
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'Order', 'paid-memberships-pro' ); ?> #<?php echo esc_html( $order->id ); ?>: <?php echo esc_html( $order->code ); ?></h1>
-		<a title="<?php esc_attr_e( 'Print', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'pmpro_orders_print_view', 'order' => $order->id ), admin_url( 'admin-ajax.php' ) ) ); ?>" class="page-title-action" target="_blank" ><?php esc_html_e( 'Print', 'paid-memberships-pro' ); ?></a>
+		<a title="<?php esc_attr_e( 'Print', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'dmrfid_orders_print_view', 'order' => $order->id ), admin_url( 'admin-ajax.php' ) ) ); ?>" class="page-title-action" target="_blank" ><?php esc_html_e( 'Print', 'paid-memberships-pro' ); ?></a>
 		<a title="<?php esc_attr_e( 'Email', 'paid-memberships-pro' ); ?>" href="#TB_inline?width=600&height=200&inlineId=email_invoice" class="thickbox email_link page-title-action" data-order="<?php echo esc_html( $order->id ); ?>"><?php esc_html_e( 'Email', 'paid-memberships-pro' ); ?></a>
 	<?php } else { ?>
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'New Order', 'paid-memberships-pro' ); ?></h1>
 	<?php } ?>
 	<hr class="wp-header-end">
 
-	<?php if ( ! empty( $pmpro_msg ) ) { ?>
+	<?php if ( ! empty( $dmrfid_msg ) ) { ?>
 		<div id="message" class="
 		<?php
-		if ( $pmpro_msgt == 'success' ) {
+		if ( $dmrfid_msgt == 'success' ) {
 			echo 'updated fade';
 		} else {
 			echo 'error';
 		}
 		?>
-		"><p><?php echo $pmpro_msg; ?></p></div>
+		"><p><?php echo $dmrfid_msg; ?></p></div>
 	<?php } ?>
 
 	<form method="post" action="">
-		<?php wp_nonce_field( 'save', 'pmpro_orders_nonce' ); ?>
+		<?php wp_nonce_field( 'save', 'dmrfid_orders_nonce' ); ?>
 
 		<table class="form-table">
 			<tbody>
@@ -565,7 +565,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				$discount_code_id = 0;
 			}
 
-			$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->pmpro_discount_codes ";
+			$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->dmrfid_discount_codes ";
 			$sqlQuery .= "ORDER BY id DESC ";
 			$codes = $wpdb->get_results($sqlQuery, OBJECT);
 			if ( ! empty( $codes ) ) { ?>
@@ -619,7 +619,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 			</tr>
 			<?php
 				// Hiding couponamount by default.
-				$coupons = apply_filters( 'pmpro_orders_show_coupon_amounts', false );
+				$coupons = apply_filters( 'dmrfid_orders_show_coupon_amounts', false );
 				if ( ! empty( $coupons ) ) { ?>
 				<tr>
 					<th scope="row" valign="top"><label for="couponamount"><?php esc_html_e( 'Coupon Amount', 'paid-memberships-pro' ); ?>:</label>
@@ -739,7 +739,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 						echo esc_html( $order->status );
 					} else { ?>
 					<?php
-						$statuses = pmpro_getOrderStatuses();
+						$statuses = dmrfid_getOrderStatuses();
 						?>
 						<select id="status" name="status">
 							<?php foreach ( $statuses as $status ) { ?>
@@ -761,13 +761,13 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 						echo esc_html( $order->gateway );
 					} else {
 					?>
-						<select id="gateway" name="gateway" onchange="pmpro_changeGateway(jQuery(this).val());">
+						<select id="gateway" name="gateway" onchange="dmrfid_changeGateway(jQuery(this).val());">
 					<?php
-						$pmpro_gateways = pmpro_gateways();
-						foreach ( $pmpro_gateways as $pmpro_gateway_name => $pmpro_gateway_label ) {
+						$dmrfid_gateways = dmrfid_gateways();
+						foreach ( $dmrfid_gateways as $dmrfid_gateway_name => $dmrfid_gateway_label ) {
 							?>
 							<option
-								value="<?php echo esc_attr( $pmpro_gateway_name ); ?>" <?php selected( $order->gateway, $pmpro_gateway_name ); ?>><?php echo esc_html( $pmpro_gateway_label ); ?></option>
+								value="<?php echo esc_attr( $dmrfid_gateway_name ); ?>" <?php selected( $order->gateway, $dmrfid_gateway_name ); ?>><?php echo esc_html( $dmrfid_gateway_label ); ?></option>
 							<?php
 						}
 					?>
@@ -866,7 +866,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 			</tr>
 
 			<?php
-			$affiliates = apply_filters( 'pmpro_orders_show_affiliate_ids', false );
+			$affiliates = apply_filters( 'dmrfid_orders_show_affiliate_ids', false );
 			if ( ! empty( $affiliates ) ) {
 				?>
 				<tr>
@@ -898,7 +898,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 			<?php } ?>
 
 			<?php
-				$tospage_id = pmpro_getOption( 'tospage' );
+				$tospage_id = dmrfid_getOption( 'tospage' );
 				$consent_entry = $order->get_tos_consent_log_entry();
 
 				if( !empty( $tospage_id ) || !empty( $consent_entry ) ) {
@@ -908,7 +908,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 					<td id="tos_consent">
 						<?php
 							if( !empty( $consent_entry ) ) {
-								echo esc_html( pmpro_consent_to_text( $consent_entry ) );
+								echo esc_html( dmrfid_consent_to_text( $consent_entry ) );
 							} else {
 								esc_html_e( 'N/A' );
 							}
@@ -931,7 +931,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				</td>
 			</tr>
 
-			<?php do_action( 'pmpro_after_order_settings', $order ); ?>
+			<?php do_action( 'dmrfid_after_order_settings', $order ); ?>
 
 			</tbody>
 		</table>
@@ -948,7 +948,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 			"/>
 			<input name="save" type="submit" class="button-primary" value="<?php esc_attr_e( 'Save Order', 'paid-memberships-pro' ); ?>"/>
 			<input name="cancel" type="button" class="cancel button-secondary" value="<?php esc_attr_e( 'Cancel', 'paid-memberships-pro' ); ?>"
-				   onclick="location.href='<?php echo esc_url( get_admin_url( null, '/admin.php?page=pmpro-orders' ) ); ?>';"/>
+				   onclick="location.href='<?php echo esc_url( get_admin_url( null, '/admin.php?page=dmrfid-orders' ) ); ?>';"/>
 		</p>
 
 	</form>
@@ -958,7 +958,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 	<form id="posts-filter" method="get" action="">
 
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'Orders', 'paid-memberships-pro' ); ?></h1>
-		<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'order' => -1 ), get_admin_url(null, 'admin.php' ) ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New Order', 'paid-memberships-pro' ); ?></a>
+		<a href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => -1 ), get_admin_url(null, 'admin.php' ) ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New Order', 'paid-memberships-pro' ); ?></a>
 
 		<?php
 		// build the export URL
@@ -984,16 +984,16 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 		<hr class="wp-header-end">
 
 
-		<?php if ( ! empty( $pmpro_msg ) ) { ?>
+		<?php if ( ! empty( $dmrfid_msg ) ) { ?>
 			<div id="message" class="
 			<?php
-			if ( $pmpro_msgt == 'success' ) {
+			if ( $dmrfid_msgt == 'success' ) {
 				echo 'updated fade';
 			} else {
 				echo 'error';
 			}
 			?>
-			"><p><?php echo $pmpro_msg; ?></p></div>
+			"><p><?php echo $dmrfid_msg; ?></p></div>
 		<?php } ?>
 
 
@@ -1017,7 +1017,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 					<option 
 						value="only-free" <?php selected( $filter, 'only-free' ); ?>><?php esc_html_e( 'Only Free Orders', 'paid-memberships-pro' ); ?></option>
 
-					<?php $custom_filters = apply_filters( 'pmpro_admin_orders_filters', array() ); ?>
+					<?php $custom_filters = apply_filters( 'dmrfid_admin_orders_filters', array() ); ?>
 					<?php foreach( $custom_filters as $value => $name ) { ?>
 						<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $filter, $value ); ?>><?php esc_html_e( $name ); ?></option>
 					<?php } ?>
@@ -1068,7 +1068,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 
 				<?php
 				// Note: only orders belonging to current levels can be filtered. There is no option for orders belonging to deleted levels
-				$levels = pmpro_getAllLevels( true, true );
+				$levels = dmrfid_getAllLevels( true, true );
 				?>
 				<select id="l" name="l">
 					<?php foreach ( $levels as $level ) { ?>
@@ -1079,7 +1079,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				</select>
 				
 				<?php
-				$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->pmpro_discount_codes ";
+				$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS * FROM $wpdb->dmrfid_discount_codes ";
 				$sqlQuery .= "ORDER BY id DESC ";
 				$codes = $wpdb->get_results($sqlQuery, OBJECT);
 				if ( ! empty( $codes ) ) { ?>
@@ -1092,7 +1092,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				<?php } ?>
 
 				<?php
-					$statuses = pmpro_getOrderStatuses();
+					$statuses = dmrfid_getOrderStatuses();
 				?>
 				<select id="status" name="status">
 					<?php foreach ( $statuses as $the_status ) { ?>
@@ -1109,11 +1109,11 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 			//update month/year when period dropdown is changed
 			jQuery(document).ready(function () {
 				jQuery('#filter').change(function () {
-					pmpro_ShowMonthOrYear();
+					dmrfid_ShowMonthOrYear();
 				});
 			});
 
-			function pmpro_ShowMonthOrYear() {
+			function dmrfid_ShowMonthOrYear() {
 				var filter = jQuery('#filter').val();
 				if (filter == 'all') {
 					jQuery('#start-month').hide();
@@ -1229,29 +1229,29 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				}
 			}
 
-			pmpro_ShowMonthOrYear();
+			dmrfid_ShowMonthOrYear();
 
 
 		</script>
 
 		<p class="search-box">
 			<label class="hidden" for="post-search-input"><?php esc_html_e( 'Search Orders', 'paid-memberships-pro' ); ?>:</label>
-			<input type="hidden" name="page" value="pmpro-orders"/>
+			<input type="hidden" name="page" value="dmrfid-orders"/>
 			<input id="post-search-input" type="text" value="<?php echo esc_attr( $s ); ?>" name="s"/>
 			<input class="button" type="submit" value="<?php esc_attr_e( 'Search Orders', 'paid-memberships-pro' ); ?>"/>
 		</p>
 
 		<?php
 		if ( $s ) {
-			$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS o.id FROM $wpdb->pmpro_membership_orders o LEFT JOIN $wpdb->users u ON o.user_id = u.ID LEFT JOIN $wpdb->pmpro_membership_levels l ON o.membership_id = l.id ";
+			$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS o.id FROM $wpdb->dmrfid_membership_orders o LEFT JOIN $wpdb->users u ON o.user_id = u.ID LEFT JOIN $wpdb->dmrfid_membership_levels l ON o.membership_id = l.id ";
 
-			$join_with_usermeta = apply_filters( 'pmpro_orders_search_usermeta', false );
+			$join_with_usermeta = apply_filters( 'dmrfid_orders_search_usermeta', false );
 			if ( $join_with_usermeta ) {
 				$sqlQuery .= "LEFT JOIN $wpdb->usermeta um ON o.user_id = um.user_id ";
 			}
 			
 			if ( $filter === 'with-discount-code' ) {
-				$sqlQuery .= "LEFT JOIN $wpdb->pmpro_discount_codes_uses dc ON o.id = dc.order_id ";
+				$sqlQuery .= "LEFT JOIN $wpdb->dmrfid_discount_codes_uses dc ON o.id = dc.order_id ";
 			}
 
 			$sqlQuery .= 'WHERE (1=2 ';
@@ -1283,7 +1283,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				$fields[] = 'um.meta_value';
 			}
 
-			$fields = apply_filters( 'pmpro_orders_search_fields', $fields );
+			$fields = apply_filters( 'dmrfid_orders_search_fields', $fields );
 
 			foreach ( $fields as $field ) {
 				$sqlQuery .= ' OR ' . esc_sql( $field ) . " LIKE '%" . esc_sql( $s ) . "%' ";
@@ -1294,10 +1294,10 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 
 			$sqlQuery .= 'GROUP BY o.id ORDER BY o.id DESC, o.timestamp DESC ';
 		} else {
-			$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS o.id FROM $wpdb->pmpro_membership_orders o ";
+			$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS o.id FROM $wpdb->dmrfid_membership_orders o ";
 			
 			if ( $filter === 'with-discount-code' ) {
-				$sqlQuery .= "LEFT JOIN $wpdb->pmpro_discount_codes_uses dc ON o.id = dc.order_id ";
+				$sqlQuery .= "LEFT JOIN $wpdb->dmrfid_discount_codes_uses dc ON o.id = dc.order_id ";
 			}
 			
 			$sqlQuery .= "WHERE " . $condition . ' ORDER BY o.id DESC, o.timestamp DESC ';
@@ -1321,7 +1321,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				<th><?php esc_html_e( 'ID', 'paid-memberships-pro' ); ?></th>
 				<th><?php esc_html_e( 'Code', 'paid-memberships-pro' ); ?></th>
 				<th><?php esc_html_e( 'Username', 'paid-memberships-pro' ); ?></th>
-				<?php do_action( 'pmpro_orders_extra_cols_header', $order_ids ); ?>
+				<?php do_action( 'dmrfid_orders_extra_cols_header', $order_ids ); ?>
 				<th><?php esc_html_e( 'Level', 'paid-memberships-pro' ); ?></th>
 				<th><?php esc_html_e( 'Total', 'paid-memberships-pro' ); ?></th>
 				<th><?php esc_html_e( 'Payment', 'paid-memberships-pro' ); ?></th>
@@ -1344,25 +1344,25 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 				<tr <?php if ( $count ++ % 2 == 0 ) { ?>
 				class="alternate"<?php } ?>>
 					<td>
-						<a href="admin.php?page=pmpro-orders&order=<?php echo esc_attr( $order->id ); ?>"><?php echo esc_html( $order->id ); ?></a>
+						<a href="admin.php?page=dmrfid-orders&order=<?php echo esc_attr( $order->id ); ?>"><?php echo esc_html( $order->id ); ?></a>
 					</td>
 					<td class="order_code column-order_code has-row-actions">
-						<a href="admin.php?page=pmpro-orders&order=<?php echo esc_attr( $order->id ); ?>"><?php echo esc_html( $order->code ); ?></a>
+						<a href="admin.php?page=dmrfid-orders&order=<?php echo esc_attr( $order->id ); ?>"><?php echo esc_html( $order->code ); ?></a>
 						<br />
 						<div class="row-actions">
 							<span class="edit">
-								<a title="<?php esc_attr_e( 'Edit', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'order' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Edit', 'paid-memberships-pro' ); ?></a>
+								<a title="<?php esc_attr_e( 'Edit', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Edit', 'paid-memberships-pro' ); ?></a>
 							</span> |
 							<span class="copy">
-								<a title="<?php esc_attr_e( 'Copy', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'order' => '-1', 'copy' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Copy', 'paid-memberships-pro' ); ?></a>
+								<a title="<?php esc_attr_e( 'Copy', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => '-1', 'copy' => $order->id ), admin_url('admin.php' ) ) ); ?>"><?php esc_html_e( 'Copy', 'paid-memberships-pro' ); ?></a>
 							</span> |
 							<span class="delete">
 							<?php $delete_prompt = sprintf( __( 'Deleting orders is permanent and can affect active users. Are you sure you want to delete order %s?', 'paid-memberships-pro' ), str_replace( "'", '', $order->code ) ); ?>
-								<a href='javascript:pmpro_askfirst("<?php echo esc_attr
-								( $delete_prompt ) ?>", "admin.php?page=pmpro-orders&delete=<?php echo $order->id; ?>"); void(0);'><?php esc_html_e( 'Delete', 'paid-memberships-pro' ); ?></a>
+								<a href='javascript:dmrfid_askfirst("<?php echo esc_attr
+								( $delete_prompt ) ?>", "admin.php?page=dmrfid-orders&delete=<?php echo $order->id; ?>"); void(0);'><?php esc_html_e( 'Delete', 'paid-memberships-pro' ); ?></a>
 							</span> |
 							<span class="print">
-								<a target="_blank" title="<?php esc_attr_e( 'Print', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'pmpro_orders_print_view', 'order' => $order->id ), admin_url('admin-ajax.php' ) ) ); ?>"><?php esc_html_e( 'Print', 'paid-memberships-pro' ); ?></a>
+								<a target="_blank" title="<?php esc_attr_e( 'Print', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'action' => 'dmrfid_orders_print_view', 'order' => $order->id ), admin_url('admin-ajax.php' ) ) ); ?>"><?php esc_html_e( 'Print', 'paid-memberships-pro' ); ?></a>
 							</span> |
 							<span class="email">
 								<a href="#TB_inline?width=600&height=200&inlineId=email_invoice" class="thickbox email_link"
@@ -1370,7 +1370,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 							</span>
 							<?php
 							// Set up the hover actions for this user
-							$actions      = apply_filters( 'pmpro_orders_user_row_actions', array(), $order->user, $order );
+							$actions      = apply_filters( 'dmrfid_orders_user_row_actions', array(), $order->user, $order );
 							$action_count = count( $actions );
 							$i            = 0;
 							if ( $action_count ) {
@@ -1395,10 +1395,10 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 							[<?php esc_html_e( 'none', 'paid-memberships-pro' ); ?>]
 						<?php } ?>	
 					</td>
-					<?php do_action( 'pmpro_orders_extra_cols_body', $order ); ?>
+					<?php do_action( 'dmrfid_orders_extra_cols_body', $order ); ?>
 					<td>
 						<?php
-							$level = pmpro_getLevel( $order->membership_id );
+							$level = dmrfid_getLevel( $order->membership_id );
 							if ( ! empty( $level ) ) {
 								echo esc_html( $level->name );
 							} elseif ( $order->membership_id > 0 ) { ?>
@@ -1408,7 +1408,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 							<?php }
 						?>
 					</td>
-					<td><?php echo esc_html( pmpro_formatPrice( $order->total ) ); ?></td>
+					<td><?php echo esc_html( dmrfid_formatPrice( $order->total ) ); ?></td>
 					<td>
 						<?php
 						if ( ! empty( $order->payment_type ) ) {
@@ -1472,7 +1472,7 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 					</td>
 					<td>
 						<?php if ( $order->getDiscountCode() ) { ?>
-							<a title="<?php esc_attr_e('edit', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'pmpro-discountcodes', 'edit' => $order->discount_code->id ), admin_url('admin.php' ) ) ); ?>">
+							<a title="<?php esc_attr_e('edit', 'paid-memberships-pro' ); ?>" href="<?php echo esc_url( add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $order->discount_code->id ), admin_url('admin.php' ) ) ); ?>">
 								<?php echo esc_html( $order->discount_code->code ); ?>
 							</a>
 						<?php } ?>							
@@ -1494,8 +1494,8 @@ if ( function_exists( 'pmpro_add_email_order_modal' ) ) {
 	</form>
 	<?php
 	// add normal args
-	$pagination_url = esc_url( add_query_arg( $url_params, get_admin_url( null, '/admin.php?page=pmpro-orders' ) ) );
-	echo pmpro_getPaginationString( $pn, $totalrows, $limit, 1, $pagination_url, "&limit=$limit&pn=" );
+	$pagination_url = esc_url( add_query_arg( $url_params, get_admin_url( null, '/admin.php?page=dmrfid-orders' ) ) );
+	echo dmrfid_getPaginationString( $pn, $totalrows, $limit, 1, $pagination_url, "&limit=$limit&pn=" );
 	?>
 
 <?php } ?>

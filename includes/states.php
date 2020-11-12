@@ -1,12 +1,12 @@
 <?php
 	//US states for dropdowns, etc
-	global $pmpro_states, $pmpro_states_abbreviations;
+	global $dmrfid_states, $dmrfid_states_abbreviations;
 
-	$pmpro_states_abbreviations = array('AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY');
+	$dmrfid_states_abbreviations = array('AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY');
 
-	$pmpro_states_abbreviations = apply_filters("pmpro_states_abbreviations", $pmpro_states_abbreviations);
+	$dmrfid_states_abbreviations = apply_filters("dmrfid_states_abbreviations", $dmrfid_states_abbreviations);
 
-	$pmpro_states = array('AL'=>"Alabama",
+	$dmrfid_states = array('AL'=>"Alabama",
                 'AK'=>"Alaska",
                 'AZ'=>"Arizona",
                 'AR'=>"Arkansas",
@@ -58,5 +58,5 @@
                 'WI'=>"Wisconsin",
                 'WY'=>"Wyoming");
 
-	$pmpro_states = apply_filters("pmpro_states", $pmpro_states);
+	$dmrfid_states = apply_filters("dmrfid_states", $dmrfid_states);
 ?>

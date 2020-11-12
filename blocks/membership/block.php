@@ -5,7 +5,7 @@
  * @package blocks/membership
  **/
 
-namespace PMPro\blocks\membership;
+namespace DmRFID\blocks\membership;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -25,7 +25,7 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
 function register_dynamic_block() {
 
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/membership', [
+	register_block_type( 'dmrfid/membership', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -38,11 +38,11 @@ function register_dynamic_block() {
  **/
 function render_dynamic_block( $attributes, $content ) {
 	if ( ! array_key_exists( 'levels', $attributes ) || ! is_array( $attributes['levels'] ) ) {
-		if ( pmpro_hasMembershipLevel() ) {
+		if ( dmrfid_hasMembershipLevel() ) {
 			return do_blocks( $content );
 		}
 	} else {
-		if ( pmpro_hasMembershipLevel( $attributes['levels'] ) ) {
+		if ( dmrfid_hasMembershipLevel( $attributes['levels'] ) ) {
 			return do_blocks( $content );
 		}
 	}

@@ -1,35 +1,35 @@
 <?php 
-global $wpdb, $pmpro_msg, $pmpro_msgt, $current_user;
+global $wpdb, $dmrfid_msg, $dmrfid_msgt, $current_user;
 
-$pmpro_levels = pmpro_getAllLevels(false, true);
-$pmpro_level_order = pmpro_getOption('level_order');
+$dmrfid_levels = dmrfid_getAllLevels(false, true);
+$dmrfid_level_order = dmrfid_getOption('level_order');
 
-if(!empty($pmpro_level_order))
+if(!empty($dmrfid_level_order))
 {
-	$order = explode(',',$pmpro_level_order);
+	$order = explode(',',$dmrfid_level_order);
 
 	//reorder array
 	$reordered_levels = array();
 	foreach($order as $level_id) {
-		foreach($pmpro_levels as $key=>$level) {
+		foreach($dmrfid_levels as $key=>$level) {
 			if($level_id == $level->id)
-				$reordered_levels[] = $pmpro_levels[$key];
+				$reordered_levels[] = $dmrfid_levels[$key];
 		}
 	}
 
-	$pmpro_levels = $reordered_levels;
+	$dmrfid_levels = $reordered_levels;
 }
 
-$pmpro_levels = apply_filters("pmpro_levels_array", $pmpro_levels);
+$dmrfid_levels = apply_filters("dmrfid_levels_array", $dmrfid_levels);
 
-if($pmpro_msg)
+if($dmrfid_msg)
 {
 ?>
-<div class="<?php echo pmpro_get_element_class( 'pmpro_message ' . $pmpro_msgt, $pmpro_msgt ); ?>"><?php echo $pmpro_msg?></div>
+<div class="<?php echo dmrfid_get_element_class( 'dmrfid_message ' . $dmrfid_msgt, $dmrfid_msgt ); ?>"><?php echo $dmrfid_msg?></div>
 <?php
 }
 ?>
-<table id="pmpro_levels_table" class="<?php echo pmpro_get_element_class( 'pmpro_table pmpro_checkout', 'pmpro_levels_table' ); ?>">
+<table id="dmrfid_levels_table" class="<?php echo dmrfid_get_element_class( 'dmrfid_table dmrfid_checkout', 'dmrfid_levels_table' ); ?>">
 <thead>
   <tr>
 	<th><?php _e('Level', 'paid-memberships-pro' );?></th>
@@ -40,7 +40,7 @@ if($pmpro_msg)
 <tbody>
 	<?php	
 	$count = 0;
-	foreach($pmpro_levels as $level)
+	foreach($dmrfid_levels as $level)
 	{
 	  if(isset($current_user->membership_level->ID))
 		  $current_level = ($current_user->membership_level->ID == $level->id);
@@ -51,8 +51,8 @@ if($pmpro_msg)
 		<td><?php echo $current_level ? "<strong>{$level->name}</strong>" : $level->name?></td>
 		<td>
 			<?php
-				$cost_text = pmpro_getLevelCost($level, true, true); 
-				$expiration_text = pmpro_getLevelExpiration($level);
+				$cost_text = dmrfid_getLevelCost($level, true, true); 
+				$expiration_text = dmrfid_getLevelExpiration($level);
 				if(!empty($cost_text) && !empty($expiration_text))
 					echo $cost_text . "<br />" . $expiration_text;
 				elseif(!empty($cost_text))
@@ -63,20 +63,20 @@ if($pmpro_msg)
 		</td>
 		<td>
 		<?php if(empty($current_user->membership_level->ID)) { ?>
-			<a class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-select', 'pmpro_btn-select' ); ?>" href="<?php echo pmpro_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'paid-memberships-pro' );?></a>
+			<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'paid-memberships-pro' );?></a>
 		<?php } elseif ( !$current_level ) { ?>                	
-			<a class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-select', 'pmpro_btn-select' ); ?>" href="<?php echo pmpro_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'paid-memberships-pro' );?></a>
+			<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Select', 'paid-memberships-pro' );?></a>
 		<?php } elseif($current_level) { ?>      
 			
 			<?php
 				//if it's a one-time-payment level, offer a link to renew				
-				if( pmpro_isLevelExpiringSoon( $current_user->membership_level) && $current_user->membership_level->allow_signups ) {
+				if( dmrfid_isLevelExpiringSoon( $current_user->membership_level) && $current_user->membership_level->allow_signups ) {
 					?>
-						<a class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-select', 'pmpro_btn-select' ); ?>" href="<?php echo pmpro_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Renew', 'paid-memberships-pro' );?></a>
+						<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-select', 'dmrfid_btn-select' ); ?>" href="<?php echo dmrfid_url("checkout", "?level=" . $level->id, "https")?>"><?php _e('Renew', 'paid-memberships-pro' );?></a>
 					<?php
 				} else {
 					?>
-						<a class="<?php echo pmpro_get_element_class( 'pmpro_btn disabled', 'pmpro_btn' ); ?>" href="<?php echo pmpro_url("account")?>"><?php _e('Your&nbsp;Level', 'paid-memberships-pro' );?></a>
+						<a class="<?php echo dmrfid_get_element_class( 'dmrfid_btn disabled', 'dmrfid_btn' ); ?>" href="<?php echo dmrfid_url("account")?>"><?php _e('Your&nbsp;Level', 'paid-memberships-pro' );?></a>
 					<?php
 				}
 			?>
@@ -89,10 +89,10 @@ if($pmpro_msg)
 	?>
 </tbody>
 </table>
-<p class="<?php echo pmpro_get_element_class( 'pmpro_actions_nav' ); ?>">
+<p class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav' ); ?>">
 	<?php if(!empty($current_user->membership_level->ID)) { ?>
-		<a href="<?php echo pmpro_url("account")?>" id="pmpro_levels-return-account"><?php _e('&larr; Return to Your Account', 'paid-memberships-pro' );?></a>
+		<a href="<?php echo dmrfid_url("account")?>" id="dmrfid_levels-return-account"><?php _e('&larr; Return to Your Account', 'paid-memberships-pro' );?></a>
 	<?php } else { ?>
-		<a href="<?php echo home_url()?>" id="pmpro_levels-return-home"><?php _e('&larr; Return to Home', 'paid-memberships-pro' );?></a>
+		<a href="<?php echo home_url()?>" id="dmrfid_levels-return-home"><?php _e('&larr; Return to Home', 'paid-memberships-pro' );?></a>
 	<?php } ?>
-</p> <!-- end pmpro_actions_nav -->
+</p> <!-- end dmrfid_actions_nav -->

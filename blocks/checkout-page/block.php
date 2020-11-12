@@ -5,7 +5,7 @@
  * @package blocks/checkout-page
  **/
 
-namespace PMPro\blocks\checkout_page;
+namespace DmRFID\blocks\checkout_page;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -23,14 +23,14 @@ if ( ! function_exists( 'register_block_type' ) ) {
  */
 function register_dynamic_block() {
 	// Need to explicitly register the default level meta
-	register_meta( 'post', 'pmpro_default_level', array(
+	register_meta( 'post', 'dmrfid_default_level', array(
 	   'show_in_rest' => true,
 	   'single' => true,
 	   'type' => 'integer',
    	) );
 	
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/checkout-page', [
+	register_block_type( 'dmrfid/checkout-page', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -43,14 +43,14 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  * @return string
  **/
 function render_dynamic_block( $attributes ) {
-	return pmpro_loadTemplate( 'checkout', 'local', 'pages' );
+	return dmrfid_loadTemplate( 'checkout', 'local', 'pages' );
 }
 
 /**
  * Load preheaders/checkout.php if a page has the checkout block.
  */
 function load_checkout_preheader() {
-	if ( has_block( 'pmpro/checkout-page' ) ) {
+	if ( has_block( 'dmrfid/checkout-page' ) ) {
 		require_once( DMRFID_DIR . "/preheaders/checkout.php" );
 	}
 }

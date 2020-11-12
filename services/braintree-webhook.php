@@ -36,20 +36,20 @@ if ( version_compare( PHP_VERSION, '5.4.45', '<' ) ) {
 
 //load Braintree library, gateway class constructor does config
 if ( ! class_exists( '\Braintree' ) ) {
-	require_once( DMRFID_DIR . "/classes/gateways/class.pmprogateway_braintree.php" );
+	require_once( DMRFID_DIR . "/classes/gateways/class.dmrfidgateway_braintree.php" );
 }
 
-$gateway             = new PMProGateway_braintree();
+$gateway             = new DmRFIDGateway_braintree();
 $webhookNotification = null;
 
 if ( empty( $_REQUEST['bt_payload'] ) ) {
 	$logstr[] = "No payload in request?!? " . print_r( $_REQUEST, true );
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 if ( isset( $_POST['bt_signature'] ) && ! isset( $_POST['bt_payload'] ) ) {
 	$logstr[] = "No payload and signature included in the request!";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 //get notification
@@ -68,7 +68,7 @@ try {
 	$logstr[] = "Couldn't extract notification from payload: {$_REQUEST['bt_payload']}";
 	$logstr[] = "Error message: " . $e->getMessage();
 	
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 /**
@@ -76,7 +76,7 @@ try {
  */
 if ( ! isset( $webhookNotification->kind ) ) {
 	$logstr[] = "Unexpected webhook message: " . print_r( $webhookNotification, true ) . "\n";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 /**
@@ -88,7 +88,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::CHECK ) {
 	
 	$logstr[] = "Since you are just testing the URL, check that the timestamp updates on refresh to make sure this isn't being cached.";
 	$logstr[] = "Braintree gateway timestamp: {$when}";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 //subscription charged sucessfully
@@ -98,7 +98,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	//need a subscription id
 	if ( empty( $webhookNotification->subscription->id ) ) {
 		$logstr[] = "No subscription ID.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	//figure out which order to attach to
@@ -108,7 +108,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	//no order?
 	if ( empty( $old_order ) ) {
 		$logstr[] = "Couldn't find the original subscription with ID={$webhookNotification->subscription->id}.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	//create new order
@@ -117,9 +117,9 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $user ) ) {
 		$logstr[] = "Couldn't find the old order's user. Order ID = {$old_order->id}.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	} else {
-		$user->membership_level = pmpro_getMembershipLevelForUser( $user_id );
+		$user->membership_level = dmrfid_getMembershipLevelForUser( $user_id );
 	}
 	
 	//data about this transaction
@@ -182,10 +182,10 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	$morder->billing->phone   = $old_order->billing->phone;
 	
 	//get CC info that is on file
-	$morder->cardtype              = get_user_meta( $user_id, "pmpro_CardType", true );
-	$morder->accountnumber         = hideCardNumber( get_user_meta( $user_id, "pmpro_AccountNumber", true ), false );
-	$morder->expirationmonth       = get_user_meta( $user_id, "pmpro_ExpirationMonth", true );
-	$morder->expirationyear        = get_user_meta( $user_id, "pmpro_ExpirationYear", true );
+	$morder->cardtype              = get_user_meta( $user_id, "dmrfid_CardType", true );
+	$morder->accountnumber         = hideCardNumber( get_user_meta( $user_id, "dmrfid_AccountNumber", true ), false );
+	$morder->expirationmonth       = get_user_meta( $user_id, "dmrfid_ExpirationMonth", true );
+	$morder->expirationyear        = get_user_meta( $user_id, "dmrfid_ExpirationYear", true );
 	$morder->ExpirationDate        = $morder->expirationmonth . $morder->expirationyear;
 	$morder->ExpirationDate_YdashM = $morder->expirationyear . "-" . $morder->expirationmonth;
 	
@@ -195,17 +195,17 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	$morder->getMemberOrderByID( $morder->id );
 	
 	//email the user their invoice
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendInvoiceEmail( $user, $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendInvoiceEmail( $user, $morder );
 	
-	do_action( 'pmpro_subscription_payment_completed', $morder );
+	do_action( 'dmrfid_subscription_payment_completed', $morder );
 	
-	$logstr[] = "Triggered pmpro_subscription_payment_completed actions and returned";
+	$logstr[] = "Triggered dmrfid_subscription_payment_completed actions and returned";
 	
 	/**
 	 * @since 1.9.5 - Didn't terminate & save debug loggins for Webhook
 	 */
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 /*
@@ -220,7 +220,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	//need a subscription id
 	if ( empty( $webhookNotification->subscription->id ) ) {
 		$logstr[] = "No subscription ID.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	//figure out which order to attach to
@@ -229,15 +229,15 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $old_order ) ) {
 		$logstr[] = "Couldn't find old order for failed payment with subscription id={$webhookNotification->subscription->id}";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	$user_id                = $old_order->user_id;
 	$user                   = get_userdata( $user_id );
-	$user->membership_level = pmpro_getMembershipLevelForUser( $user_id );
+	$user->membership_level = dmrfid_getMembershipLevelForUser( $user_id );
 	
 	//generate billing failure email
-	do_action( "pmpro_subscription_payment_failed", $old_order );
+	do_action( "dmrfid_subscription_payment_failed", $old_order );
 	
 	$transaction = isset( $webhookNotification->transactions ) && is_array( $webhookNotification->transactions ) ?
 		$webhookNotification->transactions[0] :
@@ -245,7 +245,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $transaction ) || ! isset( $transaction->billing_details ) ) {
 		// Get billing address info from either old order or billing meta
-		$old_order->billing = pmpro_braintreeAddressInfo( $user_id, $old_order );
+		$old_order->billing = dmrfid_braintreeAddressInfo( $user_id, $old_order );
 	}
 	
 	//prep this order for the failure emails
@@ -279,21 +279,21 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	$morder->billing->phone = $old_order->billing->phone;
 	
 	//get CC info that is on file
-	$morder->cardtype        = get_user_meta( $user_id, "pmpro_CardType", true );
-	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "pmpro_AccountNumber", true ), false );
-	$morder->expirationmonth = get_user_meta( $user_id, "pmpro_ExpirationMonth", true );
-	$morder->expirationyear  = get_user_meta( $user_id, "pmpro_ExpirationYear", true );
+	$morder->cardtype        = get_user_meta( $user_id, "dmrfid_CardType", true );
+	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "dmrfid_AccountNumber", true ), false );
+	$morder->expirationmonth = get_user_meta( $user_id, "dmrfid_ExpirationMonth", true );
+	$morder->expirationyear  = get_user_meta( $user_id, "dmrfid_ExpirationYear", true );
 	
 	// Email the user and ask them to update their credit card information
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureEmail( $user, $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureEmail( $user, $morder );
 	
 	// Email admin so they are aware of the failure
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
 	
 	$logstr[] = "Sent email to the member and site admin. Thanks.";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 //subscription went past due
@@ -304,7 +304,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	//need a subscription id
 	if ( empty( $webhookNotification->subscription->id ) ) {
 		$logstr[] = "No subscription ID.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	//figure out which order to attach to
@@ -313,16 +313,16 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $old_order ) ) {
 		$logstr[] = "Couldn't find old order for failed payment with subscription id=" . $webhookNotification->subscription->id;
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	$user_id                = $old_order->user_id;
 	$user                   = get_userdata( $user_id );
-	$user->membership_level = pmpro_getMembershipLevelForUser( $user_id );
+	$user->membership_level = dmrfid_getMembershipLevelForUser( $user_id );
 	
 	//generate billing failure email
-	do_action( "pmpro_subscription_payment_failed", $old_order );
-	do_action( "pmpro_subscription_payment_went_past_due", $old_order );
+	do_action( "dmrfid_subscription_payment_failed", $old_order );
+	do_action( "dmrfid_subscription_payment_went_past_due", $old_order );
 	
 	$transaction = isset( $webhookNotification->transactions ) && is_array( $webhookNotification->transactions ) ?
 		$webhookNotification->transactions[0] :
@@ -330,7 +330,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $transaction ) || ! isset( $transaction->billing_details ) ) {
 		// Get billing address info from either old order or billing meta
-		$old_order->billing = pmpro_braintreeAddressInfo( $user_id, $old_order );
+		$old_order->billing = dmrfid_braintreeAddressInfo( $user_id, $old_order );
 	}
 	
 	//prep this order for the failure emails
@@ -364,21 +364,21 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	$morder->billing->phone = $old_order->billing->phone;
 	
 	//get CC info that is on file
-	$morder->cardtype        = get_user_meta( $user_id, "pmpro_CardType", true );
-	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "pmpro_AccountNumber", true ), false );
-	$morder->expirationmonth = get_user_meta( $user_id, "pmpro_ExpirationMonth", true );
-	$morder->expirationyear  = get_user_meta( $user_id, "pmpro_ExpirationYear", true );
+	$morder->cardtype        = get_user_meta( $user_id, "dmrfid_CardType", true );
+	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "dmrfid_AccountNumber", true ), false );
+	$morder->expirationmonth = get_user_meta( $user_id, "dmrfid_ExpirationMonth", true );
+	$morder->expirationyear  = get_user_meta( $user_id, "dmrfid_ExpirationYear", true );
 	
 	// Email the user and ask them to update their credit card information
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureEmail( $user, $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureEmail( $user, $morder );
 	
 	// Email admin so they are aware of the failure
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
 	
 	$logstr[] = "Sent email to the member and site admin. Thanks.";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 //subscription expired
@@ -388,7 +388,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	//need a subscription id
 	if ( empty( $webhookNotification->subscription->id ) ) {
 		$logstr[] = "No subscription ID.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	//figure out which order to attach to
@@ -397,15 +397,15 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $old_order ) ) {
 		$logstr[] = "Couldn't find old order for failed payment with subscription id=" . $webhookNotification->subscription->id;
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	$user_id                = $old_order->user_id;
 	$user                   = get_userdata( $user_id );
-	$user->membership_level = pmpro_getMembershipLevelForUser( $user_id );
+	$user->membership_level = dmrfid_getMembershipLevelForUser( $user_id );
 	
 	//generate billing failure email
-	do_action( "pmpro_subscription_expired", $old_order );
+	do_action( "dmrfid_subscription_expired", $old_order );
 	
 	$transaction = isset( $webhookNotification->transactions ) && is_array( $webhookNotification->transactions ) ?
 		$webhookNotification->transactions[0] :
@@ -413,7 +413,7 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	
 	if ( empty( $transaction ) || ! isset( $transaction->billing_details ) ) {
 		// Get billing address info from either old order or billing meta
-		$old_order->billing = pmpro_braintreeAddressInfo( $user_id, $old_order );
+		$old_order->billing = dmrfid_braintreeAddressInfo( $user_id, $old_order );
 	}
 	
 	//prep this order for the failure emails
@@ -447,21 +447,21 @@ if ( $webhookNotification->kind === Braintree_WebhookNotification::SUBSCRIPTION_
 	$morder->billing->phone = $old_order->billing->phone;
 	
 	//get CC info that is on file
-	$morder->cardtype        = get_user_meta( $user_id, "pmpro_CardType", true );
-	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "pmpro_AccountNumber", true ), false );
-	$morder->expirationmonth = get_user_meta( $user_id, "pmpro_ExpirationMonth", true );
-	$morder->expirationyear  = get_user_meta( $user_id, "pmpro_ExpirationYear", true );
+	$morder->cardtype        = get_user_meta( $user_id, "dmrfid_CardType", true );
+	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "dmrfid_AccountNumber", true ), false );
+	$morder->expirationmonth = get_user_meta( $user_id, "dmrfid_ExpirationMonth", true );
+	$morder->expirationyear  = get_user_meta( $user_id, "dmrfid_ExpirationYear", true );
 	
 	// Email the user and ask them to update their credit card information
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureEmail( $user, $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureEmail( $user, $morder );
 	
 	// Email admin so they are aware of the failure
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
 	
 	$logstr[] = "Sent email to the member and site admin. Thanks.";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 //subscription cancelled (they used one l canceled)
@@ -472,7 +472,7 @@ if ( Braintree_WebhookNotification::SUBSCRIPTION_CANCELED === $webhookNotificati
 	//need a subscription id
 	if ( empty( $webhookNotification->subscription->id ) ) {
 		$logstr[] = "No subscription ID.";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	//figure out which order to attach to
@@ -481,7 +481,7 @@ if ( Braintree_WebhookNotification::SUBSCRIPTION_CANCELED === $webhookNotificati
 	
 	if ( empty( $old_order ) ) {
 		$logstr[] = "Couldn't find old order for failed payment with subscription id={$webhookNotification->subscription->id}";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	/**
@@ -489,12 +489,12 @@ if ( Braintree_WebhookNotification::SUBSCRIPTION_CANCELED === $webhookNotificati
 	 */
 	if ( isset( $old_order->status ) && 'cancelled' == $old_order->status ) {
 		$logstr[] = "Order for subscription id {$webhookNotification->subscription->id} is cancelled already";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	$user_id                = $old_order->user_id;
 	$user                   = get_userdata( $user_id );
-	$user->membership_level = pmpro_getMembershipLevelForUser( $user_id,true );
+	$user->membership_level = dmrfid_getMembershipLevelForUser( $user_id,true );
 	
 	/**
 	 * @since 1.9.5 - BUG FIX: Erroneously triggering warning email
@@ -504,11 +504,11 @@ if ( Braintree_WebhookNotification::SUBSCRIPTION_CANCELED === $webhookNotificati
 	if ( empty( $user->membership_level ) ) {
 		
 		$logstr[] = "Membership for user (ID: {$user_id}) is cancelled already. Probably a duplicate webhook notification. Exiting!";
-		pmpro_braintreeWebhookExit();
+		dmrfid_braintreeWebhookExit();
 	}
 	
 	// Trigger subscription cancelled action
-	do_action( "pmpro_subscription_cancelled", $old_order );
+	do_action( "dmrfid_subscription_cancelled", $old_order );
 	
 	$transaction = isset( $webhookNotification->transactions ) && is_array( $webhookNotification->transactions ) ?
 		$webhookNotification->transactions[0] :
@@ -516,7 +516,7 @@ if ( Braintree_WebhookNotification::SUBSCRIPTION_CANCELED === $webhookNotificati
 	
 	if ( empty( $transaction ) || ! isset( $transaction->billing_details ) ) {
 		// Get billing address info from either old order or billing meta
-		$old_order->billing = pmpro_braintreeAddressInfo( $user_id, $old_order );
+		$old_order->billing = dmrfid_braintreeAddressInfo( $user_id, $old_order );
 	}
 	
 	//prep this order for the failure emails
@@ -550,28 +550,28 @@ if ( Braintree_WebhookNotification::SUBSCRIPTION_CANCELED === $webhookNotificati
 	$morder->billing->phone = $old_order->billing->phone;
 	
 	//get CC info that is on file
-	$morder->cardtype        = get_user_meta( $user_id, "pmpro_CardType", true );
-	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "pmpro_AccountNumber", true ), false );
-	$morder->expirationmonth = get_user_meta( $user_id, "pmpro_ExpirationMonth", true );
-	$morder->expirationyear  = get_user_meta( $user_id, "pmpro_ExpirationYear", true );
+	$morder->cardtype        = get_user_meta( $user_id, "dmrfid_CardType", true );
+	$morder->accountnumber   = hideCardNumber( get_user_meta( $user_id, "dmrfid_AccountNumber", true ), false );
+	$morder->expirationmonth = get_user_meta( $user_id, "dmrfid_ExpirationMonth", true );
+	$morder->expirationyear  = get_user_meta( $user_id, "dmrfid_ExpirationYear", true );
 	
 	// Email the user and let them know the membership was cancelled
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureEmail( $user, $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureEmail( $user, $morder );
 	
 	// Email admin so they are aware of the failure
-	$pmproemail = new \PMProEmail();
-	$pmproemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
+	$dmrfidemail = new \DmRFIDEmail();
+	$dmrfidemail->sendBillingFailureAdminEmail( get_bloginfo( "admin_email" ), $morder );
 	
 	// Send email
 	$logstr[] = "Sent billing failure email to the member and site admin. Thanks.";
-	pmpro_braintreeWebhookExit();
+	dmrfid_braintreeWebhookExit();
 }
 
 /**
  * @since 1.9.5 - BUG FIX: Didn't terminate & save debug log for webhook event
  */
-pmpro_braintreeWebhookExit();
+dmrfid_braintreeWebhookExit();
 
 /**
  * Fix address info for order/transaction
@@ -581,7 +581,7 @@ pmpro_braintreeWebhookExit();
  *
  * @return \stdClass
  */
-function pmpro_braintreeAddressInfo( $user_id, $old_order ) {
+function dmrfid_braintreeAddressInfo( $user_id, $old_order ) {
 	
 	
 	// Grab billing info from the saved metadata as needed
@@ -591,8 +591,8 @@ function pmpro_braintreeAddressInfo( $user_id, $old_order ) {
 	}
 	
 	if ( empty ( $old_order->billing->name ) ) {
-		$first_name = get_user_meta( $user_id, 'pmpro_bfirstname', true );
-		$last_name  = get_user_meta( $user_id, 'pmpro_blastname', true );
+		$first_name = get_user_meta( $user_id, 'dmrfid_bfirstname', true );
+		$last_name  = get_user_meta( $user_id, 'dmrfid_blastname', true );
 		
 		if ( ! empty( $first_name ) && ! empty( $last_name ) ) {
 			$old_order->billing->name = trim( "{$first_name} {$last_name}" );
@@ -600,29 +600,29 @@ function pmpro_braintreeAddressInfo( $user_id, $old_order ) {
 	}
 	
 	if ( empty( $old_order->billing->street ) ) {
-		$address1                   = get_user_meta( $user_id, 'pmpro_baddress', true );
-		$address2                   = get_user_meta( $user_id, 'pmpro_baddress2', true );
+		$address1                   = get_user_meta( $user_id, 'dmrfid_baddress', true );
+		$address2                   = get_user_meta( $user_id, 'dmrfid_baddress2', true );
 		$old_order->billing->street = ! empty( $address1 ) ? trim( $address1 ) : '';
 		$old_order->billing->street .= ! empty( $address2 ) ? "\n" . trim( $address2 ) : '';
 	}
 	
 	if ( empty( $old_order->billing->city ) ) {
-		$city                     = get_user_meta( $user_id, 'pmpro_bcity', true );
+		$city                     = get_user_meta( $user_id, 'dmrfid_bcity', true );
 		$old_order->billing->city = ! empty( $city ) ? trim( $city ) : '';
 	}
 	
 	if ( empty( $old_order->billing->state ) ) {
-		$state                     = get_user_meta( $user_id, 'pmpro_bstate', true );
+		$state                     = get_user_meta( $user_id, 'dmrfid_bstate', true );
 		$old_order->billing->state = ! empty( $state ) ? trim( $state ) : '';
 	}
 	
 	if ( empty( $old_order->billing->zip ) ) {
-		$zip                     = get_user_meta( $user_id, 'pmpro_bzipcode', true );
+		$zip                     = get_user_meta( $user_id, 'dmrfid_bzipcode', true );
 		$old_order->billing->zip = ! empty( $zip ) ? trim( $zip ) : '';
 	}
 	
 	if ( empty( $old_order->billing->country ) ) {
-		$country                     = get_user_meta( $user_id, 'pmpro_bcountry', true );
+		$country                     = get_user_meta( $user_id, 'dmrfid_bcountry', true );
 		$old_order->billing->country = ! empty( $country ) ? trim( $country ) : '';
 	}
 	
@@ -634,7 +634,7 @@ function pmpro_braintreeAddressInfo( $user_id, $old_order ) {
 /**
  * Exit the Webhook handler, and save the debug log (if needed)
  */
-function pmpro_braintreeWebhookExit() {
+function dmrfid_braintreeWebhookExit() {
 	
 	global $logstr;
 	

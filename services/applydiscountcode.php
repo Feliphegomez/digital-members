@@ -14,7 +14,7 @@
 	if(!empty($_REQUEST['code']))
 	{
 		$discount_code = preg_replace("/[^A-Za-z0-9\-]/", "", $_REQUEST['code']);
-		$discount_code_id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = '" . $discount_code . "' LIMIT 1");
+		$discount_code_id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_discount_codes WHERE code = '" . $discount_code . "' LIMIT 1");
 	}
 	else
 	{
@@ -36,23 +36,23 @@
 		$msgfield = NULL;
 
 	//check that the code is valid
-	$codecheck = pmpro_checkDiscountCode($discount_code, $level_ids, true);
+	$codecheck = dmrfid_checkDiscountCode($discount_code, $level_ids, true);
 	if($codecheck[0] == false)
 	{
 		//uh oh. show code error
-		echo pmpro_no_quotes($codecheck[1]);
+		echo dmrfid_no_quotes($codecheck[1]);
 		?>
 		<script>
 			jQuery('#<?php echo $msgfield?>').show();
-			jQuery('#<?php echo $msgfield?>').removeClass('pmpro_success');
-			jQuery('#<?php echo $msgfield?>').addClass('pmpro_error');
-			jQuery('#<?php echo $msgfield?>').addClass('pmpro_discount_code_msg');
+			jQuery('#<?php echo $msgfield?>').removeClass('dmrfid_success');
+			jQuery('#<?php echo $msgfield?>').addClass('dmrfid_error');
+			jQuery('#<?php echo $msgfield?>').addClass('dmrfid_discount_code_msg');
 
 			var code_level;
 			code_level = false;
 			
 			//filter to insert your own code. Not MMPU compatible.
-			<?php do_action('pmpro_applydiscountcode_return_js', $discount_code, $discount_code_id, empty( $level_ids ) ? null : $level_ids[0], false); ?>
+			<?php do_action('dmrfid_applydiscountcode_return_js', $discount_code, $discount_code_id, empty( $level_ids ) ? null : $level_ids[0], false); ?>
 		</script>
 		<?php
 
@@ -61,7 +61,7 @@
 
 	// Okay, send back new price info.
 	// Find levels whose price this code changed...
-	$sqlQuery = "SELECT l.id, cl.*, l.name, l.description, l.allow_signups FROM $wpdb->pmpro_discount_codes_levels cl LEFT JOIN $wpdb->pmpro_membership_levels l ON cl.level_id = l.id LEFT JOIN $wpdb->pmpro_discount_codes dc ON dc.id = cl.code_id WHERE dc.code = '" . $discount_code . "' AND cl.level_id IN (" . implode( ',', $level_ids ) . ")";
+	$sqlQuery = "SELECT l.id, cl.*, l.name, l.description, l.allow_signups FROM $wpdb->dmrfid_discount_codes_levels cl LEFT JOIN $wpdb->dmrfid_membership_levels l ON cl.level_id = l.id LEFT JOIN $wpdb->dmrfid_discount_codes dc ON dc.id = cl.code_id WHERE dc.code = '" . $discount_code . "' AND cl.level_id IN (" . implode( ',', $level_ids ) . ")";
 	$code_levels = $wpdb->get_results($sqlQuery);
 
 	// ... and then get prices for the remaining levels.
@@ -70,17 +70,17 @@
 		$levels_found[] = intval( $code_level->level_id );
 	}
 	if ( ! empty( array_diff( $level_ids, $levels_found ) ) ) {
-		$sqlQuery = "SELECT * FROM $wpdb->pmpro_membership_levels WHERE id IN (" . implode( ',', array_diff( $level_ids, $levels_found ) ) . ")";
+		$sqlQuery = "SELECT * FROM $wpdb->dmrfid_membership_levels WHERE id IN (" . implode( ',', array_diff( $level_ids, $levels_found ) ) . ")";
 		$code_levels = array_merge( $code_levels, $wpdb->get_results($sqlQuery) );
 	}
 
 	//filter adjustments to the level
 	if ( count( $code_levels ) <= 1 ) {
 		// Should return just a single level object or null.
-		$code_levels = array( apply_filters("pmpro_discount_code_level", empty( $code_levels ) ? null : $code_levels[0], $discount_code_id) );
+		$code_levels = array( apply_filters("dmrfid_discount_code_level", empty( $code_levels ) ? null : $code_levels[0], $discount_code_id) );
 	} else {
 		// Should return an array of levels objects.
-		$code_levels = apply_filters("pmpro_discount_code_level", $code_levels, $discount_code_id);
+		$code_levels = apply_filters("dmrfid_discount_code_level", $code_levels, $discount_code_id);
 	}
 
 	printf(__("The %s code has been applied to your order. ", 'paid-memberships-pro' ), $discount_code);
@@ -101,9 +101,9 @@
 		var code_level = <?php echo json_encode($combined_level); ?>;
 
 		jQuery('#<?php echo $msgfield?>').show();
-		jQuery('#<?php echo $msgfield?>').removeClass('pmpro_error');
-		jQuery('#<?php echo $msgfield?>').addClass('pmpro_success');
-		jQuery('#<?php echo $msgfield?>').addClass('pmpro_discount_code_msg');
+		jQuery('#<?php echo $msgfield?>').removeClass('dmrfid_error');
+		jQuery('#<?php echo $msgfield?>').addClass('dmrfid_success');
+		jQuery('#<?php echo $msgfield?>').addClass('dmrfid_discount_code_msg');
 
 		if (jQuery("#discount_code").length) {
 			jQuery('#discount_code').val('<?php echo $discount_code?>');
@@ -113,7 +113,7 @@
 				id: 'discount_code',
 				name: 'discount_code',
 				value: '<?php echo $discount_code?>'
-			}).appendTo('#pmpro_form');
+			}).appendTo('#dmrfid_form');
 		}
 
 		jQuery('#other_discount_code_tr').hide();
@@ -129,72 +129,72 @@
 			if ( count( $code_levels ) <= 1 ) {
 				$code_level = empty( $code_levels ) ? null : $code_levels[0];
 				?>
-				jQuery('#pmpro_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'paid-memberships-pro' ), $discount_code);?></p><p><?php echo pmpro_no_quotes(pmpro_getLevelCost( $code_level, array('"', "'", "\n", "\r")))?><?php echo pmpro_no_quotes(pmpro_getLevelExpiration( $code_level, array('"', "'", "\n", "\r")))?></p>');
+				jQuery('#dmrfid_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'paid-memberships-pro' ), $discount_code);?></p><p><?php echo dmrfid_no_quotes(dmrfid_getLevelCost( $code_level, array('"', "'", "\n", "\r")))?><?php echo dmrfid_no_quotes(dmrfid_getLevelExpiration( $code_level, array('"', "'", "\n", "\r")))?></p>');
 				<?php
 			} else {
 				?>
-				jQuery('#pmpro_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'paid-memberships-pro' ), $discount_code);?></p><p><?php echo pmpro_no_quotes(pmpro_getLevelsCost($code_levels), array('"', "'", "\n", "\r"))?><?php echo pmpro_no_quotes(pmpro_getLevelsExpiration($code_levels), array('"', "'", "\n", "\r"))?></p>');
+				jQuery('#dmrfid_level_cost').html('<p><?php printf(__('The <strong>%s</strong> code has been applied to your order.', 'paid-memberships-pro' ), $discount_code);?></p><p><?php echo dmrfid_no_quotes(dmrfid_getLevelsCost($code_levels), array('"', "'", "\n", "\r"))?><?php echo dmrfid_no_quotes(dmrfid_getLevelsExpiration($code_levels), array('"', "'", "\n", "\r"))?></p>');
 				<?php
 			}
 
 			//tell gateway javascripts whether or not to fire (e.g. no Stripe on free levels)
-			if(pmpro_areLevelsFree($code_levels))
+			if(dmrfid_areLevelsFree($code_levels))
 			{
 			?>
-				pmpro_require_billing = false;
+				dmrfid_require_billing = false;
 			<?php
 			}
 			else
 			{
 			?>
-				pmpro_require_billing = true;
+				dmrfid_require_billing = true;
 			<?php
 			}
 
 			//hide/show billing
-			if(pmpro_areLevelsFree($code_levels) || pmpro_getGateway() == "paypalexpress" || pmpro_getGateway() == "paypalstandard" || pmpro_getGateway() == 'check')
+			if(dmrfid_areLevelsFree($code_levels) || dmrfid_getGateway() == "paypalexpress" || dmrfid_getGateway() == "paypalstandard" || dmrfid_getGateway() == 'check')
 			{
 				?>
-				jQuery('#pmpro_billing_address_fields').hide();
-				jQuery('#pmpro_payment_information_fields').hide();
+				jQuery('#dmrfid_billing_address_fields').hide();
+				jQuery('#dmrfid_payment_information_fields').hide();
 				<?php
 			}
 			else
 			{
 				?>
-				jQuery('#pmpro_billing_address_fields').show();
-				jQuery('#pmpro_payment_information_fields').show();
+				jQuery('#dmrfid_billing_address_fields').show();
+				jQuery('#dmrfid_payment_information_fields').show();
 				<?php
 			}
 
-			if ( pmpro_getGateway() == "paypal" && true == apply_filters('pmpro_include_payment_option_for_paypal', true ) ) {
-				if ( pmpro_areLevelsFree($code_levels) ) {
-					?> jQuery('#pmpro_payment_method').hide(); <?php
+			if ( dmrfid_getGateway() == "paypal" && true == apply_filters('dmrfid_include_payment_option_for_paypal', true ) ) {
+				if ( dmrfid_areLevelsFree($code_levels) ) {
+					?> jQuery('#dmrfid_payment_method').hide(); <?php
 				} else {
-					?> jQuery('#pmpro_payment_method').show(); <?php
+					?> jQuery('#dmrfid_payment_method').show(); <?php
 				}
 			}
 
 			//hide/show paypal button
-			if(pmpro_getGateway() == "paypalexpress" || pmpro_getGateway() == "paypalstandard")
+			if(dmrfid_getGateway() == "paypalexpress" || dmrfid_getGateway() == "paypalstandard")
 			{
-				if(pmpro_areLevelsFree($code_levels))
+				if(dmrfid_areLevelsFree($code_levels))
 				{
 					?>
-					jQuery('#pmpro_paypalexpress_checkout').hide();
-					jQuery('#pmpro_submit_span').show();
+					jQuery('#dmrfid_paypalexpress_checkout').hide();
+					jQuery('#dmrfid_submit_span').show();
 					<?php
 				}
 				else
 				{
 					?>
-					jQuery('#pmpro_submit_span').hide();
-					jQuery('#pmpro_paypalexpress_checkout').show();
+					jQuery('#dmrfid_submit_span').hide();
+					jQuery('#dmrfid_paypalexpress_checkout').show();
 					<?php
 				}
 			}
 
 			//filter to insert your own code. Not MMPU compatible.
-			do_action('pmpro_applydiscountcode_return_js', $discount_code, $discount_code_id, empty( $level_ids ) ? null : $level_ids[0], empty( $code_levels ) ? null : $code_levels[0]);
+			do_action('dmrfid_applydiscountcode_return_js', $discount_code, $discount_code_id, empty( $level_ids ) ? null : $level_ids[0], empty( $code_levels ) ? null : $code_levels[0]);
 		?>
 	</script>

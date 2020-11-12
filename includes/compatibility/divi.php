@@ -1,6 +1,6 @@
 <?php
 
-class PMProDivi{
+class DmRFIDDivi{
 
 	function __construct(){
 
@@ -83,11 +83,11 @@ class PMProDivi{
 		   $levels = array( $level );
 		}
 
-	    if( pmpro_hasMembershipLevel( $levels ) ){
+	    if( dmrfid_hasMembershipLevel( $levels ) ){
 	    	return $output;
 	    } else {
 	    	return '';
 	    }
 	}
 }
-new PMProDivi();
+new DmRFIDDivi();

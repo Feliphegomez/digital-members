@@ -1,9 +1,9 @@
 <?php
-	//include pmprogateway
-	require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+	//include dmrfidgateway
+	require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 	//load classes init method
-	add_action('init', array('PMProGateway_cybersource', 'init'));
-	class PMProGateway_cybersource extends PMProGateway
+	add_action('init', array('DmRFIDGateway_cybersource', 'init'));
+	class DmRFIDGateway_cybersource extends DmRFIDGateway
 	{
 		function __construct($gateway = NULL)
 		{
@@ -20,17 +20,17 @@
 		static function init()
 		{
 			//make sure CyberSource is a gateway option
-			add_filter('pmpro_gateways', array('PMProGateway_cybersource', 'pmpro_gateways'));
+			add_filter('dmrfid_gateways', array('DmRFIDGateway_cybersource', 'dmrfid_gateways'));
 			//add fields to payment settings
-			add_filter('pmpro_payment_options', array('PMProGateway_cybersource', 'pmpro_payment_options'));
-			add_filter('pmpro_payment_option_fields', array('PMProGateway_cybersource', 'pmpro_payment_option_fields'), 10, 2);
+			add_filter('dmrfid_payment_options', array('DmRFIDGateway_cybersource', 'dmrfid_payment_options'));
+			add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_cybersource', 'dmrfid_payment_option_fields'), 10, 2);
 		}
 		/**
 		 * Make sure this gateway is in the gateways list
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_gateways($gateways)
+		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['cybersource']))
 				$gateways['cybersource'] = __('CyberSource', 'paid-memberships-pro' );
@@ -62,10 +62,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_options($options)
+		static function dmrfid_payment_options($options)
 		{
 			//get stripe options
-			$cybersource_options = PMProGateway_cybersource::getGatewayOptions();
+			$cybersource_options = DmRFIDGateway_cybersource::getGatewayOptions();
 			//merge with others.
 			$options = array_merge($cybersource_options, $options);
 			return $options;
@@ -75,10 +75,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_option_fields($values, $gateway)
+		static function dmrfid_payment_option_fields($values, $gateway)
 		{
 		?>
-		<tr class="pmpro_settings_divider gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
+		<tr class="dmrfid_settings_divider gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
 				<h2 class="title"><?php esc_html_e( 'CyberSource Settings', 'paid-memberships-pro' ); ?></h2>
@@ -86,7 +86,7 @@
 		</tr>
 		<tr class="gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2" style="padding: 0px;">
-				<p class="pmpro_message"><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php _e('This gateway option is in beta. Some functionality may not be available. Please contact Digital Members RFID with any issues you run into. <strong>Please be sure to upgrade Digital Members RFID to the latest versions when available.</strong>', 'paid-memberships-pro' );?></p>
+				<p class="dmrfid_message"><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php _e('This gateway option is in beta. Some functionality may not be available. Please contact Digital Members RFID with any issues you run into. <strong>Please be sure to upgrade Digital Members RFID to the latest versions when available.</strong>', 'paid-memberships-pro' );?></p>
 			</td>
 		</tr>
 		<tr class="gateway gateway_cybersource" <?php if($gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
@@ -120,7 +120,7 @@
 				if($this->authorize($order))
 				{
 					$this->void($order);
-					if(!pmpro_isLevelTrial($order->membership_level))
+					if(!dmrfid_isLevelTrial($order->membership_level))
 					{
 						//subscription will start today with a 1 period trial
 						$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -146,7 +146,7 @@
 						//add a period to the start date to account for the initial payment
 						$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 					}
-					$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+					$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 					return $this->subscribe($order);
 				}
 				else
@@ -162,9 +162,9 @@
 				if($this->charge($order))
 				{
 					//set up recurring billing
-					if(pmpro_isLevelRecurring($order->membership_level))
+					if(dmrfid_isLevelRecurring($order->membership_level))
 					{
-						if(!pmpro_isLevelTrial($order->membership_level))
+						if(!dmrfid_isLevelTrial($order->membership_level))
 						{
 							//subscription will start today with a 1 period trial
 							$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -190,7 +190,7 @@
 							//add a period to the start date to account for the initial payment
 							$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 						}
-						$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+						$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 						if($this->subscribe($order))
 						{
 							return true;
@@ -249,7 +249,7 @@
 		{
 			//which gateway environment?
 			if(empty($order->gateway_environment))
-				$gateway_environment = pmpro_getOption("gateway_environment");
+				$gateway_environment = dmrfid_getOption("gateway_environment");
 			else
 				$gateway_environment = $order->gateway_environment;
 			//which host?
@@ -262,12 +262,12 @@
 			//build url
 			$wsdl_url = "https://" . $host . $path;
 			//filter
-			$wsdl_url = apply_filters("pmpro_cybersource_wsdl_url", $wsdl_url, $gateway_environment);
+			$wsdl_url = apply_filters("dmrfid_cybersource_wsdl_url", $wsdl_url, $gateway_environment);
 			return $wsdl_url;
 		}
 		function authorize(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
 			$wsdl_url = $this->getWSDL($order);
@@ -289,7 +289,7 @@
 			$ccAuthService->run = "true";
 			$request->ccAuthService = $ccAuthService;
 			//merchant id and order code
-			$request->merchantID = pmpro_getOption("cybersource_merchantid");
+			$request->merchantID = dmrfid_getOption("cybersource_merchantid");
 			$request->merchantReferenceCode = $order->code;
 			//bill to
 			$billTo = new stdClass();
@@ -321,7 +321,7 @@
 			
 			//currency
 			$purchaseTotals = new stdClass();
-			$purchaseTotals->currency = $pmpro_currency;
+			$purchaseTotals->currency = $dmrfid_currency;
 			$request->purchaseTotals = $purchaseTotals;
 
 			//item/price
@@ -336,7 +336,7 @@
 
 			try
 			{
-				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>pmpro_getOption("cybersource_securitykey")));
+				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>dmrfid_getOption("cybersource_securitykey")));
 				$reply = $soapClient->runTransaction($request);
 			}
 			catch(Throwable $t)
@@ -383,12 +383,12 @@
 			$voidService->voidRequestID = $order->payment_transaction_id;
 			$request->voidService = $voidService;
 			//merchant id and order code
-			$request->merchantID = pmpro_getOption("cybersource_merchantid");
+			$request->merchantID = dmrfid_getOption("cybersource_merchantid");
 			$request->merchantReferenceCode = $order->code;
 
 			try
 			{
-				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>pmpro_getOption("cybersource_securitykey")));
+				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>dmrfid_getOption("cybersource_securitykey")));
 				$reply = $soapClient->runTransaction($request);
 			}
 			catch(Throwable $t)
@@ -422,7 +422,7 @@
 		}
 		function charge(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 			//get a code
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
@@ -433,7 +433,7 @@
 			//tax
 			$order->subtotal = $amount;
 			$tax = $order->getTax(true);
-			$amount = pmpro_round_price((float)$order->subtotal + (float)$tax);
+			$amount = dmrfid_round_price((float)$order->subtotal + (float)$tax);
 			//combine address
 			$address = $order->Address1;
 			if(!empty($order->Address2))
@@ -453,7 +453,7 @@
 			$ccCaptureService->run = "true";
 			$request->ccCaptureService = $ccCaptureService;
 			//merchant id and order code
-			$request->merchantID = pmpro_getOption("cybersource_merchantid");
+			$request->merchantID = dmrfid_getOption("cybersource_merchantid");
 			$request->merchantReferenceCode = $order->code;
 			//bill to
 			$billTo = new stdClass();
@@ -485,7 +485,7 @@
 
 			//currency
 			$purchaseTotals = new stdClass();
-			$purchaseTotals->currency = $pmpro_currency;
+			$purchaseTotals->currency = $dmrfid_currency;
 			$request->purchaseTotals = $purchaseTotals;
 			//item/price
 			$item0 = new stdClass();
@@ -498,7 +498,7 @@
 
 			try
 			{
-				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>pmpro_getOption("cybersource_securitykey")));
+				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>dmrfid_getOption("cybersource_securitykey")));
 				$reply = $soapClient->runTransaction($request);
 			}
 			catch(Throwable $t)
@@ -532,12 +532,12 @@
 		}
 		function subscribe(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 			//create a code for the order
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
 			//filter order before subscription. use with care.
-			$order = apply_filters("pmpro_subscribe_order", $order, $this);
+			$order = apply_filters("dmrfid_subscribe_order", $order, $this);
 			//get wsdl
 			$wsdl_url = $this->getWSDL($order);
 			//to store our request
@@ -548,7 +548,7 @@
 			$paySubscriptionCreateService->disableAutoAuth = 'true';	//we do our own auth check
 			$request->paySubscriptionCreateService  = $paySubscriptionCreateService;
 			//merchant id and order code
-			$request->merchantID = pmpro_getOption("cybersource_merchantid");
+			$request->merchantID = dmrfid_getOption("cybersource_merchantid");
 			$request->merchantReferenceCode = $order->code;
 			/*
 				set up billing amount/etc
@@ -556,7 +556,7 @@
 			//figure out the amounts
 			$amount = $order->PaymentAmount;
 			$amount_tax = $order->getTaxForPrice($amount);
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 			/*
 				There are two parts to the trial. Part 1 is simply the delay until the first payment
 				since we are doing the first payment as a separate transaction.
@@ -574,7 +574,7 @@
 			//convert to a profile start date
 			$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $trial_period_days . " Day", current_time("timestamp"))) . "T0:0:0";
 			//filter the start date
-			$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+			$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 			//convert back to days
 			$trial_period_days = ceil(abs(strtotime(date_i18n("Y-m-d"), current_time('timestamp')) - strtotime($order->ProfileStartDate, current_time("timestamp"))) / 86400);
 			//now add the actual trial set by the site
@@ -683,12 +683,12 @@
 
 			//currency
 			$purchaseTotals = new stdClass();
-			$purchaseTotals->currency = $pmpro_currency;
+			$purchaseTotals->currency = $dmrfid_currency;
 			$request->purchaseTotals = $purchaseTotals;
 
 			try
 			{
-				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>pmpro_getOption("cybersource_securitykey")));
+				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>dmrfid_getOption("cybersource_securitykey")));
 				$reply = $soapClient->runTransaction($request);
 			}
 			catch(Throwable $t)
@@ -732,7 +732,7 @@
 			$paySubscriptionUpdateService ->run = "true";
 			$request->paySubscriptionUpdateService   = $paySubscriptionUpdateService ;
 			//merchant id and order code
-			$request->merchantID = pmpro_getOption("cybersource_merchantid");
+			$request->merchantID = dmrfid_getOption("cybersource_merchantid");
 			$request->merchantReferenceCode = $order->code;
 			//set subscription info for API
 			$recurringSubscriptionInfo = new stdClass();
@@ -772,7 +772,7 @@
 
 			try
 			{
-				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>pmpro_getOption("cybersource_securitykey")));
+				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>dmrfid_getOption("cybersource_securitykey")));
 				$reply = $soapClient->runTransaction($request);
 			}
 			catch(Throwable $t)
@@ -821,12 +821,12 @@
 			$recurringSubscriptionInfo->subscriptionID = $order->subscription_transaction_id;
 			$request->recurringSubscriptionInfo = $recurringSubscriptionInfo;
 			//merchant id and order code
-			$request->merchantID = pmpro_getOption("cybersource_merchantid");
+			$request->merchantID = dmrfid_getOption("cybersource_merchantid");
 			$request->merchantReferenceCode = $order->code;
 
 			try
 			{
-				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>pmpro_getOption("cybersource_securitykey")));
+				$soapClient = new CyberSourceSoapClient($wsdl_url, array("merchantID"=>$request->merchantID, "transactionKey"=>dmrfid_getOption("cybersource_securitykey")));
 				$reply = $soapClient->runTransaction($request);
 			}
 			catch(Throwable $t)

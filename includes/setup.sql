@@ -7,16 +7,16 @@
 -- Server version: 5.1.57
 -- PHP Version: 5.2.6
 -- 
--- PMPro Version: 1.5.2
+-- DmRFID Version: 1.5.2
 -- 
 
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_discount_codes`
+-- Table structure for table `wp_dmrfid_discount_codes`
 -- 
 
-CREATE TABLE `wp_pmpro_discount_codes` (
+CREATE TABLE `wp_dmrfid_discount_codes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(32) NOT NULL,
   `starts` date NOT NULL,
@@ -31,10 +31,10 @@ CREATE TABLE `wp_pmpro_discount_codes` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_discount_codes_levels`
+-- Table structure for table `wp_dmrfid_discount_codes_levels`
 -- 
 
-CREATE TABLE `wp_pmpro_discount_codes_levels` (
+CREATE TABLE `wp_dmrfid_discount_codes_levels` (
   `code_id` int(11) unsigned NOT NULL,
   `level_id` int(11) unsigned NOT NULL,
   `initial_payment` decimal(18,8) NOT NULL DEFAULT '0.00',
@@ -53,10 +53,10 @@ CREATE TABLE `wp_pmpro_discount_codes_levels` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_discount_codes_uses`
+-- Table structure for table `wp_dmrfid_discount_codes_uses`
 -- 
 
-CREATE TABLE `wp_pmpro_discount_codes_uses` (
+CREATE TABLE `wp_dmrfid_discount_codes_uses` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
@@ -70,10 +70,10 @@ CREATE TABLE `wp_pmpro_discount_codes_uses` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_membership_levels`
+-- Table structure for table `wp_dmrfid_membership_levels`
 -- 
 
-CREATE TABLE `wp_pmpro_membership_levels` (
+CREATE TABLE `wp_dmrfid_membership_levels` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
@@ -97,42 +97,42 @@ CREATE TABLE `wp_pmpro_membership_levels` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_membership_levelmeta`
+-- Table structure for table `wp_dmrfid_membership_levelmeta`
 -- 
 
-CREATE TABLE `wp_pmpro_membership_levelmeta` (
+CREATE TABLE `wp_dmrfid_membership_levelmeta` (
   `meta_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pmpro_membership_level_id` int(10) unsigned NOT NULL,
+  `dmrfid_membership_level_id` int(10) unsigned NOT NULL,
   `meta_key` varchar(255) NOT NULL,
   `meta_value` longtext,
   PRIMARY KEY (`meta_id`),
-  KEY `pmpro_membership_level_id` (`pmpro_membership_level_id`),
+  KEY `dmrfid_membership_level_id` (`dmrfid_membership_level_id`),
   KEY `meta_key` (`meta_key`)
 );
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_pmpro_membership_ordermeta`
+-- Table structure for table `wp_dmrfid_membership_ordermeta`
 --
 
-CREATE TABLE `wp_pmpro_membership_ordermeta` (
+CREATE TABLE `wp_dmrfid_membership_ordermeta` (
   `meta_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pmpro_membership_order_id` int(10) unsigned NOT NULL,
+  `dmrfid_membership_order_id` int(10) unsigned NOT NULL,
   `meta_key` varchar(255) NOT NULL,
   `meta_value` longtext,
   PRIMARY KEY (`meta_id`),
-  KEY `pmpro_membership_order_id` (`pmpro_membership_order_id`),
+  KEY `dmrfid_membership_order_id` (`dmrfid_membership_order_id`),
   KEY `meta_key` (`meta_key`)
 );
 
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_membership_orders`
+-- Table structure for table `wp_dmrfid_membership_orders`
 -- 
 
-CREATE TABLE `wp_pmpro_membership_orders` (
+CREATE TABLE `wp_dmrfid_membership_orders` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(10) NOT NULL,
   `session_id` varchar(64) NOT NULL DEFAULT '',
@@ -186,10 +186,10 @@ CREATE TABLE `wp_pmpro_membership_orders` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_memberships_categories`
+-- Table structure for table `wp_dmrfid_memberships_categories`
 -- 
 
-CREATE TABLE `wp_pmpro_memberships_categories` (
+CREATE TABLE `wp_dmrfid_memberships_categories` (
   `membership_id` int(11) unsigned NOT NULL,
   `category_id` int(11) unsigned NOT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -200,10 +200,10 @@ CREATE TABLE `wp_pmpro_memberships_categories` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_memberships_pages`
+-- Table structure for table `wp_dmrfid_memberships_pages`
 -- 
 
-CREATE TABLE `wp_pmpro_memberships_pages` (
+CREATE TABLE `wp_dmrfid_memberships_pages` (
   `membership_id` int(11) unsigned NOT NULL,
   `page_id` int(11) unsigned NOT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -214,10 +214,10 @@ CREATE TABLE `wp_pmpro_memberships_pages` (
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `wp_pmpro_memberships_users`
+-- Table structure for table `wp_dmrfid_memberships_users`
 -- 
 
-CREATE TABLE `wp_pmpro_memberships_users` (
+CREATE TABLE `wp_dmrfid_memberships_users` (
    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
    `user_id` int(11) unsigned NOT NULL,
    `membership_id` int(11) unsigned NOT NULL,

@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Note: The class names have been prefixed with pmpro_ to avoid conflicts with other plugins.
+ * Note: The class names have been prefixed with dmrfid_ to avoid conflicts with other plugins.
  *
  * This is a PHP library that handles calling reCAPTCHA.
  *    - Documentation and latest version
@@ -36,13 +36,13 @@
 /**
  * A ReCaptchaResponse is returned from checkAnswer().
  */
-class pmpro_ReCaptchaResponse
+class dmrfid_ReCaptchaResponse
 {
     public $success;
     public $errorCodes;
 }
 
-class pmpro_ReCaptcha
+class dmrfid_ReCaptcha
 {
     private static $_signupUrl = "https://www.google.com/recaptcha/admin";
     private static $_siteVerifyUrl =
@@ -95,7 +95,7 @@ class pmpro_ReCaptcha
     {
         // Discard empty solution submissions
         if ($response == null || strlen($response) == 0) {
-            $recaptchaResponse = new pmpro_ReCaptchaResponse();
+            $recaptchaResponse = new dmrfid_ReCaptchaResponse();
             $recaptchaResponse->success = false;
             $recaptchaResponse->errorCodes = 'missing-input';
             return $recaptchaResponse;
@@ -111,7 +111,7 @@ class pmpro_ReCaptcha
             )
         );
         $answers = json_decode($getResponse, true);
-        $recaptchaResponse = new pmpro_ReCaptchaResponse();
+        $recaptchaResponse = new dmrfid_ReCaptchaResponse();
 
         if ((bool)$answers['success'] == true) {
             $recaptchaResponse->success = true;

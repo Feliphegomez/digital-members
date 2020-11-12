@@ -2,13 +2,13 @@
 
 use Braintree\WebhookNotification as Braintree_WebhookNotification;
 
-	//include pmprogateway
-	require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+	//include dmrfidgateway
+	require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 
 	//load classes init method
-	add_action('init', array('PMProGateway_braintree', 'init'));
+	add_action('init', array('DmRFIDGateway_braintree', 'init'));
 
-	class PMProGateway_braintree extends PMProGateway
+	class DmRFIDGateway_braintree extends DmRFIDGateway
 	{
 		/**
 		 * @var bool    Is the Braintree/PHP Library loaded
@@ -18,7 +18,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		function __construct($gateway = NULL)
 		{
 			$this->gateway = $gateway;
-			$this->gateway_environment = pmpro_getOption("gateway_environment");
+			$this->gateway_environment = dmrfid_getOption("gateway_environment");
 
 			if( true === $this->dependencies() ) {
 				$this->loadBraintreeLibrary();
@@ -28,9 +28,9 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				if($environment == "live")
 					$environment = "production";
 
-				$merch_id = pmpro_getOption( "braintree_merchantid" );
-				$pk = pmpro_getOption( "braintree_publickey" );
-				$sk = pmpro_getOption( "braintree_privatekey" );
+				$merch_id = dmrfid_getOption( "braintree_merchantid" );
+				$pk = dmrfid_getOption( "braintree_publickey" );
+				$sk = dmrfid_getOption( "braintree_privatekey" );
 
                 try {
 
@@ -42,11 +42,11 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
                 } catch( Exception $exception ) {
                     global $msg;
                     global $msgt;
-                    global $pmpro_braintree_error;
+                    global $dmrfid_braintree_error;
 
                     error_log($exception->getMessage() );
 
-                        $pmpro_braintree_error = true;
+                        $dmrfid_braintree_error = true;
                         $msg                   = - 1;
                         $msgt                  = sprintf( __( 'Attempting to load Braintree gateway: %s', 'paid-memberships-pro' ), $exception->getMessage() );
                     return false;
@@ -65,14 +65,14 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 */
 		public static function dependencies()
 		{
-			global $msg, $msgt, $pmpro_braintree_error;
+			global $msg, $msgt, $dmrfid_braintree_error;
 
 			if ( version_compare( PHP_VERSION, '5.4.45', '<' )) {
 
 				$msg = -1;
 				$msgt = sprintf(__("The Braintree Gateway requires PHP 5.4.45 or greater. We recommend upgrading to PHP %s or greater. Ask your host to upgrade.", "paid-memberships-pro" ), DMRFID_PHP_MIN_VERSION );
 
-				pmpro_setMessage( $msgt, "pmpro_error" );
+				dmrfid_setMessage( $msgt, "dmrfid_error" );
 				return false;
 			}
 
@@ -81,15 +81,15 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			foreach($modules as $module){
 				if(!extension_loaded($module)){
 
-				    if ( false == $pmpro_braintree_error ) {
-					    $pmpro_braintree_error = true;
+				    if ( false == $dmrfid_braintree_error ) {
+					    $dmrfid_braintree_error = true;
 					    $msg                   = - 1;
 					    $msgt                  = sprintf( __( "The %s gateway depends on the %s PHP extension. Please enable it, or ask your hosting provider to enable it.", 'paid-memberships-pro' ), 'Braintree', $module );
 				    }
 
 					//throw error on checkout page
 					if ( ! is_admin() ) {
-						pmpro_setMessage( $msgt, 'pmpro_error' );
+						dmrfid_setMessage( $msgt, 'dmrfid_error' );
 					}
 
 					return false;
@@ -118,9 +118,9 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 */
 		function getPlans($force = false) {
 			//check for cache
-			$cache_key = 'pmpro_braintree_plans_' . md5($this->gateway_environment . pmpro_getOption("braintree_merchantid") . pmpro_getOption("braintree_publickey") . pmpro_getOption("braintree_privatekey"));
+			$cache_key = 'dmrfid_braintree_plans_' . md5($this->gateway_environment . dmrfid_getOption("braintree_merchantid") . dmrfid_getOption("braintree_publickey") . dmrfid_getOption("braintree_privatekey"));
 
-      $plans = wp_cache_get( $cache_key,'pmpro_levels' );
+      $plans = wp_cache_get( $cache_key,'dmrfid_levels' );
 			
 			//check Braintree if no transient found
 			if($plans === false) {
@@ -132,18 +132,18 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 
 			        global $msg;
 			        global $msgt;
-				    global $pmpro_braintree_error;
+				    global $dmrfid_braintree_error;
 
-				    if ( false == $pmpro_braintree_error ) {
+				    if ( false == $dmrfid_braintree_error ) {
 
-				        $pmpro_braintree_error = true;
+				        $dmrfid_braintree_error = true;
 					    $msg                   = - 1;
 					    $status = $exception->getMessage();
 
 					    if ( !empty( $status)) {
 						    $msgt = sprintf( __( "Problem loading plans: %s", "paid-memberships-pro" ), $status );
 					    } else {
-					        $msgt = __( "Problem accessing the Braintree Gateway. Please verify your PMPro Payment Settings (Keys, etc).", "paid-memberships-pro");
+					        $msgt = __( "Problem accessing the Braintree Gateway. Please verify your DmRFID Payment Settings (Keys, etc).", "paid-memberships-pro");
                         }
 				    }
 
@@ -156,7 +156,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 	                 * @since v1.9.5.4+ - BUG FIX: Didn't expire transient
                      * @since v1.9.5.4+ - ENHANCEMENT: Use wp_cache_*() system over direct transients
 	                 */
-                    wp_cache_set( $cache_key,$plans,'pmpro_levels',HOUR_IN_SECONDS );
+                    wp_cache_set( $cache_key,$plans,'dmrfid_levels',HOUR_IN_SECONDS );
                 }
 			}
 
@@ -168,14 +168,14 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
          *
 		 * @param $level_id
 		 */
-		public static function pmpro_save_level_action( $level_id ) {
+		public static function dmrfid_save_level_action( $level_id ) {
 		    
-		    $BT_Gateway = new PMProGateway_braintree();
+		    $BT_Gateway = new DmRFIDGateway_braintree();
 		    
 		    if ( isset( $BT_Gateway->gateway_environment ) ) {
-			    $cache_key = 'pmpro_braintree_plans_' . md5($BT_Gateway->gateway_environment . pmpro_getOption("braintree_merchantid") . pmpro_getOption("braintree_publickey") . pmpro_getOption("braintree_privatekey"));
+			    $cache_key = 'dmrfid_braintree_plans_' . md5($BT_Gateway->gateway_environment . dmrfid_getOption("braintree_merchantid") . dmrfid_getOption("braintree_publickey") . dmrfid_getOption("braintree_privatekey"));
 			
-			    wp_cache_delete( $cache_key,'pmpro_levels' );
+			    wp_cache_delete( $cache_key,'dmrfid_levels' );
 		    }
 		}
 		
@@ -199,7 +199,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 * Checks if a level has an associated plan.
 		 */
 		static function checkLevelForPlan($level_id) {
-			$Gateway = new PMProGateway_braintree();
+			$Gateway = new DmRFIDGateway_braintree();
 
 			$plan = $Gateway->getPlanByID( $Gateway->get_plan_id( $level_id ) );
 
@@ -217,26 +217,26 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		static function init()
 		{
 			//make sure Braintree Payments is a gateway option
-			add_filter('pmpro_gateways', array('PMProGateway_braintree', 'pmpro_gateways'));
+			add_filter('dmrfid_gateways', array('DmRFIDGateway_braintree', 'dmrfid_gateways'));
 
 			//add fields to payment settings
-			add_filter('pmpro_payment_options', array('PMProGateway_braintree', 'pmpro_payment_options'));
-			add_filter('pmpro_payment_option_fields', array('PMProGateway_braintree', 'pmpro_payment_option_fields'), 10, 2);
+			add_filter('dmrfid_payment_options', array('DmRFIDGateway_braintree', 'dmrfid_payment_options'));
+			add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_braintree', 'dmrfid_payment_option_fields'), 10, 2);
 
 			//code to add at checkout if Braintree is the current gateway
-			$default_gateway = pmpro_getOption('gateway');
-			$current_gateway = pmpro_getGateway();
+			$default_gateway = dmrfid_getOption('gateway');
+			$current_gateway = dmrfid_getGateway();
 			if( ( $default_gateway == "braintree" || $current_gateway == "braintree" && empty($_REQUEST['review'])))	//$_REQUEST['review'] means the PayPal Express review page
 			{
-			    add_action('pmpro_checkout_preheader', array('PMProGateway_braintree', 'pmpro_checkout_preheader'));
-				add_action( 'pmpro_billing_preheader', array( 'PMProGateway_braintree', 'pmpro_checkout_preheader' ) );
-				add_action( 'pmpro_save_membership_level', array( 'PMProGateway_braintree', 'pmpro_save_level_action') );
-				add_action('pmpro_checkout_before_submit_button', array('PMProGateway_braintree', 'pmpro_checkout_before_submit_button'));
-				add_action('pmpro_billing_before_submit_button', array('PMProGateway_braintree', 'pmpro_checkout_before_submit_button'));
-				add_filter('pmpro_checkout_order', array('PMProGateway_braintree', 'pmpro_checkout_order'));
-				add_filter('pmpro_billing_order', array('PMProGateway_braintree', 'pmpro_checkout_order'));
-				add_filter('pmpro_required_billing_fields', array('PMProGateway_braintree', 'pmpro_required_billing_fields'));
-				add_filter('pmpro_include_payment_information_fields', array('PMProGateway_braintree', 'pmpro_include_payment_information_fields'));
+			    add_action('dmrfid_checkout_preheader', array('DmRFIDGateway_braintree', 'dmrfid_checkout_preheader'));
+				add_action( 'dmrfid_billing_preheader', array( 'DmRFIDGateway_braintree', 'dmrfid_checkout_preheader' ) );
+				add_action( 'dmrfid_save_membership_level', array( 'DmRFIDGateway_braintree', 'dmrfid_save_level_action') );
+				add_action('dmrfid_checkout_before_submit_button', array('DmRFIDGateway_braintree', 'dmrfid_checkout_before_submit_button'));
+				add_action('dmrfid_billing_before_submit_button', array('DmRFIDGateway_braintree', 'dmrfid_checkout_before_submit_button'));
+				add_filter('dmrfid_checkout_order', array('DmRFIDGateway_braintree', 'dmrfid_checkout_order'));
+				add_filter('dmrfid_billing_order', array('DmRFIDGateway_braintree', 'dmrfid_checkout_order'));
+				add_filter('dmrfid_required_billing_fields', array('DmRFIDGateway_braintree', 'dmrfid_required_billing_fields'));
+				add_filter('dmrfid_include_payment_information_fields', array('DmRFIDGateway_braintree', 'dmrfid_include_payment_information_fields'));
 			}
 		}
 
@@ -245,7 +245,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_gateways($gateways)
+		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['braintree']))
 				$gateways['braintree'] = __('Braintree Payments', 'paid-memberships-pro' );
@@ -283,7 +283,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_options($options)
+		static function dmrfid_payment_options($options)
 		{
 			//get Braintree options
 			$braintree_options = self::getGatewayOptions();
@@ -299,10 +299,10 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_option_fields($values, $gateway)
+		static function dmrfid_payment_option_fields($values, $gateway)
 		{
         ?>
-		<tr class="pmpro_settings_divider gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
+		<tr class="dmrfid_settings_divider gateway gateway_braintree" <?php if($gateway != "braintree") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
 				<h2 class="title"><?php esc_html_e( 'Braintree Settings', 'paid-memberships-pro' ); ?></h2>
@@ -360,21 +360,21 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 *
 		 * @since 2.1
 		 */
-		static function pmpro_checkout_preheader() {
-			global $gateway, $pmpro_level;
+		static function dmrfid_checkout_preheader() {
+			global $gateway, $dmrfid_level;
 
-			$default_gateway = pmpro_getOption("gateway");
+			$default_gateway = dmrfid_getOption("gateway");
 
 			if(($gateway == "braintree" || $default_gateway == "braintree")) {
 				wp_enqueue_script("stripe", "https://js.braintreegateway.com/v1/braintree.js", array(), NULL);
-				wp_register_script( 'pmpro_braintree',
-                            plugins_url( 'js/pmpro-braintree.js', DMRFID_BASE_FILE ),
+				wp_register_script( 'dmrfid_braintree',
+                            plugins_url( 'js/dmrfid-braintree.js', DMRFID_BASE_FILE ),
                             array( 'jquery' ),
                             DMRFID_VERSION );
-				wp_localize_script( 'pmpro_braintree', 'pmpro_braintree', array(
-					'encryptionkey' => pmpro_getOption( 'braintree_encryptionkey' )
+				wp_localize_script( 'dmrfid_braintree', 'dmrfid_braintree', array(
+					'encryptionkey' => dmrfid_getOption( 'braintree_encryptionkey' )
 				));
-				wp_enqueue_script( 'pmpro_braintree' );
+				wp_enqueue_script( 'dmrfid_braintree' );
 			}
 		}
 
@@ -383,7 +383,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_checkout_order($morder)
+		static function dmrfid_checkout_order($morder)
 		{
 			//load up values
 			if(isset($_REQUEST['number']))
@@ -413,7 +413,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 * Don't require the CVV, but look for cvv (lowercase) that braintree sends
 		 *
 		 */
-		static function pmpro_required_billing_fields($fields)
+		static function dmrfid_required_billing_fields($fields)
 		{
 			unset($fields['CVV']);
 			$fields['cvv'] = true;
@@ -424,7 +424,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 * Add some hidden fields and JavaScript to checkout.
 		 *
 		 */
-		static function pmpro_checkout_before_submit_button()
+		static function dmrfid_checkout_before_submit_button()
 		{
 		?>
 		<input type='hidden' data-encrypted-name='expiration_date' id='credit_card_exp' />
@@ -436,48 +436,48 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 * Use our own payment fields at checkout. (Remove the name attributes and set some data-encrypted-name attributes.)
 		 * @since 1.8
 		 */
-		static function pmpro_include_payment_information_fields($include)
+		static function dmrfid_include_payment_information_fields($include)
 		{
 
 			//global vars
-			global $pmpro_requirebilling, $pmpro_show_discount_code, $discount_code, $CardType, $AccountNumber, $ExpirationMonth, $ExpirationYear;
+			global $dmrfid_requirebilling, $dmrfid_show_discount_code, $discount_code, $CardType, $AccountNumber, $ExpirationMonth, $ExpirationYear;
 
 			//get accepted credit cards
-			$pmpro_accepted_credit_cards = pmpro_getOption("accepted_credit_cards");
-			$pmpro_accepted_credit_cards = explode(",", $pmpro_accepted_credit_cards);
-			$pmpro_accepted_credit_cards_string = pmpro_implodeToEnglish($pmpro_accepted_credit_cards);
+			$dmrfid_accepted_credit_cards = dmrfid_getOption("accepted_credit_cards");
+			$dmrfid_accepted_credit_cards = explode(",", $dmrfid_accepted_credit_cards);
+			$dmrfid_accepted_credit_cards_string = dmrfid_implodeToEnglish($dmrfid_accepted_credit_cards);
 
 			//include ours
 			?>
-			<div id="pmpro_payment_information_fields" class="<?php echo pmpro_get_element_class( 'pmpro_checkout', 'pmpro_payment_information_fields' ); ?>" <?php if(!$pmpro_requirebilling || apply_filters("pmpro_hide_payment_information_fields", false) ) { ?>style="display: none;"<?php } ?>>
+			<div id="dmrfid_payment_information_fields" class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout', 'dmrfid_payment_information_fields' ); ?>" <?php if(!$dmrfid_requirebilling || apply_filters("dmrfid_hide_payment_information_fields", false) ) { ?>style="display: none;"<?php } ?>>
 				<h3>
-					<span class="<?php echo pmpro_get_element_class( 'pmpro_checkout-h3-name' ); ?>"><?php _e('Payment Information', 'paid-memberships-pro' );?></span>
-				<span class="<?php echo pmpro_get_element_class( 'pmpro_checkout-h3-msg' ); ?>"><?php printf(__('We Accept %s', 'paid-memberships-pro' ), $pmpro_accepted_credit_cards_string);?></span>
+					<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-name' ); ?>"><?php _e('Payment Information', 'paid-memberships-pro' );?></span>
+				<span class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-h3-msg' ); ?>"><?php printf(__('We Accept %s', 'paid-memberships-pro' ), $dmrfid_accepted_credit_cards_string);?></span>
 				</h3>
-				<?php $sslseal = pmpro_getOption("sslseal"); ?>
+				<?php $sslseal = dmrfid_getOption("sslseal"); ?>
 				<?php if(!empty($sslseal)) { ?>
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-fields-display-seal' ); ?>">
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-fields-display-seal' ); ?>">
 				<?php } ?>
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-fields' ); ?>">
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-fields' ); ?>">
 					<?php
-						$pmpro_include_cardtype_field = apply_filters('pmpro_include_cardtype_field', true);
-						if($pmpro_include_cardtype_field) { ?>
-						<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-card-type', 'pmpro_payment-card-type' ); ?>">
+						$dmrfid_include_cardtype_field = apply_filters('dmrfid_include_cardtype_field', true);
+						if($dmrfid_include_cardtype_field) { ?>
+						<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-card-type', 'dmrfid_payment-card-type' ); ?>">
 							<label for="CardType"><?php _e('Card Type', 'paid-memberships-pro' );?></label>
-							<select id="CardType" name="CardType" class="<?php echo pmpro_get_element_class( 'CardType' ); ?>">
-								<?php foreach($pmpro_accepted_credit_cards as $cc) { ?>
+							<select id="CardType" name="CardType" class="<?php echo dmrfid_get_element_class( 'CardType' ); ?>">
+								<?php foreach($dmrfid_accepted_credit_cards as $cc) { ?>
 									<option value="<?php echo $cc?>" <?php if($CardType == $cc) { ?>selected="selected"<?php } ?>><?php echo $cc?></option>
 								<?php } ?>
 							</select>
 						</div>
 					<?php } ?>
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-account-number', 'pmpro_payment-account-number' ); ?>">
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-account-number', 'dmrfid_payment-account-number' ); ?>">
 						<label for="AccountNumber"><?php _e('Card Number', 'paid-memberships-pro' );?></label>
-						<input id="AccountNumber" name="AccountNumber" class="<?php echo pmpro_get_element_class( 'input', 'AccountNumber' ); ?>" type="text" size="25" value="<?php echo esc_attr($AccountNumber)?>" data-encrypted-name="number" autocomplete="off" />
+						<input id="AccountNumber" name="AccountNumber" class="<?php echo dmrfid_get_element_class( 'input', 'AccountNumber' ); ?>" type="text" size="25" value="<?php echo esc_attr($AccountNumber)?>" data-encrypted-name="number" autocomplete="off" />
 					</div>
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-expiration', 'pmpro_payment-expiration' ); ?>">
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-expiration', 'dmrfid_payment-expiration' ); ?>">
 						<label for="ExpirationMonth"><?php _e('Expiration Date', 'paid-memberships-pro' );?></label>
-						<select id="ExpirationMonth" name="ExpirationMonth" class="<?php echo pmpro_get_element_class( 'ExpirationMonth' ); ?>">
+						<select id="ExpirationMonth" name="ExpirationMonth" class="<?php echo dmrfid_get_element_class( 'ExpirationMonth' ); ?>">
 							<option value="01" <?php if($ExpirationMonth == "01") { ?>selected="selected"<?php } ?>>01</option>
 							<option value="02" <?php if($ExpirationMonth == "02") { ?>selected="selected"<?php } ?>>02</option>
 							<option value="03" <?php if($ExpirationMonth == "03") { ?>selected="selected"<?php } ?>>03</option>
@@ -490,34 +490,34 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 							<option value="10" <?php if($ExpirationMonth == "10") { ?>selected="selected"<?php } ?>>10</option>
 							<option value="11" <?php if($ExpirationMonth == "11") { ?>selected="selected"<?php } ?>>11</option>
 							<option value="12" <?php if($ExpirationMonth == "12") { ?>selected="selected"<?php } ?>>12</option>
-						</select>/<select id="ExpirationYear" name="ExpirationYear" class="<?php echo pmpro_get_element_class( 'ExpirationYear' ); ?>">
+						</select>/<select id="ExpirationYear" name="ExpirationYear" class="<?php echo dmrfid_get_element_class( 'ExpirationYear' ); ?>">
 							<?php for($i = date_i18n("Y"); $i < date_i18n("Y") + 10; $i++) { ?>
 								<option value="<?php echo $i?>" <?php if($ExpirationYear == $i) { ?>selected="selected"<?php } ?>><?php echo $i?></option>
 							<?php } ?>
 						</select>
 					</div>
 					<?php
-						$pmpro_show_cvv = apply_filters("pmpro_show_cvv", true);
-						if($pmpro_show_cvv) { ?>
-							<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-cvv', 'pmpro_payment-cvv' ); ?>">
+						$dmrfid_show_cvv = apply_filters("dmrfid_show_cvv", true);
+						if($dmrfid_show_cvv) { ?>
+							<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-cvv', 'dmrfid_payment-cvv' ); ?>">
 								<label for="CVV"><?php _e('CVV', 'paid-memberships-pro' );?></label>
-								<input id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr(sanitize_text_field($_REQUEST['CVV'])); }?>" class="<?php echo pmpro_get_element_class( 'input', 'CVV' ); ?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo pmpro_https_filter(DMRFID_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
+								<input id="CVV" name="cvv" type="text" size="4" value="<?php if(!empty($_REQUEST['CVV'])) { echo esc_attr(sanitize_text_field($_REQUEST['CVV'])); }?>" class="<?php echo dmrfid_get_element_class( 'input', 'CVV' ); ?>" data-encrypted-name="cvv" />  <small>(<a href="javascript:void(0);" onclick="javascript:window.open('<?php echo dmrfid_https_filter(DMRFID_URL)?>/pages/popup-cvv.html','cvv','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=600, height=475');"><?php _e("what's this?", 'paid-memberships-pro' );?></a>)</small>
 							</div>
 					<?php } ?>
-					<?php if($pmpro_show_discount_code) { ?>
-						<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-field pmpro_payment-discount-code', 'pmpro_payment-discount-code' ); ?>">
+					<?php if($dmrfid_show_discount_code) { ?>
+						<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-field dmrfid_payment-discount-code', 'dmrfid_payment-discount-code' ); ?>">
 							<label for="discount_code"><?php _e('Discount Code', 'paid-memberships-pro' );?></label>
-							<input class="<?php echo pmpro_get_element_class( 'input', 'discount_code' ); ?>" id="discount_code" name="discount_code" type="text" size="20" value="<?php echo esc_attr($discount_code)?>" />
+							<input class="<?php echo dmrfid_get_element_class( 'input', 'discount_code' ); ?>" id="discount_code" name="discount_code" type="text" size="20" value="<?php echo esc_attr($discount_code)?>" />
 							<input type="button" id="discount_code_button" name="discount_code_button" value="<?php _e('Apply', 'paid-memberships-pro' );?>" />
-							<p id="discount_code_message" class="<?php echo pmpro_get_element_class( 'pmpro_message' ); ?>" style="display: none;"></p>
+							<p id="discount_code_message" class="<?php echo dmrfid_get_element_class( 'dmrfid_message' ); ?>" style="display: none;"></p>
 						</div>
 					<?php } ?>
-				</div> <!-- end pmpro_checkout-fields -->
+				</div> <!-- end dmrfid_checkout-fields -->
 				<?php if(!empty($sslseal)) { ?>
-					<div class="<?php echo pmpro_get_element_class( 'pmpro_checkout-fields-rightcol pmpro_sslseal', 'pmpro_sslseal' ); ?>"><?php echo stripslashes($sslseal); ?></div>
-				</div> <!-- end pmpro_checkout-fields-display-seal -->
+					<div class="<?php echo dmrfid_get_element_class( 'dmrfid_checkout-fields-rightcol dmrfid_sslseal', 'dmrfid_sslseal' ); ?>"><?php echo stripslashes($sslseal); ?></div>
+				</div> <!-- end dmrfid_checkout-fields-display-seal -->
 				<?php } ?>
-			</div> <!-- end pmpro_payment_information_fields -->
+			</div> <!-- end dmrfid_payment_information_fields -->
 			<?php
 
 			//don't include the default
@@ -541,7 +541,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				//charge then subscribe
 				if($this->charge($order))
 				{
-					if(pmpro_isLevelRecurring($order->membership_level))
+					if(dmrfid_isLevelRecurring($order->membership_level))
 					{
 						if($this->subscribe($order))
 						{
@@ -598,7 +598,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			//tax
 			$order->subtotal = $amount;
 			$tax = $order->getTax(true);
-			$amount = pmpro_round_price((float)$order->subtotal + (float)$tax);
+			$amount = dmrfid_round_price((float)$order->subtotal + (float)$tax);
 
 			//create a customer
 			$this->getCustomer($order);
@@ -695,7 +695,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			//check for a braintree customer id
 			if(!empty($user_id))
 			{
-				$customer_id = get_user_meta($user_id, "pmpro_braintree_customerid", true);
+				$customer_id = get_user_meta($user_id, "dmrfid_braintree_customerid", true);
 			}
 
 			//check for an existing Braintree customer
@@ -823,12 +823,12 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 				//if we have no user id, we need to set the customer id after the user is created
 				if(empty($user_id))
 				{
-					global $pmpro_braintree_customerid;
-					$pmpro_braintree_customerid = $this->customer->id;
-					add_action('user_register', array('PMProGateway_braintree','user_register'));
+					global $dmrfid_braintree_customerid;
+					$dmrfid_braintree_customerid = $this->customer->id;
+					add_action('user_register', array('DmRFIDGateway_braintree','user_register'));
 				}
 				else
-					update_user_meta($user_id, "pmpro_braintree_customerid", $this->customer->id);
+					update_user_meta($user_id, "dmrfid_braintree_customerid", $this->customer->id);
 
 				return $this->customer;
 			}
@@ -862,7 +862,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			//figure out the amounts
 			$amount = $order->PaymentAmount;
 			$amount_tax = $order->getTaxForPrice($amount);
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 
 			/*
 				There are two parts to the trial. Part 1 is simply the delay until the first payment
@@ -885,7 +885,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $trial_period_days . " Day", current_time("timestamp"))) . "T0:0:0";
 
 			//filter the start date
-			$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+			$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 
 			$start_ts  = strtotime($order->ProfileStartDate, current_time("timestamp") );
 			$now =  strtotime( date('Y-m-d\T00:00:00', current_time('timestamp' ) ), current_time('timestamp' ) );
@@ -1045,10 +1045,10 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		*/
 		static function user_register($user_id)
 		{
-			global $pmpro_braintree_customerid;
-			if(!empty($pmpro_braintree_customerid))
+			global $dmrfid_braintree_customerid;
+			if(!empty($dmrfid_braintree_customerid))
 			{
-				update_user_meta($user_id, 'pmpro_braintree_customerid', $pmpro_braintree_customerid);
+				update_user_meta($user_id, 'dmrfid_braintree_customerid', $dmrfid_braintree_customerid);
 			}
 		}
 
@@ -1059,7 +1059,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 		 */
 	static function get_plan_id( $level_id ) {
 		/**
-			* Filter pmpro_braintree_plan_id
+			* Filter dmrfid_braintree_plan_id
 			*
 			* Used to change the Braintree plan ID for a given level
 			*
@@ -1068,7 +1068,7 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 			* @param string  $plan_id for the given level
 			* @param int $level_id the level id to make a plan id for
 			*/
-			return apply_filters( 'pmpro_braintree_plan_id', 'pmpro_' . $level_id, $level_id );
+			return apply_filters( 'dmrfid_braintree_plan_id', 'dmrfid_' . $level_id, $level_id );
 	}
 
 	function get_subscription( &$order ) {
@@ -1089,9 +1089,9 @@ use Braintree\WebhookNotification as Braintree_WebhookNotification;
 	}
 
 	/**
-	 * Filter pmpro_next_payment to get date via API if possible
+	 * Filter dmrfid_next_payment to get date via API if possible
 	 */
-	static function pmpro_next_payment( $timestamp, $user_id, $order_status ) {
+	static function dmrfid_next_payment( $timestamp, $user_id, $order_status ) {
 		// Check that we have a user ID...
 		if ( ! empty( $user_id ) ) {
 			// Get last order...

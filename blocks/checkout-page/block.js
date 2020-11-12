@@ -1,5 +1,5 @@
 /**
- * Block: PMPro Membership Checkout
+ * Block: DmRFID Membership Checkout
  *
  * Displays the Membership Checkout form.
  *
@@ -23,39 +23,39 @@ const {
   * Register block
   */
  export default registerBlockType(
-     'pmpro/checkout-page',
+     'dmrfid/checkout-page',
      {
          title: __( 'Membership Checkout Form', 'paid-memberships-pro' ),
          description: __( 'Displays the Membership Checkout form.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'list-view',
          },
-         keywords: [ __( 'pmpro', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
          supports: {
          },
          attributes: {
-             pmpro_default_level: {
+             dmrfid_default_level: {
                  type: 'string',
                  source: 'meta',
-                 meta: 'pmpro_default_level',
+                 meta: 'dmrfid_default_level',
              },
          },
          edit: props => {
-             const { attributes: { pmpro_default_level }, className, setAttributes, isSelected } = props;
+             const { attributes: { dmrfid_default_level }, className, setAttributes, isSelected } = props;
              return [
                 isSelected && <Inspector { ...{ setAttributes, ...props} } />,
-                <div className="pmpro-block-element">
-                  <span className="pmpro-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                  <span className="pmpro-block-subtitle">{ __( 'Membership Checkout Form', 'paid-memberships-pro' ) }</span>
+                <div className="dmrfid-block-element">
+                  <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
+                  <span className="dmrfid-block-subtitle">{ __( 'Membership Checkout Form', 'paid-memberships-pro' ) }</span>
                   <hr />
                   <SelectControl
                       label={ __( 'Membership Level', 'paid-memberships-pro' ) }
-                      value={ pmpro_default_level }
-                      onChange={ pmpro_default_level => setAttributes( { pmpro_default_level } ) }
-                      options={ window.pmpro.all_level_values_and_labels }
+                      value={ dmrfid_default_level }
+                      onChange={ dmrfid_default_level => setAttributes( { dmrfid_default_level } ) }
+                      options={ window.dmrfid.all_level_values_and_labels }
                   />
                 </div>
             ];

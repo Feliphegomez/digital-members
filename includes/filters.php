@@ -1,20 +1,20 @@
 <?php
 /*
-	This file was added in version 1.5.5 of the plugin. This file is meant to store various hacks, filters, and actions that were originally developed outside of the PMPro core and brought in later... or just things that are cleaner/easier to impement via hooks and filters.
+	This file was added in version 1.5.5 of the plugin. This file is meant to store various hacks, filters, and actions that were originally developed outside of the DmRFID core and brought in later... or just things that are cleaner/easier to impement via hooks and filters.
 */
 
 /*
 	If checking out for the same level, add remaining days to the enddate.
 	Pulled in from: https://gist.github.com/3678054
 */
-function pmpro_checkout_level_extend_memberships( $level ) {
-	global $pmpro_msg, $pmpro_msgt;
+function dmrfid_checkout_level_extend_memberships( $level ) {
+	global $dmrfid_msg, $dmrfid_msgt;
 
 	// does this level expire? are they an existing user of this level?
-	if ( ! empty( $level ) && ! empty( $level->expiration_number ) && pmpro_hasMembershipLevel( $level->id ) ) {
+	if ( ! empty( $level ) && ! empty( $level->expiration_number ) && dmrfid_hasMembershipLevel( $level->id ) ) {
 		// get the current enddate of their membership
 		global $current_user;
-		$user_level = pmpro_getSpecificMembershipLevelForUser( $current_user->ID, $level->id );
+		$user_level = dmrfid_getSpecificMembershipLevelForUser( $current_user->ID, $level->id );
 
 		// bail if their existing level doesn't have an end date
 		if ( empty( $user_level ) || empty( $user_level->enddate ) ) {
@@ -50,17 +50,17 @@ function pmpro_checkout_level_extend_memberships( $level ) {
 
 	return $level;
 }
-add_filter( 'pmpro_checkout_level', 'pmpro_checkout_level_extend_memberships' );
+add_filter( 'dmrfid_checkout_level', 'dmrfid_checkout_level_extend_memberships' );
 /*
 	Same thing as above but when processed by the ipnhandler for PayPal standard.
 */
-function pmpro_ipnhandler_level_extend_memberships( $level, $user_id ) {
-	global $pmpro_msg, $pmpro_msgt;
+function dmrfid_ipnhandler_level_extend_memberships( $level, $user_id ) {
+	global $dmrfid_msg, $dmrfid_msgt;
 
 	// does this level expire? are they an existing user of this level?
-	if ( ! empty( $level ) && ! empty( $level->expiration_number ) && pmpro_hasMembershipLevel( $level->id, $user_id ) ) {
+	if ( ! empty( $level ) && ! empty( $level->expiration_number ) && dmrfid_hasMembershipLevel( $level->id, $user_id ) ) {
 		// get the current enddate of their membership
-		$user_level = pmpro_getSpecificMembershipLevelForUser( $user_id, $level->id );
+		$user_level = dmrfid_getSpecificMembershipLevelForUser( $user_id, $level->id );
 
 		// bail if their existing level doesn't have an end date
 		if ( empty( $user_level ) || empty( $user_level->enddate ) ) {
@@ -96,16 +96,16 @@ function pmpro_ipnhandler_level_extend_memberships( $level, $user_id ) {
 
 	return $level;
 }
-add_filter( 'pmpro_ipnhandler_level', 'pmpro_ipnhandler_level_extend_memberships', 10, 2 );
+add_filter( 'dmrfid_ipnhandler_level', 'dmrfid_ipnhandler_level_extend_memberships', 10, 2 );
 
 /*
 	If checking out for the same level, keep your old startdate.
 	Added with 1.5.5
 */
-function pmpro_checkout_start_date_keep_startdate( $startdate, $user_id, $level ) {
-	if ( pmpro_hasMembershipLevel( $level->id, $user_id ) ) {
+function dmrfid_checkout_start_date_keep_startdate( $startdate, $user_id, $level ) {
+	if ( dmrfid_hasMembershipLevel( $level->id, $user_id ) ) {
 		global $wpdb;
-		$sqlQuery = "SELECT startdate FROM $wpdb->pmpro_memberships_users WHERE user_id = '" . esc_sql( $user_id ) . "' AND membership_id = '" . esc_sql( $level->id ) . "' AND status = 'active' ORDER BY id DESC LIMIT 1";
+		$sqlQuery = "SELECT startdate FROM $wpdb->dmrfid_memberships_users WHERE user_id = '" . esc_sql( $user_id ) . "' AND membership_id = '" . esc_sql( $level->id ) . "' AND status = 'active' ORDER BY id DESC LIMIT 1";
 		$old_startdate = $wpdb->get_var( $sqlQuery );
 
 		if ( ! empty( $old_startdate ) ) {
@@ -115,22 +115,22 @@ function pmpro_checkout_start_date_keep_startdate( $startdate, $user_id, $level 
 
 	return $startdate;
 }
-add_filter( 'pmpro_checkout_start_date', 'pmpro_checkout_start_date_keep_startdate', 10, 3 );
+add_filter( 'dmrfid_checkout_start_date', 'dmrfid_checkout_start_date_keep_startdate', 10, 3 );
 
 /*
 	Stripe Lite Pulled into Core Plugin
 */
 // Stripe Lite, Set the Globals/etc
-$stripe_billingaddress = pmpro_getOption( 'stripe_billingaddress' );
+$stripe_billingaddress = dmrfid_getOption( 'stripe_billingaddress' );
 if ( empty( $stripe_billingaddress ) ) {
-	global $pmpro_stripe_lite;
-	$pmpro_stripe_lite = true;
-	add_filter( 'pmpro_stripe_lite', '__return_true' );
-	add_filter( 'pmpro_required_billing_fields', 'pmpro_required_billing_fields_stripe_lite' );
+	global $dmrfid_stripe_lite;
+	$dmrfid_stripe_lite = true;
+	add_filter( 'dmrfid_stripe_lite', '__return_true' );
+	add_filter( 'dmrfid_required_billing_fields', 'dmrfid_required_billing_fields_stripe_lite' );
 }
 
 // Stripe Lite, Don't Require Billing Fields
-function pmpro_required_billing_fields_stripe_lite( $fields ) {
+function dmrfid_required_billing_fields_stripe_lite( $fields ) {
 	global $gateway;
 
 	// ignore if not using stripe
@@ -164,16 +164,16 @@ if ( empty( $_REQUEST['discount_code'] ) && ! empty( $_REQUEST['other_discount_c
 }
 
 // apply all the_content filters to confirmation messages for levels
-function pmpro_pmpro_confirmation_message( $message ) {
+function dmrfid_dmrfid_confirmation_message( $message ) {
 	return wpautop( $message );
 }
-add_filter( 'pmpro_confirmation_message', 'pmpro_pmpro_confirmation_message' );
+add_filter( 'dmrfid_confirmation_message', 'dmrfid_dmrfid_confirmation_message' );
 
 // apply all the_content filters to level descriptions
-function pmpro_pmpro_level_description( $description ) {
+function dmrfid_dmrfid_level_description( $description ) {
 	return wpautop( $description );
 }
-add_filter( 'pmpro_level_description', 'pmpro_pmpro_level_description' );
+add_filter( 'dmrfid_level_description', 'dmrfid_dmrfid_level_description' );
 
 /*
 	PayPal doesn't allow start dates > 1 year out.
@@ -186,7 +186,7 @@ add_filter( 'pmpro_level_description', 'pmpro_pmpro_level_description' );
 	for that flavor of PayPal is different and may be included in future
 	updates.
 */
-function pmpro_pmpro_subscribe_order_startdate_limit( $order, $gateway ) {
+function dmrfid_dmrfid_subscribe_order_startdate_limit( $order, $gateway ) {
 	$affected_gateways = array( 'paypalexpress', 'paypal' );
 
 	if ( in_array( $gateway->gateway, $affected_gateways ) ) {
@@ -217,45 +217,45 @@ function pmpro_pmpro_subscribe_order_startdate_limit( $order, $gateway ) {
 				$order->getUser();
 
 				// get level data
-				$level = pmpro_getLevel( $order->membership_id );
+				$level = dmrfid_getLevel( $order->membership_id );
 
 				// create email
-				$pmproemail = new PMProEmail();
-				$body = '<p>' . __( "There was a potential issue while setting the 'Profile Start Date' for a user's subscription at checkout. PayPal does not allow one to set a Profile Start Date further than 1 year out. Typically, this is not an issue, but sometimes a combination of custom code or add ons for PMPro (e.g. the Prorating or Auto-renewal Checkbox add ons) will try to set a Profile Start Date out past 1 year in order to respect an existing user's original expiration date before they checked out. The user's information is below. PMPro has allowed the checkout and simply restricted the Profile Start Date to 1 year out with a possible additional free Trial of up to 1 year. You should double check this information to determine if maybe the user has overpaid or otherwise needs to be addressed. If you get many of these emails, you should consider adjusting your custom code to avoid these situations.", 'paid-memberships-pro' ) . '</p>';
+				$dmrfidemail = new DmRFIDEmail();
+				$body = '<p>' . __( "There was a potential issue while setting the 'Profile Start Date' for a user's subscription at checkout. PayPal does not allow one to set a Profile Start Date further than 1 year out. Typically, this is not an issue, but sometimes a combination of custom code or add ons for DmRFID (e.g. the Prorating or Auto-renewal Checkbox add ons) will try to set a Profile Start Date out past 1 year in order to respect an existing user's original expiration date before they checked out. The user's information is below. DmRFID has allowed the checkout and simply restricted the Profile Start Date to 1 year out with a possible additional free Trial of up to 1 year. You should double check this information to determine if maybe the user has overpaid or otherwise needs to be addressed. If you get many of these emails, you should consider adjusting your custom code to avoid these situations.", 'paid-memberships-pro' ) . '</p>';
 				$body .= '<p>' . sprintf( __( 'User: %1$s<br />Email: %2$s<br />Membership Level: %3$s<br />Order #: %4$s<br />Original Profile Start Date: %5$s<br />Adjusted Profile Start Date: %6$s<br />Trial Period: %7$s<br />Trial Frequency: %8$s<br />', 'paid-memberships-pro' ), $order->user->user_nicename, $order->user->user_email, $level->name, $order->code, date( 'c', $original_start_date ), $one_year_out_date, $order->TrialBillingPeriod, $order->TrialBillingFrequency ) . '</p>';
-				$pmproemail->template = 'profile_start_date_limit_check';
-				$pmproemail->subject = sprintf( __( 'Profile Start Date Issue Detected and Fixed at %s', 'paid-memberships-pro' ), get_bloginfo( 'name' ) );
-				$pmproemail->data = array( 'body' => $body );
-				$pmproemail->sendEmail( get_bloginfo( 'admin_email' ) );
+				$dmrfidemail->template = 'profile_start_date_limit_check';
+				$dmrfidemail->subject = sprintf( __( 'Profile Start Date Issue Detected and Fixed at %s', 'paid-memberships-pro' ), get_bloginfo( 'name' ) );
+				$dmrfidemail->data = array( 'body' => $body );
+				$dmrfidemail->sendEmail( get_bloginfo( 'admin_email' ) );
 			}
 		}
 	}
 
 	return $order;
 }
-add_filter( 'pmpro_subscribe_order', 'pmpro_pmpro_subscribe_order_startdate_limit', 99, 2 );
+add_filter( 'dmrfid_subscribe_order', 'dmrfid_dmrfid_subscribe_order_startdate_limit', 99, 2 );
 
 /**
  * Before changing membership at checkout,
  * let's remember the order for checkout
  * so we can ignore that when cancelling old orders.
  */
-function pmpro_set_checkout_order_before_changing_membership_levels( $user_id, $order ) {
-	global $pmpro_checkout_order;
-	$pmpro_checkout_order = $order;
+function dmrfid_set_checkout_order_before_changing_membership_levels( $user_id, $order ) {
+	global $dmrfid_checkout_order;
+	$dmrfid_checkout_order = $order;
 }
-add_action( 'pmpro_checkout_before_change_membership_level', 'pmpro_set_checkout_order_before_changing_membership_levels', 10, 2);
+add_action( 'dmrfid_checkout_before_change_membership_level', 'dmrfid_set_checkout_order_before_changing_membership_levels', 10, 2);
 
 /**
  * Ignore the checkout order when cancelling old orders.
  */
-function pmpro_ignore_checkout_order_when_cancelling_old_orders( $order_ids ) {
-	global $pmpro_checkout_order;
+function dmrfid_ignore_checkout_order_when_cancelling_old_orders( $order_ids ) {
+	global $dmrfid_checkout_order;
 
-	if ( ! empty( $pmpro_checkout_order ) && ! empty( $pmpro_checkout_order->id ) ) {
-		$order_ids = array_diff( $order_ids, array( $pmpro_checkout_order->id ) );
+	if ( ! empty( $dmrfid_checkout_order ) && ! empty( $dmrfid_checkout_order->id ) ) {
+		$order_ids = array_diff( $order_ids, array( $dmrfid_checkout_order->id ) );
 	}
 
 	return $order_ids;
 }
-add_filter( 'pmpro_other_order_ids_to_cancel', 'pmpro_ignore_checkout_order_when_cancelling_old_orders' );
+add_filter( 'dmrfid_other_order_ids_to_cancel', 'dmrfid_ignore_checkout_order_when_cancelling_old_orders' );

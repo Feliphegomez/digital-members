@@ -26,36 +26,36 @@ require_once( 'member-profile-edit/block.php' );
 require_once( 'login/block.php' );
 
 /**
- * Add PMPro block category
+ * Add DmRFID block category
  */
-function pmpro_place_blocks_in_panel( $categories, $post ) {
+function dmrfid_place_blocks_in_panel( $categories, $post ) {
 	return array_merge(
 		$categories,
 		array(
 			array(
-				'slug'  => 'pmpro',
+				'slug'  => 'dmrfid',
 				'title' => __( 'Digital Members RFID', 'paid-memberships-pro' ),
 			),
 		)
 	);
 }
-add_filter( 'block_categories', 'pmpro_place_blocks_in_panel', 10, 2 );
+add_filter( 'block_categories', 'dmrfid_place_blocks_in_panel', 10, 2 );
 
 /**
  * Enqueue block editor only JavaScript and CSS
  */
-function pmpro_block_editor_scripts() {
+function dmrfid_block_editor_scripts() {
 	// Enqueue the bundled block JS file.
 	wp_enqueue_script(
-		'pmpro-blocks-editor-js',
+		'dmrfid-blocks-editor-js',
 		plugins_url( 'js/blocks.build.js', DMRFID_BASE_FILE ),
-		array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor', 'pmpro_admin'),
+		array('wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor', 'dmrfid_admin'),
 		DMRFID_VERSION
 	);
 
 	// Enqueue optional editor only styles.
 	wp_enqueue_style(
-		'pmpro-blocks-editor-css',
+		'dmrfid-blocks-editor-css',
 		plugins_url( 'css/blocks.editor.css', DMRFID_BASE_FILE ),
 		array(),
 		DMRFID_VERSION
@@ -63,7 +63,7 @@ function pmpro_block_editor_scripts() {
 
 	// Adding translation functionality to Gutenberg blocks/JS.
 	if ( function_exists( 'wp_set_script_translations' ) ) {
-		wp_set_script_translations( 'pmpro-blocks-editor-js', 'paid-memberships-pro' );
+		wp_set_script_translations( 'dmrfid-blocks-editor-js', 'paid-memberships-pro' );
 	}
 }
-add_action( 'enqueue_block_editor_assets', 'pmpro_block_editor_scripts' );
+add_action( 'enqueue_block_editor_assets', 'dmrfid_block_editor_scripts' );

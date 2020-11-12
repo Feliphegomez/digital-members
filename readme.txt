@@ -33,7 +33,7 @@ Users can select a membership level, complete checkout, and immediately become m
 * Frontend Profile Editing
 * Membership Account Dashboard
 * Membership Invoices and Billing Information Pages
-* [Custom User Profile and Registration Form Fields](https://www.paidmembershipspro.com/add-ons/pmpro-register-helper-add-checkout-and-profile-fields/)
+* [Custom User Profile and Registration Form Fields](https://www.paidmembershipspro.com/add-ons/dmrfid-register-helper-add-checkout-and-profile-fields/)
 * [Custom Member Emails](https://www.paidmembershipspro.com/add-ons/email-templates-admin-editor/)
 * Restrict WP Dashboard Access
 * Hide the WP Toolbar
@@ -43,16 +43,16 @@ Users can select a membership level, complete checkout, and immediately become m
 = Content Protection Features =
 
 * Restrict Default Content: [posts and categories](https://www.paidmembershipspro.com/documentation/content-controls/for-posts/), [pages](https://www.paidmembershipspro.com/documentation/content-controls/for-pages/), and [blocks](https://www.paidmembershipspro.com/documentation/content-controls/with-the-membership-block/).
-* Restrict Custom Post Types: [events](https://www.paidmembershipspro.com/add-ons/events-for-members-only/), [courses](https://www.paidmembershipspro.com/online-learning-and-courseware-for-membership-sites/), [downloads](https://www.paidmembershipspro.com/add-ons/pmpro-download-monitor/), and [any custom post type, including WooCommerce products](https://www.paidmembershipspro.com/add-ons/custom-post-type-membership-access/).
-* Create an Interactive Members-only Community: lock down [BuddyPress](https://www.paidmembershipspro.com/add-ons/buddypress-integration/) and [bbPress](https://www.paidmembershipspro.com/add-ons/pmpro-bbpress/).
-* [Drip-Feed / Series Type Content](https://www.paidmembershipspro.com/add-ons/pmpro-series-for-drip-feed-content/)
-* Offer [personalized content to each member](https://www.paidmembershipspro.com/add-ons/pmpro-user-pages/), [customize navigation menus](https://www.paidmembershipspro.com/add-ons/pmpro-nav-menus/), and design [unique member dashboards](https://www.paidmembershipspro.com/add-ons/member-homepages/).
+* Restrict Custom Post Types: [events](https://www.paidmembershipspro.com/add-ons/events-for-members-only/), [courses](https://www.paidmembershipspro.com/online-learning-and-courseware-for-membership-sites/), [downloads](https://www.paidmembershipspro.com/add-ons/dmrfid-download-monitor/), and [any custom post type, including WooCommerce products](https://www.paidmembershipspro.com/add-ons/custom-post-type-membership-access/).
+* Create an Interactive Members-only Community: lock down [BuddyPress](https://www.paidmembershipspro.com/add-ons/buddypress-integration/) and [bbPress](https://www.paidmembershipspro.com/add-ons/dmrfid-bbpress/).
+* [Drip-Feed / Series Type Content](https://www.paidmembershipspro.com/add-ons/dmrfid-series-for-drip-feed-content/)
+* Offer [personalized content to each member](https://www.paidmembershipspro.com/add-ons/dmrfid-user-pages/), [customize navigation menus](https://www.paidmembershipspro.com/add-ons/dmrfid-nav-menus/), and design [unique member dashboards](https://www.paidmembershipspro.com/add-ons/member-homepages/).
 * Restrict Elementor elements or Beaver Builder modules.
 * Offer [Member Directories and Profiles](https://www.paidmembershipspro.com/add-ons/member-directory/) for your members.
 
 = Integrated Payment Gateways =
 
-All of our payment gateways are included in the plugin. Choose from [Stripe](https://www.paidmembershipspro.com/gateway/stripe/), [PayPal](https://www.paidmembershipspro.com/gateway/paypal/), [Authorize.net](https://www.paidmembershipspro.com/gateway/authorize-net/), [Braintree](https://www.paidmembershipspro.com/gateway/braintree/), or [2Checkout](https://www.paidmembershipspro.com/gateway/2checkout/). You can offer multiple gateway options at checkout including [PayPal Express](https://www.paidmembershipspro.com/add-ons/pmpro-add-paypal-express-option-checkout/) or [offline payment by check or direct transfer](https://www.paidmembershipspro.com/add-ons/pmpro-pay-by-check-add-on/).
+All of our payment gateways are included in the plugin. Choose from [Stripe](https://www.paidmembershipspro.com/gateway/stripe/), [PayPal](https://www.paidmembershipspro.com/gateway/paypal/), [Authorize.net](https://www.paidmembershipspro.com/gateway/authorize-net/), [Braintree](https://www.paidmembershipspro.com/gateway/braintree/), or [2Checkout](https://www.paidmembershipspro.com/gateway/2checkout/). You can offer multiple gateway options at checkout including [PayPal Express](https://www.paidmembershipspro.com/add-ons/dmrfid-add-paypal-express-option-checkout/) or [offline payment by check or direct transfer](https://www.paidmembershipspro.com/add-ons/dmrfid-pay-by-check-add-on/).
 
 = Flexible Level Pricing  =
 
@@ -68,10 +68,10 @@ All of our payment gateways are included in the plugin. Choose from [Stripe](htt
 
 Extend the features of your membership site or integrate with third-party services through our library of over 75 Add Ons. Some of the most popular features include:
 
-* [WooCommerce Integration](https://www.paidmembershipspro.com/add-ons/pmpro-woocommerce/) to sell membership as a product or offer members-only discounts in your shop.
-* Integrate members with [email marketing](https://www.paidmembershipspro.com/email-marketing-integrations-paid-memberships-pro/) platforms including [Mailchimp](https://www.paidmembershipspro.com/add-ons/pmpro-mailchimp-integration/).
+* [WooCommerce Integration](https://www.paidmembershipspro.com/add-ons/dmrfid-woocommerce/) to sell membership as a product or offer members-only discounts in your shop.
+* Integrate members with [email marketing](https://www.paidmembershipspro.com/email-marketing-integrations-paid-memberships-pro/) platforms including [Mailchimp](https://www.paidmembershipspro.com/add-ons/dmrfid-mailchimp-integration/).
 * [Manage Affiliates](https://www.paidmembershipspro.com/managing-affiliates-with-paid-memberships-pro/) with Add Ons or use a popular third-party systems like [AffiliateWP](https://www.paidmembershipspro.com/using-affiliatewp-with-paid-memberships-pro/).
-* [Zapier Integration](https://www.paidmembershipspro.com/add-ons/pmpro-zapier/) to connect with thousands of third-party applications.
+* [Zapier Integration](https://www.paidmembershipspro.com/add-ons/dmrfid-zapier/) to connect with thousands of third-party applications.
 * Let members [log in or join with their social media profiles](https://www.paidmembershipspro.com/add-ons/social-login-add-on/).
 * Design your site [using popular Page Builders](https://www.paidmembershipspro.com/using-page-builders-to-enhance-your-sites-membership-pages/) like Elementor, Page Builder by SiteOrigin, Beaver Builder, and Divi. We offer 15 core membership blocks for the WordPress Block Editor (Gutenberg).
 * Create a [sales landing page and run a sitewide sale](https://www.paidmembershipspro.com/add-ons/sitewide-sales/).
@@ -117,22 +117,22 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 = My site is broken or blank or not letting me log in after activating Digital Members RFID =
 This is typically caused by a conflict with another plugin that is trying to redirect around the login/register pages or trying to redirect from HTTP to HTTPS, etc.
 
-To regain access to your site, FTP to your site and rename the `wp-content/plugins/paid-memberships-pro` folder to wp-content/plugins/paid-memberships-pro-d (or anything different). Now WP will not be able to find PMPro, and you can gain access to /wp-admin/ again. From there, visit the plugins page to fully deactivate Digital Members RFID. (You'll want to rename the folder back to paid-memberships-pro again.)
+To regain access to your site, FTP to your site and rename the `wp-content/plugins/paid-memberships-pro` folder to wp-content/plugins/paid-memberships-pro-d (or anything different). Now WP will not be able to find DmRFID, and you can gain access to /wp-admin/ again. From there, visit the plugins page to fully deactivate Digital Members RFID. (You'll want to rename the folder back to paid-memberships-pro again.)
 
 Long term, you will need to find and fix the conflict. We can usually do this for you very quickly if you sign up for support at https://www.paidmembershipspro.com/pricing/ and send us your WP admin and FTP credentials.
 
-= Does PMPro Support Multisite/Network Installs? =
+= Does DmRFID Support Multisite/Network Installs? =
 "Supporting multisite" means different things to different people. [This guide covers the three primary ways](https://www.paidmembershipspro.com/network-multisite-mega-post-paid-memberships-pro/) you can use Digital Members RFID in a network.
 
-Out of the box PMPro will basically act as a stand alone plugin for each site. Each site has its own list of membership levels, members, payment settings, etc.
+Out of the box DmRFID will basically act as a stand alone plugin for each site. Each site has its own list of membership levels, members, payment settings, etc.
 
-Our [Member Network Sites Add On](https://www.paidmembershipspro.com/add-ons/pmpro-network-multisite-membership/) allows members to choose a site name and title at checkout and will set up a network site at checkout.
+Our [Member Network Sites Add On](https://www.paidmembershipspro.com/add-ons/dmrfid-network-multisite-membership/) allows members to choose a site name and title at checkout and will set up a network site at checkout.
 
-Our [Multisite Membership Add On](https://www.paidmembershipspro.com/add-ons/pmpro-network-membership/) allows you to manage memberships at the 'Main' Network site and provide or restrict access on other Network Subsites.
+Our [Multisite Membership Add On](https://www.paidmembershipspro.com/add-ons/dmrfid-network-membership/) allows you to manage memberships at the 'Main' Network site and provide or restrict access on other Network Subsites.
 
-If you would like more help using PMPro on a network install, sign up for support at https://www.paidmembershipspro.com.
+If you would like more help using DmRFID on a network install, sign up for support at https://www.paidmembershipspro.com.
 
-= Does PMPro Support X? =
+= Does DmRFID Support X? =
 Not sure? You can find out by doing a bit a research.
 
 1. [Check our compatibility page](https://www.paidmembershipspro.com/documentation/compatibility/).
@@ -145,7 +145,7 @@ Not sure? You can find out by doing a bit a research.
 1. Optimized Membership Checkout page that blends seamlessly into your WordPress site. Fields captured at checkout can be modified with other Add Ons.
 2. Set up the membership levels that best fit your business, whether they are Free, Paid, or Subscriptions (Annual, Monthly, Weekly, Daily). Offer Custom Trial Periods (Free Trial, Custom-length Trial, 'Introductory' Pricing)
 3. Easy to use Membership Access Settings by Page, Post, or Category. Shortcodes to display restricted content inline. Developer-friendly hooks to restrict access any way you need.
-4. Members are WordPress Users. PMPro provides a unique interface to view, filter and search Members or export your Members List.
+4. Members are WordPress Users. DmRFID provides a unique interface to view, filter and search Members or export your Members List.
 5. Offer Membership Discounts with specific price rules (restricted by level, unique pricing for each level, # of uses, expiration date.)
 6. Filterable Sales Revenue Reports (reports also included for Visits, Views, Logins, Signups, Cancellations, and other Membership Stats).
 7. Advanced settings for updating non-member messages, optionally show excerpts or filter content, use reCAPTCHA, and a Terms of Service checkbox.
@@ -156,14 +156,14 @@ Not sure? You can find out by doing a bit a research.
 = 2.5 - 2020-10-02 =
 * FEATURE: When using the Stripe Gateway, you may now allow users to pay using Apple Pay, Google Pay, or Microsoft Pay depending on their browser. Enable this feature from the payment settings page.
 * FEATURE: Added Divi Builder compatibility.
-* FEATURE: Updated the Braintree Gateway class to be able to use the Braintree API for the pmpro_next_payment() function. Note, for performance reasons, you must call this method directly or enable it by hooking it up with code like `add_filter('pmpro_next_payment', array('PMProGateway_braintree', 'pmpro_next_payment'), 10, 3);`
+* FEATURE: Updated the Braintree Gateway class to be able to use the Braintree API for the dmrfid_next_payment() function. Note, for performance reasons, you must call this method directly or enable it by hooking it up with code like `add_filter('dmrfid_next_payment', array('DmRFIDGateway_braintree', 'dmrfid_next_payment'), 10, 3);`
 * FEATURE: Added ordermeta tables and functions. We will wait about a year for all users to upgrade before using these widespread. (Thanks, Mirco Babini)
 * ENHANCEMENT: The "short" version of the level cost text for a free level is now "Free" instead of "0.00 now".
 * ENHANCEMENT: Added a `get_original_subscription_order` method to the MemberOrder class. This will return the first order in a subscription when called from a recurring order.
 * ENHANCEMENT: Removed the old style license nags.
 * BUG FIX/ENHANCEMENT: Using microtime and a static counter int to make sure our order and discount codes are unique. In the past very high traffic sites could run into duplicates if two checkouts happened at the exact same second.
 * BUG FIX/ENHANCEMENT: Adjust order delete prompt to support other locales.
-* BUG FIX/ENHANCEMENT: Better handling of tax amounts in recurring payments, e.g. when using the PMPro VAT Tax add on.
+* BUG FIX/ENHANCEMENT: Better handling of tax amounts in recurring payments, e.g. when using the DmRFID VAT Tax add on.
 * BUG FIX/ENHANCEMENT: Optimized how often we hit the Stripe API when events on the checkout page could potentially update the price of checkout.
 * BUG FIX/ENHANCEMENT: The checkout_levels api call now takes `level` as param.
 * BUG FIX/ENHANCEMENT: No longer running sanitize_text_field on password fields. This would break passwords that had strings of characters resembling html tags.
@@ -171,7 +171,7 @@ Not sure? You can find out by doing a bit a research.
 * BUG FIX/ENHANCEMENT: Now detecting when a Stripe webhook is set up for an older version of the Stripe API and showing a notice with a link to update.
 * BUG FIX/ENHANCEMENT: Adding MAXFAILEDPAYMENTS=1 to PayPal add subscription requests. This tells PayPal to cancel a subscription after the first failed payment. In our experience, the automatic retries rarely worked well. This change fixes issues with subscriptions going out of sync or users retaining access to your site when their payment has failed. Members still receive the payment failed email, which prompts users to return to the site to renew.
 * BUG FIX/ENHANCEMENT: Fixing some issues where we are adding extra break tags into the password reset email. There are still some issues like this when using certain plugins. We are working on a general fix.
-* BUG FIX/ENHANCEMENT: Removed the "coupon amount" field from the edit order page. These were hold outs from the 2007! ecommerce plugin PMPro was forked from. You can set the pmpro_orders_show_coupon_amounts filter to __return_true to show these fields again if you were using them for tracking things in your custom code.
+* BUG FIX/ENHANCEMENT: Removed the "coupon amount" field from the edit order page. These were hold outs from the 2007! ecommerce plugin DmRFID was forked from. You can set the dmrfid_orders_show_coupon_amounts filter to __return_true to show these fields again if you were using them for tracking things in your custom code.
 * BUG FIX: Fixed MMPU compatibility when using discount codes.
 * BUG FIX: No longer filtering the wp login url when on wp-login.php. This fixes issues with iThemes Security 2FA.
 * BUG FIX: Fixed issues where the Stripe webhook was not being updated sometimes when clicking the button to update.
@@ -181,13 +181,13 @@ Not sure? You can find out by doing a bit a research.
 * BUG FIX: Fixed issue where non-pretty permalinks may break frontend password resets.
 * BUG FIX: Fixed invoice links on the account page. (Thanks, Mateusz Hołtyn)
 * BUG FIX: Fixed incorrect label "for" attribute for uninstall setting.
-* BUG FIX: Fixed issue where some free plugins distributed by PMPro would show warnings about requiring a Plus license.
+* BUG FIX: Fixed issue where some free plugins distributed by DmRFID would show warnings about requiring a Plus license.
 
 = 2.4.4 - 2020-09-02 =
 * BUG FIX: Fixed fatal error that sometimes occurred on the payment settings page when using PHP 5.6 or earlier.
 * BUG FIX: Fixed fatal errors that showed up on the frontend invoice page.
 * BUG FIX: Fixed issue where the confirmation message was not showing up in the confirmation email if that option was checked.
-* ENHANCEMENT: Added a pmpro_stripe_charge_params filter that can be used to edit or add params sent to the Stripe create charge method. (Thanks, Michael Bester)
+* ENHANCEMENT: Added a dmrfid_stripe_charge_params filter that can be used to edit or add params sent to the Stripe create charge method. (Thanks, Michael Bester)
 * ENHANCEMENT: Tweaked the markup of the invoice page so the payment type information looks a little better.
 
 = 2.4.3 - 2020-08-25
@@ -196,35 +196,35 @@ Not sure? You can find out by doing a bit a research.
 * BUG FIX/ENHANCEMENT: Renamed the Vietnamese language files to match what is expected.
 
 = 2.4.2 - 2020-08-24
-* SECURITY: Updated the PMPro REST API endpoints accessed via the GET method to also require appropriate capabilities to access. The membership confirmation text will be hidden from non-members and non-admins. The endpoints to check a user's level or access to a post require the pmpro_edit_memberships capability now. You should make sure your API users have the appropriate capabilities to use the API. You can use the pmpro_rest_api_route_capabilities filter and/or pmpro_rest_api_permissions filter to change this behavior.
-* BUG FIX: Fixed issues with the PMPro REST API endpoints, including the discount code and checkout level endpoints.
-* BUG FIX: Fixed issue with backslashes in the display name when editing form the PMPro frontend profile page.
+* SECURITY: Updated the DmRFID REST API endpoints accessed via the GET method to also require appropriate capabilities to access. The membership confirmation text will be hidden from non-members and non-admins. The endpoints to check a user's level or access to a post require the dmrfid_edit_memberships capability now. You should make sure your API users have the appropriate capabilities to use the API. You can use the dmrfid_rest_api_route_capabilities filter and/or dmrfid_rest_api_permissions filter to change this behavior.
+* BUG FIX: Fixed issues with the DmRFID REST API endpoints, including the discount code and checkout level endpoints.
+* BUG FIX: Fixed issue with backslashes in the display name when editing form the DmRFID frontend profile page.
 * BUG FIX: Fixed issue where timestamps were showing up incorrectly for recent orders shown on the dashboard page.
-BUG FIX: Fixed issue where PMPro would always try to add capabilities to the administrator role, even if you removed that role for some reason.
-* ENHANCEMENT: Added a pmpro_get_no_access_message() function, which can be used to show the no access messages.
+BUG FIX: Fixed issue where DmRFID would always try to add capabilities to the administrator role, even if you removed that role for some reason.
+* ENHANCEMENT: Added a dmrfid_get_no_access_message() function, which can be used to show the no access messages.
 * ENHANCEMENT: Added a "show_noaccess" property to the membership shortcode. When set, it will show the noaccess message to users who don't have the levels specified.
-* ENHANCEMENT: Added a pmpro_user_profile_update_errors hook, which can be used to show errors on the PMPro frontend profile page.
-* ENHANCEMENT: The pmpro_set_capabilities_for_role() function now returns true or false if the caps were added in case others want to use this function and tell if it worked.
-* ENHANCEMENT: You can now include links in the description of the fields you add to the PMPro advanced settings page via the pmpro_custom_advanced_settings filter.
+* ENHANCEMENT: Added a dmrfid_user_profile_update_errors hook, which can be used to show errors on the DmRFID frontend profile page.
+* ENHANCEMENT: The dmrfid_set_capabilities_for_role() function now returns true or false if the caps were added in case others want to use this function and tell if it worked.
+* ENHANCEMENT: You can now include links in the description of the fields you add to the DmRFID advanced settings page via the dmrfid_custom_advanced_settings filter.
 * ENHANCEMENT: Updated the PayPal gateways to use the latest versions of the PayPal buttons.
-* ENHANCEMENT: Fixed styling of the PMPro update script notice.
-* ENHANCEMENT: Added the pmpro_account_membership_expiration_text filter to the expiration dates shown on the cancel page when using MMPU.
+* ENHANCEMENT: Fixed styling of the DmRFID update script notice.
+* ENHANCEMENT: Added the dmrfid_account_membership_expiration_text filter to the expiration dates shown on the cancel page when using MMPU.
 
 = 2.4.1 - 2020-08-10 =
 * BUG FIX: Fixed issues with password resets on WP Engine hosting due to security features added by their mu-plugin.
 * BUG FIX: Fixed issue where end dates were showing up incorrectly in the confirmation email sometimes.
 * BUG FIX: Fixed issue where renewing memberships were extended one day less than they should have been in some cases.
-* BUG FIX: Fixed issue where users without a PMPro Plus license were sometimes not getting an error when trying to update a Plus Add On.
+* BUG FIX: Fixed issue where users without a DmRFID Plus license were sometimes not getting an error when trying to update a Plus Add On.
 * BUG FIX/ENHANCEMENT: Added compatibility for core auto-updates for our Add Ons which aren't hosted in the .org repository.
 * BUG FIX/ENHANCEMENT: Fixed issue where PHP sessions were set up to track ReCAPTCHA even if you weren't using ReCAPTCHA. ReCAPTCHA is now only loaded on the checkout page. Loading sessions unecessarily would break some Varnish cache setups.
 * BUG FIX/ENHANCEMENT: Updated the single invoice/order page. No longer showing the end date, which isn't really related to the order. Showing a better status related to the order now.
-* BUG FIX/ENHANCEMENT: Fixed some links to the PMPro site in the plugin admin area.
+* BUG FIX/ENHANCEMENT: Fixed some links to the DmRFID site in the plugin admin area.
 * BUG FIX/ENHANCEMENT: Now saving a hash of the Stripe secretkey when saving webhook ids. This allows us to keep track of webhook ids if you switch between gateway environments or swap your Stripe keys for some reason.
-* BUG FIX/ENHANCEMENT: No longer running the Terms of Service text through wpautop. This usually just added extra spacing to your TOS. Shortcodes are rendered now though. Added a filter pmpro_tos_content so you can change the TOS content or how it is shown.
+* BUG FIX/ENHANCEMENT: No longer running the Terms of Service text through wpautop. This usually just added extra spacing to your TOS. Shortcodes are rendered now though. Added a filter dmrfid_tos_content so you can change the TOS content or how it is shown.
 * ENHANCEMENT: Added a checkout_levels API endpoint. This will allow us to build features that adjust the price on the frontend at checkout.
-* ENHANCEMENT: Added a pmpro_member_profile_edit_form_tag action to the form tag on the frontend member profile page. This is useful to set the form enctype for file uploads.
+* ENHANCEMENT: Added a dmrfid_member_profile_edit_form_tag action to the form tag on the frontend member profile page. This is useful to set the form enctype for file uploads.
 * ENHANCEMENT: Added Romanian Leu as a currency option.
-* ENHANCEMENT: Added the pmpro_stripe_payment_intent_params filter. Useful if you would like to set a specific statement descriptor for the site. See https://gist.github.com/ideadude/16983fdfa0da12fc40ef36d870f4cbd0
+* ENHANCEMENT: Added the dmrfid_stripe_payment_intent_params filter. Useful if you would like to set a specific statement descriptor for the site. See https://gist.github.com/ideadude/16983fdfa0da12fc40ef36d870f4cbd0
 * REFACTOR: Removed some unused methods from the Stripe class.
 * REFACTOR: Removed the help pointer about the menu location change.
 
@@ -239,12 +239,12 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Fixed a fatal error that was happening in PHP 5.2 or earlier due to code syntax that was not supported then. We noticed a few other cases as well, but decided we won't support PHP 5.2 consistent with WP and other plugins.
 * BUG FIX: Fixed the URL used when using 2Checkout in sandbox mode.
 * BUG FIX: Fixed JavaScript errors that would occur sometimes on the Billing Update page when using the Stripe gateway.
-* BUG FIX: Fixed issue where the dummy $0 orders created when using the "Stripe Updates" feature weren't saving with the updated subscription_transaction_id. This would prevent future payments from being linked to that user and could prevent subscriptions cancellations from being synchronized. When updating to PMPro 2.4, an update script will run to try to restore these subscription_transaction_id values. However, any recurring orders that occured when the id was missing will not be added to PMPro. You will have to update them manually.
+* BUG FIX: Fixed issue where the dummy $0 orders created when using the "Stripe Updates" feature weren't saving with the updated subscription_transaction_id. This would prevent future payments from being linked to that user and could prevent subscriptions cancellations from being synchronized. When updating to DmRFID 2.4, an update script will run to try to restore these subscription_transaction_id values. However, any recurring orders that occured when the id was missing will not be added to DmRFID. You will have to update them manually.
 * BUG FIX: Fixed JavaScript error on the edit discount code page.
 * BUG FIX/ENHANCEMENT: Showing expiration date as text when it is set as a readonly field. (Thanks, Rodmar "rodmarzavala" on GitHub)
-* BUG FIX/ENHANCEMENT: Now checking if headers were already sent before trying to start the PHP session. If headers are sent before PMPro tries to start the session, there is usually another error somewhere on the WP site that needs to be fixed. But at least we aren't adding to the confusion by trying to start the session late causing another error in the log.
+* BUG FIX/ENHANCEMENT: Now checking if headers were already sent before trying to start the PHP session. If headers are sent before DmRFID tries to start the session, there is usually another error somewhere on the WP site that needs to be fixed. But at least we aren't adding to the confusion by trying to start the session late causing another error in the log.
 * BUG FIX/ENHANCEMENT: Updated misleading hint for the PayPal Express IPN URL on the payment settings page.
-* BUG FIX/ENHANCEMENT: Fixed invalid key description in the SQL in includes/setup.sql. The actually query used to set up table in PMPro was correct though. The setup.sql file is included for reference and developers who want to create the tables "manually" in MySQL.
+* BUG FIX/ENHANCEMENT: Fixed invalid key description in the SQL in includes/setup.sql. The actually query used to set up table in DmRFID was correct though. The setup.sql file is included for reference and developers who want to create the tables "manually" in MySQL.
 * BUG FIX/ENHANCEMENT: The post type search filter now supports cases where post type set in WPQuery is an array.
 * BUG FIX/ENHANCEMENT: Fixed warning that showed when a user with no levels visited the frontend account page.
 * BUG FIX/ENHANCEMENT: Fixing warnings that would be logged at checkout in certain cases.
@@ -255,8 +255,8 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * ENHANCEMENT: Added a checkout_level API call. This will be used in the future to update the price total at checking using JS and is also needed to implement support for Google Pay and Apple Pay through Stripe.
 * ENHANCEMENT: Cleaned up the email settings page.
 * ENHANCEMENT: Better handling of some login and password reset errors.
-* ENHANCEMENT: Added links to the PMPro YouTube and Facebook profiles.
-* REFACTOR: Cleaned up some code in incldues/content.php, especially around the pmpro_search_filter() function.
+* ENHANCEMENT: Added links to the DmRFID YouTube and Facebook profiles.
+* REFACTOR: Cleaned up some code in incldues/content.php, especially around the dmrfid_search_filter() function.
 * REFACTOR: Removed the package-lock.json file from the repository.
 
 = 2.3.4 - 2020-06-18 =
@@ -271,14 +271,14 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Timestamps returned by the Stripe API when getting the next payment date needed to be adjusted based on the site's timezone setting.
 * BUG FIX: Fixed a bug where the change password form wouldn't show up sometimes when using the login shortcode.
 * BUG FIX: Fixed notice in the PayPal IPN handler when adding notes to an order.
-* BUG FIX: Fixed issue where PMPro would generate the wrong excerpt in some cases where the more tag was used but the excerpt was generated before the more tag code or blog was not yet converted to HTML. Specifically this fixes an issue with excerpts generated for AMP with the SchemaApp plugin.
-* BUG FIX/ENHANCEMENT: Added an advanced setting to "Uninstall PMPro on Deletion". You must check and save this option first or PMPro will not delete data from the DB when deleting from the plugins page. This keeps users from accidentally deleting orders and member data.
+* BUG FIX: Fixed issue where DmRFID would generate the wrong excerpt in some cases where the more tag was used but the excerpt was generated before the more tag code or blog was not yet converted to HTML. Specifically this fixes an issue with excerpts generated for AMP with the SchemaApp plugin.
+* BUG FIX/ENHANCEMENT: Added an advanced setting to "Uninstall DmRFID on Deletion". You must check and save this option first or DmRFID will not delete data from the DB when deleting from the plugins page. This keeps users from accidentally deleting orders and member data.
 * BUG FIX/ENHANCEMENT: Now hiding the profile and change password links on the membership account page if a frontend profile page is not set and users are locked from the WP dashboard by the advanced setting.
 * BUG FIX/ENHANCEMENT: Resetting the signups and cancellations report cache when there are new membership level changes.
-* ENHANCEMENT: Added a pmpro_get_element_class function and filter. We now use this function when adding classes to HTML elements in our templates. The filter can be used to alter or append to the classes used in the HTML tags. This will make it easier to create code and CSS to make PMPro look better with popular themes.
-* ENHANCEMENT: Added a pmpro_authorizenet_post_values filter to the Authorize.net class. An array of $post_values is passed in to be filtered along with a string for the API method about to be called.
-* ENHANCEMENT: Added a pmpro_member_profile_edit_user_object_fields filter to add or remove fields from the frontend edit profile page.
-* ENHANCEMENT: Now showing information about the current billing method on the update billing page. Can hide this information by having the pmpro_billing_show_payment_method filter return false.
+* ENHANCEMENT: Added a dmrfid_get_element_class function and filter. We now use this function when adding classes to HTML elements in our templates. The filter can be used to alter or append to the classes used in the HTML tags. This will make it easier to create code and CSS to make DmRFID look better with popular themes.
+* ENHANCEMENT: Added a dmrfid_authorizenet_post_values filter to the Authorize.net class. An array of $post_values is passed in to be filtered along with a string for the API method about to be called.
+* ENHANCEMENT: Added a dmrfid_member_profile_edit_user_object_fields filter to add or remove fields from the frontend edit profile page.
+* ENHANCEMENT: Now showing information about the current billing method on the update billing page. Can hide this information by having the dmrfid_billing_show_payment_method filter return false.
 * ENHANCEMENT: No longer saying "Great Work!" in the admin digest emails. This was especially embarrassing if you didn't have any sales during the diget period.
 * REFACTOR: Refactored some code in the CSV exports to avoid false positives by malware scanners.
 * REFACTOR: Added a build_post_string method to the Authorize.net class to avoid redundant code.
@@ -288,16 +288,16 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * SECURITY: Fixed SQL injection vulnerability when logged in as an administrator and adding new orders in the dashboard. JVN#20248858 (Thanks, Kenichi Okuno of Mitsui Bussan Secure Directions, Inc)
 * SECURITY: Making sure to properly escape all values on the add/edit order form in the dashboard.
 * BUG FIX: Now properly setting the order status to "error" when an initial payment fails when using PayPal Express. Before the order status would be set as "cancelled", which would count the order toward reports and make it harder to find orders that had errors. (Thanks, Mirco Babini)
-* BUG FIX: Fixed issue with the PMPro logo and some other assets loading over the wrong schema (http vs https) in some cases.
+* BUG FIX: Fixed issue with the DmRFID logo and some other assets loading over the wrong schema (http vs https) in some cases.
 * BUG FIX: Fixed issue where the chosen discount code was not shown after submitting when adding a new order through the dashboard.
-* BUG FIX/ENHANCEMENT: Using "PMPro" in the admin activity email subject to keep the line shorter and avoid issues when replacing the word "member" via gettext.
-* ENHANCEMENT: Added a pmpro_allow_weak_passwords filter. You can set this to return true (like this https://gist.github.com/ideadude/5a12119b9ce1c2aad87b2d69cb8f9505) to allow weak passwords on the change password and reset password pages. Note that at this time, weak passwords are still allowed on the checkout page no matter the value of this filter. We expect to change that in the future. For now, you can use our PMPro Strong Passwords plugin to force strong passwords at checkout.
+* BUG FIX/ENHANCEMENT: Using "DmRFID" in the admin activity email subject to keep the line shorter and avoid issues when replacing the word "member" via gettext.
+* ENHANCEMENT: Added a dmrfid_allow_weak_passwords filter. You can set this to return true (like this https://gist.github.com/ideadude/5a12119b9ce1c2aad87b2d69cb8f9505) to allow weak passwords on the change password and reset password pages. Note that at this time, weak passwords are still allowed on the checkout page no matter the value of this filter. We expect to change that in the future. For now, you can use our DmRFID Strong Passwords plugin to force strong passwords at checkout.
 * REFACTOR: Updated the logic around checking the DMRFID_IPN_DEBUG constant in the IPN handler. (Thanks, Mirco Babini)
 
 = 2.3.2 - 2020-05-07 =
 * BUG FIX: Fixed errors calling is_main_query() that came up with certain themes.
-* BUG FIX: Fixed typo in the pmpro_account_profile_action_links filter.
-* BUG FIX/ENHANCEMENT: Added a new force parameter to the pmpro_getAllLevels() function. This is used by the Multisite Membership Add On to fix an issue where levels were missing or incorrect on the subsites.
+* BUG FIX: Fixed typo in the dmrfid_account_profile_action_links filter.
+* BUG FIX/ENHANCEMENT: Added a new force parameter to the dmrfid_getAllLevels() function. This is used by the Multisite Membership Add On to fix an issue where levels were missing or incorrect on the subsites.
 * ENHANCEMENT: Removed mention of the ezAdsense plugin, which has been discontinued.
 * ENHANCEMENT: Added $recipient param in sendAdminActivity() function so you can send additional activity emails like this https://gist.github.com/dparker1005/6bf650370a12aef44adf8c8c26d3e906
 
@@ -310,8 +310,8 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 = 2.3 - 2020-05-01 =
 * FEATURE: Added frontend login and password reset.
 * FEATURE: Added frontend user profile editing.
-* FEATURE: Added [pmpro_login] shortcode and Log In Form block.
-* FEATURE: Added [pmpro_member_profile_edit] shortcode and Member Profile Edit block.
+* FEATURE: Added [dmrfid_login] shortcode and Log In Form block.
+* FEATURE: Added [dmrfid_member_profile_edit] shortcode and Member Profile Edit block.
 * FEATURE: Added "Member Log In" widget.
 * FEATURE: Added "WordPress Toolbar" Advanced Setting to hide the WordPress Toolbar from "subscriber" role.
 * FEATURE: Added "WordPress Dashboard" Advanced Setting to block dashboard access for the "subscriber" role.
@@ -321,25 +321,25 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * FEATURE: Updated Elementor code to allow for restriction of "sections" as well.
 * BUG FIX: Updated all timestamp code to be compatible with WordPress v5.4+ which fixes issues where orders could lose one hour or one day when saved.
 * BUG FIX: Updated logic to filter body_class on pages with Membership Account shortcode or any "section" of the shortcode displayed.
-* BUG FIX: Improved `pmpro_getAllLevels` function to cache even when `force` is `true`. This saves multiple DB hits per page load.
+* BUG FIX: Improved `dmrfid_getAllLevels` function to cache even when `force` is `true`. This saves multiple DB hits per page load.
 * BUG FIX/ENHANCEMENT: Cancellation report now calculates based on membership enddate.
 * BUG FIX/ENHANCEMENT: Fixed warnings and errors in PHP 7.4+.
 * BUG FIX/ENHANCEMENT: Now allowing translation for text generated by JavaScript.
 * BUG FIX/ENHANCEMENT: Updated all uses of "Email" to remove the hyphen.
 * BUG FIX/ENHANCEMENT: Updated to default to international addresses on Billing Information page. Fixes a bug with the State Dropdown Add-On.
-* BUG FIX/ENHANCEMENT: Now treating "recurring_payment_failed" transactions from PayPal IPN as cancellations. PMPro will cancel membership and attempt to cancel the associated subscription.
-* ENHANCEMENT: Added membership level class for the `PMPro_Membership_Level` object. This is currently only used in the REST API calls, but will eventually be used whenever interacting with a membership level object or array.
-* ENHANCEMENT: Added discount code class for the `PMPro_Discount_Code` object. This is currently only used in the REST API calls, but will eventually be used whnever interacting with a discount code object or array.
+* BUG FIX/ENHANCEMENT: Now treating "recurring_payment_failed" transactions from PayPal IPN as cancellations. DmRFID will cancel membership and attempt to cancel the associated subscription.
+* ENHANCEMENT: Added membership level class for the `DmRFID_Membership_Level` object. This is currently only used in the REST API calls, but will eventually be used whenever interacting with a membership level object or array.
+* ENHANCEMENT: Added discount code class for the `DmRFID_Discount_Code` object. This is currently only used in the REST API calls, but will eventually be used whnever interacting with a discount code object or array.
 * ENHANCEMENT: Now allowing all users and members access to the Membership Account page.
 * ENHANCEMENT: Updating logic for all redirects from core pages like Invoices, Billing, and Cancel to allow past members to access their data. Generally more often redirecting where you would expect to in different situations.
 * ENHANCEMENT: Several core frontend page style improvements for responsive displays and gateway-dependent fields.
-* ENHANCEMENT: Added `getSubscriptionStatus` method to the Stripe gateway API class. This fixes issues with the PMPro Subscription Check Add-On.
+* ENHANCEMENT: Added `getSubscriptionStatus` method to the Stripe gateway API class. This fixes issues with the DmRFID Subscription Check Add-On.
 * ENHANCEMENT: Added !!levels_page_url!! and !!login_url!! as replacement variables in Advanced Settings > Message Settings. Using these by default on new installs.
 * ENHANCEMENT: Improved Block Editor code and webpack configuration.
 * ENHANCEMENT: Added support for `DMRFID_AUTHNET_SILENT_POST_DEBUG` to "log" data to /logs/ or send an email to an email address different from the site admin.
 * ENHANCEMENT: Added time fields to Memberships > Orders admin page when vieweing, updating or saving an order.
-* ENHANCEMENT: Added pmpro_admin_orders_filters and pmpro_admin_orders_query_condition filters to add new filters to the orders page in the dashboard. (Thanks, Mirco Babini)
-* ENHANCEMENT: Added an SVG icon to the PMPro blocks category.
+* ENHANCEMENT: Added dmrfid_admin_orders_filters and dmrfid_admin_orders_query_condition filters to add new filters to the orders page in the dashboard. (Thanks, Mirco Babini)
+* ENHANCEMENT: Added an SVG icon to the DmRFID blocks category.
 * REFACTOR: Improved the Members List list table code to use a function for each column of data and support the code core WP methods for extending list tables with custom columns.
 * REFACTOR: Moved all Theme My Login compatiblity code to includes/compatibility/theme-my-login.php and only loading if plugin is active.
 
@@ -351,25 +351,25 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Fixed issue where password fields would disappear when the checkout form was submitted. This behavior was required to address bugs in older versions of iOS that shouldn't be in use any more.
 * BUG FIX: No longer sending an extra cancel request to the PayPal API when processing a cancel for a PayPal Express subscription through the IPN handler.
 * BUG FIX: The currency option is no longer hidden when using the check gateway.
-* BUG FIX: Fixed the comparisons in the pmpro_check_plugin_version function and related notification checks.
+* BUG FIX: Fixed the comparisons in the dmrfid_check_plugin_version function and related notification checks.
 * BUG FIX: Avoiding warnings in the sendAdminChangeEmail method if the user doesn't have a level.
 * BUG FIX: Fixed some cases where the Members List CSV export wouldn't match the members shown in the table/search.
 * BUG FIX: Fixed issue where the Members List may show the wrong count or enddate.
 * BUG FIX/ENHANCEMENT: Added support for Elementor. Filtering content later so the builder's filters can run first. Also added the ability to choose which membership levels an element should be visible for.
-* BUG FIX/ENHANCEMENT: Fixed the confirmation page formatting when paying by check. Added a div with class "pmpro_payment_instructions" around the payment instructions shown on the confirmation and invoice pages.
-* BUG FIX/ENHANCEMENT: Added an Oxford Comma to the the pmpro_implodeToEnglish() function.
+* BUG FIX/ENHANCEMENT: Fixed the confirmation page formatting when paying by check. Added a div with class "dmrfid_payment_instructions" around the payment instructions shown on the confirmation and invoice pages.
+* BUG FIX/ENHANCEMENT: Added an Oxford Comma to the the dmrfid_implodeToEnglish() function.
 * BUG FIX/ENHANCEMENT: Moved the Japanese Yen symbol to the left of the total instead of the right.
-* BUG FIX/ENHANCEMENT: Added the pmpro_checkout_login_redirect filter, which filters the url_redirect parameter of the login link on the checkout page. This is used by some Add Ons to make sure you are returned to the checkout page properly after logging in through that link.
+* BUG FIX/ENHANCEMENT: Added the dmrfid_checkout_login_redirect filter, which filters the url_redirect parameter of the login link on the checkout page. This is used by some Add Ons to make sure you are returned to the checkout page properly after logging in through that link.
 * ENHANCEMENT: Added the Ghanian Cedi currency.
-* ENHANCEMENT: Added the pmpro_are_levels_recurring() function to help with MMPU.
+* ENHANCEMENT: Added the dmrfid_are_levels_recurring() function to help with MMPU.
 * ENHANCEMENT: Improved the look and source of the CVV popup.
 
 = 2.2.5 - 2020-01-05 =
 * BUG FIX: Once again loading JavaScript on the update billing page when using Braintree.
 * BUG FIX: Loading Braintree JavaScript at checkout for free levels to support the variable pricing and donation add ons.
-* BUG FIX: Fixed issues with PayPal orders when using the pmpro_paypal_level_description filter.
+* BUG FIX: Fixed issues with PayPal orders when using the dmrfid_paypal_level_description filter.
 * BUG FIX/ENHANCEMENT: Responsive update for smaller device viewports for the Membership Levels table in the dashboard.
-* ENHANCEMENT: Added filters: pmpro_is_level_free, pmpro_is_level_trial, and pmpro_is_level_expiring.
+* ENHANCEMENT: Added filters: dmrfid_is_level_free, dmrfid_is_level_trial, and dmrfid_is_level_expiring.
 
 = 2.2.4 - 2019-12-20 =
 * BUG FIX: Fixed issue with the update billing page when using the Stripe gateway.
@@ -393,7 +393,7 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 
 = 2.2 - 2019-11-22 =
 * FEATURE: The Members List is now shown in an official "WP List Table". Most columns are sortable. The screen options in the upper right can be used to add/remove columns. (Thanks, Thomas Sjolshagen, Paul Barthmaier, and David Parker)
-* FEATURE: Showing useful notifications in the PMPro dashboard area. Notifications are shown no more than once ever 12 hours, and no more than 3 times every week. The PMPro Advanced Settings page has an option to only show security-related notifications.
+* FEATURE: Showing useful notifications in the DmRFID dashboard area. Notifications are shown no more than once ever 12 hours, and no more than 3 times every week. The DmRFID Advanced Settings page has an option to only show security-related notifications.
 * SECURITY: Better sanitizing of values in the 2Checkout INS handler.
 * BUG FIX: Fixed issue since WP 5.3 where expiration dates and other dates could be off by a month after saving.
 * BUG FIX: Fixed issue where Stripe orders processed through the webhook would use the current date instead of the date of the order. This was an issue if you had to rerun a webhook later.
@@ -410,8 +410,8 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Better exception handling in the Stripe gateway class for PHP 7+.
 * BUG FIX: Fixing some JS issues at checkout, e.g. related to the "validateCreditCard method is not available" error.
 * BUG FIX: Better messaging if the Stripe Billing Limits Add On is already installed.
-* BUG FIX: Fixed cases where PMPro would email users about credit cards expiring when they had used an offsite gateway like PayPal Express.
-* BUG FIX: Fixed issue where some user information was missing from the pmpro_orders_user_row_actions filter.
+* BUG FIX: Fixed cases where DmRFID would email users about credit cards expiring when they had used an offsite gateway like PayPal Express.
+* BUG FIX: Fixed issue where some user information was missing from the dmrfid_orders_user_row_actions filter.
 * BUG FIX: Fixed issues where the level confirmation text was not available in some cases.
 * BUG FIX/ENHANCEMENT: Updates to the French language translation.
 
@@ -428,56 +428,56 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 
 = 2.1.2 - 2019-09-26 =
 * BUG FIX: Fixed bug where Stripe subscriptions weren't updated to use the new payment method when users updated their billing method on the Update Billing page. You may have users with an updated "default payment method" but their subscriptions still need to be updated manually in Stripe to use that new method. Otherwise, payments will fail. This is fixed going forward.
-* BUG FIX: Fixed bug where PMPro Blocks were sometimes not loading on the edit post page.
+* BUG FIX: Fixed bug where DmRFID Blocks were sometimes not loading on the edit post page.
 * BUG FIX: Fixed bug where discount codes would cause ugly warnings to be shown on the checkout page.
 * BUG FIX: Fixed bug where custom templates would sometimes not load.
 * BUG FIX: Fixed issue where a warning was thrown sometimes when loading SESSION vars.
 * ENHANCEMENT: Moved the License page under Memberships.
 * ENHANCEMENT: Updated our UTM tracking links in various places we link to the Digital Members RFID website.
-* ENHANCEMENT: Added some help text and links to popular add ons in a few places in the PMPro settings.
+* ENHANCEMENT: Added some help text and links to popular add ons in a few places in the DmRFID settings.
 
 = 2.1.1 - 2019-09-16 =
 * BUG FIX: Fixed issue with SCA authentications via Stripe for subscriptions with a $0 initial payment. (Thanks, mjulian87 on Github.)
 * BUG FIX: Fixed issue where code was shown in the message box when applying a discount code.
-* BUG FIX: Fixed issue where pmpro_is_checkout() would always return true if no checkout page was set. This caused JavaScript issues on non-checkout pages.
+* BUG FIX: Fixed issue where dmrfid_is_checkout() would always return true if no checkout page was set. This caused JavaScript issues on non-checkout pages.
 * BUG FIX: The SVN repo on WordPress.org was missing a file for about 10 minutes after version 2.1 was pushed. Users who upgraded during this time may be missing that file. Updating now will restore it.
 
 = 2.1 - 2019-09-13 =
 * FEATURE: Updated Stripe integration to support Stripe v3, Stripe Elements, and their Secure Customer Authorization process.
 * FEATURE: Updated how we store prices to support up to 8 decimals (e.g. for Bitcoin gateway implementations).
 * ENHANCEMENT: Improved error messaging on the update billing page when a gateway doesn't support it or the user's current membership doesn't have a subscription.
-* ENHANCEMENT: Added a  pmpro_is_checkout() function that will return true if on the PMPro checkout page or a page with the PMPro checkout shortcode or block.
+* ENHANCEMENT: Added a  dmrfid_is_checkout() function that will return true if on the DmRFID checkout page or a page with the DmRFID checkout shortcode or block.
 * ENHANCEMENT: Showing a warning message when a user about to be deleted has a membership so admins know that existing subscriptions will be deleted at the gateway.
-* ENHANCEMENT: Added a pmpro_braintree_plan_id filter in case you need to adjust plan IDs. This is useful if you have several sites running on the same Braintree account.
-* ENHANCEMENT: Added a pmpro_num_expiration_years filter to adjust the number of years to include in the dropdown to set the year membership will expire.
+* ENHANCEMENT: Added a dmrfid_braintree_plan_id filter in case you need to adjust plan IDs. This is useful if you have several sites running on the same Braintree account.
+* ENHANCEMENT: Added a dmrfid_num_expiration_years filter to adjust the number of years to include in the dropdown to set the year membership will expire.
 * ENHANCEMENT: Tweaked the UI of the orders list and members list in the dashboard.
-* ENHANCEMENT: Added pmpro_membership_levels_table_extra_cols_header and pmpro_membership_levels_table_extra_cols_body hooks to add columns to the members list.
+* ENHANCEMENT: Added dmrfid_membership_levels_table_extra_cols_header and dmrfid_membership_levels_table_extra_cols_body hooks to add columns to the members list.
 * ENHANCEMENT: Showing notices to admins when categories are hidden from them on the frontend of the site.
-* ENHANCEMENT: Added a pmpro_url filter to filter URLs returned from that function.
-* ENHANCEMENT: Adding a pmpro_checkout_gateway-stripe or pmpro_checkout_gateway-paypal/etc CSS class to the wrapping div for payment fields to aid in styling.
+* ENHANCEMENT: Added a dmrfid_url filter to filter URLs returned from that function.
+* ENHANCEMENT: Adding a dmrfid_checkout_gateway-stripe or dmrfid_checkout_gateway-paypal/etc CSS class to the wrapping div for payment fields to aid in styling.
 * ENHANCEMENT: Using the site's date format option when printing orders.
 * BUG FIX/ENHANCEMENT: If a site has no paying levels, the test gateway will show as the "Default" gateway and we will no longer show a message about requiring gateway setup on the checkout page.
 * BUG FIX/ENHANCEMENT: Updated Russian Ruble definition to have 0 decimals and use &nbsp; as the thousands separator. (Thanks, Airat Halitov)
 * BUG FIX/ENHANCEMENT: Using add_query_arg when generating IPN URLs to avoid issues on sites that aren't using pretty permalinks or have moved their admin directory.
 * BUG FIX/ENHANCEMENT: Fixed issue on advanced settings page where clicking on labels didn't check the corresponding check boxes.
-* BUG FIX/ENHANCEMENT: Updated our pmpro_generateUsername() function to be a bit smarter.
+* BUG FIX/ENHANCEMENT: Updated our dmrfid_generateUsername() function to be a bit smarter.
 * BUG FIX/ENHANCEMENT: Now using wp_generate_password() when choosing a random password for a user (e.g. when using the Sign Up Shortcode add on or the $skip_account_fields global).
 * BUG FIX/ENHANCEMENT: Setting autocomplete to false on the "fullname" honeypot field. This will prevent user's with certain autocomplete tools from accidentally filling it out.
 * BUG FIX/ENHANCEMENT: Now sending name and email fields to PayPay (using Website Payments Pro) even if no address was captured.
 * BUG FIX/ENHANCEMENT: More specific CSS selectors for checkout form elements to make sure errors are highlighted/etc with different themes.
 * BUG FIX: Fixed issue where the first 2000 or so orders might be skipped when exporting orders on large sites.
 * BUG FIX: Fixed issue with setting custom trials on discount codes.
-* BUG FIX: Fixed issue in the SQL query in the pmpro_calculateInitialPaymentRevenue() function. This function is deprecated, but still used by some custom code.
+* BUG FIX: Fixed issue in the SQL query in the dmrfid_calculateInitialPaymentRevenue() function. This function is deprecated, but still used by some custom code.
 * BUG FIX: Fixed issue where default templates would fail to load if a custom template was specified.
-* BUG FIX: Fixed fatal errors that could happen when using the PMPro REST API endpoints.
+* BUG FIX: Fixed fatal errors that could happen when using the DmRFID REST API endpoints.
 * BUG FIX: Fixed bug where the invoices page would sometimes show data for the current (admin) users instead of the user the invoice was for.
 * BUG FIX: Fixed bug where the membership stats graphs would sometimes show up blank.
 * BUG FIX: Now falling back to using readfile() if fpassthru() doesn't existing.
-* BUG FIX: Fixed issue where the from name and email were not set properly if the Only Filter PMPro Emails setting was checked. (Thanks, mjulian87 on GitHub)
+* BUG FIX: Fixed issue where the from name and email were not set properly if the Only Filter DmRFID Emails setting was checked. (Thanks, mjulian87 on GitHub)
 * BUG FIX: Fixed several error handling issues with the Cybersource gateway integration.
-* REFACTOR: Moved JavaScript out of pages/checkout.php and other places into files in the /js/ folder. This will avoid issues where other JS at checkout breaks PMPro checkout and will improve compatibility with tools that optimize JS.
+* REFACTOR: Moved JavaScript out of pages/checkout.php and other places into files in the /js/ folder. This will avoid issues where other JS at checkout breaks DmRFID checkout and will improve compatibility with tools that optimize JS.
 * REFACTOR: Added unit testing and a started on coverage of some functions in includes/functions.php. (Thanks, Mike Auteri)
-* REFACTOR: The JS function askfirst is now prefixed as pmpro_askfirst.
+* REFACTOR: The JS function askfirst is now prefixed as dmrfid_askfirst.
 
 = 2.0.7 - 2019-05-30 =
 * BUG FIX: Fixed issue where the profile start date would sometimes be set incorrectly on the Stripe subscription.
@@ -491,24 +491,24 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 
 = 2.0.5 - 2019-04-25 =
 * BUG FIX: Fixed fatal error on return from 2Checkout.
-* BUG FIX: Removed error when installing PMPro via WP-CLI.
+* BUG FIX: Removed error when installing DmRFID via WP-CLI.
 * BUG FIX: Fix database upgrade error on localhost environment. (Thanks, codezz on GitHub)
 * BUG FIX: Fixed issue where the credit card expiring email didn't include user info because the user ID wasn't passed in properly. (Thanks, David Cervantes Caballero)
 * BUG FIX: Fixed typo on edit level page. (Thanks, Theuns Coetzee)
 * BUG FIX: Fixed bug with daily revenue reports not showing up in some cases.
 * BUG FIX: Now checking before cancelling a Stripe subscription at the gateway to see if it has already been cancelled.
-* BUG FIX/ENHANCEMENT: Now caching the query results in pmpro_getMembershipLevelsForUser(). This improves performance, especially when there are many posts on one page to check membership for. (Thanks, Seagyn Davis)
-* BUG FIX/ENHANCEMENT: Now sending display_name to the $data array passed to PMPro email filters. (Thanks, David Cervantes Caballero)
+* BUG FIX/ENHANCEMENT: Now caching the query results in dmrfid_getMembershipLevelsForUser(). This improves performance, especially when there are many posts on one page to check membership for. (Thanks, Seagyn Davis)
+* BUG FIX/ENHANCEMENT: Now sending display_name to the $data array passed to DmRFID email filters. (Thanks, David Cervantes Caballero)
 * BUG FIX/ENHANCEMENT: Now searching for the last order with "success" or "pending" status on the Billing page.
-* BUG FIX/ENHANCEMENT: Added pmpro_checkout_preheader_before_get_level_at_checkout and pmpro_checkout_preheader_after_get_level_at_checkout action hooks. Using pmpro_checkout_preheader_before_get_level_at_checkout to start the session earlier now.
+* BUG FIX/ENHANCEMENT: Added dmrfid_checkout_preheader_before_get_level_at_checkout and dmrfid_checkout_preheader_after_get_level_at_checkout action hooks. Using dmrfid_checkout_preheader_before_get_level_at_checkout to start the session earlier now.
 * BUG FIX/ENHANCEMENT: Removed the "membership_code_id" and "membership_code" as field options for the member shortcode. These weren't working and it's unclear what would be meant to ask for a user's discount code since a user could have several orders with or without discount codes. Added "membership_description" and "membership_confirmation" instead.
 * BUG FIX/ENHANCEMENT: Filtering the password reset message to make sure the link still works in all cases when we convert emails to HTML.
-* BUG FIX/ENHANCEMENT: Added reCAPTCHA v3 and invisible reCAPTCHA support. It is recommended sites using Stripe or Braintree update to the reCAPTCHA v3 option. Read more here: https://www.paidmembershipspro.com/pmpro-update-2-0-5/
-* REFACTOR: Now running the pmpro_billing_preheader hook after the jquery.creditCardValidator script is enqueued in preheader/billing.php to match how we do it in preheader/checkout.php. (Thanks, Rafe Colton)
+* BUG FIX/ENHANCEMENT: Added reCAPTCHA v3 and invisible reCAPTCHA support. It is recommended sites using Stripe or Braintree update to the reCAPTCHA v3 option. Read more here: https://www.paidmembershipspro.com/dmrfid-update-2-0-5/
+* REFACTOR: Now running the dmrfid_billing_preheader hook after the jquery.creditCardValidator script is enqueued in preheader/billing.php to match how we do it in preheader/checkout.php. (Thanks, Rafe Colton)
 
 = 2.0.4 - 2019-01-14 =
 * BUG FIX: Fixed warning in code added in 2.0.3 that could cause issues at checkout.
-* BUG FIX: Setting priority of pmpro_check_admin_capabilities to 5 to ensure it runs before dashboard redirect.
+* BUG FIX: Setting priority of dmrfid_check_admin_capabilities to 5 to ensure it runs before dashboard redirect.
 * BUG FIX: Removed duplicate id attribute on the Membership Account page "cancel" action link.
 * BUG FIX/PERFORMANCE: No longer enqueueing frontend.blocks.js which had no functional code, but loaded a lot of Gutenberg JS that wasn't needed on the frontend. When/if our blogs have frontend JS, we will load it again, but also make sure the dependencies are correct.
 * BUG FIX/PERFORMANCE: No longer loading blocks.style.css. These frontend styles were redundant with CSS in css/frontend.css.
@@ -516,18 +516,18 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 
 = 2.0.3 - 2019-01-11 =
 * BUG FIX: Fixed issue where code in the Stripe gateway was cancelling old subscriptions early if users renewed with a different gateway. NOTE: There was a fix for this in version 2.0, but it wasn't implemented fully.
-* BUG FIX: Filtering pmpro_other_order_ids_to_cancel to make sure the current checkout's order doesn't get cancelled. This started happening in version 2.0 since we started setting the user_id on orders for existing users before the checkout was fully processed. This fix along with the one above and others will fix cases where users were being cancelled immediately after checkout.
+* BUG FIX: Filtering dmrfid_other_order_ids_to_cancel to make sure the current checkout's order doesn't get cancelled. This started happening in version 2.0 since we started setting the user_id on orders for existing users before the checkout was fully processed. This fix along with the one above and others will fix cases where users were being cancelled immediately after checkout.
 * BUG FIX: Fixed warning on edit levels page by defaulting $confirmation_in_email to 0.
 
 = 2.0.2 - 2019-01-10 =
-* BUG FIX: Fixed issues when using non-US currencies. Using the pmpro_round_price function in a few places it was needed. Prepared for a later update that will increase the number of decimals on certain columns in the DB to 8 to support currencies like Bitcoin, but shelving the actual DB update for version 2.1.
-* BUG FIX: Fixed issue where existing users who checked out could run into problems. Added a getMembershipLevelAtCheckout method to the MemberOrder class and using that during checkout. The getMembershipLevel method would see the user_id property of the order (added to orders at checkout in version 2.0) and lookup the level data from the pmpro_memberships_users table instead of using the pmpro_level global. Then gateways like PayPal Express (but others also) would use the wrong data when making calls to pmpro_isLevelRecurring/etc.
+* BUG FIX: Fixed issues when using non-US currencies. Using the dmrfid_round_price function in a few places it was needed. Prepared for a later update that will increase the number of decimals on certain columns in the DB to 8 to support currencies like Bitcoin, but shelving the actual DB update for version 2.1.
+* BUG FIX: Fixed issue where existing users who checked out could run into problems. Added a getMembershipLevelAtCheckout method to the MemberOrder class and using that during checkout. The getMembershipLevel method would see the user_id property of the order (added to orders at checkout in version 2.0) and lookup the level data from the dmrfid_memberships_users table instead of using the dmrfid_level global. Then gateways like PayPal Express (but others also) would use the wrong data when making calls to dmrfid_isLevelRecurring/etc.
 * BUG FIX: Fixed bug where a notice to deactivate the Better Logins Report plugin could show up for users who couldn't deactive the plugin.
 * BUG FIX: Fixed bad translation in the membership_expired.html file of the French translation.
 * BUG FIX: Fixed some strings on updated reports that weren't wrapped for translation.
 
 = 2.0.1 - 2019-01-03 =
-* BUG FIX: Fixed issue where the PMPro dashboard and reports pages would appear blank if certain other plugins were active.
+* BUG FIX: Fixed issue where the DmRFID dashboard and reports pages would appear blank if certain other plugins were active.
 
 = 2.0 - 2018-12-31 =
 * SECURITY: Fixing how we escape things in the Memberships report SQL queries.
@@ -536,15 +536,15 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX/ENHANCEMENT: Removing unused images from core plugin.
 * BUG FIX/ENHANCEMENT: Removed unused `getTimestamp` function.
 * BUG FIX/ENHANCEMENT: Updated Braintree/PHP Library to 3.36.0
-* BUG FIX/ENHANCEMENT: Prefixing Braintree plan name with `pmpro_#`
+* BUG FIX/ENHANCEMENT: Prefixing Braintree plan name with `dmrfid_#`
 * BUG FIX/ENHANCEMENT: Better table naming in queries for Memberships and Sales reports.
 * BUG FIX/ENHANCEMENT: Changing "blacklist" to "blocklist".
 * BUG FIX/ENHANCEMENT: Changing the appearance of the Discount Code "Apply" button on checkout to look more like a text link.
 * BUG FIX/ENHANCEMENT: Now calculating the next payment date with time, not SQL.
-* BUG FIX/ENHANCEMENT: Updated the pmpro_next_payment method of Stripe to check if a customer is delinquent to avoid returning a next payment date in the future if the last payment failed.
+* BUG FIX/ENHANCEMENT: Updated the dmrfid_next_payment method of Stripe to check if a customer is delinquent to avoid returning a next payment date in the future if the last payment failed.
 * BUG FIX/ENHANCEMENT: Saving user ID in MemberOrder when a user already exists and they are checking out via an offsite gateway.
 * BUG FIX/ENHANCEMENT: Updating Stripe Webhook and PayPal IPN Handler to send the cancelled level ID for better cancellation emails.
-* BUG FIX/ENHANCEMENT: Brought back the Stripe Billing limit warnings. Here is a plugin to get billing limits working with Stripe https://github.com/strangerstudios/pmpro-stripe-billing-limits/blob/master/pmpro-stripe-billing-limits.php
+* BUG FIX/ENHANCEMENT: Brought back the Stripe Billing limit warnings. Here is a plugin to get billing limits working with Stripe https://github.com/strangerstudios/dmrfid-stripe-billing-limits/blob/master/dmrfid-stripe-billing-limits.php
 * FEATURE: Gutenberg / v5.0 Editor Blocks for Digital Members RFID pages, the Checkout Button and Membership "shortcode" functionality.
 * FEATURE: Added new "Dashboard" page and adjusted the entire menu structure for "Memberships".
 * FEATURE: Created new compatibility checks and included compatibility functions for Beaver Builder, Elementor, and SiteOrigin Page Builder.
@@ -576,17 +576,17 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Correct Braintree plans flagged as faulty.
 * BUG FIX/ENHANCEMENT: Added Order Code to the Orders Export CSV
 * BUG FIX/ENHANCEMENT: Removed another warning RE billing limits with the Stripe gateway. (Thanks, Jordan Kohl)
-* ENHANCEMENT: Added the pmpro_include_pricing_fields filter.
+* ENHANCEMENT: Added the dmrfid_include_pricing_fields filter.
 * ENHANCEMENT: Adding IDs to action links in the account shortcode so users can target them with CSS/JS.
 * ENHANCEMENT: Updated French Translation. (Thanks, Pascal)
 * ENHANCEMENT: Retina logo on dashboard pages.
-* ENHANCEMENT: Showing what PMPro page a page is in the Post List table of the WP dashboard.
+* ENHANCEMENT: Showing what DmRFID page a page is in the Post List table of the WP dashboard.
 
 = 1.9.5.5 - 2018-10-19 =
 * BUG FIX: Fixed fatal error in the Braintree webhook that will have caused syncing issues for Braintree users.
 * BUG FIX: Stopped sending the cancel subscription request to the PayPal API if we are processing the IPN request for the same subscription.
 * BUG FIX: Fixed issue where the Stripe API version was shown for non-Stripe gateways on the payment settings page.
-* BUG FIX: Using self:: instead of static:: in the Stripe class that could keep the pmpro_stripe_customerid from being updated.
+* BUG FIX: Using self:: instead of static:: in the Stripe class that could keep the dmrfid_stripe_customerid from being updated.
 * BUG FIX: Fixed some fatal errors in PHP 5.2. (We still recommend a minimum PHP 5.6.)
 * BUG FIX/ENHANCEMENT: Removed a unnecessary hr element when viewing the table of all active memberships.
 * BUG FIX/ENHANCEMENT: Cleaned up some CSS code around buttons.
@@ -594,7 +594,7 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX/ENHANCEMENT: Removed the warning RE billing limits with the Stripe gateway. Our Stripe implementation has actually supported billing limits for a while.
 * ENHANCEMENT: Added Kenyan Shilling as a currency. (Thanks, Urandu Bildad Namawa)
 * ENHANCEMENT: Updated the description, url, email, and copyright info in the plugin header.
-* ENHANCEMENT: Now showing a note on the pages list in the dashboard if a page is linked to a PMPro page.
+* ENHANCEMENT: Now showing a note on the pages list in the dashboard if a page is linked to a DmRFID page.
 * ENHANCEMENT: Improving logo and watermark in the dashboard for retina displays.
 
 = 1.9.5.4 - 2018-09-10 =
@@ -603,18 +603,18 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: No longer sending an "error canceling the subscription" email when subscriptions are cancelled from Stripe.
 * BUG FIX: Fixed issue where TwoCheckout orders were not correctly updating the TOS consent data. (Thanks, Charl P. Botha)
 * BUG FIX: Fixed issue where privacy function weren't defaulting to $current_user correctly. In practice, we were always passing a user_id anyway.
-* BUG FIX/ENHANCEMENT: Changed the confirmation message to use wpautop instead of apply_filters('the_content'). If you were relying on shortcodes or other content that required that filter, you use add_filter('pmpro_level_description', 'the_content') to revert this for your site.
+* BUG FIX/ENHANCEMENT: Changed the confirmation message to use wpautop instead of apply_filters('the_content'). If you were relying on shortcodes or other content that required that filter, you use add_filter('dmrfid_level_description', 'the_content') to revert this for your site.
 * BUG FIX/ENHANCEMENT: Using the strict parameter of sanitize_user when getting usernames. This will prevent some special characters from being used in usernames at checkout. This is inline with WP core and other plugins. (Thanks, David Cervantes Caballero)
 * ENHANCEMENT: Added a breakdown of orders at each price point to the Sales Report widget
 * ENHANCEMENT: Showing the Stripe version we use on the Payment Settings page.
 * ENHANCEMENT: Updated Copyright date and GPLv2 link in license.txt.
 
 = 1.9.5.3 - 2018-06-26 =
-* BUG FIX: The pmpro_ipnhandler_extend_memberships function actually needed use $user_id instead of $current_user.
+* BUG FIX: The dmrfid_ipnhandler_extend_memberships function actually needed use $user_id instead of $current_user.
 
 = 1.9.5.2 - 2018-06-26 =
 * BUG FIX: Fixed compatibility with Theme My Login version 7. (Thanks, Jeff Farthing)
-* BUG FIX: Fixed missing $current_user bug in pmpro_ipnhandler_level_extend_memberships function. (Thanks, Anne)
+* BUG FIX: Fixed missing $current_user bug in dmrfid_ipnhandler_level_extend_memberships function. (Thanks, Anne)
 
 = 1.9.5.1 - 2018-06-08 =
 * BUG FIX: Fixed issue with the PayPal IPN Handler where existing users checking out for a new level would sometimes have their membership and new subscription cancelled.
@@ -627,31 +627,31 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Added 'error' to the list of default order statuses.
 * BUG FIX: Fixed issue where PayPal recurring_payment messages with status "Pending" were treated as "Failed" by our IPN handler. (Thanks, Matt Julian)
 * BUG FIX: The redirect away from the billing page needed to be in the preheader instead of the page shortcode.
-* BUG FIX/ENHANCEMENT: Using the pmpro_getOrderStatuses() function in adminpages/orders.php instead of redundant code there.
-* BUG FIX/ENHANCEMENT: Passing the $order as a second parameter to pmpro_after_checkout when called from the PayPal IPN handler. (The $order was being passed already for "regular" checkouts.)
+* BUG FIX/ENHANCEMENT: Using the dmrfid_getOrderStatuses() function in adminpages/orders.php instead of redundant code there.
+* BUG FIX/ENHANCEMENT: Passing the $order as a second parameter to dmrfid_after_checkout when called from the PayPal IPN handler. (The $order was being passed already for "regular" checkouts.)
 * ENHANCEMENT: You can now sort by the Membership Level column added to the users list in the dashboard. (Thanks, Matt Julian)
 * FEATURE: Added support for the privacy features added in WP 4.9.6. Details below.
 * FEATURE: Added suggest privacy page text.
-* FEATURE: Added PMPro-related user meta fields, membership history, and order history to the personal data export. You can filter which user meta fields are included in the export using the new pmpro_get_personal_user_meta_fields filter.
-* FEATURE: Deleting PMPro-related personal data fields when personal data is erased. The ereaser deletes a number of user meta fields (filterable through the new pmpro_get_personal_user_meta_fields_to_erase filter). A user's membership history and order history are retained unless the user is deleted.
+* FEATURE: Added DmRFID-related user meta fields, membership history, and order history to the personal data export. You can filter which user meta fields are included in the export using the new dmrfid_get_personal_user_meta_fields filter.
+* FEATURE: Deleting DmRFID-related personal data fields when personal data is erased. The ereaser deletes a number of user meta fields (filterable through the new dmrfid_get_personal_user_meta_fields_to_erase filter). A user's membership history and order history are retained unless the user is deleted.
 * FEATURE: Now saving a log of when the TOS page is agreed to at checkout. The ID and date modified of the TOS post is saved along with a timestamp of when the TOS was agreed to. This information is shown on the single order page in the admin, the orders CSV export, and on the edit user profile page in the admin. Note that this feature does not yet backport any data for existing users or ask users to re-agree to the TOS if the TOS has gone out of date.
 
 = 1.9.4.4 - 2018-03-14 =
-* BUG FIX: Updated the filters to extend membership levels to use the new pmpro_getSpecificMembershipLevelForUser() function to avoid bugs when MMPU is enabled.
+* BUG FIX: Updated the filters to extend membership levels to use the new dmrfid_getSpecificMembershipLevelForUser() function to avoid bugs when MMPU is enabled.
 * BUG FIX: Fixed cases where certain email templates were resulting in the body of the email being duplicated.
-* BUG FIX: Fixed conflict with pmpro-email-templates when emails were disabled (the pmpro_email filter returns false). (Thanks, Mathieu Hays)
+* BUG FIX: Fixed conflict with dmrfid-email-templates when emails were disabled (the dmrfid_email filter returns false). (Thanks, Mathieu Hays)
 * BUG FIX: Now updating status on related subscription orders BEFORE canceling at gateway to avoid cases where the webhook sent by the gateway after canceling the subscription triggers further cancellation attempts.
 * BUG FIX: No longer showing the "Stripe Publishable Key appears incorrect" error message if the key field is blank.
-* ENHANCEMENT: Added the pmpro_getSpecificMembershipLevelForUser( $user_id, $level_id ) function for cases where MMPU is enabled and you want data about a specific membership level a user might have.
+* ENHANCEMENT: Added the dmrfid_getSpecificMembershipLevelForUser( $user_id, $level_id ) function for cases where MMPU is enabled and you want data about a specific membership level a user might have.
 * ENHANCEMENT: Changed labels on the reCAPTCHA settings to match their current terminology: Site Key and Secret Key.
 
 = 1.9.4.3 - 2018-01-04 =
-* BUG FIX: Fixed issue where PMPro would attempt to cancel gateway subscriptions more than once in some cases.
+* BUG FIX: Fixed issue where DmRFID would attempt to cancel gateway subscriptions more than once in some cases.
 
 = 1.9.4.2 - 2017-12-07 =
 * BUG FIX: Avoid double-encoding the API version in PayPal Standard gateway
 * BUG FIX: The update billing page now checks the gateway of the user's last order instead of the default gateway settings in case multiple gateways are in use or the default gateway has changed.
-* BUG FIX: Fixed bug where discount codes were not being applied properly if the pmpro_default_level custom field was set and used on a page.
+* BUG FIX: Fixed bug where discount codes were not being applied properly if the dmrfid_default_level custom field was set and used on a page.
 * BUG FIX: Credit card expiration emails were being to sent to members with PayPal Express orders.
 * BUG FIX: Now correctly unslashing instructions for the check gateway.
 * BUG FIX: Fixed issue with creating pages from the page settings page.
@@ -675,15 +675,15 @@ BUG FIX: Fixed issue where PMPro would always try to add capabilities to the adm
 * BUG FIX: Fixed issue where updating a Stripe subscription from the edit user page could cancel the subscription once the webhook fired.
 * BUG FIX: Fixed issue where "admin_cancelled" memberships weren't being calculated correctly in membership reports.
 * BUG FIX: Fixed issue where users could not drag and drop to change the order of membership levels.
-* BUG FIX: pmpro_getMembershipLevelsForUser() would sometimes return duplicate levels in the array if the user had multiple active entries in the pmpro_memberships_users table.
-* BUG FIX: Updated includes/metaboxes.php to call pmpro_getAllLevels() instead of relying on the $membership_levels global which is problematic.
+* BUG FIX: dmrfid_getMembershipLevelsForUser() would sometimes return duplicate levels in the array if the user had multiple active entries in the dmrfid_memberships_users table.
+* BUG FIX: Updated includes/metaboxes.php to call dmrfid_getAllLevels() instead of relying on the $membership_levels global which is problematic.
 * BUG FIX: Fixed a few strings that weren't wrapped for translation or were using the old text domain.
 * BUG FIX: Fixed redirect error that occured when the levels page was not set.
-* BUG FIX: Updated getfile.php to support file names with urlencoded characters (e.g. spaces) in them. (Thanks, florent from PMPro blog)
+* BUG FIX: Updated getfile.php to support file names with urlencoded characters (e.g. spaces) in them. (Thanks, florent from DmRFID blog)
 * BUG FIX: Fixed notice when use the getfile.php script due to using add_filter instead of apply_filters in the mimetype class.
 * BUG FIX: Fixed the all time views column for the logins report.
 * BUG FIX: Fixed fatal error on the logins report, member shortcode and other issues when using PHP7.1+.
-* BUG FIX: Fixed issue with saving arrays using pmpro_setOption()
+* BUG FIX: Fixed issue with saving arrays using dmrfid_setOption()
 up the lines of text.
 * BUG FIX: Fixed typo in the string "Are you sure you want to do that? Try again."
 * BUG FIX: Fixed a few strings that used the wrong text domain or weren't wrapped correclty for translation.
@@ -692,14 +692,14 @@ up the lines of text.
 * BUG FIX/ENHANCEMENT: Better checking for Theme My Login compatibility when handling login redirects.
 * BUG FIX/ENHANCEMENT: Better error handling for Braintree.
 * BUG FIX/ENHANCEMENT: Membership stats widget now shows first 3 levels based on level order.
-* BUG FIX/ENHANCEMENT: Added the pmpro_member_shortcode_access filter
+* BUG FIX/ENHANCEMENT: Added the dmrfid_member_shortcode_access filter
 * ENHANCEMENT: Updated the Stripe PHP library to version 5.2.2 and updated Stripe to use the latest version of their API, 2017-08-15.
 * ENHANCEMENT: Changed frontend pages (e.g. checkout.php) to use a div-based layout instead of tables. Important information here if you are using custom page templates or notice UI issues after upgrading:
-* ENHANCEMENT: Added pagination to the discount codes page in the admin. Also sorting codes in descending order by ID. Use the pmpro_discount_codes_per_page filter to change the per page limit from 15.
+* ENHANCEMENT: Added pagination to the discount codes page in the admin. Also sorting codes in descending order by ID. Use the dmrfid_discount_codes_per_page filter to change the per page limit from 15.
 * ENHANCEMENT: Updated plugin admin pages with better links to documentation and support.
 * ENHANCEMENT: Updated plugin frontend pages checkout, billing, confirmation, and single invoice to remove most table based layouts.
 * ENHANCEMENT: Better error message if trying to checkout using an existing user's email address.
-* ENHANCEMENT: Added the pmpro_report_levels filter to let users change levels and order of levels for the memberships.php report.
+* ENHANCEMENT: Added the dmrfid_report_levels filter to let users change levels and order of levels for the memberships.php report.
 * ENHANCEMENT: Updated video and copy for readme.txt.
 * ENHANCEMENT: Added user display name to Memberlist search query
 * ENHANCEMENT: Added Russian Ruble as a currency.
@@ -710,12 +710,12 @@ up the lines of text.
 
 = 1.9.3 - 2017-07-06 =
 * SECURITY: Fixed sanitization of inputs and added nonces in several places to protect against XSS attacks.
-* BUG FIX: Showing correct error message when trying to update a PMPro Plus add on with a Core license installed.
+* BUG FIX: Showing correct error message when trying to update a DmRFID Plus add on with a Core license installed.
 * BUG FIX: Fixed issue where subscription and payment transaction IDs were not being saved correctly when copying an order in the dashboard. (Thanks, Pippin Williamson)
 * BUG FIX: Fixed fatal errors that occurred in certain PHP versions.
 * BUG FIX: Fixed issue where ProfileStartDate was being calculated incorrectly in the test, check, and Cybersource gateways.(Thanks, David Parker)
-* ENHANCEMENT: Added a pmpro_sanitize_with_safelist() function that is used to sanitize inputs that have a limited number of exact options.
-* ENHANCEMENT: Updated the pmpro_setOption() and pmpro_getParam() functions to take a new last parameter $sanitize_function, which defaults to 'sanitize_text_field'.
+* ENHANCEMENT: Added a dmrfid_sanitize_with_safelist() function that is used to sanitize inputs that have a limited number of exact options.
+* ENHANCEMENT: Updated the dmrfid_setOption() and dmrfid_getParam() functions to take a new last parameter $sanitize_function, which defaults to 'sanitize_text_field'.
 
 = 1.9.2.2 - 2017-06-13 =
 * BUG FIX: Fixed warnings on the Network Dashboard's sites page.
@@ -749,14 +749,14 @@ up the lines of text.
 * BUG: Fixed issue where old membership levels were not listed correctly in the cancellation email. (Thanks, Mike from Migrating Eye)
 * BUG: Fixed issue where "custom trial" values were not saving for discount codes.
 * BUG: Fixed issue where checkouts were still processing even if there were errors with the discount code used.
-* BUG: Fixed bug where settings added via the pmpro_custom_advanced_settings were not being saved to DB unless they were prefixed with custom_.
-* BUG: Fixed other formatting issues with settings added via pmpro_custom_advanced_settings.
+* BUG: Fixed bug where settings added via the dmrfid_custom_advanced_settings were not being saved to DB unless they were prefixed with custom_.
+* BUG: Fixed other formatting issues with settings added via dmrfid_custom_advanced_settings.
 * BUG: Fixed issue where the sendInvoiceEmail method of the email class was expecting $order->discount_code to be a string, but it was sometimes a discount code object. (Thanks, Bill Stoltz)
-* FEATURE: Added the pmpro_member shortcode. See the Digital Members RFID website for documentation.
-* ENHANCEMENT: Added pmpro_account_membership_expiration_text filter to filter the expiration text that shows ona  user's membership account page.
+* FEATURE: Added the dmrfid_member shortcode. See the Digital Members RFID website for documentation.
+* ENHANCEMENT: Added dmrfid_account_membership_expiration_text filter to filter the expiration text that shows ona  user's membership account page.
 * ENHANCEMENT: Updated our Stripe and Braintree libraries to use their latest versions. This update allows our gateway integrations to support PHP7 and also removes support for PHP 5.2 and 5.3.
 * ENHANCEMENT: The Braintree level compatibility check now also looks for a properly named plan.
-* ENHANCEMENT: Better error handling when trying to update plugins that update against the PMPro license server.
+* ENHANCEMENT: Better error handling when trying to update plugins that update against the DmRFID license server.
 * ENHANCEMENT: Improved Italian translation. (Thanks, Francesco Pezzotti)
 * ENHANCEMENT: Improved German tranlsation. (Thanks, Simon)
 * ENHANCEMENT: Added a Sweedish tranlsation. (Thanks, Mathias Persson)
@@ -773,7 +773,7 @@ up the lines of text.
 * BUG: Fixed notifications.php to make sure it really only checks once per day. Also updated the URL checked to notifications.paidmembershipspro.com, which runs on its own server.
 
 = 1.8.13.4 =
-* BUG/ENHANCEMENT: Changed the pmpro_button shortcode to pmpro_checkout_button. (The old pmpro_button will also still work. checkout_button works if you have Register Helper installed.)
+* BUG/ENHANCEMENT: Changed the dmrfid_button shortcode to dmrfid_checkout_button. (The old dmrfid_button will also still work. checkout_button works if you have Register Helper installed.)
 
 = 1.8.13.3 =
 * BUG: Fixed bug when using a secondary gateway (e.g. PayPal Express) with Stripe as your primary gateway.
@@ -781,10 +781,10 @@ up the lines of text.
 = 1.8.13.2 =
 * BUG: Fixed bug with updating credit cards through Braintree.
 * BUG: Fixed bug with updating credit cards through Stripe.
-* BUG: Fixed SQL warnings when generating the pmpro_membership_levelmeta table. (Thanks, itibet on GitHub)
+* BUG: Fixed SQL warnings when generating the dmrfid_membership_levelmeta table. (Thanks, itibet on GitHub)
 * BUG/ENHANCEMENT: Moved some update billing and checkout related code from the preheaders and page templates into the Braintree and Stripe classes.
-* ENHANCEMENT: Added pmpro_billing_order filter that functions similar to pmpro_checkout_order.
-* ENHANCEMENT: Added pmpro_billing_before_submit_button hook that functions similar to the pmpro_checkout_before_submit_button hook.
+* ENHANCEMENT: Added dmrfid_billing_order filter that functions similar to dmrfid_checkout_order.
+* ENHANCEMENT: Added dmrfid_billing_before_submit_button hook that functions similar to the dmrfid_checkout_before_submit_button hook.
 * ENHANCEMENT: Clicking on a report widget no longer takes you to the details page. You have to click the details button. This allows us to add additional functionality to the widgets.
 * ENHANCEMENT: Updated reports widgets so the "details" button only shows if a page function is defined for that report. You can now have report widgets without details pages.
 * ENHANCEMENT: You can now click on a heading in the Membership Stats report widget to see data for up to 3 of your levels. The first 3 levels per the level ordering are shown.
@@ -797,26 +797,26 @@ up the lines of text.
 * BUG/ENHANCEMENT: Changed the number of X placeholders for masked credit cards to 12 (+ the last 4 stored) instead of 13. (Thanks, Rafe Colton)
 
 = 1.8.13 =
-* FEATURE: The Stripe Webhook has been updated to process subscriptions cancelled from Stripe. PMPro will now cancel memberships for these users instead of sending an email to the admin.
+* FEATURE: The Stripe Webhook has been updated to process subscriptions cancelled from Stripe. DmRFID will now cancel memberships for these users instead of sending an email to the admin.
 * BUG: Fixed various bugs in the PayPal IPN handler.
 * BUG: Fixed search on discount codes page in dashboard. (Thanks, Debjit Saha)
 * BUG: Fixed bug in Cancellations report where all-time cancellations were always 0.
 * BUG: Fixed link to payment settings on checkout notice. (Thanks, Coen Jacobs)
 * BUG: Timezone magic on edit user page in the dashboard to make sure the expiration date you select is the one set.
 * BUG: Swapped out deprecated uses of eregi_replace and split.
-* BUG/ENHANCEMENT: Now using add_query_arg in the pmpro_url() function. (Thanks, Debjit Saha)
+* BUG/ENHANCEMENT: Now using add_query_arg in the dmrfid_url() function. (Thanks, Debjit Saha)
 * ENHANCEMENT: Updating stylesheet for WordPress 4.7 and new Twenty Seventeen theme support.
 * ENHANCEMENT: Now longer warning of membership levels with cycle numbers > 1 when using the Payflow Pro gateway since Payflow now supports cycle numbers (frequencies) > 1.
 * ENHANCEMENT: Updated da_DK translation. (Thanks, bopdoq on GitHub)
-* ENHANCEMENT: Added pmpro_include_payment_option_for_paypal filter, which can be set to false to use PayPal WPP without the PayPal Express option.
+* ENHANCEMENT: Added dmrfid_include_payment_option_for_paypal filter, which can be set to false to use PayPal WPP without the PayPal Express option.
 * ENHANCEMENT: Better dependency checking for Stripe and Braintree gateways.
-* ENHANCEMENT: Updated IPN handler and Stripe Webhook handler to use pmpro_cancelMembershipLevel instead of pmpro_changeMembershipLevele. This improves support for the MMPU addon.
+* ENHANCEMENT: Updated IPN handler and Stripe Webhook handler to use dmrfid_cancelMembershipLevel instead of dmrfid_changeMembershipLevele. This improves support for the MMPU addon.
 
 = 1.8.12.1 =
 * BUG: Fixed bug when using the testing gateway.
-* BUG: Avoiding issues where is_user_logged in is not yet available for the pmpro_search_filter() function. (Thanks, d_enajetic)
+* BUG: Avoiding issues where is_user_logged in is not yet available for the dmrfid_search_filter() function. (Thanks, d_enajetic)
 * ENHANCEMENT: Updated Italian translation. (Thanks again, Angelo)
-* ENHANCEMENT: You can now define('DMRFID_USE_SESSIONS', false); in your wp-config.php to force PMPro to skip the call to session_start. Note that PayPal Express and some addons require sessions to function.
+* ENHANCEMENT: You can now define('DMRFID_USE_SESSIONS', false); in your wp-config.php to force DmRFID to skip the call to session_start. Note that PayPal Express and some addons require sessions to function.
 
 = 1.8.12 =
 * BUG: Fixed issue where "expiring soon" emails were sometimes sent more than needed.
@@ -824,18 +824,18 @@ up the lines of text.
 * BUG: Fixed issue with Stripe subscription "updates" that were set to fire on "next payment", e.g. if you used Stripe with levels with a non-zero trial amount. When the update processed and created a new subscription, the old subscription was not being deleted and the new subscription ID was not being saved as a new order for future tracking purposes. If you use this feature, please check in Stripe to make sure your users don't have extra subscriptions.
 * BUG: Fixed setting in PayPal/PayPal Express API calls from AUTOBILLAMT to AUTOBILLOUTAMT. This setting is set to AddToNextBilling, meaning that failed payment amounts are added to the next billing cycle's amount if left unpaid. In most cases, a retry of the original billed amount goes through or the user's subscription is cancelled. But just in case, this makes sure that outstanding balances are paid. (Thanks, jubstuff on GitHub)
 * BUG: Fixed warnings in the setGateway method of the MemberOrder class for cases where the gateway is missing or the class file is not found.
-* BUG/ENHANCEMENT: Moved the pmpro_before_change_membership_level hook to fire a little bit earlier to make it easier to determine the old level status/end date/etc before it gets updated. (Thanks, MrVibe on GitHub)
+* BUG/ENHANCEMENT: Moved the dmrfid_before_change_membership_level hook to fire a little bit earlier to make it easier to determine the old level status/end date/etc before it gets updated. (Thanks, MrVibe on GitHub)
 * ENHANCEMENT: Replaced the Force SSL option with an explanation if the entire site is over HTTPS. We are already ignoring the option in these cases.
 
 = 1.8.11.2 =
-* BUG: Fixed a bug introduced in 1.8.11 that kept PMPro from tracking coupon code uses. Any checkout with a discount code while running 1.8.11 won't have properly tracked the discount code use. You may want to adjust your "uses" numbers for your codes, and hand check any reporting/etc that relied on discount codes. Users of the Sponsored Members addon will have been affected too. Discount codes will need to be made manually for any sponsor who checked out.
+* BUG: Fixed a bug introduced in 1.8.11 that kept DmRFID from tracking coupon code uses. Any checkout with a discount code while running 1.8.11 won't have properly tracked the discount code use. You may want to adjust your "uses" numbers for your codes, and hand check any reporting/etc that relied on discount codes. Users of the Sponsored Members addon will have been affected too. Discount codes will need to be made manually for any sponsor who checked out.
 * BUG: Fix to the expiration warnings code. Making sure it finds all members who are expiring soon while also keeping track of when emails are sent so users don't get too many emails.
-* BUG: Fixed issue where pmpro_before_change_membership_level was running after levels had been changed.
+* BUG: Fixed issue where dmrfid_before_change_membership_level was running after levels had been changed.
 * BUG: Fixed some warnings.
 * ENHANCEMENT: Updated Italian translations. (Thanks, Angelo)
 
 = 1.8.11.1 =
-* BUG: Fixed issue introduced in 1.8.11 where the pmpro_default_level custom field was being ignored at checkout.
+* BUG: Fixed issue introduced in 1.8.11 where the dmrfid_default_level custom field was being ignored at checkout.
 * BUG: Fixed bugs in DB calls made for the compatibility checks for various gateways.
 * BUG: Now sending a FREQUENCY parameter for PayPal Payflow orders.
 
@@ -844,19 +844,19 @@ up the lines of text.
 * BUG: Now enqueueing the jquery.creditCardValidator.js file in Billing preheader.
 * BUG: Fixed issues where PayPal IPN updates would sometimes log $0 instead of the actual billing amount.
 * BUG: Fixed warnings in the PayPal IPN handler.
-* BUG/ENHANCEMENT: Added pmpro_checkout_level filter and now using that filter to apply the_content filters to the level description at checkout. This allows you to turn off the the_content filters (e.g. processing shortcodes) by using remove_filter('pmpro_checkout_level', 'pmpro_pmpro_checkout_level'); in a custom plugin.
-* BUG/ENHANCEMENT: Using the pmpro_confirmation_message filter on the confirmation page whether there is an invoice or not. Now also adding the the_content filters to the confirmation message. You can disable this by using remove_filter('pmpro_confirmation_message', 'pmpro_pmpro_confirmation_message'); in a custom plugin.
+* BUG/ENHANCEMENT: Added dmrfid_checkout_level filter and now using that filter to apply the_content filters to the level description at checkout. This allows you to turn off the the_content filters (e.g. processing shortcodes) by using remove_filter('dmrfid_checkout_level', 'dmrfid_dmrfid_checkout_level'); in a custom plugin.
+* BUG/ENHANCEMENT: Using the dmrfid_confirmation_message filter on the confirmation page whether there is an invoice or not. Now also adding the the_content filters to the confirmation message. You can disable this by using remove_filter('dmrfid_confirmation_message', 'dmrfid_dmrfid_confirmation_message'); in a custom plugin.
 * ENHANCEMENT: Now tracking IPN event ids in order notes for recurring orders.
-* ENHANCEMENT: Added pmpro_subscription_ipn_event_processed hook to IPN handler.
-* ENHANCEMENT: Added pmpro_set_message filter to edit PMPro error messages. Passes the message and type.
+* ENHANCEMENT: Added dmrfid_subscription_ipn_event_processed hook to IPN handler.
+* ENHANCEMENT: Added dmrfid_set_message filter to edit DmRFID error messages. Passes the message and type.
 * ENHANCEMENT: Now listing categories in hierarchical format in the Content Settings section of Membership Levels.
-* ENHANCEMENT: Added pmpro_areLevelsFree() function to check if all levels in an array of levels are free.
-* ENHANCEMENT: Added pmpro_getLevelsCost() - with an s - function to get the combined cost of multiple levels in an array.
-* ENHANCEMENT: Added pmpro_getLevelsExpiration() - with an s - function to get the combined expiration text for multiple levels in array.
-* ENHANCEMENT: Created the pmpro_getLevelAtCheckout function that modularizes some of the logic of creating the pmpro_level global at checkout.
-* ENHANCEMENT: Added pmpro_members_list_user filter used on the admin members list and members list CSV export.
-* ENHANCEMENT: Added a 4th parameter $cancel_level to pmpro_changeMembershipLevel(). If set, that level will definitely be cancelled locally and at the gateway. This parameter is also passed to the pmpro_before_change_membership_level and pmpro_after_change_membership_level hook.
-* ENHANCEMENT: Added a new function pmpro_cancelMembershipLevel($level_id, $user_id, $old_level_status) that acts as a wrapper to pass the $cancel_level param to pmpro_changeMembershipLevel().
+* ENHANCEMENT: Added dmrfid_areLevelsFree() function to check if all levels in an array of levels are free.
+* ENHANCEMENT: Added dmrfid_getLevelsCost() - with an s - function to get the combined cost of multiple levels in an array.
+* ENHANCEMENT: Added dmrfid_getLevelsExpiration() - with an s - function to get the combined expiration text for multiple levels in array.
+* ENHANCEMENT: Created the dmrfid_getLevelAtCheckout function that modularizes some of the logic of creating the dmrfid_level global at checkout.
+* ENHANCEMENT: Added dmrfid_members_list_user filter used on the admin members list and members list CSV export.
+* ENHANCEMENT: Added a 4th parameter $cancel_level to dmrfid_changeMembershipLevel(). If set, that level will definitely be cancelled locally and at the gateway. This parameter is also passed to the dmrfid_before_change_membership_level and dmrfid_after_change_membership_level hook.
+* ENHANCEMENT: Added a new function dmrfid_cancelMembershipLevel($level_id, $user_id, $old_level_status) that acts as a wrapper to pass the $cancel_level param to dmrfid_changeMembershipLevel().
 * ENHANCEMENT: Updated the cancel page on the frontend to support the Multiple Memberships per User addon. All memberships are shown. You can cancel individual memberships separately. The language of the confirm button mentions memberships vs account.
-* ENHANCEMENT: Added pmpro_getMemberOrdersByCheckoutID($checkout_id) function to support Multiple Memberships per User and others using the checkout_id.
-* ENHANCEMENT: Added a refund($order, $transaction_id) method to the PMPro_stripe class. This will be used by the Multiple Memberships per User addon and eventually used in other areas by the core pluginn.
+* ENHANCEMENT: Added dmrfid_getMemberOrdersByCheckoutID($checkout_id) function to support Multiple Memberships per User and others using the checkout_id.
+* ENHANCEMENT: Added a refund($order, $transaction_id) method to the DmRFID_stripe class. This will be used by the Multiple Memberships per User addon and eventually used in other areas by the core pluginn.

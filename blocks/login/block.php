@@ -5,7 +5,7 @@
  * @package blocks/login
  **/
 
-namespace PMPro\blocks\login_form;
+namespace DmRFID\blocks\login_form;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -26,7 +26,7 @@ function register_dynamic_block() {
 
 	// Hook server side rendering into render callback.
 	register_block_type(
-		'pmpro/login-form',
+		'dmrfid/login-form',
 		array(
 			'attributes'      => array(
 				'display_if_logged_in' => array(
@@ -58,5 +58,5 @@ function render_dynamic_block( $attributes ) {
 	$attributes['show_menu']            = filter_var( $attributes['show_menu'], FILTER_VALIDATE_BOOLEAN );
 	$attributes['show_logout_link']     = filter_var( $attributes['show_logout_link'], FILTER_VALIDATE_BOOLEAN );
 
-	return( pmpro_login_forms_handler( $attributes['show_menu'], $attributes['show_logout_link'], $attributes['display_if_logged_in'], '', false ) );
+	return( dmrfid_login_forms_handler( $attributes['show_menu'], $attributes['show_logout_link'], $attributes['display_if_logged_in'], '', false ) );
 }

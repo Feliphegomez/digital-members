@@ -1,11 +1,11 @@
 <?php
-	//include pmprogateway
-	require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+	//include dmrfidgateway
+	require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 	
 	//load classes init method
-	add_action('init', array('PMProGateway_check', 'init'));
+	add_action('init', array('DmRFIDGateway_check', 'init'));
 	
-	class PMProGateway_check extends PMProGateway
+	class DmRFIDGateway_check extends DmRFIDGateway
 	{
 		function __construct($gateway = NULL)
 		{
@@ -21,20 +21,20 @@
 		static function init()
 		{			
 			//make sure Pay by Check is a gateway option
-			add_filter('pmpro_gateways', array('PMProGateway_check', 'pmpro_gateways'));
+			add_filter('dmrfid_gateways', array('DmRFIDGateway_check', 'dmrfid_gateways'));
 			
 			//add fields to payment settings
-			add_filter('pmpro_payment_options', array('PMProGateway_check', 'pmpro_payment_options'));
-			add_filter('pmpro_payment_option_fields', array('PMProGateway_check', 'pmpro_payment_option_fields'), 10, 2);
-			add_filter('pmpro_checkout_after_payment_information_fields', array('PMProGateway_check', 'pmpro_checkout_after_payment_information_fields'));
+			add_filter('dmrfid_payment_options', array('DmRFIDGateway_check', 'dmrfid_payment_options'));
+			add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_check', 'dmrfid_payment_option_fields'), 10, 2);
+			add_filter('dmrfid_checkout_after_payment_information_fields', array('DmRFIDGateway_check', 'dmrfid_checkout_after_payment_information_fields'));
 
 			//code to add at checkout
-			$gateway = pmpro_getGateway();
+			$gateway = dmrfid_getGateway();
 			if($gateway == "check")
 			{
-				add_filter('pmpro_include_billing_address_fields', '__return_false');
-				add_filter('pmpro_include_payment_information_fields', '__return_false');
-				add_filter('pmpro_required_billing_fields', array('PMProGateway_check', 'pmpro_required_billing_fields'));
+				add_filter('dmrfid_include_billing_address_fields', '__return_false');
+				add_filter('dmrfid_include_payment_information_fields', '__return_false');
+				add_filter('dmrfid_required_billing_fields', array('DmRFIDGateway_check', 'dmrfid_required_billing_fields'));
 			}
 		}
 		
@@ -43,7 +43,7 @@
 		 *		 
 		 * @since 1.8
 		 */
-		static function pmpro_gateways($gateways)
+		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['check']))
 				$gateways['check'] = __('Pay by Check', 'paid-memberships-pro' );
@@ -77,10 +77,10 @@
 		 *		 
 		 * @since 1.8
 		 */
-		static function pmpro_payment_options($options)
+		static function dmrfid_payment_options($options)
 		{			
 			//get stripe options
-			$check_options = PMProGateway_check::getGatewayOptions();
+			$check_options = DmRFIDGateway_check::getGatewayOptions();
 			
 			//merge with others.
 			$options = array_merge($check_options, $options);
@@ -93,10 +93,10 @@
 		 *		 
 		 * @since 1.8
 		 */
-		static function pmpro_payment_option_fields($values, $gateway)
+		static function dmrfid_payment_option_fields($values, $gateway)
 		{
 		?>
-		<tr class="pmpro_settings_divider gateway gateway_check" <?php if($gateway != "check") { ?>style="display: none;"<?php } ?>>
+		<tr class="dmrfid_settings_divider gateway gateway_check" <?php if($gateway != "check") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
 				<h3><?php _e('Pay by Check Settings', 'paid-memberships-pro' ); ?></h3>
@@ -119,7 +119,7 @@
 		 *		 
 		 * @since 1.8
 		 */
-		static function pmpro_required_billing_fields($fields)
+		static function dmrfid_required_billing_fields($fields)
 		{
 			unset($fields['bfirstname']);
 			unset($fields['blastname']);
@@ -144,13 +144,13 @@
 		 * Moved here from pages/checkout.php
 		 * @since 1.8.9.3
 		 */
-		static function pmpro_checkout_after_payment_information_fields() {
+		static function dmrfid_checkout_after_payment_information_fields() {
 			global $gateway;
-			global $pmpro_level;
+			global $dmrfid_level;
 
-			if($gateway == "check" && !pmpro_isLevelFree($pmpro_level)) {
-				$instructions = pmpro_getOption("instructions");
-				echo '<div class="' . pmpro_get_element_class( 'pmpro_check_instructions' ) . '">' . wpautop(wp_unslash( $instructions )) . '</div>';
+			if($gateway == "check" && !dmrfid_isLevelFree($dmrfid_level)) {
+				$instructions = dmrfid_getOption("instructions");
+				echo '<div class="' . dmrfid_get_element_class( 'dmrfid_check_instructions' ) . '">' . wpautop(wp_unslash( $instructions )) . '</div>';
 			}
 		}
 
@@ -173,7 +173,7 @@
 				if($this->authorize($order))
 				{						
 					$this->void($order);										
-					if(!pmpro_isLevelTrial($order->membership_level))
+					if(!dmrfid_isLevelTrial($order->membership_level))
 					{
 						//subscription will start today with a 1 period trial
 						$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -202,7 +202,7 @@
 						$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 					}
 					
-					$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+					$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 					return $this->subscribe($order);
 				}
 				else
@@ -218,9 +218,9 @@
 				if($this->charge($order))
 				{							
 					//set up recurring billing					
-					if(pmpro_isLevelRecurring($order->membership_level))
+					if(dmrfid_isLevelRecurring($order->membership_level))
 					{						
-						if(!pmpro_isLevelTrial($order->membership_level))
+						if(!dmrfid_isLevelTrial($order->membership_level))
 						{
 							//subscription will start today with a 1 period trial
 							$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -249,10 +249,10 @@
 							$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 						}
 						
-						$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+						$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 						if($this->subscribe($order))
 						{
-							$order->status = apply_filters("pmpro_check_status_after_checkout", "success");	//saved on checkout page	
+							$order->status = apply_filters("dmrfid_check_status_after_checkout", "success");	//saved on checkout page	
 							return true;
 						}
 						else
@@ -276,7 +276,7 @@
 					else
 					{
 						//only a one time charge
-						$order->status = apply_filters("pmpro_check_status_after_checkout", "success");	//saved on checkout page											
+						$order->status = apply_filters("dmrfid_check_status_after_checkout", "success");	//saved on checkout page											
 						return true;
 					}
 				}
@@ -333,7 +333,7 @@
 				$order->code = $order->getRandomCode();
 			
 			//filter order before subscription. use with care.
-			$order = apply_filters("pmpro_subscribe_order", $order, $this);
+			$order = apply_filters("dmrfid_subscribe_order", $order, $this);
 			
 			//simulate a successful subscription processing
 			$order->status = "success";		

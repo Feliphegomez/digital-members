@@ -34,8 +34,8 @@
 		}
 	}
 
-	$fields = apply_filters("pmpro_authnet_silent_post_fields", $fields);
-	do_action("pmpro_before_authnet_silent_post", $fields);
+	$fields = apply_filters("dmrfid_authnet_silent_post_fields", $fields);
+	do_action("dmrfid_before_authnet_silent_post", $fields);
 
 	// Save input values to log
 	$logstr .= "\n----\n";
@@ -64,7 +64,7 @@
 	if($arb == true)
 	{
 		// okay, add an invoice. first lookup the user_id from the subscription id passed
-		$old_order_id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_membership_orders WHERE subscription_transaction_id = '" . esc_sql($fields['x_subscription_id']) . "' AND gateway = 'authorizenet' ORDER BY timestamp DESC LIMIT 1");
+		$old_order_id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE subscription_transaction_id = '" . esc_sql($fields['x_subscription_id']) . "' AND gateway = 'authorizenet' ORDER BY timestamp DESC LIMIT 1");
 		$old_order = new MemberOrder($old_order_id);
 		$user_id = $old_order->user_id;
 		$user = get_userdata($user_id);
@@ -76,7 +76,7 @@
 				//should we check for a dupe x_trans_id?
 
 				//get the user's membership level info
-				$user->membership_level = pmpro_getMembershipLevelForUser($user_id);
+				$user->membership_level = dmrfid_getMembershipLevelForUser($user_id);
 
 				//alright. create a new order/invoice
 				$morder = new MemberOrder();
@@ -112,10 +112,10 @@
 				$morder->billing->phone = $fields['x_phone'];
 
 				//get CC info that is on file
-				$morder->cardtype = get_user_meta($user_id, "pmpro_CardType", true);
-				$morder->accountnumber = hideCardNumber(get_user_meta($user_id, "pmpro_AccountNumber", true), false);
-				$morder->expirationmonth = get_user_meta($user_id, "pmpro_ExpirationMonth", true);
-				$morder->expirationyear = get_user_meta($user_id, "pmpro_ExpirationYear", true);
+				$morder->cardtype = get_user_meta($user_id, "dmrfid_CardType", true);
+				$morder->accountnumber = hideCardNumber(get_user_meta($user_id, "dmrfid_AccountNumber", true), false);
+				$morder->expirationmonth = get_user_meta($user_id, "dmrfid_ExpirationMonth", true);
+				$morder->expirationyear = get_user_meta($user_id, "dmrfid_ExpirationYear", true);
 				$morder->ExpirationDate = $morder->expirationmonth . $morder->expirationyear;
 				$morder->ExpirationDate_YdashM = $morder->expirationyear . "-" . $morder->expirationmonth;
 
@@ -125,11 +125,11 @@
 				$morder->getMemberOrderByID($morder->id);
 
 				//email the user their invoice
-				$pmproemail = new PMProEmail();
-				$pmproemail->sendInvoiceEmail($user, $morder);
+				$dmrfidemail = new DmRFIDEmail();
+				$dmrfidemail->sendInvoiceEmail($user, $morder);
 
 				//hook for successful subscription payments
-				do_action("pmpro_subscription_payment_completed", $morder);
+				do_action("dmrfid_subscription_payment_completed", $morder);
 
 			}
 		}
@@ -138,7 +138,7 @@
 			// Suspend the user's account
 			//But we can't suspend the account, maybe a future feature
 
-			do_action("pmpro_subscription_payment_failed", $old_order);
+			do_action("dmrfid_subscription_payment_failed", $old_order);
 
 			//prep this order for the failure emails
 			$morder = new MemberOrder();
@@ -152,26 +152,26 @@
 			$morder->billing->phone = $fields['x_phone'];
 
 			//get CC info that is on file
-			$morder->cardtype = get_user_meta($user_id, "pmpro_CardType", true);
-			$morder->accountnumber = hideCardNumber(get_user_meta($user_id, "pmpro_AccountNumber", true), false);
-			$morder->expirationmonth = get_user_meta($user_id, "pmpro_ExpirationMonth", true);
-			$morder->expirationyear = get_user_meta($user_id, "pmpro_ExpirationYear", true);
+			$morder->cardtype = get_user_meta($user_id, "dmrfid_CardType", true);
+			$morder->accountnumber = hideCardNumber(get_user_meta($user_id, "dmrfid_AccountNumber", true), false);
+			$morder->expirationmonth = get_user_meta($user_id, "dmrfid_ExpirationMonth", true);
+			$morder->expirationyear = get_user_meta($user_id, "dmrfid_ExpirationYear", true);
 
 			// Email the user and ask them to update their credit card information
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendBillingFailureEmail($user, $morder);
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendBillingFailureEmail($user, $morder);
 
 			// Email admin so they are aware of the failure
-			$pmproemail = new PMProEmail();
-			$pmproemail->sendBillingFailureAdminEmail(get_bloginfo("admin_email"), $morder);
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->sendBillingFailureAdminEmail(get_bloginfo("admin_email"), $morder);
 		}
 		else
 		{
 			//response 4? send an email to the admin
-			$pmproemail = new PMProEmail();
-			$pmproemail->data = array("body"=>__("<p>A payment is being held for review within Authorize.net.</p><p>Payment Information From Authorize.net", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($fields, true)));
-			$pmproemail->sendEmail(get_bloginfo("admin_email"));
+			$dmrfidemail = new DmRFIDEmail();
+			$dmrfidemail->data = array("body"=>__("<p>A payment is being held for review within Authorize.net.</p><p>Payment Information From Authorize.net", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($fields, true)));
+			$dmrfidemail->sendEmail(get_bloginfo("admin_email"));
 		}
 	}
 
-	do_action("pmpro_after_authnet_silent_post", $fields);
+	do_action("dmrfid_after_authnet_silent_post", $fields);

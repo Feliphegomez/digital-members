@@ -1,5 +1,5 @@
 /**
- * Block: PMPro Membership
+ * Block: DmRFID Membership
  *
  *
  */
@@ -21,23 +21,23 @@ const {
     InnerBlocks,
 } = wp.blockEditor;
 
-const all_levels = [{ value: 0, label: "Non-Members" }].concat( pmpro.all_level_values_and_labels );
+const all_levels = [{ value: 0, label: "Non-Members" }].concat( dmrfid.all_level_values_and_labels );
 
  /**
   * Register block
   */
  export default registerBlockType(
-     'pmpro/membership',
+     'dmrfid/membership',
      {
          title: __( 'Require Membership Block', 'paid-memberships-pro' ),
          description: __( 'Control the visibility of nested blocks for members or non-members.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'visibility',
          },
-         keywords: [ __( 'pmpro', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
          attributes: {
              levels: {
                  type: 'array',
@@ -66,8 +66,8 @@ const all_levels = [{ value: 0, label: "Non-Members" }].concat( pmpro.all_level_
                         />
                     </PanelBody>
                 </InspectorControls>,
-                isSelected && <div className="pmpro-block-require-membership-element" >
-                  <span className="pmpro-block-title">{ __( 'Require Membership', 'paid-memberships-pro' ) }</span>
+                isSelected && <div className="dmrfid-block-require-membership-element" >
+                  <span className="dmrfid-block-title">{ __( 'Require Membership', 'paid-memberships-pro' ) }</span>
                   <PanelBody>
                       <SelectControl
                           multiple
@@ -84,8 +84,8 @@ const all_levels = [{ value: 0, label: "Non-Members" }].concat( pmpro.all_level_
                       templateLock={ false }
                   />
                 </div>,
-                ! isSelected && <div className="pmpro-block-require-membership-element" >
-                  <span className="pmpro-block-title">{ __( 'Require Membership', 'paid-memberships-pro' ) }</span>
+                ! isSelected && <div className="dmrfid-block-require-membership-element" >
+                  <span className="dmrfid-block-title">{ __( 'Require Membership', 'paid-memberships-pro' ) }</span>
                   <InnerBlocks
                       renderAppender={ () => (
                         <InnerBlocks.ButtonBlockAppender />

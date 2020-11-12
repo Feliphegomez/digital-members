@@ -1,17 +1,17 @@
 <?php
 	//only admins can get this
-	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_membershiplevels")))
+	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_membershiplevels")))
 	{
 		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
 	}
 
-	global $wpdb, $msg, $msgt, $pmpro_currency_symbol, $allowedposttags;
+	global $wpdb, $msg, $msgt, $dmrfid_currency_symbol, $allowedposttags;
 
 	//some vars
-	$gateway = pmpro_getOption("gateway");
-    $pmpro_level_order = pmpro_getOption('level_order');
+	$gateway = dmrfid_getOption("gateway");
+    $dmrfid_level_order = dmrfid_getOption('level_order');
 
-	global $pmpro_stripe_error, $pmpro_braintree_error, $pmpro_payflow_error, $pmpro_twocheckout_error, $wp_version;
+	global $dmrfid_stripe_error, $dmrfid_braintree_error, $dmrfid_payflow_error, $dmrfid_twocheckout_error, $wp_version;
 
 	if(isset($_REQUEST['edit']))
 		$edit = intval($_REQUEST['edit']);
@@ -38,7 +38,7 @@
 		$deleteid = intval($_REQUEST['deleteid']);
 
 	//check nonce
-	if(!empty($action) && (empty($_REQUEST['pmpro_membershiplevels_nonce']) || !check_admin_referer($action, 'pmpro_membershiplevels_nonce'))) {
+	if(!empty($action) && (empty($_REQUEST['dmrfid_membershiplevels_nonce']) || !check_admin_referer($action, 'dmrfid_membershiplevels_nonce'))) {
 		$msg = -1;
 		$msgt = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
 		$action = false;
@@ -99,8 +99,8 @@
 			$ml_expiration_number = $ml_expiration_period = 0;
 		}
 
-		pmpro_insert_or_replace(
-			$wpdb->pmpro_membership_levels,
+		dmrfid_insert_or_replace(
+			$wpdb->dmrfid_membership_levels,
 			array(
 				'id'=>max($saveid, 0),
 				'name' => $ml_name,
@@ -139,11 +139,11 @@
 			//added a level
 			$saveid = $wpdb->insert_id;
 
-			pmpro_updateMembershipCategories( $saveid, $ml_categories );
+			dmrfid_updateMembershipCategories( $saveid, $ml_categories );
 
 			if(empty($wpdb->last_error)) {
 				$saveid = $wpdb->insert_id;
-				pmpro_updateMembershipCategories( $saveid, $ml_categories );
+				dmrfid_updateMembershipCategories( $saveid, $ml_categories );
 
 				$edit = false;
 				$msg = 1;
@@ -153,7 +153,7 @@
 				$msgt = __("Error adding membership level.", 'paid-memberships-pro' );
 			}
 		} else {
-			pmpro_updateMembershipCategories( $saveid, $ml_categories );
+			dmrfid_updateMembershipCategories( $saveid, $ml_categories );
 
 			if(empty($wpdb->last_error)) {
 				$edit = false;
@@ -166,7 +166,7 @@
 		}
 		
 		if( ! empty( $msgt ) && $ml_recurring && $ml_expiration ) {
-			$msgt .= ' <strong class="red">' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
+			$msgt .= ' <strong class="red">' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 				
 			// turn success to errors
 			if( $msg > 0 ) {
@@ -176,10 +176,10 @@
 
 		// Update the Level Meta to Add Confirmation Message to Email.
 		if ( isset( $ml_confirmation_in_email ) ) {
-			update_pmpro_membership_level_meta( $saveid, 'confirmation_in_email', $ml_confirmation_in_email );
+			update_dmrfid_membership_level_meta( $saveid, 'confirmation_in_email', $ml_confirmation_in_email );
 		}
 		
-		do_action("pmpro_save_membership_level", $saveid);
+		do_action("dmrfid_save_membership_level", $saveid);
 	}
 	elseif($action == "delete_membership_level")
 	{
@@ -188,11 +188,11 @@
 		$ml_id = intval($_REQUEST['deleteid']);
 
 		if($ml_id > 0) {
-			do_action("pmpro_delete_membership_level", $ml_id);
+			do_action("dmrfid_delete_membership_level", $ml_id);
 
 			//remove any categories from the ml
 			$sqlQuery = $wpdb->prepare("
-				DELETE FROM $wpdb->pmpro_memberships_categories
+				DELETE FROM $wpdb->dmrfid_memberships_categories
 				WHERE membership_id = %d",
 				$ml_id
 			);
@@ -202,7 +202,7 @@
 			//cancel any subscriptions to the ml
 			$r2 = true;
 			$user_ids = $wpdb->get_col( $wpdb->prepare( "
-				SELECT user_id FROM $wpdb->pmpro_memberships_users
+				SELECT user_id FROM $wpdb->dmrfid_memberships_users
 				WHERE membership_id = %d
 				AND status = 'active'",
 			 	$ml_id
@@ -210,22 +210,22 @@
 
 			foreach($user_ids as $user_id) {
 				//change there membership level to none. that will handle the cancel
-				if(pmpro_changeMembershipLevel(0, $user_id)) {
+				if(dmrfid_changeMembershipLevel(0, $user_id)) {
 					//okay
 				} else {
 					//couldn't delete the subscription
 					//we should probably notify the admin
-					$pmproemail = new PMProEmail();
-					$pmproemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%d. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), $user_id) . "</p>");
+					$dmrfidemail = new DmRFIDEmail();
+					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%d. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), $user_id) . "</p>");
 					$last_order = $wpdb->get_row( $wpdb->prepare( "
-						SELECT * FROM $wpdb->pmpro_membership_orders
+						SELECT * FROM $wpdb->dmrfid_membership_orders
 						WHERE user_id = %d
 						ORDER BY timestamp DESC LIMIT 1",
 						$user_id
 					) );
 					if($last_order)
-						$pmproemail->data["body"] .= "<p>" . __("Last Invoice", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($last_order, true)) . "</p>";
-					$pmproemail->sendEmail(get_bloginfo("admin_email"));
+						$dmrfidemail->data["body"] .= "<p>" . __("Last Invoice", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($last_order, true)) . "</p>";
+					$dmrfidemail->sendEmail(get_bloginfo("admin_email"));
 
 					$r2 = false;
 				}
@@ -233,7 +233,7 @@
 
 			//delete the ml
 			$sqlQuery = $wpdb->prepare( "
-				DELETE FROM $wpdb->pmpro_membership_levels
+				DELETE FROM $wpdb->dmrfid_membership_levels
 				WHERE id = %d LIMIT 1",
 				$ml_id
 			);
@@ -275,7 +275,7 @@
 			// get the level...
 			if(!empty($edit) && $edit > 0) {
 				$level = $wpdb->get_row( $wpdb->prepare( "
-					SELECT * FROM $wpdb->pmpro_membership_levels
+					SELECT * FROM $wpdb->dmrfid_membership_levels
 					WHERE id = %d LIMIT 1",
 					$edit
 				),
@@ -284,7 +284,7 @@
 				$temp_id = $level->id;
 			} elseif(!empty($copy) && $copy > 0) {
 				$level = $wpdb->get_row( $wpdb->prepare( "
-					SELECT * FROM $wpdb->pmpro_membership_levels
+					SELECT * FROM $wpdb->dmrfid_membership_levels
 					WHERE id = %d LIMIT 1",
 					$copy
 				),
@@ -322,7 +322,7 @@
 			if(!empty($temp_id))
 				$level->categories = $wpdb->get_col( $wpdb->prepare( "
 					SELECT c.category_id
-					FROM $wpdb->pmpro_memberships_categories c
+					FROM $wpdb->dmrfid_memberships_categories c
 					WHERE c.membership_id = %d",
 					$temp_id
 				) );
@@ -331,7 +331,7 @@
 			
 			// grab the meta for the given level...
 			if ( ! empty( $temp_id ) ) {
-				$confirmation_in_email = get_pmpro_membership_level_meta( $temp_id, 'confirmation_in_email', true );
+				$confirmation_in_email = get_dmrfid_membership_level_meta( $temp_id, 'confirmation_in_email', true );
 			} else {
 				$confirmation_in_email = 0;
 			}
@@ -340,7 +340,7 @@
 		<form action="" method="post" enctype="multipart/form-data">
 			<input name="saveid" type="hidden" value="<?php echo esc_attr($edit); ?>" />
 			<input type="hidden" name="action" value="save_membershiplevel" />
-			<?php wp_nonce_field('save_membershiplevel', 'pmpro_membershiplevels_nonce'); ?>
+			<?php wp_nonce_field('save_membershiplevel', 'dmrfid_membershiplevels_nonce'); ?>
 			<table class="form-table">
 			<tbody>
 				<tr>
@@ -358,7 +358,7 @@
 				<tr>
 					<th scope="row" valign="top"><label for="description"><?php _e('Description', 'paid-memberships-pro' );?>:</label></th>
 					<td>
-						<div id="poststuff" class="pmpro_description">
+						<div id="poststuff" class="dmrfid_description">
 						<?php
 							if(version_compare($wp_version, "3.3") >= 0)
 								wp_editor($level->description, "description", array("textarea_rows"=>5));
@@ -376,7 +376,7 @@
 				<tr>
 					<th scope="row" valign="top"><label for="confirmation"><?php _e('Confirmation Message', 'paid-memberships-pro' );?>:</label></th>
 					<td>
-						<div class="pmpro_confirmation">
+						<div class="dmrfid_confirmation">
 						<?php
 							if(version_compare($wp_version, "3.3") >= 0)
 								wp_editor($level->confirmation, "confirmation", array("textarea_rows"=>5));
@@ -401,13 +401,13 @@
 					<th scope="row" valign="top"><label for="initial_payment"><?php _e('Initial Payment', 'paid-memberships-pro' );?>:</label></th>
 					<td>
 						<?php
-						if(pmpro_getCurrencyPosition() == "left")
-							echo $pmpro_currency_symbol;
+						if(dmrfid_getCurrencyPosition() == "left")
+							echo $dmrfid_currency_symbol;
 						?>
-						<input name="initial_payment" type="text" value="<?php echo esc_attr( pmpro_filter_price_for_text_field( $level->initial_payment ) );?>" class="regular-text" />
+						<input name="initial_payment" type="text" value="<?php echo esc_attr( dmrfid_filter_price_for_text_field( $level->initial_payment ) );?>" class="regular-text" />
 						<?php
-						if(pmpro_getCurrencyPosition() == "right")
-							echo $pmpro_currency_symbol;
+						if(dmrfid_getCurrencyPosition() == "right")
+							echo $dmrfid_currency_symbol;
 						?>
 						<p class="description"><?php _e('The initial amount collected at registration.', 'paid-memberships-pro' );?></p>
 					</td>
@@ -415,20 +415,20 @@
 
 				<tr>
 					<th scope="row" valign="top"><label><?php _e('Recurring Subscription', 'paid-memberships-pro' );?>:</label></th>
-					<td><input id="recurring" name="recurring" type="checkbox" value="yes" <?php if(pmpro_isLevelRecurring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery('#recurring').is(':checked')) { jQuery('.recurring_info').show(); if(jQuery('#custom_trial').is(':checked')) {jQuery('.trial_info').show();} else {jQuery('.trial_info').hide();} } else { jQuery('.recurring_info').hide();}" /> <label for="recurring"><?php _e('Check if this level has a recurring subscription payment.', 'paid-memberships-pro' );?></label></td>
+					<td><input id="recurring" name="recurring" type="checkbox" value="yes" <?php if(dmrfid_isLevelRecurring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery('#recurring').is(':checked')) { jQuery('.recurring_info').show(); if(jQuery('#custom_trial').is(':checked')) {jQuery('.trial_info').show();} else {jQuery('.trial_info').hide();} } else { jQuery('.recurring_info').hide();}" /> <label for="recurring"><?php _e('Check if this level has a recurring subscription payment.', 'paid-memberships-pro' );?></label></td>
 				</tr>
 
-				<tr class="recurring_info" <?php if(!pmpro_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
+				<tr class="recurring_info" <?php if(!dmrfid_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
 					<th scope="row" valign="top"><label for="billing_amount"><?php _e('Billing Amount', 'paid-memberships-pro' );?>:</label></th>
 					<td>
 						<?php
-						if(pmpro_getCurrencyPosition() == "left")
-							echo $pmpro_currency_symbol;
+						if(dmrfid_getCurrencyPosition() == "left")
+							echo $dmrfid_currency_symbol;
 						?>
-						<input name="billing_amount" type="text" value="<?php echo esc_attr( pmpro_filter_price_for_text_field( $level->billing_amount ) );?>"  class="regular-text" />
+						<input name="billing_amount" type="text" value="<?php echo esc_attr( dmrfid_filter_price_for_text_field( $level->billing_amount ) );?>"  class="regular-text" />
 						<?php
-						if(pmpro_getCurrencyPosition() == "right")
-							echo $pmpro_currency_symbol;
+						if(dmrfid_getCurrencyPosition() == "right")
+							echo $dmrfid_currency_symbol;
 						?>
 						<?php _e('per', 'paid-memberships-pro' );?>
 						<input id="cycle_number" name="cycle_number" type="text" value="<?php echo esc_attr($level->cycle_number);?>" class="small-text" />
@@ -445,31 +445,31 @@
 						<p class="description">
 							<?php _e('The amount to be billed one cycle after the initial payment.', 'paid-memberships-pro' );?>
 							<?php if($gateway == "braintree") { ?>
-								<strong <?php if(!empty($pmpro_braintree_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('Braintree integration currently only supports billing periods of "Month" or "Year".', 'paid-memberships-pro' );?></strong>
+								<strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently only supports billing periods of "Month" or "Year".', 'paid-memberships-pro' );?></strong>
 							<?php } elseif($gateway == "stripe") { ?>
-								<p class="description"><strong <?php if(!empty($pmpro_stripe_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('Stripe integration does not allow billing periods longer than 1 year.', 'paid-memberships-pro' );?></strong></p>
+								<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration does not allow billing periods longer than 1 year.', 'paid-memberships-pro' );?></strong></p>
 							<?php }?>
 						</p>
 						<?php if($gateway == "braintree" && $edit < 0) { ?>
-							<p class="pmpro_message"><strong><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php _e('After saving this level, make note of the ID and create a "Plan" in your Braintree dashboard with the same settings and the "Plan ID" set to <em>pmpro_#</em>, where # is the level ID.', 'paid-memberships-pro' );?></p>
+							<p class="dmrfid_message"><strong><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php _e('After saving this level, make note of the ID and create a "Plan" in your Braintree dashboard with the same settings and the "Plan ID" set to <em>dmrfid_#</em>, where # is the level ID.', 'paid-memberships-pro' );?></p>
 						<?php } elseif($gateway == "braintree") {
-						    $has_bt_plan = PMProGateway_braintree::checkLevelForPlan( $level->id );
+						    $has_bt_plan = DmRFIDGateway_braintree::checkLevelForPlan( $level->id );
 							?>
-							<p class="pmpro_message <?php if ( ! $has_bt_plan ) {?>pmpro_error<?php } ?>">
-                                <strong><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php printf( __('You will need to create a "Plan" in your Braintree dashboard with the same settings and the "Plan ID" set to %s.', 'paid-memberships-pro' ), PMProGateway_braintree::get_plan_id( $level->id ) ); ?></p>
+							<p class="dmrfid_message <?php if ( ! $has_bt_plan ) {?>dmrfid_error<?php } ?>">
+                                <strong><?php _e('Note', 'paid-memberships-pro' );?>:</strong> <?php printf( __('You will need to create a "Plan" in your Braintree dashboard with the same settings and the "Plan ID" set to %s.', 'paid-memberships-pro' ), DmRFIDGateway_braintree::get_plan_id( $level->id ) ); ?></p>
 						<?php } ?>
 					</td>
 				</tr>
 
-				<tr class="recurring_info" <?php if(!pmpro_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
+				<tr class="recurring_info" <?php if(!dmrfid_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
 					<th scope="row" valign="top"><label for="billing_limit"><?php _e('Billing Cycle Limit', 'paid-memberships-pro' );?>:</label></th>
 					<td>
 						<input name="billing_limit" type="text" value="<?php echo $level->billing_limit?>" class="small-text" />
 						<p class="description">
 							<?php _e('The <strong>total</strong> number of recurring billing cycles for this level, including the trial period (if applicable) but not including the initial payment. Set to zero if membership is indefinite.', 'paid-memberships-pro' );?>
-							<?php if ( ( $gateway == "stripe" ) && ! function_exists( 'pmprosbl_plugin_row_meta' ) ) { ?>
-								<br /><strong <?php if(!empty($pmpro_stripe_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('Stripe integration currently does not support billing limits. You can still set an expiration date below.', 'paid-memberships-pro' );?></strong>
-								<?php if ( ! function_exists( 'pmprosd_pmpro_membership_level_after_other_settings' ) ) {
+							<?php if ( ( $gateway == "stripe" ) && ! function_exists( 'dmrfidsbl_plugin_row_meta' ) ) { ?>
+								<br /><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support billing limits. You can still set an expiration date below.', 'paid-memberships-pro' );?></strong>
+								<?php if ( ! function_exists( 'dmrfidsd_dmrfid_membership_level_after_other_settings' ) ) {
 										$allowed_sbl_html = array (
 											'a' => array (
 												'href' => array(),
@@ -477,25 +477,25 @@
 												'title' => array(),
 											),
 										);
-										echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'paid-memberships-pro' ), $allowed_sbl_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-stripe-billing-limits/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
+										echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'paid-memberships-pro' ), $allowed_sbl_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
 								} ?>
 							<?php } ?>
 						</p>
 					</td>
 				</tr>
 
-				<tr class="recurring_info" <?php if (!pmpro_isLevelRecurring($level)) echo "style='display:none;'";?>>
+				<tr class="recurring_info" <?php if (!dmrfid_isLevelRecurring($level)) echo "style='display:none;'";?>>
 					<th scope="row" valign="top"><label><?php _e('Custom Trial', 'paid-memberships-pro' );?>:</label></th>
 					<td>
-						<input id="custom_trial" name="custom_trial" type="checkbox" value="yes" <?php if ( pmpro_isLevelTrial($level) ) { echo "checked='checked'"; } ?> onclick="jQuery('.trial_info').toggle();" /> <label for="custom_trial"><?php _e('Check to add a custom trial period.', 'paid-memberships-pro' );?></label>
+						<input id="custom_trial" name="custom_trial" type="checkbox" value="yes" <?php if ( dmrfid_isLevelTrial($level) ) { echo "checked='checked'"; } ?> onclick="jQuery('.trial_info').toggle();" /> <label for="custom_trial"><?php _e('Check to add a custom trial period.', 'paid-memberships-pro' );?></label>
 
 						<?php if($gateway == "twocheckout") { ?>
-							<p class="description"><strong <?php if(!empty($pmpro_twocheckout_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('2Checkout integration does not support custom trials. You can do one period trials by setting an initial payment different from the billing amount.', 'paid-memberships-pro' );?></strong></p>
+							<p class="description"><strong <?php if(!empty($dmrfid_twocheckout_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('2Checkout integration does not support custom trials. You can do one period trials by setting an initial payment different from the billing amount.', 'paid-memberships-pro' );?></strong></p>
 						<?php } ?>
 					</td>
 				</tr>
 
-				<?php if ( ! function_exists( 'pmprosd_pmpro_membership_level_after_other_settings' ) ) {
+				<?php if ( ! function_exists( 'dmrfidsd_dmrfid_membership_level_after_other_settings' ) ) {
 						$allowed_sd_html = array (
 							'a' => array (
 								'href' => array(),
@@ -503,30 +503,30 @@
 								'title' => array(),
 							),
 						);
-						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable trial periods and renewal dates using the <a href="%s" title="Digital Members RFID - Subscription Delays Add On" target="_blank">Subscription Delays Add On</a>.', 'paid-memberships-pro' ), $allowed_sd_html ), 'https://www.paidmembershipspro.com/add-ons/subscription-delays/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=subscription-delays' ) . '</p></td></tr>';
+						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable trial periods and renewal dates using the <a href="%s" title="Digital Members RFID - Subscription Delays Add On" target="_blank">Subscription Delays Add On</a>.', 'paid-memberships-pro' ), $allowed_sd_html ), 'https://www.paidmembershipspro.com/add-ons/subscription-delays/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=subscription-delays' ) . '</p></td></tr>';
 				} ?>
 
-				<tr class="trial_info recurring_info" <?php if (!pmpro_isLevelTrial($level)) echo "style='display:none;'";?>>
+				<tr class="trial_info recurring_info" <?php if (!dmrfid_isLevelTrial($level)) echo "style='display:none;'";?>>
 					<th scope="row" valign="top"><label for="trial_amount"><?php _e('Trial Billing Amount', 'paid-memberships-pro' );?>:</label></th>
 					<td>
 						<?php
-						if(pmpro_getCurrencyPosition() == "left")
-							echo $pmpro_currency_symbol;
+						if(dmrfid_getCurrencyPosition() == "left")
+							echo $dmrfid_currency_symbol;
 						?>
-						<input name="trial_amount" type="text" value="<?php echo esc_attr( pmpro_filter_price_for_text_field( $level->trial_amount ) );?>" class="regular-text" />
+						<input name="trial_amount" type="text" value="<?php echo esc_attr( dmrfid_filter_price_for_text_field( $level->trial_amount ) );?>" class="regular-text" />
 						<?php
-						if(pmpro_getCurrencyPosition() == "right")
-							echo $pmpro_currency_symbol;
+						if(dmrfid_getCurrencyPosition() == "right")
+							echo $dmrfid_currency_symbol;
 						?>
 						<?php _e('for the first', 'paid-memberships-pro' );?>
 						<input name="trial_limit" type="text" value="<?php echo esc_attr($level->trial_limit);?>" class="small-text" />
 						<?php _e('subscription payments', 'paid-memberships-pro' );?>.
 						<?php if($gateway == "stripe") { ?>
-							<p class="description"><strong <?php if(!empty($pmpro_stripe_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('Stripe integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
+							<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
 						<?php } elseif($gateway == "braintree") { ?>
-							<p class="description"><strong <?php if(!empty($pmpro_braintree_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('Braintree integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
+							<p class="description"><strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
 						<?php } elseif($gateway == "payflowpro") { ?>
-							<p class="description"><strong <?php if(!empty($pmpro_payflow_error)) { ?>class="pmpro_red"<?php } ?>><?php _e('Payflow integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
+							<p class="description"><strong <?php if(!empty($dmrfid_payflow_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Payflow integration currently does not support trial amounts greater than $0.', 'paid-memberships-pro' );?></strong></p>
 						<?php } ?>
 					</td>
 				</tr>
@@ -544,10 +544,10 @@
 
 				<tr>
 					<th scope="row" valign="top"><label><?php _e('Membership Expiration', 'paid-memberships-pro' );?>:</label></th>
-					<td><input id="expiration" name="expiration" type="checkbox" value="yes" <?php if(pmpro_isLevelExpiring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery('#expiration').is(':checked')) { jQuery('.expiration_info').show(); } else { jQuery('.expiration_info').hide();}" /> <label for="expiration"><?php _e('Check this to set when membership access expires.', 'paid-memberships-pro' );?></label></a></td>
+					<td><input id="expiration" name="expiration" type="checkbox" value="yes" <?php if(dmrfid_isLevelExpiring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery('#expiration').is(':checked')) { jQuery('.expiration_info').show(); } else { jQuery('.expiration_info').hide();}" /> <label for="expiration"><?php _e('Check this to set when membership access expires.', 'paid-memberships-pro' );?></label></a></td>
 				</tr>
 
-				<?php if ( ! function_exists( 'pmprosed_pmpro_membership_level_after_other_settings' ) ) {
+				<?php if ( ! function_exists( 'dmrfidsed_dmrfid_membership_level_after_other_settings' ) ) {
 						$allowed_sed_html = array (
 							'a' => array (
 								'href' => array(),
@@ -555,10 +555,10 @@
 								'title' => array(),
 							),
 						);
-						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable expiration dates using the <a href="%s" title="Digital Members RFID - Set Expiration Date Add On" target="_blank">Set Expiration Date Add On</a>.', 'paid-memberships-pro' ), $allowed_sed_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-expiration-date/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=add-ons&utm_content=pmpro-expiration-date' ) . '</p></td></tr>';
+						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable expiration dates using the <a href="%s" title="Digital Members RFID - Set Expiration Date Add On" target="_blank">Set Expiration Date Add On</a>.', 'paid-memberships-pro' ), $allowed_sed_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-expiration-date/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=dmrfid-expiration-date' ) . '</p></td></tr>';
 				} ?>
 
-				<tr class="expiration_info" <?php if(!pmpro_isLevelExpiring($level)) {?>style="display: none;"<?php } ?>>					
+				<tr class="expiration_info" <?php if(!dmrfid_isLevelExpiring($level)) {?>style="display: none;"<?php } ?>>					
 					<th scope="row" valign="top"><label for="billing_amount"><?php _e('Expires In', 'paid-memberships-pro' );?>:</label></th>
 					<td>
 						<input id="expiration_number" name="expiration_number" type="text" value="<?php echo esc_attr($level->expiration_number);?>" class="small-text" />
@@ -574,22 +574,22 @@
 						</select>
 						<p class="description"><?php _e('Set the duration of membership access. Note that the any future payments (recurring subscription, if any) will be cancelled when the membership expires.', 'paid-memberships-pro' );?></p>
 						
-						<div id="pmpro_expiration_warning" style="display: none;" class="notice error inline">
-							<p><?php printf( __( 'WARNING: This level is set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a certain number of payments. For more information, <a target="_blank" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ); ?></p>
+						<div id="dmrfid_expiration_warning" style="display: none;" class="notice error inline">
+							<p><?php printf( __( 'WARNING: This level is set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a certain number of payments. For more information, <a target="_blank" href="%s">see our post here</a>.', 'paid-memberships-pro' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ); ?></p>
 						</div>
 						<script>
 							jQuery(document).ready(function() {
-								function pmpro_expirationWarningCheck() {
+								function dmrfid_expirationWarningCheck() {
 									if( jQuery('#recurring:checked').length && jQuery('#expiration:checked').length) {
-										jQuery('#pmpro_expiration_warning').show();
+										jQuery('#dmrfid_expiration_warning').show();
 									} else {
-										jQuery('#pmpro_expiration_warning').hide();
+										jQuery('#dmrfid_expiration_warning').hide();
 									}
 								}
 								
-								pmpro_expirationWarningCheck();
+								dmrfid_expirationWarningCheck();
 								
-								jQuery('#recurring,#expiration').change(function() { pmpro_expirationWarningCheck(); });
+								jQuery('#recurring,#expiration').change(function() { dmrfid_expirationWarningCheck(); });
 							});
 						</script>
 					</td>
@@ -597,15 +597,15 @@
 			</tbody>
 		</table>
 
-		<?php do_action("pmpro_membership_level_after_other_settings"); ?>
+		<?php do_action("dmrfid_membership_level_after_other_settings"); ?>
 
 		<hr />
 
 		<h2 class="title"><?php esc_html_e( 'Content Settings', 'paid-memberships-pro' ); ?></h2>
 		<?php
 			// Get the Advanced Settings for filtering queries and showing excerpts.
-			$filterqueries = pmpro_getOption('filterqueries');
-			$showexcerpts = pmpro_getOption("showexcerpts");
+			$filterqueries = dmrfid_getOption('filterqueries');
+			$showexcerpts = dmrfid_getOption("showexcerpts");
 
 			$allowed_html = array (
 				'a' => array (
@@ -617,14 +617,14 @@
 
 			if ( $filterqueries == 1 ) {
 				// Show a message that posts in these categories are hidden.
-				echo '<p>' . sprintf( wp_kses( __( 'Non-members will not see posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro' ), $allowed_html ), admin_url( 'admin.php?page=pmpro-advancedsettings' ) ) . '</p>';
+				echo '<p>' . sprintf( wp_kses( __( 'Non-members will not see posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro' ), $allowed_html ), admin_url( 'admin.php?page=dmrfid-advancedsettings' ) ) . '</p>';
 			} else {
 				if ( $showexcerpts == 1 ) {
 					// Show a message that posts in these categories will show title and excerpt.
-					echo '<p>' . sprintf( wp_kses( __( 'Non-members will see the title and excerpt for posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro' ), $allowed_html ), admin_url( 'admin.php?page=pmpro-advancedsettings' ) ) . '</p>';
+					echo '<p>' . sprintf( wp_kses( __( 'Non-members will see the title and excerpt for posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro' ), $allowed_html ), admin_url( 'admin.php?page=dmrfid-advancedsettings' ) ) . '</p>';
 				} else {
 					// Show a message that posts in these categories will show only the title.
-					echo '<p>' . sprintf( wp_kses( __( 'Non-members will see the title only for posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro' ), $allowed_html ), admin_url( 'admin.php?page=pmpro-advancedsettings' ) ) . '</p>';
+					echo '<p>' . sprintf( wp_kses( __( 'Non-members will see the title only for posts in these categories. You can <a href="%s" title="Advanced Settings" target="_blank">update this setting here</a>.', 'paid-memberships-pro' ), $allowed_html ), admin_url( 'admin.php?page=dmrfid-advancedsettings' ) ) . '</p>';
 				}
 			}
 		?>
@@ -633,14 +633,14 @@
 				<tr class="membership_categories">
 					<th scope="row" valign="top"><label><?php _e('Categories', 'paid-memberships-pro' );?>:</label></th>
 					<td>
-						<?php pmpro_listCategories(0, $level->categories); ?>
+						<?php dmrfid_listCategories(0, $level->categories); ?>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<p class="submit topborder">
 			<input name="save" type="submit" class="button button-primary" value="<?php _e('Save Level', 'paid-memberships-pro' ); ?>" />
-			<input name="cancel" type="button" class="button" value="<?php _e('Cancel', 'paid-memberships-pro' ); ?>" onclick="location.href='<?php echo add_query_arg( 'page', 'pmpro-membershiplevels' , get_admin_url(NULL, '/admin.php') ); ?>';" />
+			<input name="cancel" type="button" class="button" value="<?php _e('Cancel', 'paid-memberships-pro' ); ?>" onclick="location.href='<?php echo add_query_arg( 'page', 'dmrfid-membershiplevels' , get_admin_url(NULL, '/admin.php') ); ?>';" />
 		</p>
 	</form>
 	</div>
@@ -649,16 +649,16 @@
 	}
 	else
 	{
-		$sqlQuery = "SELECT * FROM $wpdb->pmpro_membership_levels ";
+		$sqlQuery = "SELECT * FROM $wpdb->dmrfid_membership_levels ";
 		if($s)
 			$sqlQuery .= "WHERE name LIKE '%$s%' ";
 			$sqlQuery .= "ORDER BY id ASC";
 
 			$levels = $wpdb->get_results($sqlQuery, OBJECT);
 
-        if(empty($_REQUEST['s']) && !empty($pmpro_level_order)) {
+        if(empty($_REQUEST['s']) && !empty($dmrfid_level_order)) {
             //reorder levels
-            $order = explode(',', $pmpro_level_order);
+            $order = explode(',', $dmrfid_level_order);
 
 			//put level ids in their own array
 			$level_ids = array();
@@ -679,7 +679,7 @@
 			$order = array_unique($order);
 
 			//save the level order
-			pmpro_setOption('level_order', implode(',', $order));
+			dmrfid_setOption('level_order', implode(',', $order));
 
 			//reorder levels here
             $reordered_levels = array();
@@ -728,7 +728,7 @@
 		                });
 
 		                data = {
-		                    action: 'pmpro_update_level_order',
+		                    action: 'dmrfid_update_level_order',
 		                    level_order: level_order
 		                };
 
@@ -742,23 +742,23 @@
 		?>
 
 		<?php if( empty( $s ) && count( $reordered_levels ) === 0 ) { ?>
-			<div class="pmpro-new-install">
+			<div class="dmrfid-new-install">
 				<h2><?php echo esc_attr_e( 'No Membership Levels Found', 'paid-memberships-pro' ); ?></h2>
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=pmpro-membershiplevels&edit=-1' ) ); ?>" class="button-primary"><?php echo esc_attr_e( 'Create a Membership Level', 'paid-memberships-pro' ); ?></a>
-				<a href="<?php echo esc_url( 'https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-1-add-new-membership-level/?utm_source=plugin&utm_medium=pmpro-membershiplevels&utm_campaign=documentation&utm_content=step-1-add-new-membership-level' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Video: Membership Levels', 'paid-memberships-pro' ); ?></a>
-			</div> <!-- end pmpro-new-install -->
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-membershiplevels&edit=-1' ) ); ?>" class="button-primary"><?php echo esc_attr_e( 'Create a Membership Level', 'paid-memberships-pro' ); ?></a>
+				<a href="<?php echo esc_url( 'https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-1-add-new-membership-level/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=documentation&utm_content=step-1-add-new-membership-level' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Video: Membership Levels', 'paid-memberships-pro' ); ?></a>
+			</div> <!-- end dmrfid-new-install -->
 		<?php } else { ?>
 
 		<form id="posts-filter" method="get" action="">
 			<p class="search-box">
 				<label class="screen-reader-text" for="post-search-input"><?php _e('Search Levels', 'paid-memberships-pro' );?>:</label>
-				<input type="hidden" name="page" value="pmpro-membershiplevels" />
+				<input type="hidden" name="page" value="dmrfid-membershiplevels" />
 				<input id="post-search-input" type="text" value="<?php echo esc_attr($s); ?>" name="s" size="30" />
 				<input class="button" type="submit" value="<?php _e('Search Levels', 'paid-memberships-pro' );?>" id="search-submit" />
 			</p>
 		</form>
 		<h1 class="wp-heading-inline"><?php esc_html_e( 'Membership Levels', 'paid-memberships-pro' ); ?></h1>
-		<a href="<?php echo add_query_arg( array( 'page' => 'pmpro-membershiplevels', 'edit' => -1 ), get_admin_url(null, 'admin.php' ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New Level', 'paid-memberships-pro' ); ?></a>
+		<a href="<?php echo add_query_arg( array( 'page' => 'dmrfid-membershiplevels', 'edit' => -1 ), get_admin_url(null, 'admin.php' ) ); ?>" class="page-title-action"><?php esc_html_e( 'Add New Level', 'paid-memberships-pro' ); ?></a>
 		<hr class="wp-header-end">
 
 		<?php if(empty($_REQUEST['s']) && count($reordered_levels) > 1) { ?>
@@ -777,7 +777,7 @@
 				<th><?php _e('Billing Details', 'paid-memberships-pro' );?></th>
 				<th><?php _e('Expiration', 'paid-memberships-pro' );?></th>
 				<th><?php _e('Allow Signups', 'paid-memberships-pro' );?></th>
-				<?php do_action( 'pmpro_membership_levels_table_extra_cols_header', $reordered_levels ); ?>
+				<?php do_action( 'dmrfid_membership_levels_table_extra_cols_header', $reordered_levels ); ?>
 			</tr>
 		</thead>
 		<tbody>
@@ -793,32 +793,32 @@
 				foreach($reordered_levels as $level)
 				{
 			?>
-			<tr class="<?php if($count++ % 2 == 1) { ?>alternate<?php } ?> <?php if(!$level->allow_signups) { ?>pmpro_gray<?php } ?> <?php if(!pmpro_checkLevelForStripeCompatibility($level) || !pmpro_checkLevelForBraintreeCompatibility($level) || !pmpro_checkLevelForPayflowCompatibility($level) || !pmpro_checkLevelForTwoCheckoutCompatibility($level)) { ?>pmpro_error<?php } ?>">
+			<tr class="<?php if($count++ % 2 == 1) { ?>alternate<?php } ?> <?php if(!$level->allow_signups) { ?>dmrfid_gray<?php } ?> <?php if(!dmrfid_checkLevelForStripeCompatibility($level) || !dmrfid_checkLevelForBraintreeCompatibility($level) || !dmrfid_checkLevelForPayflowCompatibility($level) || !dmrfid_checkLevelForTwoCheckoutCompatibility($level)) { ?>dmrfid_error<?php } ?>">
 				<td><?php echo $level->id?></td>
 				<td class="level_name has-row-actions">
-					<span class="level-name"><a href="<?php echo add_query_arg( array( 'page' => 'pmpro-membershiplevels', 'edit' => $level->id ), admin_url( 'admin.php' ) ); ?>"><?php esc_attr_e( $level->name ); ?></a></span>
+					<span class="level-name"><a href="<?php echo add_query_arg( array( 'page' => 'dmrfid-membershiplevels', 'edit' => $level->id ), admin_url( 'admin.php' ) ); ?>"><?php esc_attr_e( $level->name ); ?></a></span>
 					<div class="row-actions">
-						<span class="edit"><a title="<?php _e('Edit', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'pmpro-membershiplevels', 'edit' => $level->id ), admin_url('admin.php' ) ); ?>"><?php _e('Edit', 'paid-memberships-pro' ); ?></a></span> |
-						<span class="copy"><a title="<?php _e('Copy', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'pmpro-membershiplevels', 'edit' => -1, 'copy' => $level->id ), admin_url( 'admin.php' ) ); ?>"><?php _e('Copy', 'paid-memberships-pro' ); ?></a></span> |
-						<span class="delete"><a title="<?php _e('Delete', 'paid-memberships-pro' ); ?>" href="javascript:pmpro_askfirst('<?php echo str_replace("'", "\'", sprintf(__("Are you sure you want to delete membership level %s? All subscriptions will be cancelled.", 'paid-memberships-pro' ), $level->name));?>', '<?php echo wp_nonce_url(add_query_arg( array( 'page' => 'pmpro-membershiplevels', 'action' => 'delete_membership_level', 'deleteid' => $level->id ), admin_url( 'admin.php' ) ), 'delete_membership_level', 'pmpro_membershiplevels_nonce'); ?>'); void(0);"><?php _e('Delete', 'paid-memberships-pro' ); ?></a></span>
+						<span class="edit"><a title="<?php _e('Edit', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-membershiplevels', 'edit' => $level->id ), admin_url('admin.php' ) ); ?>"><?php _e('Edit', 'paid-memberships-pro' ); ?></a></span> |
+						<span class="copy"><a title="<?php _e('Copy', 'paid-memberships-pro' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-membershiplevels', 'edit' => -1, 'copy' => $level->id ), admin_url( 'admin.php' ) ); ?>"><?php _e('Copy', 'paid-memberships-pro' ); ?></a></span> |
+						<span class="delete"><a title="<?php _e('Delete', 'paid-memberships-pro' ); ?>" href="javascript:dmrfid_askfirst('<?php echo str_replace("'", "\'", sprintf(__("Are you sure you want to delete membership level %s? All subscriptions will be cancelled.", 'paid-memberships-pro' ), $level->name));?>', '<?php echo wp_nonce_url(add_query_arg( array( 'page' => 'dmrfid-membershiplevels', 'action' => 'delete_membership_level', 'deleteid' => $level->id ), admin_url( 'admin.php' ) ), 'delete_membership_level', 'dmrfid_membershiplevels_nonce'); ?>'); void(0);"><?php _e('Delete', 'paid-memberships-pro' ); ?></a></span>
 					</div>
 				</td>
 				<td>
-					<?php if(pmpro_isLevelFree($level)) { ?>
+					<?php if(dmrfid_isLevelFree($level)) { ?>
 						<?php _e('FREE', 'paid-memberships-pro' );?>
 					<?php } else { ?>
-						<?php echo str_replace( 'The price for membership is', '', pmpro_getLevelCost($level)); ?>
+						<?php echo str_replace( 'The price for membership is', '', dmrfid_getLevelCost($level)); ?>
 					<?php } ?>
 				</td>
 				<td>
-					<?php if(!pmpro_isLevelExpiring($level)) { ?>
+					<?php if(!dmrfid_isLevelExpiring($level)) { ?>
 						--
 					<?php } else { ?>
 						<?php _e('After', 'paid-memberships-pro' );?> <?php echo $level->expiration_number?> <?php echo sornot($level->expiration_period,$level->expiration_number)?>
 					<?php } ?>
 				</td>
-				<td><?php if($level->allow_signups) { ?><a target="_blank" href="<?php echo add_query_arg( 'level', $level->id, pmpro_url("checkout") );?>"><?php _e('Yes', 'paid-memberships-pro' );?></a><?php } else { ?><?php _e('No', 'paid-memberships-pro' );?><?php } ?></td>
-				<?php do_action( 'pmpro_membership_levels_table_extra_cols_body', $level ); ?>
+				<td><?php if($level->allow_signups) { ?><a target="_blank" href="<?php echo add_query_arg( 'level', $level->id, dmrfid_url("checkout") );?>"><?php _e('Yes', 'paid-memberships-pro' );?></a><?php } else { ?><?php _e('No', 'paid-memberships-pro' );?><?php } ?></td>
+				<?php do_action( 'dmrfid_membership_levels_table_extra_cols_body', $level ); ?>
 			</tr>
 			<?php
 				}
@@ -836,7 +836,7 @@
 		 * @param string $table_html HTML of the membership levels table
 		 * @param array $reordered_levels Array of membership levels
 		 */
-		$table_html = apply_filters('pmpro_membership_levels_table', $table_html, $reordered_levels);
+		$table_html = apply_filters('dmrfid_membership_levels_table', $table_html, $reordered_levels);
 
 		echo $table_html;
 	}

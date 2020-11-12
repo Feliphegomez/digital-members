@@ -5,7 +5,7 @@
  * @package blocks/cancel-page
  **/
 
-namespace PMPro\blocks\cancel_page;
+namespace DmRFID\blocks\cancel_page;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -23,7 +23,7 @@ if ( ! function_exists( 'register_block_type' ) ) {
  */
 function register_dynamic_block() {
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/cancel-page', [
+	register_block_type( 'dmrfid/cancel-page', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -36,14 +36,14 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  * @return string
  **/
 function render_dynamic_block( $attributes ) {
-	return pmpro_loadTemplate( 'cancel', 'local', 'pages' );
+	return dmrfid_loadTemplate( 'cancel', 'local', 'pages' );
 }
 
 /**
  * Load preheaders/cancel.php if a page has the checkout block.
  */
 function load_cancel_preheader() {
-	if ( has_block( 'pmpro/cancel-page' ) ) {
+	if ( has_block( 'dmrfid/cancel-page' ) ) {
 		require_once( DMRFID_DIR . "/preheaders/cancel.php" );
 	}
 }

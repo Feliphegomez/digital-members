@@ -1,5 +1,5 @@
 /**
- * Block: PMPro Membership Cancel
+ * Block: DmRFID Membership Cancel
  *
  * Displays the Membership Cancel page.
  *
@@ -17,26 +17,26 @@
   * Register block
   */
  export default registerBlockType(
-     'pmpro/cancel-page',
+     'dmrfid/cancel-page',
      {
          title: __( 'Membership Cancel Page', 'paid-memberships-pro' ),
          description: __( 'Generates the Membership Cancel page.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'no',
          },
-         keywords: [ __( 'pmpro', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
          supports: {
          },
          attributes: {
          },
          edit(){
              return [
-                 <div className="pmpro-block-element">
-                   <span className="pmpro-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                   <span className="pmpro-block-subtitle">{ __( 'Membership Cancel Page', 'paid-memberships-pro' ) }</span>
+                 <div className="dmrfid-block-element">
+                   <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
+                   <span className="dmrfid-block-subtitle">{ __( 'Membership Cancel Page', 'paid-memberships-pro' ) }</span>
                  </div>
             ];
          },

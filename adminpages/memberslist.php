@@ -2,7 +2,7 @@
 
 global $user_list_table;
 // Query, filter, and sort the data.
-$user_list_table = new PMPro_Members_List_Table();
+$user_list_table = new DmRFID_Members_List_Table();
 $user_list_table->prepare_items();
 require_once dirname( __DIR__ ) . '/adminpages/admin_header.php';
 
@@ -21,7 +21,7 @@ if ( isset( $_REQUEST['l'] ) ) {
 	<a target="_blank" href="<?php echo esc_url( $csv_export_link ); ?>" class="page-title-action"><?php esc_html_e( 'Export to CSV', 'paid-memberships-pro' ); ?></a>
 	<hr class="wp-header-end">
 
-	<?php do_action( 'pmpro_memberslist_before_table' ); ?>			
+	<?php do_action( 'dmrfid_memberslist_before_table' ); ?>			
 	<form id="member-list-form" method="get">
 		<input type="hidden" name="page" value="<?php echo $_REQUEST['page']; ?>" />
 		<?php
@@ -30,15 +30,15 @@ if ( isset( $_REQUEST['l'] ) ) {
 		?>
 	</form>
 
-	<?php if ( ! function_exists( 'pmprorh_add_registration_field' ) ) {
-		$allowed_pmprorh_html = array (
+	<?php if ( ! function_exists( 'dmrfidrh_add_registration_field' ) ) {
+		$allowed_dmrfidrh_html = array (
 			'a' => array (
 				'href' => array(),
 				'target' => array(),
 				'title' => array(),
 			),
 		);
-		echo '<p class="description">' . sprintf( wp_kses( __( 'Optional: Capture additional member profile fields using the <a href="%s" title="Digital Members RFID - Register Helper Add On" target="_blank">Register Helper Add On</a>.', 'paid-memberships-pro' ), $allowed_pmprorh_html ), 'https://www.paidmembershipspro.com/add-ons/pmpro-register-helper-add-checkout-and-profile-fields/?utm_source=plugin&utm_medium=pmpro-memberslist&utm_campaign=add-ons&utm_content=pmpro-register-helper-add-checkout-and-profile-fields' ) . '</p>';
+		echo '<p class="description">' . sprintf( wp_kses( __( 'Optional: Capture additional member profile fields using the <a href="%s" title="Digital Members RFID - Register Helper Add On" target="_blank">Register Helper Add On</a>.', 'paid-memberships-pro' ), $allowed_dmrfidrh_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-register-helper-add-checkout-and-profile-fields/?utm_source=plugin&utm_medium=dmrfid-memberslist&utm_campaign=add-ons&utm_content=dmrfid-register-helper-add-checkout-and-profile-fields' ) . '</p>';
 	} ?>
 	
 <?php

@@ -1,9 +1,9 @@
 <?php
 	//thanks JigoShop
-	global $pmpro_countries, $pmpro_default_country;
-	$pmpro_default_country = apply_filters("pmpro_default_country", "US");
+	global $dmrfid_countries, $dmrfid_default_country;
+	$dmrfid_default_country = apply_filters("dmrfid_default_country", "US");
 
-	$pmpro_countries = array(
+	$dmrfid_countries = array(
 		'AD' => __( 'Andorra', 'paid-memberships-pro' ),
     	'AE' => __( 'United Arab Emirates', 'paid-memberships-pro' ),
 		'AF' => __( 'Afghanistan', 'paid-memberships-pro' ),
@@ -254,6 +254,6 @@
 		'VE' => __( 'Venezuela', 'paid-memberships-pro' ),
 	);
 
-	asort($pmpro_countries);
+	asort($dmrfid_countries);
 
-	$pmpro_countries = apply_filters("pmpro_countries", $pmpro_countries);
+	$dmrfid_countries = apply_filters("dmrfid_countries", $dmrfid_countries);

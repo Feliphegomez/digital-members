@@ -3,16 +3,16 @@
  * The default name for WP emails is WordPress.
  * Use our setting instead.
  */
-function pmpro_wp_mail_from_name($from_name)
+function dmrfid_wp_mail_from_name($from_name)
 {
 	$default_from_name = 'WordPress';
 	
 	//make sure it's the default from name
 	if($from_name == $default_from_name)
 	{	
-		$pmpro_from_name = pmpro_getOption("from_name");
-		if ($pmpro_from_name)
-			$from_name = stripslashes($pmpro_from_name);
+		$dmrfid_from_name = dmrfid_getOption("from_name");
+		if ($dmrfid_from_name)
+			$from_name = stripslashes($dmrfid_from_name);
 	}
 	
 	return $from_name;
@@ -22,7 +22,7 @@ function pmpro_wp_mail_from_name($from_name)
  * The default email address for WP emails is wordpress@sitename.
  * Use our setting instead.
  */
-function pmpro_wp_mail_from($from_email)
+function dmrfid_wp_mail_from($from_email)
 {
 	// default from email wordpress@sitename
 	$sitename = strtolower( $_SERVER['SERVER_NAME'] );
@@ -34,35 +34,35 @@ function pmpro_wp_mail_from($from_email)
 	//make sure it's the default email address
 	if($from_email == $default_from_email)
 	{	
-		$pmpro_from_email = pmpro_getOption("from_email");
-		if ($pmpro_from_email && is_email( $pmpro_from_email ) )
-			$from_email = $pmpro_from_email;
+		$dmrfid_from_email = dmrfid_getOption("from_email");
+		if ($dmrfid_from_email && is_email( $dmrfid_from_email ) )
+			$from_email = $dmrfid_from_email;
 	}
 	
 	return $from_email;
 }
 
-// Are we filtering all WP emails or just PMPro ones?
-$only_filter_pmpro_emails = pmpro_getOption("only_filter_pmpro_emails");
-if($only_filter_pmpro_emails) {
-	add_filter('pmpro_email_sender_name', 'pmpro_wp_mail_from_name');
-	add_filter('pmpro_email_sender', 'pmpro_wp_mail_from');
+// Are we filtering all WP emails or just DmRFID ones?
+$only_filter_dmrfid_emails = dmrfid_getOption("only_filter_dmrfid_emails");
+if($only_filter_dmrfid_emails) {
+	add_filter('dmrfid_email_sender_name', 'dmrfid_wp_mail_from_name');
+	add_filter('dmrfid_email_sender', 'dmrfid_wp_mail_from');
 } else {
-	add_filter('wp_mail_from_name', 'pmpro_wp_mail_from_name');
-	add_filter('wp_mail_from', 'pmpro_wp_mail_from');
+	add_filter('wp_mail_from_name', 'dmrfid_wp_mail_from_name');
+	add_filter('wp_mail_from', 'dmrfid_wp_mail_from');
 }
 
 /**
  * If the $email_member_notification option is empty, disable the wp_new_user_notification email at checkout.
  */
-$email_member_notification = pmpro_getOption("email_member_notification");
+$email_member_notification = dmrfid_getOption("email_member_notification");
 if(empty($email_member_notification))
-	add_filter("pmpro_wp_new_user_notification", "__return_false", 0);
+	add_filter("dmrfid_wp_new_user_notification", "__return_false", 0);
 
 /**
  * Adds template files and changes content type to html if using PHPMailer directly.
  */
-function pmpro_send_html( $phpmailer ) {
+function dmrfid_send_html( $phpmailer ) {
 	
 	//to check if we should wpautop later
 	$original_body = $phpmailer->Body;
@@ -103,8 +103,8 @@ function pmpro_send_html( $phpmailer ) {
 	if(!empty($footer) && $footer == strip_tags($footer))
 		$footer = wpautop($footer);
 
-	$header = apply_filters( 'pmpro_email_body_header', $header, $phpmailer );
-	$footer = apply_filters( 'pmpro_email_body_footer', $footer, $phpmailer );
+	$header = apply_filters( 'dmrfid_email_body_header', $header, $phpmailer );
+	$footer = apply_filters( 'dmrfid_email_body_footer', $footer, $phpmailer );
 
 	// Add header/footer to the email
 	if(!empty($header))
@@ -117,7 +117,7 @@ function pmpro_send_html( $phpmailer ) {
 	$data = array(
 				"name" => $current_user->display_name,
 				"sitename" => get_option("blogname"),
-				"login_link" => pmpro_url("account"),
+				"login_link" => dmrfid_url("account"),
 				"display_name" => $current_user->display_name,
 				"user_email" => $current_user->user_email,
 				"subject" => $phpmailer->Subject
@@ -127,15 +127,15 @@ function pmpro_send_html( $phpmailer ) {
 		$phpmailer->Body = str_replace("!!" . $key . "!!", $value, $phpmailer->Body);
 	}	
 		
-	do_action("pmpro_after_phpmailer_init", $phpmailer);
-	do_action("pmpro_after_pmpmailer_init", $phpmailer);	//typo left in for backwards compatibility
+	do_action("dmrfid_after_phpmailer_init", $phpmailer);
+	do_action("dmrfid_after_pmpmailer_init", $phpmailer);	//typo left in for backwards compatibility
 }
 
 /**
  * Change the content type of emails to HTML.
  */
-function pmpro_wp_mail_content_type( $content_type ) {	
-	add_action('phpmailer_init', 'pmpro_send_html');
+function dmrfid_wp_mail_content_type( $content_type ) {	
+	add_action('phpmailer_init', 'dmrfid_send_html');
 
 	// Change to html if not already.
 	if( $content_type == 'text/plain') {			
@@ -144,7 +144,7 @@ function pmpro_wp_mail_content_type( $content_type ) {
 	
 	return $content_type;
 }
-add_filter('wp_mail_content_type', 'pmpro_wp_mail_content_type');
+add_filter('wp_mail_content_type', 'dmrfid_wp_mail_content_type');
 
 /**
  * Filter the password reset email for compatibility with the HTML format.
@@ -152,8 +152,8 @@ add_filter('wp_mail_content_type', 'pmpro_wp_mail_content_type');
  * We check if there are already <br /> tags before running nl2br.
  * Running make_clickable() multiple times has no effect.
  */
-function pmpro_retrieve_password_message( $message ) {		
-	if ( has_filter( 'wp_mail_content_type', 'pmpro_wp_mail_content_type' ) ) {		
+function dmrfid_retrieve_password_message( $message ) {		
+	if ( has_filter( 'wp_mail_content_type', 'dmrfid_wp_mail_content_type' ) ) {		
 		$message = make_clickable( $message );
 		
 		if ( strpos( '<br', strtolower( $message ) ) === false ) {
@@ -163,4 +163,4 @@ function pmpro_retrieve_password_message( $message ) {
 
 	return $message;
 }
-add_filter( 'retrieve_password_message', 'pmpro_retrieve_password_message', 10, 1 );
+add_filter( 'retrieve_password_message', 'dmrfid_retrieve_password_message', 10, 1 );

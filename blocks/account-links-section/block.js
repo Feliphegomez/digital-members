@@ -1,5 +1,5 @@
 /**
- * Block: PMPro Membership Account: Member Links
+ * Block: DmRFID Membership Account: Member Links
  *
  * Displays the Membership Account > Member Links page section.
  *
@@ -17,26 +17,26 @@
   * Register block
   */
  export default registerBlockType(
-     'pmpro/account-links-section',
+     'dmrfid/account-links-section',
      {
          title: __( 'Membership Account: Links', 'paid-memberships-pro' ),
          description: __( 'Displays the member\'s member links. This block is only visible if other Add Ons or custom code have added links.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'external',
          },
-         keywords: [ __( 'pmpro', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
          supports: {
          },
          attributes: {
          },
          edit(){
              return [
-                 <div className="pmpro-block-element">
-                   <span className="pmpro-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                   <span className="pmpro-block-subtitle">{ __( 'Membership Account: Member Links', 'paid-memberships-pro' ) }</span>
+                 <div className="dmrfid-block-element">
+                   <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
+                   <span className="dmrfid-block-subtitle">{ __( 'Membership Account: Member Links', 'paid-memberships-pro' ) }</span>
                  </div>
             ];
          },

@@ -71,10 +71,10 @@
 		//has access?
 		if($file_post_parent)
 		{
-			if(!pmpro_has_membership_access($file_post_parent))
+			if(!dmrfid_has_membership_access($file_post_parent))
 			{
 				//hook for users without access
-				do_action("pmpro_getfile_before_error", $filename, $file_post_parent);
+				do_action("dmrfid_getfile_before_error", $filename, $file_post_parent);
 				
 				//nope				
 				header('HTTP/1.1 503 Service Unavailable', true, 503);
@@ -85,11 +85,11 @@
 	}
 		
 	//get mimetype
-	$mimetype = new pmpro_mimetype();       		
+	$mimetype = new dmrfid_mimetype();       		
 	$file_mimetype = $mimetype->getType($filename);
 	
 	//in case we want to do something else with the file
-	do_action("pmpro_getfile_before_readfile", $filename, $file_mimetype);
+	do_action("dmrfid_getfile_before_readfile", $filename, $file_mimetype);
 	
 	//if file is not found, die
 	if(!file_exists($filename))
@@ -106,7 +106,7 @@
 	
 	//build blocklist and allow for filtering
 	$blocklist = array("inc", "php", "php3", "php4", "php5", "phps", "phtml");
-	$blocklist = apply_filters("pmpro_getfile_extension_blocklist", $blocklist);
+	$blocklist = apply_filters("dmrfid_getfile_extension_blocklist", $blocklist);
 
 	//check
 	if(in_array($ext, $blocklist))

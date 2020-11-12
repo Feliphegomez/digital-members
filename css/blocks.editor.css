@@ -1,8 +1,8 @@
-.pmpro-block-element {
+.dmrfid-block-element {
 	background: rgba(237, 239, 240, 0.8);
 	padding: 20px;
 }
-.pmpro-block-element span.pmpro-block-title {
+.dmrfid-block-element span.dmrfid-block-title {
 	color: #555d66;
 	display: block;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
@@ -12,7 +12,7 @@
 	position: relative;
 	text-transform: uppercase;
 }
-.pmpro-block-element span.pmpro-block-subtitle {
+.dmrfid-block-element span.dmrfid-block-subtitle {
 	color: #555d66;
 	display: block;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
@@ -21,19 +21,19 @@
 	position: relative;
 	text-transform: uppercase;
 }
-.pmpro-block-element .components-base-control {
+.dmrfid-block-element .components-base-control {
 	margin-bottom: 16px;
 }
-.pmpro-block-element .components-base-control .components-base-control__label {
+.dmrfid-block-element .components-base-control .components-base-control__label {
 	display: block;
 }
 
 /* Require Membership Block */
-.pmpro-block-require-membership-element {
+.dmrfid-block-require-membership-element {
 	border-bottom: 5px solid #8d96a0;
 	border-top: 5px solid #8d96a0;
 }
-.pmpro-block-require-membership-element .pmpro-block-title {
+.dmrfid-block-require-membership-element .dmrfid-block-title {
 	background: rgba(237, 239, 240, 0.8);
     color: #555d66;
     display: block;
@@ -43,22 +43,22 @@
     position: relative;
     text-transform: uppercase;
 }
-.pmpro-block-require-membership-element .components-panel__body {
+.dmrfid-block-require-membership-element .components-panel__body {
 	background: rgba(237, 239, 240, 0.8);
 	border-bottom: 0;
 	border-top: none;
 	padding-top: 0;
 }
-.pmpro-block-require-membership-element .block-editor-inner-blocks {
+.dmrfid-block-require-membership-element .block-editor-inner-blocks {
 	padding-left: 16px;
 	padding-right: 16px;
 }
 
 /* Checkout Button Block */
-.wp-block-pmpro-checkout-button {
+.wp-block-dmrfid-checkout-button {
 	margin-bottom: 16px;
 }
-.wp-block-pmpro-checkout-button .pmpro_btn {
+.wp-block-dmrfid-checkout-button .dmrfid_btn {
 	background-color: #EFEFEF;
 	background-image: none;
 	border: 1px solid #D6D6D6;

@@ -1,86 +1,86 @@
 <?php
 
 if ( class_exists( 'WP_REST_Controller' ) ) {
-	class PMPro_REST_API_Routes extends WP_REST_Controller {
+	class DmRFID_REST_API_Routes extends WP_REST_Controller {
 		
-		public function pmpro_rest_api_register_routes() {
+		public function dmrfid_rest_api_register_routes() {
 
 			// ================ DEPRECATED ================ //
 			$namespace = 'wp/v2';
-			register_rest_route( $namespace, '/users/(?P<id>\d+)'.'/pmpro_membership_level' , 
+			register_rest_route( $namespace, '/users/(?P<id>\d+)'.'/dmrfid_membership_level' , 
 			array(
 				array(
 					'methods'         => WP_REST_Server::READABLE,
-					'callback'        => array( $this, 'pmpro_rest_api_get_membership_level_for_user' ),
-					'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					'callback'        => array( $this, 'dmrfid_rest_api_get_membership_level_for_user' ),
+					'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			),));
 			
-			register_rest_route( $namespace, '/posts/(?P<post_id>\d+)'.'/user_id/(?P<user_id>\d+)/pmpro_has_membership_access' , 
+			register_rest_route( $namespace, '/posts/(?P<post_id>\d+)'.'/user_id/(?P<user_id>\d+)/dmrfid_has_membership_access' , 
 			array(
 				array(
 					'methods'         => WP_REST_Server::READABLE,
-					'callback'        => array( $this, 'pmpro_rest_api_get_has_membership_access' ),
-					'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					'callback'        => array( $this, 'dmrfid_rest_api_get_has_membership_access' ),
+					'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			),));
 			// ================================================  //
 
-			$pmpro_namespace = 'pmpro/v1';
+			$dmrfid_namespace = 'dmrfid/v1';
 
 			/**
 			 * Get user access for a specific post.
 			 * @since 2.3
-			 * Example: https://example.com/wp-json/pmpro/v1/has_membership_access
+			 * Example: https://example.com/wp-json/dmrfid/v1/has_membership_access
 			 */
-			register_rest_route( $pmpro_namespace, '/has_membership_access',
+			register_rest_route( $dmrfid_namespace, '/has_membership_access',
 			array(
 				array(
 					'methods'  => WP_REST_Server::READABLE,
-					'callback' => array( $this, 'pmpro_rest_api_get_has_membership_access'),
-					'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					'callback' => array( $this, 'dmrfid_rest_api_get_has_membership_access'),
+					'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 				)));
 
 			/**
 			 * Get a membership level for a user.
 			 * @since 2.3
-			 * Example: https://example.com/wp-json/pmpro/v1/get_membership_level_for_user
+			 * Example: https://example.com/wp-json/dmrfid/v1/get_membership_level_for_user
 			 */
-			 register_rest_route( $pmpro_namespace, '/get_membership_level_for_user', 
+			 register_rest_route( $dmrfid_namespace, '/get_membership_level_for_user', 
 			 array(
 				 array(
 					 'methods'         => WP_REST_Server::READABLE,
-					 'callback'        => array( $this, 'pmpro_rest_api_get_membership_level_for_user' ),
-					 'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					 'callback'        => array( $this, 'dmrfid_rest_api_get_membership_level_for_user' ),
+					 'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			 ),));
 
 			 /**
 			 * Get a membership level for a user.
 			 * @since 2.3
-			 * Example: https://example.com/wp-json/pmpro/v1/get_membership_levels_for_user
+			 * Example: https://example.com/wp-json/dmrfid/v1/get_membership_levels_for_user
 			 */
-			 register_rest_route( $pmpro_namespace, '/get_membership_levels_for_user', 
+			 register_rest_route( $dmrfid_namespace, '/get_membership_levels_for_user', 
 			 array(
 				 array(
 					 'methods'         => WP_REST_Server::READABLE,
-					 'callback'        => array( $this, 'pmpro_rest_api_get_membership_levels_for_user' ),
-					 'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					 'callback'        => array( $this, 'dmrfid_rest_api_get_membership_levels_for_user' ),
+					 'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			 ),));
 
 
 		/**
 		 * Change a user's membership level. This also supports to cancel a membership if you pass through 0.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/change_membership_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/change_membership_level
 		 */
-		register_rest_route( $pmpro_namespace, '/change_membership_level',
+		register_rest_route( $dmrfid_namespace, '/change_membership_level',
 			array(
 				array(
 					'methods'	=> 'POST,PUT,PATCH',
-					'callback'	=> array( $this, 'pmpro_rest_api_change_membership_level' ),
+					'callback'	=> array( $this, 'dmrfid_rest_api_change_membership_level' ),
 					'args'	=> array(
 						'user_id' => array(),
 						'level_id' => array()
 					),
-					'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 				)			
 			)
 		);
@@ -88,18 +88,18 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Cancel a membership level.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/cancel_membership_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/cancel_membership_level
 		 */
-		register_rest_route( $pmpro_namespace, '/cancel_membership_level',
+		register_rest_route( $dmrfid_namespace, '/cancel_membership_level',
 			array(
 				array(
 					'methods'	=> 'POST,PUT,PATCH',
-					'callback'	=> array( $this, 'pmpro_rest_api_cancel_membership_level' ),
+					'callback'	=> array( $this, 'dmrfid_rest_api_cancel_membership_level' ),
 					'args'	=> array(
 						'user_id' => array(),
 						'level_id' => array()
 					),
-					'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+					'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 				)			
 			)
 		);
@@ -107,70 +107,70 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Delete/Retrieve/Update/Create a Membership Level.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/membership_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/membership_level
 		 */
-		register_rest_route( $pmpro_namespace, '/membership_level' , 
+		register_rest_route( $dmrfid_namespace, '/membership_level' , 
 		array(
 			array(
 				'methods'         => WP_REST_Server::READABLE,
-				'callback'        => array( $this, 'pmpro_rest_api_get_membership_level' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+				'callback'        => array( $this, 'dmrfid_rest_api_get_membership_level' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			),
 			array(
 				'methods'         => 'POST,PUT,PATCH',
-				'callback'        => array( $this, 'pmpro_rest_api_set_membership_level' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+				'callback'        => array( $this, 'dmrfid_rest_api_set_membership_level' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			),
 			array(
 				'methods' 		=> 'DELETE',
-				'callback'        => array( $this, 'pmpro_rest_api_delete_membership_level' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' ),
+				'callback'        => array( $this, 'dmrfid_rest_api_delete_membership_level' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' ),
 			)
 		));
 
 		/**
 		 * Create/Retrieve discount code.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/discount_code
+		 * Example: https://example.com/wp-json/dmrfid/v1/discount_code
 		 */
-		register_rest_route( $pmpro_namespace, '/discount_code', 
+		register_rest_route( $dmrfid_namespace, '/discount_code', 
 		array(
 			array(
 				'methods' => WP_REST_Server::READABLE,
-				'callback' => array( $this, 'pmpro_rest_api_get_discount_code' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' )
+				'callback' => array( $this, 'dmrfid_rest_api_get_discount_code' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' )
 			),
 			array(
 				'methods' => 'POST,PUT,PATCH',
-				'callback' => array( $this, 'pmpro_rest_api_set_discount_code' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' )
+				'callback' => array( $this, 'dmrfid_rest_api_set_discount_code' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' )
 			),
 		));
 
 		/**
 		 * Get membership level after checkout options are applied.
 		 * @since 2.4
-		 * Example: https://example.com/wp-json/pmpro/v1/checkout_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/checkout_level
 		 */
-		register_rest_route( $pmpro_namespace, '/checkout_level', 
+		register_rest_route( $dmrfid_namespace, '/checkout_level', 
 		array(
 			array(
 				'methods' => WP_REST_Server::READABLE,
-				'callback' => array( $this, 'pmpro_rest_api_get_checkout_level' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' )
+				'callback' => array( $this, 'dmrfid_rest_api_get_checkout_level' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' )
 			),
 		));
 
 		/**
 		 * Get membership levels after checkout options are applied.
-		 * Example: https://example.com/wp-json/pmpro/v1/checkout_levels
+		 * Example: https://example.com/wp-json/dmrfid/v1/checkout_levels
 		 */
-		register_rest_route( $pmpro_namespace, '/checkout_levels', 
+		register_rest_route( $dmrfid_namespace, '/checkout_levels', 
 		array(
 			array(
 				'methods' => WP_REST_Server::READABLE,
-				'callback' => array( $this, 'pmpro_rest_api_get_checkout_levels' ),
-				'permission_callback' => array( $this, 'pmpro_rest_api_get_permissions_check' )
+				'callback' => array( $this, 'dmrfid_rest_api_get_checkout_levels' ),
+				'permission_callback' => array( $this, 'dmrfid_rest_api_get_permissions_check' )
 			),
 		));
 		}
@@ -178,9 +178,9 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Get user's membership level.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/get_membership_level_for_user?user_id=1
+		 * Example: https://example.com/wp-json/dmrfid/v1/get_membership_level_for_user?user_id=1
 		 */
-		function pmpro_rest_api_get_membership_level_for_user($request) {
+		function dmrfid_rest_api_get_membership_level_for_user($request) {
 			$params = $request->get_params();
 			
 			$user_id = isset( $params['user_id'] ) ? $params['user_id'] : null;
@@ -197,7 +197,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			}
 			
 			if ( ! empty( $user_id ) ) {
-				$level = pmpro_getMembershipLevelForUser( $user_id );
+				$level = dmrfid_getMembershipLevelForUser( $user_id );
 			} else {
 				$level = false;
 			}
@@ -208,9 +208,9 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Get user's membership levels. (MMPU)
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/get_membership_levels_for_user?user_id=1
+		 * Example: https://example.com/wp-json/dmrfid/v1/get_membership_levels_for_user?user_id=1
 		 */
-		 function pmpro_rest_api_get_membership_levels_for_user($request) {
+		 function dmrfid_rest_api_get_membership_levels_for_user($request) {
 			$params = $request->get_params();
 			
 			$user_id = isset( $params['user_id'] ) ? $params['user_id'] : null;
@@ -227,7 +227,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			}
 			
 			if ( ! empty( $user_id ) ) {
-				$levels = pmpro_getMembershipLevelsForUser( $user_id );
+				$levels = dmrfid_getMembershipLevelsForUser( $user_id );
 			} else {
 				$levels = false;
 			}	
@@ -238,10 +238,10 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Get user's access status for a specific post.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/wp/v2/posts/58/user_id/2/pmpro_has_membership_access
-		 * Example: https://example.com/wp-json/pmpro/v1/has_membership_access?post_id=58&user_id=2
+		 * Example: https://example.com/wp-json/wp/v2/posts/58/user_id/2/dmrfid_has_membership_access
+		 * Example: https://example.com/wp-json/dmrfid/v1/has_membership_access?post_id=58&user_id=2
 		 */
-		function pmpro_rest_api_get_has_membership_access($request) {
+		function dmrfid_rest_api_get_has_membership_access($request) {
 			$params = $request->get_params();
 			$post_id = isset( $params['post_id'] ) ? $params['post_id'] : null;
 			$user_id = isset( $params['user_id'] ) ? $params['user_id'] : null;
@@ -257,7 +257,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			}
 			
 			if ( ! empty( $user_id ) ) {
-				$has_access = pmpro_has_membership_access( $post_id, $user_id );
+				$has_access = dmrfid_has_membership_access( $post_id, $user_id );
 			} else {
 				// No good user, so say no.
 				// Technically this will make public posts look restricted.
@@ -270,9 +270,9 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Change a user's membership level.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/change_membership_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/change_membership_level
 		 */
-		function pmpro_rest_api_change_membership_level( $request ) {
+		function dmrfid_rest_api_change_membership_level( $request ) {
 			$params = $request->get_params();
 			$user_id = isset( $params['user_id'] ) ? $params['user_id'] : null;
 			$level_id = isset( $params['level_id'] ) ? $params['level_id'] : null;
@@ -287,12 +287,12 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 				}
 			}
 
-			if ( ! function_exists( 'pmpro_changeMembershipLevel' ) ) {
+			if ( ! function_exists( 'dmrfid_changeMembershipLevel' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID function not found.', 404 );
 			}
 			
 			if ( ! empty( $user_id ) ) {
-				$response = pmpro_changeMembershipLevel( $level_id, $user_id );
+				$response = dmrfid_changeMembershipLevel( $level_id, $user_id );
 			} else {
 				$response = false;
 			}
@@ -303,9 +303,9 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Cancel a user's membership level.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/cancel_membership_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/cancel_membership_level
 		 */
-		function pmpro_rest_api_cancel_membership_level( $request ) {
+		function dmrfid_rest_api_cancel_membership_level( $request ) {
 			$params = $request->get_params();
 			$user_id = isset( $params['user_id'] ) ? $params['user_id'] : null;
 			$level_id = isset( $params['level_id'] ) ? $params['level_id'] : null;
@@ -324,12 +324,12 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 				return new WP_REST_Response( 'No membership level ID data.', 400 );
 			}
 
-			if ( ! function_exists( 'pmpro_cancelMembershipLevel' ) ) {
+			if ( ! function_exists( 'dmrfid_cancelMembershipLevel' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID function not found.', 404 );
 			}
 			
 			if ( ! empty( $user_id ) ) {
-				$response = pmpro_cancelMembershipLevel( $level_id, $user_id, 'inactive' );
+				$response = dmrfid_cancelMembershipLevel( $level_id, $user_id, 'inactive' );
 			} else {
 				$response = false;
 			}
@@ -340,11 +340,11 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Endpoint to get membership level data
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/membership_level/
+		 * Example: https://example.com/wp-json/dmrfid/v1/membership_level/
 		 */
-		function pmpro_rest_api_get_membership_level( $request ) {
+		function dmrfid_rest_api_get_membership_level( $request ) {
 
-			if ( ! class_exists( 'PMPro_Membership_Level' ) ) {
+			if ( ! class_exists( 'DmRFID_Membership_Level' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID level class not found.', 404 );
 			}
 
@@ -355,12 +355,12 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 				return new WP_REST_Response( 'ID not passed through', 400 );
 			}
 
-			$level = new PMPro_Membership_Level( $id );
+			$level = new DmRFID_Membership_Level( $id );
 			
 			// Hide confirmation message if not an admin or member.
 			if ( ! empty( $level->confirmation ) 
-				 && ! pmpro_hasMembershipLevel( $id )
-				 && ! current_user_can( 'pmpro_edit_memberships' ) ) {				
+				 && ! dmrfid_hasMembershipLevel( $id )
+				 && ! current_user_can( 'dmrfid_edit_memberships' ) ) {				
 					 $level->confirmation = '';					
 			}
 
@@ -370,11 +370,11 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Create/Update a Membership Level
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/membership_level/
+		 * Example: https://example.com/wp-json/dmrfid/v1/membership_level/
 		 */
-		function pmpro_rest_api_set_membership_level( $request ) {
+		function dmrfid_rest_api_set_membership_level( $request ) {
 
-			if ( ! class_exists( 'PMPro_Membership_Level' ) ) {
+			if ( ! class_exists( 'DmRFID_Membership_Level' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID level class not found.', 404 );
 			}
 
@@ -385,11 +385,11 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 
 			// Pass through an ID only for PUT/PATCH methods. POST treats it as a brand new level.
 			if ( ! empty( $id ) && ( $method === 'PUT' || $method === 'PATCH' ) ) {
-				$level = new PMPro_Membership_Level( $id );
+				$level = new DmRFID_Membership_Level( $id );
 			} elseif ( empty( $id ) && ( $method === 'PUT' || $method === 'PATCH' ) ) {
 				return false; // Error trying to update
 			} elseif ( $method === 'POST' ) {
-				$level = new PMPro_Membership_Level();
+				$level = new DmRFID_Membership_Level();
 			}
 
 			$name = isset( $params['name'] ) ? sanitize_text_field( $params['name'] ) : $level->name;
@@ -405,7 +405,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			$allow_signups = isset( $params['allow_signups'] ) ? intval( $params['allow_signups'] ) : $level->allow_signups;
 			$expiration_number = isset( $params['expiration_number'] ) ? intval( $params['expiration_number'] ) : $level->expiration_number;
 			$expiration_period = isset( $params['expiration_period'] ) ? intval( $params['expiration_period'] ) : $level->expiration_period;
-			$categories = isset( $params['categories'] ) ? PMPro_REST_API_Routes::pmpro_rest_api_convert_to_array( sanitize_text_field( $params['categories'] ) ) : $level->categories;
+			$categories = isset( $params['categories'] ) ? DmRFID_REST_API_Routes::dmrfid_rest_api_convert_to_array( sanitize_text_field( $params['categories'] ) ) : $level->categories;
 			
 			// Set Level Object and save it.
 			$level->name = $name;
@@ -429,11 +429,11 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Delete membership level and remove users from level. (And cancel their subscription.)
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/membership_level/
+		 * Example: https://example.com/wp-json/dmrfid/v1/membership_level/
 		 */
-		function pmpro_rest_api_delete_membership_level( $request ) {
+		function dmrfid_rest_api_delete_membership_level( $request ) {
 
-			if ( ! class_exists( 'PMPro_Membership_Level' ) ) {
+			if ( ! class_exists( 'DmRFID_Membership_Level' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID level class not found.', 404 );
 			}
 
@@ -444,7 +444,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 				return new WP_REST_Response( 'ID not passed through.', 400 );
 			}
 			
-			$level = new PMPro_Membership_Level( $id );
+			$level = new DmRFID_Membership_Level( $id );
 
 			return new WP_REST_Response( $level->delete(), 200 );
 		}
@@ -452,10 +452,10 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		/**
 		 * Get a discount code
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/discount_code
+		 * Example: https://example.com/wp-json/dmrfid/v1/discount_code
 		 */
-		function pmpro_rest_api_get_discount_code( $request ) {
-			if ( ! class_exists( 'PMPro_Discount_Code' ) ) {
+		function dmrfid_rest_api_get_discount_code( $request ) {
+			if ( ! class_exists( 'DmRFID_Discount_Code' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID discount code class not found.', 404 );
 			}
 
@@ -466,18 +466,18 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 				return new WP_REST_Response( 'No discount code sent.', 400 );
 			}
 
-			return new WP_REST_Response( new PMPro_Discount_Code( $code ), 200 );
+			return new WP_REST_Response( new DmRFID_Discount_Code( $code ), 200 );
 					
 		}
 
 		/**
 		 * Create/update a discount code.
 		 * @since 2.3
-		 * Example: https://example.com/wp-json/pmpro/v1/discount_code
+		 * Example: https://example.com/wp-json/dmrfid/v1/discount_code
 		 */
-		function pmpro_rest_api_set_discount_code( $request ) {
+		function dmrfid_rest_api_set_discount_code( $request ) {
 
-			if ( ! class_exists( 'PMPro_Discount_Code' ) ) {
+			if ( ! class_exists( 'DmRFID_Discount_Code' ) ) {
 				return new WP_REST_Response( 'Digital Members RFID discount code class not found.', 404 );
 			}
 
@@ -511,7 +511,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 				}
 			}
 			
-			$discount_code = new PMPro_Discount_Code();
+			$discount_code = new DmRFID_Discount_Code();
 
 			// See if code already exists when POSTING.
 			if ( $method == 'POST' && ! empty( $code ) ) {
@@ -541,9 +541,9 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		 * Get a membership level at checkout.
 		 * Note: Not compatible with MMPU.
 		 * @since 2.4
-		 * Example: https://example.com/wp-json/pmpro/v1/checkout_level
+		 * Example: https://example.com/wp-json/dmrfid/v1/checkout_level
 		 */
-		function pmpro_rest_api_get_checkout_level( $request ) {
+		function dmrfid_rest_api_get_checkout_level( $request ) {
 			$params = $request->get_params();
 
 			if ( isset( $params['level_id'] ) ) {
@@ -557,12 +557,12 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			}
 
 			$discount_code = isset( $params['discount_code'] ) ? $params['discount_code'] : null;
-			$checkout_level = pmpro_getLevelAtCheckout( $level_id, $discount_code );
+			$checkout_level = dmrfid_getLevelAtCheckout( $level_id, $discount_code );
 			
 			// Hide confirmation message if not an admin or member.
 			if ( ! empty( $checkout_level->confirmation ) 
-				 && ! pmpro_hasMembershipLevel( $level_id )
-				 && ! current_user_can( 'pmpro_edit_memberships' ) ) {				
+				 && ! dmrfid_hasMembershipLevel( $level_id )
+				 && ! current_user_can( 'dmrfid_edit_memberships' ) ) {				
 					 $checkout_level->confirmation = '';					
 			}
 			
@@ -571,15 +571,15 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 
 		/**
 		 * Get membership levels at checkout.
-		 * Example: https://example.com/wp-json/pmpro/v1/checkout_levels
+		 * Example: https://example.com/wp-json/dmrfid/v1/checkout_levels
 		 */
-		function pmpro_rest_api_get_checkout_levels( $request ) {
+		function dmrfid_rest_api_get_checkout_levels( $request ) {
 			$params = $request->get_params();
 
-			global $pmpro_checkout_level_ids;
-			if ( ! empty( $pmpro_checkout_level_ids ) ) {
+			global $dmrfid_checkout_level_ids;
+			if ( ! empty( $dmrfid_checkout_level_ids ) ) {
 				// MMPU Compatibility...
-				$level_ids = $pmpro_checkout_level_ids;
+				$level_ids = $dmrfid_checkout_level_ids;
 			} elseif ( isset( $params['level_id'] ) ) {
 				$level_ids = explode( '+', $params['level_id'] );
 			} elseif ( isset( $params['level'] ) ) {
@@ -594,12 +594,12 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			$r = array();
 			$r['initial_payment'] = 0.00;
 			foreach ( $level_ids as $level_id ) {
-				$r[ $level_id ] = pmpro_getLevelAtCheckout( $level_id, $discount_code );
+				$r[ $level_id ] = dmrfid_getLevelAtCheckout( $level_id, $discount_code );
 				if ( ! empty( $r[ $level_id ]->initial_payment ) ) {
 					$r['initial_payment'] += intval( $r[ $level_id ]->initial_payment );
 				}
 			}
-			$r['initial_payment_formatted'] = pmpro_formatPrice( $r['initial_payment'] );
+			$r['initial_payment_formatted'] = dmrfid_formatPrice( $r['initial_payment'] );
 			return new WP_REST_Response( $r );
 		}
 
@@ -610,27 +610,27 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		 *
 		 * @since 2.3
 		 */
-		 function pmpro_rest_api_get_permissions_check( $request ) {
+		 function dmrfid_rest_api_get_permissions_check( $request ) {
 
 			$method = $request->get_method();
 			$route = $request->get_route();
 
-			// Default to requiring pmpro_edit_memberships capability.
-			$permission = current_user_can( 'pmpro_edit_memberships' );
+			// Default to requiring dmrfid_edit_memberships capability.
+			$permission = current_user_can( 'dmrfid_edit_memberships' );
 
 			// Check other caps for some routes.
 			$route_caps = array(
-				'/pmpro/v1/has_membership_access' => 'pmpro_edit_memberships',
-				'/pmpro/v1/get_membership_level_for_user' => 'pmpro_edit_memberships',
-				'/pmpro/v1/get_membership_levels_for_user' => 'pmpro_edit_memberships',
-				'/pmpro/v1/change_membership_level' => 'pmpro_edit_memberships',
-				'/pmpro/v1/cancel_membership_level' => 'pmpro_edit_memberships',
-				'/pmpro/v1/membership_level' => true,
-				'/pmpro/v1/discount_code' => 'pmpro_discountcodes',
-				'/pmpro/v1/checkout_level' => true,
-				'/pmpro/v1/checkout_levels' => true,				
+				'/dmrfid/v1/has_membership_access' => 'dmrfid_edit_memberships',
+				'/dmrfid/v1/get_membership_level_for_user' => 'dmrfid_edit_memberships',
+				'/dmrfid/v1/get_membership_levels_for_user' => 'dmrfid_edit_memberships',
+				'/dmrfid/v1/change_membership_level' => 'dmrfid_edit_memberships',
+				'/dmrfid/v1/cancel_membership_level' => 'dmrfid_edit_memberships',
+				'/dmrfid/v1/membership_level' => true,
+				'/dmrfid/v1/discount_code' => 'dmrfid_discountcodes',
+				'/dmrfid/v1/checkout_level' => true,
+				'/dmrfid/v1/checkout_levels' => true,				
 			);
-			$route_caps = apply_filters( 'pmpro_rest_api_route_capabilities', $route_caps, $request );			
+			$route_caps = apply_filters( 'dmrfid_rest_api_route_capabilities', $route_caps, $request );			
 
 			if ( isset( $route_caps[$route] ) ) {
 				if ( $route_caps[$route] === true ) {
@@ -642,11 +642,11 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 			}	
 
 			// Is the request method allowed? We disable DELETE by default.
-			if ( ! in_array( $method, pmpro_get_rest_api_methods( $route ) ) ) {
+			if ( ! in_array( $method, dmrfid_get_rest_api_methods( $route ) ) ) {
 				$permission = false;
 			}
 
-			$permission = apply_filters( 'pmpro_rest_api_permissions', $permission, $request );
+			$permission = apply_filters( 'dmrfid_rest_api_permissions', $permission, $request );
 
 			return $permission;
 		}
@@ -655,7 +655,7 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 		 *	Helper function to convert comma separated items to an array.
 		 * @since 2.3
 		 */
-		function pmpro_rest_api_convert_to_array( $string ) {
+		function dmrfid_rest_api_convert_to_array( $string ) {
 			return explode( ',', $string );
 		}
 
@@ -666,21 +666,21 @@ if ( class_exists( 'WP_REST_Controller' ) ) {
 	 * Register the routes for Digital Members RFID.
 	 * @since 2.3
 	 */
-	function pmpro_rest_api_register_custom_routes() {
-		$pmpro_rest_api_routes = new PMPro_REST_API_Routes;
-		$pmpro_rest_api_routes->pmpro_rest_api_register_routes();
+	function dmrfid_rest_api_register_custom_routes() {
+		$dmrfid_rest_api_routes = new DmRFID_REST_API_Routes;
+		$dmrfid_rest_api_routes->dmrfid_rest_api_register_routes();
 	}
 
-	add_action( 'rest_api_init', 'pmpro_rest_api_register_custom_routes', 5 );
+	add_action( 'rest_api_init', 'dmrfid_rest_api_register_custom_routes', 5 );
 }
 
 /**
- * Get the allowed methods for PMPro REST API endpoints.
+ * Get the allowed methods for DmRFID REST API endpoints.
  * To enable DELETE, hook into this filter.
  * @since 2.3
  */
-function pmpro_get_rest_api_methods( $route = NULL ) {
+function dmrfid_get_rest_api_methods( $route = NULL ) {
 	$methods = array( 'GET', 'POST', 'PUT', 'PATCH' );
-	$methods = apply_filters( 'pmpro_rest_api_methods', $methods, $route );
+	$methods = apply_filters( 'dmrfid_rest_api_methods', $methods, $route );
 	return $methods;
 }

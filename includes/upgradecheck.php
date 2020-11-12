@@ -2,147 +2,147 @@
 /*
 	These functions below handle DB upgrades, etc
 */
-function pmpro_checkForUpgrades()
+function dmrfid_checkForUpgrades()
 {
-	$pmpro_db_version = pmpro_getOption("db_version");
+	$dmrfid_db_version = dmrfid_getOption("db_version");
 
 	//if we can't find the DB tables, reset db_version to 0
 	global $wpdb;
 	$wpdb->hide_errors();
-	$wpdb->pmpro_membership_levels = $wpdb->prefix . 'pmpro_membership_levels';
-	$table_exists = $wpdb->query("SHOW TABLES LIKE '" . $wpdb->pmpro_membership_levels . "'");
+	$wpdb->dmrfid_membership_levels = $wpdb->prefix . 'dmrfid_membership_levels';
+	$table_exists = $wpdb->query("SHOW TABLES LIKE '" . $wpdb->dmrfid_membership_levels . "'");
 	if(!$table_exists)
-		$pmpro_db_version = 0;
+		$dmrfid_db_version = 0;
 
 	//default options
-	if(!$pmpro_db_version) {
+	if(!$dmrfid_db_version) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1.php");
-		$pmpro_db_version = pmpro_upgrade_1();
+		$dmrfid_db_version = dmrfid_upgrade_1();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.115) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.115) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_1_15.php");
-		$pmpro_db_version = pmpro_upgrade_1_1_15();
+		$dmrfid_db_version = dmrfid_upgrade_1_1_15();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.23) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.23) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_2_3.php");
-		$pmpro_db_version = pmpro_upgrade_1_2_3();
+		$dmrfid_db_version = dmrfid_upgrade_1_2_3();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.318) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.318) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_3_18.php");
-		$pmpro_db_version = pmpro_upgrade_1_3_18();
+		$dmrfid_db_version = dmrfid_upgrade_1_3_18();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.4) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.4) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_4.php");
-		$pmpro_db_version = pmpro_upgrade_1_4();
+		$dmrfid_db_version = dmrfid_upgrade_1_4();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.42) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.42) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_4_2.php");
-		$pmpro_db_version = pmpro_upgrade_1_4_2();
+		$dmrfid_db_version = dmrfid_upgrade_1_4_2();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.48) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.48) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_4_8.php");
-		$pmpro_db_version = pmpro_upgrade_1_4_8();
+		$dmrfid_db_version = dmrfid_upgrade_1_4_8();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.5) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.5) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_5.php");
-		$pmpro_db_version = pmpro_upgrade_1_5();
+		$dmrfid_db_version = dmrfid_upgrade_1_5();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.59) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.59) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_5_9.php");
-		$pmpro_db_version = pmpro_upgrade_1_5_9();
+		$dmrfid_db_version = dmrfid_upgrade_1_5_9();
 	}
 
-	//upgrading from early early versions of PMPro
-	if($pmpro_db_version < 1.6) {
+	//upgrading from early early versions of DmRFID
+	if($dmrfid_db_version < 1.6) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_6.php");
-		$pmpro_db_version = pmpro_upgrade_1_6();
+		$dmrfid_db_version = dmrfid_upgrade_1_6();
 	}
 
 	//fix for fresh 1.7 installs
-	if($pmpro_db_version == 1.7)
+	if($dmrfid_db_version == 1.7)
 	{
 		//check if we have an id column in the memberships_users table
-		$wpdb->pmpro_memberships_users = $wpdb->prefix . 'pmpro_memberships_users';
-		$col = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_memberships_users LIMIT 1");
+		$wpdb->dmrfid_memberships_users = $wpdb->prefix . 'dmrfid_memberships_users';
+		$col = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_memberships_users LIMIT 1");
 		if($wpdb->last_error == "Unknown column 'id' in 'field list'")
 		{
 			//redo 1.5 fix
 			require_once(DMRFID_DIR . "/includes/updates/upgrade_1_5.php");
-			pmpro_upgrade_1_5();
+			dmrfid_upgrade_1_5();
 		}
 
-		pmpro_db_delta();
+		dmrfid_db_delta();
 
-		pmpro_setOption("db_version", "1.703");
-		$pmpro_db_version = 1.703;
+		dmrfid_setOption("db_version", "1.703");
+		$dmrfid_db_version = 1.703;
 	}
 
 	//updates from this point on should be like this if DB only
-	if($pmpro_db_version < 1.71)
+	if($dmrfid_db_version < 1.71)
 	{
-		pmpro_db_delta();
-		pmpro_setOption("db_version", "1.71");
-		$pmpro_db_version = 1.71;
+		dmrfid_db_delta();
+		dmrfid_setOption("db_version", "1.71");
+		$dmrfid_db_version = 1.71;
 	}
 
 	//schedule the credit card expiring cron
-	if($pmpro_db_version < 1.72)
+	if($dmrfid_db_version < 1.72)
 	{
 		//schedule the credit card expiring cron
-		pmpro_maybe_schedule_event(current_time('timestamp'), 'monthly', 'pmpro_cron_credit_card_expiring_warnings');
+		dmrfid_maybe_schedule_event(current_time('timestamp'), 'monthly', 'dmrfid_cron_credit_card_expiring_warnings');
 
-		pmpro_setOption("db_version", "1.72");
-		$pmpro_db_version = 1.72;
+		dmrfid_setOption("db_version", "1.72");
+		$dmrfid_db_version = 1.72;
 	}
 
 	//register capabilities required for menus now
-	if($pmpro_db_version < 1.79)
+	if($dmrfid_db_version < 1.79)
 	{
 		//need to register caps for menu
-		pmpro_activation();
+		dmrfid_activation();
 
-		pmpro_setOption("db_version", "1.79");
-		$pmpro_db_version = 1.79;
+		dmrfid_setOption("db_version", "1.79");
+		$dmrfid_db_version = 1.79;
 	}
 
 	//set default filter_queries setting
-	if($pmpro_db_version < 1.791)
+	if($dmrfid_db_version < 1.791)
 	{
-		if(!pmpro_getOption("showexcerpts"))
-			pmpro_setOption("filterqueries", 1);
+		if(!dmrfid_getOption("showexcerpts"))
+			dmrfid_setOption("filterqueries", 1);
 		else
-			pmpro_SetOption("filterqueries", 0);
+			dmrfid_SetOption("filterqueries", 0);
 
-		pmpro_setOption("db_version", "1.791");
-		$pmpro_db_version = 1.791;
+		dmrfid_setOption("db_version", "1.791");
+		$dmrfid_db_version = 1.791;
 	}
 
 	//fix subscription ids on stripe orders
 	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_6_9.php");	//need to include this for AJAX calls
-	if($pmpro_db_version < 1.869) {		
-		$pmpro_db_version = pmpro_upgrade_1_8_6_9();
+	if($dmrfid_db_version < 1.869) {		
+		$dmrfid_db_version = dmrfid_upgrade_1_8_6_9();
 	}
 
 	//Remove extra cron jobs inserted in version 1.8.7 and 1.8.7.1
-	if($pmpro_db_version < 1.87) {
+	if($dmrfid_db_version < 1.87) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_7.php");
-		$pmpro_db_version = pmpro_upgrade_1_8_7();
+		$dmrfid_db_version = dmrfid_upgrade_1_8_7();
 	}
 	
 	/*
@@ -152,8 +152,8 @@ function pmpro_checkForUpgrades()
 		* Fixing old Authorize.net orders with empty status.
 	*/	
 	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_8.php");
-	if($pmpro_db_version < 1.88) {		
-		$pmpro_db_version = pmpro_upgrade_1_8_8();			
+	if($dmrfid_db_version < 1.88) {		
+		$dmrfid_db_version = dmrfid_upgrade_1_8_8();			
 	}
 	
 	/*
@@ -164,22 +164,22 @@ function pmpro_checkForUpgrades()
 	*/	
 	if (version_compare( PHP_VERSION, '5.3.29', '>=' )) {
 		require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_9_1.php");
-		if($pmpro_db_version < 1.891) {			
-			$pmpro_db_version = pmpro_upgrade_1_8_9_1();
+		if($dmrfid_db_version < 1.891) {			
+			$dmrfid_db_version = dmrfid_upgrade_1_8_9_1();
 		}
-	} elseif($pmpro_db_version < 1.891) {
-		$pmpro_db_version = 1.891;		  //skipping this update because Stripe is not supported
+	} elseif($dmrfid_db_version < 1.891) {
+		$dmrfid_db_version = 1.891;		  //skipping this update because Stripe is not supported
 	}
 
 	/*
 		v1.8.9.2 (db v1.9)
-		* Changed 'code' column of pmpro_membership_orders table to 32 characters.
+		* Changed 'code' column of dmrfid_membership_orders table to 32 characters.
 	*/
-	if($pmpro_db_version < 1.892) {
-		pmpro_db_delta();
+	if($dmrfid_db_version < 1.892) {
+		dmrfid_db_delta();
 		
-		$pmpro_db_version = 1.892;
-		pmpro_setOption("db_version", "1.892");
+		$dmrfid_db_version = 1.892;
+		dmrfid_setOption("db_version", "1.892");
 	}
 
 	/*
@@ -187,20 +187,20 @@ function pmpro_checkForUpgrades()
 		* Fixing incorrect start and end dates.	
 	*/
 	require_once(DMRFID_DIR . "/includes/updates/upgrade_1_8_9_3.php");
-	if($pmpro_db_version < 1.91) {
-		$pmpro_db_version = pmpro_upgrade_1_8_9_3();			
+	if($dmrfid_db_version < 1.91) {
+		$dmrfid_db_version = dmrfid_upgrade_1_8_9_3();			
 	}
 
 	/*
 		v1.8.10 (db v1.92)
 
-		Added checkout_id column to pmpro_membership_orders
+		Added checkout_id column to dmrfid_membership_orders
 	*/
-	if($pmpro_db_version < 1.92) {
-		pmpro_db_delta();
+	if($dmrfid_db_version < 1.92) {
+		dmrfid_db_delta();
 		
-		$pmpro_db_version = 1.92;
-		pmpro_setOption("db_version", "1.92");
+		$dmrfid_db_version = 1.92;
+		dmrfid_setOption("db_version", "1.92");
 	}
 
 	/*
@@ -208,34 +208,34 @@ function pmpro_checkForUpgrades()
 
 		Run dbDelta again to fix broken/missing orders tables.
 	*/
-	if($pmpro_db_version < 1.93) {
-		pmpro_db_delta();
+	if($dmrfid_db_version < 1.93) {
+		dmrfid_db_delta();
 		
-		$pmpro_db_version = 1.93;
-		pmpro_setOption("db_version", "1.93");
+		$dmrfid_db_version = 1.93;
+		dmrfid_setOption("db_version", "1.93");
 	}
 
 	require_once( DMRFID_DIR . "/includes/updates/upgrade_1_9_4.php" );	
-	if($pmpro_db_version < 1.94) {
-		$pmpro_db_version = pmpro_upgrade_1_9_4();
+	if($dmrfid_db_version < 1.94) {
+		$dmrfid_db_version = dmrfid_upgrade_1_9_4();
 	}
 	
-	if($pmpro_db_version < 1.944) {
-		pmpro_cleanup_memberships_users_table();
-		$pmpro_db_version = '1.944';
-		pmpro_setOption('db_version', '1.944');
+	if($dmrfid_db_version < 1.944) {
+		dmrfid_cleanup_memberships_users_table();
+		$dmrfid_db_version = '1.944';
+		dmrfid_setOption('db_version', '1.944');
 	}
 
-	if ( $pmpro_db_version < 2.1 ) {
-		pmpro_db_delta();
+	if ( $dmrfid_db_version < 2.1 ) {
+		dmrfid_db_delta();
 
-		$pmpro_db_version = 2.1;
-		pmpro_setOption( 'db_version', '2.1' );
+		$dmrfid_db_version = 2.1;
+		dmrfid_setOption( 'db_version', '2.1' );
 	}
 	
-	if ( $pmpro_db_version < 2.3 ) {
-		pmpro_maybe_schedule_event( strtotime( '10:30:00' ) - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ), 'daily', 'pmpro_cron_admin_activity_email' );
-		pmpro_setOption( 'db_version', '2.3' );
+	if ( $dmrfid_db_version < 2.3 ) {
+		dmrfid_maybe_schedule_event( strtotime( '10:30:00' ) - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ), 'daily', 'dmrfid_cron_admin_activity_email' );
+		dmrfid_setOption( 'db_version', '2.3' );
 	}
 	
 	/**
@@ -244,41 +244,41 @@ function pmpro_checkForUpgrades()
 	 * for orders created through a Stripe Update.
 	 */
 	require_once( DMRFID_DIR . "/includes/updates/upgrade_2_4.php" );	
- 	if($pmpro_db_version < 2.4) {
- 		$pmpro_db_version = pmpro_upgrade_2_4();
+ 	if($dmrfid_db_version < 2.4) {
+ 		$dmrfid_db_version = dmrfid_upgrade_2_4();
  	}
 	
 	/**
 	 * Version 2.5
-	 * Running pmpro_db_delta to install the ordermeta table.
+	 * Running dmrfid_db_delta to install the ordermeta table.
 	 */
-	if( $pmpro_db_version < 2.5 ) {
-		pmpro_db_delta();
-		$pmpro_db_version = 2.5;
-		pmpro_setOption( 'db_version', '2.5' );
+	if( $dmrfid_db_version < 2.5 ) {
+		dmrfid_db_delta();
+		$dmrfid_db_version = 2.5;
+		dmrfid_setOption( 'db_version', '2.5' );
 	}
 }
 
-function pmpro_db_delta()
+function dmrfid_db_delta()
 {
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 	global $wpdb;
 	$wpdb->hide_errors();
-	$wpdb->pmpro_membership_levels = $wpdb->prefix . 'pmpro_membership_levels';
-	$wpdb->pmpro_memberships_users = $wpdb->prefix . 'pmpro_memberships_users';
-	$wpdb->pmpro_memberships_categories = $wpdb->prefix . 'pmpro_memberships_categories';
-	$wpdb->pmpro_memberships_pages = $wpdb->prefix . 'pmpro_memberships_pages';
-	$wpdb->pmpro_membership_orders = $wpdb->prefix . 'pmpro_membership_orders';
-	$wpdb->pmpro_discount_codes = $wpdb->prefix . 'pmpro_discount_codes';
-	$wpdb->pmpro_discount_codes_levels = $wpdb->prefix . 'pmpro_discount_codes_levels';
-	$wpdb->pmpro_discount_codes_uses = $wpdb->prefix . 'pmpro_discount_codes_uses';
-	$wpdb->pmpro_membership_levelmeta = $wpdb->prefix . 'pmpro_membership_levelmeta';
-	$wpdb->pmpro_membership_ordermeta = $wpdb->prefix . 'pmpro_membership_ordermeta';
+	$wpdb->dmrfid_membership_levels = $wpdb->prefix . 'dmrfid_membership_levels';
+	$wpdb->dmrfid_memberships_users = $wpdb->prefix . 'dmrfid_memberships_users';
+	$wpdb->dmrfid_memberships_categories = $wpdb->prefix . 'dmrfid_memberships_categories';
+	$wpdb->dmrfid_memberships_pages = $wpdb->prefix . 'dmrfid_memberships_pages';
+	$wpdb->dmrfid_membership_orders = $wpdb->prefix . 'dmrfid_membership_orders';
+	$wpdb->dmrfid_discount_codes = $wpdb->prefix . 'dmrfid_discount_codes';
+	$wpdb->dmrfid_discount_codes_levels = $wpdb->prefix . 'dmrfid_discount_codes_levels';
+	$wpdb->dmrfid_discount_codes_uses = $wpdb->prefix . 'dmrfid_discount_codes_uses';
+	$wpdb->dmrfid_membership_levelmeta = $wpdb->prefix . 'dmrfid_membership_levelmeta';
+	$wpdb->dmrfid_membership_ordermeta = $wpdb->prefix . 'dmrfid_membership_ordermeta';
 
-	//wp_pmpro_membership_levels
+	//wp_dmrfid_membership_levels
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_membership_levels . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_membership_levels . "` (
 		  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 		  `name` varchar(255) NOT NULL,
 		  `description` longtext NOT NULL,
@@ -301,9 +301,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_membership_orders
+	//wp_dmrfid_membership_orders
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_membership_orders . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_membership_orders . "` (
 		  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 		  `code` varchar(32) NOT NULL,
 		  `session_id` varchar(64) NOT NULL DEFAULT '',
@@ -356,9 +356,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_memberships_categories
+	//wp_dmrfid_memberships_categories
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_memberships_categories . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_memberships_categories . "` (
 		  `membership_id` int(11) unsigned NOT NULL,
 		  `category_id` int(11) unsigned NOT NULL,
 		  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -368,9 +368,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_memberships_pages
+	//wp_dmrfid_memberships_pages
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_memberships_pages . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_memberships_pages . "` (
 		  `membership_id` int(11) unsigned NOT NULL,
 		  `page_id` int(11) unsigned NOT NULL,
 		  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -380,9 +380,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_memberships_users
+	//wp_dmrfid_memberships_users
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_memberships_users . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_memberships_users . "` (
 		   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 		   `user_id` int(11) unsigned NOT NULL,
 		   `membership_id` int(11) unsigned NOT NULL,
@@ -409,9 +409,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_discount_codes
+	//wp_dmrfid_discount_codes
 	$sqlQuery = "		
-		CREATE TABLE `" . $wpdb->pmpro_discount_codes . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_discount_codes . "` (
 		  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 		  `code` varchar(32) NOT NULL,
 		  `starts` date NOT NULL,
@@ -425,9 +425,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_discount_codes_levels
+	//wp_dmrfid_discount_codes_levels
 	$sqlQuery = "		
-		CREATE TABLE `" . $wpdb->pmpro_discount_codes_levels . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_discount_codes_levels . "` (
 		  `code_id` int(11) unsigned NOT NULL,
 		  `level_id` int(11) unsigned NOT NULL,
 		  `initial_payment` decimal(18,8) NOT NULL DEFAULT '0.00',
@@ -445,9 +445,9 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//wp_pmpro_discount_codes_uses
+	//wp_dmrfid_discount_codes_uses
 	$sqlQuery = "		
-		CREATE TABLE `" . $wpdb->pmpro_discount_codes_uses . "` (		  
+		CREATE TABLE `" . $wpdb->dmrfid_discount_codes_uses . "` (		  
 		  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 		  `code_id` int(10) unsigned NOT NULL,
 		  `user_id` int(10) unsigned NOT NULL,
@@ -460,29 +460,29 @@ function pmpro_db_delta()
 	";
 	dbDelta($sqlQuery);
 
-	//pmpro_membership_levelmeta
+	//dmrfid_membership_levelmeta
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_membership_levelmeta . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_membership_levelmeta . "` (
 		  `meta_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-		  `pmpro_membership_level_id` int(10) unsigned NOT NULL,
+		  `dmrfid_membership_level_id` int(10) unsigned NOT NULL,
 		  `meta_key` varchar(255) NOT NULL,
 		  `meta_value` longtext,
 		  PRIMARY KEY (`meta_id`),
-		  KEY `pmpro_membership_level_id` (`pmpro_membership_level_id`),
+		  KEY `dmrfid_membership_level_id` (`dmrfid_membership_level_id`),
 		  KEY `meta_key` (`meta_key`)
 		);
 	";
 	dbDelta($sqlQuery);
 
-	//pmpro_membership_ordermeta
+	//dmrfid_membership_ordermeta
 	$sqlQuery = "
-		CREATE TABLE `" . $wpdb->pmpro_membership_ordermeta . "` (
+		CREATE TABLE `" . $wpdb->dmrfid_membership_ordermeta . "` (
 		  `meta_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-		  `pmpro_membership_order_id` int(10) unsigned NOT NULL,
+		  `dmrfid_membership_order_id` int(10) unsigned NOT NULL,
 		  `meta_key` varchar(255) NOT NULL,
 		  `meta_value` longtext,
 		  PRIMARY KEY (`meta_id`),
-		  KEY `pmpro_membership_order_id` (`pmpro_membership_order_id`),
+		  KEY `dmrfid_membership_order_id` (`dmrfid_membership_order_id`),
 		  KEY `meta_key` (`meta_key`)
 		);
 	";

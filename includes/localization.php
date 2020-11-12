@@ -1,5 +1,5 @@
 <?php
-function pmpro_load_textdomain()
+function dmrfid_load_textdomain()
 {
     //get the locale
 	$locale = apply_filters("plugin_locale", get_locale(), "paid-memberships-pro");
@@ -7,7 +7,7 @@ function pmpro_load_textdomain()
 
 	//paths to local (plugin) and global (WP) language files
 	$mofile_local  = dirname(__FILE__)."/../languages/" . $mofile;
-	$mofile_global = WP_LANG_DIR . '/pmpro/' . $mofile;
+	$mofile_global = WP_LANG_DIR . '/dmrfid/' . $mofile;
 	$mofile_global2 = WP_LANG_DIR . '/paid-memberships-pro/' . $mofile;
 
 	//load global first    
@@ -22,9 +22,9 @@ function pmpro_load_textdomain()
 	//load via plugin_textdomain/glotpress
 	load_plugin_textdomain( 'paid-memberships-pro', false, dirname(__FILE__)."/../languages/" );
 }
-add_action("init", "pmpro_load_textdomain", 1);
+add_action("init", "dmrfid_load_textdomain", 1);
 
-function pmpro_translate_billing_period($period, $number = 1)
+function dmrfid_translate_billing_period($period, $number = 1)
 {
 	//note as of v1.8, we stopped using _n and split things up to aid in localization
 	if($number == 1)

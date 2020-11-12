@@ -1,4 +1,4 @@
-var pmpro_require_billing;
+var dmrfid_require_billing;
 
 // Wire up the form for Stripe.
 jQuery( document ).ready( function( $ ) {
@@ -6,7 +6,7 @@ jQuery( document ).ready( function( $ ) {
 	var stripe, elements, cardNumber, cardExpiry, cardCvc;
 
 	// Identify with Stripe.
-	stripe = Stripe( pmproStripe.publishableKey );
+	stripe = Stripe( dmrfidStripe.publishableKey );
 	elements = stripe.elements();
 
 	// Create Elements.
@@ -26,44 +26,44 @@ jQuery( document ).ready( function( $ ) {
 	}
 	
 	// Handle authentication for charge if required.
-	if ( 'undefined' !== typeof( pmproStripe.paymentIntent ) ) {
-		if ( 'requires_action' === pmproStripe.paymentIntent.status ) {
+	if ( 'undefined' !== typeof( dmrfidStripe.paymentIntent ) ) {
+		if ( 'requires_action' === dmrfidStripe.paymentIntent.status ) {
 			// On submit disable its submit button
 			$('input[type=submit]', this).attr('disabled', 'disabled');
 			$('input[type=image]', this).attr('disabled', 'disabled');
-			$('#pmpro_processing_message').css('visibility', 'visible');
-			stripe.handleCardAction( pmproStripe.paymentIntent.client_secret )
+			$('#dmrfid_processing_message').css('visibility', 'visible');
+			stripe.handleCardAction( dmrfidStripe.paymentIntent.client_secret )
 				.then( stripeResponseHandler );
 		}
 	}
 	
 	// Handle authentication for subscription if required.
-	if ( 'undefined' !== typeof( pmproStripe.setupIntent ) ) {
-		if ( 'requires_action' === pmproStripe.setupIntent.status ) {
+	if ( 'undefined' !== typeof( dmrfidStripe.setupIntent ) ) {
+		if ( 'requires_action' === dmrfidStripe.setupIntent.status ) {
 			// On submit disable its submit button
 			$('input[type=submit]', this).attr('disabled', 'disabled');
 			$('input[type=image]', this).attr('disabled', 'disabled');
-			$('#pmpro_processing_message').css('visibility', 'visible');
-			stripe.handleCardSetup( pmproStripe.setupIntent.client_secret )
+			$('#dmrfid_processing_message').css('visibility', 'visible');
+			stripe.handleCardSetup( dmrfidStripe.setupIntent.client_secret )
 				.then( stripeResponseHandler );
 		}
 	}
 
 	// Set require billing var if not set yet.
-	if ( typeof pmpro_require_billing === 'undefined' ) {
-		pmpro_require_billing = pmproStripe.pmpro_require_billing;
+	if ( typeof dmrfid_require_billing === 'undefined' ) {
+		dmrfid_require_billing = dmrfidStripe.dmrfid_require_billing;
 	}
 
-	$( '.pmpro_form' ).submit( function( event ) {
+	$( '.dmrfid_form' ).submit( function( event ) {
 		var name, address;
 
 		// Prevent the form from submitting with the default action.
 		event.preventDefault();
 
 		// Double check in case a discount code made the level free.
-		if ( typeof pmpro_require_billing === 'undefined' || pmpro_require_billing ) {
+		if ( typeof dmrfid_require_billing === 'undefined' || dmrfid_require_billing ) {
 
-			if ( pmproStripe.verifyAddress ) {
+			if ( dmrfidStripe.verifyAddress ) {
 				address = {
 					line1: $( '#baddress1' ).val(),
 					line2: $( '#baddress2' ).val(),
@@ -100,16 +100,16 @@ jQuery( document ).ready( function( $ ) {
 
 		// Create payment request
 		jQuery.noConflict().ajax({
-			url: pmproStripe.restUrl + 'pmpro/v1/checkout_levels',
+			url: dmrfidStripe.restUrl + 'dmrfid/v1/checkout_levels',
 			dataType: 'json',
-			data: jQuery( "#pmpro_form" ).serialize(),
+			data: jQuery( "#dmrfid_form" ).serialize(),
 			success: function(data) {
 				if ( data.hasOwnProperty('initial_payment') ) {
 					paymentRequest = stripe.paymentRequest({
 						country: 'US',
 						currency: 'usd',
 						total: {
-							label: pmproStripe.siteName,
+							label: dmrfidStripe.siteName,
 							amount: data.initial_payment * 100,
 						},
 						requestPayerName: true,
@@ -136,14 +136,14 @@ jQuery( document ).ready( function( $ ) {
 
 		function stripeUpdatePaymentRequestButton() {
 			jQuery.noConflict().ajax({
-				url: pmproStripe.restUrl + 'pmpro/v1/checkout_levels',
+				url: dmrfidStripe.restUrl + 'dmrfid/v1/checkout_levels',
 				dataType: 'json',
-				data: jQuery( "#pmpro_form" ).serialize(),
+				data: jQuery( "#dmrfid_form" ).serialize(),
 				success: function(data) {
 					if ( data.hasOwnProperty('initial_payment') ) {
 						paymentRequest.update({
 							total: {
-								label: pmproStripe.siteName,
+								label: dmrfidStripe.siteName,
 								amount: data.initial_payment * 100,
 							},
 						});
@@ -152,8 +152,8 @@ jQuery( document ).ready( function( $ ) {
 			});
 		}
 
-		if ( pmproStripe.updatePaymentRequestButton ) {
-			$(".pmpro_alter_price").change(function(){
+		if ( dmrfidStripe.updatePaymentRequestButton ) {
+			$(".dmrfid_alter_price").change(function(){
 				stripeUpdatePaymentRequestButton();
 			});
 		}
@@ -164,18 +164,18 @@ jQuery( document ).ready( function( $ ) {
 
 		var form, data, card, paymentMethodId, customerId;
 
-		form = $('#pmpro_form, .pmpro_form');
+		form = $('#dmrfid_form, .dmrfid_form');
 
 		if (response.error) {
 
 			// Re-enable the submit button.
-			$('.pmpro_btn-submit-checkout,.pmpro_btn-submit').removeAttr('disabled');
+			$('.dmrfid_btn-submit-checkout,.dmrfid_btn-submit').removeAttr('disabled');
 
 			// Hide processing message.
-			$('#pmpro_processing_message').css('visibility', 'hidden');
+			$('#dmrfid_processing_message').css('visibility', 'hidden');
 
 			// error message
-			$( '#pmpro_message' ).text( response.error.message ).addClass( 'pmpro_error' ).removeClass( 'pmpro_alert' ).removeClass( 'pmpro_success' ).show();
+			$( '#dmrfid_message' ).text( response.error.message ).addClass( 'dmrfid_error' ).removeClass( 'dmrfid_alert' ).removeClass( 'dmrfid_success' ).show();
 			
 		} else if ( response.paymentMethod ) {			
 			
@@ -203,26 +203,26 @@ jQuery( document ).ready( function( $ ) {
 		} else if ( response.paymentIntent || response.setupIntent ) {
 			
 			// success message
-			$( '#pmpro_message' ).text( pmproStripe.msgAuthenticationValidated ).addClass( 'pmpro_success' ).removeClass( 'pmpro_alert' ).removeClass( 'pmpro_error' ).show();
+			$( '#dmrfid_message' ).text( dmrfidStripe.msgAuthenticationValidated ).addClass( 'dmrfid_success' ).removeClass( 'dmrfid_alert' ).removeClass( 'dmrfid_error' ).show();
 			
-			customerId = pmproStripe.paymentIntent 
-				? pmproStripe.paymentIntent.customer
-				: pmproStripe.setupIntent.customer;
+			customerId = dmrfidStripe.paymentIntent 
+				? dmrfidStripe.paymentIntent.customer
+				: dmrfidStripe.setupIntent.customer;
 			
-			paymentMethodId = pmproStripe.paymentIntent
-				? pmproStripe.paymentIntent.payment_method.id
-				: pmproStripe.setupIntent.payment_method.id;
+			paymentMethodId = dmrfidStripe.paymentIntent
+				? dmrfidStripe.paymentIntent.payment_method.id
+				: dmrfidStripe.setupIntent.payment_method.id;
 				
-			card = pmproStripe.paymentIntent
-				? pmproStripe.paymentIntent.payment_method.card
-				: pmproStripe.setupIntent.payment_method.card;
+			card = dmrfidStripe.paymentIntent
+				? dmrfidStripe.paymentIntent.payment_method.card
+				: dmrfidStripe.setupIntent.payment_method.card;
 
-		    	if ( pmproStripe.paymentIntent ) {
-				form.append( '<input type="hidden" name="payment_intent_id" value="' + pmproStripe.paymentIntent.id + '" />' );
+		    	if ( dmrfidStripe.paymentIntent ) {
+				form.append( '<input type="hidden" name="payment_intent_id" value="' + dmrfidStripe.paymentIntent.id + '" />' );
 			}
-			if ( pmproStripe.setupIntent ) {
-				form.append( '<input type="hidden" name="setup_intent_id" value="' + pmproStripe.setupIntent.id + '" />' );
-				form.append( '<input type="hidden" name="subscription_id" value="' + pmproStripe.subscription.id + '" />' );
+			if ( dmrfidStripe.setupIntent ) {
+				form.append( '<input type="hidden" name="setup_intent_id" value="' + dmrfidStripe.setupIntent.id + '" />' );
+				form.append( '<input type="hidden" name="subscription_id" value="' + dmrfidStripe.subscription.id + '" />' );
 			}
 
 			// Insert the Customer ID into the form so it gets submitted to the server.

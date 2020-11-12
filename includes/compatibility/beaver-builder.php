@@ -2,22 +2,22 @@
 /** 
  * Beaver Builder Compatibility
  */
-function pmpro_beaver_builder_compatibility() {
-	// Filter members-only content later so that the builder's filters run before PMPro.
-	remove_filter('the_content', 'pmpro_membership_content_filter', 5);
-	add_filter('the_content', 'pmpro_membership_content_filter', 15);
+function dmrfid_beaver_builder_compatibility() {
+	// Filter members-only content later so that the builder's filters run before DmRFID.
+	remove_filter('the_content', 'dmrfid_membership_content_filter', 5);
+	add_filter('the_content', 'dmrfid_membership_content_filter', 15);
 }
-add_action( 'init', 'pmpro_beaver_builder_compatibility' );
+add_action( 'init', 'dmrfid_beaver_builder_compatibility' );
 
 /**
- * Add PMPro to row settings.
+ * Add DmRFID to row settings.
  *
  * @param array  $form Row form settings.
  * @param string $id The node/row ID.
  *
  * @return array Updated form settings.
  */
-function pmpro_beaver_builder_settings_form( $form, $id ) {
+function dmrfid_beaver_builder_settings_form( $form, $id ) {
 	if ( 'row' !== $id ) {
 		return $form;
 	}
@@ -29,13 +29,13 @@ function pmpro_beaver_builder_settings_form( $form, $id ) {
 	foreach ( $membership_levels as $level ) {
 		$levels[ $level->id ] = $level->name;
 	}
-	$row_settings_pmpro = array(
-		'title'    => __( 'PMPro', 'paid-memberships-pro' ),
+	$row_settings_dmrfid = array(
+		'title'    => __( 'DmRFID', 'paid-memberships-pro' ),
 		'sections' => array(
 			'paid-memberships-pro' => array(
 				'title'  => __( 'General', 'paid-memberships-pro' ),
 				'fields' => array(
-					'pmpro_enable'      => array(
+					'dmrfid_enable'      => array(
 						'type'    => 'select',
 						'label'   => __( 'Enable Digital Members RFID module visibility?', 'paid-memberships-pro' ),
 						'options' => array(
@@ -46,12 +46,12 @@ function pmpro_beaver_builder_settings_form( $form, $id ) {
 						'toggle'  => array(
 							'yes' => array(
 								'fields' => array(
-									'pmpro_memberships',
+									'dmrfid_memberships',
 								),
 							),
 						),
 					),
-					'pmpro_memberships' => array(
+					'dmrfid_memberships' => array(
 						'label'        => __( 'Select a level for module access', 'paid-memberships-pro' ),
 						'type'         => 'select',
 						'options'      => $levels,
@@ -64,12 +64,12 @@ function pmpro_beaver_builder_settings_form( $form, $id ) {
 
 	$form['tabs'] = array_merge(
 		array_slice( $form['tabs'], 0, 2 ),
-		array( 'PMPro' => $row_settings_pmpro ),
+		array( 'DmRFID' => $row_settings_dmrfid ),
 		array_slice( $form['tabs'], 2 )
 	);
 	return $form;
 }
-add_filter( 'fl_builder_register_settings_form', 'pmpro_beaver_builder_settings_form', 10, 2 );
+add_filter( 'fl_builder_register_settings_form', 'dmrfid_beaver_builder_settings_form', 10, 2 );
 
 /**
  * Determine if the node (row/module) should be visible based on membership level.
@@ -79,21 +79,21 @@ add_filter( 'fl_builder_register_settings_form', 'pmpro_beaver_builder_settings_
  *
  * @return bool True if visible, false if not.
  */
-function pmpro_beaver_builder_check_field_connections( $is_visible, $node ) {
+function dmrfid_beaver_builder_check_field_connections( $is_visible, $node ) {
 	if ( ! defined( 'DMRFID_VERSION' ) ) {
 		return $is_visible;
 	}
 	if ( 'row' === $node->type ) {
-		if ( isset( $node->settings->pmpro_enable ) && 'yes' === $node->settings->pmpro_enable ) {
-			if ( pmpro_hasMembershipLevel( $node->settings->pmpro_memberships ) || empty( $node->settings->pmpro_memberships ) ) {
+		if ( isset( $node->settings->dmrfid_enable ) && 'yes' === $node->settings->dmrfid_enable ) {
+			if ( dmrfid_hasMembershipLevel( $node->settings->dmrfid_memberships ) || empty( $node->settings->dmrfid_memberships ) ) {
 				return $is_visible;
 			} else {
 				return false;
 			}
 		}
 	}
-	if ( isset( $node->settings->pmpro_enable ) && 'yes' === $node->settings->pmpro_enable ) {
-		if ( pmpro_hasMembershipLevel( $node->settings->pmpro_memberships ) || empty( $node->settings->pmpro_memberships ) ) {
+	if ( isset( $node->settings->dmrfid_enable ) && 'yes' === $node->settings->dmrfid_enable ) {
+		if ( dmrfid_hasMembershipLevel( $node->settings->dmrfid_memberships ) || empty( $node->settings->dmrfid_memberships ) ) {
 			return $is_visible;
 		} else {
 			return false;
@@ -101,17 +101,17 @@ function pmpro_beaver_builder_check_field_connections( $is_visible, $node ) {
 	}
 	return $is_visible;
 }
-add_filter( 'fl_builder_is_node_visible', 'pmpro_beaver_builder_check_field_connections', 200, 2 );
+add_filter( 'fl_builder_is_node_visible', 'dmrfid_beaver_builder_check_field_connections', 200, 2 );
 
 /**
- * Add PMPro to all modules in Beaver Builder
+ * Add DmRFID to all modules in Beaver Builder
  *
  * @param array  $form The form to add a custom tab for.
  * @param string $slug The module slug.
  *
  * @return array The updated form array.
  */
-function pmpro_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
+function dmrfid_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
 	if ( ! defined( 'DMRFID_VERSION' ) ) {
 		return $form;
 	}
@@ -123,13 +123,13 @@ function pmpro_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
 		foreach ( $membership_levels as $level ) {
 			$levels[ $level->id ] = $level->name;
 		}
-		$form['pmpro-bb'] = array(
-			'title'    => __( 'PMPro', 'paid-memberships-pro' ),
+		$form['dmrfid-bb'] = array(
+			'title'    => __( 'DmRFID', 'paid-memberships-pro' ),
 			'sections' => array(
 				'memberships' => array(
 					'title'  => __( 'Membership Levels', 'paid-memberships-pro' ),
 					'fields' => array(
-						'pmpro_enable'      => array(
+						'dmrfid_enable'      => array(
 							'type'    => 'select',
 							'label'   => __( 'Enable Digital Members RFID module visibility?', 'paid-memberships-pro' ),
 							'options' => array(
@@ -140,12 +140,12 @@ function pmpro_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
 							'toggle'  => array(
 								'yes' => array(
 									'fields' => array(
-										'pmpro_memberships',
+										'dmrfid_memberships',
 									),
 								),
 							),
 						),
-						'pmpro_memberships' => array(
+						'dmrfid_memberships' => array(
 							'label'        => __( 'Select a level for module access', 'paid-memberships-pro' ),
 							'type'         => 'select',
 							'options'      => $levels,
@@ -159,4 +159,4 @@ function pmpro_beaver_builder_add_custom_tab_all_modules( $form, $slug ) {
 
 	return $form;
 }
-add_filter( 'fl_builder_register_settings_form', 'pmpro_beaver_builder_add_custom_tab_all_modules', 10, 2 );
+add_filter( 'fl_builder_register_settings_form', 'dmrfid_beaver_builder_add_custom_tab_all_modules', 10, 2 );

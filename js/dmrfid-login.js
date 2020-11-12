@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
 		jQuery( '#pass1' ).focus();
 	}
 	
-	function pmpro_check_password_strength( pass_field ) {
+	function dmrfid_check_password_strength( pass_field ) {
 		var pass1 = jQuery( pass_field ).val();		
 		var indicator = jQuery( '#pass-strength-result' );		
 		
@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 		if ( jQuery( '#resetpass-button' ).length ) {
 			submitbutton = jQuery( '#resetpass-button' );
 		} else {
-			submitbutton = jQuery( '#change-password input.pmpro_btn-submit' );
+			submitbutton = jQuery( '#change-password input.dmrfid_btn-submit' );
 		}
 
 		indicator.removeClass( 'empty bad good strong short' );
@@ -29,13 +29,13 @@ jQuery(document).ready(function(){
 		switch ( strength ) {
 			case -1:
 				indicator.addClass( 'empty' ).html( '&nbsp;' );
-				if ( pmpro.allow_weak_passwords === '' ) {
+				if ( dmrfid.allow_weak_passwords === '' ) {
 					submitbutton.prop( 'disabled', true );
 				}
 				break;
 			case 2:
 				indicator.addClass( 'bad' ).html( pwsL10n.bad );
-				if ( pmpro.allow_weak_passwords === '' ) {
+				if ( dmrfid.allow_weak_passwords === '' ) {
 					submitbutton.prop( 'disabled', true );
 				}
 				break;
@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
 				break;
 			default:
 				indicator.addClass( 'short' ).html( pwsL10n['short'] );
-				if ( pmpro.allow_weak_passwords === '' ) {
+				if ( dmrfid.allow_weak_passwords === '' ) {
 					submitbutton.prop( 'disabled', true );
 				}
 		}
@@ -61,9 +61,9 @@ jQuery(document).ready(function(){
 	
 	// Set up Strong Password script.
 	if ( jQuery( '#pass1' ) ) {
-		pmpro_check_password_strength( jQuery( '#pass1' ) );
+		dmrfid_check_password_strength( jQuery( '#pass1' ) );
 		jQuery( '#pass1' ).bind( 'keyup paste', function() {
-			pmpro_check_password_strength( jQuery( '#pass1' ) );
+			dmrfid_check_password_strength( jQuery( '#pass1' ) );
 		});
 	}
 });

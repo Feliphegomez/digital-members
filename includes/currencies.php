@@ -1,14 +1,14 @@
 <?php
-	global $pmpro_currencies, $pmpro_default_currency;
+	global $dmrfid_currencies, $dmrfid_default_currency;
 	
-	$pmpro_default_currency = apply_filters("pmpro_default_currency", "USD");
+	$dmrfid_default_currency = apply_filters("dmrfid_default_currency", "USD");
 	
-	$pmpro_currencies = array( 
+	$dmrfid_currencies = array( 
 		'USD' => __('US Dollars (&#36;)', 'paid-memberships-pro' ),
 		'EUR' => array(
 			'name' => __('Euros (&euro;)', 'paid-memberships-pro' ),
 			'symbol' => '&euro;',
-			'position' => apply_filters("pmpro_euro_position", pmpro_euro_position_from_locale())
+			'position' => apply_filters("dmrfid_euro_position", dmrfid_euro_position_from_locale())
 			),				
 		'GBP' => array(
 			'name' => __('Pounds Sterling (&pound;)', 'paid-memberships-pro' ),
@@ -105,11 +105,11 @@
 			),
 		);
 	
-	$pmpro_currencies = apply_filters("pmpro_currencies", $pmpro_currencies);
+	$dmrfid_currencies = apply_filters("dmrfid_currencies", $dmrfid_currencies);
 	
 	//stripe only supports a few (not using this anymore since 1.7.4)
-	global $pmpro_stripe_currencies;
-	$pmpro_stripe_currencies = array(
+	global $dmrfid_stripe_currencies;
+	$dmrfid_stripe_currencies = array(
 			'USD' => __('US Dollars (&#36;)', 'paid-memberships-pro' ),			
 			'CAD' => __('Canadian Dollars (&#36;)', 'paid-memberships-pro' ),
 			'GBP' => __('Pounds Sterling (&pound;)', 'paid-memberships-pro' ),
@@ -120,7 +120,7 @@
 	 * Get the Euro position based on locale.
 	 * English uses left, others use right.
 	 */
-	function pmpro_euro_position_from_locale($position = 'right') {
+	function dmrfid_euro_position_from_locale($position = 'right') {
 		$locale = get_locale();
 		if(strpos($locale, 'en_') === 0) {
 			$position = 'left';
@@ -132,8 +132,8 @@
 	 * Get an array of data for a specified currency.
 	 * Defaults to the current currency set in the global.
 	 */
-	function pmpro_get_currency( $currency = null ) {
-		global $pmpro_currency, $pmpro_currencies;
+	function dmrfid_get_currency( $currency = null ) {
+		global $dmrfid_currency, $dmrfid_currencies;
 		
 		// Defaults
 		$currency_array = array(
@@ -145,11 +145,11 @@
 			'position' => 'left',
 		);
 		
-		if ( ! empty( $pmpro_currency ) ) {
-			if ( is_array( $pmpro_currencies[$pmpro_currency] ) ) {
-				$currency_array = array_merge( $currency_array, $pmpro_currencies[$pmpro_currency] );
+		if ( ! empty( $dmrfid_currency ) ) {
+			if ( is_array( $dmrfid_currencies[$dmrfid_currency] ) ) {
+				$currency_array = array_merge( $currency_array, $dmrfid_currencies[$dmrfid_currency] );
 			} else {
-				$currency_array['name'] = $pmpro_currencies[$pmpro_currency];
+				$currency_array['name'] = $dmrfid_currencies[$dmrfid_currency];
 			}
 		}
 		

@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pmpro\n"
+"Project-Id-Version: dmrfid\n"
 "POT-Creation-Date: 2017-04-10 22:31-0700\n"
 "PO-Revision-Date: 2017-04-21 01:28+0800\n"
 "Language-Team: Stranger Studios <jason@strangerstudios.com>\n"
@@ -147,27 +147,27 @@ msgstr "刪除 %s"
 
 #: adminpages/addons.php:226 adminpages/addons.php:223
 #: adminpages/addons.php:239
-msgid "PMPro Free"
-msgstr "PMPro 免費"
+msgid "DmRFID Free"
+msgstr "DmRFID 免費"
 
 #: adminpages/addons.php:228 adminpages/addons.php:225
 #: adminpages/addons.php:241
-msgid "PMPro Core"
-msgstr "PMPro 中心"
+msgid "DmRFID Core"
+msgstr "DmRFID 中心"
 
 #: adminpages/addons.php:230 adminpages/addons.php:227
 #: adminpages/addons.php:243
-msgid "PMPro Plus"
-msgstr "PMPro 加上"
+msgid "DmRFID Plus"
+msgstr "DmRFID 加上"
 
 #: adminpages/addons.php:232 adminpages/addons.php:229
 #: adminpages/addons.php:245
 msgid "WordPress.org"
 msgstr "WordPress.org"
 
-#: adminpages/addons.php:234 shortcodes/pmpro_account.php:146
+#: adminpages/addons.php:234 shortcodes/dmrfid_account.php:146
 #: adminpages/addons.php:231 adminpages/addons.php:247
-#: shortcodes/pmpro_account.php:145
+#: shortcodes/dmrfid_account.php:145
 msgid "N/A"
 msgstr "N/A"
 
@@ -312,12 +312,12 @@ msgid "Payment Gateway &amp; SSL"
 msgstr "付款通道(payment gateway) &amp; SSL"
 
 #: adminpages/admin_header.php:171 adminpages/memberslist.php:168
-#: shortcodes/pmpro_account.php:109 adminpages/admin_header.php:131
+#: shortcodes/dmrfid_account.php:109 adminpages/admin_header.php:131
 #: adminpages/admin_header.php:152 adminpages/admin_header.php:162
 #: adminpages/memberslist.php:115 adminpages/memberslist.php:148
 #: adminpages/memberslist.php:158 pages/account.php:52 pages/account.php:56
-#: pages/account.php:77 shortcodes/pmpro_account.php:106
-#: shortcodes/pmpro_account.php:108
+#: pages/account.php:77 shortcodes/dmrfid_account.php:106
+#: shortcodes/dmrfid_account.php:108
 msgid "Email"
 msgstr "電郵"
 
@@ -426,7 +426,7 @@ msgstr "對會員藏起廣告?"
 #: adminpages/advancedsettings.php:148 adminpages/advancedsettings.php:207
 #: adminpages/advancedsettings.php:219 adminpages/membershiplevels.php:684
 #: adminpages/paymentsettings.php:219
-#: classes/gateways/class.pmprogateway_stripe.php:222 includes/profile.php:125
+#: classes/gateways/class.dmrfidgateway_stripe.php:222 includes/profile.php:125
 #: adminpages/advancedsettings.php:128 adminpages/advancedsettings.php:135
 #: adminpages/advancedsettings.php:187 adminpages/advancedsettings.php:194
 #: adminpages/advancedsettings.php:199 adminpages/advancedsettings.php:206
@@ -440,13 +440,13 @@ msgstr "對會員藏起廣告?"
 #: adminpages/paymentsettings.php:434 adminpages/paymentsettings.php:436
 #: adminpages/paymentsettings.php:454 adminpages/paymentsettings.php:459
 #: adminpages/paymentsettings.php:461
-#: classes/gateways/class.pmprogateway_stripe.php:173
-#: classes/gateways/class.pmprogateway_stripe.php:174
-#: classes/gateways/class.pmprogateway_stripe.php:184
-#: classes/gateways/class.pmprogateway_stripe.php:206
-#: classes/gateways/class.pmprogateway_stripe.php:208
-#: classes/gateways/class.pmprogateway_stripe.php:209
-#: classes/gateways/class.pmprogateway_stripe.php:220 includes/profile.php:101
+#: classes/gateways/class.dmrfidgateway_stripe.php:173
+#: classes/gateways/class.dmrfidgateway_stripe.php:174
+#: classes/gateways/class.dmrfidgateway_stripe.php:184
+#: classes/gateways/class.dmrfidgateway_stripe.php:206
+#: classes/gateways/class.dmrfidgateway_stripe.php:208
+#: classes/gateways/class.dmrfidgateway_stripe.php:209
+#: classes/gateways/class.dmrfidgateway_stripe.php:220 includes/profile.php:101
 #: includes/profile.php:105 includes/profile.php:110 includes/profile.php:117
 #: includes/profile.php:121 includes/profile.php:123
 msgid "No"
@@ -489,7 +489,7 @@ msgstr "只能是複數網站"
 
 #: adminpages/advancedsettings.php:208 adminpages/membershiplevels.php:684
 #: adminpages/paymentsettings.php:220
-#: classes/gateways/class.pmprogateway_stripe.php:223 includes/profile.php:126
+#: classes/gateways/class.dmrfidgateway_stripe.php:223 includes/profile.php:126
 #: adminpages/advancedsettings.php:188 adminpages/advancedsettings.php:195
 #: adminpages/membershiplevels.php:563 adminpages/membershiplevels.php:569
 #: adminpages/membershiplevels.php:571 adminpages/membershiplevels.php:578
@@ -501,13 +501,13 @@ msgstr "只能是複數網站"
 #: adminpages/paymentsettings.php:430 adminpages/paymentsettings.php:435
 #: adminpages/paymentsettings.php:437 adminpages/paymentsettings.php:455
 #: adminpages/paymentsettings.php:460 adminpages/paymentsettings.php:462
-#: classes/gateways/class.pmprogateway_stripe.php:174
-#: classes/gateways/class.pmprogateway_stripe.php:175
-#: classes/gateways/class.pmprogateway_stripe.php:185
-#: classes/gateways/class.pmprogateway_stripe.php:207
-#: classes/gateways/class.pmprogateway_stripe.php:209
-#: classes/gateways/class.pmprogateway_stripe.php:210
-#: classes/gateways/class.pmprogateway_stripe.php:221 includes/profile.php:102
+#: classes/gateways/class.dmrfidgateway_stripe.php:174
+#: classes/gateways/class.dmrfidgateway_stripe.php:175
+#: classes/gateways/class.dmrfidgateway_stripe.php:185
+#: classes/gateways/class.dmrfidgateway_stripe.php:207
+#: classes/gateways/class.dmrfidgateway_stripe.php:209
+#: classes/gateways/class.dmrfidgateway_stripe.php:210
+#: classes/gateways/class.dmrfidgateway_stripe.php:221 includes/profile.php:102
 #: includes/profile.php:106 includes/profile.php:111 includes/profile.php:118
 #: includes/profile.php:122 includes/profile.php:124
 msgid "Yes"
@@ -705,27 +705,27 @@ msgid "Start Date"
 msgstr "開始日期"
 
 #: adminpages/discountcodes.php:377
-#: classes/gateways/class.pmprogateway_braintree.php:361
-#: classes/gateways/class.pmprogateway_stripe.php:570 pages/billing.php:316
+#: classes/gateways/class.dmrfidgateway_braintree.php:361
+#: classes/gateways/class.dmrfidgateway_stripe.php:570 pages/billing.php:316
 #: pages/checkout.php:582 adminpages/discountcodes.php:367
 #: adminpages/discountcodes.php:370 adminpages/discountcodes.php:371
 #: adminpages/discountcodes.php:372
-#: classes/gateways/class.pmprogateway_braintree.php:308
-#: classes/gateways/class.pmprogateway_braintree.php:321
-#: classes/gateways/class.pmprogateway_braintree.php:323
-#: classes/gateways/class.pmprogateway_braintree.php:326
-#: classes/gateways/class.pmprogateway_braintree.php:327
-#: classes/gateways/class.pmprogateway_braintree.php:359
-#: classes/gateways/class.pmprogateway_stripe.php:454
-#: classes/gateways/class.pmprogateway_stripe.php:455
-#: classes/gateways/class.pmprogateway_stripe.php:465
-#: classes/gateways/class.pmprogateway_stripe.php:469
-#: classes/gateways/class.pmprogateway_stripe.php:495
-#: classes/gateways/class.pmprogateway_stripe.php:498
-#: classes/gateways/class.pmprogateway_stripe.php:500
-#: classes/gateways/class.pmprogateway_stripe.php:503
-#: classes/gateways/class.pmprogateway_stripe.php:521
-#: classes/gateways/class.pmprogateway_stripe.php:532 pages/billing.php:249
+#: classes/gateways/class.dmrfidgateway_braintree.php:308
+#: classes/gateways/class.dmrfidgateway_braintree.php:321
+#: classes/gateways/class.dmrfidgateway_braintree.php:323
+#: classes/gateways/class.dmrfidgateway_braintree.php:326
+#: classes/gateways/class.dmrfidgateway_braintree.php:327
+#: classes/gateways/class.dmrfidgateway_braintree.php:359
+#: classes/gateways/class.dmrfidgateway_stripe.php:454
+#: classes/gateways/class.dmrfidgateway_stripe.php:455
+#: classes/gateways/class.dmrfidgateway_stripe.php:465
+#: classes/gateways/class.dmrfidgateway_stripe.php:469
+#: classes/gateways/class.dmrfidgateway_stripe.php:495
+#: classes/gateways/class.dmrfidgateway_stripe.php:498
+#: classes/gateways/class.dmrfidgateway_stripe.php:500
+#: classes/gateways/class.dmrfidgateway_stripe.php:503
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:532 pages/billing.php:249
 #: pages/billing.php:253 pages/billing.php:262 pages/billing.php:265
 #: pages/billing.php:268 pages/billing.php:310 pages/billing.php:319
 #: pages/checkout.php:508 pages/checkout.php:524 pages/checkout.php:525
@@ -803,7 +803,7 @@ msgstr "付款帳單數量"
 
 #: adminpages/discountcodes.php:473 adminpages/discountcodes.php:527
 #: adminpages/membershiplevels.php:400 adminpages/membershiplevels.php:501
-#: classes/gateways/class.pmprogateway_stripe.php:637
+#: classes/gateways/class.dmrfidgateway_stripe.php:637
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:468
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
@@ -813,22 +813,22 @@ msgstr "付款帳單數量"
 #: adminpages/membershiplevels.php:377 adminpages/membershiplevels.php:449
 #: adminpages/membershiplevels.php:476 adminpages/membershiplevels.php:477
 #: adminpages/membershiplevels.php:479 adminpages/membershiplevels.php:480
-#: classes/gateways/class.pmprogateway_stripe.php:521
-#: classes/gateways/class.pmprogateway_stripe.php:522
-#: classes/gateways/class.pmprogateway_stripe.php:532
-#: classes/gateways/class.pmprogateway_stripe.php:536
-#: classes/gateways/class.pmprogateway_stripe.php:562
-#: classes/gateways/class.pmprogateway_stripe.php:566
-#: classes/gateways/class.pmprogateway_stripe.php:567
-#: classes/gateways/class.pmprogateway_stripe.php:570
-#: classes/gateways/class.pmprogateway_stripe.php:588
-#: classes/gateways/class.pmprogateway_stripe.php:599
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:532
+#: classes/gateways/class.dmrfidgateway_stripe.php:536
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:566
+#: classes/gateways/class.dmrfidgateway_stripe.php:567
+#: classes/gateways/class.dmrfidgateway_stripe.php:570
+#: classes/gateways/class.dmrfidgateway_stripe.php:588
+#: classes/gateways/class.dmrfidgateway_stripe.php:599
 msgid "Day(s)"
 msgstr "日(s)"
 
 #: adminpages/discountcodes.php:473 adminpages/discountcodes.php:527
 #: adminpages/membershiplevels.php:400 adminpages/membershiplevels.php:501
-#: classes/gateways/class.pmprogateway_stripe.php:637
+#: classes/gateways/class.dmrfidgateway_stripe.php:637
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:468
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
@@ -838,22 +838,22 @@ msgstr "日(s)"
 #: adminpages/membershiplevels.php:377 adminpages/membershiplevels.php:449
 #: adminpages/membershiplevels.php:476 adminpages/membershiplevels.php:477
 #: adminpages/membershiplevels.php:479 adminpages/membershiplevels.php:480
-#: classes/gateways/class.pmprogateway_stripe.php:521
-#: classes/gateways/class.pmprogateway_stripe.php:522
-#: classes/gateways/class.pmprogateway_stripe.php:532
-#: classes/gateways/class.pmprogateway_stripe.php:536
-#: classes/gateways/class.pmprogateway_stripe.php:562
-#: classes/gateways/class.pmprogateway_stripe.php:566
-#: classes/gateways/class.pmprogateway_stripe.php:567
-#: classes/gateways/class.pmprogateway_stripe.php:570
-#: classes/gateways/class.pmprogateway_stripe.php:588
-#: classes/gateways/class.pmprogateway_stripe.php:599
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:532
+#: classes/gateways/class.dmrfidgateway_stripe.php:536
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:566
+#: classes/gateways/class.dmrfidgateway_stripe.php:567
+#: classes/gateways/class.dmrfidgateway_stripe.php:570
+#: classes/gateways/class.dmrfidgateway_stripe.php:588
+#: classes/gateways/class.dmrfidgateway_stripe.php:599
 msgid "Month(s)"
 msgstr "月(s)"
 
 #: adminpages/discountcodes.php:473 adminpages/discountcodes.php:527
 #: adminpages/membershiplevels.php:400 adminpages/membershiplevels.php:501
-#: classes/gateways/class.pmprogateway_stripe.php:637
+#: classes/gateways/class.dmrfidgateway_stripe.php:637
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:468
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
@@ -863,22 +863,22 @@ msgstr "月(s)"
 #: adminpages/membershiplevels.php:377 adminpages/membershiplevels.php:449
 #: adminpages/membershiplevels.php:476 adminpages/membershiplevels.php:477
 #: adminpages/membershiplevels.php:479 adminpages/membershiplevels.php:480
-#: classes/gateways/class.pmprogateway_stripe.php:521
-#: classes/gateways/class.pmprogateway_stripe.php:522
-#: classes/gateways/class.pmprogateway_stripe.php:532
-#: classes/gateways/class.pmprogateway_stripe.php:536
-#: classes/gateways/class.pmprogateway_stripe.php:562
-#: classes/gateways/class.pmprogateway_stripe.php:566
-#: classes/gateways/class.pmprogateway_stripe.php:567
-#: classes/gateways/class.pmprogateway_stripe.php:570
-#: classes/gateways/class.pmprogateway_stripe.php:588
-#: classes/gateways/class.pmprogateway_stripe.php:599
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:532
+#: classes/gateways/class.dmrfidgateway_stripe.php:536
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:566
+#: classes/gateways/class.dmrfidgateway_stripe.php:567
+#: classes/gateways/class.dmrfidgateway_stripe.php:570
+#: classes/gateways/class.dmrfidgateway_stripe.php:588
+#: classes/gateways/class.dmrfidgateway_stripe.php:599
 msgid "Week(s)"
 msgstr "星期(s)"
 
 #: adminpages/discountcodes.php:473 adminpages/discountcodes.php:527
 #: adminpages/membershiplevels.php:400 adminpages/membershiplevels.php:501
-#: classes/gateways/class.pmprogateway_stripe.php:637
+#: classes/gateways/class.dmrfidgateway_stripe.php:637
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:468
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
@@ -888,16 +888,16 @@ msgstr "星期(s)"
 #: adminpages/membershiplevels.php:377 adminpages/membershiplevels.php:449
 #: adminpages/membershiplevels.php:476 adminpages/membershiplevels.php:477
 #: adminpages/membershiplevels.php:479 adminpages/membershiplevels.php:480
-#: classes/gateways/class.pmprogateway_stripe.php:521
-#: classes/gateways/class.pmprogateway_stripe.php:522
-#: classes/gateways/class.pmprogateway_stripe.php:532
-#: classes/gateways/class.pmprogateway_stripe.php:536
-#: classes/gateways/class.pmprogateway_stripe.php:562
-#: classes/gateways/class.pmprogateway_stripe.php:566
-#: classes/gateways/class.pmprogateway_stripe.php:567
-#: classes/gateways/class.pmprogateway_stripe.php:570
-#: classes/gateways/class.pmprogateway_stripe.php:588
-#: classes/gateways/class.pmprogateway_stripe.php:599
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:522
+#: classes/gateways/class.dmrfidgateway_stripe.php:532
+#: classes/gateways/class.dmrfidgateway_stripe.php:536
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:566
+#: classes/gateways/class.dmrfidgateway_stripe.php:567
+#: classes/gateways/class.dmrfidgateway_stripe.php:570
+#: classes/gateways/class.dmrfidgateway_stripe.php:588
+#: classes/gateways/class.dmrfidgateway_stripe.php:599
 msgid "Year(s)"
 msgstr "年(s)"
 
@@ -1173,8 +1173,8 @@ msgid "From Name"
 msgstr "從自名"
 
 #: adminpages/emailsettings.php:94
-msgid "Only Filter PMPro Emails?"
-msgstr "只過濾PMPro的電郵?"
+msgid "Only Filter DmRFID Emails?"
+msgstr "只過濾DmRFID的電郵?"
 
 #: adminpages/emailsettings.php:98
 #, php-format
@@ -1244,10 +1244,10 @@ msgstr "新用者"
 #: adminpages/emailsettings.php:157
 msgid ""
 "Default WP notification email. (Recommended: Leave unchecked. Members will "
-"still get an email confirmation from PMPro after checkout.)"
+"still get an email confirmation from DmRFID after checkout.)"
 msgstr ""
 "正常預設值電WP郵通告. (推薦: 無核查/無小方格打上鉤. 結帳後用者會繼續收到從"
-"PMPro的確認電郵.)"
+"DmRFID的確認電郵.)"
 
 #: adminpages/membershiplevels.php:137 adminpages/membershiplevels.php:141
 #: adminpages/membershiplevels.php:143
@@ -1334,20 +1334,20 @@ msgid "Billing Details"
 msgstr "付款帳單資料"
 
 #: adminpages/membershiplevels.php:396
-#: classes/gateways/class.pmprogateway_stripe.php:735
+#: classes/gateways/class.dmrfidgateway_stripe.php:735
 #: adminpages/membershiplevels.php:349 adminpages/membershiplevels.php:351
 #: adminpages/membershiplevels.php:370 adminpages/membershiplevels.php:372
 #: adminpages/membershiplevels.php:373
-#: classes/gateways/class.pmprogateway_stripe.php:619
-#: classes/gateways/class.pmprogateway_stripe.php:620
-#: classes/gateways/class.pmprogateway_stripe.php:630
-#: classes/gateways/class.pmprogateway_stripe.php:634
-#: classes/gateways/class.pmprogateway_stripe.php:660
-#: classes/gateways/class.pmprogateway_stripe.php:664
-#: classes/gateways/class.pmprogateway_stripe.php:665
-#: classes/gateways/class.pmprogateway_stripe.php:668
-#: classes/gateways/class.pmprogateway_stripe.php:686
-#: classes/gateways/class.pmprogateway_stripe.php:697
+#: classes/gateways/class.dmrfidgateway_stripe.php:619
+#: classes/gateways/class.dmrfidgateway_stripe.php:620
+#: classes/gateways/class.dmrfidgateway_stripe.php:630
+#: classes/gateways/class.dmrfidgateway_stripe.php:634
+#: classes/gateways/class.dmrfidgateway_stripe.php:660
+#: classes/gateways/class.dmrfidgateway_stripe.php:664
+#: classes/gateways/class.dmrfidgateway_stripe.php:665
+#: classes/gateways/class.dmrfidgateway_stripe.php:668
+#: classes/gateways/class.dmrfidgateway_stripe.php:686
+#: classes/gateways/class.dmrfidgateway_stripe.php:697
 msgid "per"
 msgstr "每"
 
@@ -1373,25 +1373,25 @@ msgstr "Braintree只綜合付款帳單用\"月\"或\"年\"的時分."
 msgid ""
 "After saving this level, make note of the ID and create a \"Plan\" in your "
 "Braintree dashboard with the same settings and the \"Plan ID\" set to "
-"<em>pmpro_#</em>, where # is the level ID."
+"<em>dmrfid_#</em>, where # is the level ID."
 msgstr ""
 "請記下ID和在您的Braintree控制台板開啓相同設定的新計劃\"Plan\"和\"Plan ID\"設"
-"定在 <em>pmpro_#</em>, 以#是會員會籍程度ID."
+"定在 <em>dmrfid_#</em>, 以#是會員會籍程度ID."
 
 #: adminpages/membershiplevels.php:417 adminpages/membershiplevels.php:419
-#: classes/gateways/class.pmprogateway_cybersource.php:101
-#: classes/gateways/class.pmprogateway_paypal.php:130
-#: classes/gateways/class.pmprogateway_paypalexpress.php:145
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_paypal.php:130
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:145
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 #: adminpages/membershiplevels.php:372 adminpages/membershiplevels.php:374
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:393
 #: adminpages/membershiplevels.php:395 adminpages/membershiplevels.php:396
 #: adminpages/membershiplevels.php:397 adminpages/membershiplevels.php:398
 #: adminpages/paymentsettings.php:170 adminpages/paymentsettings.php:174
 #: adminpages/paymentsettings.php:179
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:123
-#: classes/gateways/class.pmprogateway_paypalexpress.php:133
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:123
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:133
 msgid "Note"
 msgstr "注意"
 
@@ -1492,7 +1492,7 @@ msgid "Save Level"
 msgstr "保存程度"
 
 #: adminpages/membershiplevels.php:530 adminpages/orders.php:796
-#: pages/billing.php:371 pages/cancel.php:84 shortcodes/pmpro_account.php:72
+#: pages/billing.php:371 pages/cancel.php:84 shortcodes/dmrfid_account.php:72
 #: adminpages/membershiplevels.php:506 adminpages/membershiplevels.php:508
 #: adminpages/membershiplevels.php:517 adminpages/membershiplevels.php:518
 #: adminpages/orders.php:511 adminpages/orders.php:561
@@ -1501,8 +1501,8 @@ msgstr "保存程度"
 #: pages/billing.php:299 pages/billing.php:330 pages/billing.php:339
 #: pages/billing.php:342 pages/billing.php:344 pages/billing.php:348
 #: pages/billing.php:392 pages/billing.php:401 pages/billing.php:406
-#: pages/cancel.php:71 pages/cancel.php:83 shortcodes/pmpro_account.php:70
-#: shortcodes/pmpro_account.php:73
+#: pages/cancel.php:71 pages/cancel.php:83 shortcodes/dmrfid_account.php:70
+#: shortcodes/dmrfid_account.php:73
 msgid "Cancel"
 msgstr "取消"
 
@@ -1537,7 +1537,7 @@ msgstr "在程度頁拉和落下這個會籍程度來再訂購."
 
 #: adminpages/membershiplevels.php:656 pages/cancel.php:62
 #: pages/confirmation.php:89 pages/invoice.php:70
-#: shortcodes/pmpro_account.php:46 adminpages/membershiplevels.php:510
+#: shortcodes/dmrfid_account.php:46 adminpages/membershiplevels.php:510
 #: adminpages/membershiplevels.php:516 adminpages/membershiplevels.php:518
 #: adminpages/membershiplevels.php:544 adminpages/membershiplevels.php:545
 #: adminpages/membershiplevels.php:586 adminpages/membershiplevels.php:632
@@ -1545,7 +1545,7 @@ msgstr "在程度頁拉和落下這個會籍程度來再訂購."
 #: adminpages/membershiplevels.php:640 adminpages/membershiplevels.php:644
 #: pages/account.php:20 pages/cancel.php:53 pages/cancel.php:61
 #: pages/confirmation.php:81 pages/confirmation.php:83 pages/invoice.php:68
-#: shortcodes/pmpro_account.php:45
+#: shortcodes/dmrfid_account.php:45
 msgid "Expiration"
 msgstr "到期"
 
@@ -1632,7 +1632,7 @@ msgstr "顯示"
 
 #: adminpages/memberslist.php:32 adminpages/reports/login.php:85
 #: adminpages/reports/memberships.php:331 adminpages/reports/sales.php:225
-#: classes/class.pmproemail.php:145 classes/class.pmproemail.php:189
+#: classes/class.dmrfidemail.php:145 classes/class.dmrfidemail.php:189
 #: adminpages/reports/login.php:67 adminpages/reports/login.php:69
 #: adminpages/reports/memberships.php:281
 #: adminpages/reports/memberships.php:290
@@ -1667,12 +1667,12 @@ msgid "%d members found."
 msgstr "%d 會員找到."
 
 #: adminpages/memberslist.php:165 pages/checkout.php:191
-#: shortcodes/pmpro_account.php:108 adminpages/memberslist.php:112
+#: shortcodes/dmrfid_account.php:108 adminpages/memberslist.php:112
 #: adminpages/memberslist.php:145 adminpages/memberslist.php:155
 #: pages/account.php:51 pages/account.php:55 pages/account.php:76
 #: pages/checkout.php:168 pages/checkout.php:171 pages/checkout.php:173
 #: pages/checkout.php:180 pages/checkout.php:182 pages/checkout.php:184
-#: shortcodes/pmpro_account.php:105 shortcodes/pmpro_account.php:107
+#: shortcodes/dmrfid_account.php:105 shortcodes/dmrfid_account.php:107
 msgid "Username"
 msgstr "會員名"
 
@@ -1700,11 +1700,11 @@ msgid "Billing Address"
 msgstr "付款帳單地址"
 
 #: adminpages/memberslist.php:171 adminpages/reports/login.php:161
-#: classes/gateways/class.pmprogateway_authorizenet.php:303
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:303
 #: adminpages/memberslist.php:118 adminpages/memberslist.php:151
 #: adminpages/memberslist.php:161 adminpages/pagesettings.php:51
 #: adminpages/reports/login.php:143 adminpages/reports/login.php:145
-#: classes/gateways/class.pmprogateway_authorizenet.php:187
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:187
 msgid "Membership"
 msgstr "會籍"
 
@@ -1898,27 +1898,27 @@ msgid "e.g. PayPal Express, PayPal Standard, Credit Card."
 msgstr "例如. PayPal Express, PayPal Standard, Credit Card (信用卡)."
 
 #: adminpages/orders.php:563
-#: classes/gateways/class.pmprogateway_braintree.php:344
-#: classes/gateways/class.pmprogateway_stripe.php:522 pages/billing.php:268
+#: classes/gateways/class.dmrfidgateway_braintree.php:344
+#: classes/gateways/class.dmrfidgateway_stripe.php:522 pages/billing.php:268
 #: pages/checkout.php:534 adminpages/orders.php:339 adminpages/orders.php:389
 #: adminpages/orders.php:461 adminpages/orders.php:490
 #: adminpages/orders.php:532
-#: classes/gateways/class.pmprogateway_braintree.php:291
-#: classes/gateways/class.pmprogateway_braintree.php:304
-#: classes/gateways/class.pmprogateway_braintree.php:306
-#: classes/gateways/class.pmprogateway_braintree.php:309
-#: classes/gateways/class.pmprogateway_braintree.php:310
-#: classes/gateways/class.pmprogateway_braintree.php:342
-#: classes/gateways/class.pmprogateway_stripe.php:408
-#: classes/gateways/class.pmprogateway_stripe.php:409
-#: classes/gateways/class.pmprogateway_stripe.php:419
-#: classes/gateways/class.pmprogateway_stripe.php:423
-#: classes/gateways/class.pmprogateway_stripe.php:447
-#: classes/gateways/class.pmprogateway_stripe.php:450
-#: classes/gateways/class.pmprogateway_stripe.php:452
-#: classes/gateways/class.pmprogateway_stripe.php:455
-#: classes/gateways/class.pmprogateway_stripe.php:473
-#: classes/gateways/class.pmprogateway_stripe.php:484 pages/billing.php:234
+#: classes/gateways/class.dmrfidgateway_braintree.php:291
+#: classes/gateways/class.dmrfidgateway_braintree.php:304
+#: classes/gateways/class.dmrfidgateway_braintree.php:306
+#: classes/gateways/class.dmrfidgateway_braintree.php:309
+#: classes/gateways/class.dmrfidgateway_braintree.php:310
+#: classes/gateways/class.dmrfidgateway_braintree.php:342
+#: classes/gateways/class.dmrfidgateway_stripe.php:408
+#: classes/gateways/class.dmrfidgateway_stripe.php:409
+#: classes/gateways/class.dmrfidgateway_stripe.php:419
+#: classes/gateways/class.dmrfidgateway_stripe.php:423
+#: classes/gateways/class.dmrfidgateway_stripe.php:447
+#: classes/gateways/class.dmrfidgateway_stripe.php:450
+#: classes/gateways/class.dmrfidgateway_stripe.php:452
+#: classes/gateways/class.dmrfidgateway_stripe.php:455
+#: classes/gateways/class.dmrfidgateway_stripe.php:473
+#: classes/gateways/class.dmrfidgateway_stripe.php:484 pages/billing.php:234
 #: pages/billing.php:238 pages/billing.php:247 pages/billing.php:250
 #: pages/billing.php:253 pages/billing.php:262 pages/billing.php:271
 #: pages/checkout.php:493 pages/checkout.php:507 pages/checkout.php:510
@@ -1934,13 +1934,13 @@ msgid "e.g. Visa, MasterCard, AMEX, etc"
 msgstr "例如. Visa, MasterCard, AMEX, etc"
 
 #: adminpages/orders.php:575
-#: classes/gateways/class.pmprogateway_twocheckout.php:137
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:137
 #: adminpages/orders.php:348 adminpages/orders.php:398
 #: adminpages/orders.php:470 adminpages/orders.php:499
 #: adminpages/orders.php:544 adminpages/paymentsettings.php:347
 #: adminpages/paymentsettings.php:352
-#: classes/gateways/class.pmprogateway_twocheckout.php:129
-#: classes/gateways/class.pmprogateway_twocheckout.php:148
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:129
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:148
 msgid "Account Number"
 msgstr "戶口號碼"
 
@@ -2038,14 +2038,14 @@ msgid "Generated by the gateway. Useful to cross reference subscriptions."
 msgstr "是網關入口生產的. 對訂閱有相互參照好處."
 
 #: adminpages/orders.php:710 adminpages/orders.php:1144 pages/invoice.php:107
-#: shortcodes/pmpro_account.php:125 adminpages/orders.php:442
+#: shortcodes/dmrfid_account.php:125 adminpages/orders.php:442
 #: adminpages/orders.php:492 adminpages/orders.php:493
 #: adminpages/orders.php:565 adminpages/orders.php:594
 #: adminpages/orders.php:607 adminpages/orders.php:679
 #: adminpages/orders.php:910 adminpages/orders.php:920
 #: adminpages/orders.php:947 adminpages/orders.php:976
 #: adminpages/orders.php:1113 pages/account.php:91 pages/invoice.php:105
-#: shortcodes/pmpro_account.php:122 shortcodes/pmpro_account.php:124
+#: shortcodes/dmrfid_account.php:122 shortcodes/dmrfid_account.php:124
 msgid "Date"
 msgstr "日期"
 
@@ -2170,7 +2170,7 @@ msgid "%d orders found."
 msgstr "%d 訂購找到."
 
 #: adminpages/orders.php:1136 adminpages/reports/login.php:159
-#: classes/gateways/class.pmprogateway_payflowpro.php:116
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:116
 #: adminpages/orders.php:599 adminpages/orders.php:902
 #: adminpages/orders.php:912 adminpages/orders.php:939
 #: adminpages/orders.php:968 adminpages/orders.php:1105
@@ -2221,7 +2221,7 @@ msgstr "交易IDs"
 msgid "deleted"
 msgstr "清除"
 
-# This  pmpro-zh_HK.po Chinese/Cantonese (Hong Kong SAR China) translation is done by Kai Kong Chan
+# This  dmrfid-zh_HK.po Chinese/Cantonese (Hong Kong SAR China) translation is done by Kai Kong Chan
 # 翻譯者: 陳啟剛先生
 # 請來我們的網站參觀: http://thelearningenglish.com
 # Please visit our web-site: http://thelearningenglish.com
@@ -2535,12 +2535,12 @@ msgid ""
 "US only. If values are given, tax will be applied for any members ordering "
 "from the selected state.<br />For non-US or more complex tax rules, use the "
 "<a target=\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-"
-"taxes-paid-memberships-pro/\">pmpro_tax filter</a>."
+"taxes-paid-memberships-pro/\">dmrfid_tax filter</a>."
 msgstr ""
 "只是美國的, 如果有提供數值, 會員在任何一個他選擇的州訂購就會需要加稅款. <br /"
 ">如有非美國或複雜的稅項條例, 用這個 <a target=\"_blank\" href=\"http://www."
 "paidmembershipspro.com/2013/10/non-us-taxes-paid-memberships-pro/"
-"\">pmpro_tax 來過濾</a>."
+"\">dmrfid_tax 來過濾</a>."
 
 #: adminpages/paymentsettings.php:206 adminpages/paymentsettings.php:450
 #: adminpages/paymentsettings.php:455 adminpages/paymentsettings.php:457
@@ -2549,7 +2549,7 @@ msgstr "強迫 SSL"
 
 #: adminpages/paymentsettings.php:213
 msgid ""
-"Your Site URL starts with https:// and so PMPro will allow your entire site "
+"Your Site URL starts with https:// and so DmRFID will allow your entire site "
 "to be served over HTTPS."
 msgstr "你的網站現在會全體楚用HTTPS原因是你的網站的URL開頭是用https://的."
 
@@ -2871,68 +2871,68 @@ msgid ""
 msgstr ""
 "取消這個用者ID=%s會員會籍時有錯. 您需要檢查你的網關入口來看訂閱是不是活躍."
 
-#: classes/class.pmproemail.php:37
+#: classes/class.dmrfidemail.php:37
 #, php-format
 msgid "An Email From %s"
 msgstr "電郵從 %s"
 
-#: classes/class.pmproemail.php:134 classes/class.pmproemail.php:120
-#: classes/class.pmproemail.php:122 classes/class.pmproemail.php:125
+#: classes/class.dmrfidemail.php:134 classes/class.dmrfidemail.php:120
+#: classes/class.dmrfidemail.php:122 classes/class.dmrfidemail.php:125
 #, php-format
 msgid "Your membership at %s has been CANCELLED"
 msgstr "你的會籍在 %s 已經被取消"
 
-#: classes/class.pmproemail.php:166 classes/class.pmproemail.php:142
-#: classes/class.pmproemail.php:144 classes/class.pmproemail.php:147
-#: classes/class.pmproemail.php:156
+#: classes/class.dmrfidemail.php:166 classes/class.dmrfidemail.php:142
+#: classes/class.dmrfidemail.php:144 classes/class.dmrfidemail.php:147
+#: classes/class.dmrfidemail.php:156
 #, php-format
 msgid "Membership for %s at %s has been CANCELLED"
 msgstr "會籍給 %s 在%s 已經被取消"
 
-#: classes/class.pmproemail.php:207 classes/class.pmproemail.php:172
-#: classes/class.pmproemail.php:173 classes/class.pmproemail.php:175
-#: classes/class.pmproemail.php:178 classes/class.pmproemail.php:187
+#: classes/class.dmrfidemail.php:207 classes/class.dmrfidemail.php:172
+#: classes/class.dmrfidemail.php:173 classes/class.dmrfidemail.php:175
+#: classes/class.dmrfidemail.php:178 classes/class.dmrfidemail.php:187
 #, php-format
 msgid "Your membership confirmation for %s"
 msgstr "你的會籍確認給 %s"
 
-#: classes/class.pmproemail.php:260 classes/class.pmproemail.php:269
-#: classes/class.pmproemail.php:278 classes/class.pmproemail.php:357
-#: classes/class.pmproemail.php:366 classes/class.pmproemail.php:679
-#: classes/gateways/class.pmprogateway_braintree.php:402
-#: classes/gateways/class.pmprogateway_stripe.php:611 pages/checkout.php:83
+#: classes/class.dmrfidemail.php:260 classes/class.dmrfidemail.php:269
+#: classes/class.dmrfidemail.php:278 classes/class.dmrfidemail.php:357
+#: classes/class.dmrfidemail.php:366 classes/class.dmrfidemail.php:679
+#: classes/gateways/class.dmrfidgateway_braintree.php:402
+#: classes/gateways/class.dmrfidgateway_stripe.php:611 pages/checkout.php:83
 #: pages/checkout.php:93 pages/checkout.php:619 pages/confirmation.php:58
-#: pages/invoice.php:33 classes/class.pmproemail.php:216
-#: classes/class.pmproemail.php:218 classes/class.pmproemail.php:225
-#: classes/class.pmproemail.php:227 classes/class.pmproemail.php:228
-#: classes/class.pmproemail.php:231 classes/class.pmproemail.php:234
-#: classes/class.pmproemail.php:236 classes/class.pmproemail.php:237
-#: classes/class.pmproemail.php:240 classes/class.pmproemail.php:246
-#: classes/class.pmproemail.php:249 classes/class.pmproemail.php:258
-#: classes/class.pmproemail.php:304 classes/class.pmproemail.php:307
-#: classes/class.pmproemail.php:313 classes/class.pmproemail.php:316
-#: classes/class.pmproemail.php:325 classes/class.pmproemail.php:328
-#: classes/class.pmproemail.php:334 classes/class.pmproemail.php:337
-#: classes/class.pmproemail.php:346 classes/class.pmproemail.php:532
-#: classes/class.pmproemail.php:580 classes/class.pmproemail.php:645
-#: classes/class.pmproemail.php:648 classes/class.pmproemail.php:657
-#: classes/class.pmproemail.php:659
-#: classes/gateways/class.pmprogateway_braintree.php:349
-#: classes/gateways/class.pmprogateway_braintree.php:362
-#: classes/gateways/class.pmprogateway_braintree.php:364
-#: classes/gateways/class.pmprogateway_braintree.php:367
-#: classes/gateways/class.pmprogateway_braintree.php:368
-#: classes/gateways/class.pmprogateway_braintree.php:400
-#: classes/gateways/class.pmprogateway_stripe.php:495
-#: classes/gateways/class.pmprogateway_stripe.php:496
-#: classes/gateways/class.pmprogateway_stripe.php:506
-#: classes/gateways/class.pmprogateway_stripe.php:510
-#: classes/gateways/class.pmprogateway_stripe.php:536
-#: classes/gateways/class.pmprogateway_stripe.php:540
-#: classes/gateways/class.pmprogateway_stripe.php:541
-#: classes/gateways/class.pmprogateway_stripe.php:544
-#: classes/gateways/class.pmprogateway_stripe.php:562
-#: classes/gateways/class.pmprogateway_stripe.php:573 pages/checkout.php:66
+#: pages/invoice.php:33 classes/class.dmrfidemail.php:216
+#: classes/class.dmrfidemail.php:218 classes/class.dmrfidemail.php:225
+#: classes/class.dmrfidemail.php:227 classes/class.dmrfidemail.php:228
+#: classes/class.dmrfidemail.php:231 classes/class.dmrfidemail.php:234
+#: classes/class.dmrfidemail.php:236 classes/class.dmrfidemail.php:237
+#: classes/class.dmrfidemail.php:240 classes/class.dmrfidemail.php:246
+#: classes/class.dmrfidemail.php:249 classes/class.dmrfidemail.php:258
+#: classes/class.dmrfidemail.php:304 classes/class.dmrfidemail.php:307
+#: classes/class.dmrfidemail.php:313 classes/class.dmrfidemail.php:316
+#: classes/class.dmrfidemail.php:325 classes/class.dmrfidemail.php:328
+#: classes/class.dmrfidemail.php:334 classes/class.dmrfidemail.php:337
+#: classes/class.dmrfidemail.php:346 classes/class.dmrfidemail.php:532
+#: classes/class.dmrfidemail.php:580 classes/class.dmrfidemail.php:645
+#: classes/class.dmrfidemail.php:648 classes/class.dmrfidemail.php:657
+#: classes/class.dmrfidemail.php:659
+#: classes/gateways/class.dmrfidgateway_braintree.php:349
+#: classes/gateways/class.dmrfidgateway_braintree.php:362
+#: classes/gateways/class.dmrfidgateway_braintree.php:364
+#: classes/gateways/class.dmrfidgateway_braintree.php:367
+#: classes/gateways/class.dmrfidgateway_braintree.php:368
+#: classes/gateways/class.dmrfidgateway_braintree.php:400
+#: classes/gateways/class.dmrfidgateway_stripe.php:495
+#: classes/gateways/class.dmrfidgateway_stripe.php:496
+#: classes/gateways/class.dmrfidgateway_stripe.php:506
+#: classes/gateways/class.dmrfidgateway_stripe.php:510
+#: classes/gateways/class.dmrfidgateway_stripe.php:536
+#: classes/gateways/class.dmrfidgateway_stripe.php:540
+#: classes/gateways/class.dmrfidgateway_stripe.php:541
+#: classes/gateways/class.dmrfidgateway_stripe.php:544
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:573 pages/checkout.php:66
 #: pages/checkout.php:67 pages/checkout.php:68 pages/checkout.php:75
 #: pages/checkout.php:76 pages/checkout.php:77 pages/checkout.php:78
 #: pages/checkout.php:85 pages/checkout.php:86 pages/checkout.php:549
@@ -2943,226 +2943,226 @@ msgstr "你的會籍確認給 %s"
 msgid "Discount Code"
 msgstr "减價密碼"
 
-#: classes/class.pmproemail.php:285 classes/class.pmproemail.php:378
-#: classes/class.pmproemail.php:685 classes/class.pmproemail.php:241
-#: classes/class.pmproemail.php:243 classes/class.pmproemail.php:253
-#: classes/class.pmproemail.php:256 classes/class.pmproemail.php:265
-#: classes/class.pmproemail.php:325 classes/class.pmproemail.php:328
-#: classes/class.pmproemail.php:346 classes/class.pmproemail.php:349
-#: classes/class.pmproemail.php:358 classes/class.pmproemail.php:538
-#: classes/class.pmproemail.php:586 classes/class.pmproemail.php:651
-#: classes/class.pmproemail.php:654 classes/class.pmproemail.php:663
-#: classes/class.pmproemail.php:665
+#: classes/class.dmrfidemail.php:285 classes/class.dmrfidemail.php:378
+#: classes/class.dmrfidemail.php:685 classes/class.dmrfidemail.php:241
+#: classes/class.dmrfidemail.php:243 classes/class.dmrfidemail.php:253
+#: classes/class.dmrfidemail.php:256 classes/class.dmrfidemail.php:265
+#: classes/class.dmrfidemail.php:325 classes/class.dmrfidemail.php:328
+#: classes/class.dmrfidemail.php:346 classes/class.dmrfidemail.php:349
+#: classes/class.dmrfidemail.php:358 classes/class.dmrfidemail.php:538
+#: classes/class.dmrfidemail.php:586 classes/class.dmrfidemail.php:651
+#: classes/class.dmrfidemail.php:654 classes/class.dmrfidemail.php:663
+#: classes/class.dmrfidemail.php:665
 #, php-format
 msgid "This membership will expire on %s."
 msgstr "你的會籍會在%s到期."
 
-#: classes/class.pmproemail.php:307 classes/class.pmproemail.php:263
-#: classes/class.pmproemail.php:265 classes/class.pmproemail.php:275
-#: classes/class.pmproemail.php:278 classes/class.pmproemail.php:287
+#: classes/class.dmrfidemail.php:307 classes/class.dmrfidemail.php:263
+#: classes/class.dmrfidemail.php:265 classes/class.dmrfidemail.php:275
+#: classes/class.dmrfidemail.php:278 classes/class.dmrfidemail.php:287
 #, php-format
 msgid "Member Checkout for %s at %s"
 msgstr "會員結帳是%s 在 %s"
 
-#: classes/class.pmproemail.php:395 classes/class.pmproemail.php:375
+#: classes/class.dmrfidemail.php:395 classes/class.dmrfidemail.php:375
 #, php-format
 msgid "Your billing information has been updated at %s"
 msgstr "你的付款帳單資料已經更新在 %s"
 
-#: classes/class.pmproemail.php:448 classes/class.pmproemail.php:428
+#: classes/class.dmrfidemail.php:448 classes/class.dmrfidemail.php:428
 #, php-format
 msgid "Billing information has been updated for %s at %s"
 msgstr "付款帳單資料已經更新給 %s在%s"
 
-#: classes/class.pmproemail.php:496 classes/class.pmproemail.php:425
-#: classes/class.pmproemail.php:430 classes/class.pmproemail.php:464
-#: classes/class.pmproemail.php:467 classes/class.pmproemail.php:476
+#: classes/class.dmrfidemail.php:496 classes/class.dmrfidemail.php:425
+#: classes/class.dmrfidemail.php:430 classes/class.dmrfidemail.php:464
+#: classes/class.dmrfidemail.php:467 classes/class.dmrfidemail.php:476
 #, php-format
 msgid "Membership Payment Failed at %s"
 msgstr "會籍付款有錯在 %s"
 
-#: classes/class.pmproemail.php:542 classes/class.pmproemail.php:462
-#: classes/class.pmproemail.php:468 classes/class.pmproemail.php:510
-#: classes/class.pmproemail.php:513 classes/class.pmproemail.php:522
+#: classes/class.dmrfidemail.php:542 classes/class.dmrfidemail.php:462
+#: classes/class.dmrfidemail.php:468 classes/class.dmrfidemail.php:510
+#: classes/class.dmrfidemail.php:513 classes/class.dmrfidemail.php:522
 #, php-format
 msgid "Membership Payment Failed For %s at %s"
 msgstr "會籍付款有錯是 %s 在 %s"
 
-#: classes/class.pmproemail.php:589 classes/class.pmproemail.php:508
-#: classes/class.pmproemail.php:557 classes/class.pmproemail.php:560
-#: classes/class.pmproemail.php:569
+#: classes/class.dmrfidemail.php:589 classes/class.dmrfidemail.php:508
+#: classes/class.dmrfidemail.php:557 classes/class.dmrfidemail.php:560
+#: classes/class.dmrfidemail.php:569
 #, php-format
 msgid "Credit Card on File Expiring Soon at %s"
 msgstr "信用卡的文件就近到期日在%s"
 
-#: classes/class.pmproemail.php:639 classes/class.pmproemail.php:501
-#: classes/class.pmproemail.php:548 classes/class.pmproemail.php:605
-#: classes/class.pmproemail.php:608 classes/class.pmproemail.php:617
-#: classes/class.pmproemail.php:619
+#: classes/class.dmrfidemail.php:639 classes/class.dmrfidemail.php:501
+#: classes/class.dmrfidemail.php:548 classes/class.dmrfidemail.php:605
+#: classes/class.dmrfidemail.php:608 classes/class.dmrfidemail.php:617
+#: classes/class.dmrfidemail.php:619
 #, php-format
 msgid "INVOICE for %s membership"
 msgstr "發票給%s 的會籍"
 
-#: classes/class.pmproemail.php:710 classes/class.pmproemail.php:563
-#: classes/class.pmproemail.php:611 classes/class.pmproemail.php:676
-#: classes/class.pmproemail.php:679 classes/class.pmproemail.php:688
-#: classes/class.pmproemail.php:690
+#: classes/class.dmrfidemail.php:710 classes/class.dmrfidemail.php:563
+#: classes/class.dmrfidemail.php:611 classes/class.dmrfidemail.php:676
+#: classes/class.dmrfidemail.php:679 classes/class.dmrfidemail.php:688
+#: classes/class.dmrfidemail.php:690
 #, php-format
 msgid "Your trial at %s is ending soon"
 msgstr "你的試用期在 %s 就近到期日"
 
-#: classes/class.pmproemail.php:744 classes/class.pmproemail.php:596
-#: classes/class.pmproemail.php:645 classes/class.pmproemail.php:710
-#: classes/class.pmproemail.php:713 classes/class.pmproemail.php:722
-#: classes/class.pmproemail.php:724
+#: classes/class.dmrfidemail.php:744 classes/class.dmrfidemail.php:596
+#: classes/class.dmrfidemail.php:645 classes/class.dmrfidemail.php:710
+#: classes/class.dmrfidemail.php:713 classes/class.dmrfidemail.php:722
+#: classes/class.dmrfidemail.php:724
 #, php-format
 msgid "Your membership at %s has ended"
 msgstr "你的會籍在 %s 以完了"
 
-#: classes/class.pmproemail.php:769 classes/class.pmproemail.php:621
-#: classes/class.pmproemail.php:670 classes/class.pmproemail.php:735
-#: classes/class.pmproemail.php:738 classes/class.pmproemail.php:747
-#: classes/class.pmproemail.php:749
+#: classes/class.dmrfidemail.php:769 classes/class.dmrfidemail.php:621
+#: classes/class.dmrfidemail.php:670 classes/class.dmrfidemail.php:735
+#: classes/class.dmrfidemail.php:738 classes/class.dmrfidemail.php:747
+#: classes/class.dmrfidemail.php:749
 #, php-format
 msgid "Your membership at %s will end soon"
 msgstr "你的會籍在 %s 就近完了"
 
-#: classes/class.pmproemail.php:789 classes/class.pmproemail.php:641
-#: classes/class.pmproemail.php:690 classes/class.pmproemail.php:755
-#: classes/class.pmproemail.php:758 classes/class.pmproemail.php:767
-#: classes/class.pmproemail.php:769
+#: classes/class.dmrfidemail.php:789 classes/class.dmrfidemail.php:641
+#: classes/class.dmrfidemail.php:690 classes/class.dmrfidemail.php:755
+#: classes/class.dmrfidemail.php:758 classes/class.dmrfidemail.php:767
+#: classes/class.dmrfidemail.php:769
 #, php-format
 msgid "Your membership at %s has been changed"
 msgstr "你的會籍在 %s 已經改變了"
 
-#: classes/class.pmproemail.php:793 classes/class.pmproemail.php:830
-#: classes/class.pmproemail.php:759 classes/class.pmproemail.php:762
-#: classes/class.pmproemail.php:771 classes/class.pmproemail.php:773
-#: classes/class.pmproemail.php:800 classes/class.pmproemail.php:809
-#: classes/class.pmproemail.php:810 classes/class.pmproemail.php:811
+#: classes/class.dmrfidemail.php:793 classes/class.dmrfidemail.php:830
+#: classes/class.dmrfidemail.php:759 classes/class.dmrfidemail.php:762
+#: classes/class.dmrfidemail.php:771 classes/class.dmrfidemail.php:773
+#: classes/class.dmrfidemail.php:800 classes/class.dmrfidemail.php:809
+#: classes/class.dmrfidemail.php:810 classes/class.dmrfidemail.php:811
 #, php-format
 msgid "The new level is %s"
 msgstr "新的程度是 %s"
 
-#: classes/class.pmproemail.php:795 classes/class.pmproemail.php:647
-#: classes/class.pmproemail.php:696 classes/class.pmproemail.php:761
-#: classes/class.pmproemail.php:764 classes/class.pmproemail.php:773
-#: classes/class.pmproemail.php:775
+#: classes/class.dmrfidemail.php:795 classes/class.dmrfidemail.php:647
+#: classes/class.dmrfidemail.php:696 classes/class.dmrfidemail.php:761
+#: classes/class.dmrfidemail.php:764 classes/class.dmrfidemail.php:773
+#: classes/class.dmrfidemail.php:775
 msgid "Your membership has been cancelled"
 msgstr "你的會籍已經被取消"
 
-#: classes/class.pmproemail.php:798 classes/class.pmproemail.php:836
-#: classes/class.pmproemail.php:651 classes/class.pmproemail.php:689
-#: classes/class.pmproemail.php:700 classes/class.pmproemail.php:738
-#: classes/class.pmproemail.php:765 classes/class.pmproemail.php:768
-#: classes/class.pmproemail.php:777 classes/class.pmproemail.php:778
-#: classes/class.pmproemail.php:779 classes/class.pmproemail.php:803
-#: classes/class.pmproemail.php:806 classes/class.pmproemail.php:815
-#: classes/class.pmproemail.php:816 classes/class.pmproemail.php:817
+#: classes/class.dmrfidemail.php:798 classes/class.dmrfidemail.php:836
+#: classes/class.dmrfidemail.php:651 classes/class.dmrfidemail.php:689
+#: classes/class.dmrfidemail.php:700 classes/class.dmrfidemail.php:738
+#: classes/class.dmrfidemail.php:765 classes/class.dmrfidemail.php:768
+#: classes/class.dmrfidemail.php:777 classes/class.dmrfidemail.php:778
+#: classes/class.dmrfidemail.php:779 classes/class.dmrfidemail.php:803
+#: classes/class.dmrfidemail.php:806 classes/class.dmrfidemail.php:815
+#: classes/class.dmrfidemail.php:816 classes/class.dmrfidemail.php:817
 #, php-format
 msgid "This membership will expire on %s"
 msgstr "這個會籍會在%s到期"
 
-#: classes/class.pmproemail.php:802 classes/class.pmproemail.php:840
-#: classes/class.pmproemail.php:655 classes/class.pmproemail.php:693
-#: classes/class.pmproemail.php:704 classes/class.pmproemail.php:742
-#: classes/class.pmproemail.php:769 classes/class.pmproemail.php:772
-#: classes/class.pmproemail.php:781 classes/class.pmproemail.php:782
-#: classes/class.pmproemail.php:783 classes/class.pmproemail.php:807
-#: classes/class.pmproemail.php:810 classes/class.pmproemail.php:819
-#: classes/class.pmproemail.php:820 classes/class.pmproemail.php:821
+#: classes/class.dmrfidemail.php:802 classes/class.dmrfidemail.php:840
+#: classes/class.dmrfidemail.php:655 classes/class.dmrfidemail.php:693
+#: classes/class.dmrfidemail.php:704 classes/class.dmrfidemail.php:742
+#: classes/class.dmrfidemail.php:769 classes/class.dmrfidemail.php:772
+#: classes/class.dmrfidemail.php:781 classes/class.dmrfidemail.php:782
+#: classes/class.dmrfidemail.php:783 classes/class.dmrfidemail.php:807
+#: classes/class.dmrfidemail.php:810 classes/class.dmrfidemail.php:819
+#: classes/class.dmrfidemail.php:820 classes/class.dmrfidemail.php:821
 msgid "This membership does not expire"
 msgstr "這個會籍會不是到期"
 
-#: classes/class.pmproemail.php:826 classes/class.pmproemail.php:679
-#: classes/class.pmproemail.php:728 classes/class.pmproemail.php:793
-#: classes/class.pmproemail.php:796 classes/class.pmproemail.php:805
-#: classes/class.pmproemail.php:806 classes/class.pmproemail.php:807
+#: classes/class.dmrfidemail.php:826 classes/class.dmrfidemail.php:679
+#: classes/class.dmrfidemail.php:728 classes/class.dmrfidemail.php:793
+#: classes/class.dmrfidemail.php:796 classes/class.dmrfidemail.php:805
+#: classes/class.dmrfidemail.php:806 classes/class.dmrfidemail.php:807
 #, php-format
 msgid "Membership for %s at %s has been changed"
 msgstr "這個 %s 籍會在 %s 已經改變了"
 
-#: classes/class.pmproemail.php:832 classes/class.pmproemail.php:799
-#: classes/class.pmproemail.php:802 classes/class.pmproemail.php:811
-#: classes/class.pmproemail.php:812 classes/class.pmproemail.php:813
+#: classes/class.dmrfidemail.php:832 classes/class.dmrfidemail.php:799
+#: classes/class.dmrfidemail.php:802 classes/class.dmrfidemail.php:811
+#: classes/class.dmrfidemail.php:812 classes/class.dmrfidemail.php:813
 msgid "Membership has been cancelled"
 msgstr "這個會籍會已經被取消"
 
-#: classes/class.pmproemail.php:869 classes/class.pmproemail.php:848
-#: classes/class.pmproemail.php:849 classes/class.pmproemail.php:850
+#: classes/class.dmrfidemail.php:869 classes/class.dmrfidemail.php:848
+#: classes/class.dmrfidemail.php:849 classes/class.dmrfidemail.php:850
 msgid "Invoice for Order #: "
 msgstr "訂購的發票#: "
 
-#: classes/gateways/class.pmprogateway.php:55
-#: classes/gateways/class.pmprogateway_authorizenet.php:171
-#: classes/gateways/class.pmprogateway_check.php:210
-#: classes/gateways/class.pmprogateway_cybersource.php:171
-#: classes/gateways/class.pmprogateway_payflowpro.php:164
-#: classes/gateways/class.pmprogateway_paypal.php:272
-#: classes/gateways/class.pmprogateway_authorizenet.php:55
-#: classes/gateways/class.pmprogateway_check.php:60
-#: classes/gateways/class.pmprogateway_check.php:193
-#: classes/gateways/class.pmprogateway_cybersource.php:57
-#: classes/gateways/class.pmprogateway_payflowpro.php:27
-#: classes/gateways/class.pmprogateway_paypal.php:27
-#: classes/gateways/class.pmprogateway_paypal.php:247
-#: classes/gateways/class.pmprogateway_paypal.php:249
+#: classes/gateways/class.dmrfidgateway.php:55
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:171
+#: classes/gateways/class.dmrfidgateway_check.php:210
+#: classes/gateways/class.dmrfidgateway_cybersource.php:171
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:164
+#: classes/gateways/class.dmrfidgateway_paypal.php:272
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:55
+#: classes/gateways/class.dmrfidgateway_check.php:60
+#: classes/gateways/class.dmrfidgateway_check.php:193
+#: classes/gateways/class.dmrfidgateway_cybersource.php:57
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:27
+#: classes/gateways/class.dmrfidgateway_paypal.php:27
+#: classes/gateways/class.dmrfidgateway_paypal.php:247
+#: classes/gateways/class.dmrfidgateway_paypal.php:249
 msgid "Unknown error: Authorization failed."
 msgstr "不常見的問題: 許可有錯."
 
-#: classes/gateways/class.pmprogateway.php:106
-#: classes/gateways/class.pmprogateway.php:111
-#: classes/gateways/class.pmprogateway.php:129
-#: classes/gateways/class.pmprogateway_authorizenet.php:222
-#: classes/gateways/class.pmprogateway_authorizenet.php:227
-#: classes/gateways/class.pmprogateway_authorizenet.php:244
-#: classes/gateways/class.pmprogateway_check.php:262
-#: classes/gateways/class.pmprogateway_check.php:267
-#: classes/gateways/class.pmprogateway_check.php:285
-#: classes/gateways/class.pmprogateway_cybersource.php:222
-#: classes/gateways/class.pmprogateway_cybersource.php:227
-#: classes/gateways/class.pmprogateway_cybersource.php:245
-#: classes/gateways/class.pmprogateway_payflowpro.php:187
-#: classes/gateways/class.pmprogateway_payflowpro.php:192
-#: classes/gateways/class.pmprogateway_paypal.php:295
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
-#: classes/gateways/class.pmprogateway_authorizenet.php:111
-#: classes/gateways/class.pmprogateway_authorizenet.php:128
-#: classes/gateways/class.pmprogateway_check.php:111
-#: classes/gateways/class.pmprogateway_check.php:116
-#: classes/gateways/class.pmprogateway_check.php:134
-#: classes/gateways/class.pmprogateway_check.php:244
-#: classes/gateways/class.pmprogateway_check.php:245
-#: classes/gateways/class.pmprogateway_check.php:249
-#: classes/gateways/class.pmprogateway_check.php:250
-#: classes/gateways/class.pmprogateway_check.php:268
-#: classes/gateways/class.pmprogateway_cybersource.php:108
-#: classes/gateways/class.pmprogateway_cybersource.php:113
-#: classes/gateways/class.pmprogateway_cybersource.php:131
-#: classes/gateways/class.pmprogateway_payflowpro.php:50
-#: classes/gateways/class.pmprogateway_payflowpro.php:55
-#: classes/gateways/class.pmprogateway_paypal.php:50
-#: classes/gateways/class.pmprogateway_paypal.php:270
-#: classes/gateways/class.pmprogateway_paypal.php:272
+#: classes/gateways/class.dmrfidgateway.php:106
+#: classes/gateways/class.dmrfidgateway.php:111
+#: classes/gateways/class.dmrfidgateway.php:129
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:222
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:227
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:262
+#: classes/gateways/class.dmrfidgateway_check.php:267
+#: classes/gateways/class.dmrfidgateway_check.php:285
+#: classes/gateways/class.dmrfidgateway_cybersource.php:222
+#: classes/gateways/class.dmrfidgateway_cybersource.php:227
+#: classes/gateways/class.dmrfidgateway_cybersource.php:245
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:187
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:192
+#: classes/gateways/class.dmrfidgateway_paypal.php:295
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:111
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:128
+#: classes/gateways/class.dmrfidgateway_check.php:111
+#: classes/gateways/class.dmrfidgateway_check.php:116
+#: classes/gateways/class.dmrfidgateway_check.php:134
+#: classes/gateways/class.dmrfidgateway_check.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:245
+#: classes/gateways/class.dmrfidgateway_check.php:249
+#: classes/gateways/class.dmrfidgateway_check.php:250
+#: classes/gateways/class.dmrfidgateway_check.php:268
+#: classes/gateways/class.dmrfidgateway_cybersource.php:108
+#: classes/gateways/class.dmrfidgateway_cybersource.php:113
+#: classes/gateways/class.dmrfidgateway_cybersource.php:131
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:50
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:55
+#: classes/gateways/class.dmrfidgateway_paypal.php:50
+#: classes/gateways/class.dmrfidgateway_paypal.php:270
+#: classes/gateways/class.dmrfidgateway_paypal.php:272
 msgid "Unknown error: Payment failed."
 msgstr "不常見的問題: 付款有錯."
 
-#: classes/gateways/class.pmprogateway.php:113
-#: classes/gateways/class.pmprogateway_authorizenet.php:228
-#: classes/gateways/class.pmprogateway_check.php:269
-#: classes/gateways/class.pmprogateway_cybersource.php:229
-#: classes/gateways/class.pmprogateway_authorizenet.php:112
-#: classes/gateways/class.pmprogateway_check.php:118
-#: classes/gateways/class.pmprogateway_check.php:251
-#: classes/gateways/class.pmprogateway_check.php:252
-#: classes/gateways/class.pmprogateway_cybersource.php:115
+#: classes/gateways/class.dmrfidgateway.php:113
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:228
+#: classes/gateways/class.dmrfidgateway_check.php:269
+#: classes/gateways/class.dmrfidgateway_cybersource.php:229
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:112
+#: classes/gateways/class.dmrfidgateway_check.php:118
+#: classes/gateways/class.dmrfidgateway_check.php:251
+#: classes/gateways/class.dmrfidgateway_check.php:252
+#: classes/gateways/class.dmrfidgateway_cybersource.php:115
 msgid ""
 "A partial payment was made that we could not void. Please contact the site "
 "owner immediately to correct this."
 msgstr ""
 "有些付款已經做下了半部分我們不能取消. 請您馬上通告網站的業主來修理這個事故."
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:39
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:39
 #: paid-memberships-pro.php:132 paid-memberships-pro.php:122
 #: paid-memberships-pro.php:123 paid-memberships-pro.php:130
 #: paid-memberships-pro.php:131 paid-memberships-pro.php:133
@@ -3170,48 +3170,48 @@ msgstr ""
 msgid "Authorize.net"
 msgstr "Authorize.net"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:93
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:93
 msgid "Authorize.net Settings"
 msgstr "Authorize.net 設定"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:98
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:98
 #: adminpages/paymentsettings.php:260 adminpages/paymentsettings.php:264
 #: adminpages/paymentsettings.php:269
 msgid "Login Name"
 msgstr "登入名"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
 #: adminpages/paymentsettings.php:268 adminpages/paymentsettings.php:272
 #: adminpages/paymentsettings.php:277
 msgid "Transaction Key"
 msgstr "交易鎖匙"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:114
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:114
 #: adminpages/paymentsettings.php:454 adminpages/paymentsettings.php:495
 #: adminpages/paymentsettings.php:501 adminpages/paymentsettings.php:503
 msgid "Silent Post URL"
 msgstr "無聲文章URL"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:117
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:117
 #: adminpages/paymentsettings.php:457 adminpages/paymentsettings.php:498
 #: adminpages/paymentsettings.php:504 adminpages/paymentsettings.php:506
 msgid ""
 "To fully integrate with Authorize.net, be sure to set your Silent Post URL to"
 msgstr "要完全配合了Authorize.net, 你需要設定無聲文章URL到"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:909
-#: classes/gateways/class.pmprogateway_authorizenet.php:910
-#: classes/gateways/class.pmprogateway_authorizenet.php:787
-#: classes/gateways/class.pmprogateway_authorizenet.php:788
-#: classes/gateways/class.pmprogateway_authorizenet.php:789
-#: classes/gateways/class.pmprogateway_authorizenet.php:792
-#: classes/gateways/class.pmprogateway_authorizenet.php:793
-#: classes/gateways/class.pmprogateway_authorizenet.php:908
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:909
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:910
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:787
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:788
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:789
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:792
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:793
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:908
 msgid "Could not connect to Authorize.net"
 msgstr "不能同Authorize.net相連"
 
-#: classes/gateways/class.pmprogateway_braintree.php:49
-#: classes/gateways/class.pmprogateway_stripe.php:58
+#: classes/gateways/class.dmrfidgateway_braintree.php:49
+#: classes/gateways/class.dmrfidgateway_stripe.php:58
 #, php-format
 msgid ""
 "The %s gateway depends on the %s PHP extension. Please enable it, or ask "
@@ -3219,140 +3219,140 @@ msgid ""
 msgstr ""
 "這個 %s 網關入口需要%s PHP extension. 請你開起來, 或請你的網站宿主開起來."
 
-#: classes/gateways/class.pmprogateway_braintree.php:111
+#: classes/gateways/class.dmrfidgateway_braintree.php:111
 #: paid-memberships-pro.php:133
-#: classes/gateways/class.pmprogateway_braintree.php:63
-#: classes/gateways/class.pmprogateway_braintree.php:76
-#: classes/gateways/class.pmprogateway_braintree.php:77
-#: classes/gateways/class.pmprogateway_braintree.php:109
+#: classes/gateways/class.dmrfidgateway_braintree.php:63
+#: classes/gateways/class.dmrfidgateway_braintree.php:76
+#: classes/gateways/class.dmrfidgateway_braintree.php:77
+#: classes/gateways/class.dmrfidgateway_braintree.php:109
 #: paid-memberships-pro.php:123 paid-memberships-pro.php:124
 #: paid-memberships-pro.php:131 paid-memberships-pro.php:132
 #: paid-memberships-pro.php:134 paid-memberships-pro.php:136
 msgid "Braintree Payments"
 msgstr "Braintree 付款"
 
-#: classes/gateways/class.pmprogateway_braintree.php:167
-#: classes/gateways/class.pmprogateway_braintree.php:119
-#: classes/gateways/class.pmprogateway_braintree.php:132
-#: classes/gateways/class.pmprogateway_braintree.php:133
-#: classes/gateways/class.pmprogateway_braintree.php:165
+#: classes/gateways/class.dmrfidgateway_braintree.php:167
+#: classes/gateways/class.dmrfidgateway_braintree.php:119
+#: classes/gateways/class.dmrfidgateway_braintree.php:132
+#: classes/gateways/class.dmrfidgateway_braintree.php:133
+#: classes/gateways/class.dmrfidgateway_braintree.php:165
 msgid "Braintree Settings"
 msgstr "Braintree 設定"
 
-#: classes/gateways/class.pmprogateway_braintree.php:172
-#: classes/gateways/class.pmprogateway_cybersource.php:106
+#: classes/gateways/class.dmrfidgateway_braintree.php:172
+#: classes/gateways/class.dmrfidgateway_cybersource.php:106
 #: adminpages/paymentsettings.php:294 adminpages/paymentsettings.php:298
 #: adminpages/paymentsettings.php:303 adminpages/paymentsettings.php:364
 #: adminpages/paymentsettings.php:369
-#: classes/gateways/class.pmprogateway_braintree.php:124
-#: classes/gateways/class.pmprogateway_braintree.php:137
-#: classes/gateways/class.pmprogateway_braintree.php:138
-#: classes/gateways/class.pmprogateway_braintree.php:170
+#: classes/gateways/class.dmrfidgateway_braintree.php:124
+#: classes/gateways/class.dmrfidgateway_braintree.php:137
+#: classes/gateways/class.dmrfidgateway_braintree.php:138
+#: classes/gateways/class.dmrfidgateway_braintree.php:170
 msgid "Merchant ID"
 msgstr "商人 ID"
 
-#: classes/gateways/class.pmprogateway_braintree.php:180
+#: classes/gateways/class.dmrfidgateway_braintree.php:180
 #: adminpages/paymentsettings.php:302 adminpages/paymentsettings.php:306
 #: adminpages/paymentsettings.php:311
-#: classes/gateways/class.pmprogateway_braintree.php:132
-#: classes/gateways/class.pmprogateway_braintree.php:145
-#: classes/gateways/class.pmprogateway_braintree.php:146
-#: classes/gateways/class.pmprogateway_braintree.php:178
+#: classes/gateways/class.dmrfidgateway_braintree.php:132
+#: classes/gateways/class.dmrfidgateway_braintree.php:145
+#: classes/gateways/class.dmrfidgateway_braintree.php:146
+#: classes/gateways/class.dmrfidgateway_braintree.php:178
 msgid "Public Key"
 msgstr "公立鎖匙"
 
-#: classes/gateways/class.pmprogateway_braintree.php:188
+#: classes/gateways/class.dmrfidgateway_braintree.php:188
 #: adminpages/paymentsettings.php:310 adminpages/paymentsettings.php:314
 #: adminpages/paymentsettings.php:319
-#: classes/gateways/class.pmprogateway_braintree.php:140
-#: classes/gateways/class.pmprogateway_braintree.php:153
-#: classes/gateways/class.pmprogateway_braintree.php:154
-#: classes/gateways/class.pmprogateway_braintree.php:186
+#: classes/gateways/class.dmrfidgateway_braintree.php:140
+#: classes/gateways/class.dmrfidgateway_braintree.php:153
+#: classes/gateways/class.dmrfidgateway_braintree.php:154
+#: classes/gateways/class.dmrfidgateway_braintree.php:186
 msgid "Private Key"
 msgstr "私人鎖匙"
 
-#: classes/gateways/class.pmprogateway_braintree.php:196
+#: classes/gateways/class.dmrfidgateway_braintree.php:196
 #: adminpages/paymentsettings.php:318 adminpages/paymentsettings.php:322
 #: adminpages/paymentsettings.php:327
-#: classes/gateways/class.pmprogateway_braintree.php:148
-#: classes/gateways/class.pmprogateway_braintree.php:161
-#: classes/gateways/class.pmprogateway_braintree.php:162
-#: classes/gateways/class.pmprogateway_braintree.php:194
+#: classes/gateways/class.dmrfidgateway_braintree.php:148
+#: classes/gateways/class.dmrfidgateway_braintree.php:161
+#: classes/gateways/class.dmrfidgateway_braintree.php:162
+#: classes/gateways/class.dmrfidgateway_braintree.php:194
 msgid "Client-Side Encryption Key"
 msgstr "客人的加密鎖匙"
 
-#: classes/gateways/class.pmprogateway_braintree.php:204
-#: classes/gateways/class.pmprogateway_stripe.php:230
+#: classes/gateways/class.dmrfidgateway_braintree.php:204
+#: classes/gateways/class.dmrfidgateway_stripe.php:230
 #: adminpages/paymentsettings.php:462 adminpages/paymentsettings.php:470
 #: adminpages/paymentsettings.php:503 adminpages/paymentsettings.php:509
 #: adminpages/paymentsettings.php:511 adminpages/paymentsettings.php:517
 #: adminpages/paymentsettings.php:519
-#: classes/gateways/class.pmprogateway_braintree.php:156
-#: classes/gateways/class.pmprogateway_braintree.php:169
-#: classes/gateways/class.pmprogateway_braintree.php:170
-#: classes/gateways/class.pmprogateway_braintree.php:202
-#: classes/gateways/class.pmprogateway_stripe.php:181
-#: classes/gateways/class.pmprogateway_stripe.php:182
-#: classes/gateways/class.pmprogateway_stripe.php:192
-#: classes/gateways/class.pmprogateway_stripe.php:214
-#: classes/gateways/class.pmprogateway_stripe.php:216
-#: classes/gateways/class.pmprogateway_stripe.php:217
-#: classes/gateways/class.pmprogateway_stripe.php:228
+#: classes/gateways/class.dmrfidgateway_braintree.php:156
+#: classes/gateways/class.dmrfidgateway_braintree.php:169
+#: classes/gateways/class.dmrfidgateway_braintree.php:170
+#: classes/gateways/class.dmrfidgateway_braintree.php:202
+#: classes/gateways/class.dmrfidgateway_stripe.php:181
+#: classes/gateways/class.dmrfidgateway_stripe.php:182
+#: classes/gateways/class.dmrfidgateway_stripe.php:192
+#: classes/gateways/class.dmrfidgateway_stripe.php:214
+#: classes/gateways/class.dmrfidgateway_stripe.php:216
+#: classes/gateways/class.dmrfidgateway_stripe.php:217
+#: classes/gateways/class.dmrfidgateway_stripe.php:228
 msgid "Web Hook URL"
 msgstr "網鉤 URL"
 
-#: classes/gateways/class.pmprogateway_braintree.php:208
+#: classes/gateways/class.dmrfidgateway_braintree.php:208
 #: adminpages/paymentsettings.php:474 adminpages/paymentsettings.php:515
 #: adminpages/paymentsettings.php:521 adminpages/paymentsettings.php:523
-#: classes/gateways/class.pmprogateway_braintree.php:160
-#: classes/gateways/class.pmprogateway_braintree.php:173
-#: classes/gateways/class.pmprogateway_braintree.php:174
-#: classes/gateways/class.pmprogateway_braintree.php:206
+#: classes/gateways/class.dmrfidgateway_braintree.php:160
+#: classes/gateways/class.dmrfidgateway_braintree.php:173
+#: classes/gateways/class.dmrfidgateway_braintree.php:174
+#: classes/gateways/class.dmrfidgateway_braintree.php:206
 msgid "To fully integrate with Braintree, be sure to set your Web Hook URL to"
 msgstr "全面同Braintree配合, 你需要設定網鉤URL到"
 
-#: classes/gateways/class.pmprogateway_braintree.php:321
-#: classes/gateways/class.pmprogateway_stripe.php:499 pages/checkout.php:510
-#: classes/gateways/class.pmprogateway_braintree.php:270
-#: classes/gateways/class.pmprogateway_braintree.php:283
-#: classes/gateways/class.pmprogateway_braintree.php:285
-#: classes/gateways/class.pmprogateway_braintree.php:286
-#: classes/gateways/class.pmprogateway_braintree.php:287
-#: classes/gateways/class.pmprogateway_braintree.php:319
-#: classes/gateways/class.pmprogateway_stripe.php:387
-#: classes/gateways/class.pmprogateway_stripe.php:388
-#: classes/gateways/class.pmprogateway_stripe.php:398
-#: classes/gateways/class.pmprogateway_stripe.php:402
-#: classes/gateways/class.pmprogateway_stripe.php:426
-#: classes/gateways/class.pmprogateway_stripe.php:427
-#: classes/gateways/class.pmprogateway_stripe.php:429
-#: classes/gateways/class.pmprogateway_stripe.php:432
-#: classes/gateways/class.pmprogateway_stripe.php:450
-#: classes/gateways/class.pmprogateway_stripe.php:461 pages/checkout.php:476
+#: classes/gateways/class.dmrfidgateway_braintree.php:321
+#: classes/gateways/class.dmrfidgateway_stripe.php:499 pages/checkout.php:510
+#: classes/gateways/class.dmrfidgateway_braintree.php:270
+#: classes/gateways/class.dmrfidgateway_braintree.php:283
+#: classes/gateways/class.dmrfidgateway_braintree.php:285
+#: classes/gateways/class.dmrfidgateway_braintree.php:286
+#: classes/gateways/class.dmrfidgateway_braintree.php:287
+#: classes/gateways/class.dmrfidgateway_braintree.php:319
+#: classes/gateways/class.dmrfidgateway_stripe.php:387
+#: classes/gateways/class.dmrfidgateway_stripe.php:388
+#: classes/gateways/class.dmrfidgateway_stripe.php:398
+#: classes/gateways/class.dmrfidgateway_stripe.php:402
+#: classes/gateways/class.dmrfidgateway_stripe.php:426
+#: classes/gateways/class.dmrfidgateway_stripe.php:427
+#: classes/gateways/class.dmrfidgateway_stripe.php:429
+#: classes/gateways/class.dmrfidgateway_stripe.php:432
+#: classes/gateways/class.dmrfidgateway_stripe.php:450
+#: classes/gateways/class.dmrfidgateway_stripe.php:461 pages/checkout.php:476
 #: pages/checkout.php:478 pages/checkout.php:485 pages/checkout.php:493
 #: pages/checkout.php:494 pages/checkout.php:500 pages/checkout.php:501
 #: pages/checkout.php:503
 msgid "Payment Information"
 msgstr "付款資料"
 
-#: classes/gateways/class.pmprogateway_braintree.php:322
-#: classes/gateways/class.pmprogateway_stripe.php:500 pages/checkout.php:511
-#: classes/gateways/class.pmprogateway_braintree.php:270
-#: classes/gateways/class.pmprogateway_braintree.php:283
-#: classes/gateways/class.pmprogateway_braintree.php:285
-#: classes/gateways/class.pmprogateway_braintree.php:287
-#: classes/gateways/class.pmprogateway_braintree.php:288
-#: classes/gateways/class.pmprogateway_braintree.php:320
-#: classes/gateways/class.pmprogateway_stripe.php:387
-#: classes/gateways/class.pmprogateway_stripe.php:388
-#: classes/gateways/class.pmprogateway_stripe.php:398
-#: classes/gateways/class.pmprogateway_stripe.php:402
-#: classes/gateways/class.pmprogateway_stripe.php:426
-#: classes/gateways/class.pmprogateway_stripe.php:428
-#: classes/gateways/class.pmprogateway_stripe.php:430
-#: classes/gateways/class.pmprogateway_stripe.php:433
-#: classes/gateways/class.pmprogateway_stripe.php:451
-#: classes/gateways/class.pmprogateway_stripe.php:462 pages/checkout.php:476
+#: classes/gateways/class.dmrfidgateway_braintree.php:322
+#: classes/gateways/class.dmrfidgateway_stripe.php:500 pages/checkout.php:511
+#: classes/gateways/class.dmrfidgateway_braintree.php:270
+#: classes/gateways/class.dmrfidgateway_braintree.php:283
+#: classes/gateways/class.dmrfidgateway_braintree.php:285
+#: classes/gateways/class.dmrfidgateway_braintree.php:287
+#: classes/gateways/class.dmrfidgateway_braintree.php:288
+#: classes/gateways/class.dmrfidgateway_braintree.php:320
+#: classes/gateways/class.dmrfidgateway_stripe.php:387
+#: classes/gateways/class.dmrfidgateway_stripe.php:388
+#: classes/gateways/class.dmrfidgateway_stripe.php:398
+#: classes/gateways/class.dmrfidgateway_stripe.php:402
+#: classes/gateways/class.dmrfidgateway_stripe.php:426
+#: classes/gateways/class.dmrfidgateway_stripe.php:428
+#: classes/gateways/class.dmrfidgateway_stripe.php:430
+#: classes/gateways/class.dmrfidgateway_stripe.php:433
+#: classes/gateways/class.dmrfidgateway_stripe.php:451
+#: classes/gateways/class.dmrfidgateway_stripe.php:462 pages/checkout.php:476
 #: pages/checkout.php:478 pages/checkout.php:485 pages/checkout.php:493
 #: pages/checkout.php:494 pages/checkout.php:500 pages/checkout.php:502
 #: pages/checkout.php:504
@@ -3360,24 +3360,24 @@ msgstr "付款資料"
 msgid "We Accept %s"
 msgstr "我們接受 %s"
 
-#: classes/gateways/class.pmprogateway_braintree.php:356
-#: classes/gateways/class.pmprogateway_stripe.php:565 pages/billing.php:311
-#: pages/checkout.php:577 classes/gateways/class.pmprogateway_braintree.php:303
-#: classes/gateways/class.pmprogateway_braintree.php:316
-#: classes/gateways/class.pmprogateway_braintree.php:318
-#: classes/gateways/class.pmprogateway_braintree.php:321
-#: classes/gateways/class.pmprogateway_braintree.php:322
-#: classes/gateways/class.pmprogateway_braintree.php:354
-#: classes/gateways/class.pmprogateway_stripe.php:449
-#: classes/gateways/class.pmprogateway_stripe.php:450
-#: classes/gateways/class.pmprogateway_stripe.php:460
-#: classes/gateways/class.pmprogateway_stripe.php:464
-#: classes/gateways/class.pmprogateway_stripe.php:490
-#: classes/gateways/class.pmprogateway_stripe.php:493
-#: classes/gateways/class.pmprogateway_stripe.php:495
-#: classes/gateways/class.pmprogateway_stripe.php:498
-#: classes/gateways/class.pmprogateway_stripe.php:516
-#: classes/gateways/class.pmprogateway_stripe.php:527 pages/billing.php:244
+#: classes/gateways/class.dmrfidgateway_braintree.php:356
+#: classes/gateways/class.dmrfidgateway_stripe.php:565 pages/billing.php:311
+#: pages/checkout.php:577 classes/gateways/class.dmrfidgateway_braintree.php:303
+#: classes/gateways/class.dmrfidgateway_braintree.php:316
+#: classes/gateways/class.dmrfidgateway_braintree.php:318
+#: classes/gateways/class.dmrfidgateway_braintree.php:321
+#: classes/gateways/class.dmrfidgateway_braintree.php:322
+#: classes/gateways/class.dmrfidgateway_braintree.php:354
+#: classes/gateways/class.dmrfidgateway_stripe.php:449
+#: classes/gateways/class.dmrfidgateway_stripe.php:450
+#: classes/gateways/class.dmrfidgateway_stripe.php:460
+#: classes/gateways/class.dmrfidgateway_stripe.php:464
+#: classes/gateways/class.dmrfidgateway_stripe.php:490
+#: classes/gateways/class.dmrfidgateway_stripe.php:493
+#: classes/gateways/class.dmrfidgateway_stripe.php:495
+#: classes/gateways/class.dmrfidgateway_stripe.php:498
+#: classes/gateways/class.dmrfidgateway_stripe.php:516
+#: classes/gateways/class.dmrfidgateway_stripe.php:527 pages/billing.php:244
 #: pages/billing.php:248 pages/billing.php:257 pages/billing.php:260
 #: pages/billing.php:263 pages/billing.php:305 pages/billing.php:314
 #: pages/checkout.php:503 pages/checkout.php:519 pages/checkout.php:520
@@ -3386,24 +3386,24 @@ msgstr "我們接受 %s"
 msgid "Card Number"
 msgstr "卡號碼"
 
-#: classes/gateways/class.pmprogateway_braintree.php:393
-#: classes/gateways/class.pmprogateway_stripe.php:602 pages/billing.php:354
-#: pages/checkout.php:612 classes/gateways/class.pmprogateway_braintree.php:340
-#: classes/gateways/class.pmprogateway_braintree.php:353
-#: classes/gateways/class.pmprogateway_braintree.php:355
-#: classes/gateways/class.pmprogateway_braintree.php:358
-#: classes/gateways/class.pmprogateway_braintree.php:359
-#: classes/gateways/class.pmprogateway_braintree.php:391
-#: classes/gateways/class.pmprogateway_stripe.php:486
-#: classes/gateways/class.pmprogateway_stripe.php:487
-#: classes/gateways/class.pmprogateway_stripe.php:497
-#: classes/gateways/class.pmprogateway_stripe.php:501
-#: classes/gateways/class.pmprogateway_stripe.php:527
-#: classes/gateways/class.pmprogateway_stripe.php:531
-#: classes/gateways/class.pmprogateway_stripe.php:532
-#: classes/gateways/class.pmprogateway_stripe.php:535
-#: classes/gateways/class.pmprogateway_stripe.php:553
-#: classes/gateways/class.pmprogateway_stripe.php:564 pages/billing.php:281
+#: classes/gateways/class.dmrfidgateway_braintree.php:393
+#: classes/gateways/class.dmrfidgateway_stripe.php:602 pages/billing.php:354
+#: pages/checkout.php:612 classes/gateways/class.dmrfidgateway_braintree.php:340
+#: classes/gateways/class.dmrfidgateway_braintree.php:353
+#: classes/gateways/class.dmrfidgateway_braintree.php:355
+#: classes/gateways/class.dmrfidgateway_braintree.php:358
+#: classes/gateways/class.dmrfidgateway_braintree.php:359
+#: classes/gateways/class.dmrfidgateway_braintree.php:391
+#: classes/gateways/class.dmrfidgateway_stripe.php:486
+#: classes/gateways/class.dmrfidgateway_stripe.php:487
+#: classes/gateways/class.dmrfidgateway_stripe.php:497
+#: classes/gateways/class.dmrfidgateway_stripe.php:501
+#: classes/gateways/class.dmrfidgateway_stripe.php:527
+#: classes/gateways/class.dmrfidgateway_stripe.php:531
+#: classes/gateways/class.dmrfidgateway_stripe.php:532
+#: classes/gateways/class.dmrfidgateway_stripe.php:535
+#: classes/gateways/class.dmrfidgateway_stripe.php:553
+#: classes/gateways/class.dmrfidgateway_stripe.php:564 pages/billing.php:281
 #: pages/billing.php:285 pages/billing.php:294 pages/billing.php:297
 #: pages/billing.php:301 pages/billing.php:343 pages/billing.php:352
 #: pages/billing.php:357 pages/checkout.php:540 pages/checkout.php:556
@@ -3413,24 +3413,24 @@ msgstr "卡號碼"
 msgid "CVV"
 msgstr "CVV"
 
-#: classes/gateways/class.pmprogateway_braintree.php:394
-#: classes/gateways/class.pmprogateway_stripe.php:603 pages/billing.php:355
-#: pages/checkout.php:613 classes/gateways/class.pmprogateway_braintree.php:341
-#: classes/gateways/class.pmprogateway_braintree.php:354
-#: classes/gateways/class.pmprogateway_braintree.php:356
-#: classes/gateways/class.pmprogateway_braintree.php:359
-#: classes/gateways/class.pmprogateway_braintree.php:360
-#: classes/gateways/class.pmprogateway_braintree.php:392
-#: classes/gateways/class.pmprogateway_stripe.php:487
-#: classes/gateways/class.pmprogateway_stripe.php:488
-#: classes/gateways/class.pmprogateway_stripe.php:498
-#: classes/gateways/class.pmprogateway_stripe.php:502
-#: classes/gateways/class.pmprogateway_stripe.php:528
-#: classes/gateways/class.pmprogateway_stripe.php:532
-#: classes/gateways/class.pmprogateway_stripe.php:533
-#: classes/gateways/class.pmprogateway_stripe.php:536
-#: classes/gateways/class.pmprogateway_stripe.php:554
-#: classes/gateways/class.pmprogateway_stripe.php:565 pages/billing.php:282
+#: classes/gateways/class.dmrfidgateway_braintree.php:394
+#: classes/gateways/class.dmrfidgateway_stripe.php:603 pages/billing.php:355
+#: pages/checkout.php:613 classes/gateways/class.dmrfidgateway_braintree.php:341
+#: classes/gateways/class.dmrfidgateway_braintree.php:354
+#: classes/gateways/class.dmrfidgateway_braintree.php:356
+#: classes/gateways/class.dmrfidgateway_braintree.php:359
+#: classes/gateways/class.dmrfidgateway_braintree.php:360
+#: classes/gateways/class.dmrfidgateway_braintree.php:392
+#: classes/gateways/class.dmrfidgateway_stripe.php:487
+#: classes/gateways/class.dmrfidgateway_stripe.php:488
+#: classes/gateways/class.dmrfidgateway_stripe.php:498
+#: classes/gateways/class.dmrfidgateway_stripe.php:502
+#: classes/gateways/class.dmrfidgateway_stripe.php:528
+#: classes/gateways/class.dmrfidgateway_stripe.php:532
+#: classes/gateways/class.dmrfidgateway_stripe.php:533
+#: classes/gateways/class.dmrfidgateway_stripe.php:536
+#: classes/gateways/class.dmrfidgateway_stripe.php:554
+#: classes/gateways/class.dmrfidgateway_stripe.php:565 pages/billing.php:282
 #: pages/billing.php:286 pages/billing.php:295 pages/billing.php:298
 #: pages/billing.php:302 pages/billing.php:344 pages/billing.php:353
 #: pages/billing.php:358 pages/checkout.php:541 pages/checkout.php:557
@@ -3440,24 +3440,24 @@ msgstr "CVV"
 msgid "what's this?"
 msgstr "這是怎麼?"
 
-#: classes/gateways/class.pmprogateway_braintree.php:404
-#: classes/gateways/class.pmprogateway_stripe.php:613 pages/checkout.php:95
-#: pages/checkout.php:621 classes/gateways/class.pmprogateway_braintree.php:351
-#: classes/gateways/class.pmprogateway_braintree.php:364
-#: classes/gateways/class.pmprogateway_braintree.php:366
-#: classes/gateways/class.pmprogateway_braintree.php:369
-#: classes/gateways/class.pmprogateway_braintree.php:370
-#: classes/gateways/class.pmprogateway_braintree.php:402
-#: classes/gateways/class.pmprogateway_stripe.php:497
-#: classes/gateways/class.pmprogateway_stripe.php:498
-#: classes/gateways/class.pmprogateway_stripe.php:508
-#: classes/gateways/class.pmprogateway_stripe.php:512
-#: classes/gateways/class.pmprogateway_stripe.php:538
-#: classes/gateways/class.pmprogateway_stripe.php:542
-#: classes/gateways/class.pmprogateway_stripe.php:543
-#: classes/gateways/class.pmprogateway_stripe.php:546
-#: classes/gateways/class.pmprogateway_stripe.php:564
-#: classes/gateways/class.pmprogateway_stripe.php:575 pages/checkout.php:78
+#: classes/gateways/class.dmrfidgateway_braintree.php:404
+#: classes/gateways/class.dmrfidgateway_stripe.php:613 pages/checkout.php:95
+#: pages/checkout.php:621 classes/gateways/class.dmrfidgateway_braintree.php:351
+#: classes/gateways/class.dmrfidgateway_braintree.php:364
+#: classes/gateways/class.dmrfidgateway_braintree.php:366
+#: classes/gateways/class.dmrfidgateway_braintree.php:369
+#: classes/gateways/class.dmrfidgateway_braintree.php:370
+#: classes/gateways/class.dmrfidgateway_braintree.php:402
+#: classes/gateways/class.dmrfidgateway_stripe.php:497
+#: classes/gateways/class.dmrfidgateway_stripe.php:498
+#: classes/gateways/class.dmrfidgateway_stripe.php:508
+#: classes/gateways/class.dmrfidgateway_stripe.php:512
+#: classes/gateways/class.dmrfidgateway_stripe.php:538
+#: classes/gateways/class.dmrfidgateway_stripe.php:542
+#: classes/gateways/class.dmrfidgateway_stripe.php:543
+#: classes/gateways/class.dmrfidgateway_stripe.php:546
+#: classes/gateways/class.dmrfidgateway_stripe.php:564
+#: classes/gateways/class.dmrfidgateway_stripe.php:575 pages/checkout.php:78
 #: pages/checkout.php:79 pages/checkout.php:80 pages/checkout.php:87
 #: pages/checkout.php:88 pages/checkout.php:551 pages/checkout.php:567
 #: pages/checkout.php:568 pages/checkout.php:575 pages/checkout.php:596
@@ -3466,196 +3466,196 @@ msgstr "這是怎麼?"
 msgid "Apply"
 msgstr "啟用"
 
-#: classes/gateways/class.pmprogateway_braintree.php:459
-#: classes/gateways/class.pmprogateway_stripe.php:1143
-#: classes/gateways/class.pmprogateway_braintree.php:61
-#: classes/gateways/class.pmprogateway_braintree.php:406
-#: classes/gateways/class.pmprogateway_braintree.php:419
-#: classes/gateways/class.pmprogateway_braintree.php:421
-#: classes/gateways/class.pmprogateway_braintree.php:424
-#: classes/gateways/class.pmprogateway_braintree.php:425
-#: classes/gateways/class.pmprogateway_braintree.php:457
-#: classes/gateways/class.pmprogateway_stripe.php:53
-#: classes/gateways/class.pmprogateway_stripe.php:1011
-#: classes/gateways/class.pmprogateway_stripe.php:1025
-#: classes/gateways/class.pmprogateway_stripe.php:1026
-#: classes/gateways/class.pmprogateway_stripe.php:1036
-#: classes/gateways/class.pmprogateway_stripe.php:1040
-#: classes/gateways/class.pmprogateway_stripe.php:1068
-#: classes/gateways/class.pmprogateway_stripe.php:1072
-#: classes/gateways/class.pmprogateway_stripe.php:1073
-#: classes/gateways/class.pmprogateway_stripe.php:1076
-#: classes/gateways/class.pmprogateway_stripe.php:1094
-#: classes/gateways/class.pmprogateway_stripe.php:1105
+#: classes/gateways/class.dmrfidgateway_braintree.php:459
+#: classes/gateways/class.dmrfidgateway_stripe.php:1143
+#: classes/gateways/class.dmrfidgateway_braintree.php:61
+#: classes/gateways/class.dmrfidgateway_braintree.php:406
+#: classes/gateways/class.dmrfidgateway_braintree.php:419
+#: classes/gateways/class.dmrfidgateway_braintree.php:421
+#: classes/gateways/class.dmrfidgateway_braintree.php:424
+#: classes/gateways/class.dmrfidgateway_braintree.php:425
+#: classes/gateways/class.dmrfidgateway_braintree.php:457
+#: classes/gateways/class.dmrfidgateway_stripe.php:53
+#: classes/gateways/class.dmrfidgateway_stripe.php:1011
+#: classes/gateways/class.dmrfidgateway_stripe.php:1025
+#: classes/gateways/class.dmrfidgateway_stripe.php:1026
+#: classes/gateways/class.dmrfidgateway_stripe.php:1036
+#: classes/gateways/class.dmrfidgateway_stripe.php:1040
+#: classes/gateways/class.dmrfidgateway_stripe.php:1068
+#: classes/gateways/class.dmrfidgateway_stripe.php:1072
+#: classes/gateways/class.dmrfidgateway_stripe.php:1073
+#: classes/gateways/class.dmrfidgateway_stripe.php:1076
+#: classes/gateways/class.dmrfidgateway_stripe.php:1094
+#: classes/gateways/class.dmrfidgateway_stripe.php:1105
 msgid "Unknown error: Initial payment failed."
 msgstr "不常見的問題: 首期付款失敗."
 
-#: classes/gateways/class.pmprogateway_braintree.php:518
-#: classes/gateways/class.pmprogateway_braintree.php:120
-#: classes/gateways/class.pmprogateway_braintree.php:465
-#: classes/gateways/class.pmprogateway_braintree.php:478
-#: classes/gateways/class.pmprogateway_braintree.php:480
-#: classes/gateways/class.pmprogateway_braintree.php:483
-#: classes/gateways/class.pmprogateway_braintree.php:484
-#: classes/gateways/class.pmprogateway_braintree.php:516
+#: classes/gateways/class.dmrfidgateway_braintree.php:518
+#: classes/gateways/class.dmrfidgateway_braintree.php:120
+#: classes/gateways/class.dmrfidgateway_braintree.php:465
+#: classes/gateways/class.dmrfidgateway_braintree.php:478
+#: classes/gateways/class.dmrfidgateway_braintree.php:480
+#: classes/gateways/class.dmrfidgateway_braintree.php:483
+#: classes/gateways/class.dmrfidgateway_braintree.php:484
+#: classes/gateways/class.dmrfidgateway_braintree.php:516
 msgid "Error during settlement:"
 msgstr "定居時有錯:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:527
-#: classes/gateways/class.pmprogateway_braintree.php:129
-#: classes/gateways/class.pmprogateway_braintree.php:474
-#: classes/gateways/class.pmprogateway_braintree.php:487
-#: classes/gateways/class.pmprogateway_braintree.php:489
-#: classes/gateways/class.pmprogateway_braintree.php:492
-#: classes/gateways/class.pmprogateway_braintree.php:493
-#: classes/gateways/class.pmprogateway_braintree.php:525
+#: classes/gateways/class.dmrfidgateway_braintree.php:527
+#: classes/gateways/class.dmrfidgateway_braintree.php:129
+#: classes/gateways/class.dmrfidgateway_braintree.php:474
+#: classes/gateways/class.dmrfidgateway_braintree.php:487
+#: classes/gateways/class.dmrfidgateway_braintree.php:489
+#: classes/gateways/class.dmrfidgateway_braintree.php:492
+#: classes/gateways/class.dmrfidgateway_braintree.php:493
+#: classes/gateways/class.dmrfidgateway_braintree.php:525
 msgid "Error during charge:"
 msgstr "收費時有錯:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:619
-#: classes/gateways/class.pmprogateway_braintree.php:198
-#: classes/gateways/class.pmprogateway_braintree.php:221
-#: classes/gateways/class.pmprogateway_braintree.php:566
-#: classes/gateways/class.pmprogateway_braintree.php:579
-#: classes/gateways/class.pmprogateway_braintree.php:581
-#: classes/gateways/class.pmprogateway_braintree.php:584
-#: classes/gateways/class.pmprogateway_braintree.php:585
-#: classes/gateways/class.pmprogateway_braintree.php:617
+#: classes/gateways/class.dmrfidgateway_braintree.php:619
+#: classes/gateways/class.dmrfidgateway_braintree.php:198
+#: classes/gateways/class.dmrfidgateway_braintree.php:221
+#: classes/gateways/class.dmrfidgateway_braintree.php:566
+#: classes/gateways/class.dmrfidgateway_braintree.php:579
+#: classes/gateways/class.dmrfidgateway_braintree.php:581
+#: classes/gateways/class.dmrfidgateway_braintree.php:584
+#: classes/gateways/class.dmrfidgateway_braintree.php:585
+#: classes/gateways/class.dmrfidgateway_braintree.php:617
 msgid "Failed to update customer."
 msgstr "客戶戶口更新失敗."
 
-#: classes/gateways/class.pmprogateway_braintree.php:667
-#: classes/gateways/class.pmprogateway_braintree.php:246
-#: classes/gateways/class.pmprogateway_braintree.php:269
-#: classes/gateways/class.pmprogateway_braintree.php:614
-#: classes/gateways/class.pmprogateway_braintree.php:627
-#: classes/gateways/class.pmprogateway_braintree.php:629
-#: classes/gateways/class.pmprogateway_braintree.php:632
-#: classes/gateways/class.pmprogateway_braintree.php:633
-#: classes/gateways/class.pmprogateway_braintree.php:665
+#: classes/gateways/class.dmrfidgateway_braintree.php:667
+#: classes/gateways/class.dmrfidgateway_braintree.php:246
+#: classes/gateways/class.dmrfidgateway_braintree.php:269
+#: classes/gateways/class.dmrfidgateway_braintree.php:614
+#: classes/gateways/class.dmrfidgateway_braintree.php:627
+#: classes/gateways/class.dmrfidgateway_braintree.php:629
+#: classes/gateways/class.dmrfidgateway_braintree.php:632
+#: classes/gateways/class.dmrfidgateway_braintree.php:633
+#: classes/gateways/class.dmrfidgateway_braintree.php:665
 msgid "Failed to create customer."
 msgstr "客戶戶口創建失敗."
 
-#: classes/gateways/class.pmprogateway_braintree.php:674
-#: classes/gateways/class.pmprogateway_braintree.php:253
-#: classes/gateways/class.pmprogateway_braintree.php:276
-#: classes/gateways/class.pmprogateway_braintree.php:621
-#: classes/gateways/class.pmprogateway_braintree.php:634
-#: classes/gateways/class.pmprogateway_braintree.php:636
-#: classes/gateways/class.pmprogateway_braintree.php:639
-#: classes/gateways/class.pmprogateway_braintree.php:640
-#: classes/gateways/class.pmprogateway_braintree.php:672
+#: classes/gateways/class.dmrfidgateway_braintree.php:674
+#: classes/gateways/class.dmrfidgateway_braintree.php:253
+#: classes/gateways/class.dmrfidgateway_braintree.php:276
+#: classes/gateways/class.dmrfidgateway_braintree.php:621
+#: classes/gateways/class.dmrfidgateway_braintree.php:634
+#: classes/gateways/class.dmrfidgateway_braintree.php:636
+#: classes/gateways/class.dmrfidgateway_braintree.php:639
+#: classes/gateways/class.dmrfidgateway_braintree.php:640
+#: classes/gateways/class.dmrfidgateway_braintree.php:672
 msgid "Error creating customer record with Braintree:"
 msgstr "在Braintree造客戶記錄有錯:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:774
-#: classes/gateways/class.pmprogateway_braintree.php:344
-#: classes/gateways/class.pmprogateway_braintree.php:345
-#: classes/gateways/class.pmprogateway_braintree.php:376
-#: classes/gateways/class.pmprogateway_braintree.php:721
-#: classes/gateways/class.pmprogateway_braintree.php:734
-#: classes/gateways/class.pmprogateway_braintree.php:736
-#: classes/gateways/class.pmprogateway_braintree.php:739
-#: classes/gateways/class.pmprogateway_braintree.php:740
-#: classes/gateways/class.pmprogateway_braintree.php:772
+#: classes/gateways/class.dmrfidgateway_braintree.php:774
+#: classes/gateways/class.dmrfidgateway_braintree.php:344
+#: classes/gateways/class.dmrfidgateway_braintree.php:345
+#: classes/gateways/class.dmrfidgateway_braintree.php:376
+#: classes/gateways/class.dmrfidgateway_braintree.php:721
+#: classes/gateways/class.dmrfidgateway_braintree.php:734
+#: classes/gateways/class.dmrfidgateway_braintree.php:736
+#: classes/gateways/class.dmrfidgateway_braintree.php:739
+#: classes/gateways/class.dmrfidgateway_braintree.php:740
+#: classes/gateways/class.dmrfidgateway_braintree.php:772
 msgid "Error subscribing customer to plan with Braintree:"
 msgstr "客戶訂閱Braintree的計劃有錯:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:789
-#: classes/gateways/class.pmprogateway_braintree.php:359
-#: classes/gateways/class.pmprogateway_braintree.php:360
-#: classes/gateways/class.pmprogateway_braintree.php:391
-#: classes/gateways/class.pmprogateway_braintree.php:736
-#: classes/gateways/class.pmprogateway_braintree.php:749
-#: classes/gateways/class.pmprogateway_braintree.php:751
-#: classes/gateways/class.pmprogateway_braintree.php:754
-#: classes/gateways/class.pmprogateway_braintree.php:755
-#: classes/gateways/class.pmprogateway_braintree.php:787
+#: classes/gateways/class.dmrfidgateway_braintree.php:789
+#: classes/gateways/class.dmrfidgateway_braintree.php:359
+#: classes/gateways/class.dmrfidgateway_braintree.php:360
+#: classes/gateways/class.dmrfidgateway_braintree.php:391
+#: classes/gateways/class.dmrfidgateway_braintree.php:736
+#: classes/gateways/class.dmrfidgateway_braintree.php:749
+#: classes/gateways/class.dmrfidgateway_braintree.php:751
+#: classes/gateways/class.dmrfidgateway_braintree.php:754
+#: classes/gateways/class.dmrfidgateway_braintree.php:755
+#: classes/gateways/class.dmrfidgateway_braintree.php:787
 msgid "Failed to subscribe with Braintree:"
 msgstr "訂閱入Braintree失敗:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:827
-#: classes/gateways/class.pmprogateway_braintree.php:840
-#: classes/gateways/class.pmprogateway_braintree.php:847
-#: classes/gateways/class.pmprogateway_braintree.php:397
-#: classes/gateways/class.pmprogateway_braintree.php:398
-#: classes/gateways/class.pmprogateway_braintree.php:410
-#: classes/gateways/class.pmprogateway_braintree.php:411
-#: classes/gateways/class.pmprogateway_braintree.php:417
-#: classes/gateways/class.pmprogateway_braintree.php:418
-#: classes/gateways/class.pmprogateway_braintree.php:429
-#: classes/gateways/class.pmprogateway_braintree.php:442
-#: classes/gateways/class.pmprogateway_braintree.php:449
-#: classes/gateways/class.pmprogateway_braintree.php:774
-#: classes/gateways/class.pmprogateway_braintree.php:787
-#: classes/gateways/class.pmprogateway_braintree.php:789
-#: classes/gateways/class.pmprogateway_braintree.php:792
-#: classes/gateways/class.pmprogateway_braintree.php:793
-#: classes/gateways/class.pmprogateway_braintree.php:794
-#: classes/gateways/class.pmprogateway_braintree.php:800
-#: classes/gateways/class.pmprogateway_braintree.php:802
-#: classes/gateways/class.pmprogateway_braintree.php:805
-#: classes/gateways/class.pmprogateway_braintree.php:806
-#: classes/gateways/class.pmprogateway_braintree.php:807
-#: classes/gateways/class.pmprogateway_braintree.php:809
-#: classes/gateways/class.pmprogateway_braintree.php:812
-#: classes/gateways/class.pmprogateway_braintree.php:813
-#: classes/gateways/class.pmprogateway_braintree.php:825
-#: classes/gateways/class.pmprogateway_braintree.php:838
-#: classes/gateways/class.pmprogateway_braintree.php:845
-#: classes/gateways/class.pmprogateway_stripe.php:343
-#: classes/gateways/class.pmprogateway_stripe.php:344
-#: classes/gateways/class.pmprogateway_stripe.php:351
-#: classes/gateways/class.pmprogateway_stripe.php:353
-#: classes/gateways/class.pmprogateway_stripe.php:354
-#: classes/gateways/class.pmprogateway_stripe.php:361
-#: classes/gateways/class.pmprogateway_stripe.php:396
-#: classes/gateways/class.pmprogateway_stripe.php:402
-#: classes/gateways/class.pmprogateway_stripe.php:423
+#: classes/gateways/class.dmrfidgateway_braintree.php:827
+#: classes/gateways/class.dmrfidgateway_braintree.php:840
+#: classes/gateways/class.dmrfidgateway_braintree.php:847
+#: classes/gateways/class.dmrfidgateway_braintree.php:397
+#: classes/gateways/class.dmrfidgateway_braintree.php:398
+#: classes/gateways/class.dmrfidgateway_braintree.php:410
+#: classes/gateways/class.dmrfidgateway_braintree.php:411
+#: classes/gateways/class.dmrfidgateway_braintree.php:417
+#: classes/gateways/class.dmrfidgateway_braintree.php:418
+#: classes/gateways/class.dmrfidgateway_braintree.php:429
+#: classes/gateways/class.dmrfidgateway_braintree.php:442
+#: classes/gateways/class.dmrfidgateway_braintree.php:449
+#: classes/gateways/class.dmrfidgateway_braintree.php:774
+#: classes/gateways/class.dmrfidgateway_braintree.php:787
+#: classes/gateways/class.dmrfidgateway_braintree.php:789
+#: classes/gateways/class.dmrfidgateway_braintree.php:792
+#: classes/gateways/class.dmrfidgateway_braintree.php:793
+#: classes/gateways/class.dmrfidgateway_braintree.php:794
+#: classes/gateways/class.dmrfidgateway_braintree.php:800
+#: classes/gateways/class.dmrfidgateway_braintree.php:802
+#: classes/gateways/class.dmrfidgateway_braintree.php:805
+#: classes/gateways/class.dmrfidgateway_braintree.php:806
+#: classes/gateways/class.dmrfidgateway_braintree.php:807
+#: classes/gateways/class.dmrfidgateway_braintree.php:809
+#: classes/gateways/class.dmrfidgateway_braintree.php:812
+#: classes/gateways/class.dmrfidgateway_braintree.php:813
+#: classes/gateways/class.dmrfidgateway_braintree.php:825
+#: classes/gateways/class.dmrfidgateway_braintree.php:838
+#: classes/gateways/class.dmrfidgateway_braintree.php:845
+#: classes/gateways/class.dmrfidgateway_stripe.php:343
+#: classes/gateways/class.dmrfidgateway_stripe.php:344
+#: classes/gateways/class.dmrfidgateway_stripe.php:351
+#: classes/gateways/class.dmrfidgateway_stripe.php:353
+#: classes/gateways/class.dmrfidgateway_stripe.php:354
+#: classes/gateways/class.dmrfidgateway_stripe.php:361
+#: classes/gateways/class.dmrfidgateway_stripe.php:396
+#: classes/gateways/class.dmrfidgateway_stripe.php:402
+#: classes/gateways/class.dmrfidgateway_stripe.php:423
 msgid "Could not find the subscription."
 msgstr "找不到訂閱."
 
-#: classes/gateways/class.pmprogateway_check.php:49
+#: classes/gateways/class.dmrfidgateway_check.php:49
 #: paid-memberships-pro.php:126 adminpages/orders.php:399
 #: adminpages/orders.php:449 adminpages/paymentsettings.php:157
 #: adminpages/paymentsettings.php:159
-#: classes/gateways/class.pmprogateway_check.php:48
+#: classes/gateways/class.dmrfidgateway_check.php:48
 #: paid-memberships-pro.php:116 paid-memberships-pro.php:117
 #: paid-memberships-pro.php:124 paid-memberships-pro.php:125
 #: paid-memberships-pro.php:127 paid-memberships-pro.php:129
 msgid "Pay by Check"
 msgstr "用支票來付費"
 
-#: classes/gateways/class.pmprogateway_check.php:101
-#: classes/gateways/class.pmprogateway_check.php:100
+#: classes/gateways/class.dmrfidgateway_check.php:101
+#: classes/gateways/class.dmrfidgateway_check.php:100
 msgid "Pay by Check Settings"
 msgstr "用支票來付費設定"
 
-#: classes/gateways/class.pmprogateway_check.php:106
+#: classes/gateways/class.dmrfidgateway_check.php:106
 #: adminpages/paymentsettings.php:389 adminpages/paymentsettings.php:415
 #: adminpages/paymentsettings.php:420 adminpages/paymentsettings.php:422
-#: classes/gateways/class.pmprogateway_check.php:105
+#: classes/gateways/class.dmrfidgateway_check.php:105
 msgid "Instructions"
 msgstr "說明/指導"
 
-#: classes/gateways/class.pmprogateway_check.php:110
+#: classes/gateways/class.dmrfidgateway_check.php:110
 #: adminpages/paymentsettings.php:393 adminpages/paymentsettings.php:419
 #: adminpages/paymentsettings.php:424 adminpages/paymentsettings.php:426
-#: classes/gateways/class.pmprogateway_check.php:109
+#: classes/gateways/class.dmrfidgateway_check.php:109
 msgid ""
 "Who to write the check out to. Where to mail it. Shown on checkout, "
 "confirmation, and invoice pages."
 msgstr "這張支票是寫給誰人. 寄出到何處. 出示在結帳頁, 確認頁, 和發票頁."
 
-#: classes/gateways/class.pmprogateway_cybersource.php:42
+#: classes/gateways/class.dmrfidgateway_cybersource.php:42
 msgid "CyberSource"
 msgstr "CyberSource"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:96
+#: classes/gateways/class.dmrfidgateway_cybersource.php:96
 msgid "CyberSource Settings"
 msgstr "CyberSource設定"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
 #: adminpages/paymentsettings.php:174
 msgid ""
 "This gateway option is in beta. Some functionality may not be available. "
@@ -3666,32 +3666,32 @@ msgstr ""
 "這個網關入口選擇是在試用版先有. 有些功能是無的. 如果有任可問題請訊息Paid "
 "Memberships Pro. <strong>請你確定Digital Members RFID是最新的版本.</strong>"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:114
+#: classes/gateways/class.dmrfidgateway_cybersource.php:114
 #: adminpages/paymentsettings.php:372 adminpages/paymentsettings.php:377
 msgid "Transaction Security Key"
 msgstr "交易保安鎖匙"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:39
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:39
 msgid "Payflow Pro/PayPal Pro"
 msgstr "Payflow Pro/PayPal Pro"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:95
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:95
 msgid "Payflow Pro Settings"
 msgstr "Payflow Pro 設定"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:100
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:100
 #: adminpages/paymentsettings.php:195 adminpages/paymentsettings.php:199
 #: adminpages/paymentsettings.php:204
 msgid "Partner"
 msgstr "同伴"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:108
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:108
 #: adminpages/paymentsettings.php:203 adminpages/paymentsettings.php:207
 #: adminpages/paymentsettings.php:212
 msgid "Vendor"
 msgstr "賣主"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:124
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:124
 #: pages/checkout.php:200 adminpages/paymentsettings.php:219
 #: adminpages/paymentsettings.php:223 adminpages/paymentsettings.php:228
 #: pages/checkout.php:177 pages/checkout.php:180 pages/checkout.php:182
@@ -3699,11 +3699,11 @@ msgstr "賣主"
 msgid "Password"
 msgstr "密碼"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:132
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:132
 msgid "IPN Handler"
 msgstr "IPN 處置程式"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:137
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:137
 #, php-format
 msgid ""
 "Payflow does not use IPN. To sync recurring subscriptions, please see <a "
@@ -3712,43 +3712,43 @@ msgstr ""
 "Payflow 不用 IPN. 要同化定期訂閱, 請看<a target=\"_blank\" href=\"%s\">這個附"
 "加設備addon</a>."
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:194
-#: classes/gateways/class.pmprogateway_paypal.php:302
-#: classes/gateways/class.pmprogateway_payflowpro.php:57
-#: classes/gateways/class.pmprogateway_paypal.php:57
-#: classes/gateways/class.pmprogateway_paypal.php:277
-#: classes/gateways/class.pmprogateway_paypal.php:279
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:194
+#: classes/gateways/class.dmrfidgateway_paypal.php:302
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:277
+#: classes/gateways/class.dmrfidgateway_paypal.php:279
 msgid ""
 "A partial payment was made that we could not refund. Please contact the site "
 "owner immediately to correct this."
 msgstr ""
 "有些付款已經做下了半部分我們不能夠退款. 請您馬上通告網站的業主來修理這個事故."
 
-#: classes/gateways/class.pmprogateway_paypal.php:68
+#: classes/gateways/class.dmrfidgateway_paypal.php:68
 #: paid-memberships-pro.php:129
-#: classes/gateways/class.pmprogateway_paypal.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:57
 #: paid-memberships-pro.php:119 paid-memberships-pro.php:120
 #: paid-memberships-pro.php:127 paid-memberships-pro.php:128
 #: paid-memberships-pro.php:130 paid-memberships-pro.php:132
 msgid "PayPal Website Payments Pro"
 msgstr "PayPal Website Payments Pro"
 
-#: classes/gateways/class.pmprogateway_paypal.php:125
-#: classes/gateways/class.pmprogateway_paypalexpress.php:140
-#: classes/gateways/class.pmprogateway_paypalstandard.php:112
-#: classes/gateways/class.pmprogateway_paypal.php:113
-#: classes/gateways/class.pmprogateway_paypalexpress.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:128
+#: classes/gateways/class.dmrfidgateway_paypal.php:125
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:140
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:112
+#: classes/gateways/class.dmrfidgateway_paypal.php:113
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:128
 msgid "PayPal Settings"
 msgstr "PayPal 設定"
 
-#: classes/gateways/class.pmprogateway_paypal.php:130
-#: classes/gateways/class.pmprogateway_paypalexpress.php:145
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_paypal.php:130
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:145
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 #: adminpages/paymentsettings.php:179
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:123
-#: classes/gateways/class.pmprogateway_paypalexpress.php:133
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:123
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:133
 msgid ""
 "We do not recommend using PayPal Standard. We suggest using PayPal Express, "
 "Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="
@@ -3761,76 +3761,76 @@ msgstr ""
 "www.paidmembershipspro.com/2013/09/read-using-paypal-standard-paid-"
 "memberships-pro/\">在這裏有資料會解釋.</a>"
 
-#: classes/gateways/class.pmprogateway_paypal.php:135
-#: classes/gateways/class.pmprogateway_paypalexpress.php:150
-#: classes/gateways/class.pmprogateway_paypalstandard.php:122
+#: classes/gateways/class.dmrfidgateway_paypal.php:135
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:150
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:122
 #: adminpages/paymentsettings.php:227 adminpages/paymentsettings.php:231
 #: adminpages/paymentsettings.php:236
-#: classes/gateways/class.pmprogateway_paypal.php:123
-#: classes/gateways/class.pmprogateway_paypalexpress.php:128
-#: classes/gateways/class.pmprogateway_paypalexpress.php:138
+#: classes/gateways/class.dmrfidgateway_paypal.php:123
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:128
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:138
 msgid "Gateway Account Email"
 msgstr "網關入口戶口電郵"
 
-#: classes/gateways/class.pmprogateway_paypal.php:143
-#: classes/gateways/class.pmprogateway_paypalexpress.php:158
-#: classes/gateways/class.pmprogateway_paypalstandard.php:130
-#: classes/gateways/class.pmprogateway_twocheckout.php:119
+#: classes/gateways/class.dmrfidgateway_paypal.php:143
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:158
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:130
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:119
 #: adminpages/paymentsettings.php:235 adminpages/paymentsettings.php:239
 #: adminpages/paymentsettings.php:244 adminpages/paymentsettings.php:331
 #: adminpages/paymentsettings.php:336
-#: classes/gateways/class.pmprogateway_paypal.php:131
-#: classes/gateways/class.pmprogateway_paypalexpress.php:136
-#: classes/gateways/class.pmprogateway_paypalexpress.php:146
-#: classes/gateways/class.pmprogateway_twocheckout.php:113
-#: classes/gateways/class.pmprogateway_twocheckout.php:121
+#: classes/gateways/class.dmrfidgateway_paypal.php:131
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:136
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:146
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:113
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:121
 msgid "API Username"
 msgstr "API 用戶名"
 
-#: classes/gateways/class.pmprogateway_paypal.php:151
-#: classes/gateways/class.pmprogateway_paypalexpress.php:166
-#: classes/gateways/class.pmprogateway_paypalstandard.php:138
-#: classes/gateways/class.pmprogateway_twocheckout.php:128
+#: classes/gateways/class.dmrfidgateway_paypal.php:151
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:166
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:138
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:128
 #: adminpages/paymentsettings.php:243 adminpages/paymentsettings.php:247
 #: adminpages/paymentsettings.php:252 adminpages/paymentsettings.php:339
 #: adminpages/paymentsettings.php:344
-#: classes/gateways/class.pmprogateway_paypal.php:139
-#: classes/gateways/class.pmprogateway_paypalexpress.php:144
-#: classes/gateways/class.pmprogateway_paypalexpress.php:154
-#: classes/gateways/class.pmprogateway_twocheckout.php:121
-#: classes/gateways/class.pmprogateway_twocheckout.php:130
+#: classes/gateways/class.dmrfidgateway_paypal.php:139
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:144
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:154
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:121
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:130
 msgid "API Password"
 msgstr "API 密碼"
 
-#: classes/gateways/class.pmprogateway_paypal.php:159
-#: classes/gateways/class.pmprogateway_paypalexpress.php:174
-#: classes/gateways/class.pmprogateway_paypalstandard.php:146
+#: classes/gateways/class.dmrfidgateway_paypal.php:159
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:174
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:146
 #: adminpages/paymentsettings.php:251 adminpages/paymentsettings.php:255
 #: adminpages/paymentsettings.php:260
-#: classes/gateways/class.pmprogateway_paypal.php:147
-#: classes/gateways/class.pmprogateway_paypalexpress.php:152
-#: classes/gateways/class.pmprogateway_paypalexpress.php:162
+#: classes/gateways/class.dmrfidgateway_paypal.php:147
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:152
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:162
 msgid "API Signature"
 msgstr "API 簽名"
 
-#: classes/gateways/class.pmprogateway_paypal.php:167
-#: classes/gateways/class.pmprogateway_paypalexpress.php:182
+#: classes/gateways/class.dmrfidgateway_paypal.php:167
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:182
 msgid "Confirmation Step"
 msgstr "確認程序"
 
-#: classes/gateways/class.pmprogateway_paypal.php:178
-#: classes/gateways/class.pmprogateway_paypalexpress.php:193
-#: classes/gateways/class.pmprogateway_paypalstandard.php:154
+#: classes/gateways/class.dmrfidgateway_paypal.php:178
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:193
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:154
 #: adminpages/paymentsettings.php:446 adminpages/paymentsettings.php:479
 #: adminpages/paymentsettings.php:485 adminpages/paymentsettings.php:487
-#: classes/gateways/class.pmprogateway_paypal.php:155
-#: classes/gateways/class.pmprogateway_paypalexpress.php:160
-#: classes/gateways/class.pmprogateway_paypalexpress.php:170
+#: classes/gateways/class.dmrfidgateway_paypal.php:155
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:160
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:170
 msgid "IPN Handler URL"
 msgstr "IPN 處置程式 URL"
 
-#: classes/gateways/class.pmprogateway_paypal.php:181
-#: classes/gateways/class.pmprogateway_paypal.php:158
+#: classes/gateways/class.dmrfidgateway_paypal.php:181
+#: classes/gateways/class.dmrfidgateway_paypal.php:158
 msgid ""
 "This URL is passed to PayPal for all new charges and subscriptions. You "
 "SHOULD NOT set this in your PayPal account settings."
@@ -3838,26 +3838,26 @@ msgstr ""
 "所有的收費和訂閱會在這個URL是送給 PayPal. 您不需要設定在您的PayPal戶口的設定"
 "頁."
 
-#: classes/gateways/class.pmprogateway_paypal.php:201
-#: classes/gateways/class.pmprogateway_paypalexpress.php:438
-#: classes/gateways/class.pmprogateway_paypalstandard.php:201
-#: pages/checkout.php:309 classes/gateways/class.pmprogateway_paypal.php:178
-#: classes/gateways/class.pmprogateway_paypalexpress.php:402
-#: classes/gateways/class.pmprogateway_paypalexpress.php:412
-#: classes/gateways/class.pmprogateway_paypalstandard.php:202
+#: classes/gateways/class.dmrfidgateway_paypal.php:201
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:438
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:201
+#: pages/checkout.php:309 classes/gateways/class.dmrfidgateway_paypal.php:178
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:402
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:412
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:202
 #: pages/checkout.php:286 pages/checkout.php:288 pages/checkout.php:295
 #: pages/checkout.php:300 pages/checkout.php:302 pages/checkout.php:675
 #: pages/checkout.php:682 pages/checkout.php:685 pages/checkout.php:701
 msgid "Check Out with PayPal"
 msgstr "PayPal來結帳"
 
-#: classes/gateways/class.pmprogateway_paypal.php:207
-#: classes/gateways/class.pmprogateway_paypalexpress.php:443
-#: classes/gateways/class.pmprogateway_paypalstandard.php:206
-#: pages/checkout.php:725 classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:408
-#: classes/gateways/class.pmprogateway_paypalexpress.php:418
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
+#: classes/gateways/class.dmrfidgateway_paypal.php:207
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:443
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:206
+#: pages/checkout.php:725 classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:408
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:418
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
 #: pages/checkout.php:681 pages/checkout.php:688 pages/checkout.php:691
 #: pages/checkout.php:704 pages/checkout.php:707 pages/checkout.php:713
 #: pages/checkout.php:718 pages/checkout.php:722 pages/checkout.php:724
@@ -3865,16 +3865,16 @@ msgstr "PayPal來結帳"
 msgid "Submit and Check Out"
 msgstr "提交和結帳"
 
-#: classes/gateways/class.pmprogateway_paypal.php:207
-#: classes/gateways/class.pmprogateway_paypalexpress.php:443
-#: classes/gateways/class.pmprogateway_paypalstandard.php:206
-#: classes/gateways/class.pmprogateway_twocheckout.php:203
-#: pages/checkout.php:725 classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:408
-#: classes/gateways/class.pmprogateway_paypalexpress.php:418
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
-#: classes/gateways/class.pmprogateway_twocheckout.php:192
-#: classes/gateways/class.pmprogateway_twocheckout.php:214
+#: classes/gateways/class.dmrfidgateway_paypal.php:207
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:443
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:206
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:203
+#: pages/checkout.php:725 classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:408
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:418
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:192
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:214
 #: pages/checkout.php:681 pages/checkout.php:688 pages/checkout.php:691
 #: pages/checkout.php:704 pages/checkout.php:707 pages/checkout.php:713
 #: pages/checkout.php:718 pages/checkout.php:722 pages/checkout.php:724
@@ -3882,54 +3882,54 @@ msgstr "提交和結帳"
 msgid "Submit and Confirm"
 msgstr "提交和確認"
 
-#: classes/gateways/class.pmprogateway_paypal.php:631
-#: classes/gateways/class.pmprogateway_paypalexpress.php:777
-#: classes/gateways/class.pmprogateway_paypalstandard.php:464
-#: classes/gateways/class.pmprogateway_paypal.php:385
-#: classes/gateways/class.pmprogateway_paypal.php:605
-#: classes/gateways/class.pmprogateway_paypal.php:607
-#: classes/gateways/class.pmprogateway_paypal.php:608
-#: classes/gateways/class.pmprogateway_paypalexpress.php:301
-#: classes/gateways/class.pmprogateway_paypalexpress.php:303
-#: classes/gateways/class.pmprogateway_paypalexpress.php:305
-#: classes/gateways/class.pmprogateway_paypalexpress.php:731
-#: classes/gateways/class.pmprogateway_paypalexpress.php:740
-#: classes/gateways/class.pmprogateway_paypalexpress.php:750
-#: classes/gateways/class.pmprogateway_paypalexpress.php:752
-#: classes/gateways/class.pmprogateway_paypalstandard.php:216
-#: classes/gateways/class.pmprogateway_paypalstandard.php:220
-#: classes/gateways/class.pmprogateway_paypalstandard.php:230
-#: classes/gateways/class.pmprogateway_paypalstandard.php:231
-#: classes/gateways/class.pmprogateway_paypalstandard.php:466
+#: classes/gateways/class.dmrfidgateway_paypal.php:631
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:777
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:464
+#: classes/gateways/class.dmrfidgateway_paypal.php:385
+#: classes/gateways/class.dmrfidgateway_paypal.php:605
+#: classes/gateways/class.dmrfidgateway_paypal.php:607
+#: classes/gateways/class.dmrfidgateway_paypal.php:608
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:301
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:303
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:305
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:731
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:740
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:750
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:752
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:216
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:220
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:230
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:231
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:466
 msgid ""
 "Please contact the site owner or cancel your subscription from within PayPal "
 "to make sure you are not charged going forward."
 msgstr "如果您不想繼續提交付款, 請您通告您的網站的業主或取消您的PayPal訂閱."
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:84
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:84
 #: paid-memberships-pro.php:128
-#: classes/gateways/class.pmprogateway_paypalexpress.php:63
-#: classes/gateways/class.pmprogateway_paypalexpress.php:73
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:63
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:73
 #: paid-memberships-pro.php:118 paid-memberships-pro.php:119
 #: paid-memberships-pro.php:126 paid-memberships-pro.php:127
 #: paid-memberships-pro.php:129 paid-memberships-pro.php:131
 msgid "PayPal Express"
 msgstr "PayPal Express"
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:196
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:196
 #: adminpages/paymentsettings.php:449 adminpages/paymentsettings.php:482
 #: adminpages/paymentsettings.php:488 adminpages/paymentsettings.php:490
-#: classes/gateways/class.pmprogateway_paypalexpress.php:163
-#: classes/gateways/class.pmprogateway_paypalexpress.php:173
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:163
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:173
 msgid "To fully integrate with PayPal, be sure to set your IPN Handler URL to "
 msgstr "要完全配合了PayPal, 你需要設定 IPN Handler URL 到 "
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:301
-#: classes/gateways/class.pmprogateway_paypalexpress.php:357
-#: classes/gateways/class.pmprogateway_paypalexpress.php:268
-#: classes/gateways/class.pmprogateway_paypalexpress.php:278
-#: classes/gateways/class.pmprogateway_paypalexpress.php:320
-#: classes/gateways/class.pmprogateway_paypalexpress.php:330
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:301
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:357
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:268
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:278
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:320
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:330
 #: preheaders/checkout.php:690 preheaders/checkout.php:697
 #: preheaders/checkout.php:702 preheaders/checkout.php:735
 #: preheaders/checkout.php:750 preheaders/checkout.php:753
@@ -3939,7 +3939,7 @@ msgstr "要完全配合了PayPal, 你需要設定 IPN Handler URL 到 "
 msgid "The PayPal Token was lost."
 msgstr "這個 PayPal Token 是遺失了."
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:60
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:60
 #: paid-memberships-pro.php:131 paid-memberships-pro.php:121
 #: paid-memberships-pro.php:122 paid-memberships-pro.php:129
 #: paid-memberships-pro.php:130 paid-memberships-pro.php:132
@@ -3947,86 +3947,86 @@ msgstr "這個 PayPal Token 是遺失了."
 msgid "PayPal Standard"
 msgstr "PayPal Standard"
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:157
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:157
 msgid ""
 "Here is your IPN URL for reference. You SHOULD NOT set this in your PayPal "
 "settings."
 msgstr "這是您的 IPN URL 參考. 您不需要在PayPal設定頁造設定."
 
-#: classes/gateways/class.pmprogateway_stripe.php:142
+#: classes/gateways/class.dmrfidgateway_stripe.php:142
 #: paid-memberships-pro.php:127
-#: classes/gateways/class.pmprogateway_stripe.php:93
-#: classes/gateways/class.pmprogateway_stripe.php:94
-#: classes/gateways/class.pmprogateway_stripe.php:104
-#: classes/gateways/class.pmprogateway_stripe.php:126
-#: classes/gateways/class.pmprogateway_stripe.php:128
-#: classes/gateways/class.pmprogateway_stripe.php:129
-#: classes/gateways/class.pmprogateway_stripe.php:140
+#: classes/gateways/class.dmrfidgateway_stripe.php:93
+#: classes/gateways/class.dmrfidgateway_stripe.php:94
+#: classes/gateways/class.dmrfidgateway_stripe.php:104
+#: classes/gateways/class.dmrfidgateway_stripe.php:126
+#: classes/gateways/class.dmrfidgateway_stripe.php:128
+#: classes/gateways/class.dmrfidgateway_stripe.php:129
+#: classes/gateways/class.dmrfidgateway_stripe.php:140
 #: paid-memberships-pro.php:117 paid-memberships-pro.php:118
 #: paid-memberships-pro.php:125 paid-memberships-pro.php:126
 #: paid-memberships-pro.php:128 paid-memberships-pro.php:130
 msgid "Stripe"
 msgstr "Stripe"
 
-#: classes/gateways/class.pmprogateway_stripe.php:197
-#: classes/gateways/class.pmprogateway_stripe.php:148
-#: classes/gateways/class.pmprogateway_stripe.php:149
-#: classes/gateways/class.pmprogateway_stripe.php:159
-#: classes/gateways/class.pmprogateway_stripe.php:181
-#: classes/gateways/class.pmprogateway_stripe.php:183
-#: classes/gateways/class.pmprogateway_stripe.php:184
-#: classes/gateways/class.pmprogateway_stripe.php:195
+#: classes/gateways/class.dmrfidgateway_stripe.php:197
+#: classes/gateways/class.dmrfidgateway_stripe.php:148
+#: classes/gateways/class.dmrfidgateway_stripe.php:149
+#: classes/gateways/class.dmrfidgateway_stripe.php:159
+#: classes/gateways/class.dmrfidgateway_stripe.php:181
+#: classes/gateways/class.dmrfidgateway_stripe.php:183
+#: classes/gateways/class.dmrfidgateway_stripe.php:184
+#: classes/gateways/class.dmrfidgateway_stripe.php:195
 msgid "Stripe Settings"
 msgstr "Stripe 設定"
 
-#: classes/gateways/class.pmprogateway_stripe.php:202
+#: classes/gateways/class.dmrfidgateway_stripe.php:202
 #: adminpages/paymentsettings.php:277 adminpages/paymentsettings.php:281
 #: adminpages/paymentsettings.php:286
-#: classes/gateways/class.pmprogateway_stripe.php:153
-#: classes/gateways/class.pmprogateway_stripe.php:154
-#: classes/gateways/class.pmprogateway_stripe.php:164
-#: classes/gateways/class.pmprogateway_stripe.php:186
-#: classes/gateways/class.pmprogateway_stripe.php:188
-#: classes/gateways/class.pmprogateway_stripe.php:189
-#: classes/gateways/class.pmprogateway_stripe.php:200
+#: classes/gateways/class.dmrfidgateway_stripe.php:153
+#: classes/gateways/class.dmrfidgateway_stripe.php:154
+#: classes/gateways/class.dmrfidgateway_stripe.php:164
+#: classes/gateways/class.dmrfidgateway_stripe.php:186
+#: classes/gateways/class.dmrfidgateway_stripe.php:188
+#: classes/gateways/class.dmrfidgateway_stripe.php:189
+#: classes/gateways/class.dmrfidgateway_stripe.php:200
 msgid "Secret Key"
 msgstr "秘密鎖匙"
 
-#: classes/gateways/class.pmprogateway_stripe.php:210
+#: classes/gateways/class.dmrfidgateway_stripe.php:210
 #: adminpages/paymentsettings.php:285 adminpages/paymentsettings.php:289
 #: adminpages/paymentsettings.php:294
-#: classes/gateways/class.pmprogateway_stripe.php:161
-#: classes/gateways/class.pmprogateway_stripe.php:162
-#: classes/gateways/class.pmprogateway_stripe.php:172
-#: classes/gateways/class.pmprogateway_stripe.php:194
-#: classes/gateways/class.pmprogateway_stripe.php:196
-#: classes/gateways/class.pmprogateway_stripe.php:197
-#: classes/gateways/class.pmprogateway_stripe.php:208
+#: classes/gateways/class.dmrfidgateway_stripe.php:161
+#: classes/gateways/class.dmrfidgateway_stripe.php:162
+#: classes/gateways/class.dmrfidgateway_stripe.php:172
+#: classes/gateways/class.dmrfidgateway_stripe.php:194
+#: classes/gateways/class.dmrfidgateway_stripe.php:196
+#: classes/gateways/class.dmrfidgateway_stripe.php:197
+#: classes/gateways/class.dmrfidgateway_stripe.php:208
 msgid "Publishable Key"
 msgstr "公佈得的鎖匙"
 
-#: classes/gateways/class.pmprogateway_stripe.php:218
+#: classes/gateways/class.dmrfidgateway_stripe.php:218
 #: adminpages/paymentsettings.php:425 adminpages/paymentsettings.php:430
 #: adminpages/paymentsettings.php:432
-#: classes/gateways/class.pmprogateway_stripe.php:169
-#: classes/gateways/class.pmprogateway_stripe.php:170
-#: classes/gateways/class.pmprogateway_stripe.php:180
-#: classes/gateways/class.pmprogateway_stripe.php:202
-#: classes/gateways/class.pmprogateway_stripe.php:204
-#: classes/gateways/class.pmprogateway_stripe.php:205
-#: classes/gateways/class.pmprogateway_stripe.php:216
+#: classes/gateways/class.dmrfidgateway_stripe.php:169
+#: classes/gateways/class.dmrfidgateway_stripe.php:170
+#: classes/gateways/class.dmrfidgateway_stripe.php:180
+#: classes/gateways/class.dmrfidgateway_stripe.php:202
+#: classes/gateways/class.dmrfidgateway_stripe.php:204
+#: classes/gateways/class.dmrfidgateway_stripe.php:205
+#: classes/gateways/class.dmrfidgateway_stripe.php:216
 msgid "Show Billing Address Fields"
 msgstr "顯示付款帳單地址的欄位"
 
-#: classes/gateways/class.pmprogateway_stripe.php:225
+#: classes/gateways/class.dmrfidgateway_stripe.php:225
 #: adminpages/paymentsettings.php:437 adminpages/paymentsettings.php:439
-#: classes/gateways/class.pmprogateway_stripe.php:176
-#: classes/gateways/class.pmprogateway_stripe.php:177
-#: classes/gateways/class.pmprogateway_stripe.php:187
-#: classes/gateways/class.pmprogateway_stripe.php:209
-#: classes/gateways/class.pmprogateway_stripe.php:211
-#: classes/gateways/class.pmprogateway_stripe.php:212
-#: classes/gateways/class.pmprogateway_stripe.php:223
+#: classes/gateways/class.dmrfidgateway_stripe.php:176
+#: classes/gateways/class.dmrfidgateway_stripe.php:177
+#: classes/gateways/class.dmrfidgateway_stripe.php:187
+#: classes/gateways/class.dmrfidgateway_stripe.php:209
+#: classes/gateways/class.dmrfidgateway_stripe.php:211
+#: classes/gateways/class.dmrfidgateway_stripe.php:212
+#: classes/gateways/class.dmrfidgateway_stripe.php:223
 msgid ""
 "Stripe doesn't require billing address fields. Choose 'No' to hide them on "
 "the checkout page.<br /><strong>If No, make sure you disable address "
@@ -4035,44 +4035,44 @@ msgstr ""
 "Stripe不需要付款帳單地址的欄位. 選擇'No'來藏起這些結帳頁.<br /><strong>如"
 "果'No', 你一定要確定在你的Stripe的控制台板設定查証地址是無效的.</strong>"
 
-#: classes/gateways/class.pmprogateway_stripe.php:233
+#: classes/gateways/class.dmrfidgateway_stripe.php:233
 #: adminpages/paymentsettings.php:465 adminpages/paymentsettings.php:506
 #: adminpages/paymentsettings.php:512 adminpages/paymentsettings.php:514
-#: classes/gateways/class.pmprogateway_stripe.php:184
-#: classes/gateways/class.pmprogateway_stripe.php:185
-#: classes/gateways/class.pmprogateway_stripe.php:195
-#: classes/gateways/class.pmprogateway_stripe.php:217
-#: classes/gateways/class.pmprogateway_stripe.php:219
-#: classes/gateways/class.pmprogateway_stripe.php:220
-#: classes/gateways/class.pmprogateway_stripe.php:231
+#: classes/gateways/class.dmrfidgateway_stripe.php:184
+#: classes/gateways/class.dmrfidgateway_stripe.php:185
+#: classes/gateways/class.dmrfidgateway_stripe.php:195
+#: classes/gateways/class.dmrfidgateway_stripe.php:217
+#: classes/gateways/class.dmrfidgateway_stripe.php:219
+#: classes/gateways/class.dmrfidgateway_stripe.php:220
+#: classes/gateways/class.dmrfidgateway_stripe.php:231
 msgid "To fully integrate with Stripe, be sure to set your Web Hook URL to"
 msgstr "如果要完全配合Stripe, 一定要設定你的Web Hook URL到"
 
-#: classes/gateways/class.pmprogateway_stripe.php:683
-#: classes/gateways/class.pmprogateway_stripe.php:567
-#: classes/gateways/class.pmprogateway_stripe.php:568
-#: classes/gateways/class.pmprogateway_stripe.php:578
-#: classes/gateways/class.pmprogateway_stripe.php:582
-#: classes/gateways/class.pmprogateway_stripe.php:608
-#: classes/gateways/class.pmprogateway_stripe.php:612
-#: classes/gateways/class.pmprogateway_stripe.php:613
-#: classes/gateways/class.pmprogateway_stripe.php:616
-#: classes/gateways/class.pmprogateway_stripe.php:634
-#: classes/gateways/class.pmprogateway_stripe.php:645
+#: classes/gateways/class.dmrfidgateway_stripe.php:683
+#: classes/gateways/class.dmrfidgateway_stripe.php:567
+#: classes/gateways/class.dmrfidgateway_stripe.php:568
+#: classes/gateways/class.dmrfidgateway_stripe.php:578
+#: classes/gateways/class.dmrfidgateway_stripe.php:582
+#: classes/gateways/class.dmrfidgateway_stripe.php:608
+#: classes/gateways/class.dmrfidgateway_stripe.php:612
+#: classes/gateways/class.dmrfidgateway_stripe.php:613
+#: classes/gateways/class.dmrfidgateway_stripe.php:616
+#: classes/gateways/class.dmrfidgateway_stripe.php:634
+#: classes/gateways/class.dmrfidgateway_stripe.php:645
 msgid "Subscription Updates"
 msgstr "訂閱以更新"
 
-#: classes/gateways/class.pmprogateway_stripe.php:687
-#: classes/gateways/class.pmprogateway_stripe.php:571
-#: classes/gateways/class.pmprogateway_stripe.php:572
-#: classes/gateways/class.pmprogateway_stripe.php:582
-#: classes/gateways/class.pmprogateway_stripe.php:586
-#: classes/gateways/class.pmprogateway_stripe.php:612
-#: classes/gateways/class.pmprogateway_stripe.php:616
-#: classes/gateways/class.pmprogateway_stripe.php:617
-#: classes/gateways/class.pmprogateway_stripe.php:620
-#: classes/gateways/class.pmprogateway_stripe.php:638
-#: classes/gateways/class.pmprogateway_stripe.php:649
+#: classes/gateways/class.dmrfidgateway_stripe.php:687
+#: classes/gateways/class.dmrfidgateway_stripe.php:571
+#: classes/gateways/class.dmrfidgateway_stripe.php:572
+#: classes/gateways/class.dmrfidgateway_stripe.php:582
+#: classes/gateways/class.dmrfidgateway_stripe.php:586
+#: classes/gateways/class.dmrfidgateway_stripe.php:612
+#: classes/gateways/class.dmrfidgateway_stripe.php:616
+#: classes/gateways/class.dmrfidgateway_stripe.php:617
+#: classes/gateways/class.dmrfidgateway_stripe.php:620
+#: classes/gateways/class.dmrfidgateway_stripe.php:638
+#: classes/gateways/class.dmrfidgateway_stripe.php:649
 msgid ""
 "Subscription updates, allow you to change the member's subscription values "
 "at predefined times. Be sure to click Update Profile after making changes."
@@ -4080,17 +4080,17 @@ msgstr ""
 "訂閱以更新, 可以允許你在預早時改好你的訂閱數值. 在改好後一定要點擊你的更新檔"
 "案Update Profile."
 
-#: classes/gateways/class.pmprogateway_stripe.php:689
-#: classes/gateways/class.pmprogateway_stripe.php:573
-#: classes/gateways/class.pmprogateway_stripe.php:574
-#: classes/gateways/class.pmprogateway_stripe.php:584
-#: classes/gateways/class.pmprogateway_stripe.php:588
-#: classes/gateways/class.pmprogateway_stripe.php:614
-#: classes/gateways/class.pmprogateway_stripe.php:618
-#: classes/gateways/class.pmprogateway_stripe.php:619
-#: classes/gateways/class.pmprogateway_stripe.php:622
-#: classes/gateways/class.pmprogateway_stripe.php:640
-#: classes/gateways/class.pmprogateway_stripe.php:651
+#: classes/gateways/class.dmrfidgateway_stripe.php:689
+#: classes/gateways/class.dmrfidgateway_stripe.php:573
+#: classes/gateways/class.dmrfidgateway_stripe.php:574
+#: classes/gateways/class.dmrfidgateway_stripe.php:584
+#: classes/gateways/class.dmrfidgateway_stripe.php:588
+#: classes/gateways/class.dmrfidgateway_stripe.php:614
+#: classes/gateways/class.dmrfidgateway_stripe.php:618
+#: classes/gateways/class.dmrfidgateway_stripe.php:619
+#: classes/gateways/class.dmrfidgateway_stripe.php:622
+#: classes/gateways/class.dmrfidgateway_stripe.php:640
+#: classes/gateways/class.dmrfidgateway_stripe.php:651
 msgid ""
 "Subscription updates, allow you to change the member's subscription values "
 "at predefined times. Be sure to click Update User after making changes."
@@ -4098,206 +4098,206 @@ msgstr ""
 "訂閱以更新, 可以允許你在預早時改好你的訂閱數值. 在改好後一定要點擊你的更新用"
 "Update User."
 
-#: classes/gateways/class.pmprogateway_stripe.php:694 pages/billing.php:370
-#: classes/gateways/class.pmprogateway_stripe.php:578
-#: classes/gateways/class.pmprogateway_stripe.php:579
-#: classes/gateways/class.pmprogateway_stripe.php:589
-#: classes/gateways/class.pmprogateway_stripe.php:593
-#: classes/gateways/class.pmprogateway_stripe.php:619
-#: classes/gateways/class.pmprogateway_stripe.php:623
-#: classes/gateways/class.pmprogateway_stripe.php:624
-#: classes/gateways/class.pmprogateway_stripe.php:627
-#: classes/gateways/class.pmprogateway_stripe.php:645
-#: classes/gateways/class.pmprogateway_stripe.php:656 pages/billing.php:294
+#: classes/gateways/class.dmrfidgateway_stripe.php:694 pages/billing.php:370
+#: classes/gateways/class.dmrfidgateway_stripe.php:578
+#: classes/gateways/class.dmrfidgateway_stripe.php:579
+#: classes/gateways/class.dmrfidgateway_stripe.php:589
+#: classes/gateways/class.dmrfidgateway_stripe.php:593
+#: classes/gateways/class.dmrfidgateway_stripe.php:619
+#: classes/gateways/class.dmrfidgateway_stripe.php:623
+#: classes/gateways/class.dmrfidgateway_stripe.php:624
+#: classes/gateways/class.dmrfidgateway_stripe.php:627
+#: classes/gateways/class.dmrfidgateway_stripe.php:645
+#: classes/gateways/class.dmrfidgateway_stripe.php:656 pages/billing.php:294
 #: pages/billing.php:298 pages/billing.php:329 pages/billing.php:338
 #: pages/billing.php:341 pages/billing.php:343 pages/billing.php:347
 #: pages/billing.php:391 pages/billing.php:400 pages/billing.php:405
 msgid "Update"
 msgstr "更新"
 
-#: classes/gateways/class.pmprogateway_stripe.php:887
-#: classes/gateways/class.pmprogateway_stripe.php:769
-#: classes/gateways/class.pmprogateway_stripe.php:770
-#: classes/gateways/class.pmprogateway_stripe.php:780
-#: classes/gateways/class.pmprogateway_stripe.php:784
-#: classes/gateways/class.pmprogateway_stripe.php:812
-#: classes/gateways/class.pmprogateway_stripe.php:816
-#: classes/gateways/class.pmprogateway_stripe.php:817
-#: classes/gateways/class.pmprogateway_stripe.php:820
-#: classes/gateways/class.pmprogateway_stripe.php:838
-#: classes/gateways/class.pmprogateway_stripe.php:849
+#: classes/gateways/class.dmrfidgateway_stripe.php:887
+#: classes/gateways/class.dmrfidgateway_stripe.php:769
+#: classes/gateways/class.dmrfidgateway_stripe.php:770
+#: classes/gateways/class.dmrfidgateway_stripe.php:780
+#: classes/gateways/class.dmrfidgateway_stripe.php:784
+#: classes/gateways/class.dmrfidgateway_stripe.php:812
+#: classes/gateways/class.dmrfidgateway_stripe.php:816
+#: classes/gateways/class.dmrfidgateway_stripe.php:817
+#: classes/gateways/class.dmrfidgateway_stripe.php:820
+#: classes/gateways/class.dmrfidgateway_stripe.php:838
+#: classes/gateways/class.dmrfidgateway_stripe.php:849
 msgid "Could not cancel the old subscription. Updates have not been processed."
 msgstr "不可以取消舊訂閱. 不可以取消舊訂閱. 更新没有處理."
 
-#: classes/gateways/class.pmprogateway_stripe.php:1374
-#: classes/gateways/class.pmprogateway_stripe.php:190
-#: classes/gateways/class.pmprogateway_stripe.php:192
-#: classes/gateways/class.pmprogateway_stripe.php:199
-#: classes/gateways/class.pmprogateway_stripe.php:201
-#: classes/gateways/class.pmprogateway_stripe.php:1187
-#: classes/gateways/class.pmprogateway_stripe.php:1188
-#: classes/gateways/class.pmprogateway_stripe.php:1202
-#: classes/gateways/class.pmprogateway_stripe.php:1203
-#: classes/gateways/class.pmprogateway_stripe.php:1204
-#: classes/gateways/class.pmprogateway_stripe.php:1214
-#: classes/gateways/class.pmprogateway_stripe.php:1218
-#: classes/gateways/class.pmprogateway_stripe.php:1246
-#: classes/gateways/class.pmprogateway_stripe.php:1256
-#: classes/gateways/class.pmprogateway_stripe.php:1260
-#: classes/gateways/class.pmprogateway_stripe.php:1300
-#: classes/gateways/class.pmprogateway_stripe.php:1303
-#: classes/gateways/class.pmprogateway_stripe.php:1325
-#: classes/gateways/class.pmprogateway_stripe.php:1326
-#: classes/gateways/class.pmprogateway_stripe.php:1336
+#: classes/gateways/class.dmrfidgateway_stripe.php:1374
+#: classes/gateways/class.dmrfidgateway_stripe.php:190
+#: classes/gateways/class.dmrfidgateway_stripe.php:192
+#: classes/gateways/class.dmrfidgateway_stripe.php:199
+#: classes/gateways/class.dmrfidgateway_stripe.php:201
+#: classes/gateways/class.dmrfidgateway_stripe.php:1187
+#: classes/gateways/class.dmrfidgateway_stripe.php:1188
+#: classes/gateways/class.dmrfidgateway_stripe.php:1202
+#: classes/gateways/class.dmrfidgateway_stripe.php:1203
+#: classes/gateways/class.dmrfidgateway_stripe.php:1204
+#: classes/gateways/class.dmrfidgateway_stripe.php:1214
+#: classes/gateways/class.dmrfidgateway_stripe.php:1218
+#: classes/gateways/class.dmrfidgateway_stripe.php:1246
+#: classes/gateways/class.dmrfidgateway_stripe.php:1256
+#: classes/gateways/class.dmrfidgateway_stripe.php:1260
+#: classes/gateways/class.dmrfidgateway_stripe.php:1300
+#: classes/gateways/class.dmrfidgateway_stripe.php:1303
+#: classes/gateways/class.dmrfidgateway_stripe.php:1325
+#: classes/gateways/class.dmrfidgateway_stripe.php:1326
+#: classes/gateways/class.dmrfidgateway_stripe.php:1336
 msgid "Error creating customer record with Stripe:"
 msgstr "造Stripe的客戶記錄有錯:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1433
-#: classes/gateways/class.pmprogateway_stripe.php:1275
-#: classes/gateways/class.pmprogateway_stripe.php:1303
-#: classes/gateways/class.pmprogateway_stripe.php:1313
-#: classes/gateways/class.pmprogateway_stripe.php:1317
-#: classes/gateways/class.pmprogateway_stripe.php:1357
-#: classes/gateways/class.pmprogateway_stripe.php:1360
-#: classes/gateways/class.pmprogateway_stripe.php:1384
-#: classes/gateways/class.pmprogateway_stripe.php:1385
-#: classes/gateways/class.pmprogateway_stripe.php:1395
+#: classes/gateways/class.dmrfidgateway_stripe.php:1433
+#: classes/gateways/class.dmrfidgateway_stripe.php:1275
+#: classes/gateways/class.dmrfidgateway_stripe.php:1303
+#: classes/gateways/class.dmrfidgateway_stripe.php:1313
+#: classes/gateways/class.dmrfidgateway_stripe.php:1317
+#: classes/gateways/class.dmrfidgateway_stripe.php:1357
+#: classes/gateways/class.dmrfidgateway_stripe.php:1360
+#: classes/gateways/class.dmrfidgateway_stripe.php:1384
+#: classes/gateways/class.dmrfidgateway_stripe.php:1385
+#: classes/gateways/class.dmrfidgateway_stripe.php:1395
 msgid "Error getting subscription with Stripe:"
 msgstr "在Stripe找訂閱有錯:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1589
-#: classes/gateways/class.pmprogateway_stripe.php:278
-#: classes/gateways/class.pmprogateway_stripe.php:279
-#: classes/gateways/class.pmprogateway_stripe.php:286
-#: classes/gateways/class.pmprogateway_stripe.php:302
-#: classes/gateways/class.pmprogateway_stripe.php:308
-#: classes/gateways/class.pmprogateway_stripe.php:311
-#: classes/gateways/class.pmprogateway_stripe.php:1244
-#: classes/gateways/class.pmprogateway_stripe.php:1245
-#: classes/gateways/class.pmprogateway_stripe.php:1259
-#: classes/gateways/class.pmprogateway_stripe.php:1260
-#: classes/gateways/class.pmprogateway_stripe.php:1261
-#: classes/gateways/class.pmprogateway_stripe.php:1271
-#: classes/gateways/class.pmprogateway_stripe.php:1390
-#: classes/gateways/class.pmprogateway_stripe.php:1391
-#: classes/gateways/class.pmprogateway_stripe.php:1409
-#: classes/gateways/class.pmprogateway_stripe.php:1410
-#: classes/gateways/class.pmprogateway_stripe.php:1411
-#: classes/gateways/class.pmprogateway_stripe.php:1421
-#: classes/gateways/class.pmprogateway_stripe.php:1425
-#: classes/gateways/class.pmprogateway_stripe.php:1453
-#: classes/gateways/class.pmprogateway_stripe.php:1463
-#: classes/gateways/class.pmprogateway_stripe.php:1467
-#: classes/gateways/class.pmprogateway_stripe.php:1507
-#: classes/gateways/class.pmprogateway_stripe.php:1510
-#: classes/gateways/class.pmprogateway_stripe.php:1540
-#: classes/gateways/class.pmprogateway_stripe.php:1541
-#: classes/gateways/class.pmprogateway_stripe.php:1551
+#: classes/gateways/class.dmrfidgateway_stripe.php:1589
+#: classes/gateways/class.dmrfidgateway_stripe.php:278
+#: classes/gateways/class.dmrfidgateway_stripe.php:279
+#: classes/gateways/class.dmrfidgateway_stripe.php:286
+#: classes/gateways/class.dmrfidgateway_stripe.php:302
+#: classes/gateways/class.dmrfidgateway_stripe.php:308
+#: classes/gateways/class.dmrfidgateway_stripe.php:311
+#: classes/gateways/class.dmrfidgateway_stripe.php:1244
+#: classes/gateways/class.dmrfidgateway_stripe.php:1245
+#: classes/gateways/class.dmrfidgateway_stripe.php:1259
+#: classes/gateways/class.dmrfidgateway_stripe.php:1260
+#: classes/gateways/class.dmrfidgateway_stripe.php:1261
+#: classes/gateways/class.dmrfidgateway_stripe.php:1271
+#: classes/gateways/class.dmrfidgateway_stripe.php:1390
+#: classes/gateways/class.dmrfidgateway_stripe.php:1391
+#: classes/gateways/class.dmrfidgateway_stripe.php:1409
+#: classes/gateways/class.dmrfidgateway_stripe.php:1410
+#: classes/gateways/class.dmrfidgateway_stripe.php:1411
+#: classes/gateways/class.dmrfidgateway_stripe.php:1421
+#: classes/gateways/class.dmrfidgateway_stripe.php:1425
+#: classes/gateways/class.dmrfidgateway_stripe.php:1453
+#: classes/gateways/class.dmrfidgateway_stripe.php:1463
+#: classes/gateways/class.dmrfidgateway_stripe.php:1467
+#: classes/gateways/class.dmrfidgateway_stripe.php:1507
+#: classes/gateways/class.dmrfidgateway_stripe.php:1510
+#: classes/gateways/class.dmrfidgateway_stripe.php:1540
+#: classes/gateways/class.dmrfidgateway_stripe.php:1541
+#: classes/gateways/class.dmrfidgateway_stripe.php:1551
 msgid "Error creating plan with Stripe:"
 msgstr "在Stripe建造計劃有錯:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1620
-#: classes/gateways/class.pmprogateway_stripe.php:294
-#: classes/gateways/class.pmprogateway_stripe.php:295
-#: classes/gateways/class.pmprogateway_stripe.php:302
-#: classes/gateways/class.pmprogateway_stripe.php:318
-#: classes/gateways/class.pmprogateway_stripe.php:324
-#: classes/gateways/class.pmprogateway_stripe.php:330
-#: classes/gateways/class.pmprogateway_stripe.php:1420
-#: classes/gateways/class.pmprogateway_stripe.php:1421
-#: classes/gateways/class.pmprogateway_stripe.php:1422
-#: classes/gateways/class.pmprogateway_stripe.php:1440
-#: classes/gateways/class.pmprogateway_stripe.php:1441
-#: classes/gateways/class.pmprogateway_stripe.php:1442
-#: classes/gateways/class.pmprogateway_stripe.php:1452
-#: classes/gateways/class.pmprogateway_stripe.php:1456
-#: classes/gateways/class.pmprogateway_stripe.php:1484
-#: classes/gateways/class.pmprogateway_stripe.php:1494
-#: classes/gateways/class.pmprogateway_stripe.php:1498
-#: classes/gateways/class.pmprogateway_stripe.php:1538
-#: classes/gateways/class.pmprogateway_stripe.php:1541
-#: classes/gateways/class.pmprogateway_stripe.php:1571
-#: classes/gateways/class.pmprogateway_stripe.php:1572
-#: classes/gateways/class.pmprogateway_stripe.php:1582
+#: classes/gateways/class.dmrfidgateway_stripe.php:1620
+#: classes/gateways/class.dmrfidgateway_stripe.php:294
+#: classes/gateways/class.dmrfidgateway_stripe.php:295
+#: classes/gateways/class.dmrfidgateway_stripe.php:302
+#: classes/gateways/class.dmrfidgateway_stripe.php:318
+#: classes/gateways/class.dmrfidgateway_stripe.php:324
+#: classes/gateways/class.dmrfidgateway_stripe.php:330
+#: classes/gateways/class.dmrfidgateway_stripe.php:1420
+#: classes/gateways/class.dmrfidgateway_stripe.php:1421
+#: classes/gateways/class.dmrfidgateway_stripe.php:1422
+#: classes/gateways/class.dmrfidgateway_stripe.php:1440
+#: classes/gateways/class.dmrfidgateway_stripe.php:1441
+#: classes/gateways/class.dmrfidgateway_stripe.php:1442
+#: classes/gateways/class.dmrfidgateway_stripe.php:1452
+#: classes/gateways/class.dmrfidgateway_stripe.php:1456
+#: classes/gateways/class.dmrfidgateway_stripe.php:1484
+#: classes/gateways/class.dmrfidgateway_stripe.php:1494
+#: classes/gateways/class.dmrfidgateway_stripe.php:1498
+#: classes/gateways/class.dmrfidgateway_stripe.php:1538
+#: classes/gateways/class.dmrfidgateway_stripe.php:1541
+#: classes/gateways/class.dmrfidgateway_stripe.php:1571
+#: classes/gateways/class.dmrfidgateway_stripe.php:1572
+#: classes/gateways/class.dmrfidgateway_stripe.php:1582
 msgid "Error subscribing customer to plan with Stripe:"
 msgstr "在Stripe訂閱客戶到計劃有錯:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1716
-#: classes/gateways/class.pmprogateway_stripe.php:383
-#: classes/gateways/class.pmprogateway_stripe.php:389
-#: classes/gateways/class.pmprogateway_stripe.php:410
-#: classes/gateways/class.pmprogateway_stripe.php:1516
-#: classes/gateways/class.pmprogateway_stripe.php:1517
-#: classes/gateways/class.pmprogateway_stripe.php:1518
-#: classes/gateways/class.pmprogateway_stripe.php:1536
-#: classes/gateways/class.pmprogateway_stripe.php:1537
-#: classes/gateways/class.pmprogateway_stripe.php:1538
-#: classes/gateways/class.pmprogateway_stripe.php:1548
-#: classes/gateways/class.pmprogateway_stripe.php:1552
-#: classes/gateways/class.pmprogateway_stripe.php:1580
-#: classes/gateways/class.pmprogateway_stripe.php:1590
-#: classes/gateways/class.pmprogateway_stripe.php:1594
-#: classes/gateways/class.pmprogateway_stripe.php:1634
-#: classes/gateways/class.pmprogateway_stripe.php:1637
-#: classes/gateways/class.pmprogateway_stripe.php:1667
-#: classes/gateways/class.pmprogateway_stripe.php:1668
-#: classes/gateways/class.pmprogateway_stripe.php:1678
+#: classes/gateways/class.dmrfidgateway_stripe.php:1716
+#: classes/gateways/class.dmrfidgateway_stripe.php:383
+#: classes/gateways/class.dmrfidgateway_stripe.php:389
+#: classes/gateways/class.dmrfidgateway_stripe.php:410
+#: classes/gateways/class.dmrfidgateway_stripe.php:1516
+#: classes/gateways/class.dmrfidgateway_stripe.php:1517
+#: classes/gateways/class.dmrfidgateway_stripe.php:1518
+#: classes/gateways/class.dmrfidgateway_stripe.php:1536
+#: classes/gateways/class.dmrfidgateway_stripe.php:1537
+#: classes/gateways/class.dmrfidgateway_stripe.php:1538
+#: classes/gateways/class.dmrfidgateway_stripe.php:1548
+#: classes/gateways/class.dmrfidgateway_stripe.php:1552
+#: classes/gateways/class.dmrfidgateway_stripe.php:1580
+#: classes/gateways/class.dmrfidgateway_stripe.php:1590
+#: classes/gateways/class.dmrfidgateway_stripe.php:1594
+#: classes/gateways/class.dmrfidgateway_stripe.php:1634
+#: classes/gateways/class.dmrfidgateway_stripe.php:1637
+#: classes/gateways/class.dmrfidgateway_stripe.php:1667
+#: classes/gateways/class.dmrfidgateway_stripe.php:1668
+#: classes/gateways/class.dmrfidgateway_stripe.php:1678
 msgid "Could not cancel old subscription."
 msgstr "不可以取消舊訂閱."
 
-#: classes/gateways/class.pmprogateway_stripe.php:1733
-#: classes/gateways/class.pmprogateway_stripe.php:1533
-#: classes/gateways/class.pmprogateway_stripe.php:1534
-#: classes/gateways/class.pmprogateway_stripe.php:1535
-#: classes/gateways/class.pmprogateway_stripe.php:1553
-#: classes/gateways/class.pmprogateway_stripe.php:1554
-#: classes/gateways/class.pmprogateway_stripe.php:1555
-#: classes/gateways/class.pmprogateway_stripe.php:1565
-#: classes/gateways/class.pmprogateway_stripe.php:1569
-#: classes/gateways/class.pmprogateway_stripe.php:1597
-#: classes/gateways/class.pmprogateway_stripe.php:1607
-#: classes/gateways/class.pmprogateway_stripe.php:1611
-#: classes/gateways/class.pmprogateway_stripe.php:1651
-#: classes/gateways/class.pmprogateway_stripe.php:1654
-#: classes/gateways/class.pmprogateway_stripe.php:1684
-#: classes/gateways/class.pmprogateway_stripe.php:1685
-#: classes/gateways/class.pmprogateway_stripe.php:1695
+#: classes/gateways/class.dmrfidgateway_stripe.php:1733
+#: classes/gateways/class.dmrfidgateway_stripe.php:1533
+#: classes/gateways/class.dmrfidgateway_stripe.php:1534
+#: classes/gateways/class.dmrfidgateway_stripe.php:1535
+#: classes/gateways/class.dmrfidgateway_stripe.php:1553
+#: classes/gateways/class.dmrfidgateway_stripe.php:1554
+#: classes/gateways/class.dmrfidgateway_stripe.php:1555
+#: classes/gateways/class.dmrfidgateway_stripe.php:1565
+#: classes/gateways/class.dmrfidgateway_stripe.php:1569
+#: classes/gateways/class.dmrfidgateway_stripe.php:1597
+#: classes/gateways/class.dmrfidgateway_stripe.php:1607
+#: classes/gateways/class.dmrfidgateway_stripe.php:1611
+#: classes/gateways/class.dmrfidgateway_stripe.php:1651
+#: classes/gateways/class.dmrfidgateway_stripe.php:1654
+#: classes/gateways/class.dmrfidgateway_stripe.php:1684
+#: classes/gateways/class.dmrfidgateway_stripe.php:1685
+#: classes/gateways/class.dmrfidgateway_stripe.php:1695
 msgid "Could not find the customer."
 msgstr "找不到找客戶."
 
-#: classes/gateways/class.pmprogateway_stripe.php:1885
-#: classes/gateways/class.pmprogateway_stripe.php:1836
-#: classes/gateways/class.pmprogateway_stripe.php:1837
-#: classes/gateways/class.pmprogateway_stripe.php:1847
+#: classes/gateways/class.dmrfidgateway_stripe.php:1885
+#: classes/gateways/class.dmrfidgateway_stripe.php:1836
+#: classes/gateways/class.dmrfidgateway_stripe.php:1837
+#: classes/gateways/class.dmrfidgateway_stripe.php:1847
 msgid "Error: "
 msgstr "有錯: "
 
-#: classes/gateways/class.pmprogateway_stripe.php:1898
-#: classes/gateways/class.pmprogateway_stripe.php:1849
-#: classes/gateways/class.pmprogateway_stripe.php:1850
-#: classes/gateways/class.pmprogateway_stripe.php:1860
+#: classes/gateways/class.dmrfidgateway_stripe.php:1898
+#: classes/gateways/class.dmrfidgateway_stripe.php:1849
+#: classes/gateways/class.dmrfidgateway_stripe.php:1850
+#: classes/gateways/class.dmrfidgateway_stripe.php:1860
 #, php-format
 msgid "Error: Unkown error while refunding charge #%s"
 msgstr "提交 #%s退款時有未知的錯誤發生"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:59
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:59
 #: paid-memberships-pro.php:134
-#: classes/gateways/class.pmprogateway_twocheckout.php:53
-#: classes/gateways/class.pmprogateway_twocheckout.php:60
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:53
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:60
 #: paid-memberships-pro.php:124 paid-memberships-pro.php:125
 #: paid-memberships-pro.php:132 paid-memberships-pro.php:133
 #: paid-memberships-pro.php:135 paid-memberships-pro.php:137
 msgid "2Checkout"
 msgstr "2Checkout"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:114
-#: classes/gateways/class.pmprogateway_twocheckout.php:108
-#: classes/gateways/class.pmprogateway_twocheckout.php:116
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:114
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:108
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:116
 msgid "2Checkout Settings"
 msgstr "2Checkout 設定"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:123
-#: classes/gateways/class.pmprogateway_twocheckout.php:125
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:123
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:125
 msgid ""
 "Go to Account &raquo; User Management in 2Checkout and create a user with "
 "API Access and API Updating."
@@ -4305,48 +4305,48 @@ msgstr ""
 "去到Account &raquo; 在2Checkout的User Management 然後用API Access造用者和API "
 "更新."
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:132
-#: classes/gateways/class.pmprogateway_twocheckout.php:134
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:132
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:134
 msgid "Password for the API user created."
 msgstr "API 用者密碼以造好了."
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:141
-#: classes/gateways/class.pmprogateway_twocheckout.php:152
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:141
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:152
 msgid "Click on the profile icon in 2Checkout to find your Account Number."
 msgstr "在2Checkout要找出你的戶口號碼請點擊檔案圖示."
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:146
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:146
 #: adminpages/paymentsettings.php:355 adminpages/paymentsettings.php:360
-#: classes/gateways/class.pmprogateway_twocheckout.php:137
-#: classes/gateways/class.pmprogateway_twocheckout.php:157
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:137
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:157
 msgid "Secret Word"
 msgstr "秘密字"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:150
-#: classes/gateways/class.pmprogateway_twocheckout.php:161
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:150
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:161
 msgid ""
 "Go to Account &raquo; Site Management. Look under Checkout Options to find "
 "the Secret Word."
 msgstr "去到Account &raquo; Site Management. 看下Checkout Options來找秘密字."
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:155
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:155
 #: adminpages/paymentsettings.php:487 adminpages/paymentsettings.php:493
 #: adminpages/paymentsettings.php:495
-#: classes/gateways/class.pmprogateway_twocheckout.php:145
-#: classes/gateways/class.pmprogateway_twocheckout.php:166
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:145
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:166
 msgid "TwoCheckout INS URL"
 msgstr "TwoCheckout INS URL"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:158
-#: classes/gateways/class.pmprogateway_twocheckout.php:169
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:158
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:169
 msgid ""
 "To fully integrate with 2Checkout, be sure to use the following for your INS "
 "URL and Approved URL"
 msgstr "要完全配合2Checkout, 一定要用你的 INS URL 和 Approved URL"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:203
-#: classes/gateways/class.pmprogateway_twocheckout.php:192
-#: classes/gateways/class.pmprogateway_twocheckout.php:214
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:203
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:192
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:214
 msgid "Check Out with 2Checkout"
 msgstr "同2Checkout結帳"
 
@@ -4400,8 +4400,8 @@ msgstr "Docs"
 
 #: includes/adminpages.php:274 includes/adminpages.php:261
 #: includes/adminpages.php:265
-msgid "View PMPro Documentation"
-msgstr "審視PMPro Documentation"
+msgid "View DmRFID Documentation"
+msgstr "審視DmRFID Documentation"
 
 #: includes/adminpages.php:275 includes/adminpages.php:262
 #: includes/adminpages.php:266
@@ -5019,8 +5019,8 @@ msgstr "减價密碼不可以啟用在這個程度."
 msgid "This discount code is okay."
 msgstr "减價密碼無問題."
 
-# This pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
-# 這個pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
+# This dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
+# 這個dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
 # 翻譯者: 陳啟剛先生
 # Date Create: 17/April/2017/12:10PM/(UTC+08:00) Perth
 # Date Last Modified: 19/April/2017年/12:47AM/(UTC+08:00) Perth
@@ -5103,11 +5103,11 @@ msgstr ""
 
 #: includes/license.php:91
 msgid ""
-"Visit the PMPro <a href=\"http://www.paidmembershipspro.com/login/?"
+"Visit the DmRFID <a href=\"http://www.paidmembershipspro.com/login/?"
 "redirect_to=/membership-account/\" target=\"_blank\">Membership Account</a> "
 "page to confirm that your account is active and to find your license key."
 msgstr ""
-"參觀PMPro <a href=\"http://www.paidmembershipspro.com/login/?redirect_to=/"
+"參觀DmRFID <a href=\"http://www.paidmembershipspro.com/login/?redirect_to=/"
 "membership-account/\" target=\"_blank\">會籍戶口</a> 的頁來確認你的戶口是不是"
 "活躍和能找到你的牌照鎖匙."
 
@@ -5140,8 +5140,8 @@ msgstr ""
 "如果你用下Digital Members RFID在你的生產或產品網站, 我們推薦用年度支援牌照."
 
 #: includes/license.php:278 includes/license.php:273 includes/license.php:288
-msgid "Invalid PMPro License Key."
-msgstr "不承認PMPro 牌照鎖匙."
+msgid "Invalid DmRFID License Key."
+msgstr "不承認DmRFID 牌照鎖匙."
 
 #: includes/license.php:279 includes/license.php:274 includes/license.php:289
 msgid "Dismiss"
@@ -5276,12 +5276,12 @@ msgid "logout"
 msgstr "登出"
 
 #: pages/billing.php:27 pages/cancel.php:61 pages/invoice.php:109
-#: pages/levels.php:35 shortcodes/pmpro_account.php:44
-#: shortcodes/pmpro_account.php:126 pages/account.php:12 pages/account.php:18
+#: pages/levels.php:35 shortcodes/dmrfid_account.php:44
+#: shortcodes/dmrfid_account.php:126 pages/account.php:12 pages/account.php:18
 #: pages/account.php:92 pages/billing.php:16 pages/billing.php:25
 #: pages/billing.php:28 pages/billing.php:30 pages/cancel.php:52
-#: pages/cancel.php:60 pages/levels.php:13 shortcodes/pmpro_account.php:43
-#: shortcodes/pmpro_account.php:123 shortcodes/pmpro_account.php:125
+#: pages/cancel.php:60 pages/levels.php:13 shortcodes/dmrfid_account.php:43
+#: shortcodes/dmrfid_account.php:123 shortcodes/dmrfid_account.php:125
 msgid "Level"
 msgstr "程度"
 
@@ -5469,8 +5469,8 @@ msgstr "是的, 消你這個會籍"
 msgid "No, keep this membership"
 msgstr "不是的, 保留這個會籍"
 
-#: pages/cancel.php:57 shortcodes/pmpro_account.php:40 pages/account.php:14
-#: pages/cancel.php:48 pages/cancel.php:56 shortcodes/pmpro_account.php:39
+#: pages/cancel.php:57 shortcodes/dmrfid_account.php:40 pages/account.php:14
+#: pages/cancel.php:48 pages/cancel.php:56 shortcodes/dmrfid_account.php:39
 msgid "My Memberships"
 msgstr "我的會籍"
 
@@ -5507,10 +5507,10 @@ msgstr "您已經選擇在 <strong>%s</strong> 會籍程度."
 #: pages/checkout.php:60 pages/checkout.php:61
 #, php-format
 msgid ""
-"<p class=\"pmpro_level_discount_applied\">The <strong>%s</strong> code has "
+"<p class=\"dmrfid_level_discount_applied\">The <strong>%s</strong> code has "
 "been applied to your order.</p>"
 msgstr ""
-"<p class=\"pmpro_level_discount_applied\">這個 <strong>%s</strong> 密碼已經應"
+"<p class=\"dmrfid_level_discount_applied\">這個 <strong>%s</strong> 密碼已經應"
 "用在這個訂購.</p>"
 
 #: pages/checkout.php:79 services/applydiscountcode.php:92
@@ -5725,9 +5725,9 @@ msgstr "免費"
 msgid "Select"
 msgstr "選擇"
 
-#: pages/levels.php:78 shortcodes/pmpro_account.php:60 pages/account.php:33
-#: pages/levels.php:57 pages/levels.php:123 shortcodes/pmpro_account.php:59
-#: shortcodes/pmpro_account.php:61
+#: pages/levels.php:78 shortcodes/dmrfid_account.php:60 pages/account.php:33
+#: pages/levels.php:57 pages/levels.php:123 shortcodes/dmrfid_account.php:59
+#: shortcodes/dmrfid_account.php:61
 msgid "Renew"
 msgstr "續期"
 
@@ -6076,64 +6076,64 @@ msgstr ""
 "處埋這個%s更新會籍時, 我們失敗取消舊會籍在Stripe. 請檢查這個會籍(%s)有不有取"
 "消在Stripe的控制台板."
 
-#: shortcodes/pmpro_account.php:45 pages/account.php:19
-#: shortcodes/pmpro_account.php:44
+#: shortcodes/dmrfid_account.php:45 pages/account.php:19
+#: shortcodes/dmrfid_account.php:44
 msgid "Billing"
 msgstr "付款帳單"
 
-#: shortcodes/pmpro_account.php:64 pages/account.php:36
-#: shortcodes/pmpro_account.php:62 shortcodes/pmpro_account.php:65
+#: shortcodes/dmrfid_account.php:64 pages/account.php:36
+#: shortcodes/dmrfid_account.php:62 shortcodes/dmrfid_account.php:65
 msgid "Update Billing Info"
 msgstr "更新付款帳單資料"
 
-#: shortcodes/pmpro_account.php:70 pages/account.php:42
-#: shortcodes/pmpro_account.php:68 shortcodes/pmpro_account.php:71
+#: shortcodes/dmrfid_account.php:70 pages/account.php:42
+#: shortcodes/dmrfid_account.php:68 shortcodes/dmrfid_account.php:71
 msgid "Change"
 msgstr "改變"
 
-#: shortcodes/pmpro_account.php:93 pages/account.php:64
-#: shortcodes/pmpro_account.php:90 shortcodes/pmpro_account.php:92
+#: shortcodes/dmrfid_account.php:93 pages/account.php:64
+#: shortcodes/dmrfid_account.php:90 shortcodes/dmrfid_account.php:92
 msgid "View all Membership Options"
 msgstr "審視所有會籍的選擇"
 
-#: shortcodes/pmpro_account.php:102 pages/account.php:46 pages/account.php:50
-#: pages/account.php:71 shortcodes/pmpro_account.php:99
-#: shortcodes/pmpro_account.php:101
+#: shortcodes/dmrfid_account.php:102 pages/account.php:46 pages/account.php:50
+#: pages/account.php:71 shortcodes/dmrfid_account.php:99
+#: shortcodes/dmrfid_account.php:101
 msgid "My Account"
 msgstr "我的戶口"
 
-#: shortcodes/pmpro_account.php:113 pages/account.php:55 pages/account.php:59
-#: pages/account.php:80 shortcodes/pmpro_account.php:110
-#: shortcodes/pmpro_account.php:112
+#: shortcodes/dmrfid_account.php:113 pages/account.php:55 pages/account.php:59
+#: pages/account.php:80 shortcodes/dmrfid_account.php:110
+#: shortcodes/dmrfid_account.php:112
 msgid "Edit Profile"
 msgstr "編輯改變檔案"
 
-#: shortcodes/pmpro_account.php:114 pages/account.php:56 pages/account.php:60
-#: pages/account.php:81 shortcodes/pmpro_account.php:111
-#: shortcodes/pmpro_account.php:113
+#: shortcodes/dmrfid_account.php:114 pages/account.php:56 pages/account.php:60
+#: pages/account.php:81 shortcodes/dmrfid_account.php:111
+#: shortcodes/dmrfid_account.php:113
 msgid "Change Password"
 msgstr "改變密碼"
 
-#: shortcodes/pmpro_account.php:121 pages/account.php:87 pages/account.php:125
-#: pages/account.php:129 shortcodes/pmpro_account.php:118
-#: shortcodes/pmpro_account.php:120
+#: shortcodes/dmrfid_account.php:121 pages/account.php:87 pages/account.php:125
+#: pages/account.php:129 shortcodes/dmrfid_account.php:118
+#: shortcodes/dmrfid_account.php:120
 msgid "Past Invoices"
 msgstr "提交發票"
 
-#: shortcodes/pmpro_account.php:127 pages/account.php:93
-#: shortcodes/pmpro_account.php:124 shortcodes/pmpro_account.php:126
+#: shortcodes/dmrfid_account.php:127 pages/account.php:93
+#: shortcodes/dmrfid_account.php:124 shortcodes/dmrfid_account.php:126
 msgid "Amount"
 msgstr "數量"
 
-#: shortcodes/pmpro_account.php:155 pages/account.php:121 pages/account.php:140
-#: pages/account.php:144 shortcodes/pmpro_account.php:152
-#: shortcodes/pmpro_account.php:154
+#: shortcodes/dmrfid_account.php:155 pages/account.php:121 pages/account.php:140
+#: pages/account.php:144 shortcodes/dmrfid_account.php:152
+#: shortcodes/dmrfid_account.php:154
 msgid "View All Invoices"
 msgstr "審視所有發票"
 
-#: shortcodes/pmpro_account.php:162 pages/account.php:128 pages/account.php:146
-#: pages/account.php:150 shortcodes/pmpro_account.php:159
-#: shortcodes/pmpro_account.php:161
+#: shortcodes/dmrfid_account.php:162 pages/account.php:128 pages/account.php:146
+#: pages/account.php:150 shortcodes/dmrfid_account.php:159
+#: shortcodes/dmrfid_account.php:161
 msgid "Member Links"
 msgstr "會員聯繫"
 
@@ -6220,10 +6220,10 @@ msgstr "Payflow Pro 現在只支持一次性付款. 用者在這個程度不能�
 #: adminpages/paymentsettings.php:405 adminpages/paymentsettings.php:445
 msgid ""
 "If values are given, tax will be applied for any members ordering from the "
-"selected state. For more complex tax rules, use the \"pmpro_tax\" filter."
+"selected state. For more complex tax rules, use the \"dmrfid_tax\" filter."
 msgstr ""
 "如果有提供數值, 會員在任何一個他選擇的市州訂購就會需要加稅款. 如有複雜的稅項"
-"條例, 用這個 \"pmpro_tax\" 來過濾."
+"條例, 用這個 \"dmrfid_tax\" 來過濾."
 
 #: adminpages/paymentsettings.php:410 adminpages/paymentsettings.php:421
 msgid "Use SSL"
@@ -6255,7 +6255,7 @@ msgstr ""
 
 #: adminpages/paymentsettings.php:490 adminpages/paymentsettings.php:496
 #: adminpages/paymentsettings.php:498
-#: classes/gateways/class.pmprogateway_twocheckout.php:148
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:148
 msgid ""
 "To fully integrate with 2Checkout, be sure to set your 2Checkout INS URL "
 msgstr "要完全綜合了2Checkout, 你需要設定2Checkout INS URL "
@@ -6304,27 +6304,27 @@ msgstr "取消比率"
 msgid "Lifetime Value (LTV)"
 msgstr "永久價值Lifetime Value (LTV)"
 
-#: classes/class.pmproemail.php:342 classes/class.pmproemail.php:345
-#: classes/class.pmproemail.php:363 classes/class.pmproemail.php:366
-#: classes/class.pmproemail.php:375
+#: classes/class.dmrfidemail.php:342 classes/class.dmrfidemail.php:345
+#: classes/class.dmrfidemail.php:363 classes/class.dmrfidemail.php:366
+#: classes/class.dmrfidemail.php:375
 #, php-format
 msgid "Your billing information has been udpated at %s"
 msgstr "您的付款帳單資料已經更新給 %s"
 
-#: classes/class.pmproemail.php:386 classes/class.pmproemail.php:390
-#: classes/class.pmproemail.php:416 classes/class.pmproemail.php:419
-#: classes/class.pmproemail.php:428
+#: classes/class.dmrfidemail.php:386 classes/class.dmrfidemail.php:390
+#: classes/class.dmrfidemail.php:416 classes/class.dmrfidemail.php:419
+#: classes/class.dmrfidemail.php:428
 #, php-format
 msgid "Billing information has been udpated for %s at %s"
 msgstr "您的付款帳單資料已經更新給 %s 在 %s"
 
-#: classes/class.pmproemail.php:685 classes/class.pmproemail.php:734
-#: classes/class.pmproemail.php:799
+#: classes/class.dmrfidemail.php:685 classes/class.dmrfidemail.php:734
+#: classes/class.dmrfidemail.php:799
 msgid "membership has been cancelled"
 msgstr "會籍已經除消"
 
-#: classes/gateways/class.pmprogateway_stripe.php:51
-#: classes/gateways/class.pmprogateway_stripe.php:55
+#: classes/gateways/class.dmrfidgateway_stripe.php:51
+#: classes/gateways/class.dmrfidgateway_stripe.php:55
 #, php-format
 msgid ""
 "The %s gateway depends on the %s PHP extension. Please enable it, or ask "
@@ -6333,11 +6333,11 @@ msgstr ""
 "這個 %s 網關入口是依靠 %s PHP extension. 請您開啓這個PHP extension, 或問您的"
 "網站宿主幫您開啓"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:139
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:139
 msgid "API Private Key"
 msgstr "API 私人鎖匙"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:143
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:143
 msgid ""
 "Go to API in 2Checkout and generate a new key pair. Paste the Private Key "
 "here."
@@ -6455,8 +6455,8 @@ msgstr "%s 每 %s 給 %d 多 %s."
 msgid "%s every %d %s for %d more %s."
 msgstr "%s 每個 %d %s 給 %d 多 %s."
 
-# This pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
-# 這個pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
+# This dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
+# 這個dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
 # 翻譯者: 陳啟剛先生
 # Date Create: 17/April/2017/12:10PM/(UTC+08:00) Perth
 # Date Last Modified: 19/April/2017年/12:47AM/(UTC+08:00) Perth
@@ -6483,8 +6483,8 @@ msgstr "%s 每個 %d %s 給 %d 多 %s."
 msgid "%s after %d %s."
 msgstr "%s 和然後 %d %s."
 
-# This pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
-# 這個pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
+# This dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
+# 這個dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
 # 翻譯者: 陳啟剛先生
 # Date Create: 17/April/2017/12:10PM/(UTC+08:00) Perth
 # Date Last Modified: 19/April/2017年/12:47AM/(UTC+08:00) Perth
@@ -6511,8 +6511,8 @@ msgstr "%s 和然後 %d %s."
 msgid "Set up Your Account"
 msgstr "組織您的戶口"
 
-# This pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
-# 這個pmpro-zh_HK.po, pmpro-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
+# This dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro translation English to Chinese/Cantonese (Hong Kong SAR China) is completed by Mr. Kai Kong Chan
+# 這個dmrfid-zh_HK.po, dmrfid-zh_HK.mo, yue_HK.mo,and yue_HK.po paid-member-pro 中文翻譯Chinese/Cantonese(Hong Kong SAR China)  是由 陳啟剛先生 完成。
 # 翻譯者: 陳啟剛先生
 # Date Create: 17/April/2017/12:10PM/(UTC+08:00) Perth
 # Date Last Modified: 19/April/2017年/12:47AM/(UTC+08:00) Perth

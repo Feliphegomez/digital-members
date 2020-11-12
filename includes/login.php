@@ -1,10 +1,10 @@
 <?php
 /**
  * Are we on the login page?
- * Checks for WP default, TML, and PMPro login page.
+ * Checks for WP default, TML, and DmRFID login page.
  */
-function pmpro_is_login_page() {
-	return ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) || is_page( 'login' ) || ( pmpro_getOption( 'login_page_id' ) && is_page( pmpro_getOption( 'login_page_id' ) ) ) );
+function dmrfid_is_login_page() {
+	return ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) || is_page( 'login' ) || ( dmrfid_getOption( 'login_page_id' ) && is_page( dmrfid_getOption( 'login_page_id' ) ) ) );
 }
 
 /**
@@ -12,48 +12,48 @@ function pmpro_is_login_page() {
  * then redirect members to the account page
  * and redirect non-members to the levels page.
  */
-function pmpro_login_redirect( $redirect_to, $request = NULL, $user = NULL ) {
+function dmrfid_login_redirect( $redirect_to, $request = NULL, $user = NULL ) {
 	global $wpdb;
 
 	$is_logged_in = ! empty( $user ) && ! empty( $user->ID );
 
 	if ( $is_logged_in && empty( $redirect_to ) ) {
-		// Can't use the pmpro_hasMembershipLevel function because it won't be defined yet.
-		$is_member = $wpdb->get_var( "SELECT membership_id FROM $wpdb->pmpro_memberships_users WHERE status = 'active' AND user_id = '" . esc_sql( $user->ID ) . "' LIMIT 1" );
+		// Can't use the dmrfid_hasMembershipLevel function because it won't be defined yet.
+		$is_member = $wpdb->get_var( "SELECT membership_id FROM $wpdb->dmrfid_memberships_users WHERE status = 'active' AND user_id = '" . esc_sql( $user->ID ) . "' LIMIT 1" );
 		if ( $is_member ) {
-			$redirect_to = pmpro_url( 'account' );
+			$redirect_to = dmrfid_url( 'account' );
 		} else {
-			$redirect_to = pmpro_url( 'levels' );
+			$redirect_to = dmrfid_url( 'levels' );
 		}
 	}
 
 	// Custom redirect filters should use the core WordPress login_redirect filter instead of this one.
-	// This filter is left in place for PMPro versions dating back to 2014.
-	return apply_filters( 'pmpro_login_redirect_url', $redirect_to, $request, $user );
+	// This filter is left in place for DmRFID versions dating back to 2014.
+	return apply_filters( 'dmrfid_login_redirect_url', $redirect_to, $request, $user );
 }
-add_filter( 'login_redirect','pmpro_login_redirect', 10, 3 );	
+add_filter( 'login_redirect','dmrfid_login_redirect', 10, 3 );	
 
 /**
  * Where is the sign up page? Levels page or default multisite page.
  */
-function pmpro_wp_signup_location( $location ) {
-	if ( is_multisite() && pmpro_getOption("redirecttosubscription") ) {
-		$location = pmpro_url("levels");
+function dmrfid_wp_signup_location( $location ) {
+	if ( is_multisite() && dmrfid_getOption("redirecttosubscription") ) {
+		$location = dmrfid_url("levels");
 	}
 
-	return apply_filters( 'pmpro_wp_signup_location', $location );
+	return apply_filters( 'dmrfid_wp_signup_location', $location );
 }
-add_filter('wp_signup_location', 'pmpro_wp_signup_location');
+add_filter('wp_signup_location', 'dmrfid_wp_signup_location');
 
 /**
- * Redirect from default login pages to PMPro.
+ * Redirect from default login pages to DmRFID.
  */
-function pmpro_login_head() {
+function dmrfid_login_head() {
 	global $pagenow;
 
-	$login_redirect = apply_filters("pmpro_login_redirect", true);
+	$login_redirect = apply_filters("dmrfid_login_redirect", true);
 
-	if ( ( pmpro_is_login_page() || is_page("login") ) && $login_redirect ) {
+	if ( ( dmrfid_is_login_page() || is_page("login") ) && $login_redirect ) {
 		//redirect registration page to levels page
 		if ( isset ($_REQUEST['action'] ) && $_REQUEST['action'] == "register" ||
 			isset($_REQUEST['registration']) && $_REQUEST['registration'] == "disabled" ) {
@@ -64,48 +64,48 @@ function pmpro_login_head() {
 				}
 
 				//redirect to levels page unless filter is set.
-				$link = apply_filters("pmpro_register_redirect", pmpro_url( 'levels' ));
+				$link = apply_filters("dmrfid_register_redirect", dmrfid_url( 'levels' ));
 				if(!empty($link)) {
 					wp_redirect($link);
 					exit;
 				}
 
 			} else {
-				return; //don't redirect if pmpro_register_redirect filter returns false or a blank URL
+				return; //don't redirect if dmrfid_register_redirect filter returns false or a blank URL
 			}
 	 	}
 }
-add_action('wp', 'pmpro_login_head');
-add_action('login_init', 'pmpro_login_head');
+add_action('wp', 'dmrfid_login_head');
+add_action('login_init', 'dmrfid_login_head');
 
 /**
  * If a redirect_to value is passed into /login/ and you are logged in already, just redirect there
  *
  * @since 1.7.14
  */
-function pmpro_redirect_to_logged_in() {
-	if((pmpro_is_login_page() || is_page("login")) && !empty($_REQUEST['redirect_to']) && is_user_logged_in() && (empty($_REQUEST['action']) || $_REQUEST['action'] == 'login') && empty($_REQUEST['reauth'])) {
+function dmrfid_redirect_to_logged_in() {
+	if((dmrfid_is_login_page() || is_page("login")) && !empty($_REQUEST['redirect_to']) && is_user_logged_in() && (empty($_REQUEST['action']) || $_REQUEST['action'] == 'login') && empty($_REQUEST['reauth'])) {
 		wp_safe_redirect($_REQUEST['redirect_to']);
 		exit;
 	}
 }
-add_action("template_redirect", "pmpro_redirect_to_logged_in", 5);
-add_action("login_init", "pmpro_redirect_to_logged_in", 5);
+add_action("template_redirect", "dmrfid_redirect_to_logged_in", 5);
+add_action("login_init", "dmrfid_redirect_to_logged_in", 5);
 
 /**
  * Redirect to the login page for member login.
- * This filter is added on wp_loaded in the pmpro_wp_loaded_login_setup() function.
+ * This filter is added on wp_loaded in the dmrfid_wp_loaded_login_setup() function.
  *
  * @since 2.3
  */
-function pmpro_login_url_filter( $login_url='', $redirect='' ) {
+function dmrfid_login_url_filter( $login_url='', $redirect='' ) {
 	// Don't filter when specifically on wp-login.php.
 	if ( $_SERVER['SCRIPT_NAME'] === '/wp-login.php' ) {
 		return $login_url;
 	}
 	
-	// Check for a PMPro Login page.
-	$login_page_id = pmpro_getOption( 'login_page_id' );
+	// Check for a DmRFID Login page.
+	$login_page_id = dmrfid_getOption( 'login_page_id' );
 	if ( ! empty ( $login_page_id ) ) {
 		$login_url = get_permalink( $login_page_id );
 		
@@ -124,22 +124,22 @@ function pmpro_login_url_filter( $login_url='', $redirect='' ) {
  * @since 2.4
  *
  */
-function pmpro_wp_loaded_login_setup() {
-	add_filter( 'login_url', 'pmpro_login_url_filter', 50, 2 );	
+function dmrfid_wp_loaded_login_setup() {
+	add_filter( 'login_url', 'dmrfid_login_url_filter', 50, 2 );	
 }
-add_action( 'wp_loaded', 'pmpro_wp_loaded_login_setup' );
+add_action( 'wp_loaded', 'dmrfid_wp_loaded_login_setup' );
 
 /**
  * Make sure confirm_admin_email actions go to the default WP login page.
  * Our login page is not set up to handle them.
  */
-function pmpro_use_default_login_for_confirm_admin_email( $location ) {
+function dmrfid_use_default_login_for_confirm_admin_email( $location ) {
 	if ( strpos( $location, 'action=confirm_admin_email' ) !== false ) {
 		$login_url = wp_login_url();
 		
-		remove_filter( 'login_url', 'pmpro_login_url_filter', 50, 2 );
+		remove_filter( 'login_url', 'dmrfid_login_url_filter', 50, 2 );
 		$default_login_url = wp_login_url();
-		add_filter( 'login_url', 'pmpro_login_url_filter', 50, 2 );
+		add_filter( 'login_url', 'dmrfid_login_url_filter', 50, 2 );
 		
 		if ( $login_url != $default_login_url ) {
 			$location = str_replace( $login_url, $default_login_url, $location );
@@ -148,10 +148,10 @@ function pmpro_use_default_login_for_confirm_admin_email( $location ) {
 	
 	return $location;
 }
-add_filter( 'wp_redirect', 'pmpro_use_default_login_for_confirm_admin_email' );
+add_filter( 'wp_redirect', 'dmrfid_use_default_login_for_confirm_admin_email' );
 
 /**
- * Get a link to the PMPro login page.
+ * Get a link to the DmRFID login page.
  * Or fallback to WP default.
  * @since 2.3
  *
@@ -159,15 +159,15 @@ add_filter( 'wp_redirect', 'pmpro_use_default_login_for_confirm_admin_email' );
  * @param string $redirect     The path to redirect to on login, if supplied.
  * @param bool   $force_reauth Whether to force reauthorization, even if a cookie is present.
  */
-function pmpro_login_url( $redirect = '', $force_reauth = false ) {
-	global $pmpro_pages;
+function dmrfid_login_url( $redirect = '', $force_reauth = false ) {
+	global $dmrfid_pages;
 	
-	if ( empty( $pmpro_pages['login'] ) ) {
+	if ( empty( $dmrfid_pages['login'] ) ) {
 		// skip everything, including filter below
 		return wp_login_url( $redirect, $force_reauth );
 	}
 	
-	$login_url = get_permalink( $pmpro_pages['login'] );
+	$login_url = get_permalink( $dmrfid_pages['login'] );
  
     if ( ! empty( $redirect ) ) {
         $login_url = add_query_arg( 'redirect_to', urlencode( $redirect ), $login_url );
@@ -186,20 +186,20 @@ function pmpro_login_url( $redirect = '', $force_reauth = false ) {
      * @param string $redirect     The path to redirect to on login, if supplied.
      * @param bool   $force_reauth Whether to force reauthorization, even if a cookie is present.
      */
-    return apply_filters( 'pmpro_login_url', $login_url, $redirect, $force_reauth );
+    return apply_filters( 'dmrfid_login_url', $login_url, $redirect, $force_reauth );
 }
 
 /**
- * Get a link to the PMPro lostpassword page.
+ * Get a link to the DmRFID lostpassword page.
  * Or fallback to the WP default.
  * @since 2.3
  *
  * @param string $redirect     The path to redirect to on login, if supplied.
  */
-function pmpro_lostpassword_url( $redirect = '' ) {
-    global $pmpro_pages;
+function dmrfid_lostpassword_url( $redirect = '' ) {
+    global $dmrfid_pages;
 	
-	if ( empty( $pmpro_pages['login'] ) ) {
+	if ( empty( $dmrfid_pages['login'] ) ) {
 		// skip everything, including filter below
 		return wp_lostpassword_url( $redirect );
 	}
@@ -209,7 +209,7 @@ function pmpro_lostpassword_url( $redirect = '' ) {
         $args['redirect_to'] = urlencode( $redirect );		
     }
  
-    $lostpassword_url = add_query_arg( $args, get_permalink( $pmpro_pages['login'] ) );
+    $lostpassword_url = add_query_arg( $args, get_permalink( $dmrfid_pages['login'] ) );
  
     /**
      * Filters the Lost Password URL.
@@ -219,7 +219,7 @@ function pmpro_lostpassword_url( $redirect = '' ) {
      * @param string $lostpassword_url The lost password page URL.
      * @param string $redirect         The path to redirect to on login.
      */
-    return apply_filters( 'pmpro_lostpassword_url', $lostpassword_url, $redirect );
+    return apply_filters( 'dmrfid_lostpassword_url', $lostpassword_url, $redirect );
 }
 
 /**
@@ -227,19 +227,19 @@ function pmpro_lostpassword_url( $redirect = '' ) {
  * so we can identify it.
  * Hooks into the WP core filter login_form_top.
  */
-function pmpro_login_form_hidden_field( $html ) {
-	$html .= '<input type="hidden" name="pmpro_login_form_used" value="1" />';
+function dmrfid_login_form_hidden_field( $html ) {
+	$html .= '<input type="hidden" name="dmrfid_login_form_used" value="1" />';
 
 	return $html;
 }
 
 /**
- * Filter the_title based on the form action of the Log In Page assigned to $pmpro_pages['login'].
+ * Filter the_title based on the form action of the Log In Page assigned to $dmrfid_pages['login'].
  *
  * @since 2.3
  */
-function pmpro_login_the_title( $title, $id = NULL ) {
-	global $pmpro_pages, $wp_query;
+function dmrfid_login_the_title( $title, $id = NULL ) {
+	global $dmrfid_pages, $wp_query;
 
 	if ( is_admin() ) {
 		return $title;
@@ -249,7 +249,7 @@ function pmpro_login_the_title( $title, $id = NULL ) {
 		return $title;
 	}
 
-	if ( empty( $pmpro_pages ) || empty( $pmpro_pages['login'] ) || ! is_page( $pmpro_pages['login'] ) ) {
+	if ( empty( $dmrfid_pages ) || empty( $dmrfid_pages['login'] ) || ! is_page( $dmrfid_pages['login'] ) ) {
 		return $title;
 	}
 
@@ -263,17 +263,17 @@ function pmpro_login_the_title( $title, $id = NULL ) {
 
 	return $title;
 }
-add_filter( 'the_title', 'pmpro_login_the_title', 10, 2 );
+add_filter( 'the_title', 'dmrfid_login_the_title', 10, 2 );
 
 /**
- * Filter document_title_parts based on the form action of the Log In Page assigned to $pmpro_pages['login'].
+ * Filter document_title_parts based on the form action of the Log In Page assigned to $dmrfid_pages['login'].
  *
  * @since 2.3
  */
-function pmpro_login_document_title_parts( $titleparts ) {
-	global $pmpro_pages;
+function dmrfid_login_document_title_parts( $titleparts ) {
+	global $dmrfid_pages;
 
-	if ( empty( $pmpro_pages ) || empty ( $pmpro_pages['login'] ) || ! is_page( $pmpro_pages['login'] ) ) {
+	if ( empty( $dmrfid_pages ) || empty ( $dmrfid_pages['login'] ) || ! is_page( $dmrfid_pages['login'] ) ) {
 		return $titleparts;
 	}
 	
@@ -287,43 +287,43 @@ function pmpro_login_document_title_parts( $titleparts ) {
 
 	return $titleparts;
 }
-add_filter( 'document_title_parts', 'pmpro_login_document_title_parts' );
+add_filter( 'document_title_parts', 'dmrfid_login_document_title_parts' );
 
 /**
  * Show a member login form or logged in member widget.
  *
  * @since 2.3
  */
-function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true, $display_if_logged_in = true, $location = '', $echo = true ) {
+function dmrfid_login_forms_handler( $show_menu = true, $show_logout_link = true, $display_if_logged_in = true, $location = '', $echo = true ) {
 	// Don't show widgets on the login page.
-	if ( $location === 'widget' && pmpro_is_login_page() ) {
+	if ( $location === 'widget' && dmrfid_is_login_page() ) {
 		return '';
 	}
 	
 	// Set the message return string.
 	$message = '';
-	$msgt = 'pmpro_alert';
+	$msgt = 'dmrfid_alert';
 	if ( isset( $_GET['action'] ) ) {
 		switch ( sanitize_text_field( $_GET['action'] ) ) {
 			case 'failed':
 				$message = __( 'There was a problem with your username or password.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'invalid_username':
 				$message = __( 'Unknown username. Check again or try your email address.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'empty_username':
 				$message = __( 'Empty username. Please enter your username and try again.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'empty_password':
 				$message = __( 'Empty password. Please enter your password and try again.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'incorrect_password':
 				$message = __( 'The password you entered for the user is incorrect. Please try again.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'recovered':
 				$message = __( 'Check your email for the confirmation link.', 'paid-memberships-pro' );
@@ -336,11 +336,11 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 		switch ( sanitize_text_field( $_GET['loggedout'] ) ) {
 			case 'true':
 				$message = __( 'You are now logged out.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_success';
+				$msgt = 'dmrfid_success';
 				break;
 			default:
 				$message = __( 'There was a problem logging you out.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 		}
 	}
@@ -354,7 +354,7 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 				break;
 			default:
 				$message = __( 'There was an unexpected error regarding your email. Please try again', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 		}
 	}
@@ -364,11 +364,11 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 		switch ( sanitize_text_field( $_GET['login'] ) ) {
 			case 'invalidkey':
 				$message = __( 'Your reset password key is invalid.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'expiredkey':
 				$message = __( 'Your reset password key is expired, please request a new key from the password reset page.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			default:
 			break;
@@ -380,11 +380,11 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 		switch( $_GET['password'] ) {
 			case 'changed':
 				$message = __( 'Your password has successfully been updated.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_success';
+				$msgt = 'dmrfid_success';
 				break;
 			default:
 				$message = __( 'There was a problem updating your password', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 		}
 	}
 
@@ -398,27 +398,27 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 		switch ( $password_reset_errors ) {
 			case 'invalidcombo':
 				$message = __( 'There is no account with that username or email address.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'empty_username':
 				$message = __( 'Please enter a valid username.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'invalid_email':
 				$message = __( "You've entered an invalid email address.", 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'password_reset_mismatch':
 				$message = __( 'New passwords do not match.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'password_reset_empty':
 				$message = __( 'Please complete all fields.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 			case 'retrieve_password_email_failure':
 				$message = __( 'The email could not be sent. This site may not be correctly configured to send emails.', 'paid-memberships-pro' );
-				$msgt = 'pmpro_error';
+				$msgt = 'dmrfid_error';
 				break;
 		}
 	}
@@ -427,7 +427,7 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 
 	// Note we don't show messages on the widget form.
 	if ( $message && $location !== 'widget' ) {
-		echo '<div class="' . pmpro_get_element_class( 'pmpro_message ' . $msgt, esc_attr( $msgt ) ) . '">'. esc_html( $message ) .'</div>';
+		echo '<div class="' . dmrfid_get_element_class( 'dmrfid_message ' . $msgt, esc_attr( $msgt ) ) . '">'. esc_html( $message ) .'</div>';
 	}
 
 	// Get the form title HTML tag.
@@ -454,22 +454,22 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 				$redirect_to = isset( $_REQUEST['redirect_to'] ) ? esc_url( $_REQUEST['redirect_to'] ) : NULL;
         
 				// Redirect users back to their page that they logged-in from via the widget.  
-				if( empty( $redirect_to ) && $location === 'widget' && apply_filters( 'pmpro_login_widget_redirect_back', true ) ) {		
+				if( empty( $redirect_to ) && $location === 'widget' && apply_filters( 'dmrfid_login_widget_redirect_back', true ) ) {		
 					$redirect_to = esc_url( site_url( $_SERVER['REQUEST_URI'] ) );
 				}
 				?>
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_login_wrap' ); ?>">
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_login_wrap' ); ?>">
 					<?php 
-						if ( ! pmpro_is_login_page() ) {
+						if ( ! dmrfid_is_login_page() ) {
 							echo $before_title . esc_html( 'Log In', 'paid-memberships-pro' ) . $after_title;
 						}
 					?>
 					<?php
-						pmpro_login_form( array( 'value_username' => esc_html( $username ), 'redirect' => esc_url( $redirect_to ) ) );
-						pmpro_login_forms_handler_nav( 'login' );
+						dmrfid_login_form( array( 'value_username' => esc_html( $username ), 'redirect' => esc_url( $redirect_to ) ) );
+						dmrfid_login_forms_handler_nav( 'login' );
 					?>
-				</div> <!-- end pmpro_login_wrap -->				
-				<?php if ( pmpro_is_login_page() ) { ?>
+				</div> <!-- end dmrfid_login_wrap -->				
+				<?php if ( dmrfid_is_login_page() ) { ?>
 				<script>
 					document.getElementById('user_login').focus();
 				</script>
@@ -480,34 +480,34 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 		} elseif ( $location !== 'widget' && ( $action === 'reset_pass' || ( $action === 'rp' && in_array( $_REQUEST['login'], array( 'invalidkey', 'expiredkey' ) ) ) ) ) {
 			// Reset password form.			
 			?>
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_lost_password_wrap' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password_wrap' ); ?>">
 				<?php 
-					if ( ! pmpro_is_login_page() ) {
+					if ( ! dmrfid_is_login_page() ) {
 						echo $before_title . esc_html( 'Password Reset', 'paid-memberships-pro' ) . $after_title;
 					}
 				?>
-				<p class="<?php echo pmpro_get_element_class( 'pmpro_lost_password-instructions' ); ?>">
+				<p class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password-instructions' ); ?>">
 					<?php
 						esc_html_e( 'Please enter your username or email address. You will receive a link to create a new password via email.', 'paid-memberships-pro' );
 					?>
 				</p>
 				<?php
-					pmpro_lost_password_form();
-					pmpro_login_forms_handler_nav( 'lost_password' );
+					dmrfid_lost_password_form();
+					dmrfid_login_forms_handler_nav( 'lost_password' );
 				?>
-			</div> <!-- end pmpro_lost_password_wrap -->
+			</div> <!-- end dmrfid_lost_password_wrap -->
 			<?php
 		} elseif ( $location !== 'widget' && $action === 'rp' ) {
 			// Password reset processing key.			
 			?>
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_reset_password_wrap' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password_wrap' ); ?>">
 				<?php 
-					if ( ! pmpro_is_login_page() ) {
+					if ( ! dmrfid_is_login_page() ) {
 						echo $before_title . esc_html( 'Reset Password', 'paid-memberships-pro' ) . $after_title;
 					}
 				?>
-				<?php pmpro_reset_password_form(); ?>
-			</div> <!-- end pmpro_reset_password_wrap -->
+				<?php dmrfid_reset_password_form(); ?>
+			</div> <!-- end dmrfid_reset_password_wrap -->
 			<?php
 		}
 	} else {
@@ -515,9 +515,9 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
 		if ( isset( $_REQUEST['login'] ) && isset( $_REQUEST['key'] ) ) {
 			esc_html_e( 'You are already signed in.', 'paid-memberships-pro' );
 		} elseif ( ! empty( $display_if_logged_in ) ) { ?>
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_logged_in_welcome_wrap' ); ?>">
-				<?php pmpro_logged_in_welcome( $show_menu, $show_logout_link ); ?>
-			</div> <!-- end pmpro_logged_in_welcome_wrap -->
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_logged_in_welcome_wrap' ); ?>">
+				<?php dmrfid_logged_in_welcome( $show_menu, $show_logout_link ); ?>
+			</div> <!-- end dmrfid_logged_in_welcome_wrap -->
 			<?php
 		}
 	}
@@ -534,26 +534,26 @@ function pmpro_login_forms_handler( $show_menu = true, $show_logout_link = true,
  * Generate a login form for front-end login.
  * @since 2.3
  */
-function pmpro_login_form( $args = array() ) {
-	add_filter( 'login_form_top', 'pmpro_login_form_hidden_field' );
+function dmrfid_login_form( $args = array() ) {
+	add_filter( 'login_form_top', 'dmrfid_login_form_hidden_field' );
 	wp_login_form( $args );
-	remove_filter( 'login_form_top', 'pmpro_login_form_hidden_field' );
+	remove_filter( 'login_form_top', 'dmrfid_login_form_hidden_field' );
 }
 
 /**
  * Generate a lost password form for front-end login.
  * @since 2.3
  */
-function pmpro_lost_password_form() { ?>
-	<form id="lostpasswordform" class="<?php echo pmpro_get_element_class( 'pmpro_form', 'lostpasswordform' ); ?>" action="<?php echo wp_lostpassword_url(); ?>" method="post">
-		<div class="<?php echo pmpro_get_element_class( 'pmpro_lost_password-fields' ); ?>">
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_lost_password-field pmpro_lost_password-field-user_login', 'pmpro_lost_password-field-user_login' ); ?>">
+function dmrfid_lost_password_form() { ?>
+	<form id="lostpasswordform" class="<?php echo dmrfid_get_element_class( 'dmrfid_form', 'lostpasswordform' ); ?>" action="<?php echo wp_lostpassword_url(); ?>" method="post">
+		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password-fields' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_lost_password-field dmrfid_lost_password-field-user_login', 'dmrfid_lost_password-field-user_login' ); ?>">
 				<label for="user_login"><?php esc_html_e( 'Username or Email Address', 'paid-memberships-pro' ); ?></label>
-				<input type="text" name="user_login" id="user_login" class="<?php echo pmpro_get_element_class( 'input', 'user_login' ); ?>" size="20" />
+				<input type="text" name="user_login" id="user_login" class="<?php echo dmrfid_get_element_class( 'input', 'user_login' ); ?>" size="20" />
 			</div>
-		</div> <!-- end pmpro_lost_password-fields -->
-		<div class="<?php echo pmpro_get_element_class( 'pmpro_submit' ); ?>">
-			<input type="submit" name="submit" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-submit', 'pmpro_btn-submit' ); ?>" value="<?php esc_attr_e( 'Get New Password', 'paid-memberships-pro' ); ?>" />
+		</div> <!-- end dmrfid_lost_password-fields -->
+		<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
+			<input type="submit" name="submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e( 'Get New Password', 'paid-memberships-pro' ); ?>" />
 		</div>
 	</form>
 	<?php
@@ -563,9 +563,9 @@ function pmpro_lost_password_form() { ?>
  * Handle the password reset functionality. Redirect back to login form and show message.
  * @since 2.3
  */
-function pmpro_lost_password_redirect() {
+function dmrfid_lost_password_redirect() {
 	if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
-		$login_page = pmpro_getOption( 'login_page_id' );
+		$login_page = dmrfid_getOption( 'login_page_id' );
 		
 		if ( empty( $login_page ) ) {
 			return;
@@ -584,15 +584,15 @@ function pmpro_lost_password_redirect() {
 		exit;
 	}
 }
-add_action( 'login_form_lostpassword', 'pmpro_lost_password_redirect' );
+add_action( 'login_form_lostpassword', 'dmrfid_lost_password_redirect' );
 
 /**
  * Redirect Password reset to our own page.
  * @since 2.3
  */
-function pmpro_reset_password_redirect() {	
+function dmrfid_reset_password_redirect() {	
 	if ( 'GET' == $_SERVER['REQUEST_METHOD'] ) {
-		$login_page = pmpro_getOption( 'login_page_id' );
+		$login_page = dmrfid_getOption( 'login_page_id' );
 		
 		if ( empty( $login_page ) ) {
 			return;
@@ -617,14 +617,14 @@ function pmpro_reset_password_redirect() {
         exit;
 	}
 }
-add_action( 'login_form_rp', 'pmpro_reset_password_redirect' );
-add_action( 'login_form_resetpass', 'pmpro_reset_password_redirect' );
+add_action( 'login_form_rp', 'dmrfid_reset_password_redirect' );
+add_action( 'login_form_resetpass', 'dmrfid_reset_password_redirect' );
 
 /**
  * Show the password reset form after user redirects from email link.
  * @since 2.3
  */
-function pmpro_reset_password_form() {
+function dmrfid_reset_password_form() {
 	if ( isset( $_REQUEST['login'] ) && isset( $_REQUEST['key'] ) ) {
 
 		// Error messages
@@ -632,23 +632,23 @@ function pmpro_reset_password_form() {
 		if ( isset( $_REQUEST['error'] ) ) {
 			$error_codes = explode( ',', sanitize_text_field( $_REQUEST['error'] ) );
 		} ?>
-		<form name="resetpassform" id="resetpassform" class="<?php echo pmpro_get_element_class( 'pmpro_form', 'resetpassform' ); ?>" action="<?php echo esc_url( site_url( 'wp-login.php?action=resetpass' ) ); ?>" method="post" autocomplete="off">
+		<form name="resetpassform" id="resetpassform" class="<?php echo dmrfid_get_element_class( 'dmrfid_form', 'resetpassform' ); ?>" action="<?php echo esc_url( site_url( 'wp-login.php?action=resetpass' ) ); ?>" method="post" autocomplete="off">
 			<input type="hidden" id="user_login" name="rp_login" value="<?php echo esc_attr( sanitize_text_field( $_REQUEST['login'] ) ); ?>" autocomplete="off" />
 			<input type="hidden" name="rp_key" value="<?php echo esc_attr( sanitize_text_field( $_REQUEST['key'] ) ); ?>" />
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_reset_password-fields' ); ?>">
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_reset_password-field pmpro_reset_password-field-pass1', 'pmpro_reset_password-field-pass1' ); ?>">
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password-fields' ); ?>">
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password-field dmrfid_reset_password-field-pass1', 'dmrfid_reset_password-field-pass1' ); ?>">
 					<label for="pass1"><?php esc_html_e( 'New Password', 'paid-memberships-pro' ) ?></label>
-					<input type="password" name="pass1" id="pass1" class="<?php echo pmpro_get_element_class( 'input pass1', 'pass1' ); ?>" size="20" value="" autocomplete="off" />
+					<input type="password" name="pass1" id="pass1" class="<?php echo dmrfid_get_element_class( 'input pass1', 'pass1' ); ?>" size="20" value="" autocomplete="off" />
 					<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e( 'Strength Indicator', 'paid-memberships-pro' ); ?></div>
-					<p class="<?php echo pmpro_get_element_class( 'lite' ); ?>"><?php echo wp_get_password_hint(); ?></p>
+					<p class="<?php echo dmrfid_get_element_class( 'lite' ); ?>"><?php echo wp_get_password_hint(); ?></p>
 				</div>
-				<div class="<?php echo pmpro_get_element_class( 'pmpro_reset_password-field pmpro_reset_password-field-pass2', 'pmpro_reset_password-field-pass2' ); ?>">
+				<div class="<?php echo dmrfid_get_element_class( 'dmrfid_reset_password-field dmrfid_reset_password-field-pass2', 'dmrfid_reset_password-field-pass2' ); ?>">
 					<label for="pass2"><?php esc_html_e( 'Confirm New Password', 'paid-memberships-pro' ) ?></label>
-					<input type="password" name="pass2" id="pass2" class="<?php echo pmpro_get_element_class( 'input', 'pass2' ); ?>" size="20" value="" autocomplete="off" />
+					<input type="password" name="pass2" id="pass2" class="<?php echo dmrfid_get_element_class( 'input', 'pass2' ); ?>" size="20" value="" autocomplete="off" />
 				</div>
-			</div> <!-- end pmpro_reset_password-fields -->
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_submit' ); ?>">
-				<input type="submit" name="submit" id="resetpass-button" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-submit', 'pmpro_btn-submit' ); ?>" value="<?php esc_attr_e( 'Reset Password', 'paid-memberships-pro' ); ?>" />
+			</div> <!-- end dmrfid_reset_password-fields -->
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_submit' ); ?>">
+				<input type="submit" name="submit" id="resetpass-button" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit', 'dmrfid_btn-submit' ); ?>" value="<?php esc_attr_e( 'Reset Password', 'paid-memberships-pro' ); ?>" />
 			</div>
 		</form>
 		<?php
@@ -658,32 +658,32 @@ function pmpro_reset_password_form() {
 /**
  * Show the nav links below the login form.
  */
-function pmpro_login_forms_handler_nav( $pmpro_form ) { ?>
+function dmrfid_login_forms_handler_nav( $dmrfid_form ) { ?>
 	<hr />
-	<p class="<?php echo pmpro_get_element_class( 'pmpro_actions_nav' ); ?>">
+	<p class="<?php echo dmrfid_get_element_class( 'dmrfid_actions_nav' ); ?>">
 		<?php
 			// Build the links to return.
 			$links = array();
 
-			if ( $pmpro_form != 'login' ) {
-				$links['login'] = sprintf( '<a href="%s">%s</a>', esc_url( pmpro_login_url() ), esc_html__( 'Log In', 'paid-memberships-pro' ) );
+			if ( $dmrfid_form != 'login' ) {
+				$links['login'] = sprintf( '<a href="%s">%s</a>', esc_url( dmrfid_login_url() ), esc_html__( 'Log In', 'paid-memberships-pro' ) );
 			}
 
-			if ( apply_filters( 'pmpro_show_register_link', get_option( 'users_can_register' ) ) ) {
-				$levels_page_id = pmpro_getOption( 'levels_page_id' );
+			if ( apply_filters( 'dmrfid_show_register_link', get_option( 'users_can_register' ) ) ) {
+				$levels_page_id = dmrfid_getOption( 'levels_page_id' );
 
-				if ( $levels_page_id && pmpro_are_any_visible_levels() ) {
-					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( pmpro_url( 'levels' ) ), esc_html__( 'Join Now', 'paid-memberships-pro' ) );
+				if ( $levels_page_id && dmrfid_are_any_visible_levels() ) {
+					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( dmrfid_url( 'levels' ) ), esc_html__( 'Join Now', 'paid-memberships-pro' ) );
 				} else {
 					$links['register'] = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), esc_html__( 'Register', 'paid-memberships-pro' ) );
 				}
 			}
 
-			if ( $pmpro_form != 'lost_password' ) {
-				$links['lost_password'] = sprintf( '<a href="%s">%s</a>', esc_url( add_query_arg( 'action', urlencode( 'reset_pass' ), pmpro_login_url() ) ), esc_html__( 'Lost Password?', 'paid-memberships-pro' ) );
+			if ( $dmrfid_form != 'lost_password' ) {
+				$links['lost_password'] = sprintf( '<a href="%s">%s</a>', esc_url( add_query_arg( 'action', urlencode( 'reset_pass' ), dmrfid_login_url() ) ), esc_html__( 'Lost Password?', 'paid-memberships-pro' ) );
 			}
 
-			$links = apply_filters( 'pmpro_login_forms_handler_nav', $links, $pmpro_form );
+			$links = apply_filters( 'dmrfid_login_forms_handler_nav', $links, $dmrfid_form );
 
 			$allowed_html = array(
 				'a' => array (
@@ -694,9 +694,9 @@ function pmpro_login_forms_handler_nav( $pmpro_form ) { ?>
 					'title' => array(),
 				),
 			);
-			echo wp_kses( implode( pmpro_actions_nav_separator(), $links ), $allowed_html );
+			echo wp_kses( implode( dmrfid_actions_nav_separator(), $links ), $allowed_html );
 		?>
-	</p> <!-- end pmpro_actions_nav -->
+	</p> <!-- end dmrfid_actions_nav -->
 	<?php
 }
 
@@ -704,9 +704,9 @@ function pmpro_login_forms_handler_nav( $pmpro_form ) { ?>
  * Function to handle the actualy password reset and update password.
  * @since 2.3
  */
-function pmpro_do_password_reset() {
+function dmrfid_do_password_reset() {
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
-        $login_page = pmpro_getOption( 'login_page_id' );
+        $login_page = dmrfid_getOption( 'login_page_id' );
 		
 		if ( empty( $login_page ) ) {
 			return;
@@ -764,8 +764,8 @@ function pmpro_do_password_reset() {
         exit;
     }
 }
-add_action( 'login_form_rp', 'pmpro_do_password_reset' );
-add_action( 'login_form_resetpass', 'pmpro_do_password_reset' );
+add_action( 'login_form_rp', 'dmrfid_do_password_reset' );
+add_action( 'login_form_resetpass', 'dmrfid_do_password_reset' );
 
 /**
  * Replace the default URL inside the password reset email
@@ -773,9 +773,9 @@ add_action( 'login_form_resetpass', 'pmpro_do_password_reset' );
  *
  * @since 2.3
  */
-function pmpro_password_reset_email_filter( $message, $key, $user_login, $user_data ) {
+function dmrfid_password_reset_email_filter( $message, $key, $user_login, $user_data ) {
 
-	$login_page_id = pmpro_getOption( 'login_page_id' );
+	$login_page_id = dmrfid_getOption( 'login_page_id' );
     if ( ! empty ( $login_page_id ) ) {
 		$login_url = get_permalink( $login_page_id );
 		if ( strpos( $login_url, '?' ) ) {
@@ -787,7 +787,7 @@ function pmpro_password_reset_email_filter( $message, $key, $user_login, $user_d
 
 	return $message;
 }
-add_filter( 'retrieve_password_message', 'pmpro_password_reset_email_filter', 10, 4 );
+add_filter( 'retrieve_password_message', 'dmrfid_password_reset_email_filter', 10, 4 );
 
 /**
  * Replace the default login URL in the new user notification email
@@ -795,9 +795,9 @@ add_filter( 'retrieve_password_message', 'pmpro_password_reset_email_filter', 10
  *
  * @since 2.3.4
  */
-function pmpro_new_user_notification_email_filter( $message, $user, $blogname ) {
+function dmrfid_new_user_notification_email_filter( $message, $user, $blogname ) {
 
-	$login_page_id = pmpro_getOption( 'login_page_id' );
+	$login_page_id = dmrfid_getOption( 'login_page_id' );
     if ( ! empty ( $login_page_id ) ) {
         $login_url = get_permalink( $login_page_id );
 		$message = str_replace( network_site_url( 'wp-login.php' ), $login_url, $message );
@@ -805,7 +805,7 @@ function pmpro_new_user_notification_email_filter( $message, $user, $blogname ) 
 
 	return $message;
 }
-add_filter( 'wp_new_user_notification_email', 'pmpro_new_user_notification_email_filter', 10, 3 );
+add_filter( 'wp_new_user_notification_email', 'dmrfid_new_user_notification_email_filter', 10, 3 );
 
 /**
  * Authenticate the frontend user login.
@@ -813,10 +813,10 @@ add_filter( 'wp_new_user_notification_email', 'pmpro_new_user_notification_email
  * @since 2.3
  *
  */
- function pmpro_authenticate_username_password( $user, $username, $password ) {
+ function dmrfid_authenticate_username_password( $user, $username, $password ) {
 
-	// Only work when the PMPro login form is used.
-	if ( empty( $_REQUEST['pmpro_login_form_used'] ) ) {
+	// Only work when the DmRFID login form is used.
+	if ( empty( $_REQUEST['dmrfid_login_form_used'] ) ) {
 		return $user;
 	}
 
@@ -838,15 +838,15 @@ add_filter( 'wp_new_user_notification_email', 'pmpro_new_user_notification_email
 		$error = $user->get_error_code();
 
 		if ( $error ) {
-				wp_redirect( add_query_arg( 'action', urlencode( $error ), pmpro_login_url() ) );
+				wp_redirect( add_query_arg( 'action', urlencode( $error ), dmrfid_login_url() ) );
 			} else {
-				wp_redirect( pmpro_login_url() );
+				wp_redirect( dmrfid_login_url() );
 			}
 	}
 
 	return $user;
 }
-add_filter( 'authenticate', 'pmpro_authenticate_username_password', 30, 3);
+add_filter( 'authenticate', 'dmrfid_authenticate_username_password', 30, 3);
 
 /**
  * Redirect failed login to referrer for frontend user login.
@@ -854,9 +854,9 @@ add_filter( 'authenticate', 'pmpro_authenticate_username_password', 30, 3);
  * @since 2.3
  *
  */
-function pmpro_login_failed( $username ) {
+function dmrfid_login_failed( $username ) {
 
-	$login_page = pmpro_getOption( 'login_page_id' );	
+	$login_page = dmrfid_getOption( 'login_page_id' );	
 	if ( empty( $login_page ) ) {
 		return;
 	}
@@ -870,14 +870,14 @@ function pmpro_login_failed( $username ) {
 
 	if ( $referrer && ! strstr( $referrer, 'wp-login' ) && ! strstr( $referrer, 'wp-admin' ) ) {
 		if ( ! strstr( $referrer, '?login=failed') ) {
-			wp_redirect( add_query_arg( array( 'action'=>'failed', 'username' => sanitize_text_field( $username ), 'redirect_to' => urlencode( $redirect_to ) ), pmpro_login_url() ) );
+			wp_redirect( add_query_arg( array( 'action'=>'failed', 'username' => sanitize_text_field( $username ), 'redirect_to' => urlencode( $redirect_to ) ), dmrfid_login_url() ) );
 		} else {
-			wp_redirect( add_query_arg( 'action', 'loggedout', pmpro_login_url() ) );
+			wp_redirect( add_query_arg( 'action', 'loggedout', dmrfid_login_url() ) );
 		}
 		exit;
 	}
 }
-add_action( 'wp_login_failed', 'pmpro_login_failed', 10, 2 );
+add_action( 'wp_login_failed', 'dmrfid_login_failed', 10, 2 );
 
 /**
  * Show welcome content for a "Logged In" member with Display Name, Log Out link and a "Log In Widget" menu area.
@@ -885,25 +885,25 @@ add_action( 'wp_login_failed', 'pmpro_login_failed', 10, 2 );
  * @since 2.3
  *
  */
-function pmpro_logged_in_welcome( $show_menu = true, $show_logout_link = true ) {
+function dmrfid_logged_in_welcome( $show_menu = true, $show_logout_link = true ) {
 	if ( is_user_logged_in( ) ) {
 		// Set the location the user's display_name will link to based on level status.
-		global $current_user, $pmpro_pages;
-		if ( ! empty( $pmpro_pages ) && ! empty( $pmpro_pages['account'] ) ) {
-			$account_page      = get_post( $pmpro_pages['account'] );
-			$user_account_link = '<a href="' . esc_url( pmpro_url( 'account' ) ) . '">' . esc_html( preg_replace( '/\@.*/', '', $current_user->display_name ) ) . '</a>';
+		global $current_user, $dmrfid_pages;
+		if ( ! empty( $dmrfid_pages ) && ! empty( $dmrfid_pages['account'] ) ) {
+			$account_page      = get_post( $dmrfid_pages['account'] );
+			$user_account_link = '<a href="' . esc_url( dmrfid_url( 'account' ) ) . '">' . esc_html( preg_replace( '/\@.*/', '', $current_user->display_name ) ) . '</a>';
 		} else {
 			$user_account_link = '<a href="' . esc_url( admin_url( 'profile.php' ) ) . '">' . esc_html( preg_replace( '/\@.*/', '', $current_user->display_name ) ) . '</a>';
 		}
 		?>
-		<h3 class="<?php echo pmpro_get_element_class( 'pmpro_member_display_name' ); ?>">
+		<h3 class="<?php echo dmrfid_get_element_class( 'dmrfid_member_display_name' ); ?>">
 			<?php
 				/* translators: a generated link to the user's account or profile page */
 				printf( esc_html__( 'Welcome, %s', 'paid-memberships-pro' ), $user_account_link );
 			?>
 		</h3>
 
-		<?php do_action( 'pmpro_logged_in_welcome_before_menu' ); ?>
+		<?php do_action( 'dmrfid_logged_in_welcome_before_menu' ); ?>
 
 		<?php
 		/**
@@ -912,19 +912,19 @@ function pmpro_logged_in_welcome( $show_menu = true, $show_logout_link = true ) 
 		 *
 		 */
 		if ( ! empty( $show_menu ) ) {
-			$pmpro_login_widget_menu_defaults = array(
-				'theme_location'  => 'pmpro-login-widget',
+			$dmrfid_login_widget_menu_defaults = array(
+				'theme_location'  => 'dmrfid-login-widget',
 				'container'       => 'nav',
-				'container_id'    => 'pmpro-member-navigation',
-				'container_class' => 'pmpro-member-navigation',
+				'container_id'    => 'dmrfid-member-navigation',
+				'container_class' => 'dmrfid-member-navigation',
 				'fallback_cb'	  => false,
 				'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 			);
-			wp_nav_menu( $pmpro_login_widget_menu_defaults );
+			wp_nav_menu( $dmrfid_login_widget_menu_defaults );
 		}
 		?>
 
-		<?php do_action( 'pmpro_logged_in_welcome_after_menu' ); ?>
+		<?php do_action( 'dmrfid_logged_in_welcome_after_menu' ); ?>
 
 		<?php
 		/**
@@ -933,7 +933,7 @@ function pmpro_logged_in_welcome( $show_menu = true, $show_logout_link = true ) 
 		 *
 		 */
 		if ( ! empty ( $show_logout_link ) ) { ?>
-			<div class="<?php echo pmpro_get_element_class( 'pmpro_member_log_out' ); ?>"><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Log Out', 'paid-memberships-pro' ); ?></a></div>
+			<div class="<?php echo dmrfid_get_element_class( 'dmrfid_member_log_out' ); ?>"><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Log Out', 'paid-memberships-pro' ); ?></a></div>
 			<?php
 		}
 	}
@@ -943,16 +943,16 @@ function pmpro_logged_in_welcome( $show_menu = true, $show_logout_link = true ) 
  * Allow default WordPress registration page if no level page is set and registrations are open for a site.
  * @since 2.3
  */
-function pmpro_no_level_page_register_redirect( $url ) {
-	$level = pmpro_url( 'levels' );
+function dmrfid_no_level_page_register_redirect( $url ) {
+	$level = dmrfid_url( 'levels' );
 
-	if ( empty( pmpro_url( 'levels' ) ) && get_option( 'users_can_register' ) && ! pmpro_are_any_visible_levels() ) {
+	if ( empty( dmrfid_url( 'levels' ) ) && get_option( 'users_can_register' ) && ! dmrfid_are_any_visible_levels() ) {
 		return false;
 	}
 
 	return $url;
 }
-add_action( 'pmpro_register_redirect', 'pmpro_no_level_page_register_redirect' );
+add_action( 'dmrfid_register_redirect', 'dmrfid_no_level_page_register_redirect' );
 
 /**
  * Process Data Request confirmaction URLs.
@@ -960,7 +960,7 @@ add_action( 'pmpro_register_redirect', 'pmpro_no_level_page_register_redirect' )
  * Checks first for action=confirmaction param.
  * Code pulled from wp-login.php.
  */
-function pmpro_confirmaction_handler() {
+function dmrfid_confirmaction_handler() {
 	if ( empty( $_REQUEST['action'] ) || $_REQUEST['action'] !== 'confirmaction' ) {
 		return false;
 	}

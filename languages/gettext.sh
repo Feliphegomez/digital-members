@@ -1,8 +1,8 @@
 #---------------------------
-# This script generates a new pmpro.pot file for use in translations.
-# To generate a new pmpro.pot, cd to the main /paid-memberships-pro/ directory,
+# This script generates a new dmrfid.pot file for use in translations.
+# To generate a new dmrfid.pot, cd to the main /paid-memberships-pro/ directory,
 # then execute `languages/gettext.sh` from the command line.
-# then fix the header info (helps to have the old pmpro.pot open before running script above)
+# then fix the header info (helps to have the old dmrfid.pot open before running script above)
 # then execute `cp languages/paid-memberships-pro.pot languages/paid-memberships-pro.po` to copy the .pot to .po
 # then execute `msgfmt languages/paid-memberships-pro.po --output-file languages/paid-memberships-pro.mo` to generate the .mo
 #---------------------------

@@ -1,20 +1,20 @@
 <?php
 	//only admins can get this
-	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("pmpro_paymentsettings")))
+	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_paymentsettings")))
 	{
 		die(__("You do not have permissions to perform this action.", 'paid-memberships-pro' ));
 	}
 
-	global $wpdb, $pmpro_currency_symbol, $msg, $msgt;
+	global $wpdb, $dmrfid_currency_symbol, $msg, $msgt;
 
 	/*
 		Since 2.0, we let each gateway define what options they have in the class files
 	*/
 	//define options
-	$payment_options = array_unique(apply_filters("pmpro_payment_options", array('gateway')));
+	$payment_options = array_unique(apply_filters("dmrfid_payment_options", array('gateway')));
 
 	//check nonce for saving settings
-	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['pmpro_paymentsettings_nonce']) || !check_admin_referer('savesettings', 'pmpro_paymentsettings_nonce'))) {
+	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['dmrfid_paymentsettings_nonce']) || !check_admin_referer('savesettings', 'dmrfid_paymentsettings_nonce'))) {
 		$msg = -1;
 		$msgt = __("Are you sure you want to do that? Try again.", 'paid-memberships-pro' );
 		unset($_REQUEST['savesettings']);
@@ -31,35 +31,35 @@
 			if( in_array( $option, array( 'sslseal', 'instructions' ) ) ) {
 				global $allowedposttags;
 				$html = wp_kses(wp_unslash($_POST[$option]), $allowedposttags);
-				update_option("pmpro_{$option}", $html);
+				update_option("dmrfid_{$option}", $html);
             } else {
-				pmpro_setOption($option);
+				dmrfid_setOption($option);
 			}
 		}
 
-		do_action( 'pmpro_after_saved_payment_options', $payment_options );
+		do_action( 'dmrfid_after_saved_payment_options', $payment_options );
 
 		/*
 			Some special case options still worked out here
 		*/
 		//credit cards
-		$pmpro_accepted_credit_cards = array();
+		$dmrfid_accepted_credit_cards = array();
 		if(!empty($_REQUEST['creditcards_visa']))
-			$pmpro_accepted_credit_cards[] = "Visa";
+			$dmrfid_accepted_credit_cards[] = "Visa";
 		if(!empty($_REQUEST['creditcards_mastercard']))
-			$pmpro_accepted_credit_cards[] = "Mastercard";
+			$dmrfid_accepted_credit_cards[] = "Mastercard";
 		if(!empty($_REQUEST['creditcards_amex']))
-			$pmpro_accepted_credit_cards[] = "American Express";
+			$dmrfid_accepted_credit_cards[] = "American Express";
 		if(!empty($_REQUEST['creditcards_discover']))
-			$pmpro_accepted_credit_cards[] = "Discover";
+			$dmrfid_accepted_credit_cards[] = "Discover";
 		if(!empty($_REQUEST['creditcards_dinersclub']))
-			$pmpro_accepted_credit_cards[] = "Diners Club";
+			$dmrfid_accepted_credit_cards[] = "Diners Club";
 		if(!empty($_REQUEST['creditcards_enroute']))
-			$pmpro_accepted_credit_cards[] = "EnRoute";
+			$dmrfid_accepted_credit_cards[] = "EnRoute";
 		if(!empty($_REQUEST['creditcards_jcb']))
-			$pmpro_accepted_credit_cards[] = "JCB";
+			$dmrfid_accepted_credit_cards[] = "JCB";
 
-		pmpro_setOption("accepted_credit_cards", implode(",", $pmpro_accepted_credit_cards));
+		dmrfid_setOption("accepted_credit_cards", implode(",", $dmrfid_accepted_credit_cards));
 
 		//assume success
 		$msg = true;
@@ -71,52 +71,52 @@
 	*/
 	$payment_option_values = array();
 	foreach($payment_options as $option)
-		$payment_option_values[$option] = pmpro_getOption($option);
+		$payment_option_values[$option] = dmrfid_getOption($option);
 	extract($payment_option_values);
 
 	/*
 		Some special cases that get worked out here.
 	*/
 	//make sure the tax rate is not > 1
-	$tax_state = pmpro_getOption("tax_state");
-	$tax_rate = pmpro_getOption("tax_rate");
+	$tax_state = dmrfid_getOption("tax_state");
+	$tax_rate = dmrfid_getOption("tax_rate");
 	if((double)$tax_rate > 1)
 	{
 		//assume the entered X%
 		$tax_rate = $tax_rate / 100;
-		pmpro_setOption("tax_rate", $tax_rate);
+		dmrfid_setOption("tax_rate", $tax_rate);
 	}
 
 	//accepted credit cards
-	$pmpro_accepted_credit_cards = $payment_option_values['accepted_credit_cards'];	//this var has the pmpro_ prefix
+	$dmrfid_accepted_credit_cards = $payment_option_values['accepted_credit_cards'];	//this var has the dmrfid_ prefix
 
 	//default settings
 	if(empty($gateway_environment))
 	{
 		$gateway_environment = "sandbox";
-		pmpro_setOption("gateway_environment", $gateway_environment);
+		dmrfid_setOption("gateway_environment", $gateway_environment);
 	}
-	if(empty($pmpro_accepted_credit_cards))
+	if(empty($dmrfid_accepted_credit_cards))
 	{
-		$pmpro_accepted_credit_cards = "Visa,Mastercard,American Express,Discover";
-		pmpro_setOption("accepted_credit_cards", $pmpro_accepted_credit_cards);
+		$dmrfid_accepted_credit_cards = "Visa,Mastercard,American Express,Discover";
+		dmrfid_setOption("accepted_credit_cards", $dmrfid_accepted_credit_cards);
 	}
-	$pmpro_accepted_credit_cards = explode(",", $pmpro_accepted_credit_cards);
+	$dmrfid_accepted_credit_cards = explode(",", $dmrfid_accepted_credit_cards);
 
 	require_once(dirname(__FILE__) . "/admin_header.php");
 ?>
 
 	<form action="" method="post" enctype="multipart/form-data">
-		<?php wp_nonce_field('savesettings', 'pmpro_paymentsettings_nonce');?>
+		<?php wp_nonce_field('savesettings', 'dmrfid_paymentsettings_nonce');?>
 
         <h1 class="wp-heading-inline"><?php esc_html_e( 'Payment Gateway', 'paid-memberships-pro' );?> &amp; <?php esc_html_e( 'SSL Settings', 'paid-memberships-pro' ); ?></h1>
         <hr class="wp-header-end">
 
-		<p><?php _e('Learn more about <a title="Digital Members RFID - SSL Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link1">SSL</a> or <a title="Digital Members RFID - Payment Gateway Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-3-payment-gateway-security/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=documentation&utm_content=step-3-payment-gateway-security">Payment Gateway Settings</a>.', 'paid-memberships-pro' ); ?></p>
+		<p><?php _e('Learn more about <a title="Digital Members RFID - SSL Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link1">SSL</a> or <a title="Digital Members RFID - Payment Gateway Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-3-payment-gateway-security/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=step-3-payment-gateway-security">Payment Gateway Settings</a>.', 'paid-memberships-pro' ); ?></p>
 
 		<table class="form-table">
 		<tbody>
-			<tr class="pmpro_settings_divider">
+			<tr class="dmrfid_settings_divider">
 				<td colspan="2">
 					<hr />
 					<h3><?php _e('Choose a Gateway', 'paid-memberships-pro' ); ?></h3>
@@ -127,19 +127,19 @@
 					<label for="gateway"><?php _e('Payment Gateway', 'paid-memberships-pro' );?>:</label>
 				</th>
 				<td>
-					<select id="gateway" name="gateway" onchange="pmpro_changeGateway(jQuery(this).val());">
+					<select id="gateway" name="gateway" onchange="dmrfid_changeGateway(jQuery(this).val());">
 						<?php
-							$pmpro_gateways = pmpro_gateways();
-							foreach($pmpro_gateways as $pmpro_gateway_name => $pmpro_gateway_label)
+							$dmrfid_gateways = dmrfid_gateways();
+							foreach($dmrfid_gateways as $dmrfid_gateway_name => $dmrfid_gateway_label)
 							{
 							?>
-							<option value="<?php echo esc_attr($pmpro_gateway_name);?>" <?php selected($gateway, $pmpro_gateway_name);?>><?php echo $pmpro_gateway_label;?></option>
+							<option value="<?php echo esc_attr($dmrfid_gateway_name);?>" <?php selected($gateway, $dmrfid_gateway_name);?>><?php echo $dmrfid_gateway_label;?></option>
 							<?php
 							}
 						?>
 					</select>
-					<?php if( pmpro_onlyFreeLevels() ) { ?>
-						<div id="pmpro-default-gateway-message" style="display:none;"><p class="description"><?php echo __( 'This gateway is for membership sites with Free levels or for sites that accept payment offline.', 'paid-memberships-pro' ) . '<br/>' . __( 'It is not connected to a live gateway environment and cannot accept payments.', 'paid-memberships-pro' ); ?></p></div>
+					<?php if( dmrfid_onlyFreeLevels() ) { ?>
+						<div id="dmrfid-default-gateway-message" style="display:none;"><p class="description"><?php echo __( 'This gateway is for membership sites with Free levels or for sites that accept payment offline.', 'paid-memberships-pro' ) . '<br/>' . __( 'It is not connected to a live gateway environment and cannot accept payments.', 'paid-memberships-pro' ); ?></p></div>
 					<?php } ?>
 				</td>
 			</tr>
@@ -153,49 +153,49 @@
 						<option value="live" <?php selected( $gateway_environment, "live" ); ?>><?php _e('Live/Production', 'paid-memberships-pro' );?></option>
 					</select>
 					<script>
-						function pmpro_changeGateway(gateway)
+						function dmrfid_changeGateway(gateway)
 						{
 							//hide all gateway options
 							jQuery('tr.gateway').hide();
 							jQuery('tr.gateway_'+gateway).show();
 							
 							//hide sub settings and toggle them on based on triggers
-							jQuery('tr.pmpro_toggle_target').hide();
-							jQuery( 'input[pmpro_toggle_trigger_for]' ).each( function() {										
+							jQuery('tr.dmrfid_toggle_target').hide();
+							jQuery( 'input[dmrfid_toggle_trigger_for]' ).each( function() {										
 								if ( jQuery( this ).is( ':visible' ) ) {
-									pmpro_toggle_elements_by_selector( jQuery( this ).attr( 'pmpro_toggle_trigger_for' ), jQuery( this ).prop( 'checked' ) );
+									dmrfid_toggle_elements_by_selector( jQuery( this ).attr( 'dmrfid_toggle_trigger_for' ), jQuery( this ).prop( 'checked' ) );
 								}
 							});							
 
 							if ( jQuery('#gateway').val() === '' ) {
-								jQuery('#pmpro-default-gateway-message').show();
+								jQuery('#dmrfid-default-gateway-message').show();
 							} else {
-								jQuery('#pmpro-default-gateway-message').hide();
+								jQuery('#dmrfid-default-gateway-message').hide();
 							}
 						}
-						pmpro_changeGateway(jQuery('#gateway').val());
+						dmrfid_changeGateway(jQuery('#gateway').val());
 					</script>
 				</td>
 			</tr>
 
 			<?php /* Gateway Specific Settings */ ?>
-			<?php do_action('pmpro_payment_option_fields', $payment_option_values, $gateway); ?>
+			<?php do_action('dmrfid_payment_option_fields', $payment_option_values, $gateway); ?>
 
-			<tr class="pmpro_settings_divider">
+			<tr class="dmrfid_settings_divider">
 				<td colspan="2">
 					<hr />
 					<h3><?php _e('Currency and Tax Settings', 'paid-memberships-pro' ); ?></h3>
 				</td>
 			</tr>
-			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("currency"));?>" <?php if(!empty($gateway) && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource" && $gateway != "payflowpro" && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "gourl") { ?>style="display: none;"<?php } ?>>
+			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("currency"));?>" <?php if(!empty($gateway) && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource" && $gateway != "payflowpro" && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "gourl") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
 					<label for="currency"><?php _e('Currency', 'paid-memberships-pro' );?>:</label>
 				</th>
 				<td>
 					<select name="currency">
 					<?php
-						global $pmpro_currencies;
-						foreach($pmpro_currencies as $ccode => $cdescription)
+						global $dmrfid_currencies;
+						foreach($dmrfid_currencies as $ccode => $cdescription)
 						{
 							if(is_array($cdescription))
 								$cdescription = $cdescription['name'];
@@ -208,21 +208,21 @@
 					<p class="description"><?php _e( 'Not all currencies will be supported by every gateway. Please check with your gateway.', 'paid-memberships-pro' ); ?></p>
 				</td>
 			</tr>
-			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("accepted_credit_cards"));?>" <?php if(!empty($gateway) && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "stripe" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
+			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("accepted_credit_cards"));?>" <?php if(!empty($gateway) && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "stripe" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
 					<label for="creditcards"><?php _e('Accepted Credit Card Types', 'paid-memberships-pro' );?></label>
 				</th>
 				<td>
-					<input type="checkbox" id="creditcards_visa" name="creditcards_visa" value="1" <?php if(in_array("Visa", $pmpro_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_visa">Visa</label><br />
-					<input type="checkbox" id="creditcards_mastercard" name="creditcards_mastercard" value="1" <?php if(in_array("Mastercard", $pmpro_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_mastercard">Mastercard</label><br />
-					<input type="checkbox" id="creditcards_amex" name="creditcards_amex" value="1" <?php if(in_array("American Express", $pmpro_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_amex">American Express</label><br />
-					<input type="checkbox" id="creditcards_discover" name="creditcards_discover" value="1" <?php if(in_array("Discover", $pmpro_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_discover">Discover</label><br />
-					<input type="checkbox" id="creditcards_dinersclub" name="creditcards_dinersclub" value="1" <?php if(in_array("Diners Club", $pmpro_accepted_credit_cards)) {?>checked="checked"<?php } ?> /> <label for="creditcards_dinersclub">Diner's Club</label><br />
-					<input type="checkbox" id="creditcards_enroute" name="creditcards_enroute" value="1" <?php if(in_array("EnRoute", $pmpro_accepted_credit_cards)) {?>checked="checked"<?php } ?> /> <label for="creditcards_enroute">EnRoute</label><br />
-					<input type="checkbox" id="creditcards_jcb" name="creditcards_jcb" value="1" <?php if(in_array("JCB", $pmpro_accepted_credit_cards)) {?>checked="checked"<?php } ?> /> <label for="creditcards_jcb">JCB</label><br />
+					<input type="checkbox" id="creditcards_visa" name="creditcards_visa" value="1" <?php if(in_array("Visa", $dmrfid_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_visa">Visa</label><br />
+					<input type="checkbox" id="creditcards_mastercard" name="creditcards_mastercard" value="1" <?php if(in_array("Mastercard", $dmrfid_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_mastercard">Mastercard</label><br />
+					<input type="checkbox" id="creditcards_amex" name="creditcards_amex" value="1" <?php if(in_array("American Express", $dmrfid_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_amex">American Express</label><br />
+					<input type="checkbox" id="creditcards_discover" name="creditcards_discover" value="1" <?php if(in_array("Discover", $dmrfid_accepted_credit_cards)) { ?>checked="checked"<?php } ?> /> <label for="creditcards_discover">Discover</label><br />
+					<input type="checkbox" id="creditcards_dinersclub" name="creditcards_dinersclub" value="1" <?php if(in_array("Diners Club", $dmrfid_accepted_credit_cards)) {?>checked="checked"<?php } ?> /> <label for="creditcards_dinersclub">Diner's Club</label><br />
+					<input type="checkbox" id="creditcards_enroute" name="creditcards_enroute" value="1" <?php if(in_array("EnRoute", $dmrfid_accepted_credit_cards)) {?>checked="checked"<?php } ?> /> <label for="creditcards_enroute">EnRoute</label><br />
+					<input type="checkbox" id="creditcards_jcb" name="creditcards_jcb" value="1" <?php if(in_array("JCB", $dmrfid_accepted_credit_cards)) {?>checked="checked"<?php } ?> /> <label for="creditcards_jcb">JCB</label><br />
 				</td>
 			</tr>
-			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("tax_rate"));?>" <?php if(!empty($gateway) && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
+			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("tax_rate"));?>" <?php if(!empty($gateway) && $gateway != "stripe" && $gateway != "authorizenet" && $gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "check" && $gateway != "paypalstandard" && $gateway != "payflowpro" && $gateway != "braintree" && $gateway != "twocheckout" && $gateway != "cybersource") { ?>style="display: none;"<?php } ?>>
 				<th scope="row" valign="top">
 					<label for="tax"><?php _e('Sales Tax', 'paid-memberships-pro' );?> (<?php _e('optional', 'paid-memberships-pro' );?>)</label>
 				</th>
@@ -231,26 +231,26 @@
 					<input type="text" id="tax_state" name="tax_state" value="<?php echo esc_attr($tax_state)?>" class="small-text" /> (<?php _e('abbreviation, e.g. "PA"', 'paid-memberships-pro' );?>)
 					&nbsp; <?php _e('Tax Rate', 'paid-memberships-pro' ); ?>:
 					<input type="text" id="tax_rate" name="tax_rate" size="10" value="<?php echo esc_attr($tax_rate)?>" class="small-text" /> (<?php _e('decimal, e.g. "0.06"', 'paid-memberships-pro' );?>)
-					<p class="description"><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="https://www.paidmembershipspro.com/non-us-taxes-paid-memberships-pro/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=blog&utm_content=non-us-taxes-paid-memberships-pro">pmpro_tax filter</a>.', 'paid-memberships-pro' );?></p>
+					<p class="description"><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="https://www.paidmembershipspro.com/non-us-taxes-paid-memberships-pro/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=non-us-taxes-paid-memberships-pro">dmrfid_tax filter</a>.', 'paid-memberships-pro' );?></p>
 				</td>
 			</tr>
 
-			<tr class="pmpro_settings_divider">
+			<tr class="dmrfid_settings_divider">
 				<td colspan="2">
 					<hr />
 					<h3><?php _e('SSL Settings', 'paid-memberships-pro' ); ?></h3>
 				</td>
 			</tr>
-			<tr class="gateway gateway_ <?php echo esc_attr(pmpro_getClassesForPaymentSettingsField("use_ssl"));?>">
+			<tr class="gateway gateway_ <?php echo esc_attr(dmrfid_getClassesForPaymentSettingsField("use_ssl"));?>">
 				<th scope="row" valign="top">
 					<label for="use_ssl"><?php _e('Force SSL', 'paid-memberships-pro' );?>:</label>
 				</th>
 				<td>
 					<?php
-						if( pmpro_check_site_url_for_https() ) {
+						if( dmrfid_check_site_url_for_https() ) {
 							//entire site is over HTTPS
 							?>
-							<p class="description"><?php _e( 'Your Site URL starts with https:// and so PMPro will allow your entire site to be served over HTTPS.', 'paid-memberships-pro' ); ?></p>
+							<p class="description"><?php _e( 'Your Site URL starts with https:// and so DmRFID will allow your entire site to be served over HTTPS.', 'paid-memberships-pro' ); ?></p>
 							<?php
 						} else {
 							//site is not over HTTPS, show setting
@@ -272,7 +272,7 @@
 				</th>
 				<td>
 					<textarea id="sslseal" name="sslseal" rows="3" cols="50" class="large-text"><?php echo stripslashes(esc_textarea($sslseal))?></textarea>
-					<p class="description"><?php _e('Your <strong><a target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link2">SSL Certificate</a></strong> must be installed by your web host. Use this field to display your seal or other trusted merchant images. This field does not accept JavaScript.', 'paid-memberships-pro' ); ?></p>
+					<p class="description"><?php _e('Your <strong><a target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link2">SSL Certificate</a></strong> must be installed by your web host. Use this field to display your seal or other trusted merchant images. This field does not accept JavaScript.', 'paid-memberships-pro' ); ?></p>
 				</td>
 			</tr>
 			<tr>

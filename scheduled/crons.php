@@ -2,18 +2,18 @@
 /*
 	Expiring Memberships
 */
-add_action("pmpro_cron_expire_memberships", "pmpro_cron_expire_memberships");
-function pmpro_cron_expire_memberships()
+add_action("dmrfid_cron_expire_memberships", "dmrfid_cron_expire_memberships");
+function dmrfid_cron_expire_memberships()
 {
 	global $wpdb;
 
 	//clean up errors in the memberships_users table that could cause problems
-	pmpro_cleanup_memberships_users_table();
+	dmrfid_cleanup_memberships_users_table();
 
 	$today = date("Y-m-d", current_time("timestamp"));
 
 	//look for memberships that expired before today
-	$sqlQuery = "SELECT mu.user_id, mu.membership_id, mu.startdate, mu.enddate FROM $wpdb->pmpro_memberships_users mu WHERE mu.status = 'active' AND mu.enddate IS NOT NULL AND mu.enddate <> '0000-00-00 00:00:00' AND DATE(mu.enddate) <= '" . esc_sql( $today ) . "' ORDER BY mu.enddate";
+	$sqlQuery = "SELECT mu.user_id, mu.membership_id, mu.startdate, mu.enddate FROM $wpdb->dmrfid_memberships_users mu WHERE mu.status = 'active' AND mu.enddate IS NOT NULL AND mu.enddate <> '0000-00-00 00:00:00' AND DATE(mu.enddate) <= '" . esc_sql( $today ) . "' ORDER BY mu.enddate";
 
 	if(defined('DMRFID_CRON_LIMIT'))
 		$sqlQuery .= " LIMIT " . DMRFID_CRON_LIMIT;
@@ -22,20 +22,20 @@ function pmpro_cron_expire_memberships()
 
 	foreach($expired as $e)
 	{
-		do_action("pmpro_membership_pre_membership_expiry", $e->user_id, $e->membership_id );
+		do_action("dmrfid_membership_pre_membership_expiry", $e->user_id, $e->membership_id );
 
 		//remove their membership
-		pmpro_changeMembershipLevel(false, $e->user_id, 'expired', $e->membership_id);
+		dmrfid_changeMembershipLevel(false, $e->user_id, 'expired', $e->membership_id);
 
-		do_action("pmpro_membership_post_membership_expiry", $e->user_id, $e->membership_id );
+		do_action("dmrfid_membership_post_membership_expiry", $e->user_id, $e->membership_id );
 
-		$send_email = apply_filters("pmpro_send_expiration_email", true, $e->user_id);
+		$send_email = apply_filters("dmrfid_send_expiration_email", true, $e->user_id);
 		if($send_email)
 		{
 			//send an email
-			$pmproemail = new PMProEmail();
+			$dmrfidemail = new DmRFIDEmail();
 			$euser = get_userdata($e->user_id);
-			$pmproemail->sendMembershipExpiredEmail($euser);
+			$dmrfidemail->sendMembershipExpiredEmail($euser);
 
 			if(current_user_can('manage_options'))
 				printf(__("Membership expired email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
@@ -48,21 +48,21 @@ function pmpro_cron_expire_memberships()
 /*
 	Expiration Warning Emails
 */
-add_action("pmpro_cron_expiration_warnings", "pmpro_cron_expiration_warnings");
-function pmpro_cron_expiration_warnings()
+add_action("dmrfid_cron_expiration_warnings", "dmrfid_cron_expiration_warnings");
+function dmrfid_cron_expiration_warnings()
 {
 	global $wpdb;
 
 	//clean up errors in the memberships_users table that could cause problems
-	pmpro_cleanup_memberships_users_table();
+	dmrfid_cleanup_memberships_users_table();
 
 	$today = date("Y-m-d 00:00:00", current_time("timestamp"));
 
-	$pmpro_email_days_before_expiration = apply_filters("pmpro_email_days_before_expiration", 7);
+	$dmrfid_email_days_before_expiration = apply_filters("dmrfid_email_days_before_expiration", 7);
 
 	// Configure the interval to select records from
 	$interval_start = $today;
-	$interval_end = date( 'Y-m-d 00:00:00', strtotime( "{$today} +{$pmpro_email_days_before_expiration} days", current_time( 'timestamp' ) ) );
+	$interval_end = date( 'Y-m-d 00:00:00', strtotime( "{$today} +{$dmrfid_email_days_before_expiration} days", current_time( 'timestamp' ) ) );
 
 	//look for memberships that are going to expire within one week (but we haven't emailed them within a week)
 	$sqlQuery = $wpdb->prepare(
@@ -72,7 +72,7 @@ function pmpro_cron_expiration_warnings()
   				mu.startdate,
  				mu.enddate,
  				um.meta_value AS notice
- 			FROM {$wpdb->pmpro_memberships_users} AS mu
+ 			FROM {$wpdb->dmrfid_memberships_users} AS mu
  			  LEFT JOIN {$wpdb->usermeta} AS um ON um.user_id = mu.user_id
             	AND um.meta_key = %s
 			WHERE ( um.meta_value IS NULL OR DATE_ADD(um.meta_value, INTERVAL %d DAY) < %s )
@@ -83,8 +83,8 @@ function pmpro_cron_expiration_warnings()
  			    AND ( mu.membership_id <> 0 OR mu.membership_id <> NULL )
 			ORDER BY mu.enddate
 			",
-		"pmpro_expiration_notice",
-		$pmpro_email_days_before_expiration,
+		"dmrfid_expiration_notice",
+		$dmrfid_email_days_before_expiration,
 		$today,
 		$interval_start,
 		$interval_end
@@ -97,13 +97,13 @@ function pmpro_cron_expiration_warnings()
 
 	foreach($expiring_soon as $e)
 	{
-		$send_email = apply_filters("pmpro_send_expiration_warning_email", true, $e->user_id);
+		$send_email = apply_filters("dmrfid_send_expiration_warning_email", true, $e->user_id);
 		if($send_email)
 		{
 			//send an email
-			$pmproemail = new PMProEmail();
+			$dmrfidemail = new DmRFIDEmail();
 			$euser = get_userdata($e->user_id);
-			$pmproemail->sendMembershipExpiringEmail($euser);
+			$dmrfidemail->sendMembershipExpiringEmail($euser);
 
 			if(current_user_can('manage_options'))
 				printf(__("Membership expiring email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
@@ -112,34 +112,34 @@ function pmpro_cron_expiration_warnings()
 		}
 
 		//delete all user meta for this key to prevent duplicate user meta rows
-		delete_user_meta($e->user_id, "pmpro_expiration_notice");
+		delete_user_meta($e->user_id, "dmrfid_expiration_notice");
 
 		//update user meta so we don't email them again
-		update_user_meta($e->user_id, "pmpro_expiration_notice", $today);
+		update_user_meta($e->user_id, "dmrfid_expiration_notice", $today);
 	}
 }
 
 /*
 	Credit Card Expiring Warnings
 */
-add_action("pmpro_cron_credit_card_expiring_warnings", "pmpro_cron_credit_card_expiring_warnings");
-function pmpro_cron_credit_card_expiring_warnings()
+add_action("dmrfid_cron_credit_card_expiring_warnings", "dmrfid_cron_credit_card_expiring_warnings");
+function dmrfid_cron_credit_card_expiring_warnings()
 {
 	global $wpdb;
 
 	//clean up errors in the memberships_users table that could cause problems
-	pmpro_cleanup_memberships_users_table();
+	dmrfid_cleanup_memberships_users_table();
 
 	$next_month_date = date("Y-m-01", strtotime("+2 months", current_time("timestamp")));
 
 	$sqlQuery = "SELECT mu.user_id
-					FROM  $wpdb->pmpro_memberships_users mu
+					FROM  $wpdb->dmrfid_memberships_users mu
 						LEFT JOIN $wpdb->usermeta um1 ON mu.user_id = um1.user_id
-							AND meta_key =  'pmpro_ExpirationMonth'
+							AND meta_key =  'dmrfid_ExpirationMonth'
 						LEFT JOIN $wpdb->usermeta um2 ON mu.user_id = um2.user_id
-							AND um2.meta_key =  'pmpro_ExpirationYear'
+							AND um2.meta_key =  'dmrfid_ExpirationYear'
 						LEFT JOIN $wpdb->usermeta um3 ON mu.user_id = um3.user_id
-							AND um3.meta_key = 'pmpro_credit_card_expiring_warning'
+							AND um3.meta_key = 'dmrfid_credit_card_expiring_warning'
 					WHERE mu.status =  'active'
 						AND mu.cycle_number > 0
 						AND um1.meta_value IS NOT NULL AND um2.meta_value IS NOT NULL
@@ -163,7 +163,7 @@ function pmpro_cron_credit_card_expiring_warnings()
 			$euser = get_userdata($user_id);
 
 			//make sure their level doesn't have a billing limit that's been reached
-			$euser->membership_level = pmpro_getMembershipLevelForUser($euser->ID);
+			$euser->membership_level = dmrfid_getMembershipLevelForUser($euser->ID);
 			if(!empty($euser->membership_level->billing_limit))
 			{
 				/*
@@ -181,13 +181,13 @@ function pmpro_cron_credit_card_expiring_warnings()
 				continue;
 
 			//okay send them an email
-			$send_email = apply_filters("pmpro_send_credit_card_expiring_email", true, $euser->ID);
+			$send_email = apply_filters("dmrfid_send_credit_card_expiring_email", true, $euser->ID);
 
 			if($send_email)
 			{
 				//send an email
-				$pmproemail = new PMProEmail();
-				$pmproemail->sendCreditCardExpiringEmail($euser,$last_order);
+				$dmrfidemail = new DmRFIDEmail();
+				$dmrfidemail->sendCreditCardExpiringEmail($euser,$last_order);
 
 				if(current_user_can('manage_options'))
 					printf(__("Credit card expiring email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
@@ -196,7 +196,7 @@ function pmpro_cron_credit_card_expiring_warnings()
 			}
 
 			//update user meta so we don't email them again
-			update_user_meta($euser->ID, "pmpro_credit_card_expiring_warning", $euser->pmpro_ExpirationYear . "-" . $euser->pmpro_ExpirationMonth . "-01");
+			update_user_meta($euser->ID, "dmrfid_credit_card_expiring_warning", $euser->dmrfid_ExpirationYear . "-" . $euser->dmrfid_ExpirationMonth . "-01");
 		}
 	}
 }
@@ -207,45 +207,45 @@ function pmpro_cron_credit_card_expiring_warnings()
 	and doesn't take into account the many "custom trial" solutions that are
 	in the wild (e.g. some trials are actually a delay of the subscription start date)
 */
-//add_action("pmpro_cron_trial_ending_warnings", "pmpro_cron_trial_ending_warnings");
-function pmpro_cron_trial_ending_warnings()
+//add_action("dmrfid_cron_trial_ending_warnings", "dmrfid_cron_trial_ending_warnings");
+function dmrfid_cron_trial_ending_warnings()
 {
 	global $wpdb;
 
 	//clean up errors in the memberships_users table that could cause problems
-	pmpro_cleanup_memberships_users_table();
+	dmrfid_cleanup_memberships_users_table();
 
 	$today = date("Y-m-d 00:00:00", current_time("timestamp"));
 
-	$pmpro_email_days_before_trial_end = apply_filters("pmpro_email_days_before_trial_end", 7);
+	$dmrfid_email_days_before_trial_end = apply_filters("dmrfid_email_days_before_trial_end", 7);
 
 	//look for memberships with trials ending soon (but we haven't emailed them within a week)
 	$sqlQuery = "
 	SELECT
-		mu.user_id, mu.membership_id, mu.startdate, mu.cycle_period, mu.trial_limit FROM $wpdb->pmpro_memberships_users mu LEFT JOIN $wpdb->usermeta um ON um.user_id = mu.user_id AND um.meta_key = 'pmpro_trial_ending_notice'
+		mu.user_id, mu.membership_id, mu.startdate, mu.cycle_period, mu.trial_limit FROM $wpdb->dmrfid_memberships_users mu LEFT JOIN $wpdb->usermeta um ON um.user_id = mu.user_id AND um.meta_key = 'dmrfid_trial_ending_notice'
 	WHERE
 		mu.status = 'active' AND mu.trial_limit IS NOT NULL AND mu.trial_limit > 0 AND
 		(
-			(cycle_period = 'Day' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Day) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $pmpro_email_days_before_trial_end . " Day)) OR
-			(cycle_period = 'Week' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Week) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $pmpro_email_days_before_trial_end . " Day)) OR
-			(cycle_period = 'Month' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Month) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $pmpro_email_days_before_trial_end . " Day)) OR
-			(cycle_period = 'Year' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Year) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $pmpro_email_days_before_trial_end . " Day))
+			(cycle_period = 'Day' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Day) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $dmrfid_email_days_before_trial_end . " Day)) OR
+			(cycle_period = 'Week' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Week) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $dmrfid_email_days_before_trial_end . " Day)) OR
+			(cycle_period = 'Month' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Month) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $dmrfid_email_days_before_trial_end . " Day)) OR
+			(cycle_period = 'Year' AND DATE_ADD(mu.startdate, INTERVAL mu.trial_limit Year) <= DATE_ADD('" . esc_sql( $today ) . "', INTERVAL " . $dmrfid_email_days_before_trial_end . " Day))
 		)
 
-		AND (um.meta_value IS NULL OR um.meta_value = '' OR DATE_ADD(um.meta_value, INTERVAL " . $pmpro_email_days_before_trial_end . " Day) <= '" . $today . "')
+		AND (um.meta_value IS NULL OR um.meta_value = '' OR DATE_ADD(um.meta_value, INTERVAL " . $dmrfid_email_days_before_trial_end . " Day) <= '" . $today . "')
 	ORDER BY mu.startdate";
 
 	$trial_ending_soon = $wpdb->get_results($sqlQuery);
 
 	foreach($trial_ending_soon as $e)
 	{
-		$send_email = apply_filters("pmpro_send_trial_ending_email", true, $e->user_id);
+		$send_email = apply_filters("dmrfid_send_trial_ending_email", true, $e->user_id);
 		if($send_email)
 		{
 			//send an email
-			$pmproemail = new PMProEmail();
+			$dmrfidemail = new DmRFIDEmail();
 			$euser = get_userdata($e->user_id);
-			$pmproemail->sendTrialEndingEmail($euser);
+			$dmrfidemail->sendTrialEndingEmail($euser);
 
 			if(current_user_can('manage_options'))
 				printf(__("Trial ending email sent to %s. ", 'paid-memberships-pro' ), $euser->user_email);
@@ -254,13 +254,13 @@ function pmpro_cron_trial_ending_warnings()
 		}
 
 		//update user meta so we don't email them again
-		update_user_meta($e->user_id, "pmpro_trial_ending_notice", $today);
+		update_user_meta($e->user_id, "dmrfid_trial_ending_notice", $today);
 	}
 }
 
-add_action( 'pmpro_cron_admin_activity_email', 'pmpro_cron_admin_activity_email' );
-function pmpro_cron_admin_activity_email() {
-	$frequency = pmpro_getOption( 'activity_email_frequency' );
+add_action( 'dmrfid_cron_admin_activity_email', 'dmrfid_cron_admin_activity_email' );
+function dmrfid_cron_admin_activity_email() {
+	$frequency = dmrfid_getOption( 'activity_email_frequency' );
 	if ( empty( $frequency ) ) {
 		$frequency = 'week';
 	}
@@ -270,7 +270,7 @@ function pmpro_cron_admin_activity_email() {
 		( 'week' === $frequency && 'Mon' === date( 'D' ) ) ||
 		( 'month' === $frequency && 'Mon' === date( 'D' ) && 7 >= date( j ) )
 	) {
-		$pmproemail = new PMPro_Admin_Activity_Email();
-		$pmproemail->sendAdminActivity();
+		$dmrfidemail = new DmRFID_Admin_Activity_Email();
+		$dmrfidemail->sendAdminActivity();
 	}
 }

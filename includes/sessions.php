@@ -10,7 +10,7 @@
  * A general function to start sessions for Digital Members RFID.
  * @since 1.9.2
  */
-function pmpro_start_session() {
+function dmrfid_start_session() {
     // If headers were already sent, we can't use sessions.
 	if ( headers_sent() ) {
 		return;
@@ -34,13 +34,13 @@ function pmpro_start_session() {
     }
 }
 
-add_action('pmpro_checkout_preheader_before_get_level_at_checkout', 'pmpro_start_session', -1);
+add_action('dmrfid_checkout_preheader_before_get_level_at_checkout', 'dmrfid_start_session', -1);
 
 /**
  * Close the session object for new updates
  * @since 1.9.2
  */
-function pmpro_close_session() {
+function dmrfid_close_session() {
     if (!defined('DMRFID_USE_SESSIONS') || DMRFID_USE_SESSIONS == true) {
         if (defined('STDIN')) {
             //command line
@@ -57,7 +57,7 @@ function pmpro_close_session() {
         }
     }
 }
-add_action('pmpro_after_checkout', 'pmpro_close_session', 32768);
+add_action('dmrfid_after_checkout', 'dmrfid_close_session', 32768);
 
 /**
  * Set a session variable.
@@ -66,8 +66,8 @@ add_action('pmpro_after_checkout', 'pmpro_close_session', 32768);
  *
  * TODO: Update docblock.
  */
-function pmpro_set_session_var($key, $value) {
-    pmpro_start_session();
+function dmrfid_set_session_var($key, $value) {
+    dmrfid_start_session();
     $_SESSION[$key] = $value;
 }
 
@@ -78,8 +78,8 @@ function pmpro_set_session_var($key, $value) {
  *
  * TODO: Update docblock.
  */
-function pmpro_get_session_var( $key ) {
-    pmpro_start_session();
+function dmrfid_get_session_var( $key ) {
+    dmrfid_start_session();
 	if ( ! empty( $_SESSION ) && isset( $_SESSION[$key] ) ) {
 		return  $_SESSION[$key];
 	} else {
@@ -94,7 +94,7 @@ function pmpro_get_session_var( $key ) {
  *
  * TODO: Update docblock.
  */
-function pmpro_unset_session_var($key) {
-    pmpro_start_session();
+function dmrfid_unset_session_var($key) {
+    dmrfid_start_session();
     unset($_SESSION[$key]);
 }

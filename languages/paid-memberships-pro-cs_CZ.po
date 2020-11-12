@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: pmpro\n"
+"Project-Id-Version: dmrfid\n"
 "POT-Creation-Date: 2015-02-28 13:48-0500\n"
 "PO-Revision-Date: 2015-03-12 20:07+0100\n"
 "Last-Translator: Martin Kokeš <shr3k1@gmail.com>\n"
@@ -261,7 +261,7 @@ msgstr "Ano - Ukázat výňatky."
 #: adminpages/advancedsettings.php:148 adminpages/advancedsettings.php:207
 #: adminpages/advancedsettings.php:219 adminpages/membershiplevels.php:578
 #: adminpages/paymentsettings.php:210
-#: classes/gateways/class.pmprogateway_stripe.php:173 includes/profile.php:101
+#: classes/gateways/class.dmrfidgateway_stripe.php:173 includes/profile.php:101
 #: adminpages/advancedsettings.php:128 adminpages/advancedsettings.php:135
 #: adminpages/advancedsettings.php:187 adminpages/advancedsettings.php:194
 #: adminpages/advancedsettings.php:199 adminpages/advancedsettings.php:206
@@ -313,7 +313,7 @@ msgstr "Pouze pro multisite"
 
 #: adminpages/advancedsettings.php:208 adminpages/membershiplevels.php:578
 #: adminpages/paymentsettings.php:211
-#: classes/gateways/class.pmprogateway_stripe.php:174 includes/profile.php:102
+#: classes/gateways/class.dmrfidgateway_stripe.php:174 includes/profile.php:102
 #: adminpages/advancedsettings.php:188 adminpages/advancedsettings.php:195
 #: adminpages/membershiplevels.php:563 adminpages/membershiplevels.php:569
 #: adminpages/membershiplevels.php:571 adminpages/membershiplevels.php:598
@@ -483,8 +483,8 @@ msgid "Start Date"
 msgstr "Počáteční datum"
 
 #: adminpages/discountcodes.php:371
-#: classes/gateways/class.pmprogateway_braintree.php:308
-#: classes/gateways/class.pmprogateway_stripe.php:454 pages/billing.php:253
+#: classes/gateways/class.dmrfidgateway_braintree.php:308
+#: classes/gateways/class.dmrfidgateway_stripe.php:454 pages/billing.php:253
 #: pages/checkout.php:553 adminpages/discountcodes.php:367
 #: adminpages/discountcodes.php:370 pages/billing.php:249
 #: pages/checkout.php:508 pages/checkout.php:524 pages/checkout.php:525
@@ -545,7 +545,7 @@ msgstr "Vyfakturovaná částka"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:374 adminpages/membershiplevels.php:477
-#: classes/gateways/class.pmprogateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
 #: adminpages/membershiplevels.php:353 adminpages/membershiplevels.php:355
@@ -555,7 +555,7 @@ msgstr "den(y)"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:374 adminpages/membershiplevels.php:477
-#: classes/gateways/class.pmprogateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
 #: adminpages/membershiplevels.php:353 adminpages/membershiplevels.php:355
@@ -565,7 +565,7 @@ msgstr "měsíc(e)"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:374 adminpages/membershiplevels.php:477
-#: classes/gateways/class.pmprogateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
 #: adminpages/membershiplevels.php:353 adminpages/membershiplevels.php:355
@@ -575,7 +575,7 @@ msgstr "týden(y)"
 
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:374 adminpages/membershiplevels.php:477
-#: classes/gateways/class.pmprogateway_stripe.php:521
+#: classes/gateways/class.dmrfidgateway_stripe.php:521
 #: adminpages/discountcodes.php:446 adminpages/discountcodes.php:466
 #: adminpages/discountcodes.php:492 adminpages/discountcodes.php:520
 #: adminpages/membershiplevels.php:353 adminpages/membershiplevels.php:355
@@ -803,8 +803,8 @@ msgid "From Name"
 msgstr "Jméno odesílatele"
 
 #: adminpages/emailsettings.php:94
-msgid "Only Filter PMPro Emails?"
-msgstr "Filtrovat jen PMPro e-maily?"
+msgid "Only Filter DmRFID Emails?"
+msgstr "Filtrovat jen DmRFID e-maily?"
 
 #: adminpages/emailsettings.php:98
 msgid "If unchecked, all emails from \"WordPress &lt;"
@@ -869,10 +869,10 @@ msgstr "Noví uživatelé"
 #: adminpages/emailsettings.php:157
 msgid ""
 "Default WP notification email. (Recommended: Leave unchecked. Members will "
-"still get an email confirmation from PMPro after checkout.)"
+"still get an email confirmation from DmRFID after checkout.)"
 msgstr ""
 "Výchozí e-mail upozornění WP. (Doporučeno: Nechte zaškrtnuté. Členové i tak "
-"dostanou e-mailové potvrzení od PMPro po zaplacení.)"
+"dostanou e-mailové potvrzení od DmRFID po zaplacení.)"
 
 #: adminpages/membershiplevels.php:118
 msgid "Membership level updated successfully."
@@ -942,7 +942,7 @@ msgid "Billing Details"
 msgstr "Fakturační údaje"
 
 #: adminpages/membershiplevels.php:370
-#: classes/gateways/class.pmprogateway_stripe.php:619
+#: classes/gateways/class.dmrfidgateway_stripe.php:619
 #: adminpages/membershiplevels.php:349 adminpages/membershiplevels.php:351
 msgid "per"
 msgstr "na"
@@ -978,17 +978,17 @@ msgstr ""
 msgid ""
 "After saving this level, make note of the ID and create a \"Plan\" in your "
 "Braintree dashboard with the same settings and the \"Plan ID\" set to "
-"<em>pmpro_#</em>, where # is the level ID."
+"<em>dmrfid_#</em>, where # is the level ID."
 msgstr ""
 "Po uložení této úrovně si poznamenejte ID a vytvořte \"Plan\" ve vašem "
 "ovládacím panelu Braintree se stejným nastavením a \"Plan ID\" nastavte na "
-"<em>pmpro_#</em>, kde # je úroveň ID."
+"<em>dmrfid_#</em>, kde # je úroveň ID."
 
 #: adminpages/membershiplevels.php:393 adminpages/membershiplevels.php:395
-#: classes/gateways/class.pmprogateway_cybersource.php:101
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:123
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:123
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 #: adminpages/membershiplevels.php:372 adminpages/membershiplevels.php:374
 #: adminpages/membershiplevels.php:376 adminpages/paymentsettings.php:170
 #: adminpages/paymentsettings.php:174 adminpages/paymentsettings.php:179
@@ -1214,10 +1214,10 @@ msgid "Billing Address"
 msgstr "Fakturační adresa"
 
 #: adminpages/memberslist.php:161 adminpages/reports/login.php:143
-#: classes/gateways/class.pmprogateway_authorizenet.php:303
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:303
 #: adminpages/memberslist.php:118 adminpages/memberslist.php:151
 #: adminpages/pagesettings.php:51
-#: classes/gateways/class.pmprogateway_authorizenet.php:187
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:187
 msgid "Membership"
 msgstr "Členství"
 
@@ -1344,8 +1344,8 @@ msgid "e.g. PayPal Express, PayPal Standard, Credit Card."
 msgstr "např. PayPal Express, PayPal Standard, platební karta."
 
 #: adminpages/orders.php:389
-#: classes/gateways/class.pmprogateway_braintree.php:291
-#: classes/gateways/class.pmprogateway_stripe.php:408 pages/billing.php:238
+#: classes/gateways/class.dmrfidgateway_braintree.php:291
+#: classes/gateways/class.dmrfidgateway_stripe.php:408 pages/billing.php:238
 #: pages/checkout.php:507 adminpages/orders.php:339 pages/billing.php:234
 #: pages/checkout.php:493 pages/checkout.php:510 pages/checkout.php:517
 msgid "Card Type"
@@ -1356,7 +1356,7 @@ msgid "e.g. Visa, MasterCard, AMEX, etc"
 msgstr "Například Visa, MasterCard, AMEX, atd."
 
 #: adminpages/orders.php:398
-#: classes/gateways/class.pmprogateway_twocheckout.php:129
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:129
 #: adminpages/orders.php:348 adminpages/paymentsettings.php:347
 #: adminpages/paymentsettings.php:352
 msgid "Account Number"
@@ -1511,7 +1511,7 @@ msgid "%d orders found."
 msgstr "%d objednávek nalezeno."
 
 #: adminpages/orders.php:902 adminpages/reports/login.php:141
-#: classes/gateways/class.pmprogateway_payflowpro.php:116
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:116
 #: adminpages/orders.php:599 adminpages/paymentsettings.php:211
 #: adminpages/paymentsettings.php:215 adminpages/paymentsettings.php:220
 msgid "User"
@@ -1772,12 +1772,12 @@ msgid ""
 "US only. If values are given, tax will be applied for any members ordering "
 "from the selected state.<br />For non-US or more complex tax rules, use the "
 "<a target=\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-"
-"taxes-paid-memberships-pro/\">pmpro_tax filter</a>."
+"taxes-paid-memberships-pro/\">dmrfid_tax filter</a>."
 msgstr ""
 "Pouze pro USA. Pokud jsou zadány hodnoty, daň se použije pro všechny členy "
 "objednávající z vybraného státu.<br />Mimo USA nebo pro složitější daňové "
 "předpisy použijte <a target=\"_blank\" href=\"http://www.paidmembershipspro."
-"com/2013/10/non-us-taxes-paid-memberships-pro/\">pmpro_tax filter</a>."
+"com/2013/10/non-us-taxes-paid-memberships-pro/\">dmrfid_tax filter</a>."
 
 #: adminpages/paymentsettings.php:206 adminpages/paymentsettings.php:450
 #: adminpages/paymentsettings.php:455 adminpages/paymentsettings.php:457
@@ -1993,220 +1993,220 @@ msgstr ""
 "Došlo k chybě při zrušení předplatného pro uživatele s ID=%s. Budete muset "
 "zkontrolovat vaši platební bránu, zda je jeho předplatné stále aktivní."
 
-#: classes/class.pmproemail.php:37
+#: classes/class.dmrfidemail.php:37
 #, php-format
 msgid "An Email From %s"
 msgstr "E-mail od %s"
 
-#: classes/class.pmproemail.php:125 classes/class.pmproemail.php:120
-#: classes/class.pmproemail.php:122
+#: classes/class.dmrfidemail.php:125 classes/class.dmrfidemail.php:120
+#: classes/class.dmrfidemail.php:122
 #, php-format
 msgid "Your membership at %s has been CANCELLED"
 msgstr "Vaše členství v %s bylo ZRUŠENO"
 
-#: classes/class.pmproemail.php:147 classes/class.pmproemail.php:142
-#: classes/class.pmproemail.php:144
+#: classes/class.dmrfidemail.php:147 classes/class.dmrfidemail.php:142
+#: classes/class.dmrfidemail.php:144
 #, php-format
 msgid "Membership for %s at %s has been CANCELLED"
 msgstr "Členství uživatele %s v %s bylo ZRUŠENO"
 
-#: classes/class.pmproemail.php:178 classes/class.pmproemail.php:172
-#: classes/class.pmproemail.php:173 classes/class.pmproemail.php:175
+#: classes/class.dmrfidemail.php:178 classes/class.dmrfidemail.php:172
+#: classes/class.dmrfidemail.php:173 classes/class.dmrfidemail.php:175
 #, php-format
 msgid "Your membership confirmation for %s"
 msgstr "Potvrzení Vašeho členství v %s"
 
-#: classes/class.pmproemail.php:231 classes/class.pmproemail.php:240
-#: classes/class.pmproemail.php:249 classes/class.pmproemail.php:328
-#: classes/class.pmproemail.php:337 classes/class.pmproemail.php:648
-#: classes/gateways/class.pmprogateway_braintree.php:349
-#: classes/gateways/class.pmprogateway_stripe.php:495 pages/checkout.php:66
+#: classes/class.dmrfidemail.php:231 classes/class.dmrfidemail.php:240
+#: classes/class.dmrfidemail.php:249 classes/class.dmrfidemail.php:328
+#: classes/class.dmrfidemail.php:337 classes/class.dmrfidemail.php:648
+#: classes/gateways/class.dmrfidgateway_braintree.php:349
+#: classes/gateways/class.dmrfidgateway_stripe.php:495 pages/checkout.php:66
 #: pages/checkout.php:76 pages/checkout.php:594 pages/confirmation.php:52
-#: pages/invoice.php:33 classes/class.pmproemail.php:216
-#: classes/class.pmproemail.php:218 classes/class.pmproemail.php:225
-#: classes/class.pmproemail.php:227 classes/class.pmproemail.php:228
-#: classes/class.pmproemail.php:234 classes/class.pmproemail.php:236
-#: classes/class.pmproemail.php:237 classes/class.pmproemail.php:246
-#: classes/class.pmproemail.php:304 classes/class.pmproemail.php:307
-#: classes/class.pmproemail.php:313 classes/class.pmproemail.php:316
-#: classes/class.pmproemail.php:325 classes/class.pmproemail.php:334
-#: classes/class.pmproemail.php:532 classes/class.pmproemail.php:580
-#: classes/class.pmproemail.php:645 pages/checkout.php:67
+#: pages/invoice.php:33 classes/class.dmrfidemail.php:216
+#: classes/class.dmrfidemail.php:218 classes/class.dmrfidemail.php:225
+#: classes/class.dmrfidemail.php:227 classes/class.dmrfidemail.php:228
+#: classes/class.dmrfidemail.php:234 classes/class.dmrfidemail.php:236
+#: classes/class.dmrfidemail.php:237 classes/class.dmrfidemail.php:246
+#: classes/class.dmrfidemail.php:304 classes/class.dmrfidemail.php:307
+#: classes/class.dmrfidemail.php:313 classes/class.dmrfidemail.php:316
+#: classes/class.dmrfidemail.php:325 classes/class.dmrfidemail.php:334
+#: classes/class.dmrfidemail.php:532 classes/class.dmrfidemail.php:580
+#: classes/class.dmrfidemail.php:645 pages/checkout.php:67
 #: pages/checkout.php:68 pages/checkout.php:77 pages/checkout.php:78
 #: pages/checkout.php:549 pages/checkout.php:565 pages/checkout.php:566
 #: pages/checkout.php:573 pages/confirmation.php:51 pages/invoice.php:32
 msgid "Discount Code"
 msgstr "Slevový kód"
 
-#: classes/class.pmproemail.php:256 classes/class.pmproemail.php:349
-#: classes/class.pmproemail.php:654 classes/class.pmproemail.php:241
-#: classes/class.pmproemail.php:243 classes/class.pmproemail.php:253
-#: classes/class.pmproemail.php:325 classes/class.pmproemail.php:328
-#: classes/class.pmproemail.php:346 classes/class.pmproemail.php:538
-#: classes/class.pmproemail.php:586 classes/class.pmproemail.php:651
+#: classes/class.dmrfidemail.php:256 classes/class.dmrfidemail.php:349
+#: classes/class.dmrfidemail.php:654 classes/class.dmrfidemail.php:241
+#: classes/class.dmrfidemail.php:243 classes/class.dmrfidemail.php:253
+#: classes/class.dmrfidemail.php:325 classes/class.dmrfidemail.php:328
+#: classes/class.dmrfidemail.php:346 classes/class.dmrfidemail.php:538
+#: classes/class.dmrfidemail.php:586 classes/class.dmrfidemail.php:651
 #, php-format
 msgid "This membership will expire on %s."
 msgstr "Toto členství vyprší %s."
 
-#: classes/class.pmproemail.php:278 classes/class.pmproemail.php:263
-#: classes/class.pmproemail.php:265 classes/class.pmproemail.php:275
+#: classes/class.dmrfidemail.php:278 classes/class.dmrfidemail.php:263
+#: classes/class.dmrfidemail.php:265 classes/class.dmrfidemail.php:275
 #, php-format
 msgid "Member Checkout for %s at %s"
 msgstr "Platba člena za %s v %s"
 
-#: classes/class.pmproemail.php:366 classes/class.pmproemail.php:342
-#: classes/class.pmproemail.php:345 classes/class.pmproemail.php:363
+#: classes/class.dmrfidemail.php:366 classes/class.dmrfidemail.php:342
+#: classes/class.dmrfidemail.php:345 classes/class.dmrfidemail.php:363
 #, php-format
 msgid "Your billing information has been udpated at %s"
 msgstr "Vaše fakturační údaje byly aktualizovány na %s"
 
-#: classes/class.pmproemail.php:419 classes/class.pmproemail.php:386
-#: classes/class.pmproemail.php:390 classes/class.pmproemail.php:416
+#: classes/class.dmrfidemail.php:419 classes/class.dmrfidemail.php:386
+#: classes/class.dmrfidemail.php:390 classes/class.dmrfidemail.php:416
 #, php-format
 msgid "Billing information has been udpated for %s at %s"
 msgstr "Fakturační údaje byly aktualizovány z %s na %s"
 
-#: classes/class.pmproemail.php:467 classes/class.pmproemail.php:425
-#: classes/class.pmproemail.php:430 classes/class.pmproemail.php:464
+#: classes/class.dmrfidemail.php:467 classes/class.dmrfidemail.php:425
+#: classes/class.dmrfidemail.php:430 classes/class.dmrfidemail.php:464
 #, php-format
 msgid "Membership Payment Failed at %s"
 msgstr "Platba za členství se nezdařila na %s"
 
-#: classes/class.pmproemail.php:513 classes/class.pmproemail.php:462
-#: classes/class.pmproemail.php:468 classes/class.pmproemail.php:510
+#: classes/class.dmrfidemail.php:513 classes/class.dmrfidemail.php:462
+#: classes/class.dmrfidemail.php:468 classes/class.dmrfidemail.php:510
 #, php-format
 msgid "Membership Payment Failed For %s at %s"
 msgstr "Platba za členství se nezdařila pro %s na %s"
 
-#: classes/class.pmproemail.php:560 classes/class.pmproemail.php:508
-#: classes/class.pmproemail.php:557
+#: classes/class.dmrfidemail.php:560 classes/class.dmrfidemail.php:508
+#: classes/class.dmrfidemail.php:557
 #, php-format
 msgid "Credit Card on File Expiring Soon at %s"
 msgstr "Kreditní karta brzy skončí na %s"
 
-#: classes/class.pmproemail.php:608 classes/class.pmproemail.php:501
-#: classes/class.pmproemail.php:548 classes/class.pmproemail.php:605
+#: classes/class.dmrfidemail.php:608 classes/class.dmrfidemail.php:501
+#: classes/class.dmrfidemail.php:548 classes/class.dmrfidemail.php:605
 #, php-format
 msgid "INVOICE for %s membership"
 msgstr "VYÚČTOVÁNÍ za %s členství"
 
-#: classes/class.pmproemail.php:679 classes/class.pmproemail.php:563
-#: classes/class.pmproemail.php:611 classes/class.pmproemail.php:676
+#: classes/class.dmrfidemail.php:679 classes/class.dmrfidemail.php:563
+#: classes/class.dmrfidemail.php:611 classes/class.dmrfidemail.php:676
 #, php-format
 msgid "Your trial at %s is ending soon"
 msgstr "Vaše zkušební doba v %s brzy vyprší"
 
-#: classes/class.pmproemail.php:713 classes/class.pmproemail.php:596
-#: classes/class.pmproemail.php:645 classes/class.pmproemail.php:710
+#: classes/class.dmrfidemail.php:713 classes/class.dmrfidemail.php:596
+#: classes/class.dmrfidemail.php:645 classes/class.dmrfidemail.php:710
 #, php-format
 msgid "Your membership at %s has ended"
 msgstr "Vaše členství v %s vypršelo"
 
-#: classes/class.pmproemail.php:738 classes/class.pmproemail.php:621
-#: classes/class.pmproemail.php:670 classes/class.pmproemail.php:735
+#: classes/class.dmrfidemail.php:738 classes/class.dmrfidemail.php:621
+#: classes/class.dmrfidemail.php:670 classes/class.dmrfidemail.php:735
 #, php-format
 msgid "Your membership at %s will end soon"
 msgstr "Vaše členství v %s brzy vyprší"
 
-#: classes/class.pmproemail.php:758 classes/class.pmproemail.php:641
-#: classes/class.pmproemail.php:690 classes/class.pmproemail.php:755
+#: classes/class.dmrfidemail.php:758 classes/class.dmrfidemail.php:641
+#: classes/class.dmrfidemail.php:690 classes/class.dmrfidemail.php:755
 #, php-format
 msgid "Your membership at %s has been changed"
 msgstr "Vaše členství v %s bylo změněno"
 
-#: classes/class.pmproemail.php:762 classes/class.pmproemail.php:759
+#: classes/class.dmrfidemail.php:762 classes/class.dmrfidemail.php:759
 #, php-format
 msgid "The new level is %s."
 msgstr "Nová úroveň je %s."
 
-#: classes/class.pmproemail.php:764 classes/class.pmproemail.php:647
-#: classes/class.pmproemail.php:696 classes/class.pmproemail.php:761
+#: classes/class.dmrfidemail.php:764 classes/class.dmrfidemail.php:647
+#: classes/class.dmrfidemail.php:696 classes/class.dmrfidemail.php:761
 msgid "Your membership has been cancelled"
 msgstr "Vaše členství bylo zrušeno"
 
-#: classes/class.pmproemail.php:768 classes/class.pmproemail.php:806
-#: classes/class.pmproemail.php:651 classes/class.pmproemail.php:689
-#: classes/class.pmproemail.php:700 classes/class.pmproemail.php:738
-#: classes/class.pmproemail.php:765 classes/class.pmproemail.php:803
+#: classes/class.dmrfidemail.php:768 classes/class.dmrfidemail.php:806
+#: classes/class.dmrfidemail.php:651 classes/class.dmrfidemail.php:689
+#: classes/class.dmrfidemail.php:700 classes/class.dmrfidemail.php:738
+#: classes/class.dmrfidemail.php:765 classes/class.dmrfidemail.php:803
 #, php-format
 msgid "This membership will expire on %s"
 msgstr "Toto členství vyprší %s"
 
-#: classes/class.pmproemail.php:772 classes/class.pmproemail.php:810
-#: classes/class.pmproemail.php:655 classes/class.pmproemail.php:693
-#: classes/class.pmproemail.php:704 classes/class.pmproemail.php:742
-#: classes/class.pmproemail.php:769 classes/class.pmproemail.php:807
+#: classes/class.dmrfidemail.php:772 classes/class.dmrfidemail.php:810
+#: classes/class.dmrfidemail.php:655 classes/class.dmrfidemail.php:693
+#: classes/class.dmrfidemail.php:704 classes/class.dmrfidemail.php:742
+#: classes/class.dmrfidemail.php:769 classes/class.dmrfidemail.php:807
 msgid "This membership does not expire"
 msgstr "Toto členství nevyprší"
 
-#: classes/class.pmproemail.php:796 classes/class.pmproemail.php:679
-#: classes/class.pmproemail.php:728 classes/class.pmproemail.php:793
+#: classes/class.dmrfidemail.php:796 classes/class.dmrfidemail.php:679
+#: classes/class.dmrfidemail.php:728 classes/class.dmrfidemail.php:793
 #, php-format
 msgid "Membership for %s at %s has been changed"
 msgstr "Členství uživatele %s v %s bylo změněno"
 
-#: classes/class.pmproemail.php:800 classes/class.pmproemail.php:645
-#: classes/class.pmproemail.php:683 classes/class.pmproemail.php:694
-#: classes/class.pmproemail.php:732 classes/class.pmproemail.php:797
+#: classes/class.dmrfidemail.php:800 classes/class.dmrfidemail.php:645
+#: classes/class.dmrfidemail.php:683 classes/class.dmrfidemail.php:694
+#: classes/class.dmrfidemail.php:732 classes/class.dmrfidemail.php:797
 #, php-format
 msgid "The new level is %s. This membership is free"
 msgstr "Nová úroveň je %s. Toto členství je zdarma."
 
-#: classes/class.pmproemail.php:802 classes/class.pmproemail.php:799
+#: classes/class.dmrfidemail.php:802 classes/class.dmrfidemail.php:799
 msgid "Membership has been cancelled"
 msgstr "Členství bylo zrušeno"
 
-#: classes/gateways/class.pmprogateway.php:55
-#: classes/gateways/class.pmprogateway_authorizenet.php:171
-#: classes/gateways/class.pmprogateway_check.php:193
-#: classes/gateways/class.pmprogateway_cybersource.php:171
-#: classes/gateways/class.pmprogateway_payflowpro.php:164
-#: classes/gateways/class.pmprogateway_paypal.php:247
-#: classes/gateways/class.pmprogateway_authorizenet.php:55
-#: classes/gateways/class.pmprogateway_check.php:60
-#: classes/gateways/class.pmprogateway_cybersource.php:57
-#: classes/gateways/class.pmprogateway_payflowpro.php:27
-#: classes/gateways/class.pmprogateway_paypal.php:27
+#: classes/gateways/class.dmrfidgateway.php:55
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:171
+#: classes/gateways/class.dmrfidgateway_check.php:193
+#: classes/gateways/class.dmrfidgateway_cybersource.php:171
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:164
+#: classes/gateways/class.dmrfidgateway_paypal.php:247
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:55
+#: classes/gateways/class.dmrfidgateway_check.php:60
+#: classes/gateways/class.dmrfidgateway_cybersource.php:57
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:27
+#: classes/gateways/class.dmrfidgateway_paypal.php:27
 msgid "Unknown error: Authorization failed."
 msgstr "Neznámá chyba: Autorizace selhala."
 
-#: classes/gateways/class.pmprogateway.php:106
-#: classes/gateways/class.pmprogateway.php:111
-#: classes/gateways/class.pmprogateway.php:129
-#: classes/gateways/class.pmprogateway_authorizenet.php:222
-#: classes/gateways/class.pmprogateway_authorizenet.php:227
-#: classes/gateways/class.pmprogateway_authorizenet.php:244
-#: classes/gateways/class.pmprogateway_check.php:244
-#: classes/gateways/class.pmprogateway_check.php:249
-#: classes/gateways/class.pmprogateway_check.php:267
-#: classes/gateways/class.pmprogateway_cybersource.php:222
-#: classes/gateways/class.pmprogateway_cybersource.php:227
-#: classes/gateways/class.pmprogateway_cybersource.php:245
-#: classes/gateways/class.pmprogateway_payflowpro.php:187
-#: classes/gateways/class.pmprogateway_payflowpro.php:192
-#: classes/gateways/class.pmprogateway_paypal.php:270
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
-#: classes/gateways/class.pmprogateway_authorizenet.php:111
-#: classes/gateways/class.pmprogateway_authorizenet.php:128
-#: classes/gateways/class.pmprogateway_check.php:111
-#: classes/gateways/class.pmprogateway_check.php:116
-#: classes/gateways/class.pmprogateway_check.php:134
-#: classes/gateways/class.pmprogateway_cybersource.php:108
-#: classes/gateways/class.pmprogateway_cybersource.php:113
-#: classes/gateways/class.pmprogateway_cybersource.php:131
-#: classes/gateways/class.pmprogateway_payflowpro.php:50
-#: classes/gateways/class.pmprogateway_payflowpro.php:55
-#: classes/gateways/class.pmprogateway_paypal.php:50
+#: classes/gateways/class.dmrfidgateway.php:106
+#: classes/gateways/class.dmrfidgateway.php:111
+#: classes/gateways/class.dmrfidgateway.php:129
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:222
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:227
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:249
+#: classes/gateways/class.dmrfidgateway_check.php:267
+#: classes/gateways/class.dmrfidgateway_cybersource.php:222
+#: classes/gateways/class.dmrfidgateway_cybersource.php:227
+#: classes/gateways/class.dmrfidgateway_cybersource.php:245
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:187
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:192
+#: classes/gateways/class.dmrfidgateway_paypal.php:270
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:111
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:128
+#: classes/gateways/class.dmrfidgateway_check.php:111
+#: classes/gateways/class.dmrfidgateway_check.php:116
+#: classes/gateways/class.dmrfidgateway_check.php:134
+#: classes/gateways/class.dmrfidgateway_cybersource.php:108
+#: classes/gateways/class.dmrfidgateway_cybersource.php:113
+#: classes/gateways/class.dmrfidgateway_cybersource.php:131
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:50
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:55
+#: classes/gateways/class.dmrfidgateway_paypal.php:50
 msgid "Unknown error: Payment failed."
 msgstr "Neznámá chyba: Platba selhala."
 
-#: classes/gateways/class.pmprogateway.php:113
-#: classes/gateways/class.pmprogateway_authorizenet.php:228
-#: classes/gateways/class.pmprogateway_check.php:251
-#: classes/gateways/class.pmprogateway_cybersource.php:229
-#: classes/gateways/class.pmprogateway_authorizenet.php:112
-#: classes/gateways/class.pmprogateway_check.php:118
-#: classes/gateways/class.pmprogateway_cybersource.php:115
+#: classes/gateways/class.dmrfidgateway.php:113
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:228
+#: classes/gateways/class.dmrfidgateway_check.php:251
+#: classes/gateways/class.dmrfidgateway_cybersource.php:229
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:112
+#: classes/gateways/class.dmrfidgateway_check.php:118
+#: classes/gateways/class.dmrfidgateway_cybersource.php:115
 msgid ""
 "A partial payment was made that we could not void. Please contact the site "
 "owner immediately to correct this."
@@ -2214,34 +2214,34 @@ msgstr ""
 "Byla provedena částečná platba, kterou jsme nemohli anulovat. Pro nápravu se "
 "obraťte co nejdříve na vlastníka webu."
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:39
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:39
 #: paid-memberships-pro.php:122
 msgid "Authorize.net"
 msgstr "Authorize.net"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:93
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:93
 msgid "Authorize.net Settings"
 msgstr "Nastavení Authorize.net"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:98
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:98
 #: adminpages/paymentsettings.php:260 adminpages/paymentsettings.php:264
 #: adminpages/paymentsettings.php:269
 msgid "Login Name"
 msgstr "Přihlašovací jméno"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
 #: adminpages/paymentsettings.php:268 adminpages/paymentsettings.php:272
 #: adminpages/paymentsettings.php:277
 msgid "Transaction Key"
 msgstr "Transakční klíč"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:114
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:114
 #: adminpages/paymentsettings.php:454 adminpages/paymentsettings.php:495
 #: adminpages/paymentsettings.php:501 adminpages/paymentsettings.php:503
 msgid "Silent Post URL"
 msgstr "URL pro Silent Post"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:117
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:117
 #: adminpages/paymentsettings.php:457 adminpages/paymentsettings.php:498
 #: adminpages/paymentsettings.php:504 adminpages/paymentsettings.php:506
 msgid ""
@@ -2250,53 +2250,53 @@ msgstr ""
 "Chcete-li plně integrovat Authorize.net, ujistěte se, že máte správně "
 "nastaven URL pro Silent Post na"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:908
-#: classes/gateways/class.pmprogateway_authorizenet.php:909
-#: classes/gateways/class.pmprogateway_authorizenet.php:787
-#: classes/gateways/class.pmprogateway_authorizenet.php:788
-#: classes/gateways/class.pmprogateway_authorizenet.php:789
-#: classes/gateways/class.pmprogateway_authorizenet.php:792
-#: classes/gateways/class.pmprogateway_authorizenet.php:793
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:908
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:909
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:787
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:788
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:789
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:792
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:793
 msgid "Could not connect to Authorize.net"
 msgstr "Nelze se připojit k Authorize.net"
 
-#: classes/gateways/class.pmprogateway_braintree.php:63
+#: classes/gateways/class.dmrfidgateway_braintree.php:63
 #: paid-memberships-pro.php:123
 msgid "Braintree Payments"
 msgstr "Platby Braintree"
 
-#: classes/gateways/class.pmprogateway_braintree.php:119
+#: classes/gateways/class.dmrfidgateway_braintree.php:119
 msgid "Braintree Settings"
 msgstr "Nastavení Braintree"
 
-#: classes/gateways/class.pmprogateway_braintree.php:124
-#: classes/gateways/class.pmprogateway_cybersource.php:106
+#: classes/gateways/class.dmrfidgateway_braintree.php:124
+#: classes/gateways/class.dmrfidgateway_cybersource.php:106
 #: adminpages/paymentsettings.php:294 adminpages/paymentsettings.php:298
 #: adminpages/paymentsettings.php:303 adminpages/paymentsettings.php:364
 #: adminpages/paymentsettings.php:369
 msgid "Merchant ID"
 msgstr "ID obchodníka"
 
-#: classes/gateways/class.pmprogateway_braintree.php:132
+#: classes/gateways/class.dmrfidgateway_braintree.php:132
 #: adminpages/paymentsettings.php:302 adminpages/paymentsettings.php:306
 #: adminpages/paymentsettings.php:311
 msgid "Public Key"
 msgstr "Veřejný klíč"
 
-#: classes/gateways/class.pmprogateway_braintree.php:140
+#: classes/gateways/class.dmrfidgateway_braintree.php:140
 #: adminpages/paymentsettings.php:310 adminpages/paymentsettings.php:314
 #: adminpages/paymentsettings.php:319
 msgid "Private Key"
 msgstr "Osobní klíč"
 
-#: classes/gateways/class.pmprogateway_braintree.php:148
+#: classes/gateways/class.dmrfidgateway_braintree.php:148
 #: adminpages/paymentsettings.php:318 adminpages/paymentsettings.php:322
 #: adminpages/paymentsettings.php:327
 msgid "Client-Side Encryption Key"
 msgstr "Šifrovací klíč na straně klienta"
 
-#: classes/gateways/class.pmprogateway_braintree.php:156
-#: classes/gateways/class.pmprogateway_stripe.php:181
+#: classes/gateways/class.dmrfidgateway_braintree.php:156
+#: classes/gateways/class.dmrfidgateway_stripe.php:181
 #: adminpages/paymentsettings.php:462 adminpages/paymentsettings.php:470
 #: adminpages/paymentsettings.php:503 adminpages/paymentsettings.php:509
 #: adminpages/paymentsettings.php:511 adminpages/paymentsettings.php:517
@@ -2304,7 +2304,7 @@ msgstr "Šifrovací klíč na straně klienta"
 msgid "Web Hook URL"
 msgstr "URL pro Web Hook"
 
-#: classes/gateways/class.pmprogateway_braintree.php:160
+#: classes/gateways/class.dmrfidgateway_braintree.php:160
 #: adminpages/paymentsettings.php:474 adminpages/paymentsettings.php:515
 #: adminpages/paymentsettings.php:521 adminpages/paymentsettings.php:523
 msgid "To fully integrate with Braintree, be sure to set your Web Hook URL to"
@@ -2312,141 +2312,141 @@ msgstr ""
 "Chcete-li plně integrovat Braintree, ujistěte se, že máte správně nastaven "
 "URL pro Web Hook na"
 
-#: classes/gateways/class.pmprogateway_braintree.php:270
-#: classes/gateways/class.pmprogateway_stripe.php:387 pages/checkout.php:485
+#: classes/gateways/class.dmrfidgateway_braintree.php:270
+#: classes/gateways/class.dmrfidgateway_stripe.php:387 pages/checkout.php:485
 #: pages/checkout.php:476 pages/checkout.php:478 pages/checkout.php:493
 #: pages/checkout.php:500
 msgid "Payment Information"
 msgstr "Platební informace"
 
-#: classes/gateways/class.pmprogateway_braintree.php:270
-#: classes/gateways/class.pmprogateway_stripe.php:387 pages/checkout.php:485
+#: classes/gateways/class.dmrfidgateway_braintree.php:270
+#: classes/gateways/class.dmrfidgateway_stripe.php:387 pages/checkout.php:485
 #: pages/checkout.php:476 pages/checkout.php:478 pages/checkout.php:493
 #: pages/checkout.php:500
 #, php-format
 msgid "We Accept %s"
 msgstr "Přijímáme %s"
 
-#: classes/gateways/class.pmprogateway_braintree.php:303
-#: classes/gateways/class.pmprogateway_stripe.php:449 pages/billing.php:248
+#: classes/gateways/class.dmrfidgateway_braintree.php:303
+#: classes/gateways/class.dmrfidgateway_stripe.php:449 pages/billing.php:248
 #: pages/checkout.php:548 pages/billing.php:244 pages/checkout.php:503
 #: pages/checkout.php:519 pages/checkout.php:520 pages/checkout.php:527
 msgid "Card Number"
 msgstr "Číslo karty"
 
-#: classes/gateways/class.pmprogateway_braintree.php:340
-#: classes/gateways/class.pmprogateway_stripe.php:486 pages/billing.php:285
+#: classes/gateways/class.dmrfidgateway_braintree.php:340
+#: classes/gateways/class.dmrfidgateway_stripe.php:486 pages/billing.php:285
 #: pages/checkout.php:585 pages/billing.php:281 pages/checkout.php:540
 #: pages/checkout.php:556 pages/checkout.php:557 pages/checkout.php:564
 msgid "CVV"
 msgstr "CVV"
 
-#: classes/gateways/class.pmprogateway_braintree.php:341
-#: classes/gateways/class.pmprogateway_stripe.php:487 pages/billing.php:286
+#: classes/gateways/class.dmrfidgateway_braintree.php:341
+#: classes/gateways/class.dmrfidgateway_stripe.php:487 pages/billing.php:286
 #: pages/checkout.php:586 pages/billing.php:282 pages/checkout.php:541
 #: pages/checkout.php:557 pages/checkout.php:558 pages/checkout.php:565
 msgid "what's this?"
 msgstr "co to je?"
 
-#: classes/gateways/class.pmprogateway_braintree.php:351
-#: classes/gateways/class.pmprogateway_stripe.php:497 pages/checkout.php:78
+#: classes/gateways/class.dmrfidgateway_braintree.php:351
+#: classes/gateways/class.dmrfidgateway_stripe.php:497 pages/checkout.php:78
 #: pages/checkout.php:596 pages/checkout.php:79 pages/checkout.php:80
 #: pages/checkout.php:551 pages/checkout.php:567 pages/checkout.php:568
 #: pages/checkout.php:575
 msgid "Apply"
 msgstr "Použít"
 
-#: classes/gateways/class.pmprogateway_braintree.php:406
-#: classes/gateways/class.pmprogateway_stripe.php:1011
-#: classes/gateways/class.pmprogateway_braintree.php:61
-#: classes/gateways/class.pmprogateway_stripe.php:53
+#: classes/gateways/class.dmrfidgateway_braintree.php:406
+#: classes/gateways/class.dmrfidgateway_stripe.php:1011
+#: classes/gateways/class.dmrfidgateway_braintree.php:61
+#: classes/gateways/class.dmrfidgateway_stripe.php:53
 msgid "Unknown error: Initial payment failed."
 msgstr "Neznámá chyba: První platba se nezdařila."
 
-#: classes/gateways/class.pmprogateway_braintree.php:465
-#: classes/gateways/class.pmprogateway_braintree.php:120
+#: classes/gateways/class.dmrfidgateway_braintree.php:465
+#: classes/gateways/class.dmrfidgateway_braintree.php:120
 msgid "Error during settlement:"
 msgstr "Chyba během připsání:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:474
-#: classes/gateways/class.pmprogateway_braintree.php:129
+#: classes/gateways/class.dmrfidgateway_braintree.php:474
+#: classes/gateways/class.dmrfidgateway_braintree.php:129
 msgid "Error during charge:"
 msgstr "Chyba během debetu:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:566
-#: classes/gateways/class.pmprogateway_braintree.php:198
-#: classes/gateways/class.pmprogateway_braintree.php:221
+#: classes/gateways/class.dmrfidgateway_braintree.php:566
+#: classes/gateways/class.dmrfidgateway_braintree.php:198
+#: classes/gateways/class.dmrfidgateway_braintree.php:221
 msgid "Failed to update customer."
 msgstr "Nepodařilo se aktualizovat zákazníka."
 
-#: classes/gateways/class.pmprogateway_braintree.php:614
-#: classes/gateways/class.pmprogateway_braintree.php:246
-#: classes/gateways/class.pmprogateway_braintree.php:269
+#: classes/gateways/class.dmrfidgateway_braintree.php:614
+#: classes/gateways/class.dmrfidgateway_braintree.php:246
+#: classes/gateways/class.dmrfidgateway_braintree.php:269
 msgid "Failed to create customer."
 msgstr "Nepodařilo se vytvořit zákazníka."
 
-#: classes/gateways/class.pmprogateway_braintree.php:621
-#: classes/gateways/class.pmprogateway_braintree.php:253
-#: classes/gateways/class.pmprogateway_braintree.php:276
+#: classes/gateways/class.dmrfidgateway_braintree.php:621
+#: classes/gateways/class.dmrfidgateway_braintree.php:253
+#: classes/gateways/class.dmrfidgateway_braintree.php:276
 msgid "Error creating customer record with Braintree:"
 msgstr "Chyba při vytváření záznamu zákazníka Braintree:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:721
-#: classes/gateways/class.pmprogateway_braintree.php:344
-#: classes/gateways/class.pmprogateway_braintree.php:345
-#: classes/gateways/class.pmprogateway_braintree.php:376
+#: classes/gateways/class.dmrfidgateway_braintree.php:721
+#: classes/gateways/class.dmrfidgateway_braintree.php:344
+#: classes/gateways/class.dmrfidgateway_braintree.php:345
+#: classes/gateways/class.dmrfidgateway_braintree.php:376
 msgid "Error subscribing customer to plan with Braintree:"
 msgstr "Chyba při přihlášení zákazníka k plánu předplatného Braintree:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:736
-#: classes/gateways/class.pmprogateway_braintree.php:359
-#: classes/gateways/class.pmprogateway_braintree.php:360
-#: classes/gateways/class.pmprogateway_braintree.php:391
+#: classes/gateways/class.dmrfidgateway_braintree.php:736
+#: classes/gateways/class.dmrfidgateway_braintree.php:359
+#: classes/gateways/class.dmrfidgateway_braintree.php:360
+#: classes/gateways/class.dmrfidgateway_braintree.php:391
 msgid "Failed to subscribe with Braintree:"
 msgstr "Nepodařilo se předplatit pomocí Braintree:"
 
-#: classes/gateways/class.pmprogateway_braintree.php:774
-#: classes/gateways/class.pmprogateway_braintree.php:787
-#: classes/gateways/class.pmprogateway_braintree.php:794
-#: classes/gateways/class.pmprogateway_braintree.php:397
-#: classes/gateways/class.pmprogateway_braintree.php:398
-#: classes/gateways/class.pmprogateway_braintree.php:410
-#: classes/gateways/class.pmprogateway_braintree.php:411
-#: classes/gateways/class.pmprogateway_braintree.php:417
-#: classes/gateways/class.pmprogateway_braintree.php:418
-#: classes/gateways/class.pmprogateway_braintree.php:429
-#: classes/gateways/class.pmprogateway_braintree.php:442
-#: classes/gateways/class.pmprogateway_braintree.php:449
-#: classes/gateways/class.pmprogateway_stripe.php:343
-#: classes/gateways/class.pmprogateway_stripe.php:344
-#: classes/gateways/class.pmprogateway_stripe.php:351
-#: classes/gateways/class.pmprogateway_stripe.php:353
-#: classes/gateways/class.pmprogateway_stripe.php:354
-#: classes/gateways/class.pmprogateway_stripe.php:361
-#: classes/gateways/class.pmprogateway_stripe.php:396
-#: classes/gateways/class.pmprogateway_stripe.php:402
-#: classes/gateways/class.pmprogateway_stripe.php:423
+#: classes/gateways/class.dmrfidgateway_braintree.php:774
+#: classes/gateways/class.dmrfidgateway_braintree.php:787
+#: classes/gateways/class.dmrfidgateway_braintree.php:794
+#: classes/gateways/class.dmrfidgateway_braintree.php:397
+#: classes/gateways/class.dmrfidgateway_braintree.php:398
+#: classes/gateways/class.dmrfidgateway_braintree.php:410
+#: classes/gateways/class.dmrfidgateway_braintree.php:411
+#: classes/gateways/class.dmrfidgateway_braintree.php:417
+#: classes/gateways/class.dmrfidgateway_braintree.php:418
+#: classes/gateways/class.dmrfidgateway_braintree.php:429
+#: classes/gateways/class.dmrfidgateway_braintree.php:442
+#: classes/gateways/class.dmrfidgateway_braintree.php:449
+#: classes/gateways/class.dmrfidgateway_stripe.php:343
+#: classes/gateways/class.dmrfidgateway_stripe.php:344
+#: classes/gateways/class.dmrfidgateway_stripe.php:351
+#: classes/gateways/class.dmrfidgateway_stripe.php:353
+#: classes/gateways/class.dmrfidgateway_stripe.php:354
+#: classes/gateways/class.dmrfidgateway_stripe.php:361
+#: classes/gateways/class.dmrfidgateway_stripe.php:396
+#: classes/gateways/class.dmrfidgateway_stripe.php:402
+#: classes/gateways/class.dmrfidgateway_stripe.php:423
 msgid "Could not find the subscription."
 msgstr "Nelze najít předplatné."
 
-#: classes/gateways/class.pmprogateway_check.php:48
+#: classes/gateways/class.dmrfidgateway_check.php:48
 #: paid-memberships-pro.php:116 adminpages/orders.php:399
 #: adminpages/orders.php:449 adminpages/paymentsettings.php:157
 #: adminpages/paymentsettings.php:159
 msgid "Pay by Check"
 msgstr "Zaplatit šekem"
 
-#: classes/gateways/class.pmprogateway_check.php:100
+#: classes/gateways/class.dmrfidgateway_check.php:100
 msgid "Pay by Check Settings"
 msgstr "Nastavení platby šekem"
 
-#: classes/gateways/class.pmprogateway_check.php:105
+#: classes/gateways/class.dmrfidgateway_check.php:105
 #: adminpages/paymentsettings.php:389 adminpages/paymentsettings.php:415
 #: adminpages/paymentsettings.php:420 adminpages/paymentsettings.php:422
 msgid "Instructions"
 msgstr "Instrukce"
 
-#: classes/gateways/class.pmprogateway_check.php:109
+#: classes/gateways/class.dmrfidgateway_check.php:109
 #: adminpages/paymentsettings.php:393 adminpages/paymentsettings.php:419
 #: adminpages/paymentsettings.php:424 adminpages/paymentsettings.php:426
 msgid ""
@@ -2456,15 +2456,15 @@ msgstr ""
 "Na koho se má vystavit šek. Kam jej poslat. Zobrazeno na stránkách pokladny, "
 "potvrzení a vyúčtování."
 
-#: classes/gateways/class.pmprogateway_cybersource.php:42
+#: classes/gateways/class.dmrfidgateway_cybersource.php:42
 msgid "CyberSource"
 msgstr "CyberSource"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:96
+#: classes/gateways/class.dmrfidgateway_cybersource.php:96
 msgid "CyberSource Settings"
 msgstr "Nastavení CyberSource"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
 #: adminpages/paymentsettings.php:174
 msgid ""
 "This gateway option is in beta. Some functionality may not be available. "
@@ -2477,43 +2477,43 @@ msgstr ""
 "dostanete. <strong> Prosím ujistěte se, že jste aktualizovali Paid "
 "Memberships Pro na nejnovější verzi, která je k dispozici.</strong>"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:114
+#: classes/gateways/class.dmrfidgateway_cybersource.php:114
 #: adminpages/paymentsettings.php:372 adminpages/paymentsettings.php:377
 msgid "Transaction Security Key"
 msgstr "Bezpečnostní klíč transakce"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:39
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:39
 msgid "Payflow Pro/PayPal Pro"
 msgstr "Payflow Pro/PayPal Pro"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:95
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:95
 msgid "Payflow Pro Settings"
 msgstr "Nastavení Payflow Pro"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:100
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:100
 #: adminpages/paymentsettings.php:195 adminpages/paymentsettings.php:199
 #: adminpages/paymentsettings.php:204
 msgid "Partner"
 msgstr "Partner"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:108
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:108
 #: adminpages/paymentsettings.php:203 adminpages/paymentsettings.php:207
 #: adminpages/paymentsettings.php:212
 msgid "Vendor"
 msgstr "Prodejce"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:124
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:124
 #: pages/checkout.php:180 adminpages/paymentsettings.php:219
 #: adminpages/paymentsettings.php:223 adminpages/paymentsettings.php:228
 #: pages/checkout.php:177 pages/checkout.php:182
 msgid "Password"
 msgstr "Heslo"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:132
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:132
 msgid "IPN Handler"
 msgstr "IPN Handler"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:137
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:137
 #, php-format
 msgid ""
 "Payflow does not use IPN. To sync recurring subscriptions, please see <a "
@@ -2522,10 +2522,10 @@ msgstr ""
 "Payflow nepoužívá IPN. Chcete-li synchronizovat opakující se předplatné, viz "
 "<a target=\"_blank\" href=\"%s\">tento doplněk</a>."
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:194
-#: classes/gateways/class.pmprogateway_paypal.php:277
-#: classes/gateways/class.pmprogateway_payflowpro.php:57
-#: classes/gateways/class.pmprogateway_paypal.php:57
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:194
+#: classes/gateways/class.dmrfidgateway_paypal.php:277
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:57
 msgid ""
 "A partial payment was made that we could not refund. Please contact the site "
 "owner immediately to correct this."
@@ -2533,20 +2533,20 @@ msgstr ""
 "Byla provedena částečná platba, kterou nemůžeme vrátit. Pro nápravu se "
 "obraťte co nejdříve na vlastníka webu."
 
-#: classes/gateways/class.pmprogateway_paypal.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:57
 #: paid-memberships-pro.php:119
 msgid "PayPal Website Payments Pro"
 msgstr "PayPal Website Payments Pro"
 
-#: classes/gateways/class.pmprogateway_paypal.php:113
-#: classes/gateways/class.pmprogateway_paypalexpress.php:118
-#: classes/gateways/class.pmprogateway_paypalstandard.php:112
+#: classes/gateways/class.dmrfidgateway_paypal.php:113
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:118
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:112
 msgid "PayPal Settings"
 msgstr "Nastavení PayPal"
 
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:123
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:123
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 #: adminpages/paymentsettings.php:179
 msgid ""
 "We do not recommend using PayPal Standard. We suggest using PayPal Express, "
@@ -2561,51 +2561,51 @@ msgstr ""
 "using-paypal-standard-paid-memberships-pro/\">Více informací o tom je možné "
 "nalézt zde.</a>"
 
-#: classes/gateways/class.pmprogateway_paypal.php:123
-#: classes/gateways/class.pmprogateway_paypalexpress.php:128
-#: classes/gateways/class.pmprogateway_paypalstandard.php:122
+#: classes/gateways/class.dmrfidgateway_paypal.php:123
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:128
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:122
 #: adminpages/paymentsettings.php:227 adminpages/paymentsettings.php:231
 #: adminpages/paymentsettings.php:236
 msgid "Gateway Account Email"
 msgstr "E-mail účtu brány"
 
-#: classes/gateways/class.pmprogateway_paypal.php:131
-#: classes/gateways/class.pmprogateway_paypalexpress.php:136
-#: classes/gateways/class.pmprogateway_paypalstandard.php:130
-#: classes/gateways/class.pmprogateway_twocheckout.php:113
+#: classes/gateways/class.dmrfidgateway_paypal.php:131
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:136
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:130
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:113
 #: adminpages/paymentsettings.php:235 adminpages/paymentsettings.php:239
 #: adminpages/paymentsettings.php:244 adminpages/paymentsettings.php:331
 #: adminpages/paymentsettings.php:336
 msgid "API Username"
 msgstr "Uživatelské jméno API"
 
-#: classes/gateways/class.pmprogateway_paypal.php:139
-#: classes/gateways/class.pmprogateway_paypalexpress.php:144
-#: classes/gateways/class.pmprogateway_paypalstandard.php:138
-#: classes/gateways/class.pmprogateway_twocheckout.php:121
+#: classes/gateways/class.dmrfidgateway_paypal.php:139
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:144
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:138
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:121
 #: adminpages/paymentsettings.php:243 adminpages/paymentsettings.php:247
 #: adminpages/paymentsettings.php:252 adminpages/paymentsettings.php:339
 #: adminpages/paymentsettings.php:344
 msgid "API Password"
 msgstr "Heslo API"
 
-#: classes/gateways/class.pmprogateway_paypal.php:147
-#: classes/gateways/class.pmprogateway_paypalexpress.php:152
-#: classes/gateways/class.pmprogateway_paypalstandard.php:146
+#: classes/gateways/class.dmrfidgateway_paypal.php:147
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:152
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:146
 #: adminpages/paymentsettings.php:251 adminpages/paymentsettings.php:255
 #: adminpages/paymentsettings.php:260
 msgid "API Signature"
 msgstr "Signatura API"
 
-#: classes/gateways/class.pmprogateway_paypal.php:155
-#: classes/gateways/class.pmprogateway_paypalexpress.php:160
-#: classes/gateways/class.pmprogateway_paypalstandard.php:154
+#: classes/gateways/class.dmrfidgateway_paypal.php:155
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:160
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:154
 #: adminpages/paymentsettings.php:446 adminpages/paymentsettings.php:479
 #: adminpages/paymentsettings.php:485 adminpages/paymentsettings.php:487
 msgid "IPN Handler URL"
 msgstr "URL IPN Handleru"
 
-#: classes/gateways/class.pmprogateway_paypal.php:158
+#: classes/gateways/class.dmrfidgateway_paypal.php:158
 msgid ""
 "This URL is passed to PayPal for all new charges and subscriptions. You "
 "SHOULD NOT set this in your PayPal account settings."
@@ -2613,43 +2613,43 @@ msgstr ""
 "Tato URL adresa je předána PayPalu pro všechny nové debety a předplatné. "
 "NEMĚLI byste ji nastavovat v nastavení účtu PayPal."
 
-#: classes/gateways/class.pmprogateway_paypal.php:178
-#: classes/gateways/class.pmprogateway_paypalexpress.php:402
-#: classes/gateways/class.pmprogateway_paypalstandard.php:202
+#: classes/gateways/class.dmrfidgateway_paypal.php:178
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:402
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:202
 #: pages/checkout.php:286 pages/checkout.php:288 pages/checkout.php:302
 #: pages/checkout.php:309 pages/checkout.php:675 pages/checkout.php:682
 #: pages/checkout.php:685 pages/checkout.php:701
 msgid "Check Out with PayPal"
 msgstr "Zde zaplaťte pomocí PayPalu"
 
-#: classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:408
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
+#: classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:408
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
 #: pages/checkout.php:704 pages/checkout.php:681 pages/checkout.php:688
 #: pages/checkout.php:691 pages/checkout.php:707
 msgid "Submit and Check Out"
 msgstr "Odeslat a zaplatit"
 
-#: classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:408
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
-#: classes/gateways/class.pmprogateway_twocheckout.php:192
+#: classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:408
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:192
 #: pages/checkout.php:704 pages/checkout.php:681 pages/checkout.php:688
 #: pages/checkout.php:691 pages/checkout.php:707
 msgid "Submit and Confirm"
 msgstr "Odeslat a potvrdit"
 
-#: classes/gateways/class.pmprogateway_paypal.php:605
-#: classes/gateways/class.pmprogateway_paypalexpress.php:731
-#: classes/gateways/class.pmprogateway_paypalstandard.php:466
-#: classes/gateways/class.pmprogateway_paypal.php:385
-#: classes/gateways/class.pmprogateway_paypalexpress.php:301
-#: classes/gateways/class.pmprogateway_paypalexpress.php:303
-#: classes/gateways/class.pmprogateway_paypalexpress.php:305
-#: classes/gateways/class.pmprogateway_paypalstandard.php:216
-#: classes/gateways/class.pmprogateway_paypalstandard.php:220
-#: classes/gateways/class.pmprogateway_paypalstandard.php:230
-#: classes/gateways/class.pmprogateway_paypalstandard.php:231
+#: classes/gateways/class.dmrfidgateway_paypal.php:605
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:731
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:466
+#: classes/gateways/class.dmrfidgateway_paypal.php:385
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:301
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:303
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:305
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:216
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:220
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:230
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:231
 msgid ""
 "Please contact the site owner or cancel your subscription from within PayPal "
 "to make sure you are not charged going forward."
@@ -2657,19 +2657,19 @@ msgstr ""
 "Prosíme obraťte se na vlastníka stránky nebo zrušte předplatné v rámci "
 "PayPal a ujistěte se, že Vám nebude do budoucna účtováno."
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:63
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:63
 #: paid-memberships-pro.php:118
 msgid "PayPal Express"
 msgstr "PayPal Express"
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:163
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:163
 #: adminpages/paymentsettings.php:449 adminpages/paymentsettings.php:482
 #: adminpages/paymentsettings.php:488 adminpages/paymentsettings.php:490
 msgid "To fully integrate with PayPal, be sure to set your IPN Handler URL to "
 msgstr "Chcete-li plně integrovat PayPal, nastavte IPN Handler URL na"
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:268
-#: classes/gateways/class.pmprogateway_paypalexpress.php:320
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:268
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:320
 #: preheaders/checkout.php:690 preheaders/checkout.php:697
 #: preheaders/checkout.php:702 preheaders/checkout.php:735
 #: preheaders/checkout.php:750 preheaders/checkout.php:753
@@ -2679,12 +2679,12 @@ msgstr "Chcete-li plně integrovat PayPal, nastavte IPN Handler URL na"
 msgid "The PayPal Token was lost."
 msgstr "Paypal Token byl ztracen."
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:60
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:60
 #: paid-memberships-pro.php:121
 msgid "PayPal Standard"
 msgstr "PayPal Standard"
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:157
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:157
 msgid ""
 "Here is your IPN URL for reference. You SHOULD NOT set this in your PayPal "
 "settings."
@@ -2692,34 +2692,34 @@ msgstr ""
 "Tady je váš IPN URL pro referenci. Toto byste NEMĚLI nastavit v nastavení "
 "PayPal."
 
-#: classes/gateways/class.pmprogateway_stripe.php:93
+#: classes/gateways/class.dmrfidgateway_stripe.php:93
 #: paid-memberships-pro.php:117
 msgid "Stripe"
 msgstr "Stripe"
 
-#: classes/gateways/class.pmprogateway_stripe.php:148
+#: classes/gateways/class.dmrfidgateway_stripe.php:148
 msgid "Stripe Settings"
 msgstr "Nastavení Stripe"
 
-#: classes/gateways/class.pmprogateway_stripe.php:153
+#: classes/gateways/class.dmrfidgateway_stripe.php:153
 #: adminpages/paymentsettings.php:277 adminpages/paymentsettings.php:281
 #: adminpages/paymentsettings.php:286
 msgid "Secret Key"
 msgstr "Tajný klíč"
 
-#: classes/gateways/class.pmprogateway_stripe.php:161
+#: classes/gateways/class.dmrfidgateway_stripe.php:161
 #: adminpages/paymentsettings.php:285 adminpages/paymentsettings.php:289
 #: adminpages/paymentsettings.php:294
 msgid "Publishable Key"
 msgstr "Veřejný klíč"
 
-#: classes/gateways/class.pmprogateway_stripe.php:169
+#: classes/gateways/class.dmrfidgateway_stripe.php:169
 #: adminpages/paymentsettings.php:425 adminpages/paymentsettings.php:430
 #: adminpages/paymentsettings.php:432
 msgid "Show Billing Address Fields"
 msgstr "Zobrazit pole fakturační adresy"
 
-#: classes/gateways/class.pmprogateway_stripe.php:176
+#: classes/gateways/class.dmrfidgateway_stripe.php:176
 #: adminpages/paymentsettings.php:437 adminpages/paymentsettings.php:439
 msgid ""
 "Stripe doesn't require billing address fields. Choose 'No' to hide them on "
@@ -2730,7 +2730,7 @@ msgstr ""
 "stránce pokladny.<br /><strong>Pokud zvolíte Ne, ujistěte se, že jste "
 "zakázali ověření adresy v ovládacím panelu Stripe.</strong>"
 
-#: classes/gateways/class.pmprogateway_stripe.php:184
+#: classes/gateways/class.dmrfidgateway_stripe.php:184
 #: adminpages/paymentsettings.php:465 adminpages/paymentsettings.php:506
 #: adminpages/paymentsettings.php:512 adminpages/paymentsettings.php:514
 msgid "To fully integrate with Stripe, be sure to set your Web Hook URL to"
@@ -2738,11 +2738,11 @@ msgstr ""
 "Chcete-li plně integrovat Stripe, ujistěte se, že máte správně nastaven URL "
 "Web Hook na"
 
-#: classes/gateways/class.pmprogateway_stripe.php:567
+#: classes/gateways/class.dmrfidgateway_stripe.php:567
 msgid "Subscription Updates"
 msgstr "Aktualizace předplatného"
 
-#: classes/gateways/class.pmprogateway_stripe.php:571
+#: classes/gateways/class.dmrfidgateway_stripe.php:571
 msgid ""
 "Subscription updates, allow you to change the member's subscription values "
 "at predefined times. Be sure to click Update Profile after making changes."
@@ -2751,7 +2751,7 @@ msgstr ""
 "čase. Ujistěte se, že po provedení změn klepnete na tlačítko Aktualizovat "
 "profil."
 
-#: classes/gateways/class.pmprogateway_stripe.php:573
+#: classes/gateways/class.dmrfidgateway_stripe.php:573
 msgid ""
 "Subscription updates, allow you to change the member's subscription values "
 "at predefined times. Be sure to click Update User after making changes."
@@ -2760,82 +2760,82 @@ msgstr ""
 "čase. Ujistěte se, že po provedení změn klepnete na tlačítko Aktualizovat "
 "uživatele."
 
-#: classes/gateways/class.pmprogateway_stripe.php:578 pages/billing.php:329
+#: classes/gateways/class.dmrfidgateway_stripe.php:578 pages/billing.php:329
 #: pages/billing.php:294 pages/billing.php:298
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: classes/gateways/class.pmprogateway_stripe.php:769
+#: classes/gateways/class.dmrfidgateway_stripe.php:769
 msgid "Could not cancel the old subscription. Updates have not been processed."
 msgstr "Nemohu zrušit staré předplatné. Aktualizace nebyly zpracovány."
 
-#: classes/gateways/class.pmprogateway_stripe.php:1188
-#: classes/gateways/class.pmprogateway_stripe.php:190
-#: classes/gateways/class.pmprogateway_stripe.php:192
-#: classes/gateways/class.pmprogateway_stripe.php:199
-#: classes/gateways/class.pmprogateway_stripe.php:201
-#: classes/gateways/class.pmprogateway_stripe.php:1187
+#: classes/gateways/class.dmrfidgateway_stripe.php:1188
+#: classes/gateways/class.dmrfidgateway_stripe.php:190
+#: classes/gateways/class.dmrfidgateway_stripe.php:192
+#: classes/gateways/class.dmrfidgateway_stripe.php:199
+#: classes/gateways/class.dmrfidgateway_stripe.php:201
+#: classes/gateways/class.dmrfidgateway_stripe.php:1187
 msgid "Error creating customer record with Stripe:"
 msgstr "Chyba při vytváření záznamu zákazníka Stripe:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1245
-#: classes/gateways/class.pmprogateway_stripe.php:1391
-#: classes/gateways/class.pmprogateway_stripe.php:278
-#: classes/gateways/class.pmprogateway_stripe.php:279
-#: classes/gateways/class.pmprogateway_stripe.php:286
-#: classes/gateways/class.pmprogateway_stripe.php:302
-#: classes/gateways/class.pmprogateway_stripe.php:308
-#: classes/gateways/class.pmprogateway_stripe.php:311
-#: classes/gateways/class.pmprogateway_stripe.php:1244
-#: classes/gateways/class.pmprogateway_stripe.php:1390
+#: classes/gateways/class.dmrfidgateway_stripe.php:1245
+#: classes/gateways/class.dmrfidgateway_stripe.php:1391
+#: classes/gateways/class.dmrfidgateway_stripe.php:278
+#: classes/gateways/class.dmrfidgateway_stripe.php:279
+#: classes/gateways/class.dmrfidgateway_stripe.php:286
+#: classes/gateways/class.dmrfidgateway_stripe.php:302
+#: classes/gateways/class.dmrfidgateway_stripe.php:308
+#: classes/gateways/class.dmrfidgateway_stripe.php:311
+#: classes/gateways/class.dmrfidgateway_stripe.php:1244
+#: classes/gateways/class.dmrfidgateway_stripe.php:1390
 msgid "Error creating plan with Stripe:"
 msgstr "Chyba při vytváření plánu předplatného Stripe:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1421
-#: classes/gateways/class.pmprogateway_stripe.php:294
-#: classes/gateways/class.pmprogateway_stripe.php:295
-#: classes/gateways/class.pmprogateway_stripe.php:302
-#: classes/gateways/class.pmprogateway_stripe.php:318
-#: classes/gateways/class.pmprogateway_stripe.php:324
-#: classes/gateways/class.pmprogateway_stripe.php:330
-#: classes/gateways/class.pmprogateway_stripe.php:1420
+#: classes/gateways/class.dmrfidgateway_stripe.php:1421
+#: classes/gateways/class.dmrfidgateway_stripe.php:294
+#: classes/gateways/class.dmrfidgateway_stripe.php:295
+#: classes/gateways/class.dmrfidgateway_stripe.php:302
+#: classes/gateways/class.dmrfidgateway_stripe.php:318
+#: classes/gateways/class.dmrfidgateway_stripe.php:324
+#: classes/gateways/class.dmrfidgateway_stripe.php:330
+#: classes/gateways/class.dmrfidgateway_stripe.php:1420
 msgid "Error subscribing customer to plan with Stripe:"
 msgstr "Chyba při přihlášení zákazníka k plánu předplatného Stripe:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1517
-#: classes/gateways/class.pmprogateway_stripe.php:383
-#: classes/gateways/class.pmprogateway_stripe.php:389
-#: classes/gateways/class.pmprogateway_stripe.php:410
-#: classes/gateways/class.pmprogateway_stripe.php:1516
+#: classes/gateways/class.dmrfidgateway_stripe.php:1517
+#: classes/gateways/class.dmrfidgateway_stripe.php:383
+#: classes/gateways/class.dmrfidgateway_stripe.php:389
+#: classes/gateways/class.dmrfidgateway_stripe.php:410
+#: classes/gateways/class.dmrfidgateway_stripe.php:1516
 msgid "Could not cancel old subscription."
 msgstr "Nelze zrušit staré předplatné."
 
-#: classes/gateways/class.pmprogateway_stripe.php:1534
-#: classes/gateways/class.pmprogateway_stripe.php:1533
+#: classes/gateways/class.dmrfidgateway_stripe.php:1534
+#: classes/gateways/class.dmrfidgateway_stripe.php:1533
 msgid "Could not find the customer."
 msgstr "Nelze najít zákazníka."
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:53
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:53
 #: paid-memberships-pro.php:124
 msgid "2Checkout"
 msgstr "2Checkout"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:108
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:108
 msgid "2Checkout Settings"
 msgstr "Nastavení 2Checkout"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:137
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:137
 #: adminpages/paymentsettings.php:355 adminpages/paymentsettings.php:360
 msgid "Secret Word"
 msgstr "Tajné slovo"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:145
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:145
 #: adminpages/paymentsettings.php:487 adminpages/paymentsettings.php:493
 #: adminpages/paymentsettings.php:495
 msgid "TwoCheckout INS URL"
 msgstr "URL 2Checkout INS"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:148
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:148
 #: adminpages/paymentsettings.php:490 adminpages/paymentsettings.php:496
 #: adminpages/paymentsettings.php:498
 msgid ""
@@ -2844,7 +2844,7 @@ msgstr ""
 "Chcete-li plně integrovat 2Checkout, ujistěte se že jste nastavili URL "
 "2Checkout INS"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:192
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:192
 msgid "Check Out with 2Checkout"
 msgstr "Zaplatit pomocí 2Checkout"
 
@@ -2887,8 +2887,8 @@ msgid "Docs"
 msgstr "Dokumenty"
 
 #: includes/adminpages.php:261
-msgid "View PMPro Documentation"
-msgstr "Zobrazit dokumentaci PMPro"
+msgid "View DmRFID Documentation"
+msgstr "Zobrazit dokumentaci DmRFID"
 
 #: includes/adminpages.php:262
 msgid "Support"
@@ -3616,10 +3616,10 @@ msgstr "Vybrali jste si úroveň členství <strong>%s</strong>."
 #: pages/checkout.php:51 pages/checkout.php:53
 #, php-format
 msgid ""
-"<p class=\"pmpro_level_discount_applied\">The <strong>%s</strong> code has "
+"<p class=\"dmrfid_level_discount_applied\">The <strong>%s</strong> code has "
 "been applied to your order.</p>"
 msgstr ""
-"<p class=\"pmpro_level_discount_applied\">Kód <strong>%s</strong> byl použit "
+"<p class=\"dmrfid_level_discount_applied\">Kód <strong>%s</strong> byl použit "
 "na Vaši objednávku.</p>"
 
 #: pages/checkout.php:62 services/applydiscountcode.php:78
@@ -4172,10 +4172,10 @@ msgstr ""
 #: adminpages/paymentsettings.php:405 adminpages/paymentsettings.php:445
 msgid ""
 "If values are given, tax will be applied for any members ordering from the "
-"selected state. For more complex tax rules, use the \"pmpro_tax\" filter."
+"selected state. For more complex tax rules, use the \"dmrfid_tax\" filter."
 msgstr ""
 "Pokud jsou zadány hodnoty, bude daň použita na všechny členy objednávající z "
-"vybraného státu. Pro složitější daňová pravidla použijte filtr \"pmpro_tax\"."
+"vybraného státu. Pro složitější daňová pravidla použijte filtr \"dmrfid_tax\"."
 
 #: adminpages/paymentsettings.php:410 adminpages/paymentsettings.php:421
 msgid "Use SSL"
@@ -4208,8 +4208,8 @@ msgstr ""
 "zabezpečených stránkách. Zatrhněte, pokud používáte SSL a máte varování na "
 "stránkách pokladny."
 
-#: classes/class.pmproemail.php:685 classes/class.pmproemail.php:734
-#: classes/class.pmproemail.php:799
+#: classes/class.dmrfidemail.php:685 classes/class.dmrfidemail.php:734
+#: classes/class.dmrfidemail.php:799
 msgid "membership has been cancelled"
 msgstr "členství bylo zrušeno"
 
@@ -4312,27 +4312,27 @@ msgstr "%s každý %d %s pro %d více %s."
 msgid "%s after %d %s."
 msgstr "%s po %d %s."
 
-#: pmpro-register-helper.php
+#: dmrfid-register-helper.php
 #, php-format
 msgid "Extra profile information"
 msgstr "Další informace o profilu"
 
-#: pmpro-shipping.php
+#: dmrfid-shipping.php
 #, php-format
 msgid "Hide Shipping Address:"
 msgstr "Skrýt doručovací adresu:"
 
-#: pmpro-shipping.php
+#: dmrfid-shipping.php
 #, php-format
 msgid "Ship to the billing address used above."
 msgstr "Doručit na fakturační adresu uvedenou výše."
 
-#: pmpro-shipping.php
+#: dmrfid-shipping.php
 #, php-format
 msgid "Shipping Address"
 msgstr "Doručovací adresa"
 
-#: pmpro-shipping.php
+#: dmrfid-shipping.php
 #, php-format
 msgid "Shipping Information:"
 msgstr "Informace o doručení"

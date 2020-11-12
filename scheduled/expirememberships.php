@@ -7,4 +7,4 @@
 	require('../../../../wp-load.php');
 
 	//this function is defined in /scheduled/crons.php
-	pmpro_cron_expire_memberships();
+	dmrfid_cron_expire_memberships();

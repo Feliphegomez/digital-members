@@ -5,7 +5,7 @@
  * @package blocks/confirmation-page
  **/
 
-namespace PMPro\blocks\confirmation_page;
+namespace DmRFID\blocks\confirmation_page;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -23,7 +23,7 @@ if ( ! function_exists( 'register_block_type' ) ) {
  */
 function register_dynamic_block() {
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/confirmation-page', [
+	register_block_type( 'dmrfid/confirmation-page', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -36,14 +36,14 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  * @return string
  **/
 function render_dynamic_block( $attributes ) {
-	return pmpro_loadTemplate( 'confirmation', 'local', 'pages' );
+	return dmrfid_loadTemplate( 'confirmation', 'local', 'pages' );
 }
 
 /**
  * Load preheaders/confirmation.php if a page has the checkout block.
  */
 function load_confirmation_preheader() {
-	if ( has_block( 'pmpro/confirmation-page' ) ) {
+	if ( has_block( 'dmrfid/confirmation-page' ) ) {
 		require_once( DMRFID_DIR . "/preheaders/confirmation.php" );
 	}
 }

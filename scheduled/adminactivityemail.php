@@ -7,4 +7,4 @@
 	require( '../../../../wp-load.php' );
 
 	// This function is defined in /scheduled/crons.php.
-	pmpro_cron_admin_activity_email();
+	dmrfid_cron_admin_activity_email();

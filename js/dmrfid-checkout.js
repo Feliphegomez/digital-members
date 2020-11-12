@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){ 
     // Discount code JS if we are showing discount codes.
-    if ( pmpro.show_discount_code ) {
+    if ( dmrfid.show_discount_code ) {
         //update discount code link to show field at top of form
         jQuery('#other_discount_code_a').attr('href', 'javascript:void(0);');
         jQuery('#other_discount_code_a').click(function() {
@@ -33,15 +33,15 @@ jQuery(document).ready(function(){
             if(code)
             {
                 //hide any previous message
-                jQuery('.pmpro_discount_code_msg').hide();
+                jQuery('.dmrfid_discount_code_msg').hide();
 
                 //disable the apply button
                 jQuery('#other_discount_code_button').attr('disabled', 'disabled');
 
                 jQuery.ajax({
-                    url: pmpro.ajaxurl, type:'GET',timeout: pmpro.ajax_timeout,
+                    url: dmrfid.ajaxurl, type:'GET',timeout: dmrfid.ajax_timeout,
                     dataType: 'html',
-                    data: "action=applydiscountcode&code=" + code + "&level=" + level_id + "&msgfield=pmpro_message",
+                    data: "action=applydiscountcode&code=" + code + "&level=" + level_id + "&msgfield=dmrfid_message",
                     error: function(xml){
                         alert('Error applying discount code [1]');
 
@@ -55,7 +55,7 @@ jQuery(document).ready(function(){
                         }
                         else
                         {
-                            jQuery('#pmpro_message').html(responseHTML);
+                            jQuery('#dmrfid_message').html(responseHTML);
                         }
 
                         //enable invite button
@@ -73,13 +73,13 @@ jQuery(document).ready(function(){
 			if(code)
 			{
 				//hide any previous message
-				jQuery('.pmpro_discount_code_msg').hide();
+				jQuery('.dmrfid_discount_code_msg').hide();
 
 				//disable the apply button
 				jQuery('#discount_code_button').attr('disabled', 'disabled');
 
 				jQuery.ajax({
-					url: pmpro.ajaxurl,type:'GET',timeout: pmpro.ajax_timeout,
+					url: dmrfid.ajaxurl,type:'GET',timeout: dmrfid.ajax_timeout,
 					dataType: 'html',
 					data: "action=applydiscountcode&code=" + code + "&level=" + level_id + "&msgfield=discount_code_message",
 					error: function(xml){
@@ -134,17 +134,17 @@ jQuery(document).ready(function(){
 		// On submit disable its submit button
 		jQuery('input[type=submit]', this).attr('disabled', 'disabled');
 		jQuery('input[type=image]', this).attr('disabled', 'disabled');
-		jQuery('#pmpro_processing_message').css('visibility', 'visible');
+		jQuery('#dmrfid_processing_message').css('visibility', 'visible');
 	});	
 
 	//add required to required fields
-	if ( ! jQuery( '.pmpro_required' ).next().hasClass( "pmpro_asterisk" ) ) {
-	   jQuery( '.pmpro_required' ).after( '<span class="pmpro_asterisk"> <abbr title="Required Field">*</abbr></span>' );
+	if ( ! jQuery( '.dmrfid_required' ).next().hasClass( "dmrfid_asterisk" ) ) {
+	   jQuery( '.dmrfid_required' ).after( '<span class="dmrfid_asterisk"> <abbr title="Required Field">*</abbr></span>' );
   }
 
 	//unhighlight error fields when the user edits them
-	jQuery('.pmpro_error').bind("change keyup input", function() {
-		jQuery(this).removeClass('pmpro_error');
+	jQuery('.dmrfid_error').bind("change keyup input", function() {
+		jQuery(this).removeClass('dmrfid_error');
 	});
 
 	//click apply button on enter in discount code box
@@ -156,7 +156,7 @@ jQuery(document).ready(function(){
 	});
 
 	//hide apply button if a discount code was passed in
-	if( pmpro.discount_code_passed_in ) {
+	if( dmrfid.discount_code_passed_in ) {
 		jQuery('#discount_code_button').hide();
 		jQuery('#discount_code').bind('change keyup', function() {
 			jQuery('#discount_code_button').show();
@@ -175,17 +175,17 @@ jQuery(document).ready(function(){
 	jQuery("input[name=submit-checkout]").after('<input type="hidden" name="javascriptok" value="1" />');
 	
 	// Keep bottom message box in sync with the top one.
-	jQuery('#pmpro_message').bind("DOMSubtreeModified",function(){
-		setTimeout( function(){ pmpro_copyMessageToBottom() }, 200);
+	jQuery('#dmrfid_message').bind("DOMSubtreeModified",function(){
+		setTimeout( function(){ dmrfid_copyMessageToBottom() }, 200);
 	});
 	
-	function pmpro_copyMessageToBottom() {
-		jQuery('#pmpro_message_bottom').html(jQuery('#pmpro_message').html());
-		jQuery('#pmpro_message_bottom').attr('class', jQuery('#pmpro_message').attr('class'));
-		if(jQuery('#pmpro_message').is(":visible")) {
-			jQuery('#pmpro_message_bottom').show();
+	function dmrfid_copyMessageToBottom() {
+		jQuery('#dmrfid_message_bottom').html(jQuery('#dmrfid_message').html());
+		jQuery('#dmrfid_message_bottom').attr('class', jQuery('#dmrfid_message').attr('class'));
+		if(jQuery('#dmrfid_message').is(":visible")) {
+			jQuery('#dmrfid_message_bottom').show();
 		} else {
-			jQuery('#pmpro_message_bottom').hide();
+			jQuery('#dmrfid_message_bottom').hide();
 		}
 	}
 });

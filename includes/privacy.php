@@ -6,10 +6,10 @@
  */
 
 /** 
- * Add suggested Privacy Policy language for PMPro
+ * Add suggested Privacy Policy language for DmRFID
  * @since 1.9.5
  */
-function pmpro_add_privacy_policy_content() {	
+function dmrfid_add_privacy_policy_content() {	
 	// Check for support.
 	if ( ! function_exists( 'wp_add_privacy_policy_content') ) {
 		return;
@@ -24,29 +24,29 @@ function pmpro_add_privacy_policy_content() {
 
 	wp_add_privacy_policy_content( 'Digital Members RFID', $content );
 }
-add_action( 'admin_init', 'pmpro_add_privacy_policy_content' );
+add_action( 'admin_init', 'dmrfid_add_privacy_policy_content' );
 
 /**
- * Register the personal data eraser for PMPro
+ * Register the personal data eraser for DmRFID
  * @param array $erasers All erasers added so far
  */
-function pmpro_register_personal_data_erasers( $erasers = array() ) {
+function dmrfid_register_personal_data_erasers( $erasers = array() ) {
 	$erasers[] = array(
  		'eraser_friendly_name' => __( 'Digital Members RFID Data' ),
- 		'callback'             => 'pmpro_personal_data_eraser',
+ 		'callback'             => 'dmrfid_personal_data_eraser',
  	);
 
 	return $erasers;
 }
-add_filter( 'wp_privacy_personal_data_erasers', 'pmpro_register_personal_data_erasers' );
+add_filter( 'wp_privacy_personal_data_erasers', 'dmrfid_register_personal_data_erasers' );
 
 /**
- * Personal data eraser for PMPro data.
+ * Personal data eraser for DmRFID data.
  * @since 1.9.5
  * @param string $email_address Email address of the user to be erased.
  * @param int    $page          For batching
  */
-function pmpro_personal_data_eraser( $email_address, $page = 1 ) {
+function dmrfid_personal_data_eraser( $email_address, $page = 1 ) {
 	global $wpdb;
 
 	// What user is this?
@@ -59,7 +59,7 @@ function pmpro_personal_data_eraser( $email_address, $page = 1 ) {
 
 	if( !empty( $user ) ) {
 		// Erase any data we have about this user.
-		$user_meta_fields_to_erase = pmpro_get_personal_user_meta_fields_to_erase();
+		$user_meta_fields_to_erase = dmrfid_get_personal_user_meta_fields_to_erase();
 
 		$sqlQuery = $wpdb->prepare( "DELETE FROM {$wpdb->usermeta} WHERE user_id = %d AND meta_key IN( [IN_CLAUSE] )", intval( $user->ID ) );
 
@@ -72,15 +72,15 @@ function pmpro_personal_data_eraser( $email_address, $page = 1 ) {
 		$num_items_removed += $num_deleted;
 
 		// We retain all orders. Get the number of them to report them as retained.
-		$sqlQuery = $wpdb->prepare( "SELECT COUNT(id) FROM {$wpdb->pmpro_membership_orders} WHERE user_id = %d", intval( $user->ID ) );
+		$sqlQuery = $wpdb->prepare( "SELECT COUNT(id) FROM {$wpdb->dmrfid_membership_orders} WHERE user_id = %d", intval( $user->ID ) );
 		$num_orders = $wpdb->get_var( $sqlQuery );
 		if( $num_orders > 0 ) {
 			$num_items_retained += $num_orders;
 			// We could have used _n below, but that doesn't work well with our script for generating the .pot file.
 			if( $num_orders == 1 ) {
-				$messages[] = __( '1 PMPro order was retained for business records.', 'paid-memberships-pro' );
+				$messages[] = __( '1 DmRFID order was retained for business records.', 'paid-memberships-pro' );
 			} else {
-				$messages[] = sprintf( __( '%d PMPro orders were retained for business records.', 'paid-memberships-pro' ), $num_orders );
+				$messages[] = sprintf( __( '%d DmRFID orders were retained for business records.', 'paid-memberships-pro' ), $num_orders );
 			}
 		}
 
@@ -100,25 +100,25 @@ function pmpro_personal_data_eraser( $email_address, $page = 1 ) {
 }
 
 /**
- * Register the personal data exporter for PMPro.
+ * Register the personal data exporter for DmRFID.
  * @since 1.9.5
  * @param array $exporters All exporters added so far
  */
-function pmpro_register_personal_data_exporters( $exporters ) {
+function dmrfid_register_personal_data_exporters( $exporters ) {
 	$exporters[] = array(
 		'exporter_friendly_name' => __( 'Digital Members RFID Data' ),
-		'callback'               => 'pmpro_personal_data_exporter',
+		'callback'               => 'dmrfid_personal_data_exporter',
 	);
 
 	return $exporters;
 }
-add_filter( 'wp_privacy_personal_data_exporters', 'pmpro_register_personal_data_exporters' );
+add_filter( 'wp_privacy_personal_data_exporters', 'dmrfid_register_personal_data_exporters' );
 
 /**
- * Personal data exporter for PMPro data.
+ * Personal data exporter for DmRFID data.
  * @since 1.9.5
  */
-function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
+function dmrfid_personal_data_exporter( $email_address, $page = 1 ) {
 	global $wpdb;
 
 	$data_to_export = array();
@@ -128,7 +128,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 
 	if( !empty( $user ) ) {
 		// Add data stored in user meta.
-		$personal_user_meta_fields = pmpro_get_personal_user_meta_fields();
+		$personal_user_meta_fields = dmrfid_get_personal_user_meta_fields();
 		$sqlQuery = $wpdb->prepare( 
 			"SELECT meta_key, meta_value
 			 FROM {$wpdb->usermeta}
@@ -156,7 +156,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 		}
 
 		$data_to_export[] = array(
-			'group_id'    => 'pmpro_user_data',
+			'group_id'    => 'dmrfid_user_data',
 			'group_label' => __( 'Digital Members RFID User Data' ),
 			'item_id'     => "user-{$user->ID}",
 			'data'        => $user_meta_data_to_export,
@@ -165,7 +165,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 
 		// Add membership history.
 		$sqlQuery = $wpdb->prepare(
-			"SELECT * FROM {$wpdb->pmpro_memberships_users}
+			"SELECT * FROM {$wpdb->dmrfid_memberships_users}
 			 WHERE user_id = %d
 			 ORDER BY id DESC", intval( $user->ID ) );
 			 
@@ -196,7 +196,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 				),
 				array(
 					'name'  => __( 'Level Cost', 'paid-memberships-pro' ),
-					'value' => pmpro_getLevelCost( $item, false, true ),
+					'value' => dmrfid_getLevelCost( $item, false, true ),
 				),
 				array(
 					'name' => __( 'Status', 'paid-memberships-pro' ),
@@ -205,7 +205,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 			);
 
 			$data_to_export[] = array(
-				'group_id'    => 'pmpro_membership_history',
+				'group_id'    => 'dmrfid_membership_history',
 				'group_label' => __( 'Digital Members RFID Membership History' ),
 				'item_id'     => "memberships_users-{$item->id}",
 				'data'        => $history_data_to_export,
@@ -214,7 +214,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 
 		// Add order history.
 		$sqlQuery = $wpdb->prepare(
-			"SELECT id FROM {$wpdb->pmpro_membership_orders}
+			"SELECT id FROM {$wpdb->dmrfid_membership_orders}
 			 WHERE user_id = %d
 			 ORDER BY id DESC", intval( $user->ID ) );
 			 
@@ -329,7 +329,7 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 			);
 			
 			$data_to_export[] = array(
-				'group_id'    => 'pmpro_order_history',
+				'group_id'    => 'dmrfid_order_history',
 				'group_label' => __( 'Digital Members RFID Order History' ),
 				'item_id'     => "membership_order-{$order->id}",
 				'data'        => $order_data_to_export,
@@ -346,59 +346,59 @@ function pmpro_personal_data_exporter( $email_address, $page = 1 ) {
 }
 
 /**
- * Get list of user meta fields with labels to include in the PMPro data exporter
+ * Get list of user meta fields with labels to include in the DmRFID data exporter
  * @since 1.9.5
  */
-function pmpro_get_personal_user_meta_fields() {
+function dmrfid_get_personal_user_meta_fields() {
 	$fields = array(
-		'pmpro_bfirstname' => __( 'Billing First Name', 'paid-memberships-pro' ),
-		'pmpro_blastname' => __( 'Billing Last Name', 'paid-memberships-pro' ),
-		'pmpro_baddress1' => __( 'Billing Address 1', 'paid-memberships-pro' ),
-		'pmpro_baddress2' => __( 'Billing Address 2', 'paid-memberships-pro' ),
-		'pmpro_bcity' => __( 'Billing City', 'paid-memberships-pro' ),
-		'pmpro_bstate' => __( 'Billing State/Province', 'paid-memberships-pro' ),
-		'pmpro_bzipcode' => __( 'Billing Postal Code', 'paid-memberships-pro' ),
-		'pmpro_bphone' => __( 'Billing Phone Number', 'paid-memberships-pro' ),
-		'pmpro_bcountry' => __( 'Billing Country', 'paid-memberships-pro' ),
-		'pmpro_CardType' => __( 'Credit Card Type', 'paid-memberships-pro' ),
-		'pmpro_AccountNumber' => __( 'Credit Card Account Number', 'paid-memberships-pro' ),
-		'pmpro_ExpirationMonth' => __( 'Credit Card Expiration Month', 'paid-memberships-pro' ),
-		'pmpro_ExpirationYear' => __( 'Credit Card Expiration Year', 'paid-memberships-pro' ),
-		'pmpro_logins' => __( 'Login Data', 'paid-memberships-pro' ),
-		'pmpro_visits' => __( 'Visits Data', 'paid-memberships-pro' ),
-		'pmpro_views' => __( 'Views Data', 'paid-memberships-pro' ),
+		'dmrfid_bfirstname' => __( 'Billing First Name', 'paid-memberships-pro' ),
+		'dmrfid_blastname' => __( 'Billing Last Name', 'paid-memberships-pro' ),
+		'dmrfid_baddress1' => __( 'Billing Address 1', 'paid-memberships-pro' ),
+		'dmrfid_baddress2' => __( 'Billing Address 2', 'paid-memberships-pro' ),
+		'dmrfid_bcity' => __( 'Billing City', 'paid-memberships-pro' ),
+		'dmrfid_bstate' => __( 'Billing State/Province', 'paid-memberships-pro' ),
+		'dmrfid_bzipcode' => __( 'Billing Postal Code', 'paid-memberships-pro' ),
+		'dmrfid_bphone' => __( 'Billing Phone Number', 'paid-memberships-pro' ),
+		'dmrfid_bcountry' => __( 'Billing Country', 'paid-memberships-pro' ),
+		'dmrfid_CardType' => __( 'Credit Card Type', 'paid-memberships-pro' ),
+		'dmrfid_AccountNumber' => __( 'Credit Card Account Number', 'paid-memberships-pro' ),
+		'dmrfid_ExpirationMonth' => __( 'Credit Card Expiration Month', 'paid-memberships-pro' ),
+		'dmrfid_ExpirationYear' => __( 'Credit Card Expiration Year', 'paid-memberships-pro' ),
+		'dmrfid_logins' => __( 'Login Data', 'paid-memberships-pro' ),
+		'dmrfid_visits' => __( 'Visits Data', 'paid-memberships-pro' ),
+		'dmrfid_views' => __( 'Views Data', 'paid-memberships-pro' ),
 	);
 
-	$fields = apply_filters( 'pmpro_get_personal_user_meta_fields', $fields );
+	$fields = apply_filters( 'dmrfid_get_personal_user_meta_fields', $fields );
 
 	return $fields;
 }
 
 /**
- * Get list of user meta fields to include in the PMPro data eraser
+ * Get list of user meta fields to include in the DmRFID data eraser
  * @since 1.9.5
  */
-function pmpro_get_personal_user_meta_fields_to_erase() {
+function dmrfid_get_personal_user_meta_fields_to_erase() {
 	$fields = array(
-		'pmpro_bfirstname',
-		'pmpro_blastname',
-		'pmpro_baddress1',
-		'pmpro_baddress2',
-		'pmpro_bcity',
-		'pmpro_bstate',
-		'pmpro_bzipcode',
-		'pmpro_bphone',
-		'pmpro_bcountry',
-		'pmpro_CardType',
-		'pmpro_AccountNumber',
-		'pmpro_ExpirationMonth',
-		'pmpro_ExpirationYear',
-		'pmpro_logins',
-		'pmpro_visits',
-		'pmpro_views',
+		'dmrfid_bfirstname',
+		'dmrfid_blastname',
+		'dmrfid_baddress1',
+		'dmrfid_baddress2',
+		'dmrfid_bcity',
+		'dmrfid_bstate',
+		'dmrfid_bzipcode',
+		'dmrfid_bphone',
+		'dmrfid_bcountry',
+		'dmrfid_CardType',
+		'dmrfid_AccountNumber',
+		'dmrfid_ExpirationMonth',
+		'dmrfid_ExpirationYear',
+		'dmrfid_logins',
+		'dmrfid_visits',
+		'dmrfid_views',
 	);
 
-	$fields = apply_filters( 'pmpro_get_personal_user_meta_fields_to_erase', $fields );
+	$fields = apply_filters( 'dmrfid_get_personal_user_meta_fields_to_erase', $fields );
 
 	return $fields;
 }
@@ -407,7 +407,7 @@ function pmpro_get_personal_user_meta_fields_to_erase() {
  * Save a TOS consent timestamp to user meta.
  * @since 1.9.5
  */
-function pmpro_save_consent( $user_id = NULL, $post_id = NULL, $post_modified = NULL, $order_id = NULL ) {
+function dmrfid_save_consent( $user_id = NULL, $post_id = NULL, $post_modified = NULL, $order_id = NULL ) {
 	// Default to current user.
 	if( empty( $user_id ) ) {
 		global $current_user;
@@ -420,7 +420,7 @@ function pmpro_save_consent( $user_id = NULL, $post_id = NULL, $post_modified = 
 
 	// Default to the TOS post chosen on the advanced settings page
 	if( empty( $post_id ) ) {
-		$post_id = pmpro_getOption( 'tospage' );
+		$post_id = dmrfid_getOption( 'tospage' );
 	}
 
 	if( empty( $post_id ) ) {
@@ -433,7 +433,7 @@ function pmpro_save_consent( $user_id = NULL, $post_id = NULL, $post_modified = 
 		$post_modified = $post->post_modified;
 	}
 
-	$log = pmpro_get_consent_log( $user_id );
+	$log = dmrfid_get_consent_log( $user_id );
 	$log[] = array(
 		'user_id' => $user_id,
 		'post_id' => $post_id,
@@ -443,7 +443,7 @@ function pmpro_save_consent( $user_id = NULL, $post_id = NULL, $post_modified = 
 		'timestamp' => current_time( 'timestamp' ),
 	);
 
-	update_user_meta( $user_id, 'pmpro_consent_log', $log );
+	update_user_meta( $user_id, 'dmrfid_consent_log', $log );
 	return true;
 }
 
@@ -451,7 +451,7 @@ function pmpro_save_consent( $user_id = NULL, $post_id = NULL, $post_modified = 
  * Get the TOS consent log from user meta.
  * @since  1.9.5
  */
-function pmpro_get_consent_log( $user_id = NULL, $reversed = true ) {
+function dmrfid_get_consent_log( $user_id = NULL, $reversed = true ) {
 	// Default to current user.
 	if( empty( $user_id ) ) {
 		global $current_user;
@@ -462,7 +462,7 @@ function pmpro_get_consent_log( $user_id = NULL, $reversed = true ) {
 		return false;
 	}
 
-	$log = get_user_meta( $user_id, 'pmpro_consent_log', true );
+	$log = get_user_meta( $user_id, 'dmrfid_consent_log', true );
 
 	// Default log.
 	if( empty( $log ) ) {
@@ -480,27 +480,27 @@ function pmpro_get_consent_log( $user_id = NULL, $reversed = true ) {
  * Update TOS consent log after checkout.
  * @since 1.9.5
  */
-function pmpro_after_checkout_update_consent( $user_id, $order ) {
+function dmrfid_after_checkout_update_consent( $user_id, $order ) {
 	if( !empty( $_REQUEST['tos'] ) ) {
-		$tospage_id = pmpro_getOption( 'tospage' );
-		pmpro_save_consent( $user_id, $tospage_id, NULL, $order->id );
+		$tospage_id = dmrfid_getOption( 'tospage' );
+		dmrfid_save_consent( $user_id, $tospage_id, NULL, $order->id );
 	} elseif ( !empty( $_SESSION['tos'] ) ) {
 		// PayPal Express and others might save tos info into a session variable
 		$tospage_id = $_SESSION['tos']['post_id'];
 		$tospage_modified = $_SESSION['tos']['post_modified'];
-		pmpro_save_consent( $user_id, $tospage_id, $tospage_modified, $order->id );
+		dmrfid_save_consent( $user_id, $tospage_id, $tospage_modified, $order->id );
 		unset( $_SESSION['tos'] );
 	}
 }
-add_action( 'pmpro_after_checkout', 'pmpro_after_checkout_update_consent', 10, 2 );
-add_action( 'pmpro_before_send_to_paypal_standard', 'pmpro_after_checkout_update_consent', 10, 2);
-add_action( 'pmpro_before_send_to_twocheckout', 'pmpro_after_checkout_update_consent', 10, 2);
+add_action( 'dmrfid_after_checkout', 'dmrfid_after_checkout_update_consent', 10, 2 );
+add_action( 'dmrfid_before_send_to_paypal_standard', 'dmrfid_after_checkout_update_consent', 10, 2);
+add_action( 'dmrfid_before_send_to_twocheckout', 'dmrfid_after_checkout_update_consent', 10, 2);
 
 /**
  * Convert a consent entry into a English sentence.
  * @since  1.9.5
  */
-function pmpro_consent_to_text( $entry ) {
+function dmrfid_consent_to_text( $entry ) {
 	// Check for bad data. Shouldn't happen in practice.
 	if ( empty( $entry ) || empty( $entry['user_id'] ) ) {		
 		return '';
@@ -516,7 +516,7 @@ function pmpro_consent_to_text( $entry ) {
 				  $entry['post_modified'],
 				  date( get_option( 'date_format' ), $entry['timestamp'] ) );
 
-	if( !pmpro_is_consent_current( $entry ) ) {
+	if( !dmrfid_is_consent_current( $entry ) ) {
 		$s .= ' ' . __( 'That post has since been updated.', 'paid-memberships-pro' );
 	}
 
@@ -527,7 +527,7 @@ function pmpro_consent_to_text( $entry ) {
  * Check if a consent entry is current.
  * @since  1.9.5
  */
-function pmpro_is_consent_current( $entry ) {
+function dmrfid_is_consent_current( $entry ) {
 	$post = get_post( $entry['post_id'] );
 	if( !empty( $post ) && !empty( $post->post_modified ) && $post->post_modified == $entry['post_modified'] ) {
 		return true;

@@ -1,6 +1,6 @@
 <?php
 //only admins can get this
-if ( ! function_exists( "current_user_can" ) || ( ! current_user_can( "manage_options" ) && ! current_user_can( "pmpro_orderscsv" ) ) ) {
+if ( ! function_exists( "current_user_can" ) || ( ! current_user_can( "manage_options" ) && ! current_user_can( "dmrfid_orderscsv" ) ) ) {
 	die( __( "You do not have permissions to perform this action.", 'paid-memberships-pro' ) );
 }
 
@@ -21,13 +21,13 @@ if (true === DMRFID_BENCHMARK)
  * Filter to set max number of order records to process at a time
  * for the export (helps manage memory footprint)
  *
- * NOTE: Use the pmpro_before_orders_list_csv_export hook to increase memory "on-the-fly"
- *       Can reset with the pmpro_after_orders_list_csv_export hook
+ * NOTE: Use the dmrfid_before_orders_list_csv_export hook to increase memory "on-the-fly"
+ *       Can reset with the dmrfid_after_orders_list_csv_export hook
  *
  * @since 1.8.9
  */
 //set the number of orders we'll load to try and protect ourselves from OOM errors
-$max_orders_per_loop = apply_filters( 'pmpro_set_max_orders_per_export_loop', 2000 );
+$max_orders_per_loop = apply_filters( 'dmrfid_set_max_orders_per_export_loop', 2000 );
 
 global $wpdb;
 
@@ -175,19 +175,19 @@ if ( $filter == "all" || ! $filter ) {
 if ( ! empty( $s ) ) {
 	$sqlQuery = "
 		SELECT SQL_CALC_FOUND_ROWS o.id
-		FROM {$wpdb->pmpro_membership_orders} AS o
+		FROM {$wpdb->dmrfid_membership_orders} AS o
 			LEFT JOIN $wpdb->users u ON o.user_id = u.ID
-			LEFT JOIN $wpdb->pmpro_membership_levels l ON o.membership_id = l.id
+			LEFT JOIN $wpdb->dmrfid_membership_levels l ON o.membership_id = l.id
 		";
 
-	$join_with_usermeta = apply_filters( "pmpro_orders_search_usermeta", false );
+	$join_with_usermeta = apply_filters( "dmrfid_orders_search_usermeta", false );
 
 	if ( ! empty( $join_with_usermeta ) ) {
 		$sqlQuery .= "LEFT JOIN $wpdb->usermeta um ON o.user_id = um.user_id ";
 	}
 
 	if ( $filter === 'with-discount-code' ) {
-		$sqlQuery .= "LEFT JOIN $wpdb->pmpro_discount_codes_uses dc ON o.id = dc.order_id ";
+		$sqlQuery .= "LEFT JOIN $wpdb->dmrfid_discount_codes_uses dc ON o.id = dc.order_id ";
 	}
 
 	$sqlQuery .= "WHERE (1=2 ";
@@ -219,7 +219,7 @@ if ( ! empty( $s ) ) {
 		$fields[] = "um.meta_value";
 	}
 
-	$fields = apply_filters( "pmpro_orders_search_fields", $fields );
+	$fields = apply_filters( "dmrfid_orders_search_fields", $fields );
 
 	foreach ( $fields as $field ) {
 		$sqlQuery .= " OR " . $field . " LIKE '%" . esc_sql( $s ) . "%' ";
@@ -230,10 +230,10 @@ if ( ! empty( $s ) ) {
 	$sqlQuery .= "GROUP BY o.id ORDER BY o.id DESC, o.timestamp DESC ";
 
 } else {
-	$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS o.id FROM $wpdb->pmpro_membership_orders o ";
+	$sqlQuery = "SELECT SQL_CALC_FOUND_ROWS o.id FROM $wpdb->dmrfid_membership_orders o ";
 
 	if ( $filter === 'with-discount-code' ) {
-		$sqlQuery .= "LEFT JOIN $wpdb->pmpro_discount_codes_uses dc ON o.id = dc.order_id ";
+		$sqlQuery .= "LEFT JOIN $wpdb->dmrfid_discount_codes_uses dc ON o.id = dc.order_id ";
 	}
 
 	$sqlQuery .= "WHERE " . $condition . ' ORDER BY o.id DESC, o.timestamp DESC ';
@@ -253,7 +253,7 @@ $filename = "orders.csv";
 /*
 	Insert logic here for building filename from $filter and other values.
 */
-$filename  = apply_filters( 'pmpro_orders_csv_export_filename', $filename );
+$filename  = apply_filters( 'dmrfid_orders_csv_export_filename', $filename );
 $headers[] = "Content-Disposition: attachment; filename={$filename};";
 
 $csv_file_header_array = array(
@@ -331,22 +331,22 @@ $default_columns = array(
 );
 
 // Hiding couponamount by default.
-$coupons = apply_filters( 'pmpro_orders_show_coupon_amounts', false );
+$coupons = apply_filters( 'dmrfid_orders_show_coupon_amounts', false );
 if ( empty( $coupons ) ) {
 	$csv_file_header_array = array_diff( $csv_file_header_array, array( 'couponamount' ) );
 	$couponamount_array_key = array_keys( $default_columns, array( 'order', 'couponamount' ) );
 	unset( $default_columns[ $couponamount_array_key[0] ] );
 }
 
-$default_columns = apply_filters( "pmpro_order_list_csv_default_columns", $default_columns );
+$default_columns = apply_filters( "dmrfid_order_list_csv_default_columns", $default_columns );
 
-$csv_file_header_array = apply_filters( "pmpro_order_list_csv_export_header_array", $csv_file_header_array );
+$csv_file_header_array = apply_filters( "dmrfid_order_list_csv_export_header_array", $csv_file_header_array );
 
-$dateformat = apply_filters( 'pmpro_order_list_csv_dateformat', get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) );
+$dateformat = apply_filters( 'dmrfid_order_list_csv_dateformat', get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) );
 
 //any extra columns
-$extra_columns = apply_filters( "pmpro_orders_csv_extra_columns", array() );	//the original filter
-$extra_columns = apply_filters( "pmpro_order_list_csv_extra_columns", $extra_columns );	//in case anyone used the typo'd filter
+$extra_columns = apply_filters( "dmrfid_orders_csv_extra_columns", array() );	//the original filter
+$extra_columns = apply_filters( "dmrfid_order_list_csv_extra_columns", $extra_columns );	//in case anyone used the typo'd filter
 
 if ( ! empty( $extra_columns ) ) {
 	foreach ( $extra_columns as $heading => $callback ) {
@@ -357,8 +357,8 @@ if ( ! empty( $extra_columns ) ) {
 $csv_file_header = implode( ',', $csv_file_header_array ) . "\n";
 
 // Generate a temporary file to store the data in.
-$tmp_dir  = apply_filters( 'pmpro_order_list_csv_export_tmp_dir', sys_get_temp_dir() );
-$filename = tempnam( $tmp_dir, 'pmpro_olcsv_' );
+$tmp_dir  = apply_filters( 'dmrfid_order_list_csv_export_tmp_dir', sys_get_temp_dir() );
+$filename = tempnam( $tmp_dir, 'dmrfid_olcsv_' );
 
 // open in append mode
 $csv_fh = fopen( $filename, 'a' );
@@ -371,7 +371,7 @@ $orders_found = count( $order_ids );
 
 if ( empty( $order_ids ) ) {
 	// send data to remote browser
-	pmpro_transmit_order_content( $csv_fh, $filename, $headers );
+	dmrfid_transmit_order_content( $csv_fh, $filename, $headers );
 }
 
 if (DMRFID_BENCHMARK)
@@ -380,7 +380,7 @@ if (DMRFID_BENCHMARK)
 	$pre_action_memory = memory_get_usage(true);
 }
 
-do_action('pmpro_before_order_list_csv_export', $order_ids);
+do_action('dmrfid_before_order_list_csv_export', $order_ids);
 
 $i_start    = 0;
 $i_limit    = 0;
@@ -461,8 +461,8 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 
 		$sqlQuery = $wpdb->prepare( "
 			SELECT c.id, c.code
-			FROM {$wpdb->pmpro_discount_codes_uses} AS cu
-				LEFT JOIN {$wpdb->pmpro_discount_codes} AS c
+			FROM {$wpdb->dmrfid_discount_codes_uses} AS cu
+				LEFT JOIN {$wpdb->dmrfid_discount_codes} AS c
 				ON cu.code_id = c.id
 			WHERE cu.order_id = %s
 			LIMIT 1",
@@ -491,15 +491,15 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 						$val = null;
 				}
 
-				array_push( $csvoutput, pmpro_enclose( $val ) );
+				array_push( $csvoutput, dmrfid_enclose( $val ) );
 			}
 		}
 
 		//tos_consent
 		$consent_entry = $order->get_tos_consent_log_entry();
 		if( !empty( $consent_entry ) ) {
-			array_push( $csvoutput, pmpro_enclose( $consent_entry['post_id'] ) );
-			array_push( $csvoutput, pmpro_enclose( $consent_entry['post_modified'] ) );
+			array_push( $csvoutput, dmrfid_enclose( $consent_entry['post_id'] ) );
+			array_push( $csvoutput, dmrfid_enclose( $consent_entry['post_modified'] ) );
 		} else {
 			array_push( $csvoutput, '' );
 			array_push( $csvoutput, '' );
@@ -507,7 +507,7 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 
 		//timestamp
 		$ts = date_i18n( $dateformat, $order->getTimestamp() );
-		array_push( $csvoutput, pmpro_enclose( $ts ) );
+		array_push( $csvoutput, dmrfid_enclose( $ts ) );
 
 		//any extra columns
 		if ( ! empty( $extra_columns ) ) {
@@ -515,7 +515,7 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 				$val = call_user_func( $callback, $order );
 				$val = ! empty( $val ) ? $val : null;
 
-				array_push( $csvoutput, pmpro_enclose( $val ) );
+				array_push( $csvoutput, dmrfid_enclose( $val ) );
 			}
 		}
 
@@ -547,14 +547,14 @@ for ( $ic = 1; $ic <= $iterations; $ic ++ ) {
 	$order_list = null;
 	wp_cache_flush();
 }
-pmpro_transmit_order_content( $csv_fh, $filename, $headers );
+dmrfid_transmit_order_content( $csv_fh, $filename, $headers );
 
-function pmpro_enclose( $s ) {
+function dmrfid_enclose( $s ) {
 	return "\"" . str_replace( "\"", "\\\"", $s ) . "\"";
 }
 
 
-function pmpro_transmit_order_content( $csv_fh, $filename, $headers = array() ) {
+function dmrfid_transmit_order_content( $csv_fh, $filename, $headers = array() ) {
 
 	//close the temp file
 	fclose( $csv_fh );
@@ -572,7 +572,7 @@ function pmpro_transmit_order_content( $csv_fh, $filename, $headers = array() ) 
 	if ( headers_sent() ) {
 		echo str_repeat( '-', 75 ) . "<br/>\n";
 		echo 'Please open a support case and paste in the warnings/errors you see above this text to\n ';
-		echo 'the <a href="http://paidmembershipspro.com/support/?utm_source=plugin&utm_medium=pmpro-orders-csv&utm_campaign=support" target="_blank">Digital Members RFID support forum</a><br/>\n';
+		echo 'the <a href="http://paidmembershipspro.com/support/?utm_source=plugin&utm_medium=dmrfid-orders-csv&utm_campaign=support" target="_blank">Digital Members RFID support forum</a><br/>\n';
 		echo str_repeat( "=", 75 ) . "<br/>\n";
 		echo file_get_contents( $filename );
 		echo str_repeat( "=", 75 ) . "<br/>\n";
@@ -608,6 +608,6 @@ function pmpro_transmit_order_content( $csv_fh, $filename, $headers = array() ) 
 	}
 
 	//allow user to clean up after themselves
-	do_action( 'pmpro_after_order_csv_export' );
+	do_action( 'dmrfid_after_order_csv_export' );
 	exit;
 }

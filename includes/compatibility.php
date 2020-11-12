@@ -4,7 +4,7 @@
  * Check if certain plugins or themes are installed and activated
  * and if found dynamically load the relevant /includes/compatibility/ files.
  */
-function pmpro_compatibility_checker () {
+function dmrfid_compatibility_checker () {
     $compat_checks = array(
         array(
             'file' => 'siteorigin.php',
@@ -51,9 +51,9 @@ function pmpro_compatibility_checker () {
         }
     }
 }
-add_action( 'plugins_loaded', 'pmpro_compatibility_checker' );
+add_action( 'plugins_loaded', 'dmrfid_compatibility_checker' );
 
-function pmpro_compatibility_checker_themes(){
+function dmrfid_compatibility_checker_themes(){
 
     $compat_checks = array(
         array(
@@ -73,4 +73,4 @@ function pmpro_compatibility_checker_themes(){
 
 
 }
-add_action( 'after_setup_theme', 'pmpro_compatibility_checker_themes' );
+add_action( 'after_setup_theme', 'dmrfid_compatibility_checker_themes' );

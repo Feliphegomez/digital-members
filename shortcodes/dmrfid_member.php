@@ -2,12 +2,12 @@
 /*
 	Shortcode to show a specific user field for current user or specified user ID.
 */
-function pmpro_member_shortcode($atts, $content=null, $code='')
+function dmrfid_member_shortcode($atts, $content=null, $code='')
 {
 	// $atts    ::= array of attributes
 	// $content ::= text within enclosing form of shortcode element
 	// $code    ::= the shortcode found, when == callback name
-	// examples: [pmpro_member field='last_name']
+	// examples: [dmrfid_member field='last_name']
 	global $current_user;
 
 	extract(shortcode_atts(array(
@@ -16,12 +16,12 @@ function pmpro_member_shortcode($atts, $content=null, $code='')
 	), $atts));
 	
 	/*
-		- pmpro_next_payment()
+		- dmrfid_next_payment()
 		- 
 	*/
 
 	//membership level fields
-	$pmpro_level_fields = array(
+	$dmrfid_level_fields = array(
 		'membership_id',
 		'membership_name',
 		'membership_description',
@@ -37,8 +37,8 @@ function pmpro_member_shortcode($atts, $content=null, $code='')
 		'membership_enddate',
 	);
 
-	//pmpro-related fields stored in user meta
-	$pmpro_user_meta_fields = array(
+	//dmrfid-related fields stored in user meta
+	$dmrfid_user_meta_fields = array(
 		'bfirstname',
 		'blastname',
 		'baddress1',
@@ -81,25 +81,25 @@ function pmpro_member_shortcode($atts, $content=null, $code='')
 	);
 
 	if($field == 'level_cost') {
-		$membership_level = pmpro_getMembershipLevelForUser($user_id);
+		$membership_level = dmrfid_getMembershipLevelForUser($user_id);
 		if( !empty($membership_level ) )
-			$r = pmpro_getLevelCost($membership_level, false, true);
+			$r = dmrfid_getLevelCost($membership_level, false, true);
 		else
 			$r = '';
 	} elseif($field == 'next_payment_date') {
 		//next_payment_date
-		$r = pmpro_next_payment($user_id);
-	} elseif(in_array( $field, $pmpro_level_fields )) {
+		$r = dmrfid_next_payment($user_id);
+	} elseif(in_array( $field, $dmrfid_level_fields )) {
 		//membership level fields
 		$field = str_replace('membership_', '', $field);
-		$membership_level = pmpro_getMembershipLevelForUser($user_id);
+		$membership_level = dmrfid_getMembershipLevelForUser($user_id);
 		if(!empty($membership_level))
 			$r = $membership_level->{$field};
 		else
 			$r = '';
-	} elseif(in_array( $field, $pmpro_user_meta_fields )) {
-		//pmpro-related fields stored in user meta
-		$field = 'pmpro_' . $field;
+	} elseif(in_array( $field, $dmrfid_user_meta_fields )) {
+		//dmrfid-related fields stored in user meta
+		$field = 'dmrfid_' . $field;
 		$r = get_user_meta($user_id, $field, true);
 	} elseif(in_array( $field, $user_column_fields )) {
 		//wp_users column
@@ -125,14 +125,14 @@ function pmpro_member_shortcode($atts, $content=null, $code='')
 		if(empty($r) || $r == '0.00')
 			$r = '';
 		else
-			$r = pmpro_formatPrice($r);
+			$r = dmrfid_formatPrice($r);
 	}
 
 	/** 
 	 * Filter
 	 */
-	$r = apply_filters('pmpro_member_shortcode_field', $r, $user_id, $field);
+	$r = apply_filters('dmrfid_member_shortcode_field', $r, $user_id, $field);
 
 	return $r;
 }
-add_shortcode('pmpro_member', 'pmpro_member_shortcode');
+add_shortcode('dmrfid_member', 'dmrfid_member_shortcode');

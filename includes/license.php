@@ -1,13 +1,13 @@
 <?php
 /*
 	This file handles the support licensing control for Digital Members RFID
-	and PMPro addons.
+	and DmRFID addons.
 	
 	How it works:
 	- All source code and resource files bundled with this plugin are licensed under the GPLv2 license unless otherwise noted (e.g. included third-party libraries).
 	- An additional "support license" can be purchased at https://www.paidmembershipspro.com/pricing/
 	  which will simultaneous support the development of this plugin and also give you access to support forums and documentation.
-	- Once your license has been purchased, visit Settings --> PMPro License in your WP dashboard to enter your license.
+	- Once your license has been purchased, visit Settings --> DmRFID License in your WP dashboard to enter your license.
 	- Once the license is activated all "nags" will be disabled in the dashboard and member links will be added where appropriate.
     - This plugin will function 100% even if the support license is not installed.
     - If no support license is detected on this site, prompts will show in the admin to encourage you to purchase one.
@@ -15,7 +15,7 @@
 */
 
 /*
-	Developers, add this line to your wp-config.php to remove PMPro license nags even if no license has been purchased.
+	Developers, add this line to your wp-config.php to remove DmRFID license nags even if no license has been purchased.
 	
 	define('DMRFID_LICENSE_NAG', false);	//consider purchasing a license at https://www.paidmembershipspro.com/pricing/
 */
@@ -29,14 +29,14 @@ define('DMRFID_LICENSE_SERVER', 'none');
 /*
 	Check license.
 */
-function pmpro_license_isValid($key = NULL, $type = NULL, $force = false) {		
+function dmrfid_license_isValid($key = NULL, $type = NULL, $force = false) {		
 	//check cache first
-	$pmpro_license_check = get_option('pmpro_license_check', false);
-	if(empty($force) && $pmpro_license_check !== false && $pmpro_license_check['enddate'] > current_time('timestamp'))
+	$dmrfid_license_check = get_option('dmrfid_license_check', false);
+	if(empty($force) && $dmrfid_license_check !== false && $dmrfid_license_check['enddate'] > current_time('timestamp'))
 	{
 		if(empty($type))
 			return true;
-		elseif($type == $pmpro_license_check['license'])
+		elseif($type == $dmrfid_license_check['license'])
 			return true;
 		else
 			return false;
@@ -44,18 +44,18 @@ function pmpro_license_isValid($key = NULL, $type = NULL, $force = false) {
 	
 	//get key and site url
 	if(empty($key))
-		$key = get_option("pmpro_license_key", "");
+		$key = get_option("dmrfid_license_key", "");
 	
 	//no key
 	if(!empty($key)) 
 	{
-		return pmpro_license_check_key($key);
+		return dmrfid_license_check_key($key);
 	}
 	else
 	{
 		//no key
-		delete_option('pmpro_license_check');
-		add_option('pmpro_license_check', array('license'=>false, 'enddate'=>0), NULL, 'no');
+		delete_option('dmrfid_license_check');
+		add_option('dmrfid_license_check', array('license'=>false, 'enddate'=>0), NULL, 'no');
 	
 		return false;
 	}
@@ -65,22 +65,22 @@ function pmpro_license_isValid($key = NULL, $type = NULL, $force = false) {
 	Activation/Deactivation. Check keys once a month.
 */
 //activation
-function pmpro_license_activation() {
-	pmpro_maybe_schedule_event(current_time('timestamp'), 'monthly', 'pmpro_license_check_key');
+function dmrfid_license_activation() {
+	dmrfid_maybe_schedule_event(current_time('timestamp'), 'monthly', 'dmrfid_license_check_key');
 }
-register_activation_hook(__FILE__, 'pmpro_activation');
+register_activation_hook(__FILE__, 'dmrfid_activation');
 
 //deactivation
-function pmpro_license_deactivation() {
-	wp_clear_scheduled_hook('pmpro_license_check_key');
+function dmrfid_license_deactivation() {
+	wp_clear_scheduled_hook('dmrfid_license_check_key');
 }
-register_deactivation_hook(__FILE__, 'pmpro_deactivation');
+register_deactivation_hook(__FILE__, 'dmrfid_deactivation');
 
-//check keys with PMPro once a month
-function pmpro_license_check_key($key = NULL) {
+//check keys with DmRFID once a month
+function dmrfid_license_check_key($key = NULL) {
 	//get key
 	if(empty($key))
-		$key = get_option('pmpro_license_key');
+		$key = get_option('dmrfid_license_key');
 	
 	//key? check with server
 	if(!empty($key))
@@ -95,14 +95,14 @@ function pmpro_license_check_key($key = NULL) {
          *
          * @param int $timeout The number of seconds before the request times out
          */
-        $timeout = apply_filters("pmpro_license_check_key_timeout", 5);
+        $timeout = apply_filters("dmrfid_license_check_key_timeout", 5);
 
         $r = wp_remote_get($url, array("timeout" => $timeout));
 
         //test response
         if(is_wp_error($r)) {
             //error
-            pmpro_setMessage("Could not connect to the PMPro License Server to check key Try again later.", "error");
+            dmrfid_setMessage("Could not connect to the DmRFID License Server to check key Try again later.", "error");
         }
         elseif(!empty($r) && $r['response']['code'] == 200)
 		{
@@ -116,18 +116,18 @@ function pmpro_license_check_key($key = NULL) {
 				else
 					$enddate = strtotime("+1 Year", current_time("timestamp"));
 					
-				delete_option('pmpro_license_check');
-				add_option('pmpro_license_check', array('license'=>$r->license, 'enddate'=>$enddate), NULL, 'no');		
+				delete_option('dmrfid_license_check');
+				add_option('dmrfid_license_check', array('license'=>$r->license, 'enddate'=>$enddate), NULL, 'no');		
 				return true;
 			}
 			elseif(!empty($r->error))
 			{
 				//invalid key
-				global $pmpro_license_error;
-				$pmpro_license_error = $r->error;
+				global $dmrfid_license_error;
+				$dmrfid_license_error = $r->error;
 				
-				delete_option('pmpro_license_check');
-				add_option('pmpro_license_check', array('license'=>false, 'enddate'=>0), NULL, 'no');
+				delete_option('dmrfid_license_check');
+				add_option('dmrfid_license_check', array('license'=>false, 'enddate'=>0), NULL, 'no');
                 
 			}
 		}	
@@ -136,4 +136,4 @@ function pmpro_license_check_key($key = NULL) {
     //no key or there was an error
     return false;
 }
-add_action('pmpro_license_check_key', 'pmpro_license_check_key');
+add_action('dmrfid_license_check_key', 'dmrfid_license_check_key');

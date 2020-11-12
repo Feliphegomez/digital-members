@@ -1,12 +1,12 @@
 jQuery(document).ready(function(){
 
-    jQuery('#pmpro-sendwp-connect').on( 'click', function(e) {
+    jQuery('#dmrfid-sendwp-connect').on( 'click', function(e) {
         e.preventDefault();
         document.body.style.cursor = 'wait';
         paid_memberships_pro_sendwp_remote_install();
     });
 
-    jQuery('#pmpro-sendwp-disconnect').on( 'click', function(e) {
+    jQuery('#dmrfid-sendwp-disconnect').on( 'click', function(e) {
         e.preventDefault();
         document.body.style.cursor = 'wait';
         paid_memberships_pro_sendwp_disconnect();
@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
                     message = 'error!';
                 }
 
-                jQuery('#pmpro-sendwp-description').text( message );
+                jQuery('#dmrfid-sendwp-description').text( message );
                 document.body.style.cursor = 'default';
     
             } else {

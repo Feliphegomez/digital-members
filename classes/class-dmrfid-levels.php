@@ -1,6 +1,6 @@
 <?php
 
-class PMPro_Membership_Level{
+class DmRFID_Membership_Level{
 
     function __construct( $id = NULL ) {
         if ( $id ) {
@@ -14,7 +14,7 @@ class PMPro_Membership_Level{
         if ( isset( $this->$key ) ) {
             $value = $this->$key;
         } else {
-            $value = get_pmpro_membership_level_meta( $this->ID, $key, true );
+            $value = get_dmrfid_membership_level_meta( $this->ID, $key, true );
         }
         
         return $value;
@@ -84,7 +84,7 @@ class PMPro_Membership_Level{
     function get_membership_level_categories( $id ) {
         global $wpdb;
 
-        $dblc = $wpdb->get_results( "SELECT * FROM $wpdb->pmpro_memberships_categories WHERE membership_id = " . $id . "", ARRAY_A );
+        $dblc = $wpdb->get_results( "SELECT * FROM $wpdb->dmrfid_memberships_categories WHERE membership_id = " . $id . "", ARRAY_A );
 
         $category_array = array();
 
@@ -107,7 +107,7 @@ class PMPro_Membership_Level{
         $dcobj = $wpdb->get_row(
             $wpdb->prepare(
                 "SELECT * 
-                FROM $wpdb->pmpro_membership_levels
+                FROM $wpdb->dmrfid_membership_levels
                 WHERE id = %s",
                 $id
             ),
@@ -125,17 +125,17 @@ class PMPro_Membership_Level{
         global $wpdb;
 
         if ( empty( $this->id ) ) {
-            $before_action = 'pmpro_add_membership_level';
-            $after_action = 'pmpro_added_membership_level';
+            $before_action = 'dmrfid_add_membership_level';
+            $after_action = 'dmrfid_added_membership_level';
         } else {
-            $before_action = 'pmpro_update_membership_level';
-            $after_action = 'pmpro_updated_membership_level';
+            $before_action = 'dmrfid_update_membership_level';
+            $after_action = 'dmrfid_updated_membership_level';
         }
 
         do_action( $before_action, $this );
 
-        pmpro_insert_or_replace(
-			$wpdb->pmpro_membership_levels,
+        dmrfid_insert_or_replace(
+			$wpdb->dmrfid_membership_levels,
 			array(
 				'id'=> $this->id,
 				'name' => $this->name,
@@ -178,11 +178,11 @@ class PMPro_Membership_Level{
         if ( isset( $this->categories ) && is_array( $this->categories ) ) {
             
             // Delete categories for membership ID so we can add them back again.
-            $wpdb->delete( $wpdb->pmpro_memberships_categories, array('membership_id' => $this->id), array('%d') );
+            $wpdb->delete( $wpdb->dmrfid_memberships_categories, array('membership_id' => $this->id), array('%d') );
 
             foreach( $this->categories as $key => $category ) {
                 if ( term_exists( get_cat_name( $category ), 'category' ) ) {
-                    $wpdb->insert( $wpdb->pmpro_memberships_categories, array( 'membership_id' => $this->id, 'category_id' => $category ), array( '%d', '%d' ) );
+                    $wpdb->insert( $wpdb->dmrfid_memberships_categories, array( 'membership_id' => $this->id, 'category_id' => $category ), array( '%d', '%d' ) );
                 }
             }
         }
@@ -204,17 +204,17 @@ class PMPro_Membership_Level{
         $r2 = false; // Remove categories from level.
         $r3 = true; // Remove users from level.
 
-        if ( $wpdb->delete( $wpdb->pmpro_membership_levels, array('id' => $this->id), array('%d') ) ) {
+        if ( $wpdb->delete( $wpdb->dmrfid_membership_levels, array('id' => $this->id), array('%d') ) ) {
             $r1 = true;
         }
 
-        if ( $wpdb->delete( $wpdb->pmpro_memberships_categories, array('membership_id' => $this->id), array('%d') ) ) {
+        if ( $wpdb->delete( $wpdb->dmrfid_memberships_categories, array('membership_id' => $this->id), array('%d') ) ) {
             $r2 = true;
         }
 
         // Try to remove users from the level too
         $user_ids = $wpdb->get_col( $wpdb->prepare( "
-				SELECT user_id FROM $wpdb->pmpro_memberships_users
+				SELECT user_id FROM $wpdb->dmrfid_memberships_users
 				WHERE membership_id = %d
 				AND status = 'active'",
 			 	$this->id
@@ -223,22 +223,22 @@ class PMPro_Membership_Level{
 
 			foreach($user_ids as $user_id) {
 				//change there membership level to none. that will handle the cancel
-				if(pmpro_changeMembershipLevel(0, $user_id)) {
+				if(dmrfid_changeMembershipLevel(0, $user_id)) {
 					//okay
 				} else {
 					//couldn't delete the subscription
 					//we should probably notify the admin
-					$pmproemail = new PMProEmail();
-					$pmproemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%d. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), $user_id) . "</p>");
+					$dmrfidemail = new DmRFIDEmail();
+					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%d. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), $user_id) . "</p>");
 					$last_order = $wpdb->get_row( $wpdb->prepare( "
-						SELECT * FROM $wpdb->pmpro_membership_orders
+						SELECT * FROM $wpdb->dmrfid_membership_orders
 						WHERE user_id = %d
 						ORDER BY timestamp DESC LIMIT 1",
 						$user_id
 					) );
 					if($last_order)
-						$pmproemail->data["body"] .= "<p>" . __("Last Invoice", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($last_order, true)) . "</p>";
-                    $pmproemail->sendEmail(get_bloginfo("admin_email"));
+						$dmrfidemail->data["body"] .= "<p>" . __("Last Invoice", 'paid-memberships-pro' ) . ":<br />" . nl2br(var_export($last_order, true)) . "</p>";
+                    $dmrfidemail->sendEmail(get_bloginfo("admin_email"));
                     
                     $r3 = false; // Set it to false if it couldn't delete the subscription.
 				}

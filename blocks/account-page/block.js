@@ -1,5 +1,5 @@
 /**
- * Block: PMPro Membership Account
+ * Block: DmRFID Membership Account
  *
  * Displays the Membership Account page.
  *
@@ -19,17 +19,17 @@
   * Register block
   */
  export default registerBlockType(
-     'pmpro/account-page',
+     'dmrfid/account-page',
      {
          title: __( 'Membership Account Page', 'paid-memberships-pro' ),
          description: __( 'Displays the sections of the Membership Account page as selected below.', 'paid-memberships-pro' ),
-         category: 'pmpro',
+         category: 'dmrfid',
          icon: {
             background: '#2997c8',
             foreground: '#ffffff',
             src: 'admin-users',
          },
-         keywords: [ __( 'pmpro', 'paid-memberships-pro' ) ],
+         keywords: [ __( 'dmrfid', 'paid-memberships-pro' ) ],
          supports: {
          },
          attributes: {
@@ -54,9 +54,9 @@
              const { setAttributes, isSelected } = props;
              return [
                 isSelected && <Inspector { ...{ setAttributes, ...props} } />,
-                <div className="pmpro-block-element">
-                  <span className="pmpro-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
-                  <span className="pmpro-block-subtitle">{ __( 'Membership Account Page', 'paid-memberships-pro' ) }</span>
+                <div className="dmrfid-block-element">
+                  <span className="dmrfid-block-title">{ __( 'Digital Members RFID', 'paid-memberships-pro' ) }</span>
+                  <span className="dmrfid-block-subtitle">{ __( 'Membership Account Page', 'paid-memberships-pro' ) }</span>
                 </div>
             ];
          },

@@ -7,7 +7,7 @@
 		function __construct($id = NULL)
 		{
 			//set up the gateway
-			$this->setGateway(pmpro_getOption("gateway"));
+			$this->setGateway(dmrfid_getOption("gateway"));
 
 			//get data if an id was passed
 			if($id)
@@ -46,8 +46,8 @@
 			$order->expirationmonth = "";
 			$order->expirationyear = "";
 			$order->status = "success";
-			$order->gateway = pmpro_getOption("gateway");
-			$order->gateway_environment = pmpro_getOption("gateway_environment");
+			$order->gateway = dmrfid_getOption("gateway");
+			$order->gateway_environment = dmrfid_getOption("gateway_environment");
 			$order->payment_transaction_id = "";
 			$order->subscription_transaction_id = "";
 			$order->affiliate_id = "";
@@ -77,7 +77,7 @@
 			if(!$id)
 				return false;
 
-			$dbobj = $wpdb->get_row("SELECT * FROM $wpdb->pmpro_membership_orders WHERE id = '$id' LIMIT 1");
+			$dbobj = $wpdb->get_row("SELECT * FROM $wpdb->dmrfid_membership_orders WHERE id = '$id' LIMIT 1");
 
 			if($dbobj)
 			{
@@ -190,7 +190,7 @@
 			// Double check for a user_id, gateway and gateway environment.
 			$sql = $wpdb->prepare(
 				"SELECT ID
-				 FROM $wpdb->pmpro_membership_orders
+				 FROM $wpdb->dmrfid_membership_orders
 				 WHERE `subscription_transaction_id` = %s
 				   AND `user_id` = %d
 				   AND `gateway` = %s
@@ -226,7 +226,7 @@
 			}
 
 			//which one to load?
-			$classname = "PMProGateway";	//default test gateway
+			$classname = "DmRFIDGateway";	//default test gateway
 			if(!empty($this->gateway) && $this->gateway != "free") {
 				$classname .= "_" . $this->gateway;	//adding the gateway suffix
 			}
@@ -235,7 +235,7 @@
 				$this->Gateway = new $classname($this->gateway);
 			} else {
 				$this->Gateway = null;	//null out any current gateway
-				$error = new WP_Error("PMPro1001", "Could not locate the gateway class file with class name = " . $classname . ".");
+				$error = new WP_Error("DmRFID1001", "Could not locate the gateway class file with class name = " . $classname . ".");
 			}
 
 			if(!empty($this->Gateway)) {
@@ -265,7 +265,7 @@
 				return false;
 
 			//build query
-			$this->sqlQuery = "SELECT id FROM $wpdb->pmpro_membership_orders WHERE user_id = '" . $user_id . "' ";
+			$this->sqlQuery = "SELECT id FROM $wpdb->dmrfid_membership_orders WHERE user_id = '" . $user_id . "' ";
 			if(!empty($status) && is_array($status))
 				$this->sqlQuery .= "AND status IN('" . implode("','", $status) . "') ";
 			elseif(!empty($status))
@@ -294,7 +294,7 @@
 		function getMemberOrderByCode($code)
 		{
 			global $wpdb;
-			$id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_membership_orders WHERE code = '" . $code . "' LIMIT 1");
+			$id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE code = '" . $code . "' LIMIT 1");
 			if($id)
 				return $this->getMemberOrderByID($id);
 			else
@@ -311,7 +311,7 @@
 				return false;
 
 			global $wpdb;
-			$id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_membership_orders WHERE payment_transaction_id = '" . esc_sql($payment_transaction_id) . "' LIMIT 1");
+			$id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE payment_transaction_id = '" . esc_sql($payment_transaction_id) . "' LIMIT 1");
 			if($id)
 				return $this->getMemberOrderByID($id);
 			else
@@ -328,7 +328,7 @@
 				return false;
 
 			global $wpdb;
-			$id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_membership_orders WHERE subscription_transaction_id = '" . esc_sql($subscription_transaction_id) . "' ORDER BY id DESC LIMIT 1");
+			$id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE subscription_transaction_id = '" . esc_sql($subscription_transaction_id) . "' ORDER BY id DESC LIMIT 1");
 
 			if($id)
 				return $this->getMemberOrderByID($id);
@@ -342,7 +342,7 @@
 		function getMemberOrderByPayPalToken($token)
 		{
 			global $wpdb;
-			$id = $wpdb->get_var("SELECT id FROM $wpdb->pmpro_membership_orders WHERE paypal_token = '" . $token . "' LIMIT 1");
+			$id = $wpdb->get_var("SELECT id FROM $wpdb->dmrfid_membership_orders WHERE paypal_token = '" . $token . "' LIMIT 1");
 			if($id)
 				return $this->getMemberOrderByID($id);
 			else
@@ -361,10 +361,10 @@
 				return $this->discount_code;
 
 			global $wpdb;
-			$this->discount_code = $wpdb->get_row("SELECT dc.* FROM $wpdb->pmpro_discount_codes dc LEFT JOIN $wpdb->pmpro_discount_codes_uses dcu ON dc.id = dcu.code_id WHERE dcu.order_id = '" . $this->id . "' LIMIT 1");
+			$this->discount_code = $wpdb->get_row("SELECT dc.* FROM $wpdb->dmrfid_discount_codes dc LEFT JOIN $wpdb->dmrfid_discount_codes_uses dcu ON dc.id = dcu.code_id WHERE dcu.order_id = '" . $this->id . "' LIMIT 1");
 
 			//filter @since v1.7.14
-			$this->discount_code = apply_filters("pmpro_order_discount_code", $this->discount_code, $this);
+			$this->discount_code = apply_filters("dmrfid_order_discount_code", $this->discount_code, $this);
 
 			return $this->discount_code;
 		}
@@ -380,7 +380,7 @@
 
 			// Assumes one discount code per order
 			$sqlQuery = $wpdb->prepare("
-				SELECT id FROM $wpdb->pmpro_discount_codes_uses
+				SELECT id FROM $wpdb->dmrfid_discount_codes_uses
 				WHERE order_id = %d
 				LIMIT 1",
 				$this->id
@@ -391,7 +391,7 @@
 			if ( empty( $discount_code_id ) ) {
 				if ( ! empty( $discount_codes_uses_id ) ) {
 					$wpdb->delete(
-						$wpdb->pmpro_discount_codes_uses,
+						$wpdb->dmrfid_discount_codes_uses,
 						array( 'id' => $discount_codes_uses_id ),
 						array( '%d' )
 					);
@@ -400,7 +400,7 @@
 				if ( ! empty( $discount_codes_uses_id ) ) {
 					// Update existing row
 					$wpdb->update(
-						$wpdb->pmpro_discount_codes_uses,
+						$wpdb->dmrfid_discount_codes_uses,
 						array( 'code_id' => $discount_code_id, 'user_id' => $this->user_id, 'order_id' => $this->id ),
 						array( 'id' => $discount_codes_uses_id ),
 						array( '%d', '%d', '%d' ),
@@ -409,7 +409,7 @@
 				} else {
 					// Insert a new row
 					$wpdb->insert(
-						$wpdb->pmpro_discount_codes_uses,
+						$wpdb->dmrfid_discount_codes_uses,
 						array( 'code_id' => $discount_code_id, 'user_id' => $this->user_id, 'order_id' => $this->id ),
 						array( '%d', '%d', '%d' )
 					);
@@ -457,7 +457,7 @@
 			//check if there is an entry in memberships_users first
 			if(!empty($this->user_id))
 			{
-				$this->membership_level = $wpdb->get_row("SELECT l.id as level_id, l.name, l.description, l.allow_signups, l.expiration_number, l.expiration_period, mu.*, UNIX_TIMESTAMP(CONVERT_TZ(mu.startdate, '+00:00', @@global.time_zone)) as startdate, UNIX_TIMESTAMP(CONVERT_TZ(mu.enddate, '+00:00', @@global.time_zone)) as enddate, l.name, l.description, l.allow_signups FROM $wpdb->pmpro_membership_levels l LEFT JOIN $wpdb->pmpro_memberships_users mu ON l.id = mu.membership_id WHERE mu.status = 'active' AND l.id = '" . $this->membership_id . "' AND mu.user_id = '" . $this->user_id . "' LIMIT 1");
+				$this->membership_level = $wpdb->get_row("SELECT l.id as level_id, l.name, l.description, l.allow_signups, l.expiration_number, l.expiration_period, mu.*, UNIX_TIMESTAMP(CONVERT_TZ(mu.startdate, '+00:00', @@global.time_zone)) as startdate, UNIX_TIMESTAMP(CONVERT_TZ(mu.enddate, '+00:00', @@global.time_zone)) as enddate, l.name, l.description, l.allow_signups FROM $wpdb->dmrfid_membership_levels l LEFT JOIN $wpdb->dmrfid_memberships_users mu ON l.id = mu.membership_id WHERE mu.status = 'active' AND l.id = '" . $this->membership_id . "' AND mu.user_id = '" . $this->user_id . "' LIMIT 1");
 
 				//fix the membership level id
 				if(!empty($this->membership_level->level_id))
@@ -472,7 +472,7 @@
 				else
 					$discount_code = $this->discount_code;
 
-				$sqlQuery = "SELECT l.id, cl.*, l.name, l.description, l.allow_signups FROM $wpdb->pmpro_discount_codes_levels cl LEFT JOIN $wpdb->pmpro_membership_levels l ON cl.level_id = l.id LEFT JOIN $wpdb->pmpro_discount_codes dc ON dc.id = cl.code_id WHERE dc.code = '" . $discount_code . "' AND cl.level_id = '" . $this->membership_id . "' LIMIT 1";
+				$sqlQuery = "SELECT l.id, cl.*, l.name, l.description, l.allow_signups FROM $wpdb->dmrfid_discount_codes_levels cl LEFT JOIN $wpdb->dmrfid_membership_levels l ON cl.level_id = l.id LEFT JOIN $wpdb->dmrfid_discount_codes dc ON dc.id = cl.code_id WHERE dc.code = '" . $discount_code . "' AND cl.level_id = '" . $this->membership_id . "' LIMIT 1";
 
 				$this->membership_level = $wpdb->get_row($sqlQuery);
 			}
@@ -480,14 +480,14 @@
 			//just get the info from the membership table	(sigh, I really need to standardize the column names for membership_id/level_id) but we're checking if we got the information already or not
 			if(empty($this->membership_level->membership_id) && empty($this->membership_level->level_id))
 			{
-				$this->membership_level = $wpdb->get_row("SELECT l.* FROM $wpdb->pmpro_membership_levels l WHERE l.id = '" . $this->membership_id . "' LIMIT 1");
+				$this->membership_level = $wpdb->get_row("SELECT l.* FROM $wpdb->dmrfid_membership_levels l WHERE l.id = '" . $this->membership_id . "' LIMIT 1");
 			}
 			
 			// Round prices to avoid extra decimals.
 			if( ! empty( $this->membership_level ) ) {
-				$this->membership_level->initial_payment = pmpro_round_price( $this->membership_level->initial_payment );
-				$this->membership_level->billing_amount = pmpro_round_price( $this->membership_level->billing_amount );
-				$this->membership_level->trial_amount = pmpro_round_price( $this->membership_level->trial_amount );
+				$this->membership_level->initial_payment = dmrfid_round_price( $this->membership_level->initial_payment );
+				$this->membership_level->billing_amount = dmrfid_round_price( $this->membership_level->billing_amount );
+				$this->membership_level->trial_amount = dmrfid_round_price( $this->membership_level->trial_amount );
 			}
 
 			return $this->membership_level;
@@ -502,19 +502,19 @@
 		 *
 		 */
 		function getMembershipLevelAtCheckout($force = false) {
-			global $pmpro_level;
+			global $dmrfid_level;
 
 			if( ! empty( $this->membership_level ) && empty( $force ) ) {
 				return $this->membership_level;
 			}
 			
-			// If for some reason, we haven't setup pmpro_level yet, do that.
-			if ( empty( $pmpro_level ) ) {
-				$pmpro_level = pmpro_getLevelAtCheckout();
+			// If for some reason, we haven't setup dmrfid_level yet, do that.
+			if ( empty( $dmrfid_level ) ) {
+				$dmrfid_level = dmrfid_getLevelAtCheckout();
 			}
 			
 			// Set the level to the checkout level global.
-			$this->membership_level = $pmpro_level;
+			$this->membership_level = $dmrfid_level;
 			
 			// Fix the membership level id.
 			if(!empty( $this->membership_level) && !empty($this->membership_level->level_id)) {
@@ -523,9 +523,9 @@
 			
 			// Round prices to avoid extra decimals.
 			if( ! empty( $this->membership_level ) ) {
-				$this->membership_level->initial_payment = pmpro_round_price( $this->membership_level->initial_payment );
-				$this->membership_level->billing_amount = pmpro_round_price( $this->membership_level->billing_amount );
-				$this->membership_level->trial_amount = pmpro_round_price( $this->membership_level->trial_amount );
+				$this->membership_level->initial_payment = dmrfid_round_price( $this->membership_level->initial_payment );
+				$this->membership_level->billing_amount = dmrfid_round_price( $this->membership_level->billing_amount );
+				$this->membership_level->trial_amount = dmrfid_round_price( $this->membership_level->trial_amount );
 			}
 			
 			return $this->membership_level;
@@ -537,8 +537,8 @@
 		function getTaxForPrice($price)
 		{
 			//get options
-			$tax_state = pmpro_getOption("tax_state");
-			$tax_rate = pmpro_getOption("tax_rate");
+			$tax_state = dmrfid_getOption("tax_state");
+			$tax_rate = dmrfid_getOption("tax_rate");
 
 			//default
 			$tax = 0;
@@ -566,7 +566,7 @@
 				$values['billing_country'] = $this->billing->country;
 
 			//filter
-			$tax = apply_filters("pmpro_tax", $tax, $values, $this);
+			$tax = apply_filters("dmrfid_tax", $tax, $values, $this);
 			return $tax;
 		}
 
@@ -612,7 +612,7 @@
 			}
 
 			global $wpdb;
-			$this->sqlQuery = "UPDATE $wpdb->pmpro_membership_orders SET timestamp = '" . $date . "' WHERE id = '" . $this->id . "' LIMIT 1";
+			$this->sqlQuery = "UPDATE $wpdb->dmrfid_membership_orders SET timestamp = '" . $date . "' WHERE id = '" . $this->id . "' LIMIT 1";
 
 			if($wpdb->query($this->sqlQuery) !== "false") {
 				$this->timestamp = strtotime( $date );
@@ -627,7 +627,7 @@
 		 */
 		function saveOrder()
 		{
-			global $current_user, $wpdb, $pmpro_checkout_id;
+			global $current_user, $wpdb, $dmrfid_checkout_id;
 
 			//get a random code to use for the public ID
 			if(empty($this->code))
@@ -697,9 +697,9 @@
 				$this->status = "";
 
 			if(empty($this->gateway))
-				$this->gateway = pmpro_getOption("gateway");
+				$this->gateway = dmrfid_getOption("gateway");
 			if(empty($this->gateway_environment))
-				$this->gateway_environment = pmpro_getOption("gateway_environment");
+				$this->gateway_environment = dmrfid_getOption("gateway_environment");
 			
 			if(empty($this->datetime) && empty($this->timestamp))
 				$this->datetime = date("Y-m-d H:i:s", time());
@@ -712,19 +712,19 @@
 				$this->notes = "";
 
 			if(empty($this->checkout_id) || intval($this->checkout_id)<1) {
-				$highestval = $wpdb->get_var("SELECT MAX(checkout_id) FROM $wpdb->pmpro_membership_orders");
+				$highestval = $wpdb->get_var("SELECT MAX(checkout_id) FROM $wpdb->dmrfid_membership_orders");
 				$this->checkout_id = intval($highestval)+1;
-				$pmpro_checkout_id = $this->checkout_id;
+				$dmrfid_checkout_id = $this->checkout_id;
 			}
 
 			//build query
 			if(!empty($this->id))
 			{
 				//set up actions
-				$before_action = "pmpro_update_order";
-				$after_action = "pmpro_updated_order";
+				$before_action = "dmrfid_update_order";
+				$after_action = "dmrfid_updated_order";
 				//update
-				$this->sqlQuery = "UPDATE $wpdb->pmpro_membership_orders
+				$this->sqlQuery = "UPDATE $wpdb->dmrfid_membership_orders
 									SET `code` = '" . esc_sql( $this->code ) . "',
 									`session_id` = '" . esc_sql( $this->session_id ) . "',
 									`user_id` = " . intval($this->user_id) . ",
@@ -764,8 +764,8 @@
 			else
 			{
 				//set up actions
-				$before_action = "pmpro_add_order";
-				$after_action = "pmpro_added_order";
+				$before_action = "dmrfid_add_order";
+				$after_action = "dmrfid_added_order";
 				
 				//only on inserts, we might want to set the expirationmonth and expirationyear from ExpirationDate
 				if( (empty($this->expirationmonth) || empty($this->expirationyear)) && !empty($this->ExpirationDate)) {
@@ -774,7 +774,7 @@
 				}
 				
 				//insert
-				$this->sqlQuery = "INSERT INTO $wpdb->pmpro_membership_orders
+				$this->sqlQuery = "INSERT INTO $wpdb->dmrfid_membership_orders
 								(`code`, `session_id`, `user_id`, `membership_id`, `paypal_token`, `billing_name`, `billing_street`, `billing_city`, `billing_state`, `billing_zip`, `billing_country`, `billing_phone`, `subtotal`, `tax`, `couponamount`, `certificate_id`, `certificateamount`, `total`, `payment_type`, `cardtype`, `accountnumber`, `expirationmonth`, `expirationyear`, `status`, `gateway`, `gateway_environment`, `payment_transaction_id`, `subscription_transaction_id`, `timestamp`, `affiliate_id`, `affiliate_subid`, `notes`, `checkout_id`)
 								VALUES('" . esc_sql( $this->code ) . "',
 									   '" . esc_sql( session_id() ) . "',
@@ -839,8 +839,8 @@
 			while( empty( $code ) ) {
 				$scramble = md5( AUTH_KEY . microtime() . SECURE_AUTH_KEY . $count );
 				$code = substr( $scramble, 0, 10 );
-				$code = apply_filters( 'pmpro_random_code', $code, $this );	//filter
-				$check = $wpdb->get_var( "SELECT id FROM $wpdb->pmpro_membership_orders WHERE code = '$code' LIMIT 1" );
+				$code = apply_filters( 'dmrfid_random_code', $code, $this );	//filter
+				$check = $wpdb->get_var( "SELECT id FROM $wpdb->dmrfid_membership_orders WHERE code = '$code' LIMIT 1" );
 				if( $check || is_numeric( $code ) ) {
 					$code = NULL;
 				}
@@ -860,7 +860,7 @@
 				return false;
 
 			$this->status = $newstatus;
-			$this->sqlQuery = "UPDATE $wpdb->pmpro_membership_orders SET status = '" . esc_sql($newstatus) . "' WHERE id = '" . $this->id . "' LIMIT 1";
+			$this->sqlQuery = "UPDATE $wpdb->dmrfid_membership_orders SET status = '" . esc_sql($newstatus) . "' WHERE id = '" . $this->id . "' LIMIT 1";
 			if($wpdb->query($this->sqlQuery) !== false)
 				return true;
 			else
@@ -908,7 +908,7 @@
 				//Note: We do this early to avoid race conditions if and when the
 				//gateway send the cancel webhook after cancelling the subscription.				
 				$sqlQuery = $wpdb->prepare(
-					"UPDATE $wpdb->pmpro_membership_orders 
+					"UPDATE $wpdb->dmrfid_membership_orders 
 						SET `status` = 'cancelled' 
 						WHERE user_id = %d 
 							AND membership_id = %d 
@@ -936,24 +936,24 @@
 					$this->updateStatus("cancelled");
 
 					//we should probably notify the admin
-					$pmproemail = new PMProEmail();
-					$pmproemail->template = "subscription_cancel_error";
-					$pmproemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%s. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), strval($this->user_id)) . "</p><p>Error: " . $this->error . "</p>");
-					$pmproemail->data["body"] .= '<p>' . __('User Email', 'paid-memberships-pro') . ': ' . $order_user->user_email . '</p>';
-					$pmproemail->data["body"] .= '<p>' . __('Username', 'paid-memberships-pro') . ': ' . $order_user->user_login . '</p>';
-					$pmproemail->data["body"] .= '<p>' . __('User Display Name', 'paid-memberships-pro') . ': ' . $order_user->display_name . '</p>';
-					$pmproemail->data["body"] .= '<p>' . __('Order', 'paid-memberships-pro') . ': ' . $this->code . '</p>';
-					$pmproemail->data["body"] .= '<p>' . __('Gateway', 'paid-memberships-pro') . ': ' . $this->gateway . '</p>';
-					$pmproemail->data["body"] .= '<p>' . __('Subscription Transaction ID', 'paid-memberships-pro') . ': ' . $this->subscription_transaction_id . '</p>';
-					$pmproemail->data["body"] .= '<hr />';
-					$pmproemail->data["body"] .= '<p>' . __('Edit User', 'paid-memberships-pro') . ': ' . esc_url( add_query_arg( 'user_id', $this->user_id, self_admin_url( 'user-edit.php' ) ) ) . '</p>';
-					$pmproemail->data["body"] .= '<p>' . __('Edit Order', 'paid-memberships-pro') . ': ' . esc_url( add_query_arg( array( 'page' => 'pmpro-orders', 'order' => $this->id ), admin_url('admin.php' ) ) ) . '</p>';
-					$pmproemail->sendEmail(get_bloginfo("admin_email"));
+					$dmrfidemail = new DmRFIDEmail();
+					$dmrfidemail->template = "subscription_cancel_error";
+					$dmrfidemail->data = array("body"=>"<p>" . sprintf(__("There was an error canceling the subscription for user with ID=%s. You will want to check your payment gateway to see if their subscription is still active.", 'paid-memberships-pro' ), strval($this->user_id)) . "</p><p>Error: " . $this->error . "</p>");
+					$dmrfidemail->data["body"] .= '<p>' . __('User Email', 'paid-memberships-pro') . ': ' . $order_user->user_email . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Username', 'paid-memberships-pro') . ': ' . $order_user->user_login . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('User Display Name', 'paid-memberships-pro') . ': ' . $order_user->display_name . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Order', 'paid-memberships-pro') . ': ' . $this->code . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Gateway', 'paid-memberships-pro') . ': ' . $this->gateway . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Subscription Transaction ID', 'paid-memberships-pro') . ': ' . $this->subscription_transaction_id . '</p>';
+					$dmrfidemail->data["body"] .= '<hr />';
+					$dmrfidemail->data["body"] .= '<p>' . __('Edit User', 'paid-memberships-pro') . ': ' . esc_url( add_query_arg( 'user_id', $this->user_id, self_admin_url( 'user-edit.php' ) ) ) . '</p>';
+					$dmrfidemail->data["body"] .= '<p>' . __('Edit Order', 'paid-memberships-pro') . ': ' . esc_url( add_query_arg( array( 'page' => 'dmrfid-orders', 'order' => $this->id ), admin_url('admin.php' ) ) ) . '</p>';
+					$dmrfidemail->sendEmail(get_bloginfo("admin_email"));
 				} else {
 					//Note: status would have been set to cancelled by the gateway class. So we don't have to update it here.
 
-					//remove billing numbers in pmpro_memberships_users if the membership is still active					
-					$sqlQuery = "UPDATE $wpdb->pmpro_memberships_users SET initial_payment = 0, billing_amount = 0, cycle_number = 0 WHERE user_id = '" . $this->user_id . "' AND membership_id = '" . $this->membership_id . "' AND status = 'active'";
+					//remove billing numbers in dmrfid_memberships_users if the membership is still active					
+					$sqlQuery = "UPDATE $wpdb->dmrfid_memberships_users SET initial_payment = 0, billing_amount = 0, cycle_number = 0 WHERE user_id = '" . $this->user_id . "' AND membership_id = '" . $this->membership_id . "' AND status = 'active'";
 					$wpdb->query($sqlQuery);
 				}
 				
@@ -1002,7 +1002,7 @@
 				return false;
 			}
 			
-			$consent_log = pmpro_get_consent_log( $this->user_id );
+			$consent_log = dmrfid_get_consent_log( $this->user_id );
 			foreach( $consent_log as $entry ) {
 				if( $entry['order_id'] == $this->id ) {
 					return $entry;
@@ -1021,10 +1021,10 @@
 				return false;
 
 			global $wpdb;
-			$this->sqlQuery = "DELETE FROM $wpdb->pmpro_membership_orders WHERE id = '" . $this->id . "' LIMIT 1";
+			$this->sqlQuery = "DELETE FROM $wpdb->dmrfid_membership_orders WHERE id = '" . $this->id . "' LIMIT 1";
 			if($wpdb->query($this->sqlQuery) !== false)
 			{
-				do_action("pmpro_delete_order", $this->id, $this);
+				do_action("dmrfid_delete_order", $this->id, $this);
 				return true;
 			}
 			else

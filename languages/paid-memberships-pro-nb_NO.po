@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: pages\n"
 "X-Poedit-SearchPath-2: pages/levels.php\n"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/addons.php:5 adminpages/advancedsettings.php:5
 #: adminpages/discountcodes.php:5 adminpages/emailsettings.php:5
 #: adminpages/membershiplevels.php:5 adminpages/memberslist-csv.php:5
@@ -32,7 +32,7 @@ msgstr ""
 msgid "You do not have permissions to perform this action."
 msgstr "Du har ikke rettigheter nok for denne aktiviteten."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/addons.php:64 adminpages/admin_header.php:170
 #: includes/adminpages.php:53 includes/adminpages.php:151
 msgid "Add Ons"
@@ -75,7 +75,7 @@ msgstr "Navnet på utvidelsen"
 msgid "Type"
 msgstr "Type"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/addons.php:95 adminpages/membershiplevels.php:300
 msgid "Description"
 msgstr "Beskrivelse"
@@ -126,16 +126,16 @@ msgid "Delete"
 msgstr "Slett"
 
 #: adminpages/addons.php:223
-msgid "PMPro Free"
-msgstr "PMPro Free"
+msgid "DmRFID Free"
+msgstr "DmRFID Free"
 
 #: adminpages/addons.php:225
-msgid "PMPro Core"
-msgstr "PMPro Core"
+msgid "DmRFID Core"
+msgstr "DmRFID Core"
 
 #: adminpages/addons.php:227
-msgid "PMPro Plus"
-msgstr "PMPro Plus"
+msgid "DmRFID Plus"
+msgstr "DmRFID Plus"
 
 #: adminpages/addons.php:229
 msgid "WordPress.org"
@@ -168,22 +168,22 @@ msgstr "Vis detaljer"
 msgid "Visit plugin site"
 msgstr "Besøk tilleggets nettsted"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:25
 msgid "Add a membership level to get started."
 msgstr "Legg til et medlemskap for å starte."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:27
 msgid "Set up the membership pages"
 msgstr "Oppsett for medlemskap-sidene"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:29
 msgid "Set up your SSL certificate and payment gateway"
 msgstr "Oppsett for SSL sertifikat og betalingsmåte"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:38
 msgid ""
 "The billing details for some of your membership levels is not supported by "
@@ -192,7 +192,7 @@ msgstr ""
 "Faktureringsdetaljene for noen av dine medlemskapsnivåer er ikke støttet av "
 "Stripe."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:46
 msgid ""
 "The billing details for this level are not supported by Stripe. Please "
@@ -201,19 +201,19 @@ msgstr ""
 "Faktureringsdetaljene for dette nivået er ikke støttet av Stripe. Les "
 "igjennom informasjonen i Faktureringsdetaljene under."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:50 adminpages/admin_header.php:70
 #: adminpages/admin_header.php:90 adminpages/admin_header.php:111
 msgid "The levels with issues are highlighted below."
 msgstr "Nivåene med feil er markert under."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:52 adminpages/admin_header.php:72
 #: adminpages/admin_header.php:92 adminpages/admin_header.php:113
 msgid "Please edit your levels"
 msgstr "Rediger nivåene dine under"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:58
 msgid ""
 "The billing details for some of your membership levels is not supported by "
@@ -222,7 +222,7 @@ msgstr ""
 "Faktureringsdetaljene for noen av dine medlemskapsnivåer er ikke støttet av "
 "Payflow."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:66
 msgid ""
 "The billing details for this level are not supported by Payflow. Please "
@@ -231,7 +231,7 @@ msgstr ""
 "Faktureringsdetaljene for dette nivået er ikke støttet av Payflow. Les "
 "igjennom informasjonen i Faktureringsdetaljene under."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:78
 msgid ""
 "The billing details for some of your membership levels is not supported by "
@@ -240,7 +240,7 @@ msgstr ""
 "Faktureringsdetaljene for noen av dine medlemskapsnivåer er ikke støttet av "
 "Braintree."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:86
 msgid ""
 "The billing details for this level are not supported by Braintree. Please "
@@ -249,7 +249,7 @@ msgstr ""
 "Faktureringsdetaljene for dette nivået er ikke støttet av Braintree. Les "
 "igjennom informasjonen i Faktureringsdetaljene under."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:98
 msgid ""
 "The billing details for some of your membership levels is not supported by "
@@ -258,7 +258,7 @@ msgstr ""
 "Faktureringsdetaljene for noen av dine medlemskapsnivåer er ikke støttet av "
 "TwoCheckout."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:107
 msgid ""
 "The billing details for this level are not supported by 2Checkout. Please "
@@ -267,17 +267,17 @@ msgstr ""
 "Faktureringsdetaljene for dette nivået er ikke støttet av 2Checkout. Les "
 "igjennom informasjonen i Faktureringsdetaljene under."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:127
 msgid "Plugin Support"
 msgstr "Plugin Support"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:127
 msgid "User Forum"
 msgstr "Brukerforum"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:150 adminpages/membershiplevels.php:618
 #: adminpages/pagesettings.php:70 includes/adminpages.php:69
 #: includes/adminpages.php:70 includes/adminpages.php:116
@@ -285,28 +285,28 @@ msgstr "Brukerforum"
 msgid "Membership Levels"
 msgstr "Medlemskapsnivå"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:154 adminpages/pagesettings.php:92
 msgid "Pages"
 msgstr "Sider"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:158
 msgid "Payment Gateway &amp; SSL"
 msgstr "Betalingsmåter &amp; SSL"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:162 adminpages/memberslist.php:168
-#: shortcodes/pmpro_account.php:109
+#: shortcodes/dmrfid_account.php:109
 msgid "Email"
 msgstr "E-post"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/admin_header.php:166
 msgid "Advanced"
 msgstr "Avansert"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:43
 msgid "Your advanced settings have been updated."
 msgstr "Dine avanserte innstillinger har blitt oppdatert."
@@ -336,18 +336,18 @@ msgstr ""
 "Dette innholdet er tilgjengelig til våre medlemmer. Du må enten være "
 "pålogget som bruker, eller ha registrert deg for å få tilgang."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:88 includes/adminpages.php:52
 #: includes/adminpages.php:144
 msgid "Advanced Settings"
 msgstr "Avanserte innstillinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:94
 msgid "Message for Logged-in Non-members"
 msgstr "Melding til innloggede ikke-medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:98
 msgid ""
 "This message replaces the post content for non-members. Available variables"
@@ -355,23 +355,23 @@ msgstr ""
 "Denne meldingen erstatter innholdet i innleggene for ikke-medlemmer. "
 "Tilgjengelige variabler"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:103
 msgid "Message for Logged-out Users"
 msgstr "Melding til utloggede brukere"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:107
 msgid "This message replaces the post content for logged-out visitors."
 msgstr ""
 "Denne meldingen erstatter innholdet i innleggene for utloggede besøkende"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:112
 msgid "Message for RSS Feed"
 msgstr "Melding for RSS Feed"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:116
 msgid "This message replaces the post content in RSS feeds."
 msgstr "Denne meldingen erstatter innholdet i innleggene i RSS Feeden"
@@ -394,17 +394,17 @@ msgstr ""
 "Ja - Kun brukere som også er medlemmer vil kunne få tilgang til innhold i "
 "innlegg/sider ved søk eller i arkivene."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:133
 msgid "Show Excerpts to Non-Members?"
 msgstr "Viser utdrag for ikke-medlemmer?"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:137
 msgid "No - Hide excerpts."
 msgstr "Nei - Skjul utdragene."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:138
 msgid "Yes - Show excerpts."
 msgstr "Ja - Vis utdragene."
@@ -413,97 +413,97 @@ msgstr "Ja - Vis utdragene."
 msgid "Hide Ads From Members?"
 msgstr "Skjule annonser fra alle medlemmer?"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:148 adminpages/advancedsettings.php:207
 #: adminpages/advancedsettings.php:219 adminpages/membershiplevels.php:667
 #: adminpages/paymentsettings.php:210
-#: classes/gateways/class.pmprogateway_stripe.php:206 includes/profile.php:110
+#: classes/gateways/class.dmrfidgateway_stripe.php:206 includes/profile.php:110
 msgid "No"
 msgstr "Nei"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:149
 msgid "Hide Ads From All Members"
 msgstr "Skjul reklamen for alle medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:150
 msgid "Hide Ads From Certain Members"
 msgstr "Skjul reklamen for visse medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:157
 msgid "Ads from the following plugins will be automatically turned off"
 msgstr "Reklamer fra følgende Plugins vil automatisk slås av"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:158
 msgid "To hide ads in your template code, use code like the following"
 msgstr "For å skjule reklamer i template-koden, bruk kode som i det følgende"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:169
 msgid "Choose Levels to Hide Ads From"
 msgstr "Velg nivåer for å skjule reklamer fra"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:203
 msgid "Redirect all traffic from registration page to /susbcription/?"
 msgstr "Omdiriger all trafikk fra registreringssiden til /abonnement/?"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:203
 msgid "multisite only"
 msgstr "kun for multisite"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:208 adminpages/membershiplevels.php:667
 #: adminpages/paymentsettings.php:211
-#: classes/gateways/class.pmprogateway_stripe.php:207 includes/profile.php:111
+#: classes/gateways/class.dmrfidgateway_stripe.php:207 includes/profile.php:111
 msgid "Yes"
 msgstr "Ja"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:215
 msgid "Use reCAPTCHA?"
 msgstr "Bruk reCAPTCHA?"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:220
 msgid "Yes - Free memberships only."
 msgstr "Ja - Kun for gratis medlemskap."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:221
 msgid "Yes - All memberships."
 msgstr "Ja - Alle medlemskap."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:223
 msgid "A free reCAPTCHA key is required."
 msgstr "Det trengs en gratis reCAPTCHA nøkkel"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:223
 msgid "Click here to signup for reCAPTCHA"
 msgstr "Klikk her for å registrere deg for reCAPTCHA"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:229
 msgid "reCAPTCHA Public Key"
 msgstr "reCAPTCHA Offentlig nøkkel"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:232
 msgid "reCAPTCHA Private Key"
 msgstr "reCAPTCHA Privat nøkkel"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:238
 msgid "Require Terms of Service on signups?"
 msgstr "Er det krav til Brukerbetingelser ved registrering?"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:245
 msgid ""
 "If yes, create a WordPress page containing your TOS agreement and assign it "
@@ -516,50 +516,50 @@ msgstr ""
 msgid "selected"
 msgstr "valgte"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/advancedsettings.php:368 adminpages/pagesettings.php:294
 #: adminpages/paymentsettings.php:238
 msgid "Save Settings"
 msgstr "Lagre innstillingene"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:48
 msgid "Discount code updated successfully."
 msgstr "Rabattkoden er oppdatert."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:55
 msgid "Error updating discount code. That code may already be in use."
 msgstr "Feil ved oppdatering av rabattkoden. Koden kan allerede være i bruk."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:64
 msgid "Discount code added successfully."
 msgstr "Rabattkoden er lagt til."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:72
 msgid "Error adding discount code. That code may already be in use."
 msgstr "Feil ved innlegging av rabattkoden. Koden kan allerede være i bruk."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:197
 #, php-format
 msgid "Error saving values for the %s level."
 msgstr "Feil ved lagring av verdier for %s nivået."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:205
 msgid "There were errors updating the level values: "
 msgstr "Det oppsto feil ved oppdatering av nivå-verdiene:"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:238
 #, php-format
 msgid "Code %s deleted successfully."
 msgstr "Vi har slettet %s"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:243
 msgid ""
 "Error deleting discount code. The code was only partially deleted. Please "
@@ -568,27 +568,27 @@ msgstr ""
 "Det oppsto feil ved sletting av rabattkoden. Koden ble bare delvis slettet. "
 "Prøv igjen."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:249
 msgid "Error deleting code. Please try again."
 msgstr "Feil ved sletting av koden. Prøv igjen."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:255
 msgid "Code not found."
 msgstr "Koden ble ikke funnet."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:268
 msgid "Edit Discount Code"
 msgstr "Rediger rabattkoden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:270 adminpages/discountcodes.php:558
 msgid "Add New Discount Code"
 msgstr "Legg til ny rabattkode"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:310 adminpages/discountcodes.php:586
 #: adminpages/membershiplevels.php:288 adminpages/membershiplevels.php:636
 #: adminpages/memberslist.php:164 adminpages/orders.php:937
@@ -597,36 +597,36 @@ msgstr "Legg til ny rabattkode"
 msgid "ID"
 msgstr "ID"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:311 adminpages/orders.php:333
 msgid "This will be generated when you save."
 msgstr "Dette vil bli generert når du lagrer."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:315 adminpages/discountcodes.php:587
 #: adminpages/orders.php:337 adminpages/orders.php:938
 msgid "Code"
 msgstr "Kode"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:353
 msgid "Start Date"
 msgstr "Startdato"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:371
-#: classes/gateways/class.pmprogateway_braintree.php:323
-#: classes/gateways/class.pmprogateway_stripe.php:495 pages/billing.php:265
+#: classes/gateways/class.dmrfidgateway_braintree.php:323
+#: classes/gateways/class.dmrfidgateway_stripe.php:495 pages/billing.php:265
 #: pages/checkout.php:575
 msgid "Expiration Date"
 msgstr "Utløpsdato"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:389 adminpages/discountcodes.php:590
 msgid "Uses"
 msgstr "Ganger å bruke"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:392
 msgid "Leave blank for unlimited uses."
 msgstr "La stå åpen for ubegrenset bruk."
@@ -635,70 +635,70 @@ msgstr "La stå åpen for ubegrenset bruk."
 msgid "Which Levels Will This Code Apply To?"
 msgstr "Hvilke nivåer vil denne koden gjelde for?"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:431 adminpages/membershiplevels.php:341
 msgid "Initial Payment"
 msgstr "Pris"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:442 adminpages/membershiplevels.php:352
 msgid "The initial amount collected at registration."
 msgstr "Den første summen innbetales ved registrering."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:447 adminpages/membershiplevels.php:356
 msgid "Recurring Subscription"
 msgstr "Abonnement"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:448 adminpages/membershiplevels.php:357
 msgid "Check if this level has a recurring subscription payment."
 msgstr "Kryss av dersom nivået har regelmessige abonnementsinnbetalinger."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:452 adminpages/membershiplevels.php:361
 msgid "Billing Amount"
 msgstr "Faktureringsbeløp"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
 msgid "Day(s)"
 msgstr "Dag(er)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
 msgid "Week(s)"
 msgstr "Uke(r)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
 msgid "Month(s)"
 msgstr "Måned(er)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:467 adminpages/discountcodes.php:521
 #: adminpages/membershiplevels.php:376 adminpages/membershiplevels.php:479
-#: classes/gateways/class.pmprogateway_stripe.php:562
+#: classes/gateways/class.dmrfidgateway_stripe.php:562
 msgid "Year(s)"
 msgstr "År"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:475 adminpages/membershiplevels.php:385
 msgid "The amount to be billed one cycle after the initial payment."
 msgstr "Beløpet som skal faktureres en syklus etter første betaling."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:480 adminpages/membershiplevels.php:403
 msgid "Billing Cycle Limit"
 msgstr "Grense for faktureringssyklus"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:483 adminpages/membershiplevels.php:407
 msgid ""
 "The <strong>total</strong> number of recurring billing cycles for this "
@@ -709,47 +709,47 @@ msgstr ""
 "dette nivået, inkludert prøveperioden (hvis aktuelt), men ekslusdert den "
 "første betalingen. Satt til null dersom medlemskapet er for ubestemt tid."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:488 adminpages/membershiplevels.php:416
 msgid "Custom Trial"
 msgstr "Prøve-periode"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:489 adminpages/membershiplevels.php:418
 msgid "Check to add a custom trial period."
 msgstr "Kryss av for å legge til en egen prøveperiode."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:493 adminpages/membershiplevels.php:427
 msgid "Trial Billing Amount"
 msgstr "Betalingsbeløp for prøveperioden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:504 adminpages/membershiplevels.php:438
 msgid "for the first"
 msgstr "for den første"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:506 adminpages/membershiplevels.php:440
 msgid "subscription payments"
 msgstr "abonnementsbetalinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:511 adminpages/membershiplevels.php:469
 msgid "Membership Expiration"
 msgstr "Medlemskapsutløp"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:512 adminpages/membershiplevels.php:470
 msgid "Check this to set when membership access expires."
 msgstr "Kryss av for å definere når medlemskapet utløper"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:516 adminpages/membershiplevels.php:474
 msgid "Expires In"
 msgstr "Utløper om"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:529 adminpages/membershiplevels.php:487
 msgid ""
 "Set the duration of membership access. Note that the any future payments "
@@ -760,38 +760,38 @@ msgstr ""
 "utbetalinger (repeterende abonnement, osv) vil bli slettet når medlemskapet "
 "utløper."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:557
 msgid "Memberships Discount Codes"
 msgstr "Rabattkoder"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:567
 msgid "Search Discount Codes"
 msgstr "Søk i rabattkodene"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:570
 msgid "Search"
 msgstr "Søk"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:588
 msgid "Starts"
 msgstr "Begynner"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:589 adminpages/memberslist.php:179
 #: adminpages/reports/login.php:163 includes/profile.php:107
 msgid "Expires"
 msgstr "Utløper"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:591
 msgid "Levels"
 msgstr "Nivåer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:603
 msgid ""
 "Discount codes allow you to offer your memberships at discounted prices to "
@@ -800,18 +800,18 @@ msgstr ""
 "Rabattkoder er noe du kan tilby for å redusere medlemsprisen for enkelte "
 "kunder."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:603
 msgid "Create your first discount code now"
 msgstr "Opprett din først rabattkode"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:649 adminpages/membershiplevels.php:669
 #: adminpages/orders.php:1021
 msgid "edit"
 msgstr "rediger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:652
 #, php-format
 msgid ""
@@ -823,19 +823,19 @@ msgstr ""
 "eksisterende medlemmers vill ikke endres, men nye medlemmer vil ikke kunne "
 "benytte seg av denne rabattkoden."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/discountcodes.php:652 adminpages/membershiplevels.php:669
 #: adminpages/orders.php:1027
 msgid "delete"
 msgstr "slett"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:69 includes/adminpages.php:51
 #: includes/adminpages.php:137
 msgid "Email Settings"
 msgstr "Innstillinger for e-post"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:70
 msgid ""
 "By default, system generated emails are sent from "
@@ -845,7 +845,7 @@ msgstr ""
 "Normalt sendes automatiske e-postmeldinger fra <em>wordpress@yourdomain.com</"
 "em>. Du kan endre denne “fra” adressen ved å fylle ut feltene under."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:72
 msgid ""
 "To modify the appearance of system generated emails, add the files "
@@ -865,19 +865,19 @@ msgstr ""
 "documentation/member-communications/“>Lær mer om e-postmeldinger fra Paid "
 "Memberships Pro.</a>"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:78
 msgid "From Email"
 msgstr "E-postadressen til avsender:"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:86
 msgid "From Name"
 msgstr "Navnet på e-postavsender:"
 
 #: adminpages/emailsettings.php:94
-msgid "Only Filter PMPro Emails?"
-msgstr "Kun behandle e-post for PMPro?"
+msgid "Only Filter DmRFID Emails?"
+msgstr "Kun behandle e-post for DmRFID?"
 
 #: adminpages/emailsettings.php:98
 #, php-format
@@ -888,93 +888,93 @@ msgstr ""
 "Dersom denne ikke er krysset av, vil alle mail fra “Wordpress &lt;%s&gt; bli "
 "filtrert basert på innstillingene ovenfor."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:115
 msgid "Send the site admin emails"
 msgstr "Send ut nettstedets administrative e-postmeldinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:121
 msgid "Checkout"
 msgstr "Betaling"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:125
 msgid "when a member checks out."
 msgstr "når ett medlem betaler"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:130
 msgid "Admin Changes"
 msgstr "Administrative endringer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:134
 msgid "when an admin changes a user's membership level through the dashboard."
 msgstr ""
 "når en administrator endrer brukerens medlemsnivå ved hjelp av dashbordet."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:139
 msgid "Cancellation"
 msgstr "Avbestilling"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:143
 msgid "when a user cancels his or her account."
 msgstr "Når en bruker avbestiller kontoen sin"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:148
 msgid "Bill Updates"
 msgstr "Betalingsoppdateringer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:152
 msgid "when a user updates his or her billing information."
 msgstr "når en bruker pppdater fakturaadresse og kredittkortinformasjon."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:158
 msgid "Send members emails"
 msgstr "Send e-post til medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:164
 msgid "New Users"
 msgstr "Nye brukere"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/emailsettings.php:168
 msgid ""
 "Default WP notification email. (Recommended: Leave unchecked. Members will "
-"still get an email confirmation from PMPro after checkout.)"
+"still get an email confirmation from DmRFID after checkout.)"
 msgstr ""
 "Standard e-post fra WP. (Vi anbefaler at du lar denne forbli blank/ikke "
-"avsjekket. Nye medlemmer vil fortsatt motta bekreftelse via e-post fra PMPro "
+"avsjekket. Nye medlemmer vil fortsatt motta bekreftelse via e-post fra DmRFID "
 "etter innbetalingen.)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:120
 msgid "Membership level updated successfully."
 msgstr "Vellykket oppgradering av medlemsnivået."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:126
 msgid "Error updating membership level."
 msgstr "Feil ved oppdatering av medlemsnivået."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:143
 msgid "Membership level added successfully."
 msgstr "Nytt medlemsskapsnivå lagt til."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:148
 msgid "Error adding membership level."
 msgstr "Det oppsto en feil ved opprettelsen av medlemsnivå."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:183
 #, php-format
 msgid ""
@@ -986,54 +986,54 @@ msgstr ""
 "%d. Du må sjekke kontoen din betalingsformidlerportalen du bruker for å "
 "bekrefte hvorvidt denne brukerens abonnement fortsatt er aktivt."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:186
 msgid "Last Invoice"
 msgstr "Siste faktura"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:200
 msgid "Membership level deleted successfully."
 msgstr "Medlemsnivået har blitt slettet."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:205 adminpages/membershiplevels.php:211
 msgid "Error deleting membership level."
 msgstr "Feil ved sletting av medlemsnivået."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:226
 msgid "Edit Membership Level"
 msgstr "Redigering av medlemsnivået"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:228
 msgid "Add New Membership Level"
 msgstr "Legg til nytt medlemsskapsnivå"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:295 adminpages/membershiplevels.php:637
 #: adminpages/reports/login.php:160
 msgid "Name"
 msgstr "Navn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:318
 msgid "Confirmation Message"
 msgstr "Bekreftelse"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:337 adminpages/membershiplevels.php:638
 msgid "Billing Details"
 msgstr "Fakturadetaljer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:372
-#: classes/gateways/class.pmprogateway_stripe.php:660
+#: classes/gateways/class.dmrfidgateway_stripe.php:660
 msgid "per"
 msgstr "per"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:387
 msgid ""
 "Stripe integration currently only supports billing periods of \"Week\", "
@@ -1042,7 +1042,7 @@ msgstr ""
 "Stripe som betalingsbehandler støtter kun “Uker”, “Måneder” eller “År” som "
 "abonnementsperiodeverdier."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:389
 msgid ""
 "Braintree integration currently only supports billing periods of \"Month\" "
@@ -1051,7 +1051,7 @@ msgstr ""
 "Braintree som betalingsbehandler støtter kun “Måneder” eller “År” som "
 "abonnementsperiodeverdier."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:391
 msgid ""
 "Payflow integration currently only supports billing frequencies of 1 and "
@@ -1061,28 +1061,28 @@ msgstr ""
 "bestående av verdien 1, og av abonnementsperiodeverdier bestående av “uker”, "
 "“måneder” og “år”."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:395 adminpages/membershiplevels.php:397
-#: classes/gateways/class.pmprogateway_cybersource.php:101
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:133
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:133
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 msgid "Note"
 msgstr "Notat"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:395
 msgid ""
 "After saving this level, make note of the ID and create a \"Plan\" in your "
 "Braintree dashboard with the same settings and the \"Plan ID\" set to "
-"<em>pmpro_#</em>, where # is the level ID."
+"<em>dmrfid_#</em>, where # is the level ID."
 msgstr ""
 "Etter att du har lagret dette medlemsnivået, ta notis av ID nummeret og "
 "opprett en “Plant” i dashboardet for Braintree. Her må du bruke de samme "
-"innstillingene samt sette “Plan ID”et til <em>pmpro_#</em>, der #-tegnet "
+"innstillingene samt sette “Plan ID”et til <em>dmrfid_#</em>, der #-tegnet "
 "representerer det ID nummeret du noterte deg."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:397
 msgid ""
 "You will need to create a \"Plan\" in your Braintree dashboard with the same "
@@ -1091,7 +1091,7 @@ msgstr ""
 "Du må opprette en “Plan” i kontrollpanelet til Braintree der du bruker de "
 "samme innstillingene og setter “Plan ID”et til "
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:409
 msgid ""
 "Stripe integration currently does not support billing limits. You can still "
@@ -1101,7 +1101,7 @@ msgstr ""
 "lenge ett abonnnement kan løpe. På tross av dette kan du fortsatt sette en "
 "utløpsdato i feltet nedenfor."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:421
 msgid ""
 "2Checkout integration does not support custom trials. You can do one period "
@@ -1112,7 +1112,7 @@ msgstr ""
 "innledende betalingsbeløp som er annerledes enn hva den normale "
 "innbetalingen kommer til å være."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:443
 msgid ""
 "Stripe integration currently does not support trial amounts greater than $0."
@@ -1120,7 +1120,7 @@ msgstr ""
 "Stripe som betalingsbehandler støtter foreløpig ikke å ta betalt for "
 "prøveperioder."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:447
 msgid ""
 "Braintree integration currently does not support trial amounts greater than "
@@ -1129,7 +1129,7 @@ msgstr ""
 "Braintree som betalingsbehandler støtter foreløpig ikke å ta betalt for "
 "prøveperioder."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:451
 msgid ""
 "Payflow integration currently does not support trial amounts greater than $0."
@@ -1137,17 +1137,17 @@ msgstr ""
 "PayPal Payflow som betalingsbehandler støtter foreløpig ikke å ta betalt for "
 "prøveperioder."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:460
 msgid "Other Settings"
 msgstr "Andre innstillinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:464
 msgid "Disable New Signups"
 msgstr "Ikke tillat nye registreringer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:465
 msgid ""
 "Check to hide this level from the membership levels page and disable "
@@ -1156,12 +1156,12 @@ msgstr ""
 "Kryss av for å gjemme dette medlemsnivået fra nivåsiden, samt å deaktivere "
 "registrering for nivået."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:495
 msgid "Content Settings"
 msgstr "Innstillinger for innhold"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:499
 msgid "Categories"
 msgstr "Kategorier"
@@ -1170,18 +1170,18 @@ msgstr "Kategorier"
 msgid "Save Level"
 msgstr "Lagre nivået"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:517 adminpages/orders.php:633
-#: pages/billing.php:344 pages/cancel.php:71 shortcodes/pmpro_account.php:73
+#: pages/billing.php:344 pages/cancel.php:71 shortcodes/dmrfid_account.php:73
 msgid "Cancel"
 msgstr "Avbryt"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:618
 msgid "Add New Level"
 msgstr "Legge til nytt medlemsskapsnivå"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:621 adminpages/membershiplevels.php:624
 msgid "Search Levels"
 msgstr "Søke i medlemsnivåer"
@@ -1192,34 +1192,34 @@ msgstr ""
 "Bruk “dra og slipp” prinsippet for å endre rekkefølgen på nivåene på "
 "Medlemsnivåsiden."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:639 pages/cancel.php:53
 #: pages/confirmation.php:83 pages/invoice.php:70
-#: shortcodes/pmpro_account.php:46
+#: shortcodes/dmrfid_account.php:46
 msgid "Expiration"
 msgstr "Utløpsdato"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:640
 msgid "Allow Signups"
 msgstr "Tillat nye registreringer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:655
 msgid "FREE"
 msgstr "GRATIS"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:664
 msgid "After"
 msgstr "etter"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:669 adminpages/orders.php:1024
 msgid "copy"
 msgstr "kopier"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/membershiplevels.php:669
 #, php-format
 msgid ""
@@ -1229,23 +1229,23 @@ msgstr ""
 "Er du sikker på at du vil slette medlemsskapsnivå %s? Alle eksisterende "
 "abonnement vil bli avsluttet."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:25 includes/adminpages.php:54
 #: includes/adminpages.php:158
 msgid "Members List"
 msgstr "Medlemsliste"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:26 adminpages/orders.php:698
 msgid "Export to CSV"
 msgstr "Eksporter som kommaseparerte verdier (CSV)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:30
 msgid "Show"
 msgstr "Vis"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:32 adminpages/reports/login.php:85
 #: adminpages/reports/memberships.php:290 adminpages/reports/sales.php:225
 msgid "All Levels"
@@ -1259,71 +1259,71 @@ msgstr "Avburtte medlemsskap"
 msgid "Expired Members"
 msgstr "Utløpte medlemsskap"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:44
 msgid "Old Members"
 msgstr "Tidligere medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:49 adminpages/memberslist.php:52
 msgid "Search Members"
 msgstr "Søk i Medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:156
 #, php-format
 msgid "%d members found."
 msgstr "funnet %d medlemmer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:165 pages/checkout.php:184
-#: shortcodes/pmpro_account.php:108
+#: shortcodes/dmrfid_account.php:108
 msgid "Username"
 msgstr "Brukernavn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:166
 msgid "First&nbsp;Name"
 msgstr "Fornavn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:167
 msgid "Last&nbsp;Name"
 msgstr "Etternavn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:170 pages/billing.php:71 pages/checkout.php:319
 #: pages/confirmation.php:61 pages/invoice.php:48
 msgid "Billing Address"
 msgstr "Fakturadresse"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:171 adminpages/reports/login.php:161
-#: classes/gateways/class.pmprogateway_authorizenet.php:303
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:303
 msgid "Membership"
 msgstr "Medlemskap"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:172
 msgid "Fee"
 msgstr "Gebyr"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:173 adminpages/reports/login.php:162
 msgid "Joined"
 msgstr "Påmeldt"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:177
 msgid "Ended"
 msgstr "Avsluttet"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:261 adminpages/reports/login.php:228
 msgid "No members found."
 msgstr "Fant ingen medlemmer."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/memberslist.php:261 adminpages/reports/login.php:228
 msgid "Search all levels"
 msgstr "Søk alle nivåer"
@@ -1336,232 +1336,232 @@ msgstr "Fakturaen ble sendt med e-post"
 msgid "Error emailing invoice."
 msgstr "Feil ved sending av fakturaen via e-post."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:175
 msgid "Order deleted successfully."
 msgstr "Bestillingen ble slettet."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:180
 msgid "Error deleting order."
 msgstr "Feil ved sletting av bestillingen."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:270
 msgid "Order saved successfully."
 msgstr "Bestillingen ble lagret."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:275
 msgid "Error updating order timestamp."
 msgstr "Feil oppstod når vi oppdaterte tidspunktet for bestillingen."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:281
 msgid "Error saving order."
 msgstr "Feil oppstod mens vi forsøkte å lagre bestillingen."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:317
 msgid "Order"
 msgstr "Bestilling"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:319
 msgid "New Order"
 msgstr "Ny bestilling"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:342
 msgid "Randomly generated for you."
 msgstr "Tilfeldig generert verdi"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:347
 msgid "User ID"
 msgstr "Bruker ID"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:356
 msgid "Membership Level ID"
 msgstr "ID for medlemsnivået."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:365
 msgid "Billing Name"
 msgstr "Navn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:373
 msgid "Billing Street"
 msgstr "Gatenavn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:380
 msgid "Billing City"
 msgstr "Sted/By"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:387
 msgid "Billing State"
 msgstr "Fylke"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:394
 msgid "Billing Postal Code"
 msgstr "Postnummer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:401
 msgid "Billing Country"
 msgstr "Land"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:409
 msgid "Billing Phone"
 msgstr "Telefon"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:418
 msgid "Sub Total"
 msgstr "Totalbeløp"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:426 adminpages/templates/orders-email.php:60
 #: adminpages/templates/orders-print.php:89 pages/invoice.php:80
 msgid "Tax"
 msgstr "MVA"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:434
 msgid "Coupon Amount"
 msgstr "Rabattkodebeløp"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:442 adminpages/orders.php:942
 #: adminpages/templates/orders-email.php:64
 #: adminpages/templates/orders-print.php:93 pages/invoice.php:84
 msgid "Total"
 msgstr "Totalbeløp"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:447
 msgid "Should be subtotal + tax - couponamount."
 msgstr "Bør være tilsvarende delsum + MVS/VAT - rabattkodebeløp."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:452
 msgid "Payment Type"
 msgstr "Betalingstype"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:457
 msgid "e.g. PayPal Express, PayPal Standard, Credit Card."
 msgstr "f.eks. PayPal Express, PayPal standard, kredittkort."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:461
-#: classes/gateways/class.pmprogateway_braintree.php:306
-#: classes/gateways/class.pmprogateway_stripe.php:447 pages/billing.php:250
+#: classes/gateways/class.dmrfidgateway_braintree.php:306
+#: classes/gateways/class.dmrfidgateway_stripe.php:447 pages/billing.php:250
 #: pages/checkout.php:527
 msgid "Card Type"
 msgstr "Korttype"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:466
 msgid "e.g. Visa, MasterCard, AMEX, etc"
 msgstr "F.eks Visa, MasteCard, American Express, osv."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:470
-#: classes/gateways/class.pmprogateway_twocheckout.php:137
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:137
 msgid "Account Number"
 msgstr "Kontonummer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:475
 msgid "Obscure all but last 4 digits."
 msgstr "Skjul alle siffer unntatt de 4 siste sifrene. "
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:480
 msgid "Expiration Month"
 msgstr "Utløpsmåned"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:487
 msgid "Expiration Year"
 msgstr "Utløpsår"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:495 adminpages/orders.php:946
 msgid "Status"
 msgstr "Status"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:516 adminpages/orders.php:944
 msgid "Gateway"
 msgstr "portal"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:534 adminpages/paymentsettings.php:124
 msgid "Gateway Environment"
 msgstr "Portaloppsett"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:538 adminpages/paymentsettings.php:128
 msgid "Sandbox/Testing"
 msgstr "For testing"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:539 adminpages/paymentsettings.php:129
 msgid "Live/Production"
 msgstr "For produksjon/live"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:546
 msgid "Payment Transaction ID"
 msgstr "Transaksjons ID for betalinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:551
 msgid "Generated by the gateway. Useful to cross reference orders."
 msgstr "Opprettet av betalingstjenestens "
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:555
 msgid "Subscription Transaction ID"
 msgstr "Transaksjons ID for abonnement"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:560
 msgid "Generated by the gateway. Useful to cross reference subscriptions."
 msgstr ""
 "Opprettet av betalingsformidlingstjenesten. Kan brukes for å kryssreferere "
 "abonnenter."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:565 adminpages/orders.php:947 pages/invoice.php:107
-#: shortcodes/pmpro_account.php:125
+#: shortcodes/dmrfid_account.php:125
 msgid "Date"
 msgstr "Dato"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:599
 msgid "Affiliate ID"
 msgstr "Affiliate ID"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:607
 msgid "Affiliate SubID"
 msgstr "Affiliate under-ID"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:617
 msgid "Notes"
 msgstr "Notater"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:632
 msgid "Save Order"
 msgstr "Lagre Bestillingen"
@@ -1578,13 +1578,13 @@ msgstr "Send en faktura for denne bestillingen til:"
 msgid "Send Email"
 msgstr "Send e-post"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:677 includes/adminpages.php:56
 #: includes/adminpages.php:172
 msgid "Orders"
 msgstr "Bestillinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:678
 msgid "Add New Order"
 msgstr "Ny bestilling"
@@ -1630,51 +1630,51 @@ msgctxt "Submit button value."
 msgid "Filter"
 msgstr "Filtrer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:883 adminpages/orders.php:886
 msgid "Search Orders"
 msgstr "Søk i Bestillinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:930
 #, php-format
 msgid "%d orders found."
 msgstr "%d bestillinger funnet."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:939 adminpages/reports/login.php:159
-#: classes/gateways/class.pmprogateway_payflowpro.php:116
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:116
 msgid "User"
 msgstr "Bruker"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:941 includes/init.php:238 includes/profile.php:27
 #: pages/checkout.php:42 pages/confirmation.php:47 pages/confirmation.php:64
 #: pages/confirmation.php:105 pages/invoice.php:28 pages/invoice.php:51
 msgid "Membership Level"
 msgstr "Type medlemskap"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:943 adminpages/orders.php:1011
 msgid "Payment"
 msgstr "Betaling"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:945
 msgid "Transaction IDs"
 msgstr "Transaksjons ID"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:972
 msgid "deleted"
 msgstr "slettet"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:1013
 msgid "Subscription"
 msgstr "Abonnement"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:1027
 #, php-format
 msgid ""
@@ -1692,7 +1692,7 @@ msgstr "skriv ut"
 msgid "email"
 msgstr "e-post"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/orders.php:1043
 msgid "No orders found."
 msgstr "Fant ikke noen bestillinger"
@@ -1725,12 +1725,12 @@ msgstr "Bekreftelse"
 msgid "Membership Invoice"
 msgstr "Kvitteringer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:83
 msgid "The following pages have been created for you"
 msgstr "Vi har opprettet de følgende sidene for deg"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:97
 msgid ""
 "Manage the WordPress pages assigned to each required Digital Members RFID "
@@ -1739,7 +1739,7 @@ msgstr ""
 "Administrasjon av WordPress sidene som har blitt tildelt hver av de "
 "påkrevede Digital Members RFID sidene."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:101
 msgid ""
 "Assign the WordPress pages for each required Digital Members RFID page or"
@@ -1747,12 +1747,12 @@ msgstr ""
 "Tildel Wordpress sider for hver av de påkrevde Digital Members RFID sidene, "
 "eller"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:102
 msgid "click here to let us generate them for you"
 msgstr "klikk for å la oss opprette sidene for deg"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:111
 msgid "Account Page"
 msgstr "Side for kontoinformasjon"
@@ -1764,7 +1764,7 @@ msgstr "Side for kontoinformasjon"
 msgid "Choose One"
 msgstr "Velg en"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:119 adminpages/pagesettings.php:137
 #: adminpages/pagesettings.php:155 adminpages/pagesettings.php:174
 #: adminpages/pagesettings.php:193 adminpages/pagesettings.php:213
@@ -1772,7 +1772,7 @@ msgstr "Velg en"
 msgid "edit page"
 msgstr "rediger siden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:122 adminpages/pagesettings.php:140
 #: adminpages/pagesettings.php:158 adminpages/pagesettings.php:177
 #: adminpages/pagesettings.php:196 adminpages/pagesettings.php:216
@@ -1780,7 +1780,7 @@ msgstr "rediger siden"
 msgid "view page"
 msgstr "vis siden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:125 adminpages/pagesettings.php:143
 #: adminpages/pagesettings.php:161 adminpages/pagesettings.php:180
 #: adminpages/pagesettings.php:199 adminpages/pagesettings.php:219
@@ -1788,32 +1788,32 @@ msgstr "vis siden"
 msgid "Include the shortcode"
 msgstr "Legg til kortkoden (shortcode)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:129
 msgid "Billing Information Page"
 msgstr "Side for fakturaadresse og kredittkort informasjon"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:147
 msgid "Cancel Page"
 msgstr "Side for å avslutte medlemsskapet"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:166
 msgid "Checkout Page"
 msgstr "Side for betalinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:185
 msgid "Confirmation Page"
 msgstr "Side for betalingsbekreftelse"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:205
 msgid "Invoice Page"
 msgstr "Side for fakturaer"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/pagesettings.php:224
 msgid "Levels Page"
 msgstr "Side for medlemsnivåer"
@@ -1826,17 +1826,17 @@ msgstr "Ekstra sideinnstillinger"
 msgid "Generate Page"
 msgstr "Automatisk oppretting av siden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:49
 msgid "Your payment settings have been updated."
 msgstr "Dine innstillinger for innbetalinger er herved oppdatert"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:93 adminpages/paymentsettings.php:106
 msgid "Payment Gateway"
 msgstr "Betalingsbehandlingsportal"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:93
 msgid "SSL Settings"
 msgstr "Innstillinger for SSL"
@@ -1856,7 +1856,7 @@ msgstr ""
 "com/support/initial-plugin-setup/payment-gateway/\">Innstillinger for "
 "betalingsbehandlingsportalene (Engelsk)</a>."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:153
 msgid "Currency"
 msgstr "Valuta"
@@ -1869,61 +1869,61 @@ msgstr ""
 "Ikke alle valuttaer støttes av alle betalingsbehandlingsportalene. Vennligst "
 "bekreft valuttaen med din portal."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:174
 msgid "Accepted Credit Card Types"
 msgstr "Aksepterte kredittkort"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:188
 msgid "Sales Tax"
 msgstr "Salgsskatt (US)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:188 pages/billing.php:91
 msgid "optional"
 msgstr "valgfritt"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:191
 msgid "Tax State"
 msgstr "Stat å betale skatt i"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:192
 msgid "abbreviation, e.g. \"PA\""
 msgstr "Statsforkortelse, f.eks “NY”"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:194
 msgid "decimal, e.g. \"0.06\""
 msgstr "desimaltall, f.eks “0.06”"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:195
 msgid ""
 "US only. If values are given, tax will be applied for any members ordering "
 "from the selected state.<br />For non-US or more complex tax rules, use the "
 "<a target=\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-"
-"taxes-paid-memberships-pro/\">pmpro_tax filter</a>."
+"taxes-paid-memberships-pro/\">dmrfid_tax filter</a>."
 msgstr ""
 "Kun for USA. Dersom du oppgir verdier her vil statlige skatterrater bli "
 "brukt for medlemmer som bestiller fra den valgte staten.<br />For områder "
 "utenfor USA, eller områder med mer komplekse skatteregler, bruk <a target="
 "\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-taxes-"
-"paid-memberships-pro/\">pmpro_tax filteret (Engelsk)</a>."
+"paid-memberships-pro/\">dmrfid_tax filteret (Engelsk)</a>."
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:206
 msgid "Force SSL"
 msgstr "Fremtving bruk av SSL"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:212
 msgid "Yes (with JavaScript redirects)"
 msgstr "Ja (bruker JavaScript for omdirigeringer)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/paymentsettings.php:219
 msgid "SSL Seal Code"
 msgstr "Sikkerhetsbekreftelse (SSL Seal Code)"
@@ -1942,7 +1942,7 @@ msgstr ""
 "lenker som brukes på sikrede sider. Kryss av dersom du has SSL installert og "
 "mottar advarsler på betalingssidene. "
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports.php:40
 msgid "Details"
 msgstr "Detaljer"
@@ -1951,7 +1951,7 @@ msgstr "Detaljer"
 msgid "Back to Reports Dashboard"
 msgstr "Tilbake til  kontrollpanel for rapporter"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:16
 msgid "Visits, Views, and Logins"
 msgstr "Besøkende, visninger og innlogginger"
@@ -1983,7 +1983,7 @@ msgstr "Denne måneden"
 msgid "All Time"
 msgstr "Siden starten"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:79
 msgid "Visits, Views, and Logins Report"
 msgstr "Besøk, Visninger og Innloggingsrapport"
@@ -1993,7 +1993,7 @@ msgctxt "Dropdown label, e.g. Show All Users"
 msgid "Show"
 msgstr "Vis"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:84
 msgid "All Users"
 msgstr "Alle brukere"
@@ -2003,47 +2003,47 @@ msgctxt "Search form label"
 msgid "Search"
 msgstr "Søk"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:164
 msgid "Last Visit"
 msgstr "Siste besøk"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:165
 msgid "Visits This Month"
 msgstr "Besøk denne måneden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:166
 msgid "Total Visits"
 msgstr "Totalt antall besøk"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:167
 msgid "Views This Month"
 msgstr "Visninger denne måneden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:168
 msgid "Total Views"
 msgstr "Totalt antall visninger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:169
 msgid "Last Login"
 msgstr "Sist logget inn"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:170
 msgid "Logins This Month"
 msgstr "Innlogginger denne måneden"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/login.php:171
 msgid "Total Logins"
 msgstr "Totalt antall innlogginger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/memberships.php:18 adminpages/reports/memberships.php:259
 msgid "Membership Stats"
 msgstr "Medlemsstatistikker"
@@ -2065,17 +2065,17 @@ msgctxt "Dropdown label, e.g. Show Daily Revenue for January"
 msgid "Show"
 msgstr "Vis"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/memberships.php:265 adminpages/reports/sales.php:204
 msgid "Daily"
 msgstr "Daglig"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/memberships.php:266 adminpages/reports/sales.php:205
 msgid "Monthly"
 msgstr "Månedlig"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/memberships.php:267 adminpages/reports/sales.php:206
 msgid "Annual"
 msgstr "Årsrapport"
@@ -2084,7 +2084,7 @@ msgstr "Årsrapport"
 msgid "Signups vs. All Cancellations"
 msgstr "Registreringer vs alle avbestillinger"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/memberships.php:271
 msgid "Signups vs. Cancellations"
 msgstr "Registreringer kontra avbestillinger"
@@ -2105,22 +2105,22 @@ msgctxt "Submit button value."
 msgid "Generate Report"
 msgstr "Rapport"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/sales.php:18
 msgid "Sales and Revenue (Testing/Sandbox)"
 msgstr "Salg og inntekter (Testmiljø)"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/sales.php:20 adminpages/reports/sales.php:198
 msgid "Sales and Revenue"
 msgstr "Salg og inntekter"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/sales.php:45 adminpages/reports/sales.php:210
 msgid "Sales"
 msgstr "Salg"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/reports/sales.php:46 adminpages/reports/sales.php:209
 msgid "Revenue"
 msgstr "Inntekt"
@@ -2149,7 +2149,7 @@ msgstr "Vare"
 msgid "Price"
 msgstr "Pris"
 
-# @ pmpro
+# @ dmrfid
 #: adminpages/templates/orders-email.php:56
 #: adminpages/templates/orders-print.php:85 pages/invoice.php:79
 msgid "Subtotal"
@@ -2167,7 +2167,7 @@ msgstr "Vi jobber med oppdateringen. Dette kan komme til å ta noen minutter."
 msgid "Update complete."
 msgstr "Oppdateringen er ferdig."
 
-# @ pmpro
+# @ dmrfid
 #: classes/class.memberorder.php:697
 #, php-format
 msgid ""
@@ -2179,184 +2179,184 @@ msgstr ""
 "%s. Du bør sjekke betalingssystemportalen for å sjekke om abonnementet til "
 "brukeren fortsatt er aktivt."
 
-# @ pmpro
-#: classes/class.pmproemail.php:37
+# @ dmrfid
+#: classes/class.dmrfidemail.php:37
 #, php-format
 msgid "An Email From %s"
 msgstr "En e-post fra %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:134
+# @ dmrfid
+#: classes/class.dmrfidemail.php:134
 #, php-format
 msgid "Your membership at %s has been CANCELLED"
 msgstr "Ditt medlemsskap på %s har blitt AVSLUTTET"
 
-# @ pmpro
-#: classes/class.pmproemail.php:156
+# @ dmrfid
+#: classes/class.dmrfidemail.php:156
 #, php-format
 msgid "Membership for %s at %s has been CANCELLED"
 msgstr "Medlemsskapet for %s på %s har blitt AVSLUTTET"
 
-# @ pmpro
-#: classes/class.pmproemail.php:187
+# @ dmrfid
+#: classes/class.dmrfidemail.php:187
 #, php-format
 msgid "Your membership confirmation for %s"
 msgstr "Bekreftelse på medlemskap i %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:240 classes/class.pmproemail.php:249
-#: classes/class.pmproemail.php:258 classes/class.pmproemail.php:337
-#: classes/class.pmproemail.php:346 classes/class.pmproemail.php:657
-#: classes/gateways/class.pmprogateway_braintree.php:364
-#: classes/gateways/class.pmprogateway_stripe.php:536 pages/checkout.php:76
+# @ dmrfid
+#: classes/class.dmrfidemail.php:240 classes/class.dmrfidemail.php:249
+#: classes/class.dmrfidemail.php:258 classes/class.dmrfidemail.php:337
+#: classes/class.dmrfidemail.php:346 classes/class.dmrfidemail.php:657
+#: classes/gateways/class.dmrfidgateway_braintree.php:364
+#: classes/gateways/class.dmrfidgateway_stripe.php:536 pages/checkout.php:76
 #: pages/checkout.php:86 pages/checkout.php:616 pages/confirmation.php:52
 #: pages/invoice.php:33
 msgid "Discount Code"
 msgstr "Rabattkode"
 
-# @ pmpro
-#: classes/class.pmproemail.php:265 classes/class.pmproemail.php:358
-#: classes/class.pmproemail.php:663
+# @ dmrfid
+#: classes/class.dmrfidemail.php:265 classes/class.dmrfidemail.php:358
+#: classes/class.dmrfidemail.php:663
 #, php-format
 msgid "This membership will expire on %s."
 msgstr "Dette medlemsskapet kommer til å utløpe den %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:287
+# @ dmrfid
+#: classes/class.dmrfidemail.php:287
 #, php-format
 msgid "Member Checkout for %s at %s"
 msgstr "Nytt medlem for %s via %s"
 
-#: classes/class.pmproemail.php:375
+#: classes/class.dmrfidemail.php:375
 #, php-format
 msgid "Your billing information has been updated at %s"
 msgstr ""
 "Faktura adressen og kreditt kort informasjonen din har blitt oppdatert på %s"
 
-#: classes/class.pmproemail.php:428
+#: classes/class.dmrfidemail.php:428
 #, php-format
 msgid "Billing information has been updated for %s at %s"
 msgstr ""
 "Faktura adressen og kreditt kort informasjonen din har blitt oppdatert for "
 "%s på %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:476
+# @ dmrfid
+#: classes/class.dmrfidemail.php:476
 #, php-format
 msgid "Membership Payment Failed at %s"
 msgstr "Betaling for medlemsnivået feilet den %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:522
+# @ dmrfid
+#: classes/class.dmrfidemail.php:522
 #, php-format
 msgid "Membership Payment Failed For %s at %s"
 msgstr "Betaling for medlemsnivå feilet for %s på %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:569
+# @ dmrfid
+#: classes/class.dmrfidemail.php:569
 #, php-format
 msgid "Credit Card on File Expiring Soon at %s"
 msgstr "Kredittkortet vi har lagret for deg utløper straks (den %s)"
 
-# @ pmpro
-#: classes/class.pmproemail.php:617
+# @ dmrfid
+#: classes/class.dmrfidemail.php:617
 #, php-format
 msgid "INVOICE for %s membership"
 msgstr "Faktura for medlemsnivå %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:688
+# @ dmrfid
+#: classes/class.dmrfidemail.php:688
 #, php-format
 msgid "Your trial at %s is ending soon"
 msgstr "Din prøveperiode på %s er like ved å bli avsluttet."
 
-# @ pmpro
-#: classes/class.pmproemail.php:722
+# @ dmrfid
+#: classes/class.dmrfidemail.php:722
 #, php-format
 msgid "Your membership at %s has ended"
 msgstr "Ditt medlemsskap på %s har blitt avsluttet"
 
-# @ pmpro
-#: classes/class.pmproemail.php:747
+# @ dmrfid
+#: classes/class.dmrfidemail.php:747
 #, php-format
 msgid "Your membership at %s will end soon"
 msgstr "Medlemsskapet på %s kommer til å ende snart"
 
-# @ pmpro
-#: classes/class.pmproemail.php:767
+# @ dmrfid
+#: classes/class.dmrfidemail.php:767
 #, php-format
 msgid "Your membership at %s has been changed"
 msgstr "Medlemsnivået ditt på %s har blitt endret"
 
-#: classes/class.pmproemail.php:771 classes/class.pmproemail.php:809
+#: classes/class.dmrfidemail.php:771 classes/class.dmrfidemail.php:809
 #, php-format
 msgid "The new level is %s"
 msgstr "Det nye medlemsnivået er %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:773
+# @ dmrfid
+#: classes/class.dmrfidemail.php:773
 msgid "Your membership has been cancelled"
 msgstr "Medlemsskapet ditt er herved avsluttet."
 
-# @ pmpro
-#: classes/class.pmproemail.php:777 classes/class.pmproemail.php:815
+# @ dmrfid
+#: classes/class.dmrfidemail.php:777 classes/class.dmrfidemail.php:815
 #, php-format
 msgid "This membership will expire on %s"
 msgstr "Dette medlemsnivået kommer til å utløpe den %s"
 
-# @ pmpro
-#: classes/class.pmproemail.php:781 classes/class.pmproemail.php:819
+# @ dmrfid
+#: classes/class.dmrfidemail.php:781 classes/class.dmrfidemail.php:819
 msgid "This membership does not expire"
 msgstr "Dette medlemsnivået utløper aldri."
 
-# @ pmpro
-#: classes/class.pmproemail.php:805
+# @ dmrfid
+#: classes/class.dmrfidemail.php:805
 #, php-format
 msgid "Membership for %s at %s has been changed"
 msgstr "Medlemskapet for %s ved %s er endret"
 
-#: classes/class.pmproemail.php:811
+#: classes/class.dmrfidemail.php:811
 msgid "Membership has been cancelled"
 msgstr "Medlemsskapet/abonnementet er avsluttet"
 
-#: classes/class.pmproemail.php:848
+#: classes/class.dmrfidemail.php:848
 msgid "Invoice for Order #: "
 msgstr "Faktura for bestillingsnummer:"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway.php:55
-#: classes/gateways/class.pmprogateway_authorizenet.php:171
-#: classes/gateways/class.pmprogateway_check.php:193
-#: classes/gateways/class.pmprogateway_cybersource.php:171
-#: classes/gateways/class.pmprogateway_payflowpro.php:164
-#: classes/gateways/class.pmprogateway_paypal.php:249
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway.php:55
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:171
+#: classes/gateways/class.dmrfidgateway_check.php:193
+#: classes/gateways/class.dmrfidgateway_cybersource.php:171
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:164
+#: classes/gateways/class.dmrfidgateway_paypal.php:249
 msgid "Unknown error: Authorization failed."
 msgstr "Autorisasjon for betalingen feilet av ukjent årsak."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway.php:106
-#: classes/gateways/class.pmprogateway.php:111
-#: classes/gateways/class.pmprogateway.php:129
-#: classes/gateways/class.pmprogateway_authorizenet.php:222
-#: classes/gateways/class.pmprogateway_authorizenet.php:227
-#: classes/gateways/class.pmprogateway_authorizenet.php:244
-#: classes/gateways/class.pmprogateway_check.php:245
-#: classes/gateways/class.pmprogateway_check.php:250
-#: classes/gateways/class.pmprogateway_check.php:268
-#: classes/gateways/class.pmprogateway_cybersource.php:222
-#: classes/gateways/class.pmprogateway_cybersource.php:227
-#: classes/gateways/class.pmprogateway_cybersource.php:245
-#: classes/gateways/class.pmprogateway_payflowpro.php:187
-#: classes/gateways/class.pmprogateway_payflowpro.php:192
-#: classes/gateways/class.pmprogateway_paypal.php:272
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway.php:106
+#: classes/gateways/class.dmrfidgateway.php:111
+#: classes/gateways/class.dmrfidgateway.php:129
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:222
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:227
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:244
+#: classes/gateways/class.dmrfidgateway_check.php:245
+#: classes/gateways/class.dmrfidgateway_check.php:250
+#: classes/gateways/class.dmrfidgateway_check.php:268
+#: classes/gateways/class.dmrfidgateway_cybersource.php:222
+#: classes/gateways/class.dmrfidgateway_cybersource.php:227
+#: classes/gateways/class.dmrfidgateway_cybersource.php:245
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:187
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:192
+#: classes/gateways/class.dmrfidgateway_paypal.php:272
 msgid "Unknown error: Payment failed."
 msgstr "Betalingen feilet av ukjent årsak."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway.php:113
-#: classes/gateways/class.pmprogateway_authorizenet.php:228
-#: classes/gateways/class.pmprogateway_check.php:252
-#: classes/gateways/class.pmprogateway_cybersource.php:229
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway.php:113
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:228
+#: classes/gateways/class.dmrfidgateway_check.php:252
+#: classes/gateways/class.dmrfidgateway_cybersource.php:229
 msgid ""
 "A partial payment was made that we could not void. Please contact the site "
 "owner immediately to correct this."
@@ -2365,191 +2365,191 @@ msgstr ""
 "ta øyeblikkelig kontakt med eieren av denne websiden for å få rettet på "
 "problemet."
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:39
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:39
 #: paid-memberships-pro.php:132
 msgid "Authorize.net"
 msgstr "Authorize.net"
 
-#: classes/gateways/class.pmprogateway_authorizenet.php:93
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:93
 msgid "Authorize.net Settings"
 msgstr "Innstillinger for Authorize.net"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_authorizenet.php:98
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:98
 msgid "Login Name"
 msgstr "Påloggingsnavn"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_authorizenet.php:106
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:106
 msgid "Transaction Key"
 msgstr "Transaksjonsnøkkel"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_authorizenet.php:114
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:114
 msgid "Silent Post URL"
 msgstr "Silent Post URL"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_authorizenet.php:117
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:117
 msgid ""
 "To fully integrate with Authorize.net, be sure to set your Silent Post URL to"
 msgstr ""
 "For å integrere med Authorize.net, må du konfigurere Silent Post URL’en til "
 "en verdi av"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_authorizenet.php:909
-#: classes/gateways/class.pmprogateway_authorizenet.php:910
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:909
+#: classes/gateways/class.dmrfidgateway_authorizenet.php:910
 msgid "Could not connect to Authorize.net"
 msgstr "Feil: Kunne ikke koble oss til Authorize.net"
 
-#: classes/gateways/class.pmprogateway_braintree.php:76
+#: classes/gateways/class.dmrfidgateway_braintree.php:76
 #: paid-memberships-pro.php:133
 msgid "Braintree Payments"
 msgstr "Braintree Payments"
 
-#: classes/gateways/class.pmprogateway_braintree.php:132
+#: classes/gateways/class.dmrfidgateway_braintree.php:132
 msgid "Braintree Settings"
 msgstr "Innstillinger for Braintree"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:137
-#: classes/gateways/class.pmprogateway_cybersource.php:106
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:137
+#: classes/gateways/class.dmrfidgateway_cybersource.php:106
 msgid "Merchant ID"
 msgstr "Selger-ID"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:145
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:145
 msgid "Public Key"
 msgstr "Fellesnøkkel"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:153
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:153
 msgid "Private Key"
 msgstr "Privatnøkkel"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:161
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:161
 msgid "Client-Side Encryption Key"
 msgstr "Krypteringsnøkkel for klienten"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:169
-#: classes/gateways/class.pmprogateway_stripe.php:214
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:169
+#: classes/gateways/class.dmrfidgateway_stripe.php:214
 msgid "Web Hook URL"
 msgstr "Web Hook lenke"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:173
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:173
 msgid "To fully integrate with Braintree, be sure to set your Web Hook URL to"
 msgstr ""
 "For å fullføre integreringen av Braintree sine betalingstjenester, pass på å "
 "konfigurere “Web Hook URL” innstillingen til"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:285
-#: classes/gateways/class.pmprogateway_stripe.php:426 pages/checkout.php:504
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:285
+#: classes/gateways/class.dmrfidgateway_stripe.php:426 pages/checkout.php:504
 #, php-format
 msgid "We Accept %s"
 msgstr "Vi aksepterer følgende %s"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:285
-#: classes/gateways/class.pmprogateway_stripe.php:426 pages/checkout.php:503
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:285
+#: classes/gateways/class.dmrfidgateway_stripe.php:426 pages/checkout.php:503
 msgid "Payment Information"
 msgstr "Betalingsinformasjon"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:318
-#: classes/gateways/class.pmprogateway_stripe.php:490 pages/billing.php:260
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:318
+#: classes/gateways/class.dmrfidgateway_stripe.php:490 pages/billing.php:260
 #: pages/checkout.php:570
 msgid "Card Number"
 msgstr "Kortnummer"
 
-#: classes/gateways/class.pmprogateway_braintree.php:355
-#: classes/gateways/class.pmprogateway_stripe.php:527 pages/billing.php:297
+#: classes/gateways/class.dmrfidgateway_braintree.php:355
+#: classes/gateways/class.dmrfidgateway_stripe.php:527 pages/billing.php:297
 msgctxt "Credit card security code, CVV/CCV/CVV2"
 msgid "CVV"
 msgstr "CVV"
 
-#: classes/gateways/class.pmprogateway_braintree.php:356
-#: classes/gateways/class.pmprogateway_stripe.php:528 pages/billing.php:298
+#: classes/gateways/class.dmrfidgateway_braintree.php:356
+#: classes/gateways/class.dmrfidgateway_stripe.php:528 pages/billing.php:298
 msgctxt "link to CVV help"
 msgid "what's this?"
 msgstr "hva er dette?"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:366
-#: classes/gateways/class.pmprogateway_stripe.php:538 pages/checkout.php:88
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:366
+#: classes/gateways/class.dmrfidgateway_stripe.php:538 pages/checkout.php:88
 #: pages/checkout.php:618
 msgid "Apply"
 msgstr "Godta"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:421
-#: classes/gateways/class.pmprogateway_stripe.php:1068
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:421
+#: classes/gateways/class.dmrfidgateway_stripe.php:1068
 msgid "Unknown error: Initial payment failed."
 msgstr "Ukjent feil: Første delbetaling feilet."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:480
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:480
 msgid "Error during settlement:"
 msgstr "Feil oppstod under betalingsbehandlingen:"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:489
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:489
 msgid "Error during charge:"
 msgstr "Feil oppstod under betalingsbehandlingen:"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:581
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:581
 msgid "Failed to update customer."
 msgstr "Feil: Klarte ikke å oppdatere kundeinformasjonen."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:629
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:629
 msgid "Failed to create customer."
 msgstr "Feil: Kunne ikke opprette kunden."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:636
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:636
 msgid "Error creating customer record with Braintree:"
 msgstr "Feil: Kunne ikke lenke kunden til abonnementet hos Braintree"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:736
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:736
 msgid "Error subscribing customer to plan with Braintree:"
 msgstr "Feil: Kunne ikke lenke kunden til abonnementet hos Braintree:"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:751
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:751
 msgid "Failed to subscribe with Braintree:"
 msgstr "Feil: Kunne ikke opprette abonnement med Braintree:"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_braintree.php:789
-#: classes/gateways/class.pmprogateway_braintree.php:802
-#: classes/gateways/class.pmprogateway_braintree.php:809
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_braintree.php:789
+#: classes/gateways/class.dmrfidgateway_braintree.php:802
+#: classes/gateways/class.dmrfidgateway_braintree.php:809
 msgid "Could not find the subscription."
 msgstr "Fant ikke abonnementet."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_check.php:48
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_check.php:48
 #: paid-memberships-pro.php:126
 msgid "Pay by Check"
 msgstr "Betal med sjekk"
 
-#: classes/gateways/class.pmprogateway_check.php:100
+#: classes/gateways/class.dmrfidgateway_check.php:100
 msgid "Pay by Check Settings"
 msgstr "Innstillinger for “Betaling med Sjekk”"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_check.php:105
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_check.php:105
 msgid "Instructions"
 msgstr "Veiledning"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_check.php:109
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_check.php:109
 msgid ""
 "Who to write the check out to. Where to mail it. Shown on checkout, "
 "confirmation, and invoice pages."
@@ -2557,16 +2557,16 @@ msgstr ""
 "Hvem sjekken skal skrives ut til, og hvor du skal sende den. Dette vises "
 "betalings-, bekreftelses- og kvitteringssidene."
 
-#: classes/gateways/class.pmprogateway_cybersource.php:42
+#: classes/gateways/class.dmrfidgateway_cybersource.php:42
 msgid "CyberSource"
 msgstr "CyberSource"
 
-#: classes/gateways/class.pmprogateway_cybersource.php:96
+#: classes/gateways/class.dmrfidgateway_cybersource.php:96
 msgid "CyberSource Settings"
 msgstr "Innstillinger for CyberSource"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_cybersource.php:101
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_cybersource.php:101
 msgid ""
 "This gateway option is in beta. Some functionality may not be available. "
 "Please contact Digital Members RFID with any issues you run into. "
@@ -2579,51 +2579,51 @@ msgstr ""
 "oppdatert til den nyeste versjon av Digital Members RFID når du prøver denne "
 "portalen.</strong>"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_cybersource.php:114
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_cybersource.php:114
 msgid "Transaction Security Key"
 msgstr "Sikkerhetsnøkkel for transaksjonen"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:39
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:39
 msgid "Payflow Pro/PayPal Pro"
 msgstr "Payflow Pro/PayPal Pro"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:95
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:95
 msgid "Payflow Pro Settings"
 msgstr "Innstillinger for Payflow Pro"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_payflowpro.php:100
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:100
 msgid "Partner"
 msgstr "Sammarbeidspartner"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_payflowpro.php:108
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:108
 msgid "Vendor"
 msgstr "Selger"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_payflowpro.php:124
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:124
 #: pages/checkout.php:193
 msgid "Password"
 msgstr "Passord"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:132
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:132
 msgid "IPN Handler"
 msgstr "IPN Handler"
 
-#: classes/gateways/class.pmprogateway_payflowpro.php:137
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:137
 #, php-format
 msgid ""
 "Payflow does not use IPN. To sync recurring subscriptions, please see <a "
 "target=\"_blank\" href=\"%s\">this addon</a>."
 msgstr ""
 "Payflow bruker ikke IPN. For å synkronisere abonnement, vurder å installere "
-"<a target=“_blank” href=“%s”>denne PMPro utvidelsen</a>."
+"<a target=“_blank” href=“%s”>denne DmRFID utvidelsen</a>."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_payflowpro.php:194
-#: classes/gateways/class.pmprogateway_paypal.php:279
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_payflowpro.php:194
+#: classes/gateways/class.dmrfidgateway_paypal.php:279
 msgid ""
 "A partial payment was made that we could not refund. Please contact the site "
 "owner immediately to correct this."
@@ -2631,21 +2631,21 @@ msgstr ""
 "Vi kunne ikke refundere en delinnbetaling som ble opprettet. Vennligst ta "
 "kontakt med eieren av denne websiden for å fikse problemet."
 
-#: classes/gateways/class.pmprogateway_paypal.php:57
+#: classes/gateways/class.dmrfidgateway_paypal.php:57
 #: paid-memberships-pro.php:129
 msgid "PayPal Website Payments Pro"
 msgstr "PayPal Website Payments Pro"
 
-#: classes/gateways/class.pmprogateway_paypal.php:113
-#: classes/gateways/class.pmprogateway_paypalexpress.php:128
-#: classes/gateways/class.pmprogateway_paypalstandard.php:112
+#: classes/gateways/class.dmrfidgateway_paypal.php:113
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:128
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:112
 msgid "PayPal Settings"
 msgstr "Innstillinger for PayPal"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:118
-#: classes/gateways/class.pmprogateway_paypalexpress.php:133
-#: classes/gateways/class.pmprogateway_paypalstandard.php:117
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:118
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:133
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:117
 msgid ""
 "We do not recommend using PayPal Standard. We suggest using PayPal Express, "
 "Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="
@@ -2659,44 +2659,44 @@ msgstr ""
 "com/2013/09/read-using-paypal-standard-paid-memberships-pro/\">Vi har mer "
 "informasjon om hvorfor her (Engelsk).</a>"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:123
-#: classes/gateways/class.pmprogateway_paypalexpress.php:138
-#: classes/gateways/class.pmprogateway_paypalstandard.php:122
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:123
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:138
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:122
 msgid "Gateway Account Email"
 msgstr "E-Post adresse for kontoen til betalingsformidlingsportalen"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:131
-#: classes/gateways/class.pmprogateway_paypalexpress.php:146
-#: classes/gateways/class.pmprogateway_paypalstandard.php:130
-#: classes/gateways/class.pmprogateway_twocheckout.php:119
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:131
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:146
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:130
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:119
 msgid "API Username"
 msgstr "Brukernavn for API"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:139
-#: classes/gateways/class.pmprogateway_paypalexpress.php:154
-#: classes/gateways/class.pmprogateway_paypalstandard.php:138
-#: classes/gateways/class.pmprogateway_twocheckout.php:128
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:139
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:154
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:138
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:128
 msgid "API Password"
 msgstr "Passord for API brukeren"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:147
-#: classes/gateways/class.pmprogateway_paypalexpress.php:162
-#: classes/gateways/class.pmprogateway_paypalstandard.php:146
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:147
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:162
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:146
 msgid "API Signature"
 msgstr "Signatur for APIen"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:155
-#: classes/gateways/class.pmprogateway_paypalexpress.php:170
-#: classes/gateways/class.pmprogateway_paypalstandard.php:154
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:155
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:170
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:154
 msgid "IPN Handler URL"
 msgstr "IPN prosesseringslenke"
 
-#: classes/gateways/class.pmprogateway_paypal.php:158
+#: classes/gateways/class.dmrfidgateway_paypal.php:158
 msgid ""
 "This URL is passed to PayPal for all new charges and subscriptions. You "
 "SHOULD NOT set this in your PayPal account settings."
@@ -2705,34 +2705,34 @@ msgstr ""
 "abonnement opprettes. Det skulle IKKE være nødvendig for deg å legge inn "
 "denne i innstillingene din på PayPal sine sider."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:178
-#: classes/gateways/class.pmprogateway_paypalexpress.php:412
-#: classes/gateways/class.pmprogateway_paypalstandard.php:202
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:178
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:412
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:202
 #: pages/checkout.php:302
 msgid "Check Out with PayPal"
 msgstr "Betal med Paypal"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:418
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:418
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
 #: pages/checkout.php:728
 msgid "Submit and Check Out"
 msgstr "Lagre og betal"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypal.php:184
-#: classes/gateways/class.pmprogateway_paypalexpress.php:418
-#: classes/gateways/class.pmprogateway_paypalstandard.php:208
-#: classes/gateways/class.pmprogateway_twocheckout.php:203
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypal.php:184
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:418
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:208
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:203
 #: pages/checkout.php:728
 msgid "Submit and Confirm"
 msgstr "Lagre og bekreft"
 
-#: classes/gateways/class.pmprogateway_paypal.php:607
-#: classes/gateways/class.pmprogateway_paypalexpress.php:752
-#: classes/gateways/class.pmprogateway_paypalstandard.php:466
+#: classes/gateways/class.dmrfidgateway_paypal.php:607
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:752
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:466
 msgid ""
 "Please contact the site owner or cancel your subscription from within PayPal "
 "to make sure you are not charged going forward."
@@ -2741,30 +2741,30 @@ msgstr ""
 "abonnementet ditt på PayPal sine websider for å forsikre deg om at du ikke "
 "blir belastet for dette videre."
 
-#: classes/gateways/class.pmprogateway_paypalexpress.php:73
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:73
 #: paid-memberships-pro.php:128
 msgid "PayPal Express"
 msgstr "PayPal Express"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypalexpress.php:173
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:173
 msgid "To fully integrate with PayPal, be sure to set your IPN Handler URL to "
 msgstr ""
 "For å fullføre integreringen med PayPal’s betalingstjeneste, pass på å sette "
 "IPN hånderingslenken din til"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_paypalexpress.php:278
-#: classes/gateways/class.pmprogateway_paypalexpress.php:330
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:278
+#: classes/gateways/class.dmrfidgateway_paypalexpress.php:330
 msgid "The PayPal Token was lost."
 msgstr "PayPal tokenet var tapt."
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:60
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:60
 #: paid-memberships-pro.php:131
 msgid "PayPal Standard"
 msgstr "PayPal Standard"
 
-#: classes/gateways/class.pmprogateway_paypalstandard.php:157
+#: classes/gateways/class.dmrfidgateway_paypalstandard.php:157
 msgid ""
 "Here is your IPN URL for reference. You SHOULD NOT set this in your PayPal "
 "settings."
@@ -2772,7 +2772,7 @@ msgstr ""
 "Vi viser kun PayPal IPN lenken som en referance. Du TRENGER IKKE konfigurere "
 "denne i innstillingene din på PayPal sine websider."
 
-#: classes/gateways/class.pmprogateway_stripe.php:51
+#: classes/gateways/class.dmrfidgateway_stripe.php:51
 #, php-format
 msgid ""
 "The %s gateway depends on the %s PHP extension. Please enable it, or ask "
@@ -2781,32 +2781,32 @@ msgstr ""
 "Betalingstjenesteportalen for %s avhenger av PHP-utvidelsen %s. Vennligst "
 "aktiver den, eller be webhotell leverandøren din om å aktivere den."
 
-#: classes/gateways/class.pmprogateway_stripe.php:126
+#: classes/gateways/class.dmrfidgateway_stripe.php:126
 #: paid-memberships-pro.php:127
 msgid "Stripe"
 msgstr "Stripe"
 
-#: classes/gateways/class.pmprogateway_stripe.php:181
+#: classes/gateways/class.dmrfidgateway_stripe.php:181
 msgid "Stripe Settings"
 msgstr "Innstillinger for Stripe"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:186
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:186
 msgid "Secret Key"
 msgstr "Hemmelig nøkkel"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:194
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:194
 msgid "Publishable Key"
 msgstr "Publiserbar nøkkel"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:202
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:202
 msgid "Show Billing Address Fields"
 msgstr "Vis felt for fakturaadresse"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:209
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:209
 msgid ""
 "Stripe doesn't require billing address fields. Choose 'No' to hide them on "
 "the checkout page.<br /><strong>If No, make sure you disable address "
@@ -2817,18 +2817,18 @@ msgstr ""
 "“nei”, pass på at du ikke har addresseverifisering slått på i "
 "kontoinnstillingene dine på Stripe sine websider."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:217
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:217
 msgid "To fully integrate with Stripe, be sure to set your Web Hook URL to"
 msgstr ""
 "For å fullføre integreringen av Stripe sine betalingstjenester, pass på å "
 "konfigurere “Web Hook URL” innstillingen til"
 
-#: classes/gateways/class.pmprogateway_stripe.php:608
+#: classes/gateways/class.dmrfidgateway_stripe.php:608
 msgid "Subscription Updates"
 msgstr "Abonnementsoppdateringer"
 
-#: classes/gateways/class.pmprogateway_stripe.php:612
+#: classes/gateways/class.dmrfidgateway_stripe.php:612
 msgid ""
 "Subscription updates, allow you to change the member's subscription values "
 "at predefined times. Be sure to click Update Profile after making changes."
@@ -2837,7 +2837,7 @@ msgstr ""
 "bestemte tider. Pass på å klikke på “Oppdater profilen” etter at du har "
 "ferdigstilt endringene."
 
-#: classes/gateways/class.pmprogateway_stripe.php:614
+#: classes/gateways/class.dmrfidgateway_stripe.php:614
 msgid ""
 "Subscription updates, allow you to change the member's subscription values "
 "at predefined times. Be sure to click Update User after making changes."
@@ -2846,54 +2846,54 @@ msgstr ""
 "bestemte tider. Pass på å klikke på “Oppdater profilen” etter at du har "
 "ferdigstilt endringene."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:619 pages/billing.php:343
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:619 pages/billing.php:343
 msgid "Update"
 msgstr "Oppdater"
 
-#: classes/gateways/class.pmprogateway_stripe.php:812
+#: classes/gateways/class.dmrfidgateway_stripe.php:812
 msgid "Could not cancel the old subscription. Updates have not been processed."
 msgstr ""
 "Klarte ikke å avslutte det gamle abonnementet. Nye oppdateringer ble ikke "
 "behandlet."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:1246
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:1246
 msgid "Error creating customer record with Stripe:"
 msgstr "Feil: Kunne ikke opprette en kundekonto hos Stripe:"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1303
+#: classes/gateways/class.dmrfidgateway_stripe.php:1303
 msgid "Error getting subscription with Stripe:"
 msgstr "Feil: Fant ikke abonnementet hos Stripe"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:1453
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:1453
 msgid "Error creating plan with Stripe:"
 msgstr "Feil: Kunne ikke opprette en betalingsplan med Stripe"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_stripe.php:1484
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_stripe.php:1484
 msgid "Error subscribing customer to plan with Stripe:"
 msgstr "Feil: Kunne ikke lenke kunden til abonnementet hos Stripe"
 
-#: classes/gateways/class.pmprogateway_stripe.php:1580
+#: classes/gateways/class.dmrfidgateway_stripe.php:1580
 msgid "Could not cancel old subscription."
 msgstr "Kunne ikke avslutte det gamle abonnementet."
 
-#: classes/gateways/class.pmprogateway_stripe.php:1597
+#: classes/gateways/class.dmrfidgateway_stripe.php:1597
 msgid "Could not find the customer."
 msgstr "Fant ikke kunden"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:59
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:59
 #: paid-memberships-pro.php:134
 msgid "2Checkout"
 msgstr "2Checkout"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:114
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:114
 msgid "2Checkout Settings"
 msgstr "Innstillinger for 2Checkout"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:123
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:123
 msgid ""
 "Go to Account &raquo; User Management in 2Checkout and create a user with "
 "API Access and API Updating."
@@ -2901,20 +2901,20 @@ msgstr ""
 "Gå til kontoen din, så “User Management” i 2Checkout for å opprette en "
 "bruker med API-tilgang og API baserte oppdateringer."
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:132
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:132
 msgid "Password for the API user created."
 msgstr "Opprettet passord for API brukeren"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:141
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:141
 msgid "Click on the profile icon in 2Checkout to find your Account Number."
 msgstr "Klikk på profilikonet til 2Checkout for å finne ditt kontonummer."
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_twocheckout.php:146
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:146
 msgid "Secret Word"
 msgstr "“Secret Word”"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:150
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:150
 msgid ""
 "Go to Account &raquo; Site Management. Look under Checkout Options to find "
 "the Secret Word."
@@ -2922,12 +2922,12 @@ msgstr ""
 "Gå til kontoen din, så “Site Management”. Finn “Checkout Options” for så å "
 "lokalisere ditt “Secret Word”"
 
-# @ pmpro
-#: classes/gateways/class.pmprogateway_twocheckout.php:155
+# @ dmrfid
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:155
 msgid "TwoCheckout INS URL"
 msgstr "2Checkout INS URL"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:158
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:158
 msgid ""
 "To fully integrate with 2Checkout, be sure to use the following for your INS "
 "URL and Approved URL"
@@ -2935,31 +2935,31 @@ msgstr ""
 "For å fullføre integrasjonen med betalingstjenesten til 2Checkout, pass på å "
 "bruke følgende som din INS URL og “Approved URL”"
 
-#: classes/gateways/class.pmprogateway_twocheckout.php:203
+#: classes/gateways/class.dmrfidgateway_twocheckout.php:203
 msgid "Check Out with 2Checkout"
 msgstr "Betal med 2Checkout"
 
-# @ pmpro
+# @ dmrfid
 #: includes/adminpages.php:48
 msgid "Memberships"
 msgstr "Medlemskap"
 
-# @ pmpro
+# @ dmrfid
 #: includes/adminpages.php:49 includes/adminpages.php:123
 msgid "Page Settings"
 msgstr "Sideinnstillinger"
 
-# @ pmpro
+# @ dmrfid
 #: includes/adminpages.php:50 includes/adminpages.php:130
 msgid "Payment Settings"
 msgstr "Betalingsinnstillinger"
 
-# @ pmpro
+# @ dmrfid
 #: includes/adminpages.php:55 includes/adminpages.php:165
 msgid "Reports"
 msgstr "Rapporter"
 
-# @ pmpro
+# @ dmrfid
 #: includes/adminpages.php:57 includes/adminpages.php:179
 msgid "Discount Codes"
 msgstr "Rabattkoder"
@@ -2973,8 +2973,8 @@ msgid "<span class=\"ab-icon\"></span>Memberships"
 msgstr "<span class=\"ab-icon\"></span>Medlemsskap"
 
 #: includes/adminpages.php:274
-msgid "View PMPro Documentation"
-msgstr "Til PMPro dokumentasjonen"
+msgid "View DmRFID Documentation"
+msgstr "Til DmRFID dokumentasjonen"
 
 #: includes/adminpages.php:274
 msgid "Docs"
@@ -2988,17 +2988,17 @@ msgstr "Besøk brukerstøtte forumet"
 msgid "Support"
 msgstr "Brukerstøtte"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:17 includes/currencies.php:87
 msgid "US Dollars (&#36;)"
 msgstr "Amerikanske dollar (&#36;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:19 includes/currencies.php:90
 msgid "Euros (&euro;)"
 msgstr "Euro (&euro;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:24 includes/currencies.php:89
 msgid "Pounds Sterling (&pound;)"
 msgstr "Britiske pund (&pound;)"
@@ -3007,7 +3007,7 @@ msgstr "Britiske pund (&pound;)"
 msgid "Argentine Peso (&#36;)"
 msgstr "Argentinske Peso (&#36;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:29
 msgid "Australian Dollars (&#36;)"
 msgstr "Australske dollar (&#36;)"
@@ -3016,62 +3016,62 @@ msgstr "Australske dollar (&#36;)"
 msgid "Brazilian Real (R&#36;)"
 msgstr "Brasilianske Real (R&#36;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:35 includes/currencies.php:88
 msgid "Canadian Dollars (&#36;)"
 msgstr "Kanadiske dollar (&#36;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:36
 msgid "Chinese Yuan"
 msgstr "Kinesisk yuan"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:38
 msgid "Czech Koruna"
 msgstr "Czech koruna"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:45
 msgid "Danish Krone"
 msgstr "Dansk krone"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:46
 msgid "Hong Kong Dollar (&#36;)"
 msgstr "Hong Kong Dollar ($#36;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:47
 msgid "Hungarian Forint"
 msgstr "Hungarske Forint"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:48
 msgid "Indian Rupee"
 msgstr "Indiske Rupee"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:49
 msgid "Indonesia Rupiah"
 msgstr "Indonesiske Rupiah"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:50
 msgid "Israeli Shekel"
 msgstr "Israelske Shekel"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:52
 msgid "Japanese Yen (&yen;)"
 msgstr "Japanske Yen (&yen;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:56
 msgid "Malaysian Ringgits"
 msgstr "Malaysiske Ringgits"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:57
 msgid "Mexican Peso (&#36;)"
 msgstr "Meksikanske Peso ($#36;)"
@@ -3080,27 +3080,27 @@ msgstr "Meksikanske Peso ($#36;)"
 msgid "Nigerian Naira (&#8358;)"
 msgstr "Nigerianske Naira (%#8358)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:59
 msgid "New Zealand Dollar (&#36;)"
 msgstr "New Zealandske Dollar ($#36;)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:60
 msgid "Norwegian Krone"
 msgstr "Norske kroner (NOK)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:61
 msgid "Philippine Pesos"
 msgstr "Filippinske Pesos"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:62
 msgid "Polish Zloty"
 msgstr "Polske Zloty"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:64
 msgid "Singapore Dollar (&#36;)"
 msgstr "Singaporske Dollar ($#36;)"
@@ -3109,42 +3109,42 @@ msgstr "Singaporske Dollar ($#36;)"
 msgid "South African Rand (R)"
 msgstr "Sørafrikanske Rand(R)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:73
 msgid "South Korean Won"
 msgstr "Sør-Koreanske Won"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:74
 msgid "Swedish Krona"
 msgstr "Svenske kroner (SEK)"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:75
 msgid "Swiss Franc"
 msgstr "Sveitsiske Franc"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:76
 msgid "Taiwan New Dollars"
 msgstr "Taiwanesiske New Dollars"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:77
 msgid "Thai Baht"
 msgstr "Thai Baht"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:78
 msgid "Turkish Lira"
 msgstr "Trykiske Lire"
 
-# @ pmpro
+# @ dmrfid
 #: includes/currencies.php:79
 msgid "Vietnamese Dong"
 msgstr "Vietnamesiske Dong"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:243
 #, php-format
 msgid "The price for membership is <strong>%s</strong> now"
@@ -3204,14 +3204,14 @@ msgstr "og så koster det <strong>%s hver %s</strong>."
 msgid " and then <strong>%s every %d %s</strong>."
 msgstr "og så koster det <strong>%s hever %d. %s</strong>."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:307
 msgid "After your initial payment, your first payment is Free."
 msgstr ""
 "Etter vi har mottatt din initielle innbetaling, er den første periodiske "
 "innbetalingen gratis."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:311
 #, php-format
 msgid "After your initial payment, your first %d payments are Free."
@@ -3219,7 +3219,7 @@ msgstr ""
 "Etter vi har mottatt din initielle innbetaling, er de neste %d "
 "innbetalingsperiodene gratis."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:318
 #, php-format
 msgid "After your initial payment, your first payment will cost %s."
@@ -3227,7 +3227,7 @@ msgstr ""
 "Etter vi har mottatt din initielle innbetaling, vil de neste "
 "innbetalingsperiodene koste %s."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:322
 #, php-format
 msgid "After your initial payment, your first %d payments will cost %s."
@@ -3235,41 +3235,41 @@ msgstr ""
 "Etter vi har mottatt din initielle innbetaling vil de første %d "
 "innbetalingsperiodene koste %s."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:333
 #, php-format
 msgid "Customers in %s will be charged %s%% tax."
 msgstr ""
 "Kunder som befinner seg i %s vil bli belastet %s%% i skatter og avgifter."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:347
 #, php-format
 msgid "Membership expires after %d %s."
 msgstr "Medlemsskapet utløper etter %d %s"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:694
 msgid "User ID not found."
 msgstr "Fant ikke brukerens ID."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:714
 msgid "Invalid level."
 msgstr "Ugyldig medlemsnivå"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:725
 msgid "not changing?"
 msgstr "ingen endring?"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:742 includes/functions.php:815
 #: includes/functions.php:839
 msgid "Error interacting with database"
 msgstr "Feil i samspill med databasen"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:881 includes/functions.php:920
 msgid "Membership level not found."
 msgstr "Fant ikke medlemsnivået"
@@ -3278,54 +3278,54 @@ msgstr "Fant ikke medlemsnivået"
 msgid "No code was given to check."
 msgstr "Ingen rabattkode oppgitt som vi kan sjekke mot."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1299
 msgid "The discount code could not be found."
 msgstr "Finner ikke denne rabattkoden"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1314
 #, php-format
 msgid "This discount code goes into effect on %s."
 msgstr "Denne rabattkoden er gyldig fra %s"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1321
 #, php-format
 msgid "This discount code expired on %s."
 msgstr "Denne rabattkoden ble ugyldig den %s"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1331
 msgid "This discount code is no longer valid."
 msgstr "Denne rabattkoden er ikke gyldig."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1344
 msgid "This discount code does not apply to this membership level."
 msgstr "Denne rabattkoden gjelder ikke for dette medlemskapsnivået."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1370
 msgid "This discount code is okay."
 msgstr "Denne rabattkoden er korrekt."
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1397
 msgid "and"
 msgstr "og"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1624
 msgid "Sign Up for !!name!! Now"
 msgstr "Registrer deg for !!name!! i dag"
 
-# @ pmpro
+# @ dmrfid
 #: includes/functions.php:1630
 msgid "Please specify a level id."
 msgstr "Oppgi id for nivået"
 
-# @ pmpro
+# @ dmrfid
 #: includes/init.php:253 includes/profile.php:39
 msgid "None"
 msgstr "Ingen"
@@ -3356,11 +3356,11 @@ msgstr "Brukerstøttelisense er ugyldig, eller så har den utgått."
 
 #: includes/license.php:91
 msgid ""
-"Visit the PMPro <a href=\"http://www.paidmembershipspro.com/login/?"
+"Visit the DmRFID <a href=\"http://www.paidmembershipspro.com/login/?"
 "redirect_to=/membership-account/\" target=\"_blank\">Membership Account</a> "
 "page to confirm that your account is active and to find your license key."
 msgstr ""
-"Besøk din PMPro <a href=\"http://www.paidmembershipspro.com/login/?"
+"Besøk din DmRFID <a href=\"http://www.paidmembershipspro.com/login/?"
 "redirect_to=/membership-account/\" target=\"_blank\">medlemskontoside</a> "
 "for å bekrefte at din medlemsstøttekonto fortsatt er aktiv og for å finne "
 "lisensnøkkelen din."
@@ -3383,8 +3383,8 @@ msgid "Verify Key"
 msgstr "Bekreft lisensnøkkelen"
 
 #: includes/license.php:288
-msgid "Invalid PMPro License Key."
-msgstr "Ugyldig PMPro lisensnøkkel."
+msgid "Invalid DmRFID License Key."
+msgstr "Ugyldig DmRFID lisensnøkkel."
 
 #: includes/license.php:288
 msgid ""
@@ -3402,22 +3402,22 @@ msgstr "Mer informasjon"
 msgid "Dismiss"
 msgstr "Lukk"
 
-# @ pmpro
+# @ dmrfid
 #: includes/localization.php:26
 msgid "Day"
 msgstr "Dag\t"
 
-# @ pmpro
+# @ dmrfid
 #: includes/localization.php:28
 msgid "Week"
 msgstr "Uke"
 
-# @ pmpro
+# @ dmrfid
 #: includes/localization.php:30
 msgid "Month"
 msgstr "Måned"
 
-# @ pmpro
+# @ dmrfid
 #: includes/localization.php:32
 msgid "Year"
 msgstr "År"
@@ -3438,7 +3438,7 @@ msgstr "Måneder"
 msgid "Years"
 msgstr "År"
 
-# @ pmpro
+# @ dmrfid
 #: includes/metaboxes.php:39
 msgid ""
 "This post is already protected for this level because it is within a "
@@ -3447,7 +3447,7 @@ msgstr ""
 "Dette innlegget er allerede beskyttet fordi det er tillagt en kategori som "
 "krever at du er medlem."
 
-# @ pmpro
+# @ dmrfid
 #: includes/metaboxes.php:104 includes/metaboxes.php:105
 msgid "Require Membership"
 msgstr "Krever at du er medlem"
@@ -3459,7 +3459,7 @@ msgstr ""
 "Vi tillater kun brukere med følgende medlemsnivåer å se innlegg som tilhører "
 "denne kategorien."
 
-# @ pmpro
+# @ dmrfid
 #: includes/profile.php:36
 msgid "Current Level"
 msgstr "Gjeldende medlemsnivå"
@@ -3514,25 +3514,25 @@ msgstr ""
 "bare å komme innom og eventuelt registrere deg/logge deg på for å få lest "
 "det!"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:23
 #, php-format
 msgid "Logged in as <strong>%s</strong>."
 msgstr "Logget inn som <strong>%s</strong>."
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:23
 msgid "logout"
 msgstr "Logg ut"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:25 pages/cancel.php:52 pages/invoice.php:109
-#: pages/levels.php:35 shortcodes/pmpro_account.php:44
-#: shortcodes/pmpro_account.php:126
+#: pages/levels.php:35 shortcodes/dmrfid_account.php:44
+#: shortcodes/dmrfid_account.php:126
 msgid "Level"
 msgstr "Kurs"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:27
 msgid "Membership Fee"
 msgstr "Pris på medlemskap"
@@ -3549,12 +3549,12 @@ msgstr "%s hver %d %s."
 msgid "%s per %s."
 msgstr "%s per %s."
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:42
 msgid "Duration"
 msgstr "Varighet"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:52
 msgid ""
 "Your payment subscription is managed by PayPal. Please <a href=\"http://www."
@@ -3563,78 +3563,78 @@ msgstr ""
 "Din innbetaling blir håndtert av PayPal. <a href=«http://www.paypal."
 "com»>Bruk PayPal</a> for å oppdatere betalingsinformasjonen din."
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:78 pages/checkout.php:326
 msgid "First Name"
 msgstr "Fornavn"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:82 pages/checkout.php:330
 msgid "Last Name"
 msgstr "Etternavn"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:86 pages/checkout.php:334
 msgid "Address 1"
 msgstr "Adresse 1"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:90 pages/checkout.php:338
 msgid "Address 2"
 msgstr "Adresse 2"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:100 pages/checkout.php:348
 msgid "City"
 msgstr "Sted/By"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:104 pages/checkout.php:352
 msgid "State"
 msgstr "Fylke"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:108 pages/checkout.php:356
 msgid "Postal Code"
 msgstr "Postnummer"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:117 pages/checkout.php:365
 msgid "City, State Zip"
 msgstr "Sted/By, Postnummer"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:170 pages/checkout.php:418
 msgid "Country"
 msgstr "Land"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:195 pages/checkout.php:443
 msgid "Phone"
 msgstr "Telefon"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:206 pages/checkout.php:220 pages/checkout.php:457
 msgid "Email Address"
 msgstr "E-post-adresse"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:210 pages/checkout.php:466
 msgid "Confirm Email"
 msgstr "Bekreft e-post-adresse"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:231
 msgid "Credit Card Information"
 msgstr "Kredittkortinformasjon"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:232
 #, php-format
 msgid "We accept %s"
 msgstr "Vi aksepterer følgende korttyper %s"
 
-# @ pmpro
+# @ dmrfid
 #: pages/billing.php:360
 msgid ""
 "This subscription is not recurring. So you don't need to update your billing "
@@ -3643,7 +3643,7 @@ msgstr ""
 "Dette abonnementet har ikke periodiske betalinger, derfor trenger du ikke "
 "oppdatere betalingsinformasjonen din."
 
-# @ pmpro
+# @ dmrfid
 #: pages/cancel.php:26
 msgid "Are you sure you want to cancel your membership?"
 msgstr "Er du sikker på at du vil kansellere medlemskapet ditt?"
@@ -3653,17 +3653,17 @@ msgstr "Er du sikker på at du vil kansellere medlemskapet ditt?"
 msgid "Are you sure you want to cancel your %s membership?"
 msgstr "Er du sikker på at du ønsker å avslutte medlemsnivået ditt (%s)?"
 
-# @ pmpro
+# @ dmrfid
 #: pages/cancel.php:37
 msgid "Yes, cancel my account"
 msgstr "Ja, kanseller kontoen min"
 
-# @ pmpro
+# @ dmrfid
 #: pages/cancel.php:38
 msgid "No, keep my account"
 msgstr "Nei, behold kontoen min"
 
-#: pages/cancel.php:48 shortcodes/pmpro_account.php:40
+#: pages/cancel.php:48 shortcodes/dmrfid_account.php:40
 msgid "My Memberships"
 msgstr "Mine abonnement"
 
@@ -3671,12 +3671,12 @@ msgstr "Mine abonnement"
 msgid "Cancel All Memberships"
 msgstr "Avbryt alle medlemsskap."
 
-# @ pmpro
+# @ dmrfid
 #: pages/cancel.php:86
 msgid "Click here to go to the home page."
 msgstr "Klikk her for å gå til hjemmesiden."
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:35
 msgid ""
 "Almost done. Review the membership information and pricing below then "
@@ -3686,78 +3686,78 @@ msgstr ""
 "ditt, og <strong>klikk så på \"Fullfør betaling\" knappen</strong> for å "
 "fullføre bestillingen."
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:43
 msgid "change"
 msgstr "endre"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:51
 #, php-format
 msgid "You have selected the <strong>%s</strong> membership level."
 msgstr "Du har valgt <strong>%s</strong>."
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:61
 #, php-format
 msgid ""
-"<p class=\"pmpro_level_discount_applied\">The <strong>%s</strong> code has "
+"<p class=\"dmrfid_level_discount_applied\">The <strong>%s</strong> code has "
 "been applied to your order.</p>"
 msgstr ""
-"<p class=«pmpro_level_discount_applied»><strong>%s</strong>Rabattkoden er "
+"<p class=«dmrfid_level_discount_applied»><strong>%s</strong>Rabattkoden er "
 "tilført din bestilling.</p>"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:72 services/applydiscountcode.php:89
 msgid "Click here to change your discount code"
 msgstr "Klikk her for å endre din rabattkode"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:74
 msgid "Do you have a discount code?"
 msgstr "Har du en rabattkode?"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:74
 msgid "Click here to enter your discount code"
 msgstr "Klikk her for å legge til din rabattkode"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:175
 msgid "Account Information"
 msgstr "Kontoinformasjon"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:176
 msgid "Already have an account?"
 msgstr "Har du allerede en konto?"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:176
 msgid "Log in here"
 msgstr "Logg inn her"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:202
 msgid "Confirm Password"
 msgstr "Bekreft passord"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:229
 msgid "Confirm Email Address"
 msgstr "Bekreft e-post-adresse"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:248
 msgid "Full Name"
 msgstr "Fullt navn"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:249
 msgid "LEAVE THIS BLANK"
 msgstr "LA FELTET VÆRE TOMT"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:273
 #, php-format
 msgid ""
@@ -3767,57 +3767,57 @@ msgstr ""
 "Du er nå logget på som <strong>%s</strong>. Hvis du ønsker å logge deg på "
 "med en annen konto, <a href=\"%s\">logg ut nå</a>."
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:289
 msgid "Choose your Payment Method"
 msgstr "Velg betalingsmetode"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:298
 msgid "Check Out with a Credit Card Here"
 msgstr "Betal med et kredittkort"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:607
 msgid "CVV"
 msgstr "CCV"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:608
 msgid "what's this?"
 msgstr "hva er dette?"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:696
 #, php-format
 msgid "I agree to the %s"
 msgstr "Jeg har lest og godtar %s"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:716
 msgid "Complete Payment"
 msgstr "Fullfør betaling"
 
-# @ pmpro
+# @ dmrfid
 #: pages/checkout.php:738
 msgid "Processing..."
 msgstr "Prosesserer.."
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:12
 msgid ""
 "Your payment has been submitted. Your membership will be activated shortly."
 msgstr ""
 "Betalingen din er gjennomført. Medlemskapet ditt vil snart bli aktivert."
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:14
 #, php-format
 msgid "Thank you for your membership to %s. Your %s membership is now active."
 msgstr ""
 "Tusen takk for påmeldingen din til  %s. Ditt medlemskap ved %s er nå aktivt."
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:28
 #, php-format
 msgid ""
@@ -3828,33 +3828,33 @@ msgstr ""
 "Under finner du detaljer om medlemskontoen din og en kvittering for "
 "betaling. Det er også sendt en e-post med en kopi av fakturaen til %s."
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:41 pages/invoice.php:22
 #, php-format
 msgid "Invoice #%s on %s"
 msgstr "Faktura #%s for %s"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:43 pages/invoice.php:24
 msgid "Print"
 msgstr "Skriv ut"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:46 pages/confirmation.php:104 pages/invoice.php:27
 msgid "Account"
 msgstr "Konto"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:49 pages/invoice.php:30
 msgid "Membership Expires"
 msgstr "Medlemskapet utløper"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:63 pages/invoice.php:50
 msgid "Payment Method"
 msgstr "Betalingsinformasjon"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:65 pages/invoice.php:52 pages/invoice.php:110
 msgid "Total Billed"
 msgstr "Totalsum belastet"
@@ -3878,12 +3878,12 @@ msgctxt "User without membership is in {pending} status."
 msgid "Pending"
 msgstr "Avventer"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:113 pages/invoice.php:141
 msgid "View Your Membership Account &rarr;"
 msgstr "Se kontoen for medlemskapet ditt &rarr;"
 
-# @ pmpro
+# @ dmrfid
 #: pages/confirmation.php:115
 msgid ""
 "If your account is not activated within a few minutes, please contact the "
@@ -3892,27 +3892,27 @@ msgstr ""
 "Hvis medlomskontoen din ikke aktiveres i løpet av et par minutter, så ta "
 "kontakt med eieren av disse sidene."
 
-# @ pmpro
+# @ dmrfid
 #: pages/invoice.php:82
 msgid "Coupon"
 msgstr "Rabattkode"
 
-# @ pmpro
+# @ dmrfid
 #: pages/invoice.php:108
 msgid "Invoice #"
 msgstr "Faktura #"
 
-# @ pmpro
+# @ dmrfid
 #: pages/invoice.php:134
 msgid "No invoices found."
 msgstr "Ingen fakturaer funnet"
 
-# @ pmpro
+# @ dmrfid
 #: pages/invoice.php:145
 msgid "&larr; View All Invoices"
 msgstr "&larr; Se alle fakturaer"
 
-# @ pmpro
+# @ dmrfid
 #: pages/levels.php:55
 msgid "Free"
 msgstr "Gratis"
@@ -3923,26 +3923,26 @@ msgid "Select"
 msgstr "Velg"
 
 # @ Clickign to renew from levels page
-#: pages/levels.php:78 shortcodes/pmpro_account.php:61
+#: pages/levels.php:78 shortcodes/dmrfid_account.php:61
 msgid "Renew"
 msgstr "Forny"
 
-# @ pmpro
+# @ dmrfid
 #: pages/levels.php:82
 msgid "Your&nbsp;Level"
 msgstr "Ditt&nbsp;Medlemsnivå"
 
-# @ pmpro
+# @ dmrfid
 #: pages/levels.php:98
 msgid "&larr; Return to Your Account"
 msgstr "&larr; Tilbake til kontoen din"
 
-# @ pmpro
+# @ dmrfid
 #: pages/levels.php:100
 msgid "&larr; Return to Home"
 msgstr "&larr; Til hjemmesiden"
 
-# @ pmpro
+# @ dmrfid
 #: paid-memberships-pro.php:125
 msgid "Testing Only"
 msgstr "Kun for test"
@@ -3955,12 +3955,12 @@ msgstr "PayPal Payflow Pro/PayPal Pro"
 msgid "Cybersource"
 msgstr "Cybersource"
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/account.php:10 preheaders/levels.php:22
 msgid "Your membership status has been updated - Thank you!"
 msgstr "Status for medlemskapet ditt er oppdatert - Takk!"
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/account.php:12 preheaders/levels.php:24
 msgid ""
 "Sorry, your request could not be completed - please try again in a few "
@@ -3969,49 +3969,49 @@ msgstr ""
 "Beklager, din forespørsel kunne ikke fullføres - vennligst prøv igjen om en "
 "liten stund."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/billing.php:270 preheaders/checkout.php:336
 msgid "Please complete all required fields."
 msgstr "Fyll ut alle påkrevde felt."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/billing.php:273 preheaders/checkout.php:344
 msgid "Your email addresses do not match. Please try again."
 msgstr "E-post-adressene dine stemmer ikke overens. Prøv igjen."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/billing.php:276 preheaders/checkout.php:349
 msgid "The email address entered is in an invalid format. Please try again."
 msgstr "E-post-adressen er i et ugyldig format. Prøv igjen."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/billing.php:280
 msgid "All good!"
 msgstr "Alt er korrekt!"
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/billing.php:350
 #, php-format
 msgid "Information updated. <a href=\"%s\">&laquo; back to my account</a>"
 msgstr ""
 "Informasjonen er oppdatert. <a href=\"%s\">&laquo; gå tilbake til kontoen</a>"
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/billing.php:356
 msgid "Error updating billing information."
 msgstr "Feil ved oppdatering av faktureringsinformasjon."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/cancel.php:28
 msgid "Your membership has been cancelled."
 msgstr "Medlemskapet ditt er blitt kansellert."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:32 preheaders/checkout.php:358
 msgid "Invalid gateway."
 msgstr "Ugyldig portal for betalingsformidleren."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:95
 msgid "Checkout: Payment Information"
 msgstr "Betaling: Betalingsinformasjon"
@@ -4026,44 +4026,44 @@ msgstr ""
 "Det har oppstått JavaScript feil på denne siden. Vennligst ta kontakt med "
 "webmasteren for denne siden."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:339
 msgid "Your passwords do not match. Please try again."
 msgstr "Passordene stemmer ikke overens. Prøv igjen."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:354
 #, php-format
 msgid "Please check the box to agree to the %s."
 msgstr "Huk av i boksen for å godta %s."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:361
 msgid "Are you a spammer?"
 msgstr "Er du en spammer?"
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:381
 msgid "That username is already taken. Please try another."
 msgstr "Brukernavnet er opptatt. Prøv et annet."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:386
 msgid "That email address is already taken. Please try another."
 msgstr "Denne e-post-adressen er allerede registrert. Bruk en annen adresse."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:420
 #, php-format
 msgid "reCAPTCHA failed. (%s) Please try again."
 msgstr "Feil reCAPTCHA verdi. (%s) Vennligst prøv på nytt."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:505
 msgid "Payment accepted."
 msgstr "Betaling er mottatt."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:513
 msgid ""
 "Unknown error generating account. Please contact us to set up your "
@@ -4072,7 +4072,7 @@ msgstr ""
 "Det oppstod en ukjent feil når medlemskontoen din skulle opprettes. Ta "
 "kontakt med oss for å blir registrert som medlem."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:575
 msgid ""
 "Your payment was accepted, but there was an error setting up your account. "
@@ -4081,7 +4081,7 @@ msgstr ""
 "Betalingen din er mottatt, men det skjedde en feil ved oppretting av "
 "medlemskontoen din. Ta kontakt med oss."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:722
 msgid ""
 "IMPORTANT: Something went wrong during membership creation. Your credit card "
@@ -4094,7 +4094,7 @@ msgstr ""
 "transaksjonen på nytt</em> og kontakt med eieren av disse websidene for å "
 "fikse problemet."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:725
 msgid ""
 "IMPORTANT: Something went wrong during membership creation. Your credit card "
@@ -4106,7 +4106,7 @@ msgstr ""
 "stand til å gi deg det korrekte medlemsnivået. Vennligst ta kontakt med "
 "eieren av disse websidene for å fikse problemet."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:736
 #, php-format
 msgid ""
@@ -4116,49 +4116,49 @@ msgstr ""
 "Du må <a href=\"%s\">sette opp en betalingsformidlerportal</a> før "
 "innbetalinger kan mottas og behandles."
 
-# @ pmpro
+# @ dmrfid
 #: preheaders/checkout.php:738
 msgid "A Payment Gateway must be set up before any payments will be processed."
 msgstr ""
 "En betalingsformidlerportal må settes opp før vi kan behandle innbetalinger."
 
-# @ pmpro
+# @ dmrfid
 #: scheduled/crons.php:39
 #, php-format
 msgid "Membership expired email sent to %s. "
 msgstr "Vi har sendt melding til %s om at medlemsperioden er avsluttet."
 
-# @ pmpro
+# @ dmrfid
 #: scheduled/crons.php:88
 #, php-format
 msgid "Membership expiring email sent to %s. "
 msgstr "Vi har sendt melding til %s om at medlemsperioden er i ferd med å utgå"
 
-# @ pmpro
+# @ dmrfid
 #: scheduled/crons.php:164
 #, php-format
 msgid "Credit card expiring email sent to %s. "
 msgstr "Vi har sendt melding om ugyldig kredittkort til %s"
 
-# @ pmpro
+# @ dmrfid
 #: scheduled/crons.php:220
 #, php-format
 msgid "Trial ending email sent to %s. "
 msgstr "E-post om avsluttet prøveperiode ble sendt til %s"
 
-# @ pmpro
+# @ dmrfid
 #: services/applydiscountcode.php:67
 #, php-format
 msgid "The %s code has been applied to your order. "
 msgstr "Bestillingen din har blitt påført rabattkode %s"
 
-# @ pmpro
+# @ dmrfid
 #: services/applydiscountcode.php:97
 #, php-format
 msgid "The <strong>%s</strong> code has been applied to your order."
 msgstr "Rabattkode <strong>%s</strong> har blitt tilført bestillingen din."
 
-# @ pmpro
+# @ dmrfid
 #: services/authnet-silent-post.php:144
 msgid ""
 "<p>A payment is being held for review within Authorize.net.</p><p>Payment "
@@ -4167,7 +4167,7 @@ msgstr ""
 "Authorize.net har valgt å holde betalingen for ettersyn.</p><p>Informasjon "
 "om betalingen fra Authorize.net"
 
-# @ pmpro
+# @ dmrfid
 #: services/stripe-webhook.php:272
 #, php-format
 msgid ""
@@ -4177,53 +4177,53 @@ msgstr ""
 "Stripe har kansellert abonnementsinnbetalinger for %s. Vennligst bekreft at "
 "brukeren nå har korrekte tilganger til dine websider/tjenester."
 
-#: shortcodes/pmpro_account.php:45
+#: shortcodes/dmrfid_account.php:45
 msgid "Billing"
 msgstr "Innbetalinger"
 
-#: shortcodes/pmpro_account.php:65
+#: shortcodes/dmrfid_account.php:65
 msgid "Update Billing Info"
 msgstr "Oppdaterer kredittkortinformasjon og fakturadresse."
 
-#: shortcodes/pmpro_account.php:71
+#: shortcodes/dmrfid_account.php:71
 msgid "Change"
 msgstr "Endre"
 
-#: shortcodes/pmpro_account.php:93
+#: shortcodes/dmrfid_account.php:93
 msgid "View all Membership Options"
 msgstr "Vis alle medlemskapsalternativer"
 
-# @ pmpro
-#: shortcodes/pmpro_account.php:102
+# @ dmrfid
+#: shortcodes/dmrfid_account.php:102
 msgid "My Account"
 msgstr "Min konto"
 
-# @ pmpro
-#: shortcodes/pmpro_account.php:113
+# @ dmrfid
+#: shortcodes/dmrfid_account.php:113
 msgid "Edit Profile"
 msgstr "Rediger profil"
 
-# @ pmpro
-#: shortcodes/pmpro_account.php:114
+# @ dmrfid
+#: shortcodes/dmrfid_account.php:114
 msgid "Change Password"
 msgstr "Endre passord"
 
-# @ pmpro
-#: shortcodes/pmpro_account.php:121
+# @ dmrfid
+#: shortcodes/dmrfid_account.php:121
 msgid "Past Invoices"
 msgstr "Siste faktura"
 
-#: shortcodes/pmpro_account.php:127
+#: shortcodes/dmrfid_account.php:127
 msgid "Amount"
 msgstr "Beløp"
 
-# @ pmpro
-#: shortcodes/pmpro_account.php:155
+# @ dmrfid
+#: shortcodes/dmrfid_account.php:155
 msgid "View All Invoices"
 msgstr "Se alle fakturaer"
 
-# @ pmpro
-#: shortcodes/pmpro_account.php:162
+# @ dmrfid
+#: shortcodes/dmrfid_account.php:162
 msgid "Member Links"
 msgstr "Lenker for medlemmer"
 
@@ -4231,59 +4231,59 @@ msgstr "Lenker for medlemmer"
 #~ msgstr ""
 #~ "Dersom denne ikke er krysset av sendes alle email fra “WordPress &lt;"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Your billing information has been udpated at %s"
 #~ msgstr "Faktureringsinformasjonen har blitt oppdatert på %s"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Billing information has been udpated for %s at %s"
 #~ msgstr "Faktureringsinformasjonen har blitt oppdatert for %s den %s"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Enabled"
 #~ msgstr "Aktiv"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Disabled"
 #~ msgstr "Ikke aktiv"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Billing Cycle"
 #~ msgstr "Faktureringssyklus"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Trial Cycle"
 #~ msgstr "Prøveperiode"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "every"
 #~ msgstr "hver"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "for"
 #~ msgstr "i"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Never"
 #~ msgstr "Aldri"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "The new level is %s."
 #~ msgstr "Det nye medlemsnivået er %s"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "The new level is %s. This membership is free"
 #~ msgstr "Det nye medlemsnivået er %s. Dette medlemsnivået er gratis."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "membership has been cancelled"
 #~ msgstr "medlemsskapet/abonnementet er avsluttet"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Brazilian Real (&#36;)"
 #~ msgstr "Brasilianske real"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "South African Rand"
 #~ msgstr "Sør-Afrikanske Rand"
 
@@ -4291,47 +4291,47 @@ msgstr "Lenker for medlemmer"
 #~ msgid " and then <strong>%s every %d %s for %d more %s</strong>."
 #~ msgstr "og så koster det <strong>%s hver %d. %s i %d flere %s</strong>."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "User is not paying."
 #~ msgstr "Brukeren betaler ikke."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Your membership is <strong>active</strong>."
 #~ msgstr "Medlemskapet ditt er <strong>aktivt</strong>."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Your first payment will cost %s."
 #~ msgstr "Din første innbetaling vil koste %s."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Your first %d payments will cost %s."
 #~ msgstr "Dine første %d innbetalinger vil koste %s."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Billing Information"
 #~ msgstr "Fakturainformasjon"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Edit Billing Information"
 #~ msgstr "Oppdater fakturaadresse og kredittkort informasjon"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Update Billing Information"
 #~ msgstr "Oppdaterer kredittkortinformasjon og fakturadresse."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Change Membership Level"
 #~ msgstr "Endre medlemsnivå"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Cancel Membership"
 #~ msgstr "Kanseller medlemskap"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Submit and Pay with 2CheckOut"
 #~ msgstr "Lagre og betal med 2CheckOut"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid ""
 #~ "Below are details about your membership account. A welcome email with has "
 #~ "been sent to %s."
@@ -4339,19 +4339,19 @@ msgstr "Lenker for medlemmer"
 #~ "Under finner du detaljer om medlemskontoen din. En e-post med har blitt "
 #~ "sendt til %s."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Pending"
 #~ msgstr "Ventende"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "View Invoice"
 #~ msgstr "Se på faktura"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Subscription Information"
 #~ msgstr "Kursinformasjon"
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "--"
 #~ msgstr "—"
 
@@ -4367,6 +4367,6 @@ msgstr "Lenker for medlemmer"
 #~ msgid "%s after %d %s."
 #~ msgstr "%s etter %d %s."
 
-# @ pmpro
+# @ dmrfid
 #~ msgid "Set up Your Account"
 #~ msgstr "Oppsett av medlemskonto"

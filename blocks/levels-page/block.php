@@ -5,7 +5,7 @@
  * @package blocks/levels-page
  **/
 
-namespace PMPro\blocks\levels_page;
+namespace DmRFID\blocks\levels_page;
 
 defined( 'ABSPATH' ) || die( 'File cannot be accessed directly' );
 
@@ -23,7 +23,7 @@ if ( ! function_exists( 'register_block_type' ) ) {
  */
 function register_dynamic_block() {
 	// Hook server side rendering into render callback.
-	register_block_type( 'pmpro/levels-page', [
+	register_block_type( 'dmrfid/levels-page', [
 		'render_callback' => __NAMESPACE__ . '\render_dynamic_block',
 	] );
 }
@@ -36,14 +36,14 @@ add_action( 'init', __NAMESPACE__ . '\register_dynamic_block' );
  * @return string
  **/
 function render_dynamic_block( $attributes ) {
-	return pmpro_loadTemplate( 'levels', 'local', 'pages' );
+	return dmrfid_loadTemplate( 'levels', 'local', 'pages' );
 }
 
 /**
  * Load preheaders/levels.php if a page has the checkout block.
  */
 function load_levels_preheader() {
-	if ( has_block( 'pmpro/levels-page' ) ) {
+	if ( has_block( 'dmrfid/levels-page' ) ) {
 		require_once( DMRFID_DIR . "/preheaders/levels.php" );
 	}
 }

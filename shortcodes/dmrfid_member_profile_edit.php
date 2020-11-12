@@ -1,14 +1,14 @@
 <?php
 /**
  * Display a Member Profile Form that allows members to edit their information on the front end.
- * Supports the core WordPress User fields that PMPro uses.
- * Add Ons and other plugins can hook into this form using the pmpro_show_user_profile action.
+ * Supports the core WordPress User fields that DmRFID uses.
+ * Add Ons and other plugins can hook into this form using the dmrfid_show_user_profile action.
  *
  */
-function pmpro_shortcode_member_profile_edit( $atts, $content=null, $code='' ) {
+function dmrfid_shortcode_member_profile_edit( $atts, $content=null, $code='' ) {
 	// $content ::= text within enclosing form of shortcode element
 	// $code    ::= the shortcode found, when == callback name
-	// examples: [pmpro_member_profile_edit]
+	// examples: [dmrfid_member_profile_edit]
 
 	ob_start();
 
@@ -21,10 +21,10 @@ function pmpro_shortcode_member_profile_edit( $atts, $content=null, $code='' ) {
 
 	if ( ! empty( $view ) && $view == 'change-password' ) {
 		// Display the Change Password form.
-		pmpro_change_password_form();
+		dmrfid_change_password_form();
 	} else {
 		// Display the Member Profile Edit form.
-		pmpro_member_profile_edit_form();
+		dmrfid_member_profile_edit_form();
 	}
 
 	$content = ob_get_contents();
@@ -32,4 +32,4 @@ function pmpro_shortcode_member_profile_edit( $atts, $content=null, $code='' ) {
 
 	return $content;
 }
-add_shortcode( 'pmpro_member_profile_edit', 'pmpro_shortcode_member_profile_edit' );
+add_shortcode( 'dmrfid_member_profile_edit', 'dmrfid_shortcode_member_profile_edit' );

@@ -59,7 +59,7 @@
 	</header>
 	<main class="main">
 		<p>
-			<?php echo pmpro_formatAddress(
+			<?php echo dmrfid_formatAddress(
 				$order->billing->name,
 				$order->billing->street,
 				'',
@@ -91,7 +91,7 @@
 			</tr>
 			<tr>
 				<th colspan="2" class="alignright"><?php _e('Total', 'paid-memberships-pro' ); ?></th>
-				<th class="alignright"><?php echo pmpro_formatPrice( $order->total ); ?></th>
+				<th class="alignright"><?php echo dmrfid_formatPrice( $order->total ); ?></th>
 			</tr>
 		</table>
 	</main>

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use Elementor\Controls_Manager;
 
-class PMPro_Elementor {
+class DmRFID_Elementor {
     private static $_instance = null;
 
     public $locations = array(
@@ -20,14 +20,14 @@ class PMPro_Elementor {
             'action'  => 'section_advanced',
         )
     );
-    public $section_name = 'pmpro_elementor_section';
+    public $section_name = 'dmrfid_elementor_section';
 
 	/**
-	 * Register new section for PMPro Required Membership Levels.
+	 * Register new section for DmRFID Required Membership Levels.
 	 */
 	public function __construct() {
         
-        require_once( __DIR__ . '/class-pmpro-elementor-content-restriction.php' );
+        require_once( __DIR__ . '/class-dmrfid-elementor-content-restriction.php' );
         // Register new section to display restriction controls
         $this->register_sections();
 
@@ -38,7 +38,7 @@ class PMPro_Elementor {
      *
      * Ensures only one instance of the class is loaded or can be loaded.
      *
-     * @return PMPro_Elementor An instance of the class.
+     * @return DmRFID_Elementor An instance of the class.
      */
     public static function instance() {
         if ( is_null( self::$_instance ) )
@@ -73,4 +73,4 @@ class PMPro_Elementor {
 }
 
 // Instantiate Plugin Class
-PMPro_Elementor::instance();
+DmRFID_Elementor::instance();

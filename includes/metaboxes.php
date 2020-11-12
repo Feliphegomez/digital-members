@@ -2,13 +2,13 @@
 /**
  * Require Membership Meta Box
  */
-function pmpro_page_meta() {
+function dmrfid_page_meta() {
 	global $post, $wpdb;
-	$membership_levels = pmpro_getAllLevels( true, true );
-	$page_levels = $wpdb->get_col( "SELECT membership_id FROM {$wpdb->pmpro_memberships_pages} WHERE page_id = '" . intval( $post->ID ) . "'" );
+	$membership_levels = dmrfid_getAllLevels( true, true );
+	$page_levels = $wpdb->get_col( "SELECT membership_id FROM {$wpdb->dmrfid_memberships_pages} WHERE page_id = '" . intval( $post->ID ) . "'" );
 ?>
     <ul id="membershipschecklist" class="list:category categorychecklist form-no-clear">
-    <input type="hidden" name="pmpro_noncename" id="pmpro_noncename" value="<?php echo esc_attr( wp_create_nonce( plugin_basename(__FILE__) ) )?>" />
+    <input type="hidden" name="dmrfid_noncename" id="dmrfid_noncename" value="<?php echo esc_attr( wp_create_nonce( plugin_basename(__FILE__) ) )?>" />
 	<?php
 		$in_member_cat = false;
 		foreach( $membership_levels as $level ) {
@@ -19,7 +19,7 @@ function pmpro_page_meta() {
 				<?php
 					echo esc_html( $level->name );
 					//Check which categories are protected for this level
-					$protectedcategories = $wpdb->get_col( "SELECT category_id FROM $wpdb->pmpro_memberships_categories WHERE membership_id = '" . intval( $level->id ) . "'");
+					$protectedcategories = $wpdb->get_col( "SELECT category_id FROM $wpdb->dmrfid_memberships_categories WHERE membership_id = '" . intval( $level->id ) . "'");
 					//See if this post is in any of the level's protected categories
 					if( in_category( $protectedcategories, $post->id ) ) {
 						$in_member_cat = true;
@@ -34,11 +34,11 @@ function pmpro_page_meta() {
     </ul>
 	<?php
 		if( 'post' == get_post_type( $post ) && $in_member_cat ) { ?>
-		<p class="pmpro_meta_notice">* <?php _e("This post is already protected for this level because it is within a category that requires membership.", 'paid-memberships-pro' );?></p>
+		<p class="dmrfid_meta_notice">* <?php _e("This post is already protected for this level because it is within a category that requires membership.", 'paid-memberships-pro' );?></p>
 	<?php
 		}
 
-		do_action( 'pmpro_after_require_membership_metabox', $post );
+		do_action( 'dmrfid_after_require_membership_metabox', $post );
 	?>
 <?php
 }
@@ -46,7 +46,7 @@ function pmpro_page_meta() {
 /**
  * Saves meta options when a page is saved.
  */
-function pmpro_page_save( $post_id ) {
+function dmrfid_page_save( $post_id ) {
 	global $wpdb;
 
 	if( empty( $post_id ) ) {
@@ -54,12 +54,12 @@ function pmpro_page_save( $post_id ) {
 	}
 
 	// Post is saving somehow with our meta box not shown.
-	if ( ! isset( $_POST['pmpro_noncename'] ) ) {
+	if ( ! isset( $_POST['dmrfid_noncename'] ) ) {
 		return $post_id;
 	}
 
 	// Verify the nonce.
-	if ( ! wp_verify_nonce( $_POST['pmpro_noncename'], plugin_basename( __FILE__ ) ) ) {
+	if ( ! wp_verify_nonce( $_POST['dmrfid_noncename'], plugin_basename( __FILE__ ) ) ) {
 		return $post_id;
 	}
 
@@ -87,12 +87,12 @@ function pmpro_page_save( $post_id ) {
 	}
 
 	// Remove all memberships for this page.
-	$wpdb->query( "DELETE FROM {$wpdb->pmpro_memberships_pages} WHERE page_id = '" . intval( $post_id ) . "'" );
+	$wpdb->query( "DELETE FROM {$wpdb->dmrfid_memberships_pages} WHERE page_id = '" . intval( $post_id ) . "'" );
 
 	// Add new memberships for this page.
 	if( is_array( $mydata ) ) {
 		foreach( $mydata as $level ) {
-			$wpdb->query( "INSERT INTO {$wpdb->pmpro_memberships_pages} (membership_id, page_id) VALUES('" . intval( $level ) . "', '" . intval( $post_id ) . "')" );
+			$wpdb->query( "INSERT INTO {$wpdb->dmrfid_memberships_pages} (membership_id, page_id) VALUES('" . intval( $level ) . "', '" . intval( $post_id ) . "')" );
 		}
 	}
 
@@ -102,26 +102,26 @@ function pmpro_page_save( $post_id ) {
 /**
  * Wrapper to add meta boxes
  */
-function pmpro_page_meta_wrapper() {
-	add_meta_box( 'pmpro_page_meta', __( 'Require Membership', 'paid-memberships-pro' ), 'pmpro_page_meta', 'page', 'side', 'high' );
-	add_meta_box( 'pmpro_page_meta', __( 'Require Membership', 'paid-memberships-pro' ), 'pmpro_page_meta', 'post', 'side', 'high' );
+function dmrfid_page_meta_wrapper() {
+	add_meta_box( 'dmrfid_page_meta', __( 'Require Membership', 'paid-memberships-pro' ), 'dmrfid_page_meta', 'page', 'side', 'high' );
+	add_meta_box( 'dmrfid_page_meta', __( 'Require Membership', 'paid-memberships-pro' ), 'dmrfid_page_meta', 'post', 'side', 'high' );
 }
 if ( is_admin() ) {
-	add_action( 'admin_menu', 'pmpro_page_meta_wrapper' );
-	add_action( 'save_post', 'pmpro_page_save' );
+	add_action( 'admin_menu', 'dmrfid_page_meta_wrapper' );
+	add_action( 'save_post', 'dmrfid_page_save' );
 }
 
 /**
  * Show membership level restrictions on category edit.
  */
-function pmpro_taxonomy_meta( $term ) {
+function dmrfid_taxonomy_meta( $term ) {
 	global $membership_levels, $post, $wpdb;
 
 	$protectedlevels = array();
 	foreach( $membership_levels as $level ) {
-		$protectedlevel = $wpdb->get_col( "SELECT category_id FROM $wpdb->pmpro_memberships_categories WHERE membership_id = '" . intval( $level->id ) . "' AND category_id = '" . intval( $term->term_id ) . "'" );
+		$protectedlevel = $wpdb->get_col( "SELECT category_id FROM $wpdb->dmrfid_memberships_categories WHERE membership_id = '" . intval( $level->id ) . "' AND category_id = '" . intval( $term->term_id ) . "'" );
 		if( ! empty( $protectedlevel ) ) {
-			$protectedlevels[] .= '<a target="_blank" href="admin.php?page=pmpro-membershiplevels&edit=' . intval( $level->id ) . '">' . esc_html( $level->name ) . '</a>';
+			$protectedlevels[] .= '<a target="_blank" href="admin.php?page=dmrfid-membershiplevels&edit=' . intval( $level->id ) . '">' . esc_html( $level->name ) . '</a>';
 		}
 	}
 	
@@ -138,4 +138,4 @@ function pmpro_taxonomy_meta( $term ) {
 	<?php
 	}
 }
-add_action( 'category_edit_form_fields', 'pmpro_taxonomy_meta', 10, 2 );
+add_action( 'category_edit_form_fields', 'dmrfid_taxonomy_meta', 10, 2 );

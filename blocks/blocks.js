@@ -23,7 +23,7 @@ import './member-profile-edit/block.js';
 import './login/block.js';
 
 ( function() {
-	const PMProSVG = <svg version="1.1" id="Layer_1" x="0px" y="0px"
+	const DmRFIDSVG = <svg version="1.1" id="Layer_1" x="0px" y="0px"
 	 viewBox="0 0 18 18">
 <path d="M17.99,4.53c-0.35,0.12-0.7,0.26-1.06,0.4c-0.35,0.14-0.7,0.3-1.05,0.46c-0.35,0.16-0.69,0.33-1.03,0.51
 	c-0.34,0.18-0.68,0.37-1.02,0.56c-0.15,0.09-0.31,0.18-0.46,0.27c-0.15,0.09-0.3,0.19-0.45,0.28c-0.15,0.1-0.3,0.19-0.45,0.29
@@ -107,5 +107,5 @@ import './login/block.js';
 	C7.01,1.37,6.76,1.49,6.53,1.65c-0.22,0.16-0.43,0.35-0.6,0.57C5.77,2.43,5.63,2.67,5.53,2.91c-0.1,0.25-0.16,0.5-0.17,0.76
 	L5.33,4.91L9.46,3.96z"/>
 </svg>;
-	wp.blocks.updateCategory( 'pmpro', { icon: PMProSVG } );
+	wp.blocks.updateCategory( 'dmrfid', { icon: DmRFIDSVG } );
 } )();

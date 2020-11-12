@@ -1,11 +1,11 @@
 <?php
-	//include pmprogateway
-	require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+	//include dmrfidgateway
+	require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 
 	//load classes init method
-	add_action('init', array('PMProGateway_paypal', 'init'));
+	add_action('init', array('DmRFIDGateway_paypal', 'init'));
 
-	class PMProGateway_paypal extends PMProGateway
+	class DmRFIDGateway_paypal extends DmRFIDGateway
 	{
 		function __construct($gateway = NULL)
 		{
@@ -21,29 +21,29 @@
 		static function init()
 		{
 			//make sure PayPal Website Payments Pro is a gateway option
-			add_filter('pmpro_gateways', array('PMProGateway_paypal', 'pmpro_gateways'));
+			add_filter('dmrfid_gateways', array('DmRFIDGateway_paypal', 'dmrfid_gateways'));
 
 			//add fields to payment settings
-			add_filter('pmpro_payment_options', array('PMProGateway_paypal', 'pmpro_payment_options'));
+			add_filter('dmrfid_payment_options', array('DmRFIDGateway_paypal', 'dmrfid_payment_options'));
 
 			/*
 				This code is the same for PayPal Website Payments Pro, PayPal Express, and PayPal Standard
 				So we only load it if we haven't already.
 			*/
-			global $pmpro_payment_option_fields_for_paypal;
-			if(empty($pmpro_payment_option_fields_for_paypal))
+			global $dmrfid_payment_option_fields_for_paypal;
+			if(empty($dmrfid_payment_option_fields_for_paypal))
 			{
-				add_filter('pmpro_payment_option_fields', array('PMProGateway_paypal', 'pmpro_payment_option_fields'), 10, 2);
-				$pmpro_payment_option_fields_for_paypal = true;
+				add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_paypal', 'dmrfid_payment_option_fields'), 10, 2);
+				$dmrfid_payment_option_fields_for_paypal = true;
 			}
 
 			//code to add at checkout
-			$gateway = pmpro_getGateway();
+			$gateway = dmrfid_getGateway();
 			if($gateway == "paypal")
 			{
-				add_action('pmpro_checkout_preheader', array('PMProGateway_paypal', 'pmpro_checkout_preheader'));
-				add_filter('pmpro_checkout_default_submit_button', array('PMProGateway_paypal', 'pmpro_checkout_default_submit_button'));
-				add_action('http_api_curl', array('PMProGateway_paypal', 'http_api_curl'), 10, 3);
+				add_action('dmrfid_checkout_preheader', array('DmRFIDGateway_paypal', 'dmrfid_checkout_preheader'));
+				add_filter('dmrfid_checkout_default_submit_button', array('DmRFIDGateway_paypal', 'dmrfid_checkout_default_submit_button'));
+				add_action('http_api_curl', array('DmRFIDGateway_paypal', 'http_api_curl'), 10, 3);
 			}
 		}
 
@@ -62,7 +62,7 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_gateways($gateways)
+		static function dmrfid_gateways($gateways)
 		{
 			if(empty($gateways['paypal']))
 				$gateways['paypal'] = __('PayPal Website Payments Pro', 'paid-memberships-pro' );
@@ -107,10 +107,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_options($options)
+		static function dmrfid_payment_options($options)
 		{
 			//get options
-			$paypal_options = PMProGateway_paypal::getGatewayOptions();
+			$paypal_options = DmRFIDGateway_paypal::getGatewayOptions();
 
 			//merge with others.
 			$options = array_merge($paypal_options, $options);
@@ -123,10 +123,10 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_payment_option_fields($values, $gateway)
+		static function dmrfid_payment_option_fields($values, $gateway)
 		{
 		?>
-		<tr class="pmpro_settings_divider gateway gateway_paypal gateway_paypalexpress gateway_paypalstandard" <?php if($gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
+		<tr class="dmrfid_settings_divider gateway gateway_paypal gateway_paypalexpress gateway_paypalstandard" <?php if($gateway != "paypal" && $gateway != "paypalexpress" && $gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2">
 				<hr />
 				<h2 class="title"><?php _e('PayPal Settings', 'paid-memberships-pro' ); ?></h2>
@@ -134,7 +134,7 @@
 		</tr>
 		<tr class="gateway gateway_paypalstandard" <?php if($gateway != "paypalstandard") { ?>style="display: none;"<?php } ?>>
 			<td colspan="2" style="padding: 0px;">
-				<p class="pmpro_message">
+				<p class="dmrfid_message">
 				<?php
 					$allowed_message_html = array (
 						'a' => array (
@@ -143,7 +143,7 @@
 							'title' => array(),
 						),
 					);
-					echo sprintf( wp_kses( __( 'Note: We do not recommend using PayPal Standard. We suggest using PayPal Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="_blank" href="%s" title="More information on why can be found here">More information on why can be found here</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/read-using-paypal-standard-paid-memberships-pro/?utm_source=plugin&utm_medium=pmpro-paymentsettings&utm_campaign=blog&utm_content=read-using-paypal-standard-paid-memberships-pro' );
+					echo sprintf( wp_kses( __( 'Note: We do not recommend using PayPal Standard. We suggest using PayPal Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="_blank" href="%s" title="More information on why can be found here">More information on why can be found here</a>.', 'paid-memberships-pro' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/read-using-paypal-standard-paid-memberships-pro/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=read-using-paypal-standard-paid-memberships-pro' );
 				?>
 				</p>
 			</td>
@@ -186,8 +186,8 @@
 			</th>
 			<td>
 				<select id="paypalexpress_skip_confirmation" name="paypalexpress_skip_confirmation">
-					<option value="0" <?php selected(pmpro_getOption('paypalexpress_skip_confirmation'), 0);?>>Require an extra confirmation after users return from PayPal Express.</option>
-					<option value="1" <?php selected(pmpro_getOption('paypalexpress_skip_confirmation'), 1);?>>Skip the extra confirmation after users return from PayPal Express.</option>
+					<option value="0" <?php selected(dmrfid_getOption('paypalexpress_skip_confirmation'), 0);?>>Require an extra confirmation after users return from PayPal Express.</option>
+					<option value="1" <?php selected(dmrfid_getOption('paypalexpress_skip_confirmation'), 1);?>>Skip the extra confirmation after users return from PayPal Express.</option>
 				</select>
 			</td>
 		</tr>
@@ -208,26 +208,26 @@
 		 *
 		 * @since 2.1
 		 */
-		static function pmpro_checkout_preheader() {
-			global $gateway, $gateway_environment, $pmpro_level;
-			$default_gateway = pmpro_getOption("gateway");
+		static function dmrfid_checkout_preheader() {
+			global $gateway, $gateway_environment, $dmrfid_level;
+			$default_gateway = dmrfid_getOption("gateway");
 
 			if ( $gateway == 'paypal' || $default_gateway == 'paypal' ) {
 				$dependencies = array( 'jquery' );
-				$paypal_enable_3dsecure = pmpro_getOption( 'paypal_enable_3dsecure' );
+				$paypal_enable_3dsecure = dmrfid_getOption( 'paypal_enable_3dsecure' );
 				$data = array();
 
 				// Setup 3DSecure if enabled.
-				if( pmpro_was_checkout_form_submitted() && $paypal_enable_3dsecure ) {
+				if( dmrfid_was_checkout_form_submitted() && $paypal_enable_3dsecure ) {
 					if( 'sandbox' === $gateway_environment || 'beta-sandbox' === $gateway_environment ) {
 						$songbird_url = 'https://songbirdstag.cardinalcommerce.com/cardinalcruise/v1/songbird.js';
 					} else {
 						$songbird_url = 'https://songbird.cardinalcommerce.com/edge/v1/songbird.js';
 					}
-					wp_enqueue_script( 'pmpro_songbird', $songbird_url );
-					$dependencies[] = 'pmpro_songbird';
+					wp_enqueue_script( 'dmrfid_songbird', $songbird_url );
+					$dependencies[] = 'dmrfid_songbird';
 					$data['enable_3dsecure'] = $paypal_enable_3dsecure;
-					$data['cardinal_jwt'] = PMProGateway_paypal::get_cardinal_jwt();
+					$data['cardinal_jwt'] = DmRFIDGateway_paypal::get_cardinal_jwt();
 					if ( WP_DEBUG ) {
 						$data['cardinal_debug'] = 'verbose';
 						$data['cardinal_logging'] = 'On';
@@ -237,29 +237,29 @@
 					}
 				}
 
-				wp_register_script( 'pmpro_paypal',
-                            plugins_url( 'js/pmpro-paypal.js', DMRFID_BASE_FILE ),
+				wp_register_script( 'dmrfid_paypal',
+                            plugins_url( 'js/dmrfid-paypal.js', DMRFID_BASE_FILE ),
                             $dependencies,
                             DMRFID_VERSION );
-				wp_localize_script( 'pmpro_paypal', 'pmpro_paypal', $data );
-				wp_enqueue_script( 'pmpro_paypal' );
+				wp_localize_script( 'dmrfid_paypal', 'dmrfid_paypal', $data );
+				wp_enqueue_script( 'dmrfid_paypal' );
 			}
 		}
 
 		static function get_cardinal_jwt() {
 			require_once( DMRFID_DIR . '/includes/lib/php-jwt/JWT.php' );
 
-			$key = pmpro_getOption( 'paypal_cardinal_apikey' );
+			$key = dmrfid_getOption( 'paypal_cardinal_apikey' );
 			$now = current_time( 'timestamp' );
 			$token = array(
-				'jti' => 'JWT' . pmpro_getDiscountCode(),
+				'jti' => 'JWT' . dmrfid_getDiscountCode(),
 				'iat' => $now,
 				'exp' => $now + 7200,
-				'iss' => pmpro_getOption( 'paypal_cardinal_apiidentifier' ),
-				'OrgUnitId' => pmpro_getOption( 'paypal_cardinal_orgunitid' ),
+				'iss' => dmrfid_getOption( 'paypal_cardinal_apiidentifier' ),
+				'OrgUnitId' => dmrfid_getOption( 'paypal_cardinal_orgunitid' ),
 
 			);
-			$jwt = \PMPro\Firebase\JWT\JWT::encode($token, $key);
+			$jwt = \DmRFID\Firebase\JWT\JWT::encode($token, $key);
 
 			return $jwt;
 		}
@@ -269,22 +269,22 @@
 		 *
 		 * @since 1.8
 		 */
-		static function pmpro_checkout_default_submit_button($show)
+		static function dmrfid_checkout_default_submit_button($show)
 		{
-			global $gateway, $pmpro_requirebilling;
+			global $gateway, $dmrfid_requirebilling;
 
 			//show our submit buttons
 			?>
 			<?php if($gateway == "paypal" || $gateway == "paypalexpress" || $gateway == "paypalstandard") { ?>
-			<span id="pmpro_paypalexpress_checkout" <?php if(($gateway != "paypalexpress" && $gateway != "paypalstandard") || !$pmpro_requirebilling) { ?>style="display: none;"<?php } ?>>
+			<span id="dmrfid_paypalexpress_checkout" <?php if(($gateway != "paypalexpress" && $gateway != "paypalstandard") || !$dmrfid_requirebilling) { ?>style="display: none;"<?php } ?>>
 				<input type="hidden" name="submit-checkout" value="1" />
-				<input type="image" id="pmpro_btn-submit-paypal" class="<?php echo pmpro_get_element_class( 'pmpro_btn-submit-checkout' ); ?>" value="<?php _e('Check Out with PayPal', 'paid-memberships-pro' );?> &raquo;" src="<?php echo apply_filters("pmpro_paypal_button_image", "https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png");?>" />
+				<input type="image" id="dmrfid_btn-submit-paypal" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn-submit-checkout' ); ?>" value="<?php _e('Check Out with PayPal', 'paid-memberships-pro' );?> &raquo;" src="<?php echo apply_filters("dmrfid_paypal_button_image", "https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png");?>" />
 			</span>
 			<?php } ?>
 
-			<span id="pmpro_submit_span" <?php if(($gateway == "paypalexpress" || $gateway == "paypalstandard") && $pmpro_requirebilling) { ?>style="display: none;"<?php } ?>>
+			<span id="dmrfid_submit_span" <?php if(($gateway == "paypalexpress" || $gateway == "paypalstandard") && $dmrfid_requirebilling) { ?>style="display: none;"<?php } ?>>
 				<input type="hidden" name="submit-checkout" value="1" />
-				<input type="submit" id="pmpro_btn-submit" class="<?php echo pmpro_get_element_class( 'pmpro_btn pmpro_btn-submit-checkout', 'pmpro_btn-submit-checkout' ); ?>" value="<?php if($pmpro_requirebilling) { _e('Submit and Check Out', 'paid-memberships-pro' ); } else { _e('Submit and Confirm', 'paid-memberships-pro' );}?> &raquo;" />
+				<input type="submit" id="dmrfid_btn-submit" class="<?php echo dmrfid_get_element_class( 'dmrfid_btn dmrfid_btn-submit-checkout', 'dmrfid_btn-submit-checkout' ); ?>" value="<?php if($dmrfid_requirebilling) { _e('Submit and Check Out', 'paid-memberships-pro' ); } else { _e('Submit and Confirm', 'paid-memberships-pro' );}?> &raquo;" />
 			</span>
 			<?php
 
@@ -306,7 +306,7 @@
 				{
 					$this->void($order, $authorization_id);
 					$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
-					$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+					$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 					return $this->subscribe($order);
 				}
 				else
@@ -322,10 +322,10 @@
 				if($this->charge($order))
 				{
 					//set up recurring billing
-					if(pmpro_isLevelRecurring($order->membership_level))
+					if(dmrfid_isLevelRecurring($order->membership_level))
 					{
 						$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
-						$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+						$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 						if($this->subscribe($order))
 						{
 							return true;
@@ -368,7 +368,7 @@
 			$nvpStr = "";
 			if(!empty($order->Token))
 				$nvpStr .= "&TOKEN=" . $order->Token;
-			$nvpStr .="&AMT=1.00&CURRENCYCODE=" . pmpro_getOption("currency");
+			$nvpStr .="&AMT=1.00&CURRENCYCODE=" . dmrfid_getOption("currency");
 			$nvpStr .= "&NOTIFYURL=" . urlencode( add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') ) );
 			//$nvpStr .= "&L_BILLINGTYPE0=RecurringPayments&L_BILLINGAGREEMENTDESCRIPTION0=" . $order->PaymentAmount;
 
@@ -465,7 +465,7 @@
 
 		function charge(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
@@ -474,13 +474,13 @@
 			$amount = $order->InitialPayment;
 			$amount_tax = $order->getTaxForPrice($amount);
 			$order->subtotal = $amount;
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 
 			//paypal profile stuff
 			$nvpStr = "";
 			if(!empty($order->Token))
 				$nvpStr .= "&TOKEN=" . $order->Token;
-			$nvpStr .="&AMT=" . $amount . "&ITEMAMT=" . $order->InitialPayment . "&TAXAMT=" . $amount_tax . "&CURRENCYCODE=" . $pmpro_currency;
+			$nvpStr .="&AMT=" . $amount . "&ITEMAMT=" . $order->InitialPayment . "&TAXAMT=" . $amount_tax . "&CURRENCYCODE=" . $dmrfid_currency;
 			$nvpStr .= "&NOTIFYURL=" . urlencode( add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') ) );
 			//$nvpStr .= "&L_BILLINGTYPE0=RecurringPayments&L_BILLINGAGREEMENTDESCRIPTION0=" . $order->PaymentAmount;
 
@@ -532,27 +532,27 @@
 
 		function subscribe(&$order)
 		{
-			global $pmpro_currency;
+			global $dmrfid_currency;
 
 			if(empty($order->code))
 				$order->code = $order->getRandomCode();
 
 			//filter order before subscription. use with care.
-			$order = apply_filters("pmpro_subscribe_order", $order, $this);
+			$order = apply_filters("dmrfid_subscribe_order", $order, $this);
 
 			//taxes on the amount
 			$amount = $order->PaymentAmount;
 			$amount_tax = $order->getTaxForPrice($amount);
-			$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
+			$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
 
 			//paypal profile stuff
 			$nvpStr = "";
 
 			if(!empty($order->Token))
 				$nvpStr .= "&TOKEN=" . $order->Token;
-			$nvpStr .="&AMT=" . $order->PaymentAmount . "&TAXAMT=" . $amount_tax . "&CURRENCYCODE=" . $pmpro_currency . "&PROFILESTARTDATE=" . $order->ProfileStartDate;
+			$nvpStr .="&AMT=" . $order->PaymentAmount . "&TAXAMT=" . $amount_tax . "&CURRENCYCODE=" . $dmrfid_currency . "&PROFILESTARTDATE=" . $order->ProfileStartDate;
 			$nvpStr .= "&BILLINGPERIOD=" . $order->BillingPeriod . "&BILLINGFREQUENCY=" . $order->BillingFrequency . "&AUTOBILLOUTAMT=AddToNextBilling";
-			$nvpStr .= "&DESC=" . urlencode( apply_filters( 'pmpro_paypal_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")) );
+			$nvpStr .= "&DESC=" . urlencode( apply_filters( 'dmrfid_paypal_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")) );
 			$nvpStr .= "&NOTIFYURL=" . urlencode( add_query_arg( 'action', 'ipnhandler', admin_url('admin-ajax.php') ) );
 			//$nvpStr .= "&L_BILLINGTYPE0=RecurringPayments&L_BILLINGAGREEMENTDESCRIPTION0=" . $order->PaymentAmount;
 
@@ -565,7 +565,7 @@
 			{
 				$trial_amount = $order->TrialAmount;
 				$trial_tax = $order->getTaxForPrice($trial_amount);
-				$trial_amount = pmpro_round_price((float)$trial_amount + (float)$trial_tax);
+				$trial_amount = dmrfid_round_price((float)$trial_amount + (float)$trial_tax);
 
 				$nvpStr .= "&TRIALBILLINGPERIOD=" . $order->TrialBillingPeriod . "&TRIALBILLINGFREQUENCY=" . $order->TrialBillingFrequency . "&TRIALAMT=" . $trial_amount;
 			}
@@ -604,7 +604,7 @@
 			// Set MAXFAILEDPAYMENTS so subscriptions are cancelled after 1 failed payment.
 			$nvpStr .= "&MAXFAILEDPAYMENTS=1";
 			
-			$nvpStr = apply_filters("pmpro_create_recurring_payments_profile_nvpstr", $nvpStr, $order);
+			$nvpStr = apply_filters("dmrfid_create_recurring_payments_profile_nvpstr", $nvpStr, $order);
 
 			//for debugging let's add this to the class object
 			$this->nvpStr = $nvpStr;
@@ -704,7 +704,7 @@
 			$nvpStr = "";
 			$nvpStr .= "&PROFILEID=" . urlencode($order->subscription_transaction_id) . "&ACTION=Cancel&NOTE=" . urlencode("User requested cancel.");
 
-			$nvpStr = apply_filters("pmpro_manage_recurring_payments_profile_status_nvpstr", $nvpStr, $order);
+			$nvpStr = apply_filters("dmrfid_manage_recurring_payments_profile_status_nvpstr", $nvpStr, $order);
 
 			$this->httpParsedResponseAr = $this->PPHttpPost('ManageRecurringPaymentsProfileStatus', $nvpStr);
 
@@ -729,7 +729,7 @@
 			$nvpStr = "";
 			$nvpStr .= "&PROFILEID=" . urlencode($order->subscription_transaction_id);
 
-			$nvpStr = apply_filters("pmpro_get_recurring_payments_profile_details_nvpstr", $nvpStr, $order);
+			$nvpStr = apply_filters("dmrfid_get_recurring_payments_profile_details_nvpstr", $nvpStr, $order);
 
 			$this->httpParsedResponseAr = $this->PPHttpPost('GetRecurringPaymentsProfileDetails', $nvpStr);
 
@@ -853,9 +853,9 @@
 			global $gateway_environment;
 			$environment = $gateway_environment;
 
-			$API_UserName = pmpro_getOption("apiusername");
-			$API_Password = pmpro_getOption("apipassword");
-			$API_Signature = pmpro_getOption("apisignature");
+			$API_UserName = dmrfid_getOption("apiusername");
+			$API_Password = dmrfid_getOption("apipassword");
+			$API_Signature = dmrfid_getOption("apisignature");
 			$API_Endpoint = "https://api-3t.paypal.com/nvp";
 			if("sandbox" === $environment || "beta-sandbox" === $environment) {
 				$API_Endpoint = "https://api-3t.$environment.paypal.com/nvp";

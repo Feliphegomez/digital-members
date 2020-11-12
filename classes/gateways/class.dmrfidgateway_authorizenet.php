@@ -1,11 +1,11 @@
 <?php
-//include pmprogateway
-require_once(dirname(__FILE__) . "/class.pmprogateway.php");
+//include dmrfidgateway
+require_once(dirname(__FILE__) . "/class.dmrfidgateway.php");
 
 //load classes init method
-add_action('init', array('PMProGateway_authorizenet', 'init'));
+add_action('init', array('DmRFIDGateway_authorizenet', 'init'));
 
-class PMProGateway_authorizenet extends PMProGateway
+class DmRFIDGateway_authorizenet extends DmRFIDGateway
 {
 	function __construct($gateway = NULL)
 	{
@@ -21,18 +21,18 @@ class PMProGateway_authorizenet extends PMProGateway
 	static function init()
 	{
 		//make sure Authorize.net is a gateway option
-		add_filter('pmpro_gateways', array('PMProGateway_authorizenet', 'pmpro_gateways'));
+		add_filter('dmrfid_gateways', array('DmRFIDGateway_authorizenet', 'dmrfid_gateways'));
 
 		//add fields to payment settings
-		add_filter('pmpro_payment_options', array('PMProGateway_authorizenet', 'pmpro_payment_options'));
-		add_filter('pmpro_payment_option_fields', array('PMProGateway_authorizenet', 'pmpro_payment_option_fields'), 10, 2);
+		add_filter('dmrfid_payment_options', array('DmRFIDGateway_authorizenet', 'dmrfid_payment_options'));
+		add_filter('dmrfid_payment_option_fields', array('DmRFIDGateway_authorizenet', 'dmrfid_payment_option_fields'), 10, 2);
 
-		add_filter('pmpro_checkout_order', array('PMProGateway_authorizenet', 'pmpro_checkout_order'));
-		add_filter('pmpro_billing_order', array('PMProGateway_authorizenet', 'pmpro_checkout_order'));
+		add_filter('dmrfid_checkout_order', array('DmRFIDGateway_authorizenet', 'dmrfid_checkout_order'));
+		add_filter('dmrfid_billing_order', array('DmRFIDGateway_authorizenet', 'dmrfid_checkout_order'));
 
 	}
 
-	static function pmpro_checkout_order( $morder ) {
+	static function dmrfid_checkout_order( $morder ) {
 
 		if ( isset( $_REQUEST['CVV'] ) ) {
 			$authorizenet_cvv = sanitize_text_field( $_REQUEST['CVV'] );
@@ -49,7 +49,7 @@ class PMProGateway_authorizenet extends PMProGateway
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_gateways($gateways)
+	static function dmrfid_gateways($gateways)
 	{
 		if(empty($gateways['authorizenet']))
 			$gateways['authorizenet'] = __('Authorize.net', 'paid-memberships-pro' );
@@ -85,10 +85,10 @@ class PMProGateway_authorizenet extends PMProGateway
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_payment_options($options)
+	static function dmrfid_payment_options($options)
 	{
 		//get stripe options
-		$authorizenet_options = PMProGateway_authorizenet::getGatewayOptions();
+		$authorizenet_options = DmRFIDGateway_authorizenet::getGatewayOptions();
 
 		//merge with others.
 		$options = array_merge($authorizenet_options, $options);
@@ -101,10 +101,10 @@ class PMProGateway_authorizenet extends PMProGateway
 	 *
 	 * @since 1.8
 	 */
-	static function pmpro_payment_option_fields($values, $gateway)
+	static function dmrfid_payment_option_fields($values, $gateway)
 	{
 	?>
-	<tr class="pmpro_settings_divider gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
+	<tr class="dmrfid_settings_divider gateway gateway_authorizenet" <?php if($gateway != "authorizenet") { ?>style="display: none;"<?php } ?>>
 		<td colspan="2">
 			<hr />
 			<h2 class="title"><?php esc_html_e('Authorize.net Settings', 'paid-memberships-pro' ); ?></h2>
@@ -151,7 +151,7 @@ class PMProGateway_authorizenet extends PMProGateway
 			if($this->authorize($order))
 			{
 				$this->void($order);
-				if(!pmpro_isLevelTrial($order->membership_level))
+				if(!dmrfid_isLevelTrial($order->membership_level))
 				{
 					//subscription will start today with a 1 period trial
 					$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -180,7 +180,7 @@ class PMProGateway_authorizenet extends PMProGateway
 					$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 				}
 
-				$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+				$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 				return $this->subscribe($order);
 			}
 			else
@@ -196,9 +196,9 @@ class PMProGateway_authorizenet extends PMProGateway
 			if($this->charge($order))
 			{
 				//set up recurring billing
-				if(pmpro_isLevelRecurring($order->membership_level))
+				if(dmrfid_isLevelRecurring($order->membership_level))
 				{
-					if(!pmpro_isLevelTrial($order->membership_level))
+					if(!dmrfid_isLevelTrial($order->membership_level))
 					{
 						//subscription will start today with a 1 period trial
 						$order->ProfileStartDate = date_i18n("Y-m-d") . "T0:0:0";
@@ -227,7 +227,7 @@ class PMProGateway_authorizenet extends PMProGateway
 						$order->ProfileStartDate = date_i18n("Y-m-d", strtotime("+ " . $order->BillingFrequency . " " . $order->BillingPeriod, current_time("timestamp"))) . "T0:0:0";
 					}
 
-					$order->ProfileStartDate = apply_filters("pmpro_profile_start_date", $order->ProfileStartDate, $order);
+					$order->ProfileStartDate = apply_filters("dmrfid_profile_start_date", $order->ProfileStartDate, $order);
 					if($this->subscribe($order))
 					{
 						return true;
@@ -272,7 +272,7 @@ class PMProGateway_authorizenet extends PMProGateway
 			$order->code = $order->getRandomCode();
 
 		if(empty($order->gateway_environment))
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 		else
 			$gateway_environment = $order->gateway_environment;
 		if($gateway_environment == "live")
@@ -283,7 +283,7 @@ class PMProGateway_authorizenet extends PMProGateway
 		$path = "/gateway/transact.dll";
 		$post_url = "https://" . $host . $path;
 
-		$post_url = apply_filters("pmpro_authorizenet_post_url", $post_url, $gateway_environment);
+		$post_url = apply_filters("dmrfid_authorizenet_post_url", $post_url, $gateway_environment);
 
 		//what amount to authorize? just $1 to test
 		$amount = "1.00";
@@ -303,8 +303,8 @@ class PMProGateway_authorizenet extends PMProGateway
 		$post_values = array(
 
 			// the API Login ID and Transaction Key must be replaced with valid values
-			"x_login"			=> pmpro_getOption("loginname"),
-			"x_tran_key"		=> pmpro_getOption("transactionkey"),
+			"x_login"			=> dmrfid_getOption("loginname"),
+			"x_tran_key"		=> dmrfid_getOption("transactionkey"),
 
 			"x_version"			=> "3.1",
 			"x_delim_data"		=> "TRUE",
@@ -318,7 +318,7 @@ class PMProGateway_authorizenet extends PMProGateway
 			"x_exp_date"		=> $order->ExpirationDate,
 
 			"x_amount"			=> $amount,
-			"x_description"		=> apply_filters( 'pmpro_authorizenet_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")),
+			"x_description"		=> apply_filters( 'dmrfid_authorizenet_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")),
 
 			"x_first_name"		=> $order->FirstName,
 			"x_last_name"		=> $order->LastName,
@@ -377,7 +377,7 @@ class PMProGateway_authorizenet extends PMProGateway
 			return false;
 
 		if(empty($order->gateway_environment))
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 		else
 			$gateway_environment = $order->gateway_environment;
 		if($gateway_environment == "live")
@@ -388,13 +388,13 @@ class PMProGateway_authorizenet extends PMProGateway
 		$path = "/gateway/transact.dll";
 		$post_url = "https://" . $host . $path;
 
-		$post_url = apply_filters("pmpro_authorizenet_post_url", $post_url, $gateway_environment);
+		$post_url = apply_filters("dmrfid_authorizenet_post_url", $post_url, $gateway_environment);
 
 		$post_values = array(
 
 			// the API Login ID and Transaction Key must be replaced with valid values
-			"x_login"			=> pmpro_getOption("loginname"),
-			"x_tran_key"		=> pmpro_getOption("transactionkey"),
+			"x_login"			=> dmrfid_getOption("loginname"),
+			"x_tran_key"		=> dmrfid_getOption("transactionkey"),
 
 			"x_version"			=> "3.1",
 			"x_delim_data"		=> "TRUE",
@@ -446,7 +446,7 @@ class PMProGateway_authorizenet extends PMProGateway
 		if(!empty($order->gateway_environment))
 			$gateway_environment = $order->gateway_environment;
 		if(empty($gateway_environment))
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 		if($gateway_environment == "live")
 			$host = "secure.authorize.net";
 		else
@@ -455,7 +455,7 @@ class PMProGateway_authorizenet extends PMProGateway
 		$path = "/gateway/transact.dll";
 		$post_url = "https://" . $host . $path;
 
-		$post_url = apply_filters("pmpro_authorizenet_post_url", $post_url, $gateway_environment);
+		$post_url = apply_filters("dmrfid_authorizenet_post_url", $post_url, $gateway_environment);
 
 		//what amount to charge?
 		$amount = $order->InitialPayment;
@@ -463,7 +463,7 @@ class PMProGateway_authorizenet extends PMProGateway
 		//tax
 		$order->subtotal = $amount;
 		$tax = $order->getTax(true);
-		$amount = pmpro_round_price((float)$order->subtotal + (float)$tax);
+		$amount = dmrfid_round_price((float)$order->subtotal + (float)$tax);
 
 		//combine address
 		$address = $order->Address1;
@@ -480,8 +480,8 @@ class PMProGateway_authorizenet extends PMProGateway
 		$post_values = array(
 
 			// the API Login ID and Transaction Key must be replaced with valid values
-			"x_login"			=> pmpro_getOption("loginname"),
-			"x_tran_key"		=> pmpro_getOption("transactionkey"),
+			"x_login"			=> dmrfid_getOption("loginname"),
+			"x_tran_key"		=> dmrfid_getOption("transactionkey"),
 
 			"x_version"			=> "3.1",
 			"x_delim_data"		=> "TRUE",
@@ -496,7 +496,7 @@ class PMProGateway_authorizenet extends PMProGateway
 
 			"x_amount"			=> $amount,
 			"x_tax"				=> $tax,
-			"x_description"		=> apply_filters( 'pmpro_authorizenet_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")),
+			"x_description"		=> apply_filters( 'dmrfid_authorizenet_level_description', substr($order->membership_level->name . " at " . get_bloginfo("name"), 0, 127), $order->membership_level->name, $order, get_bloginfo("name")),
 
 			"x_first_name"		=> $order->FirstName,
 			"x_last_name"		=> $order->LastName,
@@ -557,12 +557,12 @@ class PMProGateway_authorizenet extends PMProGateway
 			$order->code = $order->getRandomCode();
 
 		//filter order before subscription. use with care.
-		$order = apply_filters("pmpro_subscribe_order", $order, $this);
+		$order = apply_filters("dmrfid_subscribe_order", $order, $this);
 
 		if(!empty($order->gateway_environment))
 			$gateway_environment = $order->gateway_environment;
 		if(empty($gateway_environment))
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 		if($gateway_environment == "live")
 				$host = "api.authorize.net";
 			else
@@ -570,8 +570,8 @@ class PMProGateway_authorizenet extends PMProGateway
 
 		$path = "/xml/v1/request.api";
 
-		$loginname = pmpro_getOption("loginname");
-		$transactionkey = pmpro_getOption("transactionkey");
+		$loginname = dmrfid_getOption("loginname");
+		$transactionkey = dmrfid_getOption("transactionkey");
 
 		$amount = $order->PaymentAmount;
 		$refId = $order->code;
@@ -613,8 +613,8 @@ class PMProGateway_authorizenet extends PMProGateway
 		$amount_tax = $order->getTaxForPrice($amount);
 		$trial_tax = $order->getTaxForPrice($trialAmount);
 
-		$amount = pmpro_round_price((float)$amount + (float)$amount_tax);
-		$trialAmount = pmpro_round_price((float)$trialAmount + (float)$trial_tax);
+		$amount = dmrfid_round_price((float)$amount + (float)$amount_tax);
+		$trialAmount = dmrfid_round_price((float)$trialAmount + (float)$trial_tax);
 
 		//authorize.net doesn't support different periods between trial and actual
 
@@ -742,7 +742,7 @@ class PMProGateway_authorizenet extends PMProGateway
 		//define variables to send
 		$gateway_environment = $order->gateway_environment;
 		if(empty($gateway_environment))
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 		if($gateway_environment == "live")
 				$host = "api.authorize.net";
 			else
@@ -750,8 +750,8 @@ class PMProGateway_authorizenet extends PMProGateway
 
 		$path = "/xml/v1/request.api";
 
-		$loginname = pmpro_getOption("loginname");
-		$transactionkey = pmpro_getOption("transactionkey");
+		$loginname = dmrfid_getOption("loginname");
+		$transactionkey = dmrfid_getOption("transactionkey");
 
 		//$amount = $order->PaymentAmount;
 		$refId = $order->code;
@@ -853,13 +853,13 @@ class PMProGateway_authorizenet extends PMProGateway
 			$subscriptionId = $order->subscription_transaction_id;
 		else
 			$subscriptionId = "";
-		$loginname = pmpro_getOption("loginname");
-		$transactionkey = pmpro_getOption("transactionkey");
+		$loginname = dmrfid_getOption("loginname");
+		$transactionkey = dmrfid_getOption("transactionkey");
 
 		if(!empty($order->gateway_environment))
 			$gateway_environment = $order->gateway_environment;
 		else
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 
 		if($gateway_environment == "live")
 			$host = "api.authorize.net";
@@ -924,13 +924,13 @@ class PMProGateway_authorizenet extends PMProGateway
 			$subscriptionId = $order->subscription_transaction_id;
 		else
 			$subscriptionId = "";
-		$loginname = pmpro_getOption("loginname");
-		$transactionkey = pmpro_getOption("transactionkey");
+		$loginname = dmrfid_getOption("loginname");
+		$transactionkey = dmrfid_getOption("transactionkey");
 
 		if(!empty($order->gateway_environment))
 			$gateway_environment = $order->gateway_environment;
 		else
-			$gateway_environment = pmpro_getOption("gateway_environment");
+			$gateway_environment = dmrfid_getOption("gateway_environment");
 
 		if($gateway_environment == "live")
 			$host = "api.authorize.net";
@@ -1007,7 +1007,7 @@ class PMProGateway_authorizenet extends PMProGateway
 		 * @param array  $post_values that will be sent.
 		 * @param string $action being performed.
 		 */
-		$post_values = apply_filters( 'pmpro_authorizenet_post_values', $post_values, $action );
+		$post_values = apply_filters( 'dmrfid_authorizenet_post_values', $post_values, $action );
 		
 		$post_string = '';
 		foreach( $post_values as $key => $value ) {
@@ -1055,7 +1055,7 @@ class PMProGateway_authorizenet extends PMProGateway
 	function send_request_via_curl($host,$path,$content)
 	{
 		$posturl = "https://" . $host . $path;
-		$posturl = apply_filters("pmpro_authorizenet_post_url", $posturl, pmpro_getOption("gateway_environment"));
+		$posturl = apply_filters("dmrfid_authorizenet_post_url", $posturl, dmrfid_getOption("gateway_environment"));
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $posturl);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
