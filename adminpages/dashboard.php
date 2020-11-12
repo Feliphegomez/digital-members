@@ -110,9 +110,9 @@ function dmrfid_dashboard_welcome_callback() { ?>
     			<?php if ( current_user_can( 'dmrfid_membershiplevels' ) ) { ?>
     				<li>
     					<?php if ( empty( $dmrfid_level_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels&edit=-1' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'Create a Membership Level', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels&edit=-1' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'Crear un nivel de membresía', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'View Membership Levels', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-membershiplevels' );?>"><i class="dashicons dashicons-admin-users"></i> <?php echo esc_attr_e( 'Ver niveles de membresía', 'digital-members-rfid' ); ?></a>
     					<?php } ?>
     				</li>
     			<?php } ?>
@@ -120,9 +120,9 @@ function dmrfid_dashboard_welcome_callback() { ?>
     			<?php if ( current_user_can( 'dmrfid_pagesettings' ) ) { ?>
     				<li>
     					<?php if ( empty( $dmrfid_pages_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Generate Membership Pages', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Generar páginas de membresía', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Manage Membership Pages', 'digital-members-rfid' ); ?>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-pagesettings' );?>"><i class="dashicons dashicons-welcome-add-page"></i> <?php echo esc_attr_e( 'Administrar páginas de membresía', 'digital-members-rfid' ); ?>
     					<?php } ?>
     				</li>
     			<?php } ?>
@@ -130,9 +130,9 @@ function dmrfid_dashboard_welcome_callback() { ?>
     			<?php if ( current_user_can( 'dmrfid_pagesettings' ) ) { ?>
     				<li>
     					<?php if ( empty( $dmrfid_gateway_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configure Payment Settings', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configurar los ajustes de pago', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configure Payment Settings', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-paymentsettings' );?>"><i class="dashicons dashicons-cart"></i> <?php echo esc_attr_e( 'Configurar los ajustes de pago', 'digital-members-rfid' ); ?></a>
     					<?php } ?>
     				</li>
     			<?php } ?>
@@ -140,21 +140,21 @@ function dmrfid_dashboard_welcome_callback() { ?>
     		<h3><?php echo esc_attr_e( 'Other Settings', 'digital-members-rfid' ); ?></h3>
     		<ul>
     			<?php if ( current_user_can( 'dmrfid_emailsettings' ) ) { ?>
-    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-emailsettings' );?>"><i class="dashicons dashicons-email"></i> <?php echo esc_attr_e( 'Confirm Email Settings', 'digital-members-rfid' );?></a></li>
+    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-emailsettings' );?>"><i class="dashicons dashicons-email"></i> <?php echo esc_attr_e( 'Confirmar la configuración de correo electrónico', 'digital-members-rfid' );?></a></li>
     			<?php } ?>
 
     			<?php if ( current_user_can( 'dmrfid_advancedsettings' ) ) { ?>
-    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-advancedsettings' );?>"><i class="dashicons dashicons-admin-settings"></i> <?php echo esc_attr_e( 'View Advanced Settings', 'digital-members-rfid' ); ?></a></li>
+    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-advancedsettings' );?>"><i class="dashicons dashicons-admin-settings"></i> <?php echo esc_attr_e( 'Ver configuración avanzada', 'digital-members-rfid' ); ?></a></li>
     			<?php } ?>
 
     			<?php if ( current_user_can( 'dmrfid_addons' ) ) { ?>
-    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-addons' );?>"><i class="dashicons dashicons-admin-plugins"></i> <?php echo esc_attr_e( 'Explore Add Ons for Additional Features', 'digital-members-rfid' ); ?></a></li>
+    				<li><a href="<?php echo admin_url( 'admin.php?page=dmrfid-addons' );?>"><i class="dashicons dashicons-admin-plugins"></i> <?php echo esc_attr_e( 'Explore los complementos para obtener características adicionales', 'digital-members-rfid' ); ?></a></li>
     			<?php } ?>
     		</ul>
     		<hr />
     		<p class="text-center">
     			<?php echo esc_html( __( 'For guidance as your begin these steps,', 'digital-members-rfid' ) ); ?>
-    			<a href="https://www.managertechnology.com.co/documentation/initial-plugin-setup/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=documentation&utm_content=initial-plugin-setup" target="_blank"><?php echo esc_attr_e( 'view the Initial Setup Video and Docs.', 'digital-members-rfid' ); ?></a>
+    			<a href="https://www.managertechnology.com.co/documentation/initial-plugin-setup/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=documentation&utm_content=initial-plugin-setup" target="_blank"><?php echo esc_attr_e( 'ver el video de configuración inicial y los documentos.', 'digital-members-rfid' ); ?></a>
     		</p>
     	</div> <!-- end dmrfid-dashboard-welcome-column -->
     	<div class="dmrfid-dashboard-welcome-column">

@@ -25,6 +25,7 @@
 */
 # define('DMRFID_LICENSE_SERVER', 'https://license.paidmembe r s h i pspro.com/');
 define('DMRFID_LICENSE_SERVER', 'none');
+define('DMRFID_LICENSE_NAG', false);	//consider purchasing a license at https://www.managertechnology.com.co/pricing/
 
 /*
 	Check license.
