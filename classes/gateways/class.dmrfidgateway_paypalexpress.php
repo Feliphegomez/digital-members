@@ -152,7 +152,7 @@
 							'title' => array(),
 						),
 					);
-					echo sprintf( wp_kses( __( 'Note: We do not recommend using PayPal Standard. We suggest using PayPal Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="_blank" href="%s" title="More information on why can be found here">More information on why can be found here</a>.', 'digital-members-rfid' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/read-using-paypal-standard-digital-members-rfid/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=read-using-paypal-standard-digital-members-rfid' );
+					echo sprintf( wp_kses( __( 'Note: We do not recommend using PayPal Standard. We suggest using PayPal Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target="_blank" href="%s" title="More information on why can be found here">More information on why can be found here</a>.', 'digital-members-rfid' ), $allowed_message_html ), 'https://www.managertechnology.com.co/read-using-paypal-standard-digital-members-rfid/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=read-using-paypal-standard-digital-members-rfid' );
 				?>
 				</p>
 			</td>

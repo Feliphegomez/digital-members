@@ -404,8 +404,8 @@ add_filter( 'plugin_action_links_' . plugin_basename( DMRFID_DIR . '/digital-mem
 function dmrfid_plugin_row_meta( $links, $file ) {
 	if ( strpos( $file, 'digital-members-rfid.php' ) !== false ) {
 		$new_links = array(
-			'<a href="' . esc_url( apply_filters( 'dmrfid_docs_url', 'http://paidmembershipspro.com/documentation/' ) ) . '" title="' . esc_attr( __( 'View DmRFID Documentation', 'digital-members-rfid' ) ) . '">' . __( 'Docs', 'digital-members-rfid' ) . '</a>',
-			'<a href="' . esc_url( apply_filters( 'dmrfid_support_url', 'http://paidmembershipspro.com/support/' ) ) . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'digital-members-rfid' ) ) . '">' . __( 'Support', 'digital-members-rfid' ) . '</a>',
+			'<a href="' . esc_url( apply_filters( 'dmrfid_docs_url', 'http://managertechnology.com.co/documentation/' ) ) . '" title="' . esc_attr( __( 'View DmRFID Documentation', 'digital-members-rfid' ) ) . '">' . __( 'Docs', 'digital-members-rfid' ) . '</a>',
+			'<a href="' . esc_url( apply_filters( 'dmrfid_support_url', 'http://managertechnology.com.co/support/' ) ) . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'digital-members-rfid' ) ) . '">' . __( 'Support', 'digital-members-rfid' ) . '</a>',
 		);
 		$links = array_merge( $links, $new_links );
 	}

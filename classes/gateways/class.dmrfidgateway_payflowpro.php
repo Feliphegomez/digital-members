@@ -142,7 +142,7 @@
 							'title' => array(),
 						),
 					);
-					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'digital-members-rfid' ), $allowed_message_html ), 'https://www.paidmembershipspro.com/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
+					echo sprintf( wp_kses( __( 'Payflow does not use IPN. To sync recurring subscriptions, please see the <a target="_blank" href="%s" title="the Payflow Recurring Orders Add On">Payflow Recurring Orders Add On</a>.', 'digital-members-rfid' ), $allowed_message_html ), 'https://www.managertechnology.com.co/add-ons/payflow-recurring-orders-addon/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=payflow-recurring-orders-addon' );
 				?>
 				</p>
 			</td>

@@ -1,6 +1,6 @@
 #
 # Hi there! Details on how to help out translating Digital Members RFID can be found at:
-# http://www.paidmembershipspro.com/documentation/languages/
+# http://www.managertechnology.com.co/documentation/languages/
 #
 msgid ""
 msgstr ""
@@ -2086,9 +2086,9 @@ msgstr ""
 #: adminpages/paymentsettings.php:95 adminpages/paymentsettings.php:148
 msgid ""
 "Learn more about <a title=\"Digital Members RFID - SSL Settings\" target="
-"\"_blank\" href=\"http://www.paidmembershipspro.com/support/initial-plugin-"
+"\"_blank\" href=\"http://www.managertechnology.com.co/support/initial-plugin-"
 "setup/ssl/\">SSL</a> or <a title=\"Digital Members RFID - Payment Gateway "
-"Settings\" target=\"_blank\" href=\"http://www.paidmembershipspro.com/support/"
+"Settings\" target=\"_blank\" href=\"http://www.managertechnology.com.co/support/"
 "initial-plugin-setup/payment-gateway/\">Payment Gateway Settings</a>."
 msgstr ""
 
@@ -2159,7 +2159,7 @@ msgstr ""
 msgid ""
 "US only. If values are given, tax will be applied for any members ordering "
 "from the selected state.<br />For non-US or more complex tax rules, use the <a "
-"target=\"_blank\" href=\"http://www.paidmembershipspro.com/2013/10/non-us-"
+"target=\"_blank\" href=\"http://www.managertechnology.com.co/2013/10/non-us-"
 "taxes-digital-members-rfid/\">dmrfid_tax filter</a>."
 msgstr ""
 
@@ -2187,7 +2187,7 @@ msgstr ""
 
 #: adminpages/paymentsettings.php:223
 msgid ""
-"Your <strong><a target=\"_blank\" href=\"http://www.paidmembershipspro.com/"
+"Your <strong><a target=\"_blank\" href=\"http://www.managertechnology.com.co/"
 "documentation/initial-plugin-setup/ssl/\">SSL Certificate</a></strong> must be "
 "installed by your web host. Your <strong>SSL Seal</strong> will be a short "
 "HTML or JavaScript snippet that can be pasted here."
@@ -3112,7 +3112,7 @@ msgstr "הגדרות פייפאל"
 msgid ""
 "We do not recommend using PayPal Standard. We suggest using PayPal Express, "
 "Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro). <a target=\"_blank"
-"\" href=\"http://www.paidmembershipspro.com/2013/09/read-using-paypal-standard-"
+"\" href=\"http://www.managertechnology.com.co/2013/09/read-using-paypal-standard-"
 "digital-members-rfid/\">More information on why can be found here.</a>"
 msgstr ""
 
@@ -4159,7 +4159,7 @@ msgstr ""
 
 #: includes/license.php:91
 msgid ""
-"Visit the DmRFID <a href=\"http://www.paidmembershipspro.com/login/?"
+"Visit the DmRFID <a href=\"http://www.managertechnology.com.co/login/?"
 "redirect_to=/membership-account/\" target=\"_blank\">Membership Account</a> "
 "page to confirm that your account is active and to find your license key."
 msgstr ""

@@ -527,7 +527,7 @@
 		{
 			echo str_repeat('-', 75) . "<br/>\n";
 			echo 'Please open a support case and paste in the warnings/errors you see above this text to\n ';
-			echo 'the <a href="http://paidmembershipspro.com/support/?utm_source=plugin&utm_medium=banner&utm_campaign=memberslist_csv" target="_blank">Digital Members RFID support forum</a><br/>\n';
+			echo 'the <a href="http://managertechnology.com.co/support/?utm_source=plugin&utm_medium=banner&utm_campaign=memberslist_csv" target="_blank">Digital Members RFID support forum</a><br/>\n';
 			echo str_repeat("=", 75) . "<br/>\n";
 			echo file_get_contents($filename);
 			echo str_repeat("=", 75) . "<br/>\n";

@@ -166,7 +166,7 @@
 		}
 		
 		if( ! empty( $msgt ) && $ml_recurring && $ml_expiration ) {
-			$msgt .= ' <strong class="red">' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
+			$msgt .= ' <strong class="red">' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.managertechnology.com.co/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 				
 			// turn success to errors
 			if( $msg > 0 ) {
@@ -477,7 +477,7 @@
 												'title' => array(),
 											),
 										);
-										echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
+										echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
 								} ?>
 							<?php } ?>
 						</p>
@@ -503,7 +503,7 @@
 								'title' => array(),
 							),
 						);
-						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable trial periods and renewal dates using the <a href="%s" title="Digital Members RFID - Subscription Delays Add On" target="_blank">Subscription Delays Add On</a>.', 'digital-members-rfid' ), $allowed_sd_html ), 'https://www.paidmembershipspro.com/add-ons/subscription-delays/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=subscription-delays' ) . '</p></td></tr>';
+						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable trial periods and renewal dates using the <a href="%s" title="Digital Members RFID - Subscription Delays Add On" target="_blank">Subscription Delays Add On</a>.', 'digital-members-rfid' ), $allowed_sd_html ), 'https://www.managertechnology.com.co/add-ons/subscription-delays/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=subscription-delays' ) . '</p></td></tr>';
 				} ?>
 
 				<tr class="trial_info recurring_info" <?php if (!dmrfid_isLevelTrial($level)) echo "style='display:none;'";?>>
@@ -555,7 +555,7 @@
 								'title' => array(),
 							),
 						);
-						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable expiration dates using the <a href="%s" title="Digital Members RFID - Set Expiration Date Add On" target="_blank">Set Expiration Date Add On</a>.', 'digital-members-rfid' ), $allowed_sed_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-expiration-date/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=dmrfid-expiration-date' ) . '</p></td></tr>';
+						echo '<tr><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Allow more customizable expiration dates using the <a href="%s" title="Digital Members RFID - Set Expiration Date Add On" target="_blank">Set Expiration Date Add On</a>.', 'digital-members-rfid' ), $allowed_sed_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-expiration-date/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=dmrfid-expiration-date' ) . '</p></td></tr>';
 				} ?>
 
 				<tr class="expiration_info" <?php if(!dmrfid_isLevelExpiring($level)) {?>style="display: none;"<?php } ?>>					
@@ -575,7 +575,7 @@
 						<p class="description"><?php _e('Set the duration of membership access. Note that the any future payments (recurring subscription, if any) will be cancelled when the membership expires.', 'digital-members-rfid' );?></p>
 						
 						<div id="dmrfid_expiration_warning" style="display: none;" class="notice error inline">
-							<p><?php printf( __( 'WARNING: This level is set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a certain number of payments. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ); ?></p>
+							<p><?php printf( __( 'WARNING: This level is set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a certain number of payments. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.managertechnology.com.co/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ); ?></p>
 						</div>
 						<script>
 							jQuery(document).ready(function() {
@@ -745,7 +745,7 @@
 			<div class="dmrfid-new-install">
 				<h2><?php echo esc_attr_e( 'No Membership Levels Found', 'digital-members-rfid' ); ?></h2>
 				<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-membershiplevels&edit=-1' ) ); ?>" class="button-primary"><?php echo esc_attr_e( 'Create a Membership Level', 'digital-members-rfid' ); ?></a>
-				<a href="<?php echo esc_url( 'https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-1-add-new-membership-level/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=documentation&utm_content=step-1-add-new-membership-level' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Video: Membership Levels', 'digital-members-rfid' ); ?></a>
+				<a href="<?php echo esc_url( 'https://www.managertechnology.com.co/documentation/initial-plugin-setup/step-1-add-new-membership-level/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=documentation&utm_content=step-1-add-new-membership-level' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Video: Membership Levels', 'digital-members-rfid' ); ?></a>
 			</div> <!-- end dmrfid-new-install -->
 		<?php } else { ?>
 

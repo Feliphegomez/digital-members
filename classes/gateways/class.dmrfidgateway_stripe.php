@@ -429,7 +429,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 							),
 						);
 						if ( empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off" ) {
-							$payment_request_error = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://www.paidmembershipspro.com/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
+							$payment_request_error = sprintf( wp_kses( __( 'This webpage is being served over HTTP, but the Stripe Payment Request Button will only work on pages being served over HTTPS. To resolve this, you must <a target="_blank" href="%s" title="Configuring WordPress to Always Use HTTPS/SSL">set up WordPress to always use HTTPS</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://www.managertechnology.com.co/configuring-wordpress-always-use-httpsssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=configure-https' );
 						} elseif ( substr( $values['stripe_publishablekey'], 0, 8 ) !== "pk_live_" && substr( $values['stripe_publishablekey'], 0, 8 ) !== "pk_test_" ) {
 							$payment_request_error = sprintf( wp_kses( __( 'It looks like you are using an older Stripe publishable key. In order to use the Payment Request Button feature, you will need to update your API key, which will be prefixed with "pk_live_" or "pk_test_". <a target="_blank" href="%s" title="Stripe Dashboard API Key Settings">Log in to your Stripe Dashboard to roll your publishable key</a>.', 'digital-members-rfid' ), $allowed_payment_request_error_html ), 'https://dashboard.stripe.com/account/apikeys' );
 						} elseif ( substr( $values['stripe_secretkey'], 0, 8 ) !== "sk_live_" && substr( $values['stripe_secretkey'], 0, 8 ) !== "sk_test_" ) {
@@ -460,7 +460,7 @@ class DmRFIDGateway_stripe extends DmRFIDGateway {
 				if ( $gateway != "stripe" ) { 
 					echo ' style="display: none;"';
 				}
-				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Digital Members RFID - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'digital-members-rfid' ), $allowed_appe_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=dmrfid-add-paypal-express-option-checkout' ) . '</p></td></tr>';
+				echo '><th>&nbsp;</th><td><p class="description">' . sprintf( wp_kses( __( 'Optional: Offer PayPal Express as an option at checkout using the <a target="_blank" href="%s" title="Digital Members RFID - Add PayPal Express Option at Checkout Add On">Add PayPal Express Add On</a>.', 'digital-members-rfid' ), $allowed_appe_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-add-paypal-express-option-checkout/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=add-ons&utm_content=dmrfid-add-paypal-express-option-checkout' ) . '</p></td></tr>';
 		} ?>
 		<?php
 	}

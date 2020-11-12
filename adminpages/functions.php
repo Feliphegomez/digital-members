@@ -11,10 +11,10 @@
 	If you were asked to insert code into "your functions.php file", it was meant that you edit the functions.php
 	in the root folder of your active theme. e.g. /wp-content/themes/twentytwelve/functions.php
 	You can also create a custom plugin to place customization code into. Instructions are here:
-	https://www.paidmembershipspro.com/create-a-plugin-for-dmrfid-customizations/
+	https://www.managertechnology.com.co/create-a-plugin-for-dmrfid-customizations/
 
 	Further documentation for customizing Digital Members RFID can be found here:
-	https://www.paidmembershipspro.com/documentation/
+	https://www.managertechnology.com.co/documentation/
 
 ****************************************************************/
 

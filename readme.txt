@@ -17,11 +17,11 @@ Users can select a membership level, complete checkout, and immediately become m
 
 = Simple to set up, deeply customizable =
 
-* Restrict access to [members-only content](https://www.paidmembershipspro.com/documentation/content-controls/).
-* Create unlimited [membership levels with flexible pricing](https://www.paidmembershipspro.com/documentation/membership-levels/) including free memberships, trials, recurring payments and subscriptions, one-time payments, and more.
-* Integrate with [Stripe](https://www.paidmembershipspro.com/gateway/stripe/), [PayPal](https://www.paidmembershipspro.com/gateway/paypal/), and other [popular gateways](https://www.paidmembershipspro.com/gateway/).
-* Manage your full membership data, import and export members or orders, and [view reports](https://www.paidmembershipspro.com/documentation/reports/) on sales and revenue, cancellations, expirations, and signups.
-* [100% GPL, fully open source](https://www.paidmembershipspro.com/features/digital-members-rfid-is-100-gpl/), and integrated with loads of third-party platforms.
+* Restrict access to [members-only content](https://www.managertechnology.com.co/documentation/content-controls/).
+* Create unlimited [membership levels with flexible pricing](https://www.managertechnology.com.co/documentation/membership-levels/) including free memberships, trials, recurring payments and subscriptions, one-time payments, and more.
+* Integrate with [Stripe](https://www.managertechnology.com.co/gateway/stripe/), [PayPal](https://www.managertechnology.com.co/gateway/paypal/), and other [popular gateways](https://www.managertechnology.com.co/gateway/).
+* Manage your full membership data, import and export members or orders, and [view reports](https://www.managertechnology.com.co/documentation/reports/) on sales and revenue, cancellations, expirations, and signups.
+* [100% GPL, fully open source](https://www.managertechnology.com.co/features/digital-members-rfid-is-100-gpl/), and integrated with loads of third-party platforms.
 
 [youtube https://www.youtube.com/watch?v=-M3aoEHvGZ4]
 
@@ -33,26 +33,26 @@ Users can select a membership level, complete checkout, and immediately become m
 * Frontend Profile Editing
 * Membership Account Dashboard
 * Membership Invoices and Billing Information Pages
-* [Custom User Profile and Registration Form Fields](https://www.paidmembershipspro.com/add-ons/dmrfid-register-helper-add-checkout-and-profile-fields/)
-* [Custom Member Emails](https://www.paidmembershipspro.com/add-ons/email-templates-admin-editor/)
+* [Custom User Profile and Registration Form Fields](https://www.managertechnology.com.co/add-ons/dmrfid-register-helper-add-checkout-and-profile-fields/)
+* [Custom Member Emails](https://www.managertechnology.com.co/add-ons/email-templates-admin-editor/)
 * Restrict WP Dashboard Access
 * Hide the WP Toolbar
 
-[View all Screenshots](https://www.paidmembershipspro.com/features/screenshots/)
+[View all Screenshots](https://www.managertechnology.com.co/features/screenshots/)
 
 = Content Protection Features =
 
-* Restrict Default Content: [posts and categories](https://www.paidmembershipspro.com/documentation/content-controls/for-posts/), [pages](https://www.paidmembershipspro.com/documentation/content-controls/for-pages/), and [blocks](https://www.paidmembershipspro.com/documentation/content-controls/with-the-membership-block/).
-* Restrict Custom Post Types: [events](https://www.paidmembershipspro.com/add-ons/events-for-members-only/), [courses](https://www.paidmembershipspro.com/online-learning-and-courseware-for-membership-sites/), [downloads](https://www.paidmembershipspro.com/add-ons/dmrfid-download-monitor/), and [any custom post type, including WooCommerce products](https://www.paidmembershipspro.com/add-ons/custom-post-type-membership-access/).
-* Create an Interactive Members-only Community: lock down [BuddyPress](https://www.paidmembershipspro.com/add-ons/buddypress-integration/) and [bbPress](https://www.paidmembershipspro.com/add-ons/dmrfid-bbpress/).
-* [Drip-Feed / Series Type Content](https://www.paidmembershipspro.com/add-ons/dmrfid-series-for-drip-feed-content/)
-* Offer [personalized content to each member](https://www.paidmembershipspro.com/add-ons/dmrfid-user-pages/), [customize navigation menus](https://www.paidmembershipspro.com/add-ons/dmrfid-nav-menus/), and design [unique member dashboards](https://www.paidmembershipspro.com/add-ons/member-homepages/).
+* Restrict Default Content: [posts and categories](https://www.managertechnology.com.co/documentation/content-controls/for-posts/), [pages](https://www.managertechnology.com.co/documentation/content-controls/for-pages/), and [blocks](https://www.managertechnology.com.co/documentation/content-controls/with-the-membership-block/).
+* Restrict Custom Post Types: [events](https://www.managertechnology.com.co/add-ons/events-for-members-only/), [courses](https://www.managertechnology.com.co/online-learning-and-courseware-for-membership-sites/), [downloads](https://www.managertechnology.com.co/add-ons/dmrfid-download-monitor/), and [any custom post type, including WooCommerce products](https://www.managertechnology.com.co/add-ons/custom-post-type-membership-access/).
+* Create an Interactive Members-only Community: lock down [BuddyPress](https://www.managertechnology.com.co/add-ons/buddypress-integration/) and [bbPress](https://www.managertechnology.com.co/add-ons/dmrfid-bbpress/).
+* [Drip-Feed / Series Type Content](https://www.managertechnology.com.co/add-ons/dmrfid-series-for-drip-feed-content/)
+* Offer [personalized content to each member](https://www.managertechnology.com.co/add-ons/dmrfid-user-pages/), [customize navigation menus](https://www.managertechnology.com.co/add-ons/dmrfid-nav-menus/), and design [unique member dashboards](https://www.managertechnology.com.co/add-ons/member-homepages/).
 * Restrict Elementor elements or Beaver Builder modules.
-* Offer [Member Directories and Profiles](https://www.paidmembershipspro.com/add-ons/member-directory/) for your members.
+* Offer [Member Directories and Profiles](https://www.managertechnology.com.co/add-ons/member-directory/) for your members.
 
 = Integrated Payment Gateways =
 
-All of our payment gateways are included in the plugin. Choose from [Stripe](https://www.paidmembershipspro.com/gateway/stripe/), [PayPal](https://www.paidmembershipspro.com/gateway/paypal/), [Authorize.net](https://www.paidmembershipspro.com/gateway/authorize-net/), [Braintree](https://www.paidmembershipspro.com/gateway/braintree/), or [2Checkout](https://www.paidmembershipspro.com/gateway/2checkout/). You can offer multiple gateway options at checkout including [PayPal Express](https://www.paidmembershipspro.com/add-ons/dmrfid-add-paypal-express-option-checkout/) or [offline payment by check or direct transfer](https://www.paidmembershipspro.com/add-ons/dmrfid-pay-by-check-add-on/).
+All of our payment gateways are included in the plugin. Choose from [Stripe](https://www.managertechnology.com.co/gateway/stripe/), [PayPal](https://www.managertechnology.com.co/gateway/paypal/), [Authorize.net](https://www.managertechnology.com.co/gateway/authorize-net/), [Braintree](https://www.managertechnology.com.co/gateway/braintree/), or [2Checkout](https://www.managertechnology.com.co/gateway/2checkout/). You can offer multiple gateway options at checkout including [PayPal Express](https://www.managertechnology.com.co/add-ons/dmrfid-add-paypal-express-option-checkout/) or [offline payment by check or direct transfer](https://www.managertechnology.com.co/add-ons/dmrfid-pay-by-check-add-on/).
 
 = Flexible Level Pricing  =
 
@@ -68,20 +68,20 @@ All of our payment gateways are included in the plugin. Choose from [Stripe](htt
 
 Extend the features of your membership site or integrate with third-party services through our library of over 75 Add Ons. Some of the most popular features include:
 
-* [WooCommerce Integration](https://www.paidmembershipspro.com/add-ons/dmrfid-woocommerce/) to sell membership as a product or offer members-only discounts in your shop.
-* Integrate members with [email marketing](https://www.paidmembershipspro.com/email-marketing-integrations-digital-members-rfid/) platforms including [Mailchimp](https://www.paidmembershipspro.com/add-ons/dmrfid-mailchimp-integration/).
-* [Manage Affiliates](https://www.paidmembershipspro.com/managing-affiliates-with-digital-members-rfid/) with Add Ons or use a popular third-party systems like [AffiliateWP](https://www.paidmembershipspro.com/using-affiliatewp-with-digital-members-rfid/).
-* [Zapier Integration](https://www.paidmembershipspro.com/add-ons/dmrfid-zapier/) to connect with thousands of third-party applications.
-* Let members [log in or join with their social media profiles](https://www.paidmembershipspro.com/add-ons/social-login-add-on/).
-* Design your site [using popular Page Builders](https://www.paidmembershipspro.com/using-page-builders-to-enhance-your-sites-membership-pages/) like Elementor, Page Builder by SiteOrigin, Beaver Builder, and Divi. We offer 15 core membership blocks for the WordPress Block Editor (Gutenberg).
-* Create a [sales landing page and run a sitewide sale](https://www.paidmembershipspro.com/add-ons/sitewide-sales/).
-* [Offer members-only events](https://www.paidmembershipspro.com/add-ons/events-for-members-only/) with Events Manager, The Events Calendar, Sugar Calendar, or All-in-One Event Calendar.
+* [WooCommerce Integration](https://www.managertechnology.com.co/add-ons/dmrfid-woocommerce/) to sell membership as a product or offer members-only discounts in your shop.
+* Integrate members with [email marketing](https://www.managertechnology.com.co/email-marketing-integrations-digital-members-rfid/) platforms including [Mailchimp](https://www.managertechnology.com.co/add-ons/dmrfid-mailchimp-integration/).
+* [Manage Affiliates](https://www.managertechnology.com.co/managing-affiliates-with-digital-members-rfid/) with Add Ons or use a popular third-party systems like [AffiliateWP](https://www.managertechnology.com.co/using-affiliatewp-with-digital-members-rfid/).
+* [Zapier Integration](https://www.managertechnology.com.co/add-ons/dmrfid-zapier/) to connect with thousands of third-party applications.
+* Let members [log in or join with their social media profiles](https://www.managertechnology.com.co/add-ons/social-login-add-on/).
+* Design your site [using popular Page Builders](https://www.managertechnology.com.co/using-page-builders-to-enhance-your-sites-membership-pages/) like Elementor, Page Builder by SiteOrigin, Beaver Builder, and Divi. We offer 15 core membership blocks for the WordPress Block Editor (Gutenberg).
+* Create a [sales landing page and run a sitewide sale](https://www.managertechnology.com.co/add-ons/sitewide-sales/).
+* [Offer members-only events](https://www.managertechnology.com.co/add-ons/events-for-members-only/) with Events Manager, The Events Calendar, Sugar Calendar, or All-in-One Event Calendar.
 
-[View all Add Ons](https://www.paidmembershipspro.com/add-ons/)
+[View all Add Ons](https://www.managertechnology.com.co/add-ons/)
 
 = Digital Members RFID is a free membership plugin for WordPress =
 
-Our plugin is 100% GPL and available from the WordPress repository or on our site at [www.paidmembershipspro.com](https://www.paidmembershipspro.com). The full version of the plugin is offered with no restrictions or additional licenses required. Developers should get involved at [our GitHub page](https://github.com/strangerstudios/digital-members-rfid/).
+Our plugin is 100% GPL and available from the WordPress repository or on our site at [www.managertechnology.com.co](https://www.managertechnology.com.co). The full version of the plugin is offered with no restrictions or additional licenses required. Developers should get involved at [our GitHub page](https://github.com/strangerstudios/digital-members-rfid/).
 
 == Installation ==
 
@@ -91,7 +91,7 @@ Our plugin is 100% GPL and available from the WordPress repository or on our sit
 3. Activate the plugin.
 
 = Complete the Initial Plugin Setup =
-Go to Memberships > Dashboard in the WordPress admin to begin setup. Our [Initial Setup Tutorial](https://www.paidmembershipspro.com/documentation/initial-plugin-setup/) will show you how to configure the following required pages:
+Go to Memberships > Dashboard in the WordPress admin to begin setup. Our [Initial Setup Tutorial](https://www.managertechnology.com.co/documentation/initial-plugin-setup/) will show you how to configure the following required pages:
 
 1. Membership Levels: Add one or more levels
 2. Page Settings: Generate frontend pages
@@ -100,16 +100,16 @@ Go to Memberships > Dashboard in the WordPress admin to begin setup. Our [Initia
 5. Advanced Settings: Update non-member messages, content filters, dashboard access, and more.
 
 = More Installation and Setup Documentation =
-* [Installation Video](https://www.paidmembershipspro.com/documentation/initial-plugin-setup/tutorial-video/)
-* [Installation Docs](https://www.paidmembershipspro.com/documentation/initial-plugin-setup/)
-* [Membership Levels](https://www.paidmembershipspro.com/documentation/membership-levels/)
-* [Payment Gateways](https://www.paidmembershipspro.com/gateway/)
-* [Add Ons](https://www.paidmembershipspro.com/add-ons/)
+* [Installation Video](https://www.managertechnology.com.co/documentation/initial-plugin-setup/tutorial-video/)
+* [Installation Docs](https://www.managertechnology.com.co/documentation/initial-plugin-setup/)
+* [Membership Levels](https://www.managertechnology.com.co/documentation/membership-levels/)
+* [Payment Gateways](https://www.managertechnology.com.co/gateway/)
+* [Add Ons](https://www.managertechnology.com.co/add-ons/)
 
 == Frequently Asked Questions ==
 
 = I need help installing, configuring, or customizing the plugin. =
-Please visit [our support site at https://www.paidmembershipspro.com](https://www.paidmembershipspro.com) for more documentation and our support forums.
+Please visit [our support site at https://www.managertechnology.com.co](https://www.managertechnology.com.co) for more documentation and our support forums.
 
 = I found a bug in the plugin. =
 Please post it in the [WordPress support forum](https://wordpress.org/support/plugin/digital-members-rfid/) and we'll fix it right away. Thanks for helping.
@@ -119,25 +119,25 @@ This is typically caused by a conflict with another plugin that is trying to red
 
 To regain access to your site, FTP to your site and rename the `wp-content/plugins/digital-members-rfid` folder to wp-content/plugins/digital-members-rfid-d (or anything different). Now WP will not be able to find DmRFID, and you can gain access to /wp-admin/ again. From there, visit the plugins page to fully deactivate Digital Members RFID. (You'll want to rename the folder back to digital-members-rfid again.)
 
-Long term, you will need to find and fix the conflict. We can usually do this for you very quickly if you sign up for support at https://www.paidmembershipspro.com/pricing/ and send us your WP admin and FTP credentials.
+Long term, you will need to find and fix the conflict. We can usually do this for you very quickly if you sign up for support at https://www.managertechnology.com.co/pricing/ and send us your WP admin and FTP credentials.
 
 = Does DmRFID Support Multisite/Network Installs? =
-"Supporting multisite" means different things to different people. [This guide covers the three primary ways](https://www.paidmembershipspro.com/network-multisite-mega-post-digital-members-rfid/) you can use Digital Members RFID in a network.
+"Supporting multisite" means different things to different people. [This guide covers the three primary ways](https://www.managertechnology.com.co/network-multisite-mega-post-digital-members-rfid/) you can use Digital Members RFID in a network.
 
 Out of the box DmRFID will basically act as a stand alone plugin for each site. Each site has its own list of membership levels, members, payment settings, etc.
 
-Our [Member Network Sites Add On](https://www.paidmembershipspro.com/add-ons/dmrfid-network-multisite-membership/) allows members to choose a site name and title at checkout and will set up a network site at checkout.
+Our [Member Network Sites Add On](https://www.managertechnology.com.co/add-ons/dmrfid-network-multisite-membership/) allows members to choose a site name and title at checkout and will set up a network site at checkout.
 
-Our [Multisite Membership Add On](https://www.paidmembershipspro.com/add-ons/dmrfid-network-membership/) allows you to manage memberships at the 'Main' Network site and provide or restrict access on other Network Subsites.
+Our [Multisite Membership Add On](https://www.managertechnology.com.co/add-ons/dmrfid-network-membership/) allows you to manage memberships at the 'Main' Network site and provide or restrict access on other Network Subsites.
 
-If you would like more help using DmRFID on a network install, sign up for support at https://www.paidmembershipspro.com.
+If you would like more help using DmRFID on a network install, sign up for support at https://www.managertechnology.com.co.
 
 = Does DmRFID Support X? =
 Not sure? You can find out by doing a bit a research.
 
-1. [Check our compatibility page](https://www.paidmembershipspro.com/documentation/compatibility/).
-2. [Check our Add Ons](https://www.paidmembershipspro.com/add-ons/).
-3. [Do a search on our site](https://www.paidmembershipspro.com/).
+1. [Check our compatibility page](https://www.managertechnology.com.co/documentation/compatibility/).
+2. [Check our Add Ons](https://www.managertechnology.com.co/add-ons/).
+3. [Do a search on our site](https://www.managertechnology.com.co/).
 4. [Ask in the forums here](https://wordpress.org/support/plugin/digital-members-rfid/).
 
 == Screenshots ==
@@ -503,7 +503,7 @@ BUG FIX: Fixed issue where DmRFID would always try to add capabilities to the ad
 * BUG FIX/ENHANCEMENT: Added dmrfid_checkout_preheader_before_get_level_at_checkout and dmrfid_checkout_preheader_after_get_level_at_checkout action hooks. Using dmrfid_checkout_preheader_before_get_level_at_checkout to start the session earlier now.
 * BUG FIX/ENHANCEMENT: Removed the "membership_code_id" and "membership_code" as field options for the member shortcode. These weren't working and it's unclear what would be meant to ask for a user's discount code since a user could have several orders with or without discount codes. Added "membership_description" and "membership_confirmation" instead.
 * BUG FIX/ENHANCEMENT: Filtering the password reset message to make sure the link still works in all cases when we convert emails to HTML.
-* BUG FIX/ENHANCEMENT: Added reCAPTCHA v3 and invisible reCAPTCHA support. It is recommended sites using Stripe or Braintree update to the reCAPTCHA v3 option. Read more here: https://www.paidmembershipspro.com/dmrfid-update-2-0-5/
+* BUG FIX/ENHANCEMENT: Added reCAPTCHA v3 and invisible reCAPTCHA support. It is recommended sites using Stripe or Braintree update to the reCAPTCHA v3 option. Read more here: https://www.managertechnology.com.co/dmrfid-update-2-0-5/
 * REFACTOR: Now running the dmrfid_billing_preheader hook after the jquery.creditCardValidator script is enqueued in preheader/billing.php to match how we do it in preheader/checkout.php. (Thanks, Rafe Colton)
 
 = 2.0.4 - 2019-01-14 =
@@ -770,7 +770,7 @@ up the lines of text.
 * ENHANCEMENT: Added filter for modifying the order description in Stripe. (Thanks, Rafe Colton)
 
 = 1.8.13.5 =
-* BUG: Fixed notifications.php to make sure it really only checks once per day. Also updated the URL checked to notifications.paidmembershipspro.com, which runs on its own server.
+* BUG: Fixed notifications.php to make sure it really only checks once per day. Also updated the URL checked to notifications.managertechnology.com.co, which runs on its own server.
 
 = 1.8.13.4 =
 * BUG/ENHANCEMENT: Changed the dmrfid_button shortcode to dmrfid_checkout_button. (The old dmrfid_button will also still work. checkout_button works if you have Register Helper installed.)

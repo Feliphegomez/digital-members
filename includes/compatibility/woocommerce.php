@@ -4,7 +4,7 @@
  *
  * This code resolves common conflicts between DmRFID and WooCommerce.
  * For more advanced integration, see the DmRFID WooCommerce Add-On.
- * https://www.paidmembershipspro.com/add-ons/dmrfid-woocommerce/
+ * https://www.managertechnology.com.co/add-ons/dmrfid-woocommerce/
  *
  * @since 2.3
  */

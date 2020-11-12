@@ -311,7 +311,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 								?>
 							<hr style="background-color:#F1F1F1;border:0;height:4px;margin:30px 0px 30px 0px;" />
 							<h3 style="color:#2997c8;font-size:20px;line-height:30px;margin:0px 0px 15px 0px;padding:0px;"><?php esc_html_e( 'License Status: None', 'digital-members-rfid' ); ?></h3>
-							<p style="margin:0px;padding:0px;"><?php printf( __( '...and that is perfectly OK! DmRFID is free to use for as long as you want for membership sites of all sizes. Interested in unlimited support, access to over 70 featured-enhancing Add Ons and instant installs and updates? <a %s>Check out our paid plans to learn more</a>.', 'digital-members-rfid' ), ' style="color:#2997c8;" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=dmrfid-admin-activity-email&utm_campaign=pricing&utm_content=license-section" target="_blank"' ); ?></p>
+							<p style="margin:0px;padding:0px;"><?php printf( __( '...and that is perfectly OK! DmRFID is free to use for as long as you want for membership sites of all sizes. Interested in unlimited support, access to over 70 featured-enhancing Add Ons and instant installs and updates? <a %s>Check out our paid plans to learn more</a>.', 'digital-members-rfid' ), ' style="color:#2997c8;" href="https://www.managertechnology.com.co/pricing/?utm_source=plugin&utm_medium=dmrfid-admin-activity-email&utm_campaign=pricing&utm_content=license-section" target="_blank"' ); ?></p>
 								<?php
 							}
 							?>
@@ -332,7 +332,7 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 									include_once ABSPATH . WPINC . '/feed.php';
 
 									// Get a SimplePie feed object from the specified feed source.
-									$rss       = fetch_feed( 'https://www.paidmembershipspro.com/feed/' );
+									$rss       = fetch_feed( 'https://www.managertechnology.com.co/feed/' );
 									$max_items = 0;
 									if ( ! is_wp_error( $rss ) ) { // Checks that the object is created correctly
 											// Figure out how many total items there are, but limit it to 3.
@@ -350,8 +350,8 @@ class DmRFID_Admin_Activity_Email extends DmRFIDEmail {
 									?>
 									</td>
 									<td width="40%" style="background-color:#F1F1F1;padding:15px;">
-										<p style="margin:0px;padding:0px;text-align:center;"><a style="color:#2997c8;" href="https://www.paidmembershipspro.com" target="_blank"><img style="width:100px;height:100px;" src="<?php echo esc_url( plugins_url( 'images/Digital-Members-RFID_icon.png', DMRFID_BASE_FILE ) ); ?>" alt="<?php esc_html_e( 'Digital Members RFID', 'digital-members-rfid' ); ?>" /></a></p>
-										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.paidmembershipspro.com/support/" target="_blank"><?php esc_html_e( 'Get Support', 'digital-members-rfid' ); ?></a></p>
+										<p style="margin:0px;padding:0px;text-align:center;"><a style="color:#2997c8;" href="https://www.managertechnology.com.co" target="_blank"><img style="width:100px;height:100px;" src="<?php echo esc_url( plugins_url( 'images/Digital-Members-RFID_icon.png', DMRFID_BASE_FILE ) ); ?>" alt="<?php esc_html_e( 'Digital Members RFID', 'digital-members-rfid' ); ?>" /></a></p>
+										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.managertechnology.com.co/support/" target="_blank"><?php esc_html_e( 'Get Support', 'digital-members-rfid' ); ?></a></p>
 										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://twitter.com/dmrfidplugin" target="_blank"><?php esc_html_e( 'Follow @dmrfidplugin on Twitter', 'digital-members-rfid' ); ?></a></p>
 										<p style="margin:0px 0px 15px 0px;padding:0px;"><a style="color:#2997c8;" href="https://www.facebook.com/DigitalMembersRFID/" target="_blank"><?php esc_html_e( 'Like us on Facebook', 'digital-members-rfid' ); ?></p></p>
 										<p style="margin:0px;padding:0px;"><a style="color:#2997c8;" href="https://www.youtube.com/user/strangerstudiostv" target="_blank"><?php esc_html_e( 'Subscribe to our YouTube Channel', 'digital-members-rfid' ); ?></a></p>

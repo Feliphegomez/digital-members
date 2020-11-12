@@ -167,11 +167,11 @@
 
 <div class="wrap dmrfid_admin">
 	<div class="dmrfid_banner">
-		<a class="dmrfid_logo" title="Digital Members RFID - Membership Plugin for WordPress" target="_blank" href="<?php echo dmrfid_https_filter("https://www.paidmembershipspro.com/?utm_source=plugin&utm_medium=dmrfid-admin-header&utm_campaign=homepage")?>"><img src="<?php echo DMRFID_URL?>/images/Digital-Members-RFID.png" width="350" height="75" border="0" alt="Digital Members RFID(c) - All Rights Reserved" /></a>
+		<a class="dmrfid_logo" title="Digital Members RFID - Membership Plugin for WordPress" target="_blank" href="<?php echo dmrfid_https_filter("https://www.managertechnology.com.co/?utm_source=plugin&utm_medium=dmrfid-admin-header&utm_campaign=homepage")?>"><img src="<?php echo DMRFID_URL?>/images/Digital-Members-RFID.png" width="350" height="75" border="0" alt="Digital Members RFID(c) - All Rights Reserved" /></a>
 		<div class="dmrfid_meta">
 			<span class="dmrfid_version">v<?php echo DMRFID_VERSION?></span>
-			<a target="_blank" href="<?php echo dmrfid_https_filter("https://www.paidmembershipspro.com/documentation/?utm_source=plugin&utm_medium=dmrfid-admin-header&utm_campaign=documentation")?>"><?php _e('Documentation', 'digital-members-rfid' );?></a>
-			<a target="_blank" href="https://www.paidmembershipspro.com/pricing/?utm_source=plugin&utm_medium=dmrfid-admin-header&utm_campaign=pricing&utm_content=get-support"><?php _e('Get Support', 'digital-members-rfid' );?></a>
+			<a target="_blank" href="<?php echo dmrfid_https_filter("https://www.managertechnology.com.co/documentation/?utm_source=plugin&utm_medium=dmrfid-admin-header&utm_campaign=documentation")?>"><?php _e('Documentation', 'digital-members-rfid' );?></a>
+			<a target="_blank" href="https://www.managertechnology.com.co/pricing/?utm_source=plugin&utm_medium=dmrfid-admin-header&utm_campaign=pricing&utm_content=get-support"><?php _e('Get Support', 'digital-members-rfid' );?></a>
 
 			<?php if ( dmrfid_license_isValid() ) { ?>
 				<?php printf(__( '<a class="dmrfid_license_tag dmrfid_license_tag-valid" href="%s">Valid License</a>', 'digital-members-rfid' ), admin_url( 'admin.php?page=dmrfid-license' ) ); ?>				

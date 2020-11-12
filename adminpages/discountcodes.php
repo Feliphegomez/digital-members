@@ -355,7 +355,7 @@
 	}
 	
 	if( ! empty( $dmrfid_msg ) && ! empty( $expiration_warning_flag ) ) {
-		$dmrfid_msg .= ' <strong>' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.paidmembershipspro.com/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
+		$dmrfid_msg .= ' <strong>' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.managertechnology.com.co/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 		
 		if( $dmrfid_msgt == 'success' ) {
 			$dmrfid_msgt = 'warning';
@@ -639,7 +639,7 @@
 															'title' => array(),
 														),
 													);
-													echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
+													echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
 											} ?>
 									<?php } ?>
 								</p>
@@ -751,7 +751,7 @@
 					<h2><?php echo esc_attr_e( 'No Discount Codes Found', 'digital-members-rfid' ); ?></h2>
 					<h4><?php _e( 'Discount codes allow you to override your membership level\'s default pricing.', 'digital-members-rfid' ); ?></h4>
 					<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes&edit=-1' ) ) ; ?>" class="button-primary"><?php esc_attr_e( 'Create a Discount Code', 'digital-members-rfid' );?></a>
-					<a href="<?php echo esc_url( 'https://www.paidmembershipspro.com/documentation/discount-codes/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=documentation&utm_content=discount-codes' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Documentation: Discount Codes', 'digital-members-rfid' ); ?></a>
+					<a href="<?php echo esc_url( 'https://www.managertechnology.com.co/documentation/discount-codes/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=documentation&utm_content=discount-codes' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Documentation: Discount Codes', 'digital-members-rfid' ); ?></a>
 				</div> <!-- end dmrfid-new-install -->
 			<?php } else { ?>
 

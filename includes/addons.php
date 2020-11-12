@@ -291,7 +291,7 @@ function dmrfid_admin_init_updating_plugins() {
 		// if Plus addons found, check license key
 		if ( ! empty( $plus_plugins ) && ! dmrfid_license_isValid( null, 'plus' ) ) {
 			// show error
-			$msg = __( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=bulkupdate">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons. The following plugins will not be updated:', 'digital-members-rfid' );
+			$msg = __( 'You must have a <a href="https://www.managertechnology.com.co/pricing/?utm_source=wp-admin&utm_pluginlink=bulkupdate">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons. The following plugins will not be updated:', 'digital-members-rfid' );
 			echo '<div class="error"><p>' . $msg . ' <strong>' . implode( ', ', $plus_addons ) . '</strong></p></div>';
 		}
 
@@ -311,7 +311,7 @@ function dmrfid_admin_init_updating_plugins() {
 
 			echo '<div class="wrap"><h2>' . __( 'Update Plugin' ) . '</h2>';
 
-			$msg = __( 'You must have a <a href="https://www.paidmembershipspro.com/pricing/?utm_source=wp-admin&utm_pluginlink=addon_update">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons.', 'digital-members-rfid' );
+			$msg = __( 'You must have a <a href="https://www.managertechnology.com.co/pricing/?utm_source=wp-admin&utm_pluginlink=addon_update">valid DmRFID Plus License Key</a> to update DmRFID Plus add ons.', 'digital-members-rfid' );
 			echo '<div class="error"><p>' . $msg . '</p></div>';
 
 			echo '<p><a href="' . admin_url( 'admin.php?page=dmrfid-addons' ) . '" target="_parent">' . __( 'Return to the DmRFID Add Ons page', 'digital-members-rfid' ) . '</a></p>';

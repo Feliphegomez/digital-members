@@ -121,7 +121,7 @@ class DmRFID_Widget_Member_Login extends WP_Widget {
 					'title' => array(),
 				),
 			);
-			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Digital Members RFID - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'digital-members-rfid' ), $allowed_nav_menus_link_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-nav-menus/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
+			echo '<p class="description">' . sprintf( wp_kses( __( 'Customize this menu per level using the <a href="%s" title="Digital Members RFID - Nav Menus Add On" target="_blank">Nav Menus Add On</a>. Assign the menu under Appearance > Menus.', 'digital-members-rfid' ), $allowed_nav_menus_link_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-nav-menus/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=nav-menus' ) . '</p>';
 	}
 }
 /* End Member Login Widget */

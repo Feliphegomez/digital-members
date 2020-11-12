@@ -112,7 +112,7 @@
         <h1 class="wp-heading-inline"><?php esc_html_e( 'Payment Gateway', 'digital-members-rfid' );?> &amp; <?php esc_html_e( 'SSL Settings', 'digital-members-rfid' ); ?></h1>
         <hr class="wp-header-end">
 
-		<p><?php _e('Learn more about <a title="Digital Members RFID - SSL Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link1">SSL</a> or <a title="Digital Members RFID - Payment Gateway Settings" target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/step-3-payment-gateway-security/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=step-3-payment-gateway-security">Payment Gateway Settings</a>.', 'digital-members-rfid' ); ?></p>
+		<p><?php _e('Learn more about <a title="Digital Members RFID - SSL Settings" target="_blank" href="https://www.managertechnology.com.co/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link1">SSL</a> or <a title="Digital Members RFID - Payment Gateway Settings" target="_blank" href="https://www.managertechnology.com.co/documentation/initial-plugin-setup/step-3-payment-gateway-security/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=step-3-payment-gateway-security">Payment Gateway Settings</a>.', 'digital-members-rfid' ); ?></p>
 
 		<table class="form-table">
 		<tbody>
@@ -231,7 +231,7 @@
 					<input type="text" id="tax_state" name="tax_state" value="<?php echo esc_attr($tax_state)?>" class="small-text" /> (<?php _e('abbreviation, e.g. "PA"', 'digital-members-rfid' );?>)
 					&nbsp; <?php _e('Tax Rate', 'digital-members-rfid' ); ?>:
 					<input type="text" id="tax_rate" name="tax_rate" size="10" value="<?php echo esc_attr($tax_rate)?>" class="small-text" /> (<?php _e('decimal, e.g. "0.06"', 'digital-members-rfid' );?>)
-					<p class="description"><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="https://www.paidmembershipspro.com/non-us-taxes-digital-members-rfid/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=non-us-taxes-digital-members-rfid">dmrfid_tax filter</a>.', 'digital-members-rfid' );?></p>
+					<p class="description"><?php _e('US only. If values are given, tax will be applied for any members ordering from the selected state.<br />For non-US or more complex tax rules, use the <a target="_blank" href="https://www.managertechnology.com.co/non-us-taxes-digital-members-rfid/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=blog&utm_content=non-us-taxes-digital-members-rfid">dmrfid_tax filter</a>.', 'digital-members-rfid' );?></p>
 				</td>
 			</tr>
 
@@ -272,7 +272,7 @@
 				</th>
 				<td>
 					<textarea id="sslseal" name="sslseal" rows="3" cols="50" class="large-text"><?php echo stripslashes(esc_textarea($sslseal))?></textarea>
-					<p class="description"><?php _e('Your <strong><a target="_blank" href="https://www.paidmembershipspro.com/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link2">SSL Certificate</a></strong> must be installed by your web host. Use this field to display your seal or other trusted merchant images. This field does not accept JavaScript.', 'digital-members-rfid' ); ?></p>
+					<p class="description"><?php _e('Your <strong><a target="_blank" href="https://www.managertechnology.com.co/documentation/initial-plugin-setup/ssl/?utm_source=plugin&utm_medium=dmrfid-paymentsettings&utm_campaign=documentation&utm_content=ssl&utm_term=link2">SSL Certificate</a></strong> must be installed by your web host. Use this field to display your seal or other trusted merchant images. This field does not accept JavaScript.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 			<tr>

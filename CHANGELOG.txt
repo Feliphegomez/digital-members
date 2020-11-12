@@ -349,7 +349,7 @@ BUG FIX: Fixed issue where DmRFID would always try to add capabilities to the ad
 * BUG FIX/ENHANCEMENT: Added dmrfid_checkout_preheader_before_get_level_at_checkout and dmrfid_checkout_preheader_after_get_level_at_checkout action hooks. Using dmrfid_checkout_preheader_before_get_level_at_checkout to start the session earlier now.
 * BUG FIX/ENHANCEMENT: Removed the "membership_code_id" and "membership_code" as field options for the member shortcode. These weren't working and it's unclear what would be meant to ask for a user's discount code since a user could have several orders with or without discount codes. Added "membership_description" and "membership_confirmation" instead.
 * BUG FIX/ENHANCEMENT: Filtering the password reset message to make sure the link still works in all cases when we convert emails to HTML.
-* BUG FIX/ENHANCEMENT: Added reCAPTCHA v3 and invisible reCAPTCHA support. It is recommended sites using Stripe or Braintree update to the reCAPTCHA v3 option. Read more here: https://www.paidmembershipspro.com/dmrfid-update-2-0-5/
+* BUG FIX/ENHANCEMENT: Added reCAPTCHA v3 and invisible reCAPTCHA support. It is recommended sites using Stripe or Braintree update to the reCAPTCHA v3 option. Read more here: https://www.managertechnology.com.co/dmrfid-update-2-0-5/
 * REFACTOR: Now running the dmrfid_billing_preheader hook after the jquery.creditCardValidator script is enqueued in preheader/billing.php to match how we do it in preheader/checkout.php. (Thanks, Rafe Colton)
 
 = 2.0.4 - 2019-01-14 =
@@ -616,7 +616,7 @@ up the lines of text.
 * ENHANCEMENT: Added filter for modifying the order description in Stripe. (Thanks, Rafe Colton)
 
 = 1.8.13.5 =
-* BUG: Fixed notifications.php to make sure it really only checks once per day. Also updated the URL checked to notifications.paidmembershipspro.com, which runs on its own server.
+* BUG: Fixed notifications.php to make sure it really only checks once per day. Also updated the URL checked to notifications.managertechnology.com.co, which runs on its own server.
 
 = 1.8.13.4 =
 * BUG/ENHANCEMENT: Changed the dmrfid_button shortcode to dmrfid_checkout_button. (The old dmrfid_button will also still work. checkout_button works if you have Register Helper installed.)
@@ -873,7 +873,7 @@ up the lines of text.
 
 = 1.8.6.3 =
 * SECURITY: No longer showing email addresses in output when cron jobs are processed by non-admins. (Thanks, Daniel Bachhuber)
-* BUG: Better handling of errors when validating PayPal IPN requests. Added dmrfid_ipn_validate filter. PayPal users should read the release notes here: http://www.paidmembershipspro.com/2015/10/dmrfid-update-1-8-6-3/
+* BUG: Better handling of errors when validating PayPal IPN requests. Added dmrfid_ipn_validate filter. PayPal users should read the release notes here: http://www.managertechnology.com.co/2015/10/dmrfid-update-1-8-6-3/
 * BUG: Fixed bug where both the return and first order INS would change membership and update the order twice, leading to unwanted cancellations and emails. (Thanks, Steffen Dressler)
 * BUG: No longer using the $dmrfid_levels global in pages/levels.php.
 
@@ -1013,7 +1013,7 @@ up the lines of text.
 * ENHANCEMENT: Added labels to checkboxes in the dashboard settings pages.
 * ENHANCEMENT: Can now use the [dmrfid_account] shortcode on other pages/widgets/etc. Can also limit to specific sections [dmrfid_account sections='membership,profile,invoices,links'] just remove sections from that list.
 * ENHANCEMENT: Changed all uses of the global $table_prefix to use $wpdb->base_prefix to aid in compatibility when loading WordPress with other PHP code (e.g. phpBB). (Thanks, Dion)
-* ENHANCEMENT: The notification script was updated to point to notifications.paidmembershipspro.com instead of www.paidmembershipspro.com/notifications/. This allows us to keep our notification script on a different server. This script is used to insert notifications into the DmRFID admin pages when important updates are available.
+* ENHANCEMENT: The notification script was updated to point to notifications.managertechnology.com.co instead of www.managertechnology.com.co/notifications/. This allows us to keep our notification script on a different server. This script is used to insert notifications into the DmRFID admin pages when important updates are available.
 
 = 1.8.2.2 =
 * BUG: Fixed conflicts when other plugins with older Recaptcha libraries are also activated. Prefixed our copy of the Recaptcha library and functions with dmrfid_ and added code to handle cases where an older version of recaptch is used at checkout.
@@ -1158,7 +1158,7 @@ up the lines of text.
 * Added getGatewaySubscriptionStatus() and getGatewayTransactionStatus() methods to the MemberOrder class. These are implemented for PayPalExpress right now and will hit the gateway API to return information on a subscription or transaction.
 * Added dmrfid_memberslist_expires_column filter to members list. $order is passed as second parameter. Use this to filter the date or "Never" shown in the Expires column.
 * No longer showing "Membership Levels" link in dashboard menu if a user has access to other DmRFID settings pages, but not the membership levels page.
-* Added dmrfid_applydiscountcode_return_js hook. http://www.paidmembershipspro.com/hook/dmrfid_applydiscountcode_return_js/
+* Added dmrfid_applydiscountcode_return_js hook. http://www.managertechnology.com.co/hook/dmrfid_applydiscountcode_return_js/
 * Fixed formatting of the level cost when a discount code is applied via AJAX.
 * Removed extra $ in checkout_check.html email template.
 * Fixed bug where dmrfid_setOption was not working for array values in $_POST, e.g. the hideadlevels setting on the Advanced Settings page.
@@ -1500,7 +1500,7 @@ up the lines of text.
 * Updated the button CSS included in digital-members-rfid/css/frontend.css. I added a dmrfid_ prefix to these classes so they don't conflict with other .btn CSS rules. I also changed the rules a bit to show the buttons more consistently. If you relied on the old CSS rules, you may need to tweak your theme to get things looking right.
 
 = 1.5.4 =
-* Added a gateway check to preheaders/checkout.php. Mischivous users used to be able to bypass payment by passing &gateway=check or something similar to the checkout page. DmRFID would then use the check gateway to checkout. Now only the active gateway option in the payments settings or gateways added via the new dmrfid_valid_gateways filter (1 parameter is the array of gateways, add/edit the gateways and return the array). It is important that all DmRFID users upgrade to keep mischivious users from accessing your site for free. Any site currently enabling multiple gateway options will need to add code to set the valid gateways. More info here: http://www.paidmembershipspro.com/2012/06/offering-multiple-gateway-options-at-checkout/
+* Added a gateway check to preheaders/checkout.php. Mischivous users used to be able to bypass payment by passing &gateway=check or something similar to the checkout page. DmRFID would then use the check gateway to checkout. Now only the active gateway option in the payments settings or gateways added via the new dmrfid_valid_gateways filter (1 parameter is the array of gateways, add/edit the gateways and return the array). It is important that all DmRFID users upgrade to keep mischivious users from accessing your site for free. Any site currently enabling multiple gateway options will need to add code to set the valid gateways. More info here: http://www.managertechnology.com.co/2012/06/offering-multiple-gateway-options-at-checkout/
 * Fixed bug where level restrictions would be deleted if a page were updated via quick edit.
 * Added if(!class_exists("Stripe")) to the Stripe class definition. This should help with some conflicts if other plugins have their own Stripe library. (Going to udate the Stripe library in the next version and work on supporting new Stripe functionality.)
 * Fixed a bug where copying a level didn't properly set recurring billing settings. (Thanks, AtheistsUnited)

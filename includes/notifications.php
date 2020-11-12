@@ -1,6 +1,6 @@
 <?php
 /**
- * This code calls the server at notifications.paidmembershipspro.com
+ * This code calls the server at notifications.managertechnology.com.co
  * to see if there are any notifications to display to the user.
  * Notifications are shown on the DmRFID settings pages in the dashboard.
  * Runs on the wp_ajax_dmrfid_notifications hook.
@@ -121,7 +121,7 @@ function dmrfid_get_all_notifications() {
 		set_transient( 'dmrfid_notifications_' . DMRFID_VERSION, 'NULL', 86400 );
 		
 		// We use the filter to hit our testing servers.
-		$dmrfid_notification_url = apply_filters( 'dmrfid_notifications_url', esc_url( 'https://notifications.paidmembershipspro.com/v2/notifications.json' ) );
+		$dmrfid_notification_url = apply_filters( 'dmrfid_notifications_url', esc_url( 'https://notifications.managertechnology.com.co/v2/notifications.json' ) );
 
 		// Get notifications.
 		$remote_notifications = wp_remote_get( $dmrfid_notification_url );		

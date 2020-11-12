@@ -5,7 +5,7 @@
 	
 	How it works:
 	- All source code and resource files bundled with this plugin are licensed under the GPLv2 license unless otherwise noted (e.g. included third-party libraries).
-	- An additional "support license" can be purchased at https://www.paidmembershipspro.com/pricing/
+	- An additional "support license" can be purchased at https://www.managertechnology.com.co/pricing/
 	  which will simultaneous support the development of this plugin and also give you access to support forums and documentation.
 	- Once your license has been purchased, visit Settings --> DmRFID License in your WP dashboard to enter your license.
 	- Once the license is activated all "nags" will be disabled in the dashboard and member links will be added where appropriate.
@@ -17,7 +17,7 @@
 /*
 	Developers, add this line to your wp-config.php to remove DmRFID license nags even if no license has been purchased.
 	
-	define('DMRFID_LICENSE_NAG', false);	//consider purchasing a license at https://www.paidmembershipspro.com/pricing/
+	define('DMRFID_LICENSE_NAG', false);	//consider purchasing a license at https://www.managertechnology.com.co/pricing/
 */
 
 /*

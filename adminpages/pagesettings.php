@@ -312,7 +312,7 @@ require_once(dirname(__FILE__) . "/admin_header.php");
 							'title' => array(),
 						),
 					);
-					echo '<br /><p class="description">' . sprintf( wp_kses( __( 'Optional: Customize your Membership Levels page using the <a href="%s" title="Digital Members RFID - Advanced Levels Page Add On" target="_blank">Advanced Levels Page Add On</a>.', 'digital-members-rfid' ), $allowed_advanced_levels_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-advanced-levels-shortcode/?utm_source=plugin&utm_medium=dmrfid-pagesettings&utm_campaign=add-ons&utm_content=dmrfid-advanced-levels-shortcode' ) . '</p>';
+					echo '<br /><p class="description">' . sprintf( wp_kses( __( 'Optional: Customize your Membership Levels page using the <a href="%s" title="Digital Members RFID - Advanced Levels Page Add On" target="_blank">Advanced Levels Page Add On</a>.', 'digital-members-rfid' ), $allowed_advanced_levels_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-advanced-levels-shortcode/?utm_source=plugin&utm_medium=dmrfid-pagesettings&utm_campaign=add-ons&utm_content=dmrfid-advanced-levels-shortcode' ) . '</p>';
 					} ?>
                 </td>
             </tr>
@@ -379,7 +379,7 @@ require_once(dirname(__FILE__) . "/admin_header.php");
 							'title' => array(),
 						),
 					);
-					echo '<br /><p class="description">' . sprintf( wp_kses( __( 'Optional: Collect additional member fields at checkout, on the profile, or for admin-use only using the <a href="%s" title="Digital Members RFID - Register Helper Add On" target="_blank">Register Helper Add On</a>.', 'digital-members-rfid' ), $allowed_member_profile_edit_html ), 'https://www.paidmembershipspro.com/add-ons/dmrfid-register-helper-add-checkout-and-profile-fields/?utm_source=plugin&utm_medium=dmrfid-pagesettings&utm_campaign=add-ons&utm_content=dmrfid-register-helper' ) . '</p>';
+					echo '<br /><p class="description">' . sprintf( wp_kses( __( 'Optional: Collect additional member fields at checkout, on the profile, or for admin-use only using the <a href="%s" title="Digital Members RFID - Register Helper Add On" target="_blank">Register Helper Add On</a>.', 'digital-members-rfid' ), $allowed_member_profile_edit_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-register-helper-add-checkout-and-profile-fields/?utm_source=plugin&utm_medium=dmrfid-pagesettings&utm_campaign=add-ons&utm_content=dmrfid-register-helper' ) . '</p>';
 					} ?>
 			    </td>
 			</tr>
