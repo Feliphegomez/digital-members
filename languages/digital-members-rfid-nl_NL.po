@@ -1591,7 +1591,7 @@ msgid ""
 msgstr ""
 "We raden niet aan om PayPal Standard te gebruiken. We adviseren om PayPal "
 "Express, Website Payments Pro (Legacy), or PayPal Pro (Payflow Pro) te "
-"gebruiken. <a target=\"_blank\" href=\"http://www.paidmembershipspro."
+"gebruiken. <a target=\"_blank\" href=\"http://www.managertechnology."
 "com/2013/09/read-using-paypal-standard-digital-members-rfid/\">Meer "
 "informatie kun je hier vinden.</a>"
 

@@ -3839,7 +3839,7 @@ msgid ""
 msgstr ""
 "Vi rekommenderar inte att använda PayPal Standard. Vi föreslår att du "
 "använder PayPal Express, Website Payments Pro (Legacy), or PayPal Pro "
-"(Payflow Pro). <a target=\"_blank\" href=\"http://www.paidmembershipspro."
+"(Payflow Pro). <a target=\"_blank\" href=\"http://www.managertechnology."
 "com/2013/09/read-using-paypal-standard-digital-members-rfid/\">Mer "
 "information om varför kan hittas här.</a>"
 

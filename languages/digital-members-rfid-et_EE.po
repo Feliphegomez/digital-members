@@ -2193,7 +2193,7 @@ msgid ""
 msgstr ""
 "Ainult US. Kui väärtused on antud, maks lisatakse igale liikmele tellides "
 "valitud riigist<br />Mitte US või keerulisemate makse reeglite puhul, "
-"kasutage <a target=\"_blank\" href=\"http://www.paidmembershipspro."
+"kasutage <a target=\"_blank\" href=\"http://www.managertechnology."
 "com/2013/10/non-us-taxes-digital-members-rfid/\">dmrfid_tax filter</a>."
 
 #: adminpages/paymentsettings.php:206 adminpages/paymentsettings.php:450

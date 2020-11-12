@@ -2958,7 +2958,7 @@ msgstr ""
 "Mehr Informationen über <a title=\"Digital Members RFID - SSL Settings\" "
 "target=\"_blank\" href=\"http://www.managertechnology.com.co/support/initial-"
 "plugin-setup/ssl/\">SSL</a> oder <a title=\"Digital Members RFID - Payment "
-"Gateway Settings\" target=\"_blank\" href=\"http://www.paidmembershipspro."
+"Gateway Settings\" target=\"_blank\" href=\"http://www.managertechnology."
 "com/support/initial-plugin-setup/payment-gateway/\">Zahlungsdienstleister "
 "Einstellungen</a>."
 

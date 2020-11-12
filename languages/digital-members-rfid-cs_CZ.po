@@ -1776,7 +1776,7 @@ msgid ""
 msgstr ""
 "Pouze pro USA. Pokud jsou zadány hodnoty, daň se použije pro všechny členy "
 "objednávající z vybraného státu.<br />Mimo USA nebo pro složitější daňové "
-"předpisy použijte <a target=\"_blank\" href=\"http://www.paidmembershipspro."
+"předpisy použijte <a target=\"_blank\" href=\"http://www.managertechnology."
 "com/2013/10/non-us-taxes-digital-members-rfid/\">dmrfid_tax filter</a>."
 
 #: adminpages/paymentsettings.php:206 adminpages/paymentsettings.php:450

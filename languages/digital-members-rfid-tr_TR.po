@@ -1536,7 +1536,7 @@ msgstr ""
 "Daha fazla bilgi için; <a title=\"Digital Members RFID - SSL Settings\" "
 "target=\"_blank\" href=\"http://www.managertechnology.com.co/support/initial-"
 "plugin-setup/ssl/\">SSL</a> ya da <a title=\"Digital Members RFID - Payment "
-"Gateway Settings\" target=\"_blank\" href=\"http://www.paidmembershipspro."
+"Gateway Settings\" target=\"_blank\" href=\"http://www.managertechnology."
 "com/support/initial-plugin-setup/payment-gateway/\">Ödeme Kanalı "
 "Seçenekleri</a>."
 
