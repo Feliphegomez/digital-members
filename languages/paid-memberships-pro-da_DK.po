@@ -741,7 +741,7 @@ msgid ""
 "still get an email confirmation from PMPro after checkout.)"
 msgstr ""
 "Standard WP notifikations email. (Anbefales: Ikke Aktiveret. Medlemmer vil "
-"stadig få email bekræftigelse fra PMPRO efter de har betalt.)"
+"stadig få email bekræftigelse fra DMRFID efter de har betalt.)"
 
 #: adminpages/membershiplevels.php:118
 msgid "Membership level updated successfully."
