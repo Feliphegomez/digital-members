@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_emailsettings")))
 	{
-		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
+		die(__("No tienes permisos para realizar esta acción.", 'digital-members-rfid' ));
 	}	
 	
 	global $wpdb, $msg, $msgt;
@@ -13,7 +13,7 @@
 	//check nonce for saving settings
 	if (!empty($_REQUEST['savesettings']) && (empty($_REQUEST['dmrfid_emailsettings_nonce']) || !check_admin_referer('savesettings', 'dmrfid_emailsettings_nonce'))) {
 		$msg = -1;
-		$msgt = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
+		$msgt = __("¿Seguro que quieres hacer eso? Inténtalo de nuevo.", 'digital-members-rfid' );
 		unset($_REQUEST['savesettings']);
 	}	
 	
@@ -80,16 +80,16 @@
 	<form action="" method="post" enctype="multipart/form-data"> 
 		<?php wp_nonce_field('savesettings', 'dmrfid_emailsettings_nonce');?>
 		
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'Email Settings', 'digital-members-rfid' ); ?></h1>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'Ajustes del correo electrónico', 'digital-members-rfid' ); ?></h1>
 		<hr class="wp-header-end">
-		<h2><?php _e( 'Send Emails From', 'digital-members-rfid' ); ?></h2>
-		<p><?php _e('By default, system generated emails are sent from <em><strong>wordpress@yourdomain.com</strong></em>. You can update this from address using the fields below.', 'digital-members-rfid' );?></p>
+		<h2><?php _e( 'Enviar correos electrónicos desde', 'digital-members-rfid' ); ?></h2>
+		<p><?php _e('De forma predeterminada, los mensajes de correo electrónico generados por el sistema se envían desde <em><b>wordpress@yourdomain.com </p> Puede actualizar esto desde la dirección utilizando los campos a continuación.', 'digital-members-rfid' );?></p>
 
 		<table class="form-table">
 		<tbody>                
 			<tr>
 				<th scope="row" valign="top">
-					<label for="from_email"><?php _e('From Email', 'digital-members-rfid' );?>:</label>
+					<label for="from_email"><?php _e('Desde el e-mail', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<input type="text" name="from_email" value="<?php echo esc_attr($from_email);?>" class="regular-text" />
@@ -105,19 +105,19 @@
 			</tr>
 			<tr>
 				<th scope="row" valign="top">
-					<label for="only_filter_dmrfid_emails"><?php _e('Only Filter DmRFID Emails?', 'digital-members-rfid' );?>:</label>
+					<label for="only_filter_dmrfid_emails"><?php _e('¿Solo filtrar correos electrónicos DmRFID?', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<input type="checkbox" id="only_filter_dmrfid_emails" name="only_filter_dmrfid_emails" value="1" <?php if(!empty($only_filter_dmrfid_emails)) { ?>checked="checked"<?php } ?> />
-					<label for="only_filter_dmrfid_emails"><?php printf( __('If unchecked, all emails from "WordPress &lt;%s&gt;" will be filtered to use the above settings.', 'digital-members-rfid' ),  $default_from_email );?></label>
+					<label for="only_filter_dmrfid_emails"><?php printf( __('Si no se marca, todos los correos electrónicos de "WordPress &lt;%s&gt;" se filtrarán para utilizar la configuración anterior.', 'digital-members-rfid' ),  $default_from_email );?></label>
 				</td>
 			</tr>
 		</tbody>
 		</table>
-		<p class="submit"><input name="savesettings" type="submit" class="button-primary" value="<?php esc_attr_e( 'Save All Settings', 'digital-members-rfid' ); ?>" /></p>
+		<p class="submit"><input name="savesettings" type="submit" class="button-primary" value="<?php esc_attr_e( 'Guardar todas las configuraciones', 'digital-members-rfid' ); ?>" /></p>
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-email-content">
-			<h2><?php _e( 'Customizing Email Content', 'digital-members-rfid' ); ?></h2>
+			<h2><?php _e( 'Personalización del contenido del correo electrónico', 'digital-members-rfid' ); ?></h2>
 			<p><?php
 			$allowed_email_customizing_html = array (
 				'a' => array (
@@ -126,12 +126,12 @@
 					'title' => array(),
 				),
 			);
-			echo sprintf( wp_kses( __( 'There are several ways to modify the appearance of your Digital Members RFID emails. We recommend using the free <a href="%s" title="Digital Members RFID - Email Templates Admin Editor Add On" target="_blank">Email Templates Admin Editor Add On</a>, which allows you to modify the email header, footer, subject, and body content for all member and admin communications. <a title="Digital Members RFID - Member Communications" target="_blank" href="%s">Click here to learn more about Digital Members RFID emails</a>.', 'digital-members-rfid' ), $allowed_email_customizing_html ), 'https://www.managertechnology.com.co/add-ons/email-templates-admin-editor/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=add-ons&utm_content=email-templates-admin-editor', 'http://www.managertechnology.com.co/documentation/member-communications/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=documentation&utm_content=member-communications' );
+			echo sprintf( wp_kses( __( 'Hay varias formas de modificar la apariencia de sus correos electrónicos RFID de Digital Members. Recomendamos usar el <a href="%s" title="Digital Members RFID-Email Templates Admin Editor Add On" target="_blank"> Add On del editor de administración de plantillas de correo electrónico </a>, que le permite modificar el encabezado, pie de página, asunto y cuerpo del correo electrónico para todas las comunicaciones de miembros y administradores. <a title="Digital Members RFID-Member Communications" target="_blank" href="%s"> Haga clic aquí para obtener más información sobre los correos electrónicos RFID de Digital Members </a>.', 'digital-members-rfid' ), $allowed_email_customizing_html ), 'https://www.managertechnology.com.co/add-ons/email-templates-admin-editor/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=add-ons&utm_content=email-templates-admin-editor', 'http://www.managertechnology.com.co/documentation/member-communications/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=documentation&utm_content=member-communications' );
 		?></p>
 		</div> <!-- end dmrfid_admin_section-email-content -->
 		<hr />
 		<div class="dmrfid_admin_section dmrfid_admin_section-email-deliverability">
-			<h2><?php _e( 'Email Deliverability', 'digital-members-rfid' ); ?></h2>
+			<h2><?php _e( 'Capacidad de entrega del correo electrónico', 'digital-members-rfid' ); ?></h2>
 
 			<p><?php
 				$allowed_email_troubleshooting_html = array (
@@ -142,7 +142,7 @@
 					),
 					'em' => array(),
 				);
-				echo sprintf( wp_kses( __( 'If you are having issues with email delivery from your server, <a href="%s" title="Digital Members RFID - Subscription Delays Add On" target="_blank">please read our email troubleshooting guide</a>. As an alternative, Digital Members RFID offers built-in integration for SendWP. <em>Optional: SendWP is a third-party service for transactional email in WordPress. <a href="%s" title="Documentation on SendWP and Digital Members RFID" target="_blank">Click here to learn more about SendWP and Digital Members RFID</a></em>.', 'digital-members-rfid' ), $allowed_email_troubleshooting_html ), 'https://www.managertechnology.com.co/troubleshooting-email-issues-sending-sent-spam-delivery-delays/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=blog&utm_content=email-troubleshooting', 'https://www.managertechnology.com.co/documentation/member-communications/email-delivery-sendwp/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=documentation&utm_content=sendwp' );
+				echo sprintf( wp_kses( __( 'Si tiene problemas con la entrega de correo electrónico desde su servidor, <a href="%s" title="Retrasos de suscripción de RFID para miembros digitales se agregan" target="_blank"> por favor lea nuestra guía de solución de problemas de correo electrónico </a>. Como alternativa, Digital Members RFID ofrece integración incorporada para SendWP. <em> Opcional: SendWP es un servicio de terceros para correo electrónico transaccional en WordPress. <a href="%s" title="Documentation on SendWP y Digital Members RFID" target="_blank"> Haga clic aquí para obtener más información sobre SendWP y Digital Members RFID </a> </em>.', 'digital-members-rfid' ), $allowed_email_troubleshooting_html ), 'https://www.managertechnology.com.co/troubleshooting-email-issues-sending-sent-spam-delivery-delays/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=blog&utm_content=email-troubleshooting', 'https://www.managertechnology.com.co/documentation/member-communications/email-delivery-sendwp/?utm_source=plugin&utm_medium=dmrfid-emailsettings&utm_campaign=documentation&utm_content=sendwp' );
 			?></p>
 
 			<?php
@@ -150,51 +150,51 @@
 				$sendwp_connected = function_exists( 'sendwp_client_connected' ) && sendwp_client_connected() ? true : false;
 
 				if ( ! $sendwp_connected ) { ?>
-					<p><button id="dmrfid-sendwp-connect" class="button"><?php esc_html_e( 'Connect to SendWP', 'digital-members-rfid' ); ?></button></p>
+					<p><button id="dmrfid-sendwp-connect" class="button"><?php esc_html_e( 'Conectarse a SendWP', 'digital-members-rfid' ); ?></button></p>
 				<?php } else { ?>
-					<p><button id="dmrfid-sendwp-disconnect" class="button-primary"><?php esc_html_e( 'Disconnect from SendWP', 'digital-members-rfid' ); ?></button></p>
+					<p><button id="dmrfid-sendwp-disconnect" class="button-primary"><?php esc_html_e( 'Desconectarse de SendWP', 'digital-members-rfid' ); ?></button></p>
 					<?php
 					// Update SendWP status to see if email forwarding is enabled or not.
 					$sendwp_email_forwarding = function_exists( 'sendwp_forwarding_enabled' ) && sendwp_forwarding_enabled() ? true : false;
 					
 					// Messages for connected or not.
-					$connected = __( 'Your site is connected to SendWP.', 'digital-members-rfid' ) . " <a href='https://sendwp.com/account/' target='_blank' rel='nofollow'>" . __( 'View Your SendWP Account', 'digital-members-rfid' ) . "</a>";
-					$disconnected = ' ' . sprintf( __( 'Please enable email sending inside %s.', 'digital-members-rfid' ), '<a href="' . admin_url('/tools.php?page=sendwp') . '">SendWP Settings</a>' );
+					$connected = __( 'Su sitio está conectado a SendWP.', 'digital-members-rfid' ) . " <a href='https://sendwp.com/account/' target='_blank' rel='nofollow'>" . __( 'View Your SendWP Account', 'digital-members-rfid' ) . "</a>";
+					$disconnected = ' ' . sprintf( __( 'Habilite el envío de correo electrónico dentro de %s.', 'digital-members-rfid' ), '<a href="' . admin_url('/tools.php?page=sendwp') . '">SendWP Settings</a>' );
 					?>
 					<p class="description" id="dmrfid-sendwp-description"><?php echo $sendwp_email_forwarding ? $connected : $disconnected; ?></p>
 				<?php }
 			?>
 		</div> <!-- end dmrfid_admin_section-email-deliverability -->
 		<hr />
-		<h2 class="title"><?php esc_html_e( 'Other Email Settings', 'digital-members-rfid' ); ?></h2>
+		<h2 class="title"><?php esc_html_e( 'Otras configuraciones de correo electrónico', 'digital-members-rfid' ); ?></h2>
 		<table class="form-table">
 		<tbody>                
 			<tr>
 				<th scope="row" valign="top">
-					<label for="email_admin"><?php _e('Send the site admin emails', 'digital-members-rfid' );?>:</label>
+					<label for="email_admin"><?php _e('Enviar los correos electrónicos de administrador del sitio', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<input type="checkbox" id="email_admin_checkout" name="email_admin_checkout" value="1" <?php if(!empty($email_admin_checkout)) { ?>checked="checked"<?php } ?> />
-					<label for="email_admin_checkout"><?php _e('when a member checks out.', 'digital-members-rfid' );?></label>
+					<label for="email_admin_checkout"><?php _e('Cuando un miembro sale.', 'digital-members-rfid' );?></label>
 					<br />
 					<input type="checkbox" id="email_admin_changes" name="email_admin_changes" value="1" <?php if(!empty($email_admin_changes)) { ?>checked="checked"<?php } ?> />
-					<label for="email_admin_changes"><?php _e('when an admin changes a user\'s membership level through the dashboard.', 'digital-members-rfid' );?></label>
+					<label for="email_admin_changes"><?php _e('cuando un administrador cambia el nivel de membresía de un usuario a través del panel de control.', 'digital-members-rfid' );?></label>
 					<br />
 					<input type="checkbox" id="email_admin_cancels" name="email_admin_cancels" value="1" <?php if(!empty($email_admin_cancels)) { ?>checked="checked"<?php } ?> />
-					<label for="email_admin_cancels"><?php _e('when a user cancels his or her account.', 'digital-members-rfid' );?></label>
+					<label for="email_admin_cancels"><?php _e('cuando un usuario cancela su cuenta.', 'digital-members-rfid' );?></label>
 					<br />
 					<input type="checkbox" id="email_admin_billing" name="email_admin_billing" value="1" <?php if(!empty($email_admin_billing)) { ?>checked="checked"<?php } ?> />
-					<label for="email_admin_billing"><?php _e('when a user updates his or her billing information.', 'digital-members-rfid' );?></label>
+					<label for="email_admin_billing"><?php _e('cuando un usuario actualiza su información de facturación.', 'digital-members-rfid' );?></label>
 				</td>
 			</tr>               
 			<tr>
 				<th scope="row" valign="top">
-					<label for="email_member_notification"><?php _e('Send members emails', 'digital-members-rfid' );?>:</label>
+					<label for="email_member_notification"><?php _e('Enviar correos electrónicos a los miembros', 'digital-members-rfid' );?>:</label>
 				</th>
 				<td>
 					<input type="checkbox" id="email_member_notification" name="email_member_notification" value="1" <?php if(!empty($email_member_notification)) { ?>checked="checked"<?php } ?> />
-					<label for="email_member_notification"><?php _e('Default WP notification email.', 'digital-members-rfid' );?></label>
-					<p class="description"><?php _e( 'Recommended: Leave unchecked. Members will still get an email confirmation from DmRFID after checkout.', 'digital-members-rfid' ); ?></p>
+					<label for="email_member_notification"><?php _e('Correo electrónico de notificación de WP predeterminado.', 'digital-members-rfid' );?></label>
+					<p class="description"><?php _e( 'Recomendado: déjelo sin marcar. Los miembros seguirán recibiendo una confirmación por correo electrónico de DmRFID después del pago.', 'digital-members-rfid' ); ?></p>
 				</td>
 			</tr>
 		</tbody>

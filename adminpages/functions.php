@@ -391,11 +391,11 @@ function dmrfid_add_email_order_modal() {
 		$order = new MemberOrder( $_REQUEST['order'] );
 		if ( $email->sendBillableInvoiceEmail( $user, $order ) ) { ?>
 			<div class="notice notice-success is-dismissible">
-				<p><?php _e( 'Invoice emailed successfully.', 'digital-members-rfid' ); ?></p>
+				<p><?php _e( 'Factura enviada correctamente por correo electrónico.', 'digital-members-rfid' ); ?></p>
 			</div>
 		<?php } else { ?>
 			<div class="notice notice-error is-dismissible">
-				<p><?php _e( 'Error emailing invoice.', 'digital-members-rfid' ); ?></p>
+				<p><?php _e( 'Error al enviar la factura por correo electrónico.', 'digital-members-rfid' ); ?></p>
 			</div>
 		<?php }
 	}
@@ -422,10 +422,10 @@ function dmrfid_add_email_order_modal() {
 	</script>
 	<?php add_thickbox(); ?>
 	<div id="email_invoice" style="display:none;">
-		<h3><?php _e( 'Email Invoice', 'digital-members-rfid' ); ?></h3>
+		<h3><?php _e( 'Factura por correo electrónico', 'digital-members-rfid' ); ?></h3>
 		<form method="post" action="">
 			<input type="hidden" name="order" value=""/>
-			<?php _e( 'Send an invoice for this order to: ', 'digital-members-rfid' ); ?>
+			<?php _e( 'Envíe una factura de este pedido a: ', 'digital-members-rfid' ); ?>
 			<input type="text" value="" name="email"/>
 			<button class="button button-primary alignright"><?php _e( 'Send Email', 'digital-members-rfid' ); ?></button>
 		</form>

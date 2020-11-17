@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_discountcodes")))
 	{
-		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
+		die(__("No tienes permisos para realizar esta acción.", 'digital-members-rfid' ));
 	}
 
 	//vars
@@ -60,7 +60,7 @@
 	//check nonce for saving codes
 	if (!empty($_REQUEST['saveid']) && (empty($_REQUEST['dmrfid_discountcodes_nonce']) || !check_admin_referer('save', 'dmrfid_discountcodes_nonce'))) {
 		$dmrfid_msgt = 'error';
-		$dmrfid_msg = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
+		$dmrfid_msg = __("¿Seguro que quieres hacer eso? Inténtalo de nuevo.", 'digital-members-rfid' );
 		$saveid = false;
 	}
 
@@ -104,13 +104,13 @@
 		if(empty($wpdb->last_error)) {
 			if($saveid < 1) {
 				//insert
-				$dmrfid_msg = __("Discount code added successfully.", 'digital-members-rfid' );
+				$dmrfid_msg = __("El código de descuento se agregó correctamente.", 'digital-members-rfid' );
 				$dmrfid_msgt = "success";
 				$saved = true;
 				$edit = $wpdb->insert_id;
 			} else {
 				//updated
-				$dmrfid_msg = __("Discount code updated successfully.", 'digital-members-rfid' );
+				$dmrfid_msg = __("Código de descuento actualizado correctamente.", 'digital-members-rfid' );
 				$dmrfid_msgt = "success";
 				$saved = true;
 				$edit = $saveid;
@@ -118,11 +118,11 @@
 		} else {
 			if($saveid < 1) {
 				//error inserting
-				$dmrfid_msg = __("Error adding discount code. That code may already be in use.", 'digital-members-rfid' ) . $wpdb->last_error;
+				$dmrfid_msg = __("Error al agregar el código de descuento. Es posible que ese código ya esté en uso.", 'digital-members-rfid' ) . $wpdb->last_error;
 				$dmrfid_msgt = "error";
 			} else {
 				//error updating
-				$dmrfid_msg = __("Error updating discount code. That code may already be in use.", 'digital-members-rfid' );
+				$dmrfid_msg = __("Error al actualizar el código de descuento. Es posible que ese código ya esté en uso.", 'digital-members-rfid' );
 				$dmrfid_msgt = "error";
 			}
 		}
@@ -284,7 +284,7 @@
 					else
 					{
 						$level = dmrfid_getLevel($level_id);
-						$level_errors[] = sprintf(__("Error saving values for the %s level.", 'digital-members-rfid' ), $level->name);
+						$level_errors[] = sprintf(__("Error al guardar valores para el nivel %s.", 'digital-members-rfid' ), $level->name);
 					}
 				}
 			}
@@ -292,7 +292,7 @@
 			//errors?
 			if(!empty($level_errors))
 			{
-				$dmrfid_msg = __("There were errors updating the level values: ", 'digital-members-rfid' ) . implode(" ", $level_errors);
+				$dmrfid_msg = __("Hubo errores al actualizar los valores de nivel:", 'digital-members-rfid' ) . implode(" ", $level_errors);
 				$dmrfid_msgt = "error";
 			}
 			else
@@ -308,7 +308,7 @@
 	//check nonce for deleting codes
 	if (!empty($_REQUEST['delete']) && (empty($_REQUEST['dmrfid_discountcodes_nonce']) || !check_admin_referer('delete', 'dmrfid_discountcodes_nonce'))) {
 		$dmrfid_msgt = 'error';
-		$dmrfid_msg = __("Are you sure you want to do that? Try again.", 'digital-members-rfid' );
+		$dmrfid_msg = __("", 'digital-members-rfid' );
 		$delete = false;
 	}
 
@@ -332,30 +332,30 @@
 
 				if($r2 !== false)
 				{
-					$dmrfid_msg = sprintf(__("Code %s deleted successfully.", 'digital-members-rfid' ), $code);
+					$dmrfid_msg = sprintf(__("El código %s se eliminó correctamente.", 'digital-members-rfid' ), $code);
 					$dmrfid_msgt = "success";
 				}
 				else
 				{
-					$dmrfid_msg = __("Error deleting discount code. The code was only partially deleted. Please try again.", 'digital-members-rfid' );
+					$dmrfid_msg = __("Error al eliminar el código de descuento. El código solo se eliminó parcialmente. Inténtalo de nuevo.", 'digital-members-rfid' );
 					$dmrfid_msgt = "error";
 				}
 			}
 			else
 			{
-				$dmrfid_msg = __("Error deleting code. Please try again.", 'digital-members-rfid' );
+				$dmrfid_msg = __("Error al eliminar el código. Inténtalo de nuevo.", 'digital-members-rfid' );
 				$dmrfid_msgt = "error";
 			}
 		}
 		else
 		{
-			$dmrfid_msg = __("Code not found.", 'digital-members-rfid' );
+			$dmrfid_msg = __("Código no encontrado.", 'digital-members-rfid' );
 			$dmrfid_msgt = "error";
 		}
 	}
 	
 	if( ! empty( $dmrfid_msg ) && ! empty( $expiration_warning_flag ) ) {
-		$dmrfid_msg .= ' <strong>' . sprintf( __( 'WARNING: A level was set with both a recurring billing amount and an expiration date. You only need to set one of these unless you really want this membership to expire after a specific time period. For more information, <a target="_blank" href="%s">see our post here</a>.', 'digital-members-rfid' ), 'https://www.managertechnology.com.co/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
+		$dmrfid_msg .= ' <strong>' . sprintf( __( 'ADVERTENCIA: Se estableció un nivel con un monto de facturación recurrente y una fecha de vencimiento. Solo necesita configurar uno de estos a menos que realmente desee que esta membresía caduque después de un período de tiempo específico. Para obtener más información, <a target="_blank" href="%s"> consulte nuestra publicación aquí </a>.', 'digital-members-rfid' ), 'https://www.managertechnology.com.co/important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=blog&utm_content=important-notes-on-recurring-billing-and-expiration-dates-for-membership-levels' ) . '</strong>';
 		
 		if( $dmrfid_msgt == 'success' ) {
 			$dmrfid_msgt = 'warning';
@@ -370,9 +370,9 @@
 		<h1>
 			<?php
 				if($edit > 0)
-					echo __("Edit Discount Code", 'digital-members-rfid' );
+					echo __("Editar código de descuento", 'digital-members-rfid' );
 				else
-					echo __("Add New Discount Code", 'digital-members-rfid' );
+					echo __("Agregar nuevo código de descuento", 'digital-members-rfid' );
 			?>
 		</h1>
 
@@ -442,11 +442,11 @@
                 <tbody>
                     <tr>
                         <th scope="row" valign="top"><label><?php _e('ID', 'digital-members-rfid' );?>:</label></th>
-                        <td><p class="description"><?php if(!empty($code->id)) echo $code->id; else echo __("This will be generated when you save.", 'digital-members-rfid' );?></p></td>
+                        <td><p class="description"><?php if(!empty($code->id)) echo $code->id; else echo __("Esto se generará cuando guarde.", 'digital-members-rfid' );?></p></td>
                     </tr>
 
                     <tr>
-                        <th scope="row" valign="top"><label for="code"><?php _e('Code', 'digital-members-rfid' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="code"><?php _e('Codigo', 'digital-members-rfid' );?>:</label></th>
                         <td><input name="code" type="text" size="20" value="<?php echo str_replace("\"", "&quot;", stripslashes($code->code))?>" /></td>
                     </tr>
 
@@ -502,7 +502,7 @@
                     </tr>
 
 					<tr>
-                        <th scope="row" valign="top"><label for="expires"><?php _e('Expiration Date', 'digital-members-rfid' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="expires"><?php _e('Fecha de caducidad', 'digital-members-rfid' );?>:</label></th>
                         <td>
 							<select name="expires_month">
 								<?php
@@ -520,10 +520,10 @@
                     </tr>
 
 					<tr>
-                        <th scope="row" valign="top"><label for="uses"><?php _e('Uses', 'digital-members-rfid' );?>:</label></th>
+                        <th scope="row" valign="top"><label for="uses"><?php _e('Usos', 'digital-members-rfid' );?>:</label></th>
                         <td>
 							<input name="uses" type="text" size="10" value="<?php if(!empty($code->uses)) echo str_replace("\"", "&quot;", stripslashes($code->uses));?>" />
-							<p class="description"><?php _e('Leave blank for unlimited uses.', 'digital-members-rfid' );?></p>
+							<p class="description"><?php _e('Déjelo en blanco para usos ilimitados.', 'digital-members-rfid' );?></p>
 						</td>
                     </tr>
 
@@ -532,7 +532,7 @@
 
 			<?php do_action("dmrfid_discount_code_after_settings", $edit); ?>
 
-			<h3><?php _e('Which Levels Will This Code Apply To?', 'digital-members-rfid' ); ?></h3>
+			<h3><?php _e('¿A qué niveles se aplicará este código?', 'digital-members-rfid' ); ?></h3>
 
 			<div class="dmrfid_discount_levels">
 			<?php
@@ -614,23 +614,23 @@
 										}
 									  ?>
 									</select>
-									<p class="description"><?php _e('The amount to be billed one cycle after the initial payment.', 'digital-members-rfid' );?></p>
+									<p class="description"><?php _e('La cantidad que se facturará un ciclo después del pago inicial.', 'digital-members-rfid' );?></p>
 									<?php if($gateway == "braintree") { ?>
-										<strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently only supports billing periods of "Month" or "Year".', 'digital-members-rfid' );?></strong>
+										<strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('La integración de Braintree actualmente solo admite períodos de facturación de "Mes" o "Año".', 'digital-members-rfid' );?></strong>
 									<?php } elseif($gateway == "stripe") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration does not allow billing periods longer than 1 year.', 'digital-members-rfid' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('La integración de Stripe no permite períodos de facturación superiores a 1 año.', 'digital-members-rfid' );?></strong></p>
 									<?php }?>
 								</td>
 							</tr>
 
 							<tr class="recurring_info" <?php if(!dmrfid_isLevelRecurring($level)) {?>style="display: none;"<?php } ?>>
-								<th scope="row" valign="top"><label for="billing_limit"><?php _e('Billing Cycle Limit', 'digital-members-rfid' );?>:</label></th>
+								<th scope="row" valign="top"><label for="billing_limit"><?php _e('Límite del ciclo de facturación', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<input name="billing_limit[]" type="text" size="20" value="<?php echo $level->billing_limit?>" />
 									<p class="description">
-										<?php _e('The <strong>total</strong> number of recurring billing cycles for this level, including the trial period (if applicable) but not including the initial payment. Set to zero if membership is indefinite.', 'digital-members-rfid' );?>
+										<?php _e('La cantidad <strong> total </strong> de ciclos de facturación recurrentes para este nivel, incluido el período de prueba (si corresponde), pero sin incluir el pago inicial. Establecer en cero si la membresía es indefinida.', 'digital-members-rfid' );?>
 										<?php if ( ( $gateway == "stripe" ) && ! function_exists( 'dmrfidsbl_plugin_row_meta' ) ) { ?>
-											<br /><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support billing limits. You can still set an expiration date below.', 'digital-members-rfid' );?></strong>
+											<br /><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Actualmente, la integración de Stripe no admite límites de facturación. Aún puede establecer una fecha de vencimiento a continuación.', 'digital-members-rfid' );?></strong>
 											<?php if ( ! function_exists( 'dmrfidsd_dmrfid_membership_level_after_other_settings' ) ) {
 													$allowed_sbl_html = array (
 														'a' => array (
@@ -639,7 +639,7 @@
 															'title' => array(),
 														),
 													);
-													echo '<br />' . sprintf( wp_kses( __( 'Optional: Allow billing limits with Stripe using the <a href="%s" title="Digital Members RFID - Stripe Billing Limits Add On" target="_blank">Stripe Billing Limits Add On</a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
+													echo '<br />' . sprintf( wp_kses( __( 'Opcional: Permita límites de facturación con Stripe mediante el <a href="%s" title="Agregar límites de facturación de Stripe RFID para miembros digitales" target="_blank"> Complemento de límites de facturación de Stripe </a>.', 'digital-members-rfid' ), $allowed_sbl_html ), 'https://www.managertechnology.com.co/add-ons/dmrfid-stripe-billing-limits/?utm_source=plugin&utm_medium=dmrfid-membershiplevels&utm_campaign=add-ons&utm_content=stripe-billing-limits' ) . '</em></td></tr>';
 											} ?>
 									<?php } ?>
 								</p>
@@ -647,17 +647,17 @@
 							</tr>
 
 							<tr class="recurring_info" <?php if (!dmrfid_isLevelRecurring($level)) echo "style='display:none;'";?>>
-								<th scope="row" valign="top"><label><?php _e('Custom Trial', 'digital-members-rfid' );?>:</label></th>
+								<th scope="row" valign="top"><label><?php _e('Prueba personalizada', 'digital-members-rfid' );?>:</label></th>
 								<td>
-									<input id="custom_trial_<?php echo $level->id?>" id="custom_trial_<?php echo $level->id;?>" name="custom_trial[]" type="checkbox" value="<?php echo $level->id?>" <?php if ( dmrfid_isLevelTrial($level) ) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).prop('checked')) jQuery(this).parent().parent().siblings('.trial_info').show();	else jQuery(this).parent().parent().siblings('.trial_info').hide();" /> <label for="custom_trial_<?php echo $level->id;?>"><?php _e('Check to add a custom trial period.', 'digital-members-rfid' );?></label>
+									<input id="custom_trial_<?php echo $level->id?>" id="custom_trial_<?php echo $level->id;?>" name="custom_trial[]" type="checkbox" value="<?php echo $level->id?>" <?php if ( dmrfid_isLevelTrial($level) ) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).prop('checked')) jQuery(this).parent().parent().siblings('.trial_info').show();	else jQuery(this).parent().parent().siblings('.trial_info').hide();" /> <label for="custom_trial_<?php echo $level->id;?>"><?php _e('Marque para agregar un período de prueba personalizado.', 'digital-members-rfid' );?></label>
 									<?php if($gateway == "twocheckout") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_twocheckout_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('2Checkout integration does not support custom trials. You can do one period trials by setting an initial payment different from the billing amount.', 'digital-members-rfid' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_twocheckout_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('La integración de 2Checkout no admite pruebas personalizadas. Puede realizar pruebas de un período estableciendo un pago inicial diferente del monto de facturación.', 'digital-members-rfid' );?></strong></p>
 									<?php } ?>
 								</td>
 							</tr>
 
 							<tr class="trial_info recurring_info" <?php if (!dmrfid_isLevelTrial($level)) echo "style='display:none;'";?>>
-								<th scope="row" valign="top"><label for="trial_amount"><?php _e('Trial Billing Amount', 'digital-members-rfid' );?>:</label></th>
+								<th scope="row" valign="top"><label for="trial_amount"><?php _e('Monto de facturación de prueba', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<?php
 									if(dmrfid_getCurrencyPosition() == "left")
@@ -672,27 +672,27 @@
 									<input name="trial_limit[]" type="text" size="10" value="<?php echo str_replace("\"", "&quot;", stripslashes($level->trial_limit))?>" />
 									<?php _e('subscription payments', 'digital-members-rfid' );?>.
 									<?php if($gateway == "stripe") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Stripe integration currently does not support trial amounts greater than $0.', 'digital-members-rfid' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_stripe_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Actualmente, la integración de Stripe no admite montos de prueba superiores a $0.', 'digital-members-rfid' );?></strong></p>
 									<?php } elseif($gateway == "braintree") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Braintree integration currently does not support trial amounts greater than $0.', 'digital-members-rfid' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_braintree_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Actualmente, la integración de Braintree no admite montos de prueba superiores a $0.', 'digital-members-rfid' );?></strong></p>
 									<?php } elseif($gateway == "payflowpro") { ?>
-										<p class="description"><strong <?php if(!empty($dmrfid_payflow_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Payflow integration currently does not support trial amounts greater than $0.', 'digital-members-rfid' );?></strong></p>
+										<p class="description"><strong <?php if(!empty($dmrfid_payflow_error)) { ?>class="dmrfid_red"<?php } ?>><?php _e('Actualmente, la integración de flujo de pago no admite montos de prueba superiores a $0.', 'digital-members-rfid' );?></strong></p>
 									<?php } ?>
 								</td>
 							</tr>
 
 							<tr>
-								<th scope="row" valign="top"><label><?php _e('Membership Expiration', 'digital-members-rfid' );?>:</label></th>
+								<th scope="row" valign="top"><label><?php _e('Caducidad de la membresía', 'digital-members-rfid' );?>:</label></th>
 								<td><input id="expiration_<?php echo $level->id;?>" name="expiration[]" type="checkbox" value="<?php echo $level->id?>" <?php if(dmrfid_isLevelExpiring($level)) { echo "checked='checked'"; } ?> onclick="if(jQuery(this).is(':checked')) { jQuery(this).parent().parent().siblings('.expiration_info').show(); } else { jQuery(this).parent().parent().siblings('.expiration_info').hide();}" /> <label for="expiration_<?php echo $level->id;?>"><?php _e('Check this to set when membership access expires.', 'digital-members-rfid' );?></label></td>
 							</tr>
 
 							<tr class="expiration_info" <?php if(!dmrfid_isLevelExpiring($level)) {?>style="display: none;"<?php } ?>>
-								<th scope="row" valign="top"><label for="billing_amount"><?php _e('Expires In', 'digital-members-rfid' );?>:</label></th>
+								<th scope="row" valign="top"><label for="billing_amount"><?php _e('Expira en', 'digital-members-rfid' );?>:</label></th>
 								<td>
 									<input id="expiration_number" name="expiration_number[]" type="text" size="10" value="<?php echo str_replace("\"", "&quot;", stripslashes($level->expiration_number))?>" />
 									<select id="expiration_period" name="expiration_period[]">
 									  <?php
-										$cycles = array( __('Day(s)', 'digital-members-rfid' ) => 'Day', __('Week(s)', 'digital-members-rfid' ) => 'Week', __('Month(s)', 'digital-members-rfid' ) => 'Month', __('Year(s)', 'digital-members-rfid' ) => 'Year' );
+										$cycles = array( __('Día(s)', 'digital-members-rfid' ) => 'Day', __('Semana(s)', 'digital-members-rfid' ) => 'Week', __('Mes(es)', 'digital-members-rfid' ) => 'Month', __('Año(s)', 'digital-members-rfid' ) => 'Year' );
 										foreach ( $cycles as $name => $value ) {
 										  echo "<option value='$value'";
 										  if ( $level->expiration_period == $value ) echo " selected='selected'";
@@ -701,7 +701,7 @@
 									  ?>
 
 									</select>
-									<p class="description"><?php _e('Set the duration of membership access. Note that the any future payments (recurring subscription, if any) will be cancelled when the membership expires.', 'digital-members-rfid' );?></p>
+									<p class="description"><?php _e('Establezca la duración del acceso a la membresía. Tenga en cuenta que los pagos futuros (suscripción recurrente, si corresponde) se cancelarán cuando expire la membresía.', 'digital-members-rfid' );?></p>
 								</td>
 							</tr>
 						</tbody>
@@ -728,8 +728,8 @@
 
 	<?php } else { ?>
 
-		<h1 class="wp-heading-inline"><?php esc_html_e( 'Memberships Discount Codes', 'digital-members-rfid' ); ?></h1>
-		<a href="admin.php?page=dmrfid-discountcodes&edit=-1" class="page-title-action"><?php esc_html_e( 'Add New Discount Code', 'digital-members-rfid' ); ?></a>
+		<h1 class="wp-heading-inline"><?php esc_html_e( 'Códigos de descuento de membresías', 'digital-members-rfid' ); ?></h1>
+		<a href="admin.php?page=dmrfid-discountcodes&edit=-1" class="page-title-action"><?php esc_html_e( 'Agregar nuevo código de descuento', 'digital-members-rfid' ); ?></a>
 		<hr class="wp-header-end">
 
 		<?php
@@ -748,10 +748,10 @@
 
 			if( empty( $s ) && empty( $codes ) ) { ?>
 				<div class="dmrfid-new-install">
-					<h2><?php echo esc_attr_e( 'No Discount Codes Found', 'digital-members-rfid' ); ?></h2>
-					<h4><?php _e( 'Discount codes allow you to override your membership level\'s default pricing.', 'digital-members-rfid' ); ?></h4>
-					<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes&edit=-1' ) ) ; ?>" class="button-primary"><?php esc_attr_e( 'Create a Discount Code', 'digital-members-rfid' );?></a>
-					<a href="<?php echo esc_url( 'https://www.managertechnology.com.co/documentation/discount-codes/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=documentation&utm_content=discount-codes' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Documentation: Discount Codes', 'digital-members-rfid' ); ?></a>
+					<h2><?php echo esc_attr_e( 'No se encontraron códigos de descuento', 'digital-members-rfid' ); ?></h2>
+					<h4><?php _e( 'Los códigos de descuento le permiten anular el precio predeterminado de su nivel de membresía.', 'digital-members-rfid' ); ?></h4>
+					<a href="<?php echo esc_url( admin_url( 'admin.php?page=dmrfid-discountcodes&edit=-1' ) ) ; ?>" class="button-primary"><?php esc_attr_e( 'Crea un código de descuento', 'digital-members-rfid' );?></a>
+					<a href="<?php echo esc_url( 'https://www.managertechnology.com.co/documentation/discount-codes/?utm_source=plugin&utm_medium=dmrfid-discountcodes&utm_campaign=documentation&utm_content=discount-codes' ); ?>" target="_blank" class="button"><?php echo esc_attr_e( 'Documentación: Códigos de descuento', 'digital-members-rfid' ); ?></a>
 				</div> <!-- end dmrfid-new-install -->
 			<?php } else { ?>
 
@@ -760,15 +760,15 @@
 				<?php } ?>
 
 				<?php if ( ! empty( $codes ) ) { ?>
-					<p class="subsubsub"><?php printf( __( "%d discount codes found.", 'digital-members-rfid' ), $totalrows ); ?></span></p>
+					<p class="subsubsub"><?php printf( __( "%d códigos de descuento encontrados.", 'digital-members-rfid' ), $totalrows ); ?></span></p>
 				<?php } ?>
 
 				<form id="posts-filter" method="get" action="">
 					<p class="search-box">
-						<label class="screen-reader-text" for="post-search-input"><?php _e('Search Discount Codes', 'digital-members-rfid' );?>:</label>
+						<label class="screen-reader-text" for="post-search-input"><?php _e('Buscar códigos de descuento', 'digital-members-rfid' );?>:</label>
 						<input type="hidden" name="page" value="dmrfid-discountcodes" />
 						<input id="post-search-input" type="text" value="<?php if(!empty($s)) echo $s;?>" name="s" size="30" />
-						<input class="button" type="submit" value="<?php _e('Search', 'digital-members-rfid' );?>" id="search-submit "/>
+						<input class="button" type="submit" value="<?php _e('Buscar', 'digital-members-rfid' );?>" id="search-submit "/>
 					</p>
 				</form>
 
@@ -778,11 +778,11 @@
 				<thead>
 					<tr>
 						<th><?php _e('ID', 'digital-members-rfid' );?></th>
-						<th><?php _e('Code', 'digital-members-rfid' );?></th>
-						<th><?php _e('Starts', 'digital-members-rfid' );?></th>
-						<th><?php _e('Expires', 'digital-members-rfid' );?></th>
-						<th><?php _e('Uses', 'digital-members-rfid' );?></th>
-						<th><?php _e('Levels', 'digital-members-rfid' );?></th>
+						<th><?php _e('Codigo', 'digital-members-rfid' );?></th>
+						<th><?php _e('Empieza', 'digital-members-rfid' );?></th>
+						<th><?php _e('Expira', 'digital-members-rfid' );?></th>
+						<th><?php _e('Usuarios', 'digital-members-rfid' );?></th>
+						<th><?php _e('Roles', 'digital-members-rfid' );?></th>
 						<?php do_action("dmrfid_discountcodes_extra_cols_header", $codes);?>
 					</tr>
 				</thead>
@@ -790,7 +790,7 @@
 					<?php if ( !empty( $s ) && empty( $codes ) ) { ?>
 					<tr>
 						<td colspan="6">
-							<?php echo esc_attr_e( 'Code not found.', 'digital-members-rfid' ); ?>
+							<?php echo esc_attr_e( 'Código no encontrado.', 'digital-members-rfid' ); ?>
 						</td>
 					</tr> 
 					<?php } ?>
@@ -801,20 +801,20 @@
 						<tr<?php if ( ! dmrfid_check_discount_code_for_gateway_compatibility( $code->id ) ) { ?> class="dmrfid_error"<?php } ?>>
 							<td><?php echo $code->id?></td>
 							<td class="has-row-actions">
-								<a title="<?php echo sprintf( 'Edit Code: %s', $code->code ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php echo $code->code?></a>
+								<a title="<?php echo sprintf( 'Modificar código: %s', $code->code ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php echo $code->code?></a>
 								<div class="row-actions">
 									<span class="edit">
-										<a title="<?php _e( 'Edit', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Edit', 'digital-members-rfid' ); ?></a>
+										<a title="<?php _e( 'Editar', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Editar', 'digital-members-rfid' ); ?></a>
 									</span> |
 									<span class="copy">
-										<a title="<?php _e( 'Copy', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => -1, 'copy' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Copy', 'digital-members-rfid' ); ?></a>
+										<a title="<?php _e( 'Copiar', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'edit' => -1, 'copy' => $code->id ), admin_url('admin.php' ) ); ?>"><?php _e( 'Copiar', 'digital-members-rfid' ); ?></a>
 									</span> |
 									<span class="delete">
-										<a title="<?php _e( 'Delete', 'digital-members-rfid' ); ?>" href="javascript:dmrfid_askfirst('<?php echo str_replace("'", "\'", sprintf(__('Are you sure you want to delete the %s discount code? The subscriptions for existing users will not change, but new users will not be able to use this code anymore.', 'digital-members-rfid' ), $code->code));?>', '<?php echo wp_nonce_url(add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'delete' => $code->id), admin_url( 'admin.php' ) ), 'delete', 'dmrfid_discountcodes_nonce'); ?>'); void(0);"><?php _e('Delete', 'digital-members-rfid' ); ?></a>
+										<a title="<?php _e( 'Eliminar', 'digital-members-rfid' ); ?>" href="javascript:dmrfid_askfirst('<?php echo str_replace("'", "\'", sprintf(__('¿Está seguro de que desea eliminar el código de descuento% s? Las suscripciones para los usuarios existentes no cambiarán, pero los nuevos usuarios ya no podrán usar este código.', 'digital-members-rfid' ), $code->code));?>', '<?php echo wp_nonce_url(add_query_arg( array( 'page' => 'dmrfid-discountcodes', 'delete' => $code->id), admin_url( 'admin.php' ) ), 'delete', 'dmrfid_discountcodes_nonce'); ?>'); void(0);"><?php _e('Delete', 'digital-members-rfid' ); ?></a>
 									</span>
 									<?php if ( (int)$uses > 0 ) { ?>
 										| <span class="orders">
-											<a title="<?php _e(' View Orders', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-orders', 'discount_code' => $code->id, 'filter' => 'with-discount-code' ), admin_url('admin.php' ) ); ?>"><?php _e( 'Orders', 'digital-members-rfid' ); ?></a>
+											<a title="<?php _e(' Ver Ordenes', 'digital-members-rfid' ); ?>" href="<?php echo add_query_arg( array( 'page' => 'dmrfid-orders', 'discount_code' => $code->id, 'filter' => 'with-discount-code' ), admin_url('admin.php' ) ); ?>"><?php _e( 'Orders', 'digital-members-rfid' ); ?></a>
 										</span>
 									<?php } ?>
 								</div>
