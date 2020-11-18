@@ -46,6 +46,7 @@ require_once( DMRFID_DIR . '/classes/class.memberorder.php' );       // class to
 require_once( DMRFID_DIR . '/classes/class.dmrfidemail.php' );        // setup and filter emails sent by DmRFID
 require_once( DMRFID_DIR . '/classes/class-dmrfid-levels.php' );
 require_once( DMRFID_DIR . '/classes/class-dmrfid-admin-activity-email.php' );        // setup the admin activity email
+require_once( DMRFID_DIR . '/classes/class-dmrfid-api.php' );
 
 require_once( DMRFID_DIR . '/includes/filters.php' );                // filters, hacks, etc, moved into the plugin
 require_once( DMRFID_DIR . '/includes/reports.php' );                // load reports for admin (reports may also include tracking code, etc)
