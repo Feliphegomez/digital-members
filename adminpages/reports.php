@@ -16,7 +16,7 @@ if ( ! empty( $_REQUEST[ 'report' ] ) ) {
 	$report = sanitize_text_field( $_REQUEST[ 'report' ] );
 	call_user_func( 'dmrfid_report_' . $report . '_page' ); ?>
 	<hr />
-	<a class="button button-primary" href="<?php echo admin_url("admin.php?page=dmrfid-reports");?>"><?php _e( 'Back to Reports Dashboard', 'digital-members-rfid' ); ?></a>
+	<a class="button button-primary" href="<?php echo admin_url("admin.php?page=dmrfid-reports");?>"><?php _e( 'Volver al panel de informes', 'digital-members-rfid' ); ?></a>
 	<?php
 } else {
 	$pieces = array_chunk( $dmrfid_reports, ceil( count( $dmrfid_reports ) / 2 ), true );

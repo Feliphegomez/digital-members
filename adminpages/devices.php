@@ -11,3 +11,7 @@
 	echo "\nDEVICES\n";
 	echo "\nDEVICES\n";
 	echo "\nDEVICES\n";
+/**
+ * Load the Digital Members RFID dashboard-area header
+ */
+require_once( dirname( __FILE__ ) . '/admin_header.php' ); ?>

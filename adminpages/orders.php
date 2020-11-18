@@ -1,7 +1,7 @@
 <?php
 // only admins can get this
 if ( ! function_exists( 'current_user_can' ) || ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'dmrfid_orders' ) ) ) {
-	die( __( 'You do not have permissions to perform this action.', 'digital-members-rfid' ) );
+	die( __( 'No tienes permisos para realizar esta acción.', 'digital-members-rfid' ) );
 }
 
 // vars
@@ -158,10 +158,10 @@ $condition = apply_filters( 'dmrfid_admin_orders_query_condition', $condition, $
 if ( ! empty( $_REQUEST['delete'] ) ) {
 	$dorder = new MemberOrder( intval( $_REQUEST['delete'] ) );
 	if ( $dorder->deleteMe() ) {
-		$dmrfid_msg  = __( 'Order deleted successfully.', 'digital-members-rfid' );
+		$dmrfid_msg  = __( 'Pedido eliminado correctamente.', 'digital-members-rfid' );
 		$dmrfid_msgt = 'success';
 	} else {
-		$dmrfid_msg  = __( 'Error deleting order.', 'digital-members-rfid' );
+		$dmrfid_msg  = __( 'Error al eliminar el pedido.', 'digital-members-rfid' );
 		$dmrfid_msgt = 'error';
 	}
 }
@@ -301,14 +301,14 @@ if ( ! empty( $_REQUEST['save'] ) ) {
 		
 		// handle timestamp
 		if ( $order->updateTimestamp( intval( $_POST['ts_year'] ), intval( $_POST['ts_month'] ), intval( $_POST['ts_day'] ), intval( $_POST['ts_hour'] ) . ':' . intval( $_POST['ts_minute'] ) . ':00' ) !== false ) {
-			$dmrfid_msg  = __( 'Order saved successfully.', 'digital-members-rfid' );
+			$dmrfid_msg  = __( 'Pedido guardado correctamente.', 'digital-members-rfid' );
 			$dmrfid_msgt = 'success';
 		} else {
-			$dmrfid_msg  = __( 'Error updating order timestamp.', 'digital-members-rfid' );
+			$dmrfid_msg  = __( 'Error al actualizar la marca de tiempo del pedido.', 'digital-members-rfid' );
 			$dmrfid_msgt = 'error';
 		}
 	} else {
-		$dmrfid_msg  = __( 'Error saving order.', 'digital-members-rfid' );
+		$dmrfid_msg  = __( 'Error al guardar el pedido.', 'digital-members-rfid' );
 		$dmrfid_msgt = 'error';
 	}
 	
@@ -999,7 +999,7 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 
 		<ul class="subsubsub">
 			<li>
-				<?php esc_html_e( 'Show', 'digital-members-rfid' ); ?>
+				<?php esc_html_e( 'Mostrar', 'digital-members-rfid' ); ?>
 				<select id="filter" name="filter">
 					<option value="all" <?php selected( $filter, 'all' ); ?>><?php esc_html_e( 'Todas', 'digital-members-rfid' ); ?></option>
 					<option
@@ -1319,17 +1319,17 @@ if ( function_exists( 'dmrfid_add_email_order_modal' ) ) {
 			<thead>
 			<tr class="thead">
 				<th><?php esc_html_e( 'ID', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Code', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Username', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Codigo', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Usuario', 'digital-members-rfid' ); ?></th>
 				<?php do_action( 'dmrfid_orders_extra_cols_header', $order_ids ); ?>
-				<th><?php esc_html_e( 'Level', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Rol', 'digital-members-rfid' ); ?></th>
 				<th><?php esc_html_e( 'Total', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Payment', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Gateway', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Transaction IDs', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Status', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Date', 'digital-members-rfid' ); ?></th>
-				<th><?php esc_html_e( 'Discount Code', 'digital-members-rfid' );?></th>
+				<th><?php esc_html_e( 'Pago', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Pasarela', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'ID de transacción', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Estado', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Fecha', 'digital-members-rfid' ); ?></th>
+				<th><?php esc_html_e( 'Código de descuento', 'digital-members-rfid' );?></th>
 			</tr>
 			</thead>
 			<tbody id="orders" class="list:order orders-list">

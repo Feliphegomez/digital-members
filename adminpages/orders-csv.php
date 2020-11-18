@@ -1,7 +1,7 @@
 <?php
 //only admins can get this
 if ( ! function_exists( "current_user_can" ) || ( ! current_user_can( "manage_options" ) && ! current_user_can( "dmrfid_orderscsv" ) ) ) {
-	die( __( "You do not have permissions to perform this action.", 'digital-members-rfid' ) );
+	die( __( "No tienes permisos para realizar esta acción.", 'digital-members-rfid' ) );
 }
 
 define('DMRFID_BENCHMARK', true);
@@ -571,8 +571,8 @@ function dmrfid_transmit_order_content( $csv_fh, $filename, $headers = array() )
 	//did we accidentally send errors/warnings to browser?
 	if ( headers_sent() ) {
 		echo str_repeat( '-', 75 ) . "<br/>\n";
-		echo 'Please open a support case and paste in the warnings/errors you see above this text to\n ';
-		echo 'the <a href="http://managertechnology.com.co/support/?utm_source=plugin&utm_medium=dmrfid-orders-csv&utm_campaign=support" target="_blank">Digital Members RFID support forum</a><br/>\n';
+		echo 'Abra un caso de soporte y pegue las advertencias / errores que ve encima de este texto para \n ';
+		echo 'el <a href="http://managertechnology.com.co/support/?utm_source=plugin&utm_medium=dmrfid-orders-csv&utm_campaign=support" target="_blank">Foro de soporte RFID para miembros digitales</a><br/>\n';
 		echo str_repeat( "=", 75 ) . "<br/>\n";
 		echo file_get_contents( $filename );
 		echo str_repeat( "=", 75 ) . "<br/>\n";

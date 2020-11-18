@@ -178,8 +178,8 @@ function dmrfid_dashboard_welcome_callback() { ?>
     		<?php } ?>
 
     		<?php if ( ! dmrfid_license_isValid() ) { ?>
-    			<p><?php esc_html_e( 'Se recomienda una licencia de soporte anual para los sitios web que ejecutan Digital Members RFID.', 'digital-members-rfid' ); ?><br /><a href="https://www.managertechnology.com.co/pricing/?utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=pricing&utm_content=upgrade" target="_blank"><?php esc_html_e( 'View Pricing &raquo;' , 'digital-members-rfid' ); ?></a></p>
-    			<p><a href="https://www.managertechnology.com.co/membership-checkout/?level=20&utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=plus-checkout&utm_content=upgrade" target="_blank" class="button button-action button-hero"><?php esc_attr_e( 'Upgrade', 'digital-members-rfid' ); ?></a>
+    			<p><?php esc_html_e( 'Se recomienda una licencia de soporte anual para los sitios web que ejecutan Digital Members RFID.', 'digital-members-rfid' ); ?><br /><a href="https://www.managertechnology.com.co/digital-members-rfid/pricing/" target="_blank"><?php esc_html_e( 'Ver precios&raquo;' , 'digital-members-rfid' ); ?></a></p>
+    			<p><a href="https://www.managertechnology.com.co/membership-checkout/?level=20&utm_source=plugin&utm_medium=dmrfid-dashboard&utm_campaign=plus-checkout&utm_content=upgrade" target="_blank" class="button button-action button-hero"><?php esc_attr_e( 'Mejorar', 'digital-members-rfid' ); ?></a>
     		<?php } ?>
     		<hr />
     		<p><?php echo wp_kses_post( sprintf( __( 'Los miembros digitales RFID y nuestros complementos se distribuyen bajo la <a target="_blank" href="%s"> licencia GPLv2 </a>. Esto significa, entre otras cosas, que puede utilizar el software en este sitio o en cualquier otro sitio de forma gratuita.', 'digital-members-rfid' ), 'http://www.gnu.org/licenses/gpl-2.0.html' ) ); ?></p>
@@ -218,7 +218,7 @@ function dmrfid_dashboard_report_recent_members_callback() {
     			<tr>
     				<th><?php _e( 'Nombre de usuario', 'digital-members-rfid' );?></th>
     				<th><?php _e( 'Rol', 'digital-members-rfid' );?></th>
-    				<th><?php _e( 'Joined', 'digital-members-rfid' );?></th>
+    				<th><?php _e( 'Fecha de Registro', 'digital-members-rfid' );?></th>
     				<th><?php _e( 'Expiración', 'digital-members-rfid' ); ?></th>
     			</tr>
     		</thead>

@@ -2,7 +2,7 @@
 	//only admins can get this
 	if(!function_exists("current_user_can") || (!current_user_can("manage_options") && !current_user_can("dmrfid_membershiplevels")))
 	{
-		die(__("You do not have permissions to perform this action.", 'digital-members-rfid' ));
+		die(__("No tienes permisos para realizar esta acción.", 'digital-members-rfid' ));
 	}
 
 	global $wpdb, $msg, $msgt, $dmrfid_currency_symbol, $allowedposttags;
@@ -774,7 +774,7 @@
 			<tr>
 				<th><?php _e('ID', 'digital-members-rfid' );?></th>
 				<th><?php _e('Nombre', 'digital-members-rfid' );?></th>
-				<th><?php _e('Billing Details', 'digital-members-rfid' );?></th>
+				<th><?php _e('Detalles de facturación', 'digital-members-rfid' );?></th>
 				<th><?php _e('Vencimiento', 'digital-members-rfid' );?></th>
 				<th><?php _e('Permitir registros', 'digital-members-rfid' );?></th>
 				<?php do_action( 'dmrfid_membership_levels_table_extra_cols_header', $reordered_levels ); ?>
@@ -805,7 +805,7 @@
 				</td>
 				<td>
 					<?php if(dmrfid_isLevelFree($level)) { ?>
-						<?php _e('FREE', 'digital-members-rfid' );?>
+						<?php _e('GRATIS', 'digital-members-rfid' );?>
 					<?php } else { ?>
 						<?php echo str_replace( 'El precio de la membresía es', '', dmrfid_getLevelCost($level)); ?>
 					<?php } ?>

@@ -17,15 +17,15 @@
 
 
 	/**
-	 * Filter to set max number of records to process at a time
-	 * for the export (helps manage memory footprint)
+	 * Filtrar para establecer el número máximo de registros a procesar a la vez para la exportación 
+	 * (ayuda a administrar la huella de memoria)
 	 *
-	 * Rule of thumb: 2000 records: ~50-60 MB of addl. memory (memory_limit needs to be between 128MB and 256MB)
-	 *                4000 records: ~70-100 MB of addl. memory (memory_limit needs to be >= 256MB)
-	 *                6000 records: ~100-140 MB of addl. memory (memory_limit needs to be >= 256MB)
+	 * Regla de oro: 2000 registros: ~50-60 MB de adicional. memoria (memory_limit debe estar entre 128 MB y 256 MB)
+	 *               4000 registros: ~70-100 MB de adicional. memoria (el límite de memoria debe ser> = 256 MB)
+	 *               6000 registros: ~100-140 MB de adicional. memoria (el límite de memoria debe ser> = 256 MB)
 	 *
-	 * NOTE: Use the dmrfid_before_members_list_csv_export hook to increase memory "on-the-fly"
-	 *       Can reset with the dmrfid_after_members_list_csv_export hook
+	 * NOTA: Utilice el gancho dmrfid_before_members_list_csv_export para aumentar la memoria "sobre la marcha". 
+	 *       Se puede restablecer con el gancho dmrfid_after_members_list_csv_export
 	 *
 	 * @since 1.8.7
 	 */
@@ -526,8 +526,8 @@
 		if (headers_sent())
 		{
 			echo str_repeat('-', 75) . "<br/>\n";
-			echo 'Please open a support case and paste in the warnings/errors you see above this text to\n ';
-			echo 'the <a href="http://managertechnology.com.co/support/?utm_source=plugin&utm_medium=banner&utm_campaign=memberslist_csv" target="_blank">Digital Members RFID support forum</a><br/>\n';
+			echo 'Abra un caso de soporte y pegue las advertencias / errores que ve encima de este texto para\n ';
+			echo 'el <a href="http://managertechnology.com.co/support/?utm_source=plugin&utm_medium=banner&utm_campaign=memberslist_csv" target="_blank">Foro de soporte RFID para miembros digitales</a><br/>\n';
 			echo str_repeat("=", 75) . "<br/>\n";
 			echo file_get_contents($filename);
 			echo str_repeat("=", 75) . "<br/>\n";

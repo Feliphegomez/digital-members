@@ -121,7 +121,7 @@
 				?>
 				<tr>
 					<td></td>
-					<td colspan="3"><p><?php _e('No Add Ons found.', 'digital-members-rfid' ); ?></p></td>
+					<td colspan="3"><p><?php _e('No se encontraron complementos.', 'digital-members-rfid' ); ?></p></td>
 				</tr>
 				<?php
 			}
