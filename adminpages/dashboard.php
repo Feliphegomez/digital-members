@@ -136,6 +136,16 @@ function dmrfid_dashboard_welcome_callback() { ?>
     					<?php } ?>
     				</li>
     			<?php } ?>
+				
+    			<?php if ( current_user_can( 'dmrfid_pagesettings' ) ) { ?>
+    				<li>
+    					<?php if ( empty( $dmrfid_gateway_ready ) ) { ?>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-devices' );?>"><i class="dashicons dashicons-superhero"></i> <?php echo esc_attr_e( 'Configurar Dispositivos', 'digital-members-rfid' ); ?></a>
+    					<?php } else { ?>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-devices' );?>"><i class="dashicons dashicons-superhero"></i> <?php echo esc_attr_e( 'Configurar dispositivos', 'digital-members-rfid' ); ?></a>
+    					<?php } ?>
+    				</li>
+    			<?php } ?>
     		</ul>
     		<h3><?php echo esc_attr_e( 'Other Settings', 'digital-members-rfid' ); ?></h3>
     		<ul>

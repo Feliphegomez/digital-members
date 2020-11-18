@@ -218,7 +218,7 @@ function dmrfid_admin_bar_menu() {
 	}
 
 	// Add menu item for Devices
-	if ( current_user_can( 'dmrfid_addons' ) ) {
+	if ( current_user_can( 'dmrfid_devices' ) ) {
 		$wp_admin_bar->add_menu(
 			array(
 				'id' => 'dmrfid-devices',
@@ -313,6 +313,10 @@ function dmrfid_license_settings_page() {
 
 function dmrfid_updates() {
 	require_once( DMRFID_DIR . '/adminpages/updates.php' );
+}
+
+function dmrfid_devices() {
+	require_once( DMRFID_DIR . '/adminpages/devices.php' );
 }
 
 /**
