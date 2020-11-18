@@ -61,9 +61,9 @@ function dmrfid_devices_welcome_callback() { ?>
 				<?php if ( current_user_can( 'dmrfid_pagesettings' ) ) { ?>
 					<li>
     					<?php if ( empty( $dmrfid_gateway_ready ) ) { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-apir' );?>"><i class="dashicons dashicons-rest-api"></i> <?php echo esc_attr_e( 'API', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-apir' );?>"><i class="dashicons dashicons-rest-api"></i> <?php echo esc_attr_e( 'Explorador API', 'digital-members-rfid' ); ?></a>
     					<?php } else { ?>
-    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-apir' );?>"><i class="dashicons dashicons-rest-api"></i> <?php echo esc_attr_e( 'API', 'digital-members-rfid' ); ?></a>
+    						<a href="<?php echo admin_url( 'admin.php?page=dmrfid-apir' );?>"><i class="dashicons dashicons-rest-api"></i> <?php echo esc_attr_e( 'Explorador API', 'digital-members-rfid' ); ?></a>
     					<?php } ?>
     				</li>
     			<?php } ?>
