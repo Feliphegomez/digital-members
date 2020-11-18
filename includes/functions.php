@@ -40,6 +40,7 @@ function dmrfid_setDBTables() {
 	$wpdb->dmrfid_discount_codes_uses = $wpdb->prefix . 'dmrfid_discount_codes_uses';
 	$wpdb->dmrfid_membership_levelmeta = $wpdb->prefix . 'dmrfid_membership_levelmeta';
 	$wpdb->dmrfid_membership_ordermeta = $wpdb->prefix . 'dmrfid_membership_ordermeta';
+	$wpdb->dmrfid_membership_devices = $wpdb->prefix . 'dmrfid_membership_devices';
 }
 dmrfid_setDBTables();
 

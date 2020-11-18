@@ -17,7 +17,8 @@ function dmrfid_getDmRFIDCaps() {
 		'dmrfid_orders',
 		'dmrfid_discountcodes',
 		'dmrfid_updates',
-		'dmrfid_devices'
+		'dmrfid_devices',
+		'dmrfid_apir'
 	);
 
 	return $dmrfid_caps;
@@ -63,6 +64,7 @@ function dmrfid_add_pages() {
 	add_submenu_page( 'dmrfid-dashboard', __( 'Settings', 'digital-members-rfid' ), __( 'Configuraciones', 'digital-members-rfid' ), 'dmrfid_membershiplevels', 'dmrfid-membershiplevels', 'dmrfid_membershiplevels' );
 	add_submenu_page( 'dmrfid-dashboard', __( 'Add Ons', 'digital-members-rfid' ), __( 'Complementos', 'digital-members-rfid' ), 'dmrfid_addons', 'dmrfid-addons', 'dmrfid_addons' );
 	add_submenu_page( 'dmrfid-dashboard', __( 'Devices', 'digital-members-rfid' ), __( 'Dispositivos', 'digital-members-rfid' ), 'dmrfid_devices', 'dmrfid-devices', 'dmrfid_devices' );
+	add_submenu_page( 'dmrfid-dashboard', __( 'API', 'digital-members-rfid' ), __( 'API', 'digital-members-rfid' ), 'dmrfid_apir', 'dmrfid-apir', 'dmrfid_apir' );
 	
 
 	// Check License Key for Correct Link Color
@@ -217,18 +219,6 @@ function dmrfid_admin_bar_menu() {
 		);
 	}
 
-	// Add menu item for Devices
-	if ( current_user_can( 'dmrfid_devices' ) ) {
-		$wp_admin_bar->add_menu(
-			array(
-				'id' => 'dmrfid-devices',
-				'parent' => 'digital-members-rfid',
-				'title' => __( 'Dispositivos', 'digital-members-rfid' ),
-				'href' => get_admin_url( NULL, '/admin.php?page=dmrfid-devices' )
-			)
-		);
-	}
-
 	// Add menu item for License.
 	if ( current_user_can( 'manage_options' ) ) {
 		// Check License Key for Correct Link Color
@@ -244,6 +234,30 @@ function dmrfid_admin_bar_menu() {
 				'parent' => 'digital-members-rfid',
 				'title' => __( '<span style="color: ' . $span_color . '; line-height: 26px;">License</span>', 'digital-members-rfid' ),
 				'href' => get_admin_url( NULL, '/admin.php?page=dmrfid-license' )
+			)
+		);
+	}
+
+	// Add menu item for Devices
+	if ( current_user_can( 'dmrfid_devices' ) ) {
+		$wp_admin_bar->add_menu(
+			array(
+				'id' => 'dmrfid-devices',
+				'parent' => 'digital-members-rfid',
+				'title' => __( 'Dispositivos', 'digital-members-rfid' ),
+				'href' => get_admin_url( NULL, '/admin.php?page=dmrfid-devices' )
+			)
+		);
+	}
+
+	// Add menu item for API
+	if ( current_user_can( 'dmrfid_apir' ) ) {
+		$wp_admin_bar->add_menu(
+			array(
+				'id' => 'dmrfid-apir',
+				'parent' => 'digital-members-rfid',
+				'title' => __( 'API', 'digital-members-rfid' ),
+				'href' => get_admin_url( NULL, '/admin.php?page=dmrfid-apir' )
 			)
 		);
 	}
@@ -317,6 +331,9 @@ function dmrfid_updates() {
 
 function dmrfid_devices() {
 	require_once( DMRFID_DIR . '/adminpages/devices.php' );
+}
+function dmrfid_apir() {
+	require_once( DMRFID_DIR . '/adminpages/apir.php' );
 }
 
 /**

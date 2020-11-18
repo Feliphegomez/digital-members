@@ -213,6 +213,7 @@
 			'dmrfid-advancedsettings',
 			'dmrfid-addons',
 			'dmrfid-devices',
+			'dmrfid-apir',
 			'dmrfid-license'
 		);
 		if( in_array( $view, $settings_tabs ) ) { ?>
@@ -247,6 +248,10 @@
 
 			<?php if(current_user_can('manage_options')) { ?>
 				<a href="<?php echo admin_url('admin.php?page=dmrfid-license');?>" class="nav-tab<?php if($view == 'dmrfid-license') { ?> nav-tab-active<?php } ?>"><?php _e('Licencia', 'digital-members-rfid' );?></a>
+			<?php } ?>
+
+			<?php if(current_user_can('manage_options')) { ?>
+				<a href="<?php echo admin_url('admin.php?page=dmrfid-apir');?>" class="nav-tab<?php if($view == 'dmrfid-apir') { ?> nav-tab-active<?php } ?>"><?php _e('API', 'digital-members-rfid' );?></a>
 			<?php } ?>
 		</nav>
 
