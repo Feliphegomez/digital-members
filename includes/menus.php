@@ -63,20 +63,20 @@ function dmrfid_pages_metabox_nav_links() {
 				<?php // Include the custom Log In and Log Out menu items. ?>
 				<li>
 					<label class="menu-item-title">
-						<input type="checkbox" class="menu-item-checkbox" name="menu-item[-1][menu-item-object-id]" value="-1"> <?php _e( 'Log In', 'digital-members-rfid'); ?>
+						<input type="checkbox" class="menu-item-checkbox" name="menu-item[-1][menu-item-object-id]" value="-1"> <?php _e( 'Iniciar sesión', 'digital-members-rfid'); ?>
 					</label>
 					<input type="hidden" class="menu-item-type" name="menu-item[-1][menu-item-type]" value="custom">
 					<input type="hidden" class="menu-item-type-name" name="menu-item[-1][menu-item-type]" value="custom">
-					<input type="hidden" class="menu-item-title" name="menu-item[-1][menu-item-title]" value="<?php _e( 'Log In', 'digital-members-rfid'); ?>">
+					<input type="hidden" class="menu-item-title" name="menu-item[-1][menu-item-title]" value="<?php _e( 'Iniciar sesión', 'digital-members-rfid'); ?>">
 					<input type="hidden" class="menu-item-url" name="menu-item[-1][menu-item-url]" value="#">
 					<input type="hidden" class="menu-item-classes" name="menu-item[-1][menu-item-classes]" value="menu-item-type-dmrfid-login">
 				</li>
 				<li>
 					<label class="menu-item-title">
-						<input type="checkbox" class="menu-item-checkbox" name="menu-item[-2][menu-item-object-id]" value="-2"> <?php _e( 'Log Out', 'digital-members-rfid'); ?>
+						<input type="checkbox" class="menu-item-checkbox" name="menu-item[-2][menu-item-object-id]" value="-2"> <?php _e( 'Cerrar sesión', 'digital-members-rfid'); ?>
 					</label>
 					<input type="hidden" class="menu-item-type" name="menu-item[-2][menu-item-type]" value="custom">
-					<input type="hidden" class="menu-item-title" name="menu-item[-2][menu-item-title]" value="<?php _e( 'Log Out', 'digital-members-rfid'); ?>">
+					<input type="hidden" class="menu-item-title" name="menu-item[-2][menu-item-title]" value="<?php _e( 'Cerrar sesión', 'digital-members-rfid'); ?>">
 					<input type="hidden" class="menu-item-url" name="menu-item[-2][menu-item-url]" value="#">
 					<input type="hidden" class="menu-item-classes" name="menu-item[-2][menu-item-classes]" value="menu-item-type-dmrfid-logout">
 				</li>
@@ -84,7 +84,7 @@ function dmrfid_pages_metabox_nav_links() {
 		</div>
 		<p class="button-controls wp-clearfix">
 			<span class="add-to-menu">
-				<input type="submit"<?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-dmrfid-page-items" id="submit-dmrfid-page-items" />
+				<input type="submit"<?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button submit-add-to-menu right" value="<?php esc_attr_e( 'Agregar al menú' ); ?>" name="add-dmrfid-page-items" id="submit-dmrfid-page-items" />
 				<span class="spinner"></span>
 			</span>
 		</p>
@@ -141,7 +141,7 @@ function dmrfid_customize_nav_menu_available_items( $items, $type, $object, $pag
 	$dmrfid_pages = get_pages( array( 'include' => $dmrfid_page_ids ) );
 
 	// Include conditional log in / log out menu item.
-	//$dmrfid_pages['login-out'] = __( 'Log in/Log Out Conditional', 'digital-members-rfid' );
+	$dmrfid_pages['login-out'] = __( 'Iniciar / Cerrar sesión condicional', 'digital-members-rfid' );
 
 	foreach ( $dmrfid_pages as $dmrfid_page ) {
 		$items[] = array(
@@ -157,7 +157,7 @@ function dmrfid_customize_nav_menu_available_items( $items, $type, $object, $pag
 	// Include the custom Log In and Log Out menu items.
 	$items[] = array(
 		'id'         => 'dmrfid-login',
-		'title'      => __( 'Log In', 'digital-members-rfid'),
+		'title'      => __( 'Iniciar sesión', 'digital-members-rfid'),
 		'type'       => 'dmrfid-login',
 		'type_label' => __( 'Page', 'digital-members-rfid'),
 		'object'     => 'page',
@@ -166,7 +166,7 @@ function dmrfid_customize_nav_menu_available_items( $items, $type, $object, $pag
 
 	$items[] = array(
 		'id'         => 'dmrfid-logout',
-		'title'      => __( 'Log Out', 'digital-members-rfid'),
+		'title'      => __( 'Cerrar sesión', 'digital-members-rfid'),
 		'type'       => 'dmrfid-logout',
 		'type_label' => __( 'Page', 'digital-members-rfid'),
 		'object'     => 'page',
@@ -228,7 +228,7 @@ function dmrfid_register_menus() {
 	// Register DmRFID menu areas.
 	register_nav_menus(
 		array(
-			'dmrfid-login-widget' => __( 'Log In Widget - DmRFID', 'digital-members-rfid' ),
+			'dmrfid-login-widget' => __( 'Widget de inicio de sesión - DmRFID', 'digital-members-rfid' ),
 		)
 	);
 }

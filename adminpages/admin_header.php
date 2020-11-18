@@ -8,8 +8,7 @@
 
 	global $dmrfid_ready, $msg, $msgt;
 	///$dmrfid_ready = dmrfid_is_ready();
-	if(!$dmrfid_ready)
-	{
+	if(!$dmrfid_ready){
 		global $dmrfid_level_ready, $dmrfid_gateway_ready, $dmrfid_pages_ready;
 		if(!isset($edit))
 		{
@@ -213,6 +212,7 @@
 			'dmrfid-emailsettings',
 			'dmrfid-advancedsettings',
 			'dmrfid-addons',
+			'dmrfid-devices',
 			'dmrfid-license'
 		);
 		if( in_array( $view, $settings_tabs ) ) { ?>
@@ -242,7 +242,7 @@
 		<?php } ?>
 
 		<?php if(current_user_can('manage_options')) { ?>
-			<a href="<?php echo admin_url('admin.php?page=dmrfid-devices');?>" class="nav-tab<?php if($view == 'dmrfid-license') { ?> nav-tab-active<?php } ?>"><?php _e('Dispositivos', 'digital-members-rfid' );?></a>
+			<a href="<?php echo admin_url('admin.php?page=dmrfid-devices');?>" class="nav-tab<?php if($view == 'dmrfid-devices') { ?> nav-tab-active<?php } ?>"><?php _e('Dispositivos', 'digital-members-rfid' );?></a>
 		<?php } ?>
 
 		<?php if(current_user_can('manage_options')) { ?>
@@ -253,27 +253,27 @@
 	<?php if( $view == 'dmrfid-membershiplevels' || $view == 'dmrfid-discountcodes' || $view == 'dmrfid-pagesettings' || $view == 'dmrfid-paymentsettings' || $view == 'dmrfid-emailsettings' || $view == 'dmrfid-advancedsettings' ) { ?>
 		<ul class="subsubsub">
 			<?php if(current_user_can('dmrfid_membershiplevels')) { ?>
-				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-membershiplevels');?>" title="<?php _e('Niveles de membresía', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-membershiplevels') { ?>current<?php } ?>"><?php _e('Levels', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
+				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-membershiplevels');?>" title="<?php _e('Niveles de membresía', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-membershiplevels') { ?>current<?php } ?>"><?php _e('Niveles', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
 			<?php } ?>
 
 			<?php if(current_user_can('dmrfid_discountcodes')) { ?>
-				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-discountcodes');?>" title="<?php _e('Códigos de descuento', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-discountcodes') { ?>current<?php } ?>"><?php _e('Discount Codes', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
+				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-discountcodes');?>" title="<?php _e('Códigos de descuento', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-discountcodes') { ?>current<?php } ?>"><?php _e('Códigos de descuento', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
 			<?php } ?>
 
 			<?php if(current_user_can('dmrfid_pagesettings')) { ?>
-				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-pagesettings');?>" title="<?php _e('Configuración de página', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-pagesettings') { ?>current<?php } ?>"><?php _e('Pages', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
+				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-pagesettings');?>" title="<?php _e('Configuración de página', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-pagesettings') { ?>current<?php } ?>"><?php _e('Páginas', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
 			<?php } ?>
 
 			<?php if(current_user_can('dmrfid_paymentsettings')) { ?>
-				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-paymentsettings');?>" title="<?php _e('Pasarela de pago &amp; configuración de SSL', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-paymentsettings') { ?>current<?php } ?>"><?php _e('Payment Gateway &amp; SSL', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
+				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-paymentsettings');?>" title="<?php _e('Pasarela de pago &amp; configuración de SSL', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-paymentsettings') { ?>current<?php } ?>"><?php _e('Pasarela de pago & SSL', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
 			<?php } ?>
 
 			<?php if(current_user_can('dmrfid_emailsettings')) { ?>
-				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-emailsettings');?>" title="<?php _e('Ajustes del correo electrónico', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-emailsettings') { ?>current<?php } ?>"><?php _e('Email', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
+				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-emailsettings');?>" title="<?php _e('Ajustes del correo electrónico', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-emailsettings') { ?>current<?php } ?>"><?php _e('E-Mail', 'digital-members-rfid' );?></a>&nbsp;|&nbsp;</li>
 			<?php } ?>
 
 			<?php if(current_user_can('dmrfid_advancedsettings')) { ?>
-				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-advancedsettings');?>" title="<?php _e('Ajustes avanzados', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-advancedsettings') { ?>current<?php } ?>"><?php _e('Advanced', 'digital-members-rfid' );?></a></li>
+				<li><a href="<?php echo admin_url('admin.php?page=dmrfid-advancedsettings');?>" title="<?php _e('Ajustes avanzados', 'digital-members-rfid' );?>" class="<?php if($view == 'dmrfid-advancedsettings') { ?>current<?php } ?>"><?php _e('Avanzada', 'digital-members-rfid' );?></a></li>
 			<?php } ?>
 		</ul>
 		<br class="clear" />

@@ -1,23 +1,16 @@
 <?php
 //make sure administrators have correct capabilities
-function dmrfid_check_admin_capabilities()
-{
+function dmrfid_check_admin_capabilities(){
     // Grab the defined (needed) admin capabilities
     $roles = dmrfid_get_capability_defs('administrator');
 
     $caps_configured = true;
 
     // check whether the current user has those capabilities already
-    foreach( $roles as $r )
-    {
-        $caps_configured = $caps_configured && current_user_can($r);
-    }
+    foreach( $roles as $r ){ $caps_configured = $caps_configured && current_user_can($r); }
 
     // if not, set the
-    if ( false === $caps_configured && current_user_can('administrator'))
-    {
-        dmrfid_set_capabilities_for_role('administrator');
-    }
+    if ( false === $caps_configured && current_user_can('administrator')){ dmrfid_set_capabilities_for_role('administrator'); }
 }
 add_action('admin_init', 'dmrfid_check_admin_capabilities', 5, 2);
 
@@ -25,7 +18,7 @@ add_action('admin_init', 'dmrfid_check_admin_capabilities', 5, 2);
 function dmrfid_set_capabilities_for_role( $role_name, $action = 'enable' )
 {
     $role = get_role( $role_name );
-    if ( empty( $role ) ) {
+    if ( empty( $role ) ) { 
         // Role does not exist.
         return false;
     }
@@ -66,6 +59,7 @@ function dmrfid_get_capability_defs($role)
         'dmrfid_orderscsv',
         'dmrfid_discountcodes',
         'dmrfid_updates',
+        'dmrfid_devices',
     );
 
     return apply_filters( "dmrfid_assigned_{$role}_capabilities", $cap_array);

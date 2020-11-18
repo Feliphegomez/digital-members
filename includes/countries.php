@@ -1,7 +1,7 @@
 <?php
 	//thanks JigoShop
 	global $dmrfid_countries, $dmrfid_default_country;
-	$dmrfid_default_country = apply_filters("dmrfid_default_country", "US");
+	$dmrfid_default_country = apply_filters("dmrfid_default_country", "CO");
 
 	$dmrfid_countries = array(
 		'AD' => __( 'Andorra', 'digital-members-rfid' ),

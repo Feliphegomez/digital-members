@@ -4,6 +4,7 @@
 	$dmrfid_default_currency = apply_filters("dmrfid_default_currency", "USD");
 	
 	$dmrfid_currencies = array( 
+		'COP' => __('Peso Colombiano (&#36;)', 'digital-members-rfid' ),
 		'USD' => __('US Dollars (&#36;)', 'digital-members-rfid' ),
 		'EUR' => array(
 			'name' => __('Euros (&euro;)', 'digital-members-rfid' ),
@@ -110,6 +111,7 @@
 	//stripe only supports a few (not using this anymore since 1.7.4)
 	global $dmrfid_stripe_currencies;
 	$dmrfid_stripe_currencies = array(
+			'COP' => __('Peso Colombiano (&#36;)', 'digital-members-rfid' ),			
 			'USD' => __('US Dollars (&#36;)', 'digital-members-rfid' ),			
 			'CAD' => __('Canadian Dollars (&#36;)', 'digital-members-rfid' ),
 			'GBP' => __('Pounds Sterling (&pound;)', 'digital-members-rfid' ),
@@ -137,8 +139,8 @@
 		
 		// Defaults
 		$currency_array = array(
-			'name' =>__('US Dollars (&#36;)', 'digital-members-rfid' ),
-			'decimals' => '2',
+			'name' =>__('Peso Colombiano (&#36;)', 'digital-members-rfid' ),
+			'decimals' => '0',
 			'thousands_separator' => ',',
 			'decimal_separator' => '.',
 			'symbol' => '&#36;',
