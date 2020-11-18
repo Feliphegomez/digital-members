@@ -60,6 +60,7 @@ function dmrfid_get_capability_defs($role)
         'dmrfid_discountcodes',
         'dmrfid_updates',
         'dmrfid_devices',
+        'dmrfid_apir',
     );
 
     return apply_filters( "dmrfid_assigned_{$role}_capabilities", $cap_array);

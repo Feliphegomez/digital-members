@@ -3,11 +3,12 @@
  * Load the Digital Members RFID devices-area header
  */
 require_once( dirname( __FILE__ ) . '/admin_header.php' ); 
+/*
 use FelipheGomez\PhpCrudApi\Api;
 use FelipheGomez\PhpCrudApi\Config;
 use FelipheGomez\PhpCrudApi\RequestFactory;
 use FelipheGomez\PhpCrudApi\ResponseUtils;
-
+*/
 
 
 /**
